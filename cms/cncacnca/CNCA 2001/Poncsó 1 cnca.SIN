@@ -1,0 +1,107 @@
+   1 C *******PONCSO******* 2 SZALVEZETOS CSIPKE *****
+   2 C LAP0.48+NYAK0.015+ROJT0.066=0.57KG->400FT ELADAS 800FT FEKETE:0.63X650=410FT
+   3 C                                            16 MIN  MARAD KB.170FT
+   4 C       14.5  9.0             0    14.5
+   5 C  1: <-------------       ------------->  LEVALASZTAS
+   6 C       14.5   0              0    14.5
+   7 C       
+   8 C J2: <-------------       -------------> 
+   9 C            
+  10 C       11.0  11.0          11.0   11.0
+  11 C B2: <-------------       ------------->  1/1
+  12 C       11.0  11.0          11.0   11.0
+  13 C       
+  14 C J3: <-------------       -------------> 
+  15 C      
+  16 C       13.5   13.5         13.5   13.5
+  17 C B3: <-------------       ------------->  MINTA:2 SZALVEZETOS CSIPKE
+  18 C       13.5   13.5         13.5   13.5
+  19 C       12.5   12.5         12.5   12.5   
+  20 C J4: <-------------       ------------->  LEVALASZTAS
+  21 C       12.5   12.5         12.5   12.5
+  22 C B4:=J4
+  23 C TUAGYKORREKCIOK:
+  24 C   V0:<-0.15-0.5
+  25 C   R1:->3   __________R2:-     ________R3:-
+  26 C   L1:-     __________L2:-     ________L3:-
+  27 C 7 SULY
+  28 C   PONCSO RS19=0            NP3=       RS1=            
+  29 C-----------------------+------------+----------------+-----------------+-----------+
+  30 C   2X15/1 PAMUT+1BRILL:    13.5        102  (80-82CM) 
+  31 C-----------------------+------------+----------------+-----------------+-----------+
+  32 C   3X15/1 PAMUT(F-F):
+  33 C    1 SZAL ATORSOZVA  
+  34 C-----------------------+------------+----------------+-----------------+-----------+
+  35 C 1/1-ES V NYAK:RS19=1 GUMI NELKUL
+  36 C 1/1-ES O NYAK:RS19=2 GUMIVAL VAGY:CP 1X1G
+  40 START 
+  50 YG:6/256;
+  54 <<	S:D.I-DI./DI.-D.I;		            Y:5/2;	  NP4-4  V# V0	    S1 S2
+  56 >>	S:D.I-DI./DI.-D.I/UVNDI.;      	Y:5/2;	  NP4-4            S1 S2 T2
+  58 <<	S:U^ND.I/DI.-D.I;		             Y:5;		  	NP1-1         T1 S1
+  60 >>	S:U^NDI./D.I-D.I;		             Y:6;	    NP4-4  VR1	   T1	   S2
+  62 <<	S:0-D.I/R-0;		                  Y:6/0;   NP4-4  V#	       S1 S2
+  64 IF RS19=1 GOTO 600     C******** 1/1-ES O NYAK ********
+  66 IF RS19=2 GOTO 700     C******** 1/1-ES V NYAK ********
+  68 >>	S:DI.-D.I;		                    Y:5;	           V# V0     S1
+ 100 C ---2LAP 553 TU---------------------
+ 105 JA1=1004(1004-1030)
+ 107 PA:JA1;
+ 112 FA=1-267
+ 115 PM:<.>7:IIFAIIIFAII;
+ 125 << S:DI.-0/DI.-D.I/UVND.I;               Y:2/5;                   S1 S2 T2
+ 130 VJA^0
+ 135 >> S:U^NN./.-N./.-N./UVNNA.;              NP3-3  VR1         T1 S1 S2 T2
+ 145 RBEG*RS1
+ 150 << S:U^N<1->N./.-N./.-N./UVNNY.;                 V0          T1 S1 S2 T2
+ 155 >> S:U^N<1->N./.-N./.-N./UVNI;                   VR1         T1 S1 S2 T2
+ 160 REND
+ 165 << S:U^N<1->N./.-N./.-N./UVNN.;                 V0          T1 S1 S2 T2
+ 170 >> S:U^N<1->N./.-N./.-N./UVNN.;                  V0          T1 S1 S2 T2
+ 175 << S:U^ND.I/DI.-D.I/DI.-D.I;                       NP4-4     T1 S1 S2
+ 180 >> S:DI.-D.I/DI.-D.I/UVND.I;                                    S1 S2 T2
+ 185 END
+ 600 C 1/1-ES V NYAK GUMI NELKUL *************************
+ 660 >>	S:DI.-D.I;		                    Y:5;	 NP2-2     V# V0     S1
+ 665 << S:DI.-0/0-D.I;                  Y:2/5;          V#        S1 S2
+ 670 >> S:DI.-D.I/DI.-D.I;                              V#        S1 S2
+ 675 REP*4
+ 680 <<                                                 V#        S1 S2
+ 685 >>                                                 V#        S1 S2
+ 690 REPEND
+ 692 <<                                                 V#        S1 S2
+ 695 >>S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2 T2
+ 699 END
+ 700 C 1/1-ES O NYAK GUMIVAL *************************
+ 724 >>	S:DI.-D.I;		                    Y:5;	  NP2-2    V# V0     S1
+ 726 << S:DI.-0/0-D.I;                  Y:6/2;          V#        S1 S2
+ 728 >> S:DI.-0/DI.-D.I;                                V#        S1 S2
+ 729                                    Y:2/5;
+ 730 REP*4
+ 732 << S:DI.-D.I/DI.-D.I;                              V#        S1 S2
+ 734 >>                                                 V#        S1 S2
+ 736 REPEND
+ 738 <<                                                 V#        S1 S2
+ 740 >>S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2 T2
+ 742 END
+ 990 C FEHER     . FONAK 
+ 991 C FEKETE    I SZIN
+ 992 C SARGA     Y SZIN ->
+ 993 C OKKERS.   A SZIN <-
+ 994 C           B+HTGO FONAS
+1002 268I
+1004 9(.3A.I.I3A3I).3A5I9(A4I.IAIII.I.)A4I.I
+1006 9(4IY.I.IIIYI.)4IYI9(3I3YI.I.3Y.)3I3YI.II
+1008 9(.I3A3I.3A.I).I3AII9(IAIII.I.A4I.)IAIII.I.I
+1010 9(I.3IYI.4IY.)I.3IYII9(3Y.3I3YI.I.)3Y.4I
+1012 9(II.3A.I.I3AI)II.3AI9(A4I.IAIII.I.)A4I.IAI
+1014 9(I.4IY.I.IIIY)I.4IY9(3YI.I.3Y.3I)3YI.I.YI
+1016 9(.I.I3A3I.3A).I.IAA9(AIII.I.A4I.I)AIII.I.AII
+1018 9(Y.I.IIIYI.4I)Y.I.I5I9(3I3YI.I.3Y.)3IYYI
+1020 9(A3I.3A.I.IAA)A5I9(4I.IAIII.I.A)4I.IA3I
+1022 9(IYI.4IY.I.II)IYI.6I9(I.3Y.3I3YI.)I.3YI
+1024 9(AA.I.I3A3I.A)AA.6I9(I.A4I.IA3I.)I.A4I
+1026 9(IIY.I.IIIYI.II)IIY.4I9(3I3YI.I.3Y.)3I3YII
+1028 9(3A3I.3A.I.I)3A6I9(IAIII.I.A4I.)IA3I.I
+1030 9(3IYI.4IY.I.)3IY6I9(3Y.3I3YI.I.)3Y.II
+1032 268I

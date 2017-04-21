@@ -1,0 +1,27 @@
+ 250 WM=22 C********  CSAVARAS BALRA  2SZV *** OTBW+G ************
+ 252 >> S:U^S<2->N./.(J1)-N.(J2)/.(J1)-N.(J2)/UVSI;    Y:5/2;  V0        T1 S1 S2 T2
+ 258 WM=18
+ 260 << S:U^S<2->I/.(J1)-IOTB+/0-+(8.0)/UVSIOTB;       Y:5/0; VL3        T1 S1 S2 T2
+ 262 >> S:U^SI/.-IOTBW(J2)/0-O(8.0)/UVSI;              Y:5/0; VR1 VKC>4  T1 S1 S2 T2
+ 264 WM=22
+ 256 << S:U^S<2->I/.(J1)-N.(J2)/.(J1)-N.(J2)/UVSI;                       T1 S1 S2 T2
+ 266 >> S:U^S<2->OTBI/.-N.(J2)/.-N./UVSN.;             Y:5/2; VR3 VKD>6  T1 S1 S2 T2 
+ 346 C********CSAVARAS BALRA---GIITOO-----ELOL 14.8 KELL. ES VR1 HELYETT VR2**********
+ 348  Y:5/2/0/5/0/5; C         OTBW+G
+ 350 WM=15
+ 352 VJA^0
+ 354 << S:U^S<1-2->N./.-N./UVSN.;			             VR1	VKF>6  T1 S1	  T2
+ 355 WM=0
+ 356 >> S:U^SNI.;				                            V0	        T1
+ 357 WM=15
+ 358 << S:U^S<1->I/.-IOTBW/0-W/UVSIOTB;		        VL3	       T1 S1 S2 T2
+ 360 >> S:U^S<1-2->I/.-IOTBW/0-O(9.0)/UVSI;	     VR1	VKC>3  T1 S1 S2 T2
+ 362 << S:U^S<1->IOTB/.-N.(J2)/UVSN.;	           VR3	VKD>5  T1 S1	   T2
+ 250 WM=22 C********  CSAVARAS BALRA  2SZV *** OTBW+G ************
+ 252 >> S:U^S<2->N./.(J1)-N.(J2)/.(J1)-N.(J2)/UVSI;    Y:5/2;  V0        T1 S1 S2 T2
+ 256 << S:U^S<2->I/.(J1)-N.(J2)/.(J1)-N.(J2)/UVSI;                       T1 S1 S2 T2
+ 258 WM=18
+ 260 >> S:U^S<2->I/.(J1)-IOTB+/0-+(8.0)/UVSIOTB;       Y:5/0; VL3        T1 S1 S2 T2
+ 262 << S:U^SI/.-IOTBW(J2)/0-O(8.0)/UVSI;              Y:5/0; VR1 VKC>4  T1 S1 S2 T2
+ 264 WM=22
+ 266 >> S:U^S<2->OTBI/.-N.(J2)/.-N./UVSN.;             Y:5/2; VR3 VKD>6  T1 S1 S2 T2 

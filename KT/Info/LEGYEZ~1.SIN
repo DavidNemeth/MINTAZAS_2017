@@ -1,0 +1,108 @@
+
+ LEGYEZÕS PASSZÉ:
+  SZÍN:  *
+         A<-
+         Y->
+  FONÁK: .
+         T<-
+         I->
+  SZÉLE: +
+ PL:LEPKÉS I-II (KT2000)
+    GÁBOR 4F-S  (KT)
+
+   1 C LEPKES:
+  12    NP1=13.8  C:MINTA ---13.8-14.5
+  15    NP4=12.5  C:LEVALASZTAS--
+  18    NP2=14.3  C:PASSZE----14.2---
+  19    NP3=13.8  C:LEGYEZO---13.3---
+  40 START
+  45 YG:6/256;
+  50 WM=20
+  55 << S:D.I-DI./DI.-D.I;		             Y:5/2;	             NP4-4 VU V0	       S1 S2
+  60 >> S:R-0/0-R;                       Y:5/2;      NP1-1                     S1 S2
+  65 << S:D.I-DI./DI.-D.I/UVNR;	         Y:5/2;	    NP4-4	                     S1 S2 T2
+  70 WM=15 
+  75 >> S:R-R;		                       Y:6;	    NP2-0   	                      S1
+  80 << S:0-R/R-0/0-R;		                Y:0/6/0;    NP2-2   	               T1 S1 S2
+  85 >> S:R-R(6.5)/0-R(2);	              	Y:2/5;	             ML                 S1 S2
+
+  90 WM=20
+ 105 JA1=1236
+ 110 PA:1:JA1;
+ 115 FA=13-188
+ 120 PM:<.>8:3(.FA...);
+ 122 REP*2 C***** BAL-BAL *******
+ 124 << S:U^NN./.-N./UVSR;       Y:2;                           T1 S1    T2
+ 126 >> S:R-0;                                                      S1
+ 128 REPEND C*******************
+ 130 << S:U^NN./.-N.(15.0)/UVS.+;       Y:2;                           T1 S1    T2
+ 135 REP*1 C******PASSZE********
+ 140 WM=0
+ 145 >> S:UVS*;                                   VR2     NP2-2   T2
+ 150 PKV:2:JA1;
+ 155 WM=20
+ 160 << S:NI-I;                        Y:5;        VR1 VU    S1
+ 165 >> S:U^S*+Y/.-N./UVS*;            Y:2;                T1 S1   T2
+ 170 WM=0
+ 175 << S:UVS+;                                   VL1 VKA>6       T2
+ 180 PKV:1:JA1;
+ 185 WM=20
+ 190 >> S:NI-I;                         Y:5;        V0  VU    S1
+ 195 << S:U^S*+Y/.-N./UVS+;             Y:2;                T1 S1   T2
+ 200 REPEND C****************************************************************
+ 204 GOSUB 140-190
+ 210 << S:U^S*+Y/.-N./UVSN.;             Y:2;                T1 S1   T2
+
+ 215 PM:<+> 8:+FA ++++ FA ++++ FA+; C PM:11(+)FA++++FA++++FA<+>; 
+ 220 JA1=1304(1304-1350)
+ 222 WM=20
+ 224 >> S:U^S N.TI+/.TI+-N.TI+;                  NP3-3   VU     T1 S2
+ 280 REP*11 C REP*5 C REP*1 C***********LEGYEZO***********
+ 285 WM=0
+ 290 << S:U^S ./UVS YA;                                          T1       T2
+ 295 >> S:U^S YI;                                VKB>3  VL1      T1
+ 300 << S:U^S AT;                                       VR1      T1
+ 310 >> S:UVS <1+>.TI+;                                  V0                T2
+ 315 WM=20
+ 320 << S:.TI+-N.TI+;                   Y:2/5;                VU          S1 S2
+ 325 WM=0
+ 330 >> S:U^S ./UVS YA;                                          T1       T2
+ 335 << S:U^S YI;                                   VKB VL1      T1
+ 340 >> S:U^S AT;                                       VR1      T1
+ 345 << S:UVS <1+>.TI+;                                  V0                T2
+ 350 WM=20
+ 355 >> S:.TI+-N.TI+;                    Y:2/5;                VU          S1 S2
+ 360 REPEND        C*********************************
+ 390 WM=20
+ 395 << S:U^NN+/+-N+/+-N+/UVNN+;                     Y:2/5;             T1 S1 S2 T2
+
+1236 I**********..+++++++++I**********Y++++++++++I**********Y++++++++++I**********Y++++++++++I**********Y++++++++++I**********Y++++++++++I**********Y++++++++++I**********Y++++++++++I**********.++++++++++I**********Y++++++++++
+1302 *IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT
+1304 *IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT
+1306 *YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA
+1308 *IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT
+1310 ..IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT.
+1312 ***IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT**
+1314 ....IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT...
+1316 *****IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT****
+1318 ......IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT.....
+1320 *******IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT******
+1322 ........IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT.......
+1324 *********IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT********
+1326 ..........I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T.........
+1330 *AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY
+1332 *ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY
+1334 *TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI
+1336 *AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY
+1338 *ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY
+1340 *TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI
+1342 *AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY
+1344 *ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY
+1346 *TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI
+1348 *AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY
+1350 *T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I
+1352 ............................................................................................................................................................................................................................
+1354 ............................................................................................................................................................................................................................
+1356 ............................................................................................................................................................................................................................
+1358 ****************************************************************************************************************************************************************************************************************************
+

@@ -1,0 +1,5 @@
+  40 START 
+  50 YG:6/256;
+  60 << S:DI.-D.I;     V0    Y:2;    NP4-4   ML     S2
+  70 >> S:D.I-DI.;                           ML    S1 
+ 100 END

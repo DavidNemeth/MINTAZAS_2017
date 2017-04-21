@@ -1,0 +1,108 @@
+   1 C HAROMSZOG CS PASSZE + KREPP: CP KR RS10= RS17=
+   2 C ****UA. MINT A NYUSZIFUL KREPP H-U CSAK A PASSZE UTAN NEM KOT FONAK SORT,
+   3 C HANEM EGYBOL A KREPPET. A KORSLAG UTAN SZINNEL KEZDI A PASSZET
+   4 C CNCA2007: CP KR RS10= RS17=
+   5 C NYERS LUSI+TX:      
+   6 C         14.25  14.5                                      15.0                  15.0
+   7 C J2:<---+-----  ---->  CS.PASSZE                   1LUREX:-----          2LUREX:-----
+   8 C         14.5   14.75                                     15.5                  15.5
+   9 C J3:13.5 2SZV. PASSZE             
+  10 C B3:14.0 BAL-BAL       2LUSI+TX:13.9  3LUSI:14.25        14.25            14.5/14.75
+  11 C B2:11.7 BEKEZDES                   
+  12 C J4:12.5 LEVALASZTAS,1/1               
+  13 C 4-6 SULY LUREX:+2 SULY                                    
+  14 C TUAGYKORREKCIOK: V0:->2.4 (2008.03.28.)
+  15 C                  R1:->2.2_________R2: - ________R3:-
+  16 C                  L1:<-1.0_________L2: - ________L3:-
+  17 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:2/5;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  60 C***********NYUSZIFUL KREPP H-U***554 TU (TELI TUAGY)*******************************
+  61  IF RS10=2  RS17=0    C*** TUN H   3LAP
+  62  IF RS10=1  RS17=1    C*** HU      4LAP
+  63 C IF RS10=6  RS17=2    C*** RU      4LAP
+  65 C IF RS10=6  RS17=6    C*** U-H-H-U **554TU CSIPKE PASSZEJU TOP
+  70 C**********2LUSI+1TX**LUREXXEL:+0.4*********KESZEN:**********72CM.:***70CM.:***65CM.:***60CM.:*****
+  71 IF RS17=0  RS1=146         RS19=0 RS15=0 C TUN.H   TX/15/1:154/146       148     138      130                       
+  72 IF RS17=1  RS1=112         RS19=1 RS15=0 C HU TELI TX/15/1:120/112
+  73 IF RS17=2  RS1=60          RS19=1 RS15=0 C RU TELI                           
+  75 IF RS17=6  RS1=156         RS19=3 RS15=0 C*** U-H-H-U *554TU CSIPKE PASSZEJU TOP
+  80 C********************************************************************************
+  82 JA1=1024(1004-1006);
+  84 JA2=1040(1034-1062)   C KREPP
+  86 PA:<JA1>;
+  88 IF RS19=0 FA=7-185;PM:<.>7:3(FA..);                       C*3LAP************TELI TUAGY 554TU
+  90 IF RS19=1 FA=30-162;PM:<.>9:4(FA..);                      C*4LAP************TELI TUAGY 554TU
+  93 IF RS19=3 FC=15-165;FB=33-147; PM:<.>7:..FBIIFCIIFCIIFB.; C*U-H-H-U*********TELI TUAGY 554TU
+  98 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP2-2          ML       S1
+ 109 Y:5/5/2/2;
+ 110 REP*2
+ 111 << S:R-0;		                                NP2-02           S2
+ 112 >> S:0-R;		                                NP0-             S1
+ 113 REPEND
+ 117 C-----SZINNEL KEZD:------
+ 118 << S:R-0;                                  NP-0             S2
+ 119 >> S:0-R/UVN.;                             NP0-             S1 T2
+ 120 << S:U^NN./.-N.;                                         T1 S2
+ 121 >> S:UVNA;                                 NP0-0               T2
+ 122 << S:UVNY;                                 NP0-0               T2
+ 123 >> S:NI-I;                          V#                     S1
+ 126 REP*4
+ 128 << S:U^NY;                                   VR1 NP0-0     T1
+ 130 >> S:U^NAW;                                  VL1 NP0-0     T1
+ 132 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S2 T2 
+ 134 >> S:U^NI/.-I/UVN<1->NI;                                   T1 S1 T2
+ 136 REPEND
+ 138 GOSUB 128-132
+ 140 >> S:U^NI/.-I;                              T1 S1
+ 142 << S:UVNDI.;        NP0-0       T2
+ 144 >> S:UVND.I;        NP03-03     T2
+ 400 C**********HATA-UJJA (KREPP)********
+ 402 PA:<JA2>;
+ 404 Y:2/2/5/5;
+ 406 RBEG*RS1
+ 408 << S:U^N<2->N./.-N./UVNR;                   V0     T1 S2     T2
+ 410 >>                                                 T1 S1     T2
+ 412 REND C******
+ 414 << S:U^ND.I/DI.-D.I;                           NP4-4       T1 S2
+ 416 >> S:DI.-D.I/UVND.I;                                           S1     T2
+ 418 RS10=RS10-1
+ 420 IF RS10>0 GOTO 52
+ 422 END
+1002 WWWWWWWWWWWW
+1004 ............
+1006 IIIIIIIIIIII
+1008 YIYIYIAIAIAI
+1010 .IIIIIIIII.I
+1012 YYIYIIIAIAAI
+1014 ..IIIIIII..I
+1016 YYYIYIAIAAAI
+1018 ...IIIII...I
+1020 YYYYIIIAAAAI
+1022 ....III....I
+1024 YYYYYIAAAAAI
+1026 WWWWWWWWWWWW
+1032 WWWWWWWWWWWW
+1034 II.II...I...
+1036 I.I.I..III..
+1038 .I.I.II...II
+1040 .III..I.I.I.
+1042 I...II.I.I.I
+1044 ..I..III.III
+1046 II.II...I...
+1048 II.III..I..I
+1050 ..I...II.II.
+1052 II.II.I...I.
+1054 ..I..I.III.I
+1056 I...I.II.II.
+1058 .III.I..I..I
+1060 II.III..I..I
+1062 ..I...II.II.
+1064 WWWWWWWWWWWW

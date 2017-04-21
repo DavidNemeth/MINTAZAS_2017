@@ -1,0 +1,41 @@
+   1 C
+  10 C KESKENY SZIMM. CSIPKE NYAK GUMI NELKUL (MINT AZ ANTIE)
+  12 NP2=11.0  C:1/1    11.0-11.8
+  14 NP5=14.0  C:CSIPKE PASSZE
+  16 NP4=12.8  C:LEVALASZTAS
+  40 START        
+  42 YG:6/256;
+  44 WM=18; WMI=7
+  46 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  47 VJA^1
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+  66 >> S:DI.-D.I;                   Y:5;                   VR1VU      S1
+  68 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+  70 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+  72 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+  74 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	        NP2-2   V0 VU      S1 S2
+  76 Y:5/5/2/2;
+  78 << S:DI.-0;                                               VU      S1
+  86 JA1=1260(1254-1260);
+  88 PA:<JA1>;
+ 100 FA=1-8;  PM:9.I<FA>573:I<.>;        C*2LAP NYAK ******581
+ 102 >> S:DI.-D.I/UVSD.I;           NP4-4                   VU     S1 T2
+ 104 NP5-5
+ 106 REP*3
+ 108 WM=0
+ 110 << S:U^NA;                                   VL1 VKB>6   T1 C VKB>6 !!!!!!!!!!!!!!!!!!!!!!!!!!
+ 112 >> S:U^NY;                                   VR1 VKA>1   T1 C VKA>1 !!!!!!!!!!!!!!!!!!!!!!!!!!
+ 114 WM=18
+ 116 << S:U^NN./.-N./UVNN.;                      V0            T1 S1    T2
+ 118 >> S:R<1->-0;                                V0 VU           S1
+ 120 REPEND
+ 124 << S:U^NI/.-I/UVNI;                                   T1 S1    T2
+ 126 >> S:R-0;                                 VU            S1
+ 130 END
+1254 I.I.I.I.
+1256 IAIAIYIY
+1258 IIAAIYYI
+1260 IAAAIYYY
+1262 IIIIIIII
+

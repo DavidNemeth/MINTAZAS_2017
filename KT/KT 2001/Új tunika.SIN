@@ -1,0 +1,215 @@
+   1 C TUNIKA-MELLENY GARNITURA   T/M: RS15=0/1  
+   2 C T:RS1=12 RS2=27
+   3 C M:RS1=15 RS2=27
+  10 C UJ GARNITURA DIANA SPECIAL 
+  12 NP1=14.4   C:MINTA E -KREPP
+  13 NP7=14.6   C:MINTA H
+  18 NP2=10.0   C:BEKEZDES
+  20 NP8=14.0   C:SLAG PASSZE
+  22 NP4=12.5   C:LEVALASZTAS
+  24 NP5=14.5   C:LEVALASZTAS
+  25 NP6=13.4   C:SORMINTA
+  50 START
+  55 YG:6/256;
+  60 WM=20 WMI=7
+  65 << S:D.I-DI./DI.-D.I;	          Y:2/5;	   NP4-4   VU   V0	     S1 S2
+  70 JA1=1990; C Y+AI
+  75 PA:<JA1>; 
+  80 FA=1-4; 
+  85 PM:9.<FA>548:<.>;
+  90 >> S:U^SA /NA-A/UVSNA;          Y:5;      NP5-5             T1 S1    T2
+  95 << S:NA+-A/UVSA;                                  VL1 VKA>3    S1    T2
+ 100 >> S:NA-NA;                     Y:6;      NP4-4   V0              S2
+ 105 << S:NA-0/0-R;                  Y:6/0;                         S1 S2
+ 110 >> S:R(2)-R(2)/NA(8)-0;         Y:2/5;                         S1 S2
+ 115 WM=25
+ 120                                           NP8-8
+ 125 C LYUKAK:
+ 130 << S:0-NA/NA-0;                                                S1 S2
+ 135 >> S:0-NA/NA-0;                                                S1 S2
+ 140 << S:0-NA/NA-0/UVSY;              VL1                          S1 S2 T2
+ 145 >> S:U^SY/0-R/R-0;                                          T1 S1 S2
+ 150 REP*3
+ 155 << S:0-R/R-0;                     V0                           S1 S2
+ 160 >>                                                             S1 S2
+ 165 REPEND
+
+ 168 IF RS17=1 GOTO 400 C********HATA-UJJA*********
+
+ 170 C ---3LAP 553 TU---------------------
+ 172 FA=12-189;
+ 174 PM:<.>9:3(FA..);
+ 176 PA:<JA2>:JA1;
+ 178 JA1=1038;
+ 180                    IF RS15=1 JA1=1072;                C MELLENY
+ 182 JA2=1056;
+ 184                    IF RS15=1 JA2=1090;                C MELLENY
+ 186 << S:0-R/R-0/UVN.Z;                                                   S1 S2 T2
+ 188 JA2=1056(1042-1056);
+ 190                    IF RS15=1 JA2=1090(1076-1090);     C MELLENY
+ 192 >> S:U^NN.Z/.Z*-N.Z*/.%Z*-N.Z*/UVNN.Z;                             T1 S1 S2 T2
+ 194 JA1=1038(1026-1038);
+ 196                    IF RS15=1 JA1=1072(1060-1072);     C MELLENY
+
+ 200 VJA^0
+ 202                                              NP1-7 
+ 204 RBEG*RS1      C  **************************************************
+ 206 REP*2
+ 208 WM=20
+ 210 << S:U^N<1-2->N.Z/.Z*-N.Z*/.%Z*-N.Z*/UVNNY.Z;           VR2 VKA>4  T1 S1 S2 T2
+ 212 >> S:U^N<1-2->N.Z/.Z*-N.Z*/.%Z*-N.Z*/UVNNA.Z;           VR3        T1 S1 S2 T2
+ 214 REPEND
+ 216 << S:U^S<1-2->N.Z/.Z*-N.Z*/.%Z*-N.Z*/UVSI*;      Y:2/5; V0         T1 S1 S2 T2
+ 218 WM=16
+ 220 >> S:U^S<1-2->I*/.Z*-IOTBW/0-W(10.0)/UVSOTBI*;   Y:2/0; VL3        T1 S1 S2 T2
+ 222 << S:U^SZI*/.Z*-IOTBW(7)/0-O(9.0)/UVSZI*;        Y:2/0; VR1 VKB>2  T1 S1 S2 T2
+ 224 >> S:U^S<1-2->IAOTB*/.Z*-N.Z*(7)/.%Z*-N.Z*/UVSN.ZA; Y:2/5; VR3 VKD>6  T1 S1 S2 T2
+ 226 REND          C  ***************************************************
+ 227 GOSUB 206-222
+ 228 >> S:U^S<1-2->IAOTB*/.Z*-N.Z*(7)/.%Z*-N.Z*/UVSN.Z;  Y:2/5; VR3 VKD>6  T1 S1 S2 T2
+ 229 IF RS15=1 GOTO 284   C MELLENY
+
+ 230 JA1=1001  C SORMINTA: 3.MINTAELEM **********************************************
+ 232 C
+ 233 NP6=13.4   C:SORMINTA
+ 234 WM=18
+ 235 REP*2
+ 236 <> S:R-0;                             NP6-6  V0          S1 S2
+ 238 <> S:U^SN./.-N./.-N./UVSN.;                           T1 S1 S2 T2
+ 240 <> S:.*(12.0)-+(14.5)/.+-*;                              S1 S2
+ 242 <> S:R-0;                             NP6-6              S1 S2
+ 244 <>                                                       S1 S2
+ 246 <>                                                       S1 S2
+ 248 <> S:U^SN./.-N./.-N./UVSN.;                           T1 S1 S2 T2
+ 249 REPEND
+ 250 << S:R-0;                                                S1 S2
+ 252 >> S:U^SN./.-N./.-N./UVSN.;                           T1 S1 S2 T2
+ 253 C***********************************************************************************
+
+ 260 JA1=1022(1004-1022);
+ 262 JA2=1500(1500-1510); C KREPP
+ 264 WM=24
+ 266 VJA^0
+ 267                                                NP1-1
+ 268 RBEG*RS2
+ 272 << S:U^N<1-2->N.Z/.Z-N.Z/.%Z-N.Z/UVNNA.Z;           V0           T1 S1 S2 T2
+ 274 >> S:U^N<1-2->N.Z/.Z-N.Z/.%Z-N.Z/UVNNY.Z;           VL1 VKA>4    T1 S1 S2 T2
+ 278 REND
+ 280 GOSUB 272
+ 282 >> S:U^N<1-2->N.Z/.Z*-N.Z*/.Z*-N.Z*/UVNN.Z*;   Y:2/5;  VL1 VKA   T1 S1 S2 T2
+ 284 << S:U^SD.I/DI.-D.I/DI.-D.I;                    NP4-4  V0        T1 S1 S2
+ 286 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                        S1 S2 T2
+ 288 END
+
+ 600 C****SLAG PIKO-MINI--LYUKAKKAL + 3DB. GOMBLYUK (NAGYBBAK:3TU MAX. 21MM-ES GOMBHOZ)
+ 602 NP1=11.0   C:REX
+ 604 NP2=11.0   C:BEKEZDES             10.0
+ 605 NP3=14.8   C:SLAG GOMBLYUK ELOTT
+ 606 NP4=12.5   C:LEVALASZTAS
+ 608 NP5=14.5   C:LEVALASZTAS
+ 609 NP6=8.0
+ 610 NP8=14.5   C:SLAG PASSZE          14.0
+ 612 START
+ 614 YG:6/256;
+ 616 WM=20 WMI=7
+ 618 << S:D.I-DI./DI.-D.I;	          Y:2/5;	   NP4-4   VU   V0	     S1 S2
+ 620 JA1=1990; 
+ 622 PA:<JA1>; 
+ 624 FA=1-4; 
+ 626 PM:9.<FA>544:<.>;
+ 628 >> S:U^SA /NA-A/UVSNA;          Y:5;      NP5-5             T1 S1    T2
+ 630 << S:NA+-A/UVSA;                                  VL1 VKA>3    S1    T2
+ 632 >> S:NA-NA;                     Y:6;      NP4-4   V0              S2
+ 634 << S:NA-0/0-R;                  Y:6/0;                         S1 S2
+ 635 >> S:R(2)-R(2)/NA(8)-0;         Y:2/5;                         S1 S2
+ 636 WM=25
+ 637                                           NP8-8
+ 638 C LYUKAK:
+ 639 << S:0-NA/NA-0;                                                S1 S2
+ 640 >> S:0-NA/NA-0;                                                S1 S2
+ 641 << S:0-NA/NA-0/UVSY;              VL1                          S1 S2 T2
+ 642 >> S:U^SY/0-NA/NA-0;                                        T1 S1 S2
+ 643 << S:0-R/R-0;                     V0                           S1 S2
+ 645 >>                                                             S1 S2
+ 647 <<                                                             S1 S2
+ 648 >>                                        NP3-3                S1 S2
+ 649 PM:9.120*3(YTI17*)<*>544:<.>; C GOMBLYUKAK 3DB
+  651 C GOMBLYUKAK:
+ 651 WM=0
+ 652 << S:U^STI/UVSYT;                        VL2                T1       T2
+ 656 >> S:U^SY/UVSI;                          VR1                T1       T2
+ 657 WM=25
+ 658 << S:T(6)-.*IY(8)/.*IY(8)-T(6);          V0                    S1 S2
+ 659                                               NP8-8
+ 660 REP*3
+ 662 >> S:0-R/R-0;                                                  S1 S2
+ 664 <<                                                             S1 S2
+ 666 REPEND
+ 668 >> S:R-R;                                 NP1-1                S1 S2
+ 670 END
+
+ 990 C FEHER     . FONAK             T S.KEK         W PIROS
+ 991 C FEKETE    I SZIN              + KIR.KEK       Z ZOLD
+ 992 C SARGA     Y SZIN ->           O BORDO
+ 993 C OKKERS.   A SZIN <-           B S.LILA
+ 994 C VSZURKE   X                   G V.ZOLD
+ 995 C SSZURKE   * KREPP             H V.KEK
+
+1990 Y+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AI
+1991 *******************YTI*****************YTI*****************YTI******************
+1001 32(II*II+)3I
+1002 11I2(.87I.)7I
+1004 6X18(9X.)9XI
+1006 7X18(6X..I.)8XI
+1008 7X18(5X.IY..)8XI
+1010 8X18(5X.AII.)7XI
+1012 8X18(5X.IY..)7XI
+1014 9X18(5X.AII.)6XI
+1016 8X18(6X.IY.)7XI
+1018 8X18(7X.A.)7XI
+1020 7X18(9X.)8XI
+1022 195XI
+1024 32(II*II+)II*I
+
+1026 20X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15XI
+1028 19X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..15XI
+1030 20X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15XI
+1032 20X..6I..15X..6I..15X..6I..15X..6I..15X..6I..15X..6I..15X..6I..15XI
+1034 20X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15XI
+1036 20X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15XI
+1038 20X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15XI
+1040 11I.176I.7I
+1042 5(.Z)7(.Z.Z..*..Z10.Z..*.)5(.Z)I
+1044 5(Z.)Z7(.Z..*.*13..*.*.)4(.Z).I
+1046 5(.Z)7(.Z.Z..*..Z10.Z..*.)5(.Z)I
+1048 6(Z.)Z6(2(.Z..)9.2(.Z..))2(.Z..)10.Z..5(.Z).I
+1050 7(.Z)6(3(.Z)9.3(.Z)..*.)3(.Z)9.8(.Z)I
+1052 7(Z.)Z6(.Z.Z11..Z.Z..*.*.).Z.Z11.7(.Z).I
+1054 7(.Z)6(3(.Z)9.3(.Z)..*.)3(.Z)9.8(.Z)I
+1056 6(Z.)Z6(2(.Z..)9.2(.Z..))2(.Z..)10.Z..5(.Z).I
+
+1058 196I
+1060 33X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..15X..OTAWAG..27XI
+1062 32X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..14X3.OTBW+G..27XI
+1064 33X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..15X..OTBW+G..27XI
+1066 33X..6I..15X..6I..15X..6I..15X..6I..15X..6I..15X..6I..27XI
+1068 33X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..15X..IYIYII..27XI
+1070 33X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..15X..IAIAII..27XI
+1072 33X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..15X..IIYIYI..27XI
+1074 11I.176I.7I
+1076 8(Z.)Z6(2(.Z..*..Z)9.)2(.Z..*..Z)6(.Z)I
+1078 9(.Z)6(..*.*..Z..*.*12.)2(..*.*..Z)5(.Z).I
+1080 8(Z.)Z6(2(.Z..*..Z)9.)2(.Z..*..Z)6(.Z)I
+1082 8(.Z)6(4(3.Z)9.)5(3.Z)4(.Z).I
+1084 8(Z.).*.6(.Z.Z..*.3(.Z)10.Z)2(.Z.Z..*.)5(.Z)I
+1086 7(.Z)..*.*.6(.Z..*.*..Z.Z12.Z)2(.Z..*.*.)4(.Z).I
+1088 8(Z.).*.6(.Z.Z..*.3(.Z)10.Z)2(.Z.Z..*.)5(.Z)I
+1090 8(.Z)6(4(3.Z)9.)5(3.Z)4(.Z).I
+1092 11I2(.87I.)7I
+
+1500 33(Z5.)
+1502 33(.Z3.Z)
+1504 33(..Z.Z.)
+1506 33(3.Z..)
+1508 33(..Z.Z.)
+1510 33(.Z3.Z)

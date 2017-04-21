@@ -1,0 +1,122 @@
+VAR1.:
+ 500 C************* MADONNA NYAK 2007.04.23.**********EZ A LEGJOBB********
+ 500 C KONNYEBBEN KOTI A GEP-1/1-BEN VAN- ES SOKKAL SZEBBEN LEHET VARRNI, MERT NEM PONDORODIK ES BUGGYOSODIK.
+ 501 C 1'31"
+ 502 C*******************
+ 503 NP4=13.0   C:LEVALASZTAS
+ 504 NP12=12.0  C:BEKEZDES
+ 505 NP15=13.0  C:1/1
+ 506 NP14=11.0  C:2SZV. CSIPKE NYAK HATUL
+ 507 NP13=11.2  C:2SZV. CSIPKE NYAK ELOL
+ 508C START        
+ 509C YG:6/256;	
+ 510 WM=15;WMI=7
+ 511C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                  VR1      T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 518 << S:0-D.I;                     Y:6;           NP15-15    VU      S1
+ 519 >> S:0-D.I/DI.-0;               Y:6/5;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 521 JA1=1992;
+ 522 PA:1:<JA1>;
+ 523 FA=1-2; PM:<.>7:*<FA>514:*<.>;   C******NYAK OSZTAS NELKUL********521TU
+ 523 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 524 >> S:DI.-D.I/DI.(13)-D.I(14)/UVS.Y*;                   S1 S2 T2
+ 525 VJA^0
+ 526 NP13-14
+ 527 REP*2
+ 528 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 529 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0  VKA<2   T1 S1 S2 T2
+ 530 REPEND
+ 531 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 532 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;             V0  VKA  T1 S1 S2 T2
+ 533 END C**********************************************************
+ 1992 IY
+
+VAR2.:
+  (IGY A JOBB 6-OS SZV.DUGO KI VAN IKTATVA)
+ 500 C************* MADONNA NYAK 2007.04.23.**********EZ A LEGJOBB********
+ 500 C KONNYEBBEN KOTI A GEP-1/1-BEN VAN- ES SOKKAL SZEBBEN LEHET VARRNI, MERT NEM PONDORODIK ES BUGGYOSODIK.
+ 501 C 1'31"
+ 502 C*******************
+ 503 NP4=13.0   C:LEVALASZTAS
+ 504 NP12=12.0  C:BEKEZDES
+ 505 NP15=13.0  C:1/1
+ 506 NP14=11.0  C:2SZV. CSIPKE NYAK HATUL
+ 507 NP13=11.2  C:2SZV. CSIPKE NYAK ELOL
+ 508C START        
+ 509C YG:6/256;	
+ 510 WM=15;WMI=7
+ 511C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                  VR1      T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.(12)-D.I(12)/DI.(15)-0;	Y:2/5;	                V0 VU      S1 S2
+ 518 << S:0-D.I;                     Y:6;           NP15-15    VU      S1
+ 519 >> S:0-D.I;                                               VU         S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 521 JA1=1992;
+ 522 PA:1:<JA1>;
+ 523 FA=1-2; PM:<.>7:*<FA>514:*<.>;   C******NYAK OSZTAS NELKUL********521TU
+ 523 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 524 >> S:DI.-D.I/DI.(13)-D.I(14)/UVS.Y*;                   S1 S2 T2
+ 525 VJA^0
+ 526 NP13-14
+ 527 REP*2
+ 528 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 529 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0  VKA<2   T1 S1 S2 T2
+ 530 REPEND
+ 531 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 532 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;             V0  VKA  T1 S1 S2 T2
+ 533 END C**********************************************************
+ 1992 IY
+
+VAR3.:
+ LEVALASZTASNAL ELORE RAKJA A SZEMEKET, IGY HA A GUMI ELSZAKADNA, NEM DOBJA LE AZ ARUT.
+ 500 C************* MADONNA NYAK 2007.04.23.**********EZ A LEGJOBB********
+ 500 C KONNYEBBEN KOTI A GEP-1/1-BEN VAN- ES SOKKAL SZEBBEN LEHET VARRNI, MERT NEM PONDORODIK ES BUGGYOSODIK.
+ 501 C 1'31"
+ 502 C*******************
+ 503 NP4=13.0   C:LEVALASZTAS
+ 504 NP12=12.0  C:BEKEZDES
+ 505 NP15=13.0  C:1/1
+ 506 NP14=11.0  C:2SZV. CSIPKE NYAK HATUL
+ 507 NP13=11.2  C:2SZV. CSIPKE NYAK ELOL
+ 508C START        
+ 509C YG:6/256;	
+ 510 WM=15;WMI=7
+ 511C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+
+ 515 >> S:DI.-D.I;                   Y:2;                  VR1 VU      S1
+ 516 << S:DI.-0/UVND.I;                                    VR1         S1    T2
+
+ 517 >> S:DI.-DI.;                   Y:6;                  VR1            S2
+ 518 << S:DI.-0/0-DI.;               Y:6/0;                    VU      S1 S2
+ 519 >>	S:DI.(12)-D.I(12)/DI.(15)-0;	Y:2/5;	                V0 VU      S1 S2
+ 520 << S:0-D.I;                     Y:6;           NP15-15    VU      S1
+ 521 >> S:0-D.I;                                               VU         S2
+ 522 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 523 JA1=1992;
+ 524 PA:1:<JA1>;
+ 525 FA=1-2; PM:<.>7:*<FA>514:*<.>;   C******NYAK OSZTAS NELKUL********521TU
+ 525 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 526 >> S:DI.-D.I/DI.(13)-D.I(14)/UVS.Y*;                   S1 S2 T2
+ 527 VJA^0
+ 528 NP13-14
+ 529 REP*2
+ 530 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1         T1 S1 S2 T2
+ 531 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0  VKA<2   T1 S1 S2 T2
+ 532 REPEND
+ 533 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1         T1 S1 S2 T2
+ 534 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;             V0  VKA     T1 S1 S2 T2
+ 535 END C**********************************************************
+ 1992 IY

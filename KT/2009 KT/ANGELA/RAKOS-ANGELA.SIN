@@ -1,0 +1,182 @@
+   1 C 
+   1 C *** ANGELA RAKOSN KARDIGAN AZSUR 1  - HAROMSZOG ALAKU PASSZEVAL MINTA 
+   1 C *** H-U:2SZV.KOCKAS KREPP**********************
+   1 C 
+   1 C *** UGYAN EZ REZINKA PASSZEVAL: CVETA/CVETA KARDIGAN
+   1 C 
+
+  10 NP4=12.2;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  12 NP3=14.4              C KORSLAG          14.4
+  13 NP5=14.0              C PASSZE           14.4
+  14 NP6=14.4;             C PASSZE
+
+  19 NP1=13.8   C:CSIPKE                 13.3
+  20 NP7=13.3   C:2SZV KOCKAS KREPP
+
+  21 NP9=13.4              C:2SZVCS:E
+  22 NP8=13.6              C:2SZVCS:H
+
+  40  START        
+  50  YG:6/256;	
+  55  WM=16;WMI=7
+  60  << S:D.I-DI./DI.-D.I;              Y:5/2;       NP4-4    VU V0     S1 S2
+C**********NYAK********************************
+C************************************
+  64 IF #100=3   RS17=10          C E  CS 68CM-ES
+  65 CIF #100=4   RS17=0           C E  CS 60CM-ES
+  66 CIF #100=14  RS17=4           C RU CS    4 LAP
+  67 CIF #100=27  RS17=5           C HU CS    4 LAP
+  C-------2SZV KOCKAS KREPP H-U:-----------------
+  68 CIF #100=9   RS17=1           C H  KREPP 3 LAP
+  69 CIF #100=6   RS17=2           C HU KREPP 5 LAP
+  70 CIF #100=5   RS17=3           C RU KREPP 5 LAP
+  C-------2SZV NECC H-U:-----------------
+  71 IF #100=5   RS17=9           C 3H NECC 3 LAP
+  72 CIF #100=9   RS17=6           C 4H NECC 4 LAP
+  73 CIF #100=11  RS17=7           C HU NECC 5 LAP
+  74 CIF #100=5   RS17=8           C RU NECC 5 LAP
+C***************************************************
+C------------------------------------------------------------------------------------------------------------
+C                             TAMAS     TAMAS     TAM+GILETTI    TAMAS   T.FEH+15/1    BAJA FEHER    BAJA FEHER     
+C                             GRAFIT:   FEHER:    FUST/MOGYI:    NYERS:   +FUST TX       +TX          +ROZSA 
+C------------------------------------------------------------------------------------------------------------
+C KT :WM%=0      NPK=                                                              
+C------------------------------------------------------------------------------------------------------------
+CPKT :WM%=-10    NPK=          0.4      0.4                                 0.4
+C------------------------------------------------------------------------------------------------------------
+C******************************2LUSI+1TX:0***********************KESZEN:*******
+  82 IF RS17=0  RS19=3 RS18=0 RS1=71        C 3E  30'  CS        50*60
+  83 IF RS17=10 RS19=3 RS18=0 RS1=85        C 3E  30'  CS        58*68
+  84 IF RS17=4  RS19=4 RS18=0 RS1=28        C 4RU 14'  CS                  
+  85 IF RS17=5  RS19=4 RS18=0 RS1=60        C 4HU 30'  CS                 
+
+  86 IF RS17=1  RS19=3 RS18=1 RS1=70        C 3H  15'  KREPP       60      
+  87 IF RS17=2  RS19=5 RS18=1 RS1=70        C 5HU 15'  KREPP               
+  88 IF RS17=3  RS19=5 RS18=1 RS1=30        C 5RU 14'  KREPP     
+
+  89 IF RS17=9  RS19=3 RS18=2 RS1=78        C 3H NECC              68
+  90 IF RS17=6  RS19=4 RS18=2 RS1=70        C 4H NECC              60
+  91 IF RS17=7  RS19=5 RS18=2 RS1=70        C 5HU NECC
+  92 IF RS17=8  RS19=5 RS18=2 RS1=30        C 5RU NECC
+
+C**********************************************************************************
+
+ 100 JA1=1022(1006-1008)   C CSIPKE PASSZE
+ 102 JA2=1022(1006-1008)   C CSIPKE PASSZE
+ 104 PA:1:<JA1>:201:<JA2>;
+C************581TU***********************************************************************************
+ 106 IF RS19=3  FA=3-189; FB=203-389;  PM:<.>7:IIFAIIFAIIFAII;     C*E-E-E      (FB:KREPP HATA SZUKSEG ESETEN)
+ 108 IF RS19=4  FA=1-140;              PM:<.>7:4(IIFA)I;           C*U-U-U-U
+ 110 IF RS19=5  FA=1-112;              PM:<.>7:I5(IFA)II;          C*U-U-U-U-U
+
+ 112C FA=9-572;     PM:<.>7:IIFAII;          C OSZTAS NELKUL 3.5 KK ELEJEHEZ
+ 112C FA=9-18;      PM:<.>7:II<FA>574:II<.>; C OSZTAS NELKUL 3.5 KK ELEJEHEZ
+C****************************************************************************************************
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/2/5/5;
+ 212 REP*1
+ 214 << S:R-0;		                             ML   NP3-3     VU          S1
+ 216 >> S:0-R;		                             ML             VU          S1
+ 218 REPEND
+ 220 << S:0-R;                               ML              VU        S1
+ 221 >> S:R-0/UVS.;                          ML                         S1    T2
+ 222 << S:U^SN./.-N./UVSAY;                  ML  NP6-6               T1 S1    T2
+ 223 >> S:NI-I;                              ML              VU         S1
+
+ 224 REP*3
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+ 234 << S:U^NI/.-N./UVN<1-2->.;               NP5-5 V0        T1 S1 T2 
+ 236 >> S:U^NI/.-I/UVN<1-2->NI;               NP6-6           T1 S1 T2
+ 238 REPEND
+ 240 GOSUB 226-230
+ 242 IF RS18=2 GOTO 450 C NECC U-H
+ 244 GOSUB 232-234
+ 246 >> S:U^NI/.-I/UVNI;                    NP6-6           T1 S1 T2
+ 248 IF RS18=1  GOTO 400 C KREPP
+ 250 C********************************************************
+
+
+ 300 JA1=1114(1100-1114)   C MINTA
+ 302 JA2=1004(1002-1004)   C KREPP
+ 304 VJA^0
+ 306 NP1-1
+ 308 WM=16;WMI=4
+ 310 Y:5/5/2/2;
+ 312 RBEG*RS1
+ 314 REP*2
+ 316 << S:U^S<1-2->N.*/.*-N.*/UVSNY;                V0           T1 S1    T2
+ 318 >> S:U^S<1->N.*/.*-N.*/UVSNA;                  VL1          T1 S1    T2
+ 320 REPEND
+ 322 REND
+ 324 << S:U^S<1-2->N.*/.*-N.*/UVSN.;                V0           T1 S1    T2
+ 326 >> S:U^ND.I/DI.-D.I/UVNR;              NP4-4                T1 S1    T2
+ 328 END
+
+ 400 C**HATA-UJJA (KOCKAS, 2SZV.KREPP)**************************
+ 402 JA2=1004(1002-1004)   C KREPP
+ 404 PA:<JA2>;
+ 412 WM=16
+ 414 Y:2/5;
+ 416 NP7-7
+ 418 RBEG*RS1
+ 420 << S:U^N<2->N./.-N./.-N./UVNI;              V0     T1 S1 S2 T2
+ 422 >>                                                 T1 S1 S2 T2
+ 424 REND
+ 430 END C**************************************************
+
+ 450 C ******************2SZV. NECC *************************
+ 452 JA1=1042(1040-1042)   C 2SZV.HALO
+ 456 VJA^0
+ 458 WM=18
+ 460 NP9-8
+ 462 Y:5/2;
+ 464 RBEG*RS1
+ 466 << S:U^S<1->N./.-N./.-N./UVSNY.;       V0     T1 S1 S2 T2
+ 468 >> S:U^S<1->N./.-N./.-N./UVSNA.;       VL1    T1 S1 S2 T2
+ 470 REND
+ 471 << S:U^S<1->N./.-N./.-N./UVNN.;             V0  T1 S1 S2 T2
+ 472 >> S:U^ND.I/DI.-D.I/DI.-D.I;       NP4-4        T1 S1 S2
+ 473 << S:DI.-D.I/DI.-D.I;                              S1 S2
+ 474 >> S:DI.-D.I/DI.-D.I/UVND.I;                       S1 S2 T2
+ 475 ENDC*******************************************************
+
+
+1001 *I
+
+1002 ..II
+1004 II..
+
+1040 A*
+1042 Y*
+
+1004 WWWWWWWWWW
+1006 IIIIIIIIII
+1008 IIIIIIIIII
+1010 IIAIAIYIYI
+1012 IIII.I.III
+1014 IAIAAIYYIY
+1016 III..I..II
+1018 IIAAAIYYYI
+1020 II...I...I
+1022 IAAAAIYYYY
+1028 WWWWWWWWWW
+
+1098 WWWWWWWWWW
+1100 ....AI....
+1102 IIIIIIYIII
+1104 ...AAII...
+1106 IIIIIIYYII
+1108 ..AAAIII..
+1110 IIIIIIYYYI
+1112 .AAAAIIII.
+1114 IIIIIIYYYY
+1116 WWWWWWWWWW
+

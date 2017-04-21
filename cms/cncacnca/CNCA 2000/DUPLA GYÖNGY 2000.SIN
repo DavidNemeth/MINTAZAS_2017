@@ -1,0 +1,78 @@
+   1C  DUPLA GYÖNGY  (ARAN+FANG+PMNP II.-ELEJÉHEZ)
+   1C  4xTX       CP DUPLAGY RS1=
+   1C  ÖSSZES SULY+3 TÁRCSA
+   1C        15.5   0             -     -
+   1C  1: <-------------       -------------> 1 SOR KÖRSLAG AZ ÁTRAKÁS ELÕTT
+   1C         0    15.5           -     -
+   1C       15.5   15.5         15.5   15.5
+   1C J2: <-------------       ------------->  HATA-UJJA (DUPLA GYONGY)15-15.5
+   1C       15.5   15.5         15.5   15.5
+   1C       14.5    0           14.0   13.0
+   1C B2: <-------------       ------------->  BEKEZDES-KORSLAG
+   1C        0    14.5            0    11.5
+   1C         -      -            -      - 
+   1C J3: <-------------       -------------> -
+   1C         -      -            -      - 
+   1C        14.5   0             0    14.5
+   1C B3: <-------------       ------------->  KORSLAG
+   1C         0    14.5          14.5   0
+   1C       13.25  13.25        13.25  13.25
+   1C J4: <-------------       ------------->  LEVALASZTAS
+   1C       13.25  13.25        13.25  13.25
+   1C       13.25  13.25        13.25  13.25
+   1C J4: <-------------       ------------->  NYAK (DUPLA GYONGY)
+   1C       13.25  13.25        13.25  13.25
+   1C CIKLUSOK: DUPLA GYÖNGY+3X3-AS FONÁS (KT2000)
+
+   1C-------V0:->1.0  
+   
+  11 C-----------------------KOZAK NYAK: SP600 RS1=17
+  12 C-----------------------ZIPPES NYAK:SP700 RS1=18 (18 CM-ES ZIPPZARHOZ)
+  40  START
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;		       Y:5/2;	     NP4-4   V# V0	ML      S1 S2
+  59 >> S:D.I-DI.;                 Y:5;                      ML      S1
+  62 << S:U^ND.I/DI.-D.I;        	                           ML   T1 S1
+  64 >> S:U^NDI.;                              NP0-0         ML   T1
+  66 << S:0-0;                    Y:0;         NP0-0         ML      S1
+  68 >> S:R-R;		                  Y:6;	                    	 ML         S2
+  71 << S:0-R/R-0;		              Y:6/0;            	        ML      S1 S2
+  74 >> S:R-R/0-R;	               Y:2/5;	      NP2-2         ML      S1 S2
+  80 << S:0-R/R-0;		              Y:5/2;   	                 ML      S1 S2
+  83 >> S:0-R/R-0;                Y:2/5;       NP3-3         ML      S1 S2
+  85 << S:0-R/R-0;		              Y:5/2;   		                ML      S1 S2
+  87 >> S:0-R/R-0;                Y:2/5;                     ML      S1 S2
+  88 << S:0-R/R-0;		              Y:5/2;   		  NP1-1         ML      S1 S2
+ 100 C-----HATA-UJJA-----------
+ 105 JA2=1000
+ 110 PA:JA2;
+ 115 FA=1-2
+ 120 PM:<FA>1:6. 186:.. 364:.. 546:<.>;
+ 125 IF RS1<65 PM:<FA>1:6. 140:.. 275:.. 410:.. 546:<.>;
+ 130 >> S:UVNI;                           ML   NP0-0           T2
+ 135 << S:U^N.T;                          ML   NP02-02         T1 
+ 140 Y:2/5;
+ 145 RBEG*RS1
+ 150 >>S:I-.T/%I-.T;                                        V#    S1 S2
+ 155 <<S:%I-.T/I-.T;                                        V#    S1 S2
+ 160 REND
+ 165 >> S:%I-.T/I-.T;                                       V#    S1 S2
+ 166 << S:I-.T/I-.T;                           NP4-4        V#    S1 S2
+ 167 >> S:U^NI/D.I-DI./DI.-D.I;		        	ML                  T1 S1 S2
+ 170 END
+ 600 C---KOZAK NYAK-------
+ 605 START
+ 610 GOSUB 50-74
+ 615 GOSUB 105-135
+ 620 <<S:.I-%T;                    ML         V#    S1
+ 625 GOSUB 145-165
+ 630 END
+ 700 C---ZIPPES NYAK------
+ 705 START
+ 710 GOSUB 50-83
+ 720 GOSUB 85-87*14
+ 730 GOSUB 105-135
+ 735 <<S:.I-%T;                    ML         V#    S1
+ 737 GOSUB 145-165
+ 740 END
+1000 IT

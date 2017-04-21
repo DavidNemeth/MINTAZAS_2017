@@ -1,0 +1,31 @@
+   1 C ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL
+   2 C CNCA 2010/ CP NP
+   3 C J4:LEVALASZTAS
+   4 C B2:BEKEZDES
+   5 C J2 KORSLAG
+   6 C 7-8 SULY
+  40 START
+  50 YG:6/256;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:0-D.I/DI.-D.I;             Y:2/6;  ML             V0 V#      S1 S2
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2
+  74 >>	S:D.I-D.I;		                 Y:5;	          NP02-2             S1
+  76 Y:2/2/5/5;
+  78 REP*2
+  80 << S:0-D.I;                        NP04-4      V#      S1
+  82 >> S:D.I-0;                        NP-0        V#      S1 
+  84 REPEND
+  86 << S:DI.-D.I;                          NP0-             S1
+  88 >> S:D.I-DI.;                          NP4-04           S1
+  89 NP1-1
+  90 REP*5
+  92 << S:0-R/R-0;                 Y:5/2;              S1 S2
+  94 >> S:0-R/R-0;                                     S1 S2
+  95 REPEND
+  96 <<                                                S1 S2
+  98 >>S:0-R/R-0;                                      S1 S2
+ 100 END

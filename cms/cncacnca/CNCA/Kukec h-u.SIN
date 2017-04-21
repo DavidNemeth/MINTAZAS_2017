@@ -1,0 +1,35 @@
+ 420 START
+ 421 YG:6/256;
+ 422 <<	S:R-R/R-0;			Y:5/2;	    NP4-4  V0	       S1 S2
+ 423 >>	S:D.I-DI./DI.-D.I/UVNDI.;	Y:5/2;	    NP1-1	       S1 S2 T2
+ 424 <<	S:U^ND.I/DI.-D.I;		Y:5;			    T1 S1
+ 425 >>	S:U^NDI./D.I-D.I;		Y:6;	    NP0-   VL1	    T1	  S2
+ 426 <<	S:R-0/R-0/0-D.I;		Y:0/0/6;    NP2-2  V#	    T1 S1 S2
+ 427 >>	S:DI.-D.I;                  Y:5;	    NP0-   V# V0     S2
+ 428 IF RS18=0 GOTO 432
+ 429 << S:DI.-0/0-D.I;			Y:6/2;	    NP02-2 V#	       S1 S2
+ 430 >> S:DI.-0/DI.-D.I;                  Y:6/2;             V#          S1 S2
+ 431 IF RS18=1 GOTO 434
+ 432 <<	S:DI.-0/0-D.I;			Y:5/2;	    NP2-2  V#	       S1 S2
+ 433 >>	S:DI.-D.I;	               	Y:5/2;		   V#	       S1 S2
+ 434 <<	S:DI.-D.I;                      Y:5/2;             V#	       S1 S2
+ 435 >>							   V#	       S1 S2
+ 436 <<	S:DI.-D.I/DI.-D.I;		Y:5/2;             V#          S1 S2
+ 437 IF RS18=1 GOSUB 433-436
+ 438 >> S:DI.-D.I/DI.-D.I/UVND.I;       Y:5/2;      NP4-4              S1 S2 T2
+ 439 JA1=1001(1001-1002)
+ 440 PA:JA1;
+ 442 FA=1-2
+ 444 C FA=1-4
+ 446 PM:<.>8:<FA>176:..345:..516:<.>;IF RS1<22 PM:<.>8:<FA>141:..275:..410:..546:<.>;
+ 448 NP3-3
+ 450 RBEG*RS1
+ 452 REP*3
+ 454 << S:U^N<1+>I/.-I/.-I/UVNI;           Y:5/2;                T1 S1 S2 T2
+ 455 IF RS19=1 GOSUB 448
+ 456 >>                                     T1 S1 S2 T2
+ 458 REPEND
+ 459 REND
+ 460 END
+1001 .II.
+1002 I..I

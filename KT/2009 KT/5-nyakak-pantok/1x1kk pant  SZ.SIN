@@ -1,0 +1,68 @@
+ 700 C NAGY GOMBLYUKKAL SZELESEBB 1/1      ANGELANAK
+ 701 C 1/1 KK.PANT KORSLAG BEKEZDESSEL, 4 SZEM SZELES GOMBLYUKKAL
+ 702 C------------------------------2LUSI+TX:----3LUSI:------
+ 703 NP4=12.4  C:LEVALASZTAS
+ 704 NP11=9.2   C BEKEZDES
+ 705 NP12=13.0  C:SLAG              13.2              13.5
+ 706 NP10=11.4  C:1/1             11.6-11.8         11.8-12.0
+ 707 NP13=13.8
+ 708 NP14=8.6
+ 710 START        
+ 712 YG:6/256;
+ 714 WM=18; WMI=7
+ 716 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+ 718 >> S:D.I-DI./UVNDI.;             Y:5;                     ML       S1    T2
+ 720 << S:DI.-D.I/UVND.I;         	   Y:5;          	          ML       S1    T2
+ 722 >> S:R-R;		                      Y:6;	       NP4-11    VU ML          S2
+ 724 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 726 >> S:R(11)-R(11)/R(12)-0;        Y:2/5;                VU ML       S1 S2
+ 734 REP*1
+ 736 << S:R-0/0-R;		                  Y:2/5;      NP12-12   VU          S1 S2
+ 738 >> S:0-R/R-0;		                                        VU          S1 S2
+ 740 REPEND
+ 742 << S:R-0/0-R;		                  Y:2/5;      NP12-12  VU          S1 S2
+
+ 744 JA1=1001(1000-1002);
+ 746 PA:<JA1>;FA=1-22;C** VAGY: FA=1-22 VAGY: FA=1-20 ** CSAK 2-VEL LEHET VALTOZTATNI!
+ 748 PM:6.7FA<I.>576:<.>;        C**581TU**
+ 750 VJA^0
+C1000 .........*............
+C1001 I.I.I.I.I.A*Y+I.I.I.I.
+C1002 ...............*......
+
+ 751 >> S:R-0/0-R/UVS.*+; 		                                     S1 S2 T2
+ 752 << S:U^SIAY/.*+-IAY/.*+-IAY;     NP10-10                 T1 S1 S2
+ 753 >> S:.*+-IAY/.*+-IAY;                           VU         S1 S2
+ 754 <<                               Y:2;           VU          S1
+ 755 WM=13
+ 756 >> S:.*+Y(13)-IAY(13)/Y-0/UVSAY; Y:2/0;                     S1 S2 T2
+ 757 WM=0;
+
+C---------------------------------------------------------------------------------
+ 758 << S:U^SA*;                                    VR2       T1
+ 760 >> S:UVS<1->*;                                 V0                 T2
+ 762 << S:U^S<1+>Y+;                                VL2       T1
+ 764 >> S:UVS<1+>*;                                 V0                 T2
+C---------------------------------------------------------------------------------
+
+ 766 NP14-14
+ 768 JA1=1001;
+ 769 WM=18;
+ 770 REP*1
+ 772 << S:.*+-IAY/.*+(10)-IAY(10);     Y:5/2;       VU           S1 S2
+ 774 >>                                             VU           S1 S2
+ 776 REPEND
+ 778 <<                                             VU           S1 S2
+ 780 >> S:.*+-IAY/.*+-IAY/UVSIAY;      Y:5/2;                    S1 S2 T2
+
+ 782C << S:R(9.0)-R(7.0)/R(12)-0;                        S1 S2
+ 784C >> S:0-R/R-0;                  NP12-12     VU      S1 S2
+ 786C REP*1
+ 788C << S:R-0/0-R;                              VU      S1 S2
+ 790C >> S:0-R/R-0;                              VU      S1 S2
+ 792C REPEND
+ 794 END
+
+1000 .........*............
+1001 I.I.I.I.I.A*Y+I.I.I.I.
+1002 ...............*......

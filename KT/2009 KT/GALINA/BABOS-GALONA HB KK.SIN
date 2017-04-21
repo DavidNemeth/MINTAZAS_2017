@@ -1,0 +1,242 @@
+   1C BABOS-GALINA KARDIGAN HBVAL (TX HELYETT)- UA MINT A LOBABOS, CSAK A JAC MAS
+1C 2PAMUT+1HB
+   1 C JAC: R2014/BABOS-GALINA
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+
+  10 NP4=12.6;              C LEVALASZTAS   
+  12 NP11=10.0               C BEKEZDES          
+  14 NP12=14.4              C PASSZE 14.2      
+  16 NP13=14.6              C PASSZE 14.5   
+  20 NP1=14.0     C MINTA   <-  13.7-13.9  SZOROSABB, HOGY NE TEPJE KI AZ ELOZO SORT,Y2:ATORSOZNI!
+  21 NP6=14.4     C MINTA   ->  14.2-14.3 
+  22 NP3=10.5     C FELVESZ ->  10.5-10.6  10.6-NAL NAGYOBB MAR ELHAGYJA A SZALAT, 10.5-NEL KISEBB VISZONT KISZAKITJA
+  23 NP7=10.2     C VAKSZEM <-     
+  24 NP5=10.8     C VAKSZEM LEDOBAS  
+  26 NP2=10.6               C:1/1
+C     KT:NPK=0      WM%=0    
+C    PKT:NPK=0.2    WM%=0  
+C     UJ:NPK=0.3    WM%=0  
+C FEKETE:NPK=0-0.2
+C T NYERS-FEHER PAMUT:NPK=-0.2 RS3:-3 
+  40  START
+  42  YG:6/256;
+  44 WM=14 WMI=7
+  50  <<	S:0-R/D.I-DI.;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+  50  <<	S:D.I-DI./0-R;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+  50  <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  C***** KISKABAT: 57*90CM  BOLERO FAZONU KARDIGAN:(0.43KG)*********12DB:***24:***30:***6:**
+  52C IF #100=35  RS17=1         C TTT  
+  53C IF #100=31  RS17=2         C UUUU                                
+  54C IF #100=50  RS17=50        C PANT  
+  C**********************************************************RS3:0-6****
+  91 IF RS17=50 RS19=1 RS1=2                 C PANT                                 
+  93 IF RS17=2  RS19=4 RS1=2   RS2=23    C 3/4UUUU   L:4/2 T:3/5                
+  97 IF RS17=1  RS19=3 RS1=2   RS2=45    C TTT       L:8/3 T:7/3        
+   
+ C************581TU**************************************************************
+ 107 JA1=1110(1100-1110)   C CSIPKE PASSZE
+ 108 PA:1:<JA1>;
+ 109 FA=1-8; PM:Z 6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ C********************************************************************************
+ 110 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 112 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 114 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 116 <<	S:UVSDI.;		                      	                               T2
+ 118 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 120 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 122 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 123 IF RS1=0 GOTO 300 C**************************************************** ELEJE CSIPKE PASSZE NELKUL*************
+ 124 Y:2/2/5/5;
+ 126 << S:D.I-0;                                NP13-13 VU           S1
+ 128 >> S:0-DI./UVS.Z;                                              S1    T2
+ 130 << S:U^SN.Z/.Z-N.Z/UVSR;                                      T1 S1    T2   CCCCCCCCCCCCC S1
+ 131 >> S:NZ-0;                          NP13-13         VU           S2        CCCCCCCCCCCC S1
+ 132 VJA^1
+ 133 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 134 REP*3
+ 136 WM=0
+ 138 << S:U^SA;                                   VL1      T1
+ 140 >> S:U^SY;                                   VR1      T1
+ 142 WM=12
+ 144 << S:U^SI*/.Z-N.Z/UVS<1->N.Z;         NP12-12    V0       T1 S1 T2   C CCCCCCCCCCC S1
+ 146 >> S:NZ-0;                          NP13-13         VU     S2
+ 147 REPEND
+ 148 << S:U^SN.Z/.Z-N.Z/UVSN.Z;             NP12-12             T1 S1 T2    CCCCCCCCCCCCC S1
+ 149 >> S:NZ-0;                          NP13-13         VU     S2
+ 150 REND C*********************************
+ 154 JA1=1098(1092-1098)   C********** CSIPKE PASSZE KILEPO************
+ 156 REP*3
+ 158 WM=0
+ 160 << S:U^SA;                             VL1     T1
+ 162 >> S:U^SY;                             VR1     T1
+ 164 WM=12
+ 166 << S:U^SI/.Z-N.Z/UVS<1->AY;   NP12-12    V0      T1 S1 T2    CCCCCCCCCCC S1
+ 168 >> S:.AY-I;                 NP13-13       VU      S2
+ 170 REPEND
+ 171 IF RS17=50 GOTO 260
+ 172 << S:U^S.Z/0-R;              NP1-1             T1 S1    CCCCCCCCCCC S1
+ 174 >> S:0-R;                                 VU      S2
+
+ 180 C************581TU****************************************************************
+ 182 JA1=1264(1234-1264); C PROBA 1.
+ 183 JA2=1230(1200-1230); C PROBA 2. SZAR!!!!!!!!!!!!
+ 184 PA:2:<JA1>:202:<JA2>;
+ 186 IF RS19=1  FA=2-75;             PM:7.TT<FA> 573:TT7.;       C  JELOLES NELKUL
+ 188 IF RS19=3  FA=5-185;            PM:<.>8: 3(4TFA4T);       C  3X
+ 190 IF RS19=4  FA=10-143;           PM:<.>7: 4(4TFA4T);       C  4X
+ 192 IF RS19=5  FA=25-129;           PM:<.>9: 5(4TFA4T);       C  5X
+ 194 IF RS19=8  FA=46-108;           PM:<.>7: 8(4TFA4T);       C  8X
+ 196 IF RS19=9  FA=51-104;           PM:<.>8: 9(5TFA4T);       C  9X
+ 198 IF RS19=10 FA=54-101;           PM:<.>7:4T 9(FA9T)FA4T;   C 10X
+   C********************************************************************************
+
+ 210 VJA^1
+ 212 WM=12
+ 214 Y:0/2/0/2/0/5/0/5; C  Y:5:PARAFINOZNI!
+C  20 NP1=14.0     C MINTA   <-  KT:13.5  P:13.8  UJ:13.9-14.0 SZOROSABB, HOGY NE TEPJE KI AZ ELOZO SORT,Y2:ATORSOZNI!
+C  21 NP6=14.4     C MINTA   ->  14.3-14.4
+ 217 RBEG*RS2 C***************************************************************************************
+ 218 REP*4
+ 219 PKV:1:<JA1>:201:<JA2>;     
+ 220 << S:U^SAIHGT/+*IG(5)-0/<1-2->B+(7)-.YT%Z(1)/UVSY;              V0         T1 S1 S2 T2
+ 221 PKV:2:<JA1>:202:<JA2>;     
+ 222 >> S:U^SYIT/+*I(5)-0/<1-2->B+H(3)-.AGHT%Z(6)/UVSAH;             VL1        T1 S1 S2 T2
+ 223 REPEND
+ 224 REND C********************************************************************************************
+
+ 236 PKV:1:<JA1>; C:201:<JA2>;     
+ 238 << S:U^SAIHGT/+*IG(5)-0/<1->B+(3)-.YTZ(1)/UVSY;              V0         T1 S1 S2 T2
+ 240 PKV:2:<JA1>; C:202:<JA2>;     
+ 242 >> S:U^SYIT/+*I(5)-0/<1->B+H(3)-.AGHT(1);                   VL1        T1 S1 S2
+ 244 WM=15
+ 246 C
+ 247 C
+ 248 << S:0-R/0-R/UVSD.I;                             Y:5/2;        V0         S1 S2 T2
+ 249 REP*1
+ 250 >> S:D.I-DI.;		              			       VU  NP4-4     S1 S2
+ 252 <<                                     VU            S1 S2
+ 254 REPEND
+ 256 >> S:D.I-DI./D.I-DI./UVSDI.;	              NP4-4     S1 S2 T2
+ 258 END
+
+C PANT VEGE:
+ 260 << S:.AY-I/.AY-I/UVSD.I;       Y:5/2;    NP12-12   S1 S2 T2
+ 262 >> S:U^SDI./D.I(2)-DI.(2)/D.I(4)-DI.(4)/UVSDI.; T1 S1 S2 T2
+ 264 END
+
+ 300 C 1/1 AZ ELEJE PASSZEJA
+ 302 << S:D.I-0/0-DI.;                 Y:5/2;    NP13-13 VU       S1 S2
+ 303 REP*2
+ 304 >> S:D.I-DI.;                               NP4-4   VU       S1 S2
+ 306 <<                                                  VU       S1 S2 
+ 307 REPEND
+ 308 >> S:U^SD.I/0-R/0-R;	                       NP1-1 T1  S1 S2
+ 309 << S:0-R;	                      VU    S1 S2
+ 310 >> S:0-R;	                      VU    S1 S2
+ 311 GOTO 180
+
+ 700 C************581TU*************************************************************
+ 702 JA1=1172(1150-1160)   C CSIPKE PASSZE
+ 704 PA:1:<JA1>;
+ 706 FA=1-8; PM:6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 708 C********************************************************************************
+ 710 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 712 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 714 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1
+ 716 <<	S:UVSDI.;		                      	                               T2
+ 718 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 720 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 722 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 726 Y:2/2/5/5;
+ 728 << S:D.I-0;                                NP13-13 VU           S1
+ 730 >> S:0-DI./UVS.;                                              S1    T2
+ 732 << S:U^SN./.-N./UVSR;                                      T1 S1    T2
+ 734 >> S:R-0;                          NP13-13         VU           S1
+ 736 VJA^1
+ 738 REP*3 C ******  AZSUR PASSZE *********
+ 740 REP*3
+ 742 WM=0
+ 744 << S:U^SA*;                                   VL1      T1
+ 746 >> S:U^SY+B;                                   VR1      T1
+ 748 WM=12
+ 750 << S:U^SI/.+*-N.+*/UVS<1->N.;         NP12-12    V0       T1 S1 T2 
+ 752 >> S:NB-0;                          NP13-13         VU     S1
+ 754 REPEND
+ 756 << S:U^SN./.-N./UVSN.;             NP12-12             T1 S1 T2 
+ 758 >> S:R-0;                          NP13-13         VU     S1
+ 760 REPEND C*********************************
+ 762 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP2-2  T1 S1 S2 
+ 764 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+ 766 END
+
+ 998 <> S:0-R; Y:2; NP4-4 V0 VU T1
+ 999 <> W0 VU S0
+
+1092 IIIIIIII
+1094 IIIAIYII
+1096 IIAAIYYI
+1098 IAIAIYIY
+
+1100 IYYYIAAA
+1102 IYYIIIAA
+1104 IYIYIAIA
+1106 IAAAIYYY
+1108 IIAAIYYI
+1110 IAAAIYYY
+
+
+1150 IYYYIAAA
+1152 IYYIIIAA
+1154 IYYYIAAA
+1156 IAAAIYYY
+1158 IIAAIYYI
+1160 IAAAIYYY
+1162 IYYYIAAA
+1164 IYYBIIAA
+1166 IYY+*AAA
+1168 IAAAIYYY
+1170 IIAAIYYI
+1172 IAAAIYYY
+
+1198 WWWWWWWWWWWW
+1200 Y.Y.IBIBIB..
+1202 A.A.HIBIBIG.
+1204 Y.Y..**+*Y..
+1206 A.A..A***...
+1208 Y.Y...*+Y...
+1210 A.A...A*....
+1212 Y.Y....Y....
+1214 A.A.........
+1216 Y.Y.IBIBIB..
+1218 A.A.HIBIBIG.
+1220 Y.Y..**+*Y..
+1222 A.A..A***...
+1224 Y.Y...*+Y...
+1226 A.A...A*....
+1228 Y.Y....Y....
+1230 A.A.........
+
+1232 WWWWWWWWWWWWW
+1234 Y.Y.IBIBI..
+1236 A.A.HIBIBG.
+1238 Y.Y..*+*Y..
+1240 A.A..A**...
+1242 Y.Y...*Y...
+1244 A.A...A....
+1246 Y.Y........
+1248 A.A........
+1250 Y.Y.IBIBI..
+1252 A.A.HIBIBG.
+1254 Y.Y..*+*Y..
+1256 A.A..A**...
+1258 Y.Y...*Y...
+1260 A.A...A....
+1262 Y.Y........
+1264 A.A........
+1266 WWWWWWWWWWW
+

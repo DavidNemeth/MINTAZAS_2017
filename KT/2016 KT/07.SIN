@@ -1,0 +1,77 @@
+  16 NP1=14.8              C:MINTA 14.6-15.0
+ 130 C************581TU**************************************************************
+ 132 JA1=1056(1042-1056)   C PASSZE
+ 136 PA:2:<JA1>
+C       ----------- 581TU ----1100 IAAAAIYYYY---130---------------------
+ 138 IF RS19=1  FA=2-19;FB=2-4;        PM:*<I>11:31FAFB;                           C*1 LAP   
+ 140 IF RS19=3  FA=2-184;              PM:*<I>10:FA  7I FA  7I FA;                 C*3 LAP      
+ 142 IF RS19=4  FA=2-130;              PM:*<I>14:FA 13I FA 13I FA 13I FA;          C*4 LAP
+ 300 C ******************1SZV. CSIPKE*************************
+ 302 JA1=1040(1004-1038) C MINTA
+ 304 VJA^1
+ 306 WM=15 C10
+ 308 Y:5/0/5/0/2/0/2/0;
+ 310 NP1-1
+ 312 RBEG*RS2
+ 314 REP*9
+C-------------------------------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYO/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OIY/+(7.0)-0/UVSY;           VL1    T1 S1 S2 T2
+C---------------NO.2:----------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYOH/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OHIY/+(7.0)-0/UVSYH;           VL1    T1 S1 S2 T2
+C------------------------------------------------
+ 320 REPEND
+ 322 REND
+ 342 GOSUB 315-318*8
+ 343 PKV:1:<JA1>;
+ 344 << S:U^SYO/<1->+ (6.5)- OIA/+(8.0)-0/UVSDI.;            V0   T1 S1 S2 T2
+ 345 WM=16
+ 346 >> S:U^ND.I/DI.-D.I;                 NP4-4       T1 S1
+ 348 << S:DI.-D.I;                        Y:5/2;  VU     S1 S2
+ 350 >> S:DI.-D.I/DI.-D.I/UVND.I;                        S1 S2 T2
+ 352 END C************************************************
+
+ 400 C PANT VEGE *************
+ 402 << S:U^S+/0-R/0-R/UVSD.I;    Y:2/5;  NP5-5 V0   T1 S1 S2 T2 
+ 404 >> S:D.I-DI./D.I-DI./UVSDI.;         NP2-2         S1 S2 T2
+ 408 END
+
+ 600 C EEEE 1/1 PASSZE
+ 602 << S:D.I-0/D.I-DI.;          Y:2/5; NP4-4   VU     S1 S2
+ 603 >> S:D.I-DI./D.I-DI.;                       VU     S1 S2
+ 606 << S:D.I-DI.;                Y:2;           VU     S1
+ 608 >> S:U^SD.I/0-R;                    NP1-1       T1 S1
+ 609 GOTO 300
+
+ 999 <> W0 VU S0
+1002 WWWWWWWWWWWWWWWWWW
+1004 IWO.YYYIIIWOIIIIII
+1006 III.IIIIIIIIIIAAA.
+1008 IWO..YYYIIWOIIIII.
+1010 III..IIIIIIIIAAA..
+1012 IWO+..YYYIWOIIII..
+1014 III..+IIIIIIAAA..+
+1016 IWO.+..YYYWOIII+..
+1018 III...+IIIIAAA...+
+1020 IWO.+..IIIWOII.+..
+1022 III..+AAAIIIII...+
+1024 IWO+..IIIIWOYYY+..
+1026 III..AAAIIIIIII..+
+1028 IWO..IIIIIWOIYYY..
+1030 III.AAAIAIIIIIII..
+1032 IWO.IIIIIIWOYIYYY.
+1034 IIIAAAIAIIIIIIIII.
+1036 IWOIIIIIIIWOIYIYYY
+1038 IIIIIIIIIIIIIIIIII
+1040 YYYYYYYYYYYYYYYYYY
+
+C-------NO.2:---------
+1026 III..AAAIAIIIII..+
+1028 IWO..IIIIIWHIYYY..

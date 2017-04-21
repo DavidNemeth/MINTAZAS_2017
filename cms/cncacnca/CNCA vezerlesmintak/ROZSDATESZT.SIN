@@ -1,0 +1,37 @@
+C TISZTITAS:
+C   KT:2005.09.20.
+C CNCA:     09.20.PLAT.
+C  PKT:2005.10.04.      12.09
+C
+   1 C TISZTITO PROGRAM ES TUAGY FINOMBEALLITO TESZT
+  10 C A CNCA-N:CP TISZTIT
+  11  NP1=14.5;    C **KT**
+  12  NP4=12.5;    C **KT**
+  40 START
+  50 YG:/25;
+  52  WM=20; WMI=7 C20        C **KT**
+  54 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4     V0      S1 S2
+  56 >> S:DI.-D.I/D.I-DI./UVNDI.;                  ML           S1 S2 T2
+  58 << S:DI.-D.I/UVND.I;           Y:2;           ML              S2 T2
+  60 >> S:R-0;                              NP1-0  ML           S1
+  62 <<                             Y:5;    NP-0   ML           S1
+  64 >>                                     NP-0   ML           S1
+  66 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4  ML           S1 S2
+  68 >> S:DI.-D.I/D.I-DI.;                         ML           S1 S2
+  70 << S:U^ND.I/DI.-D.I;           Y:2;           ML        T1    S2
+  72 >> S:U^NDI./0-R;                       NP0-1  ML        T1 S1
+  74 << S:0-R;                      Y:5;    NP0-   ML           S1
+  76 >>                                     NP0-   ML           S1
+  77 RBEG*RS1 C***************TUAGY FINOMBEALLITO TESZT **************
+  78 <<                             Y:2;    NP0-   V0               S1
+  80 >>                                     NP0-   V0             S1
+  82 <<                             Y:5;    NP0-   V0     S1
+  84 >>                                     NP0-   V0     S1
+  86 <<                             Y:2;    NP0-   V0              S1
+  88 >>                                     NP0-   V0     S1
+  90 <<                             Y:5;    NP0-   V0              S1
+  92 >>                                     NP0-   V0     S1
+  94 REND     C*******************************************************
+  96 END
+ 998 <> S:R-0/R-0;          Y:2/5;  NP4-4     V0 VU   S1 S2
+ 999 <> W0 S0

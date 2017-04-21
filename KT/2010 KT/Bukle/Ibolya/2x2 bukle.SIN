@@ -1,0 +1,48 @@
+   1 C 2/2 BUKLE
+   2 C LEVALASZTAS:1/1 AZ ELSO TUAGYON
+
+  10 NP4=13.0   C:LEVALASZTAS
+  12 NP2=9.8    C:BEKEZDES        9.8 10.2 9.8
+  14 NP5=10.8   C:1/1             9.8 10.8
+  16 NP3=11.2   C:2/2 PASSZE     
+  18 NP1=12.1   C:2/2 TEST    12.1-12.3   
+  40 START
+  50 YG:6/23456;
+  51 WM=16 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  60 RS1=80 C U-E-H-U 
+  62 RS2=25 C NYAK      6'
+
+C TUKIOSZTAS NELKUL DIREKVALOGATASSAL
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0 ML        S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU    ML     S1 S2
+ 212 >>	S:D.I-DI.;		                	Y:5;	      NP2-2 VU V0 ML     S1
+
+ 213 IF RS17=10 GOTO 300 C 1/1 NYAK
+
+ 214 << S:0-DI./D.I-0/UVSD.II.;      Y:2/5;           VU           S1 S2 T2
+ 216 >> S:U^SDI..I/D.II.-DI..I/D.II.-DI..I;     NP3-3           T1 S1 S2
+ 218 << S:DI..I-D.II.;               Y:0/0;           VU           S1 S2
+ 220 >>                                               VU           S1 S2
+ 222 RBEG*RS1
+ 224 << S:D.II.-DI..I;               Y:2/5;     NP1-1 VU           S1 S2
+ 226 >>                                               VU           S1 S2
+ 228 REND
+ 230 <<                                               VU           S1 S2
+ 232 >> S:D.II.-DI..I/D.II.-DI..I/UVSDI..I;                        S1 S2 T2
+ 234 END
+
+ C********* 1/1 GARBO **************
+ 300 << S:0-DI./D.I-0;        Y:2/5;     NP5-5 VU           S1 S2
+ 302 RBEG*RS2
+ 304 >> S:D.I-DI.;                       NP5-5 VU           S1 S2
+ 306 <<                                        VU           S1 S2
+ 308 REND
+ 310 >> S:D.I-DI./D.I-DI./UVSDI.;                           S1 S2 T2
+ 312 END

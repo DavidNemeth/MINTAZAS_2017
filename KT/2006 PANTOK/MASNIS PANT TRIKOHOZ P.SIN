@@ -1,0 +1,33 @@
+ 900 C REX POIKO PANT (MASNIS) 2X15/2PAMUT VAGY1LUSI+1TX KT:NPK=+0.2  PKT:NPK=0   TELI TUAGY(581TU)
+ 902 NP4=12.6   C12.6
+ 904 NP2=10.2   C:BEKEZDES
+ 906 NP3=10.0    C:REX
+ 940 START 
+ 950 YG:6/256;
+ 952 WM=16 WMI=7
+ 954 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	     NP4-4   VU   V0	   S1 S2
+ 956 JA1=1994;
+ 958 PA:<JA1>; 
+ 960 FA=2-7; C FA=1-7 VAGY 2-7;
+ 962 PM:<.>5:<FA>575:<.>;
+ 964 >> S:D.I-DI./UVN.I;	           	Y:2;                     	      S1    T2
+ 966 << S:U^NA/.I-A;                                              T1 S1
+ 968 >> S:.I-A;                      Y:5;                 VR1        S1
+ 970 << S:.I-0/UVNA;                              VKA>2        S1    T2
+ 972 >> S:.I-.I;                     Y:6;                 V0            S2
+ 974 << S:.I-0/0-.I;                 Y:6/0;                          S1 S2
+ 976 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+ 977 WM=19
+ 978 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+ 980 >> S:.-./.-.;                           ML                        S1 S2
+ 982 << S:.-./.-.;                           ML                        S1 S2
+ 984 >> S:.-./.I-.I;                         ML                        S1 S2
+ 986 << S:R-R/R-R;                                                     S1 S2
+ 988 >> S:R-R/R-R;                                                     S1 S2
+ 990 << S:R-R/R-R;                                                     S1 S2
+ 991 >> S:R-R/R-R;                                                     S1 S2
+ 992 <<                              Y:5;                              S1
+ 993 >>                                                                S1
+ 994 END
+ 999 <> W0 S0
+1994 ....AIA

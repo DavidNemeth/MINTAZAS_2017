@@ -1,0 +1,163 @@
+1C 1-2-3: XL GYERTYAS - 10 GYONGYOS - KARO
+1C 
+1C 1SZVCS + 2SZV.KREPP
+1C JAC./R2009/GYONGYOS
+   1C   2/5:1BUKLE+1HB    !!MINDKET BUKLE ATPARAFINOZVA!!!!!!
+   1C BUKLE     (0.41-0.42 KG.):
+   1C       VAGY: LAJTOS   6/1-ES:1760FT  1012.09.-TOL:1820  2013.08.:1880 2013.09:2050         
+   1C       VAGY: IZA      6/1-ES:1800                                1880         2050
+   1C FEKETE HB (0.18-0.20 KG.):
+   1C       VAGY: IZA     32/2-ES: 
+   1C       VAGY: TAMAS   30/2-ES:1550FT
+   1C       VAGY: BAJAI   32/2-ES:1610 
+   1C             LAJTOS: 32/2
+   1C             LAJTOS: 16/1
+   1C------------------------------------------------------------------------------
+   1C                  SUM.:1700-1800FT/KG 1013.09:1900 FT/KG                               0.60      KG
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 58*68  I1BU:0.42I 0.60*1900I  180    I 2*GOMB   I  60   I 1400  I  1850   I 450 I      I       I     I 
+1C BOLERO I1HB:0.15I   1140   I         I CRB  24  I       I       I         I     I      I       I     I
+1C FAZON
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 55*68  I1BU:0.40I 0.65*1900I  140    I          I  60   I 1430  I  1850   I 400 I      I       I    )I 
+1CKAMZSA  I1HB:0.14I   1230   I         I          I       I       I         I     I      I       I     I
+1C                                                                    
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1  C        6-OS BUKLE:                                   7.5:RS2=+3-4 NPK:-0.3--0.5
+1  C           KT: NPK=0.0-0.2   WM%=0
+1  C          PKT: NPK=0.1-0.3   WM%=-10
+1  C           UJ: NPK=0.1-0.3   WM%=0--5
+  10 C-----------------------------LAJTOS 6-OS BUKLE:----
+  10 NP4=12.6    C:LEVALASZTAS              
+  11 NP2=10.2    C:BEKEZDES 10.2
+  12 NP3=12.6    C:2/1 PASSZE
+  13 NP1=13.3    C:CSIPKE HATUL  
+  14 NP5=13.2    C:CSIPKE ELOL, KREPP ELOL-HATUL
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+
+C************************************************************************************************************************
+  70 C--- BOLERO VAGY BOLERO FAZONU PULOVER BETETTEL 60*70CM KESZEN---------------------------------------------------------
+  72 C RS17=11: 9DB BETET-MINDEN SZINHEZ FEKETE BETET KELL A DEKOLTAZSBA-KULON KELL MEGKOTNI-66-72-IG A #100-AKAT KI KEL CEZNI
+  74 CIF #100=23  RS17=10        C 1DB PANT   6      8     10     12
+  76 CIF #100=11  RS17=1         C UEHU       3      4      5      6   21' VASALVA: E:53*70 H:63*70 U:48*70  KESZ MERET:60*69CM
+             C----------JAVITASHOZ:-----------
+  78 C IF #100=16  RS17=0         C EEEE       2(2)   2      3((2)  3                           E:         
+  80  IF #100=1  RS17=2         C UUUUU      2(4)   2(2)   2      3(3)                        U:      U:45*58                
+  82 C---KAMZSA NYAKU PULOVER-----------------------------------------------------------
+  84 C IF #100=3   RS17=12        C 2DB KAMZYA NYAK
+  86 C IF #100=2   RS17=3         C UHHU                 21'  T:55*69 U:45*58   2*110*72          
+C************************************************************************************************************************
+
+ 100 C***********TUK.:**GUMI:****KR/PAS:****PAS:***********************KESZEN:***********VASALVA:**************
+ 102 IF RS17=0  RS19=4 RS15=0    RS18=1    RS1=0    RS2=71  C EEEE              7.5:RS2=+3 NPK:-0.3--0.4
+ 104 IF RS17=1  RS19=6 RS15=0    RS18=1    RS1=3    RS2=70  C UHHU               
+ 106 IF RS17=3  RS19=6 RS15=1    RS18=3    RS1=10   RS2=64  C UEHU               
+ 108 IF RS17=2  RS19=5 RS15=0    RS18=1    RS1=3    RS2=61  C UUUUU              
+ 110 IF RS17=10 RS19=7 RS15=0    RS18=2    RS1=4            C PANT 
+ 112 IF RS17=11 RS19=7 RS15=0    RS18=1    RS1=0    RS2=42  C 15 DB BETET A DEKOLTAZSBA
+ 114 IF RS17=12 RS19=2 RS15=0    RS18=0    RS1=36           C 2 DB KAMZSA NYAK
+C*******************************************************************************************************
+
+ 150 C************581TU**************************************************************
+ 151 JA1=1120(1102-1130) C KREPP
+ 154 PA:1:<JA1>;
+ 156 IF RS19=3  FB=205-391;                       PM:<.>9:3(FB..);         C*3
+ 159 IF RS19=4  FB=227-366                        PM:<.>8:4(FB..);         C*4
+ 160 IF RS19=5  FB=242-354                        PM:<.>7:5(FB.);          C*5
+ 161 IF RS19=6             F2=1-168;  F3=242-354; PM:<.>8:F3 II F2 I   F2 II F3;   C*U-H-H-U  
+ 161 IF RS19=6  F1=1-153;  F2=1-177;  F3=1-115;   PM:<.>8:F3 II F2 III F1 II F3;   C*U-H-E-U  
+ 162 IF RS19=7  FB=201-212;                       PM:<.>9:<FB>574:<.>;     C <KR> OSZTAS NELKUL
+ 163 C*******************************************************************************
+
+
+ 199 C*******************************************************************************
+
+ 200 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;                           T1 S1    T2
+ 202 <<	S:DI..-D..I/UVND..I;		                  VL1                    S1    T2
+ 204 >> S:D..I-R/DII.-D.II;          Y:0/6;                    VU       S1 S2      C VAGY: VU
+ 206 << S:DII.-0/D..I-R;             Y:6/0;                    VU      S1 S2      C VAGY: VU            
+ 208 >>	S:DII.(2)-D.II(2)/DII.(3)-0; Y:5/2;	                   VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 209 IF RS15=0 GOTO 214  C---GUMI NELKUL RS15=0-----
+ 210 << S:0-D.II;                    Y:6;                      VU       S1         C VAGY: VU
+ 211 >>                                                        VU       S2         C VAGY: VU
+ 212 << S:DII.-D.II;                 Y:5/2;       NP3-3   V0   VU       S1 S2      C VAGY: VU
+ 213 GOTO 218            C---GUMIVAL RS15=1---------
+ 214 << S:0-D.II/DII.-D.II;                       NP3-3   V0   VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 216 IF RS1=0 GOTO 248                                                       VU      S1 S2      C VAGY: VU
+ 218 >> S:DII.-D.II;                                           VU      S1 S2      C VAGY: VU
+ 220 IF RS18=0 GOTO 236                                                       VU      S1 S2      C VAGY: VU
+ 222 IF RS18=3 GOTO 236                                                       VU      S1 S2      C VAGY: VU
+
+ 224 REP*3
+ 226 << S:U^SD.I.; V0 T1
+ 228 >> S:U^SDI..; VR1 T1
+ 230 << S:DII.-D.II/DI..-D.II;                              V0 VU      S1 S2      C VAGY: VU
+ 232 >> S:DII.-D.II;                                           VU      S1 S2      C VAGY: VU
+ 234 REPEND                                                   
+
+ 236 RBEG*RS1
+ 238 << S:DII.-D.II;                                           VU      S1 S2      C VAGY: VU
+ 240 >>                                                        VU      S1 S2      C VAGY: VU
+ 242 REND
+ 244 <<                                                        VU      S1 S2      C VAGY: VU
+ 246 IF RS18=2 GOTO 648 C*****  2/1 NYAK PASSZE VEGE *****
+ 247 IF RS18=0 GOTO 648 C*****  2/1 KAMZSA NYAK PASSZE VEGE *****
+C********************************************************************
+ 248 >> S:DII.-D.II/DII.(5)-D.II(5);                     VU       S1 S2
+ 250 WM=0
+ 252 << S:UVS.;                                                         T2
+ 254 >> S:U^SN.;                                                 T1
+C**********************************************************************************************************
+ 256 WM=18;
+ 258 RBEG*RS2
+ 260 << S:U^SN./.-N./.-N./UVS<1->.;        NP5-5;  Y:2/5;      T1S1S2T2
+ 262 >>                                                        T1S1S2T2
+ 264 REND
+ 266 CMS
+ 268 END
+C******************************************
+
+C*************************************************
+ 616 >> S:DII.-D.II/DII.(5)-D.II(5)/UVSD.II;                              S1 S2 T2
+ 618 END
+
+ 648 C ***2/1 PASSZE VEGE********581TU*********
+ 650 IF RS19=7 PM:<.>;                         C* 1 LAP  
+ 652 IF RS19=2 PM:<.>290:I;                    C* 2 LAP C 290/291
+ 654 IF RS19=3 PM:<.>194:I 388:I;              C* 3 LAP C PM:<.>194:I 388:I;
+ 656 IF RS19=4 PM:<.>290:I                     C* 4 LAP C PM:<.>145:I 290:I 435:I;VAGY:PM:<.>290:I
+ 658 >> S:I(2)-I(2)/DII.(3)-D.II(3)/DII.-D.II;     Y:0/2/5; VU    T1 S1 S2
+ 660 END C************************
+
+ 999 <> S0 W0 VU
+
+
+1100 IIIIIIIIIIII
+1102 II.II...I...
+1104 I.I.I..III..
+1106 .I.I.II...II
+1108 .III..I.I.I.
+1110 I...II.I.I.I
+1112 ..I..III.III
+1114 II.II...I...
+1116 II.III..I..I
+1118 ..I...II.II.
+1120 II.II.I...I.
+1122 ..I..I.III.I
+1124 I...I.II.II.
+1126 .III.I..I..I
+1128 II.III..I..I
+1130 ..I...II.II.
+1132 WWWWWWWWWWWW
+
+1200 195W
+1202 W193XW
+1204 W193XW

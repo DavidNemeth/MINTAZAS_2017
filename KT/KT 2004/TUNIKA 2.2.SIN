@@ -1,0 +1,295 @@
+1C TUNIKA 2  3X3 DUPLA CSAVAR +CSIPKE
+1C JAC.:RAJZOK4/TUNIKA2
+1C H-U:CP TUN2 RS10= RS1=
+1C KAGYLO NYAK:SP800
+1C
+1C         
+1C                             E:77CM        H:77CM     KREPP U 
+1C                             -24            55-        25-54        
+1C--------------------------+------------+-------------+-----------+-----------+
+1C   3 LUSIFIL               1(17) MAX 2       62          50
+1C--------------------------+------------+-------------+------------+-----------+
+  
+  11 NP1=13.6   C:MINTA
+  12 NP14=11.6  C:MINTA (14)
+  14 NP7=14.0   C:MINTA  HATUL
+  15 NP6=14.0   C:HATA-UJJA
+  16 NP12=12.0   C:HATA-UJJA
+  18 NP3=11.2   C:REX PASSZE
+  19 NP13=10.0  C:REX PASSZE (14)
+  20 NP4=12.5  C:LEVALASZTAS
+  22 NP5=14.5  C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52 WM=18 WMI=7
+  54 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  56 JA1=1991(1991-1993); 
+  58 PA:<JA1>; 
+  60 FA=1-7; 
+  62 PM:<.>5:77FA;
+  64 VJA^0
+  66 >> S:U^SA /.-A/UVS.;            Y:5;    ML     NP5-5           T1 S1    T2
+  68 << S:<1+>.-A/UVSA;                      ML          VL1 VKA>3     S1    T2
+  70 >> S:<1+>.I-.I/0-.I;            Y:6/0;  ML              V0        S1 S2
+  72 << S:.I-0;                      Y:6;    ML                        S1
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  80 >> S:.-./.(13)-.;                       ML                        S1 S2
+  82 << S:.-./.-.;                           ML     NP3-3              S1 S2
+  84 >> S:.-./.I(13)-.I;                     ML                        S1 S2
+  86 << S:R-R/R-R;                           ML     NP3-3              S1 S2
+  88 >> S:R-R/R(13)-R;                       ML                        S1 S2
+  99 << S:R-R;                      Y:5;     ML     NP3-3   S1
+
+ 102C  IF #100=35  RS1=19   C E
+ 104C  IF #100=25  RS1=62    C H
+ 106C  IF #100=15  RS1=50    C U
+ 108 IF RS1>25 GOTO 700 C********* U-H ***************
+
+ 110 JA1=1002(1002-1128); C FONAS
+ 112 JA2=1200(1200-1206); C KREPP .I
+ 114 PA:<JA2>:JA1;
+ 116 FA=7-184;
+ 118 PM:<.>9:3(FA.);
+ 120 >> S:UVS.;            VKB>3       T2
+ 122 << S:U^SN.;           VKB    T1
+ 124 >> S:.-N./UVNN.;           ML   NP1-7            S1 T2
+
+ 126 REP*4
+ 130 GOSUB 400-450*1 C FONAS 2* CSIPKE NELKUL (CSAK A FONASOK KOZT LEHET CSIPKE)
+ 135 GOSUB 500-599*3 C FONAS 6* CSIPKEVEL
+ 138 REPEND
+ 140 RBEG*RS1
+ 145 GOSUB 400-450
+ 148 REND
+
+ 200 Y:5/5/2/2;
+ 202 << S:U^N<1-2->N.*/.*-N.*/UVNNY.;                      V0  VKA>0  T1 S1    T2
+ 204 >> S:U^N<1-2->N./.-N./UVNNA.;                         VL1 VKB>5  T1 S1    T2
+ 206 GOSUB 202
+ 208 <> S:U^N<1->N./.-N./UVNN.;                        VL1 VKB        T1 S1    T2
+ 210 IF #124=0 GOTO 218
+ 212 << S:U^SD.I/DI.-D.I;              NP4-4           V0             T1 S1
+ 214 >> S:DI.-D.I/UVSD.I;                              V0                S1    T2
+ 216 END
+ 218 >> S:U^SD.I/DI.(4)-D.I(4)/DI.(14)-D.I/UVSD.I; Y:2/5;  V0         T1 S1 S2 T2
+ 220 END
+
+ 400 C***  FONASOK SZAMA X2 CSIPKE CSAK A FONASOK KOZOTT LEHET **...OTBW+G...**
+ 402 VJA^0
+ 404 WM=18
+ 406 NP1-7
+ 408 Y:2/2/5/5/2/2/0/5/0/5;
+ 410 REP*2
+ 412 <> S:U^N<1-2->N.*/.*-N.*/UVNNY.;                      V0  VKA>0 T1 S1    T2
+ 414 <> S:U^N<1-2->N./.-N./UVNNA.;                         VL1 VKB>5 T1 S1    T2
+ 416 REPEND
+ 418 <> S:U^N<1-2->N.*/.*-N.*/UVNIY*;                      V0  VKA>0 T1 S1    T2
+ 420 <> S:U^S<1-2->I/.-IOTB+/0-+(8.0)/UVSIOTB;             VL3       T1 S1 S2 T2
+ 422 <> S:U^S<1-2->I/.-ITBWO(7)/0-O(8.0)/UVSI;             VR1 VKC>3 T1 S1 S2 T2
+ 424 <> S:U^S<1-2->IOTB/.-N.(7)/UVSN.;                     VR3 VKD>6 T1 S1    T2
+ 426 REP*2
+ 428 <> S:U^N<1-2->N.*/.*-N.*/UVNNY.;                      V0  VKA   T1 S1    T2
+ 430 <> S:U^N<1-2->N./.-N./UVNNA.;                         VL1 VKB   T1 S1    T2
+ 432 REPEND
+ 434 <> S:U^N<1-2->N.*/.*-N.*/UVNIY*;                      V0  VKA>0 T1 S1    T2
+ 436 <> S:U^S<1-2->I/.-ITW+G/0-T(8.0)/UVSIW+G;             VR3 VKD   T1 S1 S2 T2
+ 438 <> S:U^S<1-2->I/.-IBW+G(7)/0-G(8.0)/UVSI;             VL1 VKB   T1 S1 S2 T2
+ 440 <> S:U^S<1-2->IW+G/.-N.(7)/UVSN.;                     VL3       T1 S1    T2
+ 450 C******************** ...OTBW+G... *******************************
+
+ 500 C***  FONASOK SZAMA X2 CSIPKEVEL *******************************************
+ 502 VJA^0
+ 504 WM=18
+ 506 Y:2/2/5/5; 
+ 508 REP*2  C----------------- CSIPKE ---------------------------------------
+ 510 <> S:U^N<1-2->N.*/.*-N.*/UVNNY.;                      V0  VKA>0   T1 S1    T2
+ 512 <> S:U^N<1-2->N./.-N./UVNNA.;                         VL1 VKB>5   T1 S1    T2
+ 514 REPEND C----------------- ---------------------------------------
+    C---------------- FONAS BALRA KEZDVE -----OTBW+G------------
+ 516 <> S:U^N<1-2->N.*/.*-N.*/UVNI*;               Y:2;    V0  VKA     T1 S1    T2
+ 518 <> S:U^S<1-2->IA/.-IABW+G/0-G(8.0)/UVSIA;     Y:2/0;  VL1 VKB     T1 S1 S2 T2
+ 520 WM=0  WMI=1
+ 522 <> S:UVSOTB;                                          VL3                  T2
+ 524 <> S:U^SA;                                            V0          T1
+ 526 WM=18 WMI=7
+ 528 <> S:U^S<1-2->IY/.*-IOTBW(7)/0-O(8.0)/UVSI*;  Y:5/0;  VR1 VKC>3   T1 S1 S2 T2
+ 530 WM=0 WMI=1
+ 532 <> S:UVS<1-2->IA;                                     V0  VKA              T2
+ 534 WM=18 WMI=7
+ 536 <> S:U^SIAOTB/.-N.(7)/UVSN.;                  Y:2;    VR3 VKD>6   T1 S1    T2
+ 538 WM=0 WMI=1
+ 540 <> S:U^SA;                                            VL1 VKB     T1
+ 542 <> W0 S0
+ 544 WM=18 WMI=7
+ 546 Y:5/5/2/2;
+ 548 REP*2  C----------------- CSIPKE ---------------------------------------
+ 550 <> S:U^N<1-2->N.*/.*-N.*/UVNNY.;                      V0  VKA     T1 S1    T2
+ 552 <> S:U^N<1-2->N./.-N./UVNNA.;                         VL1 VKB     T1 S1    T2
+ 554 REPEND C--------------------------------------------------------
+        C---------------- FONAS JOBBRA KEZDVE ------ OTBW+G -----------
+ 556 <> S:U^N<1-2->N.*/.*-N.*/UVNI*;               Y:5;    V0  VKA     T1 S1    T2
+ 558 WM=0 WMI=1
+ 560 <> S:UVS<1-2->IA;                                     VL1 VKB              T2
+ 562 WM=18 WMI=7
+ 564 <> S:U^SIA/.-IATW+G/0-T(8.0)/UVSIAW+G;        Y:2/0;  VR3 VKD     T1 S1 S2 T2
+ 566 WM=0 WMI=1
+ 568 <> S:U^SA;                                            VL2         T1
+ 570 <> S:U^S<1-2->IY;                                     VL1 VKB     T1
+ 572 WM=18 WMI=7
+ 574 <> S:.*-IBW+G(7)/0-G(8.0)/UVSI*;              Y:5/0;      VKB        S1 S2 T2
+ 576 WM=0 WMI=1
+ 578 <> S:UVS<1-2->IA;                                     VL2                  T2
+ 580 WM=18 WMI=7
+ 582 <> S:U^SIAW+G/.-N.(7)/UVSN.;                   Y:2;   VL3         T1  S1    T2
+ 584 WM=0 WMI=1
+ 586 <> S:U^SA;                                            VL1 VKB     T1
+ 588 <> W0 S0
+ 590 WM=18 WMI=7
+ 599 C*****************************************************************************
+
+ 700 C******** H-U ***********
+ 702 >>                                                                S1
+ 704 JA2=1804(1804-1806)
+ 706 PA:<JA2>;
+ 708 FA=6-183;         IF RS1<55 FA=28-160         C**H-U**
+ 710 PM:<.>8:3(IFAI);  IF RS1<55 PM:<.>7:4(IFAI);  C**H-U**
+ 712 WM=0
+ 714 << S:U^NN./UVN.;  VKC>1    T1  T2
+ 716 >> S:U^NN./UVN.;  VKC>1    T1  T2
+ 718 WM=24
+ 720 << S:.-N./.-N./UVNN.;             Y:2/5;  NP6-6  VKC V0    S1 S2 T2
+ 722 RBEG*RS1
+ 724 >> S:U^N<2->N./.-N./.(12)-N./UVNN.;                VKC V0   T1 S1 S2 T2
+ 726 << S:U^N<2->N./.(6)-N./.-N./UVNN.;                VKC      T1 S1 S2 T2 
+ 728 REND
+ 730 >> S:U^SD.I/DI.(4)-D.I(4)/DI.(14)-D.I/UVNR;                T1 S1 S2 T2
+ 732 END
+
+ 800 CKAGYLO NYAK********************
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:BEKEZDES
+ 808 NP5=12.5   C:LEVALASZTAS
+ 810 NP3=10.5   C:1/1
+ 811 NP6=12.5   C:1/1 A VARROSZEGELYNEL
+ 812 NP4=14.0   C:SLAG
+ 813 NP10=12.0  C:SLAG(14)
+ 814 YG:6/256;
+ 816 WM=16
+ 818 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP5-5  VU V0	      S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	      VKC>3       S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP1-1  VKC      T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+ 826 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+ 830 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 832 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 834 << S:0-D.I/DI.-D.I;                    Y:2/5;   NP3-3  VU          S1 S2
+ 836 JA1=1998
+ 838 FA=1-8
+ 840 PA:JA1;
+ 842 PM:<.> 9:<FA> 543:<.>;
+ 844 >> S:DI.-D.I/DI.-D.I;                             VU     S1 S2
+ 846 << S:DI.-D.I/DI.-D.I/UVS.;                               S1 S2 T2
+ 848 >> S:U^SN./.(4)-N.(4)/.(12.0)-N.(14.8)/UVSN.;         T1 S1 S2 T2
+ 850 << S:*.(4)-A(15.0)/*.-0;                          VU     S1 S2
+ 852 WM=28
+ 854 >> S:.*-0;                 Y:5;    VU   S1     C KAGYLO
+ 855 <<                                 VU   S2     C KAGYLO
+ 856 >>                                 VU   S1
+ 857 <<                                 VU   S2
+ 858 FA=5-6
+ 860 >> S:U^S*;                                            T1
+ 862 << S:U^SY;                                            T1
+ 864 WM=20
+ 866 >> S:.-N.(4)/.(10)-N./UVSY;             Y:2/5;           S1 S2 T2
+ 868 << S:.Y-*;                                 NP3-3  VU     S1 S2
+ 870 >>                                                VU     S1 S2
+ 872 << S:U^SY/.-N./.-N./UVSN.;                 NP4-4      T1 S1 S2 T2
+ 874 >> S:R-0/R(10)-0;                                        S1 S2
+ 876 << S:U^SN./.-N./.-N./UVSD.I;              NP4-4       T1 S1 S2 T2
+ 878 >> S:U^SDI./D.I-DI./D.I-DI.;              NP6-6       T1 S1 S2
+ 880 << S:D.I-DI. ;                   Y:2;              VU    S1
+ 882 >> S:D.I-DI. /UVSDI.;                              VU    S1    T2
+ 884 END
+ 999 <> W0 S0
+1998 5*YAY
+
+1000 I..I
+1804 Z.
+1806 .Z
+1991 4.A.A
+1992 3.A*A*
+1993 4.*I*
+1200 .I
+1202 .I
+1204 I.
+1206 I.
+1000 190I
+1002 72X3.OTBW+G3.22I3.OTBW+G3.71XI
+1004 72X3.OTBW+G3.3(3I*YI)3I*3.OTBW+G3.71XI
+1006 72X3.OTBW+G3.3(IIA.II)IIA4.OTBW+G3.71XI
+1008 72X3.OTBW+G3.3(3I.IY)3I4.OTBW+G3.71XI
+1010 72X3.OTBW+G3.3(IAI..I)IAI4.6I3.71XI
+1012 72X3.OTBW+G3.3(I3.II)I6.6I3.71XI
+1014 72X3.OTBW+G3.3(I..IIA)2(I..).6I3.71XI
+1016 72X3.OTBW+G3.3(I..*YI)I..*3.6I3.71XI
+1018 72X3.OTBW+G3.3(IIA.II)IIA4.OTBW+G3.71XI
+1020 72X3.OTBW+G3.3(3I.IY)3I4.OTBW+G3.71XI
+1022 72X3.OTBW+G3.3(IA3.I)IA5.OTBW+G3.71XI
+1024 72X3.OTBW+G3.3(.YII.I).YII3.OTBW+G3.71XI
+1026 72X3.OTBW+G3.3(.3IAI).3I3.6I3.71XI
+1028 72X3.OTBW+G..3(..IYII)..IYI3.6I3.71XI
+1030 72X3.OTBW+G..3(3.3I)2(3.II)4I3.71XI
+1032 72X3.OTBW+G3.3(3I*YI)3I*3.6I3.71XI
+1034 72X3.OTBW+G3.3(IIA.II)IIA4.OTBW+G3.71XI
+1036 72X3.OTBW+G3.3(3I.IY)3I4.OTBW+G3.71XI
+1038 72X3.OTBW+G3.3(IAI..I)IAI4.OTBW+G3.71XI
+1040 72X3.OTBW+G3.3(I3.II)I6.OTBW+G3.71XI
+1042 72X3.OTBW+G3.3(I..IIA)2(I..).6I3.71XI
+1044 72X3.OTBW+G3.3(I..*YI)I..*3.6I3.71XI
+1046 72X3.OTBW+G3.3(IIA.II)IIA4.6I3.71XI
+1048 72X3.OTBW+G3.3(3I.IY)3I4.6I3.71XI
+1050 72X3.OTBW+G3.3(IA3.I)IA5.OTBW+G3.71XI
+1052 72X3.OTBW+G3.3(.YII.I).YII3.OTBW+G3.71XI
+1054 72X3.OTBW+G3.3(.3IAI).3I3.OTBW+G3.71XI
+1056 72X3.OTBW+G..3(..IYII)..IYI3.OTBW+G3.71XI
+1058 72X3.OTBW+G..3(3.3I)2(3.II)4I3.71XI
+1060 72X3.OTBW+G3.3(3I*YI)3I*3.6I3.71XI
+1062 72X3.OTBW+G3.3(IIA.II)IIA4.6I3.71XI
+1064 72X3.OTBW+G3.3(3I.IY)3I4.6I3.71XI
+1066 72X3.OTBW+G3.3(IAI..I)IAI4.OTBW+G3.71XI
+1068 72X3.OTBW+G3.3(I3.II)I6.OTBW+G3.71XI
+1070 72X3.OTBW+G3.3(I..IIA)2(I..).OTBW+G3.71XI
+1072 72X3.OTBW+G3.3(I..*YI)I..*3.OTBW+G3.71XI
+1074 72X3.OTBW+G3.3(IIA.II)IIA4.6I3.71XI
+1076 72X3.OTBW+G3.3(3I.IY)3I4.6I3.71XI
+1078 72X3.OTBW+G3.3(IA3.I)IA5.6I3.71XI
+1080 72X3.OTBW+G3.3(.YII.I).YII3.6I3.71XI
+1082 72X3.OTBW+G3.3(.3IAI).3I3.OTBW+G3.71XI
+1084 72X3.OTBW+G..3(..IYII)..IYI3.OTBW+G3.71XI
+1086 72X3.OTBW+G..3(3.3I)3.II3.OTBW+G3.71XI
+1088 72X3.OTBW+G3.3(3I*YI)3I*3.OTBW+G3.71XI
+1090 72X3.OTBW+G3.3(IIA.II)IIA4.6I3.71XI
+1092 72X3.OTBW+G3.3(3I.IY)3I4.6I3.71XI
+1094 72X3.OTBW+G3.3(IAI..I)IAI4.6I3.71XI
+1096 72X3.OTBW+G28.6I3.71XI
+1098 72X3.OTBW+G3.22I3.OTBW+G3.71XI
+1100 72X3.OTBW+G28.OTBW+G3.71XI
+1102 72X3.OTBW+G3.22I3.OTBW+G3.71XI
+1104 72X3.OTBW+G28.OTBW+G3.71XI
+1106 72X3.OTBW+G3.22I3.6I3.71XI
+1108 72X3.OTBW+G28.6I3.71XI
+1110 72X3.OTBW+G3.22I3.6I3.71XI
+1112 72X3.OTBW+G28.6I3.71XI
+1114 72X3.OTBW+G3.22I3.OTBW+G3.71XI
+1116 72X3.OTBW+G28.OTBW+G3.71XI
+1118 72X3.OTBW+G3.22I3.OTBW+G3.71XI
+1120 72X3.OTBW+G28.OTBW+G3.71XI
+1122 72X3.OTBW+G3.22I3.6I3.71XI
+1124 72X3.OTBW+G28.6I3.71XI
+1126 72X3.OTBW+G3.22I3.6I3.71XI
+1128 72X3.OTBW+G28.6I3.71XI
+1130 6I.2(87I.I)5I
+1500 73.45I73.

@@ -1,0 +1,148 @@
+   1 C** 1SZV.CSIPKE-CSIPKE PASSZE *****CP SEJT RS17=0-1-2 RS19=1-2-3RS1=***
+   2 C       14.5    0            0     14.5
+   3 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   4 C       14.5    0            0     14.5
+   5 C       
+   6 C J2: <-------------       ------------->  
+   7 C                 
+   8 C       11.5   11.5         11.5   11.5
+   9 C B2: <-------------       ------------->  REXPIKO PANT: CP PANT
+  10 C       11.5   11.5         11.5   11.5          
+  11 C        0     15.0-15.5    15.0    0
+  12 C J3: <-------------       ------------->  PASSZE
+  13 C        0     15.0         15.7    0
+  14 C       
+  15 C B3: <-------------       ------------->
+  16 C       
+  17 C       13.5   12.5         13.5   13.5
+  18 C J4: <-------------       ------------->  LEVALASZTAS
+  19 C       13.5   12.5         13.5   13.5
+  20 C B4:=J4=13.5                              BEKEZDES
+  21 C TUAGYKORREKCIOK: V0:->2.25
+  22 C                  R1:->3__________R2: - ________R3:-
+  23 C                  L1:->0.5-1.5?________L2: - ________L3:-
+  24 C                            NP1=          RS1=
+  25 C                                        ELEJE:       HATA:        UJJA:<25
+  26 C-----------------------+------------+------------+------------+-------------+
+  27 C   2X16/1 PAMUT+1BRILL:    14.2                       30(23')      12 (TRIKO:22)
+  28 C-----------------------+------------+------------+------------+-------------+
+  29 C   3X16/1 PAMUT(F-F):    14.75-14.9(TRIKO)            25           10 (TRIKO:20)
+  30 C                                                            (HA RS17=0VAGY1: +1)
+  31 C-----------------------+------------+------------+------------+-------------+
+  32 C HA TRIKOT KOT 3 MINTA VAN:RS17=0-1-2 (KALASYOS-MILAN-SEJT)
+  33 C RS19=1: 1 LAPOT KOT, (RS17=0-1-2)0,1 VAGY 2
+  34 C RS19=2: 2 LAPOT KOT, (RS17=0) 1 ES 2.
+  35 C RS19=3: 3 LAPOT KOT, (RS17=0) 0,1 ES 2. MINDHAROM MINTABOL EGYET-EGYET.
+  36 C     7-8 SULY
+  37 C!!!!!!!!!!!!! HA NEM PAMUT TRIKOT KOT,A 200 ES 204 SOROKAT KI KELL CEZNI, !!!!!!
+  38 C!!!!!!!!!!!!! MERT FIXEN BE VAN ALLITVA MINDHAROM MINTARA RS1 !!!!!!!!!!!!!!!!!!
+  40 START        
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4       V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  80  JA1=1000
+  82 C IF RS17=2 JA1=1248;
+  98 PA:1:<JA1>;
+ 100            FA=5-182;                  C*3LAP************
+ 102            PM:<.>7:3(IFAI);         C*3LAP************
+ 104 IF RS1<25  FA=9-142                  C*4LAP************
+ 106 IF RS1<25  PM:<.>7:4(IFA)I;          C*4LAP************
+ 107 Y:2/2/5/5;
+ 108 REP*1
+ 109 << S:R-0;		                             ML NP3-03             S2
+ 110 >> S:0-R;		                             ML NP0-               S2
+ 112 REPEND
+ 114 << S:R-0/UVNNI;                         ML NP-0               S2 T2
+ 116 >> S:U^NI/NI-I;                         ML              T1    S2
+ 118 REP*5
+ 120 << S:U^NA;              ML                     VL1 NP0-0   T1
+ 122 >> S:U^NY;                ML                   VR1 NP0-0   T1
+ 124 << S:U^NY/.-N./UVNAY;        ML                V0          T1 S2 T2 
+ 126 >> S:.AY-I;                   ML               V#                S2
+ 128 REPEND
+ 140 << S:U^NN./.-N.;    ML                                     T1    S2
+ 142 >> S:.-N./UVNN.;      ML                           NP1-1      S1    T2
+ 145 << S:R-0;               ML                                    S1
+ 147 >>                        ML                                  S1
+ 200 RS1=21
+ 201 JA1=1226(1204-1246);
+ 202 IF RS17=1 JA1=1014(1002-1028);
+ 203 IF RS17=2 JA1=1124(1104-1122);
+ 204 IF RS17=2 RS1=20
+ 205 VJA^0
+ 206 Y:2/2/5/5;
+ 208 RBEG*RS1
+ 210 REP*5
+ 212 << S:U^N<1->N./.-N./UVNNY.;                      V0        T1 S1    T2
+ 214 >> S:U^N<1->N./.-N./UVNNA.;                      VL1       T1 S1    T2
+ 216 REPEND
+ 218 REND
+ 220 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 222 >> S:U^NDI./D.I-DI./D.I-DI./UVNDI.;                            T1 S1 S2 T2
+ 224 IF RS19=0 GOTO 250
+ 225 IF RS19=1 GOTO 250
+ 226 RS17=RS17+1
+ 228 IF RS17=1 GOTO 56
+ 229 IF RS19=2 GOTO 250
+ 230 IF RS17=2 GOTO 56
+ 232 RS17=0
+ 250 END
+1000 YYYIAAAAAIYY
+1002 ..IIIIYYI.
+1004 ..IAA.III.
+1006 ..III..YY.
+1008 ..AA...II.
+1010 ..II...I.Y
+1012 .A.I...I.I
+1014 II.I...III
+1016 IIII...IAA
+1018 .YYI...III
+1020 .III...AA.
+1022 ..YY...II.
+1024 ..II..A.I.
+1026 ..I.Y.I.I.
+1028 ..I.IIIII.
+1102 IIIIII
+1104 .I..Y.
+1106 A...I.
+1108 I....Y
+1110 I....I
+1112 .Y...I
+1114 .I..A.
+1116 ..Y.I.
+1118 ..IA..
+1120 ..II..
+1122 .A.I..
+1124 .I.I..
+1202 IIIIIIIIIIIIII
+1204 I..III..I..I..
+1206 I..II.Y.I..I..
+1208 IIA.I.IIIIIIII
+1210 III.I..YIIIIII
+1212 IA..I..IIIIIII
+1214 II..I...YIIIII
+1216 A...I...IIIIII
+1218 I...I....YIIII
+1220 ....I....IIIIA
+1222 .I..I..I..YIII
+1224 .I..I..I..IIA.
+1226 .I..I..I..III.
+1228 .I..I..I.A.II.
+1230 IIIIIIIIII.I.Y
+1232 IIIIIIIIA..I.I
+1234 YIIIIIIII..I..
+1236 IIIIIIIA...I..
+1238 .YIIIIII...I..
+1240 .IIIIIA....I..
+1242 ..YIIII....I..
+1244 I.IIIA..I..I..
+1246 I..YII..I..I..
+1248 YYYYIAAAAAAIYY
+1300 .........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I
+1302 YYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAA
+1304 IIII.III.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIII
+1306 YYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIYYYYYYIAAAAAAIY

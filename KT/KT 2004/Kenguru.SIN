@@ -1,0 +1,176 @@
+3 TUS  BIZTONSAGOSSABBAN:2005 TÉLI/KENGURU 2005
+C 
+1C 4TUS ARAN SLAG PIKO PASSZEVAL-
+1C H-U:CP RIA  (2SZ.V. KREPP)                          E           H             U
+1C-----------------------+------------+------------+------------+-------------+
+1C                             PUL:      57          57            52
+1C                             TUN:      66          67            52
+1C-----------------------+------------+------------+------------+-------------+
+1C AZ 5. SZV.-N EGY SZALAT AT LEHET PARAFINOZNI!!!!!!!!!!!!!!
+1C-----------------------+------------+------------+------------+-------------+
+C  10 NP1=14.6              C:MINTA HATUL
+C 160 NPJ1:I=14.4 .=15.0;   C:MINTA ELOL I: KREPP .:ARAN
+
+  10 NP1=14.6              C:MINTA HATUL
+  12 NP3=15.0              C:MINTA ELOL
+
+  14 NP4=12.6;             C:LEVALASZTAS
+  16 NP6=14.4;             C:U-H 2SZV.BAL-BAL KREPP (RIZS)
+  18 NP5=13.6              C:KORSLAG
+
+  20 NP7=14.0   C:2/2NYAK FONAS H
+  22 NP8=13.6   C:2/2NYAK FONAS E
+  24 NP2=11.6;  C:2/2NYAK 1/1,BEKEZDES
+
+  40 START        
+  50 YG:6/256;
+  53 WM=18;WMI=7
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C********************************************
+  60C IF #100=13 RS17=0            C E
+  62 IF #100=4   RS17=1            C H
+  64 IF #100=13  RS17=2            C U
+  65C IF #100=6  RS17=4            C NYAK
+C********************************************
+  66 IF RS17=0  RS1=70            C E
+  68 IF RS17=1  RS1=70            C H 67 69  70
+  70 IF RS17=2  RS1=57            C U
+ C********KORSLAG PIKO PASSZE***************************
+  88 IF RS17=4 GOTO 916 C 2X2 NYAK**********
+  90 JA1=1990;  C 1990 IIIIAI
+  92 PA:<JA1>; 
+  94 FA=1-6; 
+  96 PM:9.<FA>548:<.>;
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP1-01         ML       S1
+ 110 << S:0-NA/NA-0;                  Y:5/2;      NP5-5             S1 S2
+ 112 REP*2 C2 C***PIKO*** IIIIAI
+ 114 >> S:NA-0/0-NA;                                                S1 S2
+ 116 << S:0-NA/NA-0;                                                S1 S2
+ 118 REPEND
+ 120 REP*3 C3 C**KORSLAG*****
+ 122 >> S:R-0/0-R;                                                  S1 S2
+ 124 << S:0-R/R-0;                                                  S1 S2
+ 126 REPEND
+
+ 150 JA3=1000
+ 152 PANP:1:JA3;
+ 154 FB=5-183
+ 156 PMNP:<I>7:FBIFBIFB;
+
+ 200 JA1=1018(1004-1018)  C KEZD:Y(SARGA)SIVI
+ 202 JA2=1218(1204-1218) C******RIZS**********************
+ 203 IF RS17>0 GOTO 400 C****U-H********
+ 204 PA:<JA2>:JA1;
+ 206 FA=5-183;                           C EGESZ LAP              179 TU
+ 208 PM:<*>7:FAIFAIFA;                   C 3 EGESZ LAP            551 TU
+ 210 IF RS17=2 FA=14-147                 C*4LAP************
+ 212 IF RS17=2 PM:<.>7:4(IFA)I;          C*4LAP************
+
+ 214 >> S:R-0/0-R/UVSN.;                                     S1 S2 T2
+ 218 WM=20
+ 220 << S:U^S./N.(3)-.(1)/UVS.;       Y:2;       V0  VKC>2  T1  S1 T2
+ 222 >> S:U^S<1-2->./N.-.;                           VKC    T1  S1
+ 224 Y:5/2;
+ 226 RBEG*RS1C********** ARAN AZ ELSO TUAGYON YYYYY:SARGA H:V.KEK********************
+ 228 REP*2
+ 230 <> S:U^SH/N.H-.H/UVS.H;                    V0  VKC>2       T1 S1  T2  
+ 233 PK^:3:<JA2>3:JA1;
+ 234 <> S:U^NYH;                                VL2             T1
+ 236 <> S:UVNY;                                 VL3 VKB>1              T2
+ 238 <> S:UVNH;                                 VR2 VKD>0              T2
+ 240 WM=18;WMI=7
+ 241 PK^:0
+ 242 <> S:U^N<1-2->./N.-.;                   V0  VKC         T1 S1
+ 244 REPEND C*****2.: X.IIIIIHYYYYIII.X************************************************
+ 245 REND   C*****1.: X.IIIIIIHYYYYII.X************************************************
+ 246 << S:N.-./UVN.;               Y:5;             V0  VKC             S1 T2
+ 248 >> S:U^SDI./D.I-DI./UVSDI.;           NP4-4        VKC         T1  S1 T2
+ 250 END
+
+ 400 C******** H-U RIZS***********
+ 404 PA:<JA2>;
+ 406 FA=6-183;         IF RS17=2 FA=28-160         C**H-U**
+ 408 PM:<.>9:3(FA..);  IF RS17=2 PM:<.>8:4(FA..);  C**H-U**
+
+ 410 >> S:R-0/0-R/UVS.;       VKC>1                              S1 S2 T2
+
+ 416 WM=25
+ 418 << S:U^SN./.-N./.-N./UVNN.;             NP6-6  VKC V0       T1 S1 S2 T2
+ 420 RBEG*RS1
+ 422 >> S:U^N<2->N./.-N./.-N./UVNN.;                    VKC V0   T1 S1 S2 T2
+ 424 << S:U^N<2->N./.-N./.-N./UVNN.;                    VKC      T1 S1 S2 T2 
+ 426 REND
+ 428 >> S:U^SD.I/DI.-D.I/DI.-D.I/UVNR;       NP4-4               T1 S1 S2 T2
+ 430 END C******** H-U RIZS***********
+
+ 900 C***** 2/2 FONOTT NYAK ******* 1/1-ES VARRO SZEGELLYEL ********************
+ 902C START
+ 904 NP7=14.0   C:FONAS H
+ 905 NP8=13.6   C:FONAS E
+ 906 NP2=11.6;  C:1/1,BEKEZDES
+ 908 NP4=12.6;  C:LEVALASZTAS
+ 910 YG:6/256;
+ 912 WM=20 WMI=7
+ 914 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 916 >> S:D.I-DI./UVSDI.;            Y:2;                                S1    T2
+ 918 << S:U^SD.I/DI.-D.I;                           NP7-7             T1 S1
+ 920 >> S:U^SDI./D.I-D.I;            Y:6;           NP4-4   VR1       T1 S1
+ 922 << S:0-D.I/D.I-0;               Y:6/0;                              S1 S2
+ 924 >> S:DI.-D.I/0-D.I;             Y:5/2;         NP2-2   V0   VU      S1 S2
+ 926 << S:DI.(8.5)-0;                Y:6;                        VU      S1
+ 928 >> S:DI.(8.5)-0;                Y:6;                        VU      S1
+ 930 << S:DI.(2)-D.I/DI.-D.I;        Y:5/2;                      VU      S1 S2
+ 938 JA1=1999
+ 940 FA=1-6
+ 942 PA:JA1;
+ 944 PM:<.> 9:<FA> 543:<.>; C VAGY
+ 944 PM:<.> 8:<FA> 548:<.>; C VAGY
+ 944 PM:<.> 7:<FA> 547:<.>; C VAGY
+ 946 >>S:DI.-D.I/DI.-D.I/UVS.+;               Y:2/5;               S1 S2 T2
+ 948 REP*2 C*********FONAS********
+ 950 VJA^1
+ 954 << S:U^SY*/.+-Y*/.+-Y*;         NP8-7    Y:2/5;  V0        T1 S1 S2
+ 956 WM=12
+ 958 >> S:.+-*/UVS*;                          Y:2;    VL2 VKD>3    S1    T2
+ 960 << S:.+-Y;                               Y:2;    VR2          S1
+ 962 VJA^0
+ 964 WM=20
+ 966 >> S:U^SY/.+-Y*/.+-Y*/UVSY*;             Y:2/5;      VKE>5 T1 S1 S2 T2
+ 968 REPEND C********************
+ 970 << S:U^SY*/.+-Y*;                        Y:2;    V0        T1 S1
+ 974 >> S:U^S+/.-N./UVSN.;                                      T1 S1    T2
+ 976 << S:R-0;                                Y:5/2;               S1 S2
+ 978 >> S:U^SN./.-N./.-N./UVSD.I;                               T1 S1 S2 T2
+ 980 << S:U^SDI./D.I-DI./D.I-DI.;    NP4-4                      T1 S1 S2     C 
+ 982 >> S:D.I-DI./D.I-DI./UVSDI.;                     VU           S1 S2  T2  C
+ 984 END
+ 999 <> W0 S0
+1999 +YY**+
+
+
+1990 IIIIAI
+1000 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII...................IIIIIIIIIIIIIIIIII...............................IIIIIIIIIIIIIIIII...................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 WXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIIIIIHYYYYII.XXXXXXXXXXXXXXXXXXXXX.IIIIIIHYYYYIIIHYYYYIIIIIII.XXXXXXXXXXXXXXXXXXXXX.IIIIIIHYYYYII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1006 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIIIIIIHYYYYI.XXXXXXXXXXXXXXXXXXXXX.IIIIIIIHYYYYIIIHYYYYIIIIII.XXXXXXXXXXXXXXXXXXXXX.IIIIIIIHYYYYI.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1008 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.HYYYYIIIHYYYY.XXXXXXXXXXXXXXXXXXXXX.HYYYYIIIHYYYYIIIHYYYYIIIII.XXXXXXXXXXXXXXXXXXXXX.HYYYYIIIHYYYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1010 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IHYYYYIIIIIII.XXXXXXXXXXXXXXXXXXXXX.IHYYYYIIIHYYYYIIIHYYYYIIII.XXXXXXXXXXXXXXXXXXXXX.IHYYYYIIIIIII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1012 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIHYYYYIIIIII.XXXXXXXXXXXXXXXXXXXXX.IIHYYYYIIIHYYYYIIIHYYYYIII.XXXXXXXXXXXXXXXXXXXXX.IIHYYYYIIIIII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1014 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIIHYYYYIIIII.XXXXXXXXXXXXXXXXXXXXX.IIIHYYYYIIIHYYYYIIIHYYYYII.XXXXXXXXXXXXXXXXXXXXX.IIIHYYYYIIIII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1016 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIIIHYYYYIIII.XXXXXXXXXXXXXXXXXXXXX.IIIIHYYYYIIIHYYYYIIIHYYYYI.XXXXXXXXXXXXXXXXXXXXX.IIIIHYYYYIIII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1018 WXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IIIIIHYYYYIII.XXXXXXXXXXXXXXXXXXXXX.IIIIIHYYYYIIIHYYYYIIIHYYYY.XXXXXXXXXXXXXXXXXXXXX.IIIIIHYYYYIII.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1020 IIIIXIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII
+
+1204 I...II.II...
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II..I.I.I..I
+1212 ..II.I.I.II.
+1214 I..III.III..
+1216 .II...I...II
+1218 .III..I..III

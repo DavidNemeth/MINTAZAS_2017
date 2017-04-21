@@ -1,0 +1,141 @@
+   1 C  GYONGY-SLAG CSIKOS MINTA KENGURU ZSEBBEL
+   1 C KK.:ZIPPZARRAL,55CM-ES ZIPPZARRAL
+   1 C TUN.:1/1-ES GARBO NYAKKAL
+  1 C                                       E-H:70CM21'        U:59CM       ZSEB,GARBO
+  1 C-----------------------+------------+----------------+-------------+----------------+
+  1 C Y2: 4NYERS LUSI     - FARMERKEK           14               12             5 
+  1 C Y5: 1HB+3LUSI FUZFA - FEKETE
+  1 C Y3: 1HB+3LUSI FUZFA - FEKETE
+  1 C-----------------------+------------+------------+-------1KG=530FT-----+-------------+
+C FONALFELHASZNALAS:
+C 2:NYERS 4 LUSI      6*0.34=  SUM:           GARBO:         KAPUCNIS 3LAPOS:        KAPUCNIS-4LAPOS:
+C 5:FUZFA 1HB         6*0.11=        NYERS LUSI:0.34   36%(400FT)      	0.396                    0.33
+C         3LUSI       6*0.34=       SZINES LUSI:0.46   49%(450FT)       0.539                    0.45
+C 3:FUZFA 1HB         6*0.03=                HB:0.14   15%(1100FT)      0.165                    0.13
+C         3LUSI       6*0.12=                     SUM:100%(530FT/KG)2007.07.
+C----------------------------------------------------------------------------------------------------------
+C            SUM.:    6*0.94=             GARBO:0.94=500FT     KAPUCNIS:1.1=600FT    4LAPOS-PUL.:0.92=500FT
+C------------------------------------------------------------------------------
+  1 C   ZIPPES KARDIGAN.:           TUNIKA:     NYERS LUSI: 400       KAPUCNIS-ZIPPES:     KAPUCNUS PULOVER:
+  1 C     FONAL: 500 (530FT/KG)        500     SZINES LUSI: 450              580                580 (4LAPOS:-100FT)
+  1 C   CIPPZAR:  60 (M:50CM,L:55CM)     -              HB:1100               60                  -
+  1 C VALLTOMES:   5                     5                                     5                  5
+  1 C ZSINORVEG:   5                     5                                     5                  5
+  1 C    VARRAS: 280                   160                                   280                200
+  1 C   VASALAS:  40                    40                                    50                 50
+  1 C     OSSZ.: 900                   720                                   980                860
+  1 C        E.:1250                  1100                                  1400  KICSI:19'    1350
+  1 C        H.: 350                   380                                   420   NAGY:22'     490 
+C--------------------------------------------------------------------------------------------------------------
+
+C NPK:FUST:0, MOGYI-FUZFA:0.2       KT:0 PKT:-0.2
+  10 NP4=12.6;   C:LEVALASZTAS
+  12 NP2=12.5;   C:BEKEZDES,1/1,NYAK
+  14 NP3=14.2;   C:SLAG      3 LUSI:14.0  4LUSI:14.0   2LUSI+1HB:13.8   1LUSI+2HB:13.8   2LUSI+1HB:13.4
+  16 NP1=13.0;   C GYONGY    3 LUSI:12.2  4LUSI:12.4   2LUSI+1HB:12.2   1LUSI+2HB:12.2       3LUSI:11.8
+
+  40 START        
+  50 YG:6/2356;
+  52 WM=22;WMI=7
+  54 C
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  VU V0 ML       S1 S2
+
+C----------------------------------------------------------------------------------------
+  60  IF #100=7   RS19=0       C 20' C E-H 3LAP                                   0.75KG  3DB
+  61  IF #100=3   RS19=1       C 16' C U   4LAP                                   0.64KG  2PAR
+  62 C IF #100=10  RS19=4       C 19' C :U-E-H-U(122.SOR)                          0.7KG  4DB
+  63  IF #100=10  RS19=2       C  6' C VAGY 2PAR ZSEB+2 CSIKOS GARBO ZIPPESHEZ    0.27 KG               
+                                      C VAGY 2 KAPUCNI+1PAR ZSEB (VAGY 1DB KENGURU ZSEB)
+                                      C VAGY 5 KENGURU ZSEB VAGY 10DB NORMAL ZSEB
+  64  IF #100=11  RS19=5       C  5' C 10DB NORMAL ZSEB
+
+
+
+  65 C IF #100=11  RS19=3           C 3DB. 1/1 GARBO NYAK TUNIKAHOZ                              
+C----------------------------RS1:SAVOK SZAMA----RS2:AZ UTOLSO SAV HOSSZA--------------------
+  66 IF RS19=0  RS1=13   RS2=8     C E-H     3LAP                          19'
+  68 IF RS19=1  RS1=11   RS2=3     C U:      4LAP                          16'
+  69 IF RS19=4  RS1=12   RS2=8     C U-E-H-U                               18'
+  70 IF RS19=2  RS1=4    RS2=5     C 1PAR ZSEB+2KAPUCNI                     7'
+  71 IF RS19=5  RS1=4    RS2=0     C 5PAR ZSEB                              6'
+C-------------------------------------------------------------------------------------------
+
+  72 >>	S:D.I-DI./UVND.I;   	      	 Y:5;    ML                        S1    T2
+  74 <<	S:U^NDI./D.I-DI.;		          Y:3;			 ML                     T1 S1
+  76 >> S:D.I-DI.;                   Y:2;    ML             VR1 VU     S1
+  78 << S:U^ND.I/0-DI.;              Y:5;    ML     NP0-            T1 S1
+  80 >> S:D.I-DI.;                   Y:6;    ML             V0 VU         S2
+  82 << S:0-DI./R-0;                 Y:6/0;  ML                VU      S1 S2            
+
+C----------------------------------------------------
+  94 JA1=1004; C1004 .I.I.I.I.I.I.I.I.I.I.I.
+  96 PA:1:<JA1>;
+C---------554TU-------------------------------------------
+ 108 CIF RS19=0 FA=1-178; PM:<*>9:3(FA**); C*3 LAP  554TU
+ 112 CIF RS19=1 FA=1-134; PM:<*>7:4(FA**); C*4 LAP  554TU
+ 116 CIF RS19=2 FA=1-272; PM:<*>6:2FA;     C*2 GARBO+2PAR ZSEB-GARBO DUPLAN HAJTVA VAGY 9DB ZSEB(OSZTAS NELKUL)554TU
+ 120 CIF RS19=3 FA=1-272; PM:<*>7:2FA;     C*4 GYONGY GARBO
+C---------581TU-------------------------------------------
+ 108 IF RS19=0 FA=1-187; PM:<*>9:3(FA**); C*3 LAP  581TU
+ 112 IF RS19=1 FA=1-140; PM:<*>7:4(FA**); C*4 LAP  581TU
+ 116 IF RS19=2 FA=1-284; PM:<*>8:2FA;     C*2 GARBO+1PAR ZSEB-GARBO DUPLAN HAJTVA VAGY 10DB ZSEB(OSZTAS NELKUL)581TU
+ 118 IF RS19=5 FA=1-284; PM:<*>8:2FA;     C*10DB ZSEB(OSZTAS NELKUL)581TU
+ 120 IF RS19=3 FA=1-284; PM:<*>7:2FA;     C*4 GYONGY GARBO
+
+ 122 IF RS19=4 FA=1-140;          PM:<*>7:4(FA**);        C*4 LAP    581TU  VAGY
+ 122 IF RS19=4 FA=1-156;FB=1-124; PM:<*>9:FB**FA**FA**FB; C*U-E-H-U  581TU  VAGY
+ 122 IF RS19=4 FA=1-284;          PM:<*>7:FA**FA;         C*U-E-H-U  581TU  VAGY (CSAK KOZEPEN VAN OSZTAS)
+C----------------------------------------------------
+ 128 IF RS19=3  GOTO 400 C *******GYONGY+1/1 GARBO***********
+
+ 130 >>	S:D.I-DI./D.I-0;		           Y:5/3;	 ML     NP2-2      VU      S1 S2
+ 132 << S:0-DI./D.I-DI.;             Y:3/5;                    VU      S1 S2
+ 134 >> S:D.I-DI./D.I-DI./UVNI*;                    S1 S2 T2
+
+
+ 182 NP1-1
+ 183 WM=28
+ 200 RBEG*RS1 C*****GYONGY*************************************
+ 203 Y:2/5/2/5/2/3/2/3;                                   C Y:2/5;C VAGY Y:2/5/2/5/2/3/2/3; $$$$$$$$
+ 205 << S:U^N./I*-%./I*-.;       NP1-1     T1 S1 S2
+ 210 REP*4
+ 215 >> S:I*-%./I*-.;                  VU        S1 S2
+ 220 << S:I*-%./I*-.;                  VU        S1 S2
+ 225 REPEND
+ 230 >> S:I*-%./I*-./UVS.;                       S1 S2 T2
+ 235 REP*2 C **********************SLAG ***********************
+ 240 << S:R-0;          Y:3/5;       NP3-3 VU    S1 S2
+ 245 >>                                    VU    S1 S2
+ 250 REPEND
+ 255 REND C****************************************************
+ 260 IF RS2=0 GOTO 288
+ 275 GOSUB 203-205
+ 278 RBEG*RS2
+ 280 GOSUB 215-220
+ 282 C
+ 284 REND
+ 286 >> S:I*-./I*-./UVN.;                        S1 S2 T2
+ 288 END
+
+
+ 400 C************* GYONGY+1/1 GARBO *******************************
+ 402 >>	S:D.I-DI./D.I-0;		           Y:5/3;	 ML     NP1-1      VU      S1 S2  C NP5-5 VAGY NP1-1
+ 404 << S:0-DI./D.I-DI.;             Y:3/5;                    VU      S1 S2
+ 406 >> S:D.I-DI./D.I-DI./UVNI*;                                       S1 S2 T2
+ 408 << S:U^N./I*-%./I*-.;   Y:2/5; NP1-1     T1 S1 S2
+ 410 REP*4  C REGI:5
+ 412 >> S:I*-%./I*-.;                  VU        S1 S2
+ 414 << S:I*-%./I*-.;                  VU        S1 S2
+ 416 REPEND
+ 418 >> S:I*-%./I*-.;                  VU        S1 S2
+ 420 REP*14 C REGI:16
+ 422 << S:I*-./I*-.;   Y:3/5;   NP2-2   VU       S1 S2
+ 424 >> S:I*-./I*-.;                    VU       S1 S2
+ 426 REPEND
+ 428 << S:I*-./I*-.;                    VU       S1 S2
+ 430 >> S:I*-./I*-./UVN.;                        S1 S2 T2
+ 432 END
+
+ 999 <> W0 S0
+
+1004 .I

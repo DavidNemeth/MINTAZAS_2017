@@ -1,0 +1,70 @@
+1C 1/1-ES PASSZE + 3X3 FONAS      H-U:CP RIZS1X1 RS10= RS1=
+1C                              E: RS17=0         H: RS17=0         U: RS17=0
+1C                               RS1<40          39<RS1<76              RS1>75   
+1C          RAGLAN UJJU TUNIKA:   70CM             70CM                70CM
+1C          AZ UJJA SZABASI HULLADEKABOL ZSEBET LEHET CSINALNI
+1C--------------------------+-----------------+------------------+----------------+
+1C       3XTX : NPK=0       PUL:  23            56                   54
+1C                            TUN:  28            64-66                54
+1C--------------------------+----------------+------------------+-----------------+
+  10 NP1=14.4;  NP9=12.4      C MINTA ELOL
+ 118 NPJ1:.=14.4 I=14.8 ;     C MINTA HATUL
+  12 NP4=12.5                 C LEVALASZTAS
+  14 NP2=10.6;  NP8=9.0       C 1/1
+  16 NP6=14.2;  NP14=12.6     C:U-H 2SZV.BAL-BAL KREPP (I.)
+ 
+  40 START
+  45 WM=18; WMI=7
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  77 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  78 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  80 REP*3
+  82 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+  84 << S:DI.(2)-D.I/DI.-D.I;                             VU           S1 S2
+  90 REPEND
+  95C IF RS1>40 GOTO 400
+ 100 JA1=1104(1104-1106);
+ 102 JA2=1204(1204-1206) C******RIZS**********************
+ 104 PA:<JA2>:JA1;
+ 106 FA=7-183
+ 108 PM:<.>9:3(FA3.);
+
+ 110 JA3=1600;
+ 112 PANP:1:JA3;
+ 116 PMNP:<.>7:3(FA..);
+ 150 C-----MINTA-----
+ 155 VJA^0
+ 160 >> S:DI.-D.I/DI.(8)-D.I/UVS.;                        S1 S2 T2
+ 162 WM=26
+ 165 << S:U^SN./.-N./.-N./UVSI;           Y:2/5;   NP1-1     T1 S1 S2 T2
+ 170 RBEG*RS1 C***  FONASOK SZAMA  ...... ...OTBW+G... ................................
+ 172 >> S:U^S<2->N./.(1)-N.(J1)/.(9)-N.(J1)/UVSI;      Y:2/5;  V0        T1 S1 S2 T2
+ 174 << S:U^S<2->I/.(1)-N.(J1)/.(1)-N.(J1)/UVSI;                         T1 S1 S2 T2
+ 176 >> S:U^S<2->I/.(1)-N.(J1)/.(9)-N.(J1)/UVSI;                         T1 S1 S2 T2
+ 178 WM=22
+ 180 << S:U^S<1-2->I/.(1)-IOTB+/0-+(8.0)/UVSIOTB;        Y:2/0; VL3        T1 S1 S2 T2
+ 182 >> S:U^S<1->I/.-IOBW+(J1)/0-O(8.0)/UVSI;            Y:2/0; VR2 VKC>4  T1 S1 S2 T2
+ 184 WM=26
+ 186 << S:U^S<2->OTBI/.-N.(J1)/.-N./UVSN.;               Y:2/5; VR3 VKD>6  T1 S1 S2 T2 
+ 200 REND C******************** ...OTBW+G *******************************
+ 202 >> S:U^S<2->N./.(1)-N(J1)./.(9)-N./UVSDI.;               V0         T1 S1 S2 T2
+ 204 << S:U^SD.I/DI.-D.I;                       NP4-4  Y:2;              T1 S1
+ 206 >> S:DI.-D.I/UVSD.I;                                                   S1    T2
+ 208 END
+
+ 400 C ***********H-U********
+
+1000 I..I
+1001 5.*8(3.I6.)3.I4.*8(4.I5.)4.I3.*
+1104 24X4(20X..OTBW+G..)46X
+1106 24X4(19X3.OTBW+G..)46X
+1600 25.4(18.12I)48.
+1204 I.
+1206 .I

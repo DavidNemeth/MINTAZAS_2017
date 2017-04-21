@@ -1,0 +1,348 @@
+  10 C***** GRAFFITI ********
+  13 NP5=12.0 C:MINTA ^ HATUL
+  14 NP1=13.0 C:MINTA V ELOL
+  16 NP2=13.0 C:BEKEZDS
+  17 NP4=13.0 C:LEVALASZTAS
+  18 NP3=11.0 C:SLAG PASSZE ELOL
+  19 NP6=10.0 C:SLAG PASSZE HATUL
+  20 START 
+  22 YG:6/2356;
+  24 WM=20 WMI=7
+  26 << S:D.I-DI./DI.-D.I;		       Y:2/5;	     NP4-4  VU  V0	       S1 S2
+  28 >> S:D.I-DI./UVSDI.;           Y:2;                            S1    T2
+  30 << S:DI.-D.I/UVSD.I;	         Y:2;	                            S1    T2
+  32 WM=20
+  34 >> S:R-R;		                    Y:6;	       NP2-0   	            S1
+  36 << S:0-R/R-0/0-R;		           Y:0/6/0;    NP2-2   	         T1 S1 S2
+  38 >> S:R-R(6.5)/0(0)-R(3);      	Y:5/2;	                   ML     S1 S2
+  39                  NP3-6
+  40 C<< S:R-0/0-R;	          S1 S2    
+  42 C>>                       S1 S2
+  44 C<<                       S1 S2
+  46 C>>                       S1 S2
+  47 C<<                       S1 S2
+  48 C>>                       S1 S2
+  49 JA1=1578(1004-1578)
+  50 JA2=1000
+
+  51 CPA:1:JA1;
+  52 CPK^:1:<JA1>1:<JA2>;
+  51 PA:1:JA1:JA2;
+  52 PKV:1:JA1;
+
+  59 F1=7-183;          IF RS1<63 F1=29-161;
+  60 PM:<.O>9:3(F1.O);  IF RS1<63 PM:<.O>7:4(F1.O);
+  64 WM=20
+  73 << S:R-R;                 Y:5;                 S1
+  75 >> S:R(15.0)-0/UVSA.O;                          S1    T2
+  76                                   NP1-5
+
+  77  CY:2/3/5;
+  77  Y:2/5;
+
+
+  78 RBEG*RS1
+  80 REP*2
+
+  82 C<< S:<1->I.-*+/*O-I+/+.-I*;                             T1 S1 S2
+  84 C>> S:<1->IO-*+/*.-I+/+O-I*;                             T1 S1 S2
+  82 << S:<1->I.-0/*+O-0;                              S1 S2
+  84 >> S:<1->0-*+/0-I;                              S1 S2
+
+
+  86 REPEND
+  88 REND
+  90 << S:D.I-DI./DI.-D.I;         Y:2/5;       NP4-4  VU  V0        S1 S2
+  92 >>                                                VU            S1 S2
+  96 END
+1000 AAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAXAAX
+1002 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1004 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+
+1006 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+
+1008 IIIIIIIIIIIIIIIIIIIIIIIIIII++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIIII++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIII+
+1010 IIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIII+++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++IIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1012 IIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++IIIIIIIIIII++++++IIIIIIIII++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++++++IIIIIIIII++++++IIIIIIIIIII+++++++++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1014 IIIIIIIIIIIIIIIIIIIIIIIIII+++++IIII++IIIIII+++++++++++++++++IIII+++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++IIII+++++++++++++++++IIIIII++IIII+++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1016 IIIIIIIIIIIIIIIIIIIIIIIIII++++IIIII+IIIII++++++++++++++++++++IIIII++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++++IIIII++++++++++++++++++++IIIII+IIIII++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1018 IIIIIIIIIIIIIIIIIIIIIIIIII++++IIIIIIIII++++++++++++++++++++++III+II+++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++II+III++++++++++++++++++++++IIIIIIIII++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1020 IIIIIIIIIIIIIIIIIIIIIIIIII++++IIIIIII++++++++++IIIIIIIII++++++IIII++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++++IIII++++++IIIIIIIII++++++++++IIIIIII++++IIIIIIIIIIIIIIIIIIIIIIIIII+
+1022 IIIIIIIIIII*********IIIIIII++++IIII+++++++++IIIIIIIIIIIII+++++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++++++++IIIIIIIIIIIII+++++++++IIII++++IIIIIII*********IIIIIIIIIII+
+1024 IIIII***IIII*********IIIIII++++III+++++++++IIIIIIIIIIIIIII++++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII++++++++++++++++IIIIIIIIIIIIIII+++++++++III++++IIIIII*********IIII***IIIII+
+1026 IIII******II*********IIIIII+++++++++++++IIIII***********III+++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++++++III***********IIIII+++++++++++++IIIIII*********II******IIII+
+1028 IIII*****************IIIIIII++++++++++III*****************II+++++++++++IIIIIIIIIIIIIIIIII*IIIIIIIIII*IIIIIIIIIIIIIIIIII+++++++++++II*****************III++++++++++IIIIIII*****************IIII+
+1030 IIII*****************IIIIIIII++++++++III*******************IIII++++++IIIIIIIIIIIIIIIIIII**IIIIIIIIII**IIIIIIIIIIIIIIIIIII++++++IIII*******************III++++++++IIIIIIII*****************IIII+
+1032 IIII*****************IIIIIIIIII++++IIII*********************IIIIIIIIIIIIIIIIIIIIIIIIIII***IIIIIIIIII***IIIIIIIIIIIIIIIIIIIIIIIIIII*********************IIII++++IIIIIIIIII*****************IIII+
+1034 IIIII**II********IIIIIIIIIIIIIIIIIIIII**********************IIIIIIIIIIII**IIIIIIIIIII*****IIIIIIIIII*****IIIIIIIIIII**IIIIIIIIIIII**********************IIIIIIIIIIIIIIIIIIIII********II**IIIII+
+1036 IIIIIIIIII********IIIIII***IIIIIIIIIII********IIIII***********IIIIIIIIII***IIIIIIIII******IIIIIIIIII******IIIIIIIII***IIIIIIIIII***********IIIII********IIIIIIIIIII***IIIIII********IIIIIIIIII+
+1038 IIII****I*********IIII******IIIIIIIII********IIIIIIIII*********IIIIIII********************IIIIIIIIII********************IIIIIII*********IIIIIIIII********IIIIIIIII******IIII*********I****IIII+
+1040 IIII***************IIII*****IIIIIIII*******IIIIIIIIIIII***********************************IIIIIIIIII***********************************IIIIIIIIIIII*******IIIIIIII*****IIII***************IIII+
+1042 III*****************III*****IIIIIII*******IIIIIIIIIIIIII**********************************IIIIIIIIII**********************************IIIIIIIIIIIIII*******IIIIIII*****III*****************III+
+1044 III*****************I*******IIIIII*******IIIIIIIIIIIIIIII*********************************IIIIIIIIII*********************************IIIIIIIIIIIIIIII*******IIIIII*******I*****************III+
+1046 III*************************IIIII*******IIIIIIIIIIIIIIIIIII******************************IIIIIIIIIIII******************************IIIIIIIIIIIIIIIIIII*******IIIII*************************III+
+1048 III*********III*************III*****IIIIIIIIIIIIIIIIIIIIIIIIIII***********IIIIIII********IIIIIIIIIIII********IIIIIII***********IIIIIIIIIIIIIIIIIIIIIIIIIII*****III*************III*********III+
+1050 IIII*********II************III****IIIIIIIIIIIIIIIIIIIIIIIIIIII**********IIIIIIIIIIII*****IIIIIIIIIIII*****IIIIIIIIIIII**********IIIIIIIIIIIIIIIIIIIIIIIIIIII****III************II*********IIII+
+1052 IIIIIII******II**********IIIIIII*IIIIIII++++++++IIIIIIIIIIIIIIII*******IIIIIIIIIIIIII***IIIIIIIIIIIIII***IIIIIIIIIIIIII*******IIIIIIIIIIIIIIII++++++++IIIIIII*IIIIIII**********II******IIIIIII+
+1054 IIIIIII*******II*****IIIIIIIIIIIIIII+++++++++++++++IIIIIIIIIIIIIII****IIIIIIIIIIIIIIII**IIIIIIIIIIIIII**IIIIIIIIIIIIIIII****IIIIIIIIIIIIIII+++++++++++++++IIIIIIIIIIIIIII*****II*******IIIIIII+
+1056 IIIIIII*******IIIIIIIIIIIIIIIIII+++++++++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII***IIIIIIIIIIII***IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++++++++++++IIIIIIIIIIIIIIIIII*******IIIIIII+
+1058 IIIIIIII*****IIIIIIIIIIIIIIIII++++++++++++++++++++++++IIIIIIIIII***IIIIIIIIIIIIIIIIIII***IIIIIIIIIIII***IIIIIIIIIIIIIIIIIII***IIIIIIIIII++++++++++++++++++++++++IIIIIIIIIIIIIIIII*****IIIIIIII+
+1060 IIIIIIIII***IIIIIIIIIIIIII++++++++++++++++++++++++++++IIII**IIII****IIIIIIIIIIIIIIIIIII**IIIIIIIIIIII**IIIIIIIIIIIIIIIIIII****IIII**IIII++++++++++++++++++++++++++++IIIIIIIIIIIIII***IIIIIIIII+
+1062 IIIIIIIIIIIIIIIIIIIIIIII++++++++++++++++++++++++++++++IIII**IIIII****IIIIIIIIIIIIIIIII***IIIIIIIIIIII***IIIIIIIIIIIIIIIII****IIIII**IIII++++++++++++++++++++++++++++++IIIIIIIIIIIIIIIIIIIIIIII+
+1064 IIIIIIIIIIIIIIIIIIIIIIII++++++++++++++++++++++++++++++IIII**IIIII******IIIIIIIIIIIIIII****IIIIIIIIII****IIIIIIIIIIIIIII******IIIII**IIII++++++++++++++++++++++++++++++IIIIIIIIIIIIIIIIIIIIIIII+
+1066 IIIIIIIIIIIIIIIIIIIIIII+++++++++++++++++++++++++++++++IIII**IIIII*********IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*********IIIII**IIII+++++++++++++++++++++++++++++++IIIIIIIIIIIIIIIIIIIIIII+
+1068 IIIIIIIIIIIIIIIIIIIIII++++++++++++++++++++++IIIIIII+IIIIII***III************IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII************III***IIIIII+IIIIIII++++++++++++++++++++++IIIIIIIIIIIIIIIIIIIIII+
+1070 IIIIIIIIIIIIIIIIIIIII++++++++++++++++++++IIIIIIIIIIIIIIIII**********************IIII******IIIIIIIIII******IIII**********************IIIIIIIIIIIIIIIII++++++++++++++++++++IIIIIIIIIIIIIIIIIIIII+
+1072 IIIIIIIIIIIIIIIIIIII++++++++++++++++++IIIIIIIIIIIIIIIIIIII*****************************II*IIIIIIIIII*II*****************************IIIIIIIIIIIIIIIIIIII++++++++++++++++++IIIIIIIIIIIIIIIIIIII+
+1074 IIIIIIIIIIIIIIIIIII+++++++++++++III+IIIIIIIIIIIIIIIIIIIII*****************************IIIIIIIIIIIIIIIIII*****************************IIIIIIIIIIIIIIIIIIIII+III+++++++++++++IIIIIIIIIIIIIIIIIII+
+1076 IIIIIIIIIIIIIIIIIII++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIII*************III************IIIIIIIIIIIIIIIIIIII************III*************IIIIIIIIIIIIIIIIIIIIIIIIII++++++++++++IIIIIIIIIIIIIIIIIII+
+1078 IIIII+++++++IIIIIII+++++++++++IIIIIIIIIIIIIIIIIII*III**********IIIIIIIIIIIII*********IIIIIIIIIIIIIIIIIIII*********IIIIIIIIIIIII**********III*IIIIIIIIIIIIIIIIIII+++++++++++IIIIIII+++++++IIIII+
+1080 I++++++++++++IIIIII+++++++++IIIIIIIIIIIII*********I***********IIIIIIIIIIIIIII********IIIIIIIIIIIIIIIIIIII********IIIIIIIIIIIIIII***********I*********IIIIIIIIIIIII+++++++++IIIIII++++++++++++I+
+1082 I+++++++++++++IIIII++++++++IIIIIIIII************************IIIIIIIIIIIIIIIIII************IIIIIIIIII************IIIIIIIIIIIIIIIIII************************IIIIIIIII++++++++IIIII+++++++++++++I+
+1084 I++++++++++++++IIII+++++++IIIIIIIII************************IIIIIIIIIIIIIIIIIII************IIIIIIIIII************IIIIIIIIIIIIIIIIIII************************IIIIIIIII+++++++IIII++++++++++++++I+
+1086 I++++++++++++++III++++++++IIIIIIII*************************III+++++++++IIIIIII**********IIIIIIIIIIIIII**********IIIIIII+++++++++III*************************IIIIIIII++++++++III++++++++++++++I+
+1088 I+++++++++++++++II++++++++IIIIIIII**************III*******IIII++++++++++IIIIII*******IIIIIIIIIIIIIIIIIIII*******IIIIII++++++++++IIII*******III**************IIIIIIII++++++++II+++++++++++++++I+
+1090 I+++++++++++++++II++++++++IIIIIIII*********IIIIIIIIIIIIIIIIII+++++++++++IIIIII******IIIIIIIIIIIIIIIIIIIIII******IIIIII+++++++++++IIIIIIIIIIIIIIIIII*********IIIIIIII++++++++II+++++++++++++++I+
+1092 I+++++++++++++++II++++++++IIIIIIII*******IIIIIIIIIIIIIIIIIIII+++++++++++IIIII******IIIIIIIIIIIIIIIIIIIIIIII******IIIII+++++++++++IIIIIIIIIIIIIIIIIIII*******IIIIIIII++++++++II+++++++++++++++I+
+1094 I+++++++++++++++II+++++++IIIIIIIII*******IIIII+II+++IIIIIIIII++++++++++++IIII*****IIIIIIIIIIIIIIIIIIIIIIIIII*****IIII++++++++++++IIIIIIIII+++II+IIIII*******IIIIIIIII+++++++II+++++++++++++++I+
+1096 I+++++++++++++++I++++++++IIIIIIIII******IIIIII+++++++++++++++++++++++++++IIII****IIIIIIIIII*IIIIII*IIIIIIIIII****IIII+++++++++++++++++++++++++++IIIIII******IIIIIIIII++++++++I+++++++++++++++I+
+1098 I+++++++++++I++II++++++++IIIIIIIIIII***IIII++++++++++++++++++++++++++++++III*****IIIIIIIII**IIIIII**IIIIIIIII*****III++++++++++++++++++++++++++++++IIII***IIIIIIIIIII++++++++II++I+++++++++++I+
+1100 I+++++++++++IIII+++++++++IIIIIIIIIIIIIII+++++++++++++++++++++++++++++++++III****IIIIIIIII***IIIIII***IIIIIIIII****III+++++++++++++++++++++++++++++++++IIIIIIIIIIIIIII+++++++++IIII+++++++++++I+
+1102 I+++++++++++++++++++++++IIIIIIIIIIIIIII+++++++++++++++++++++++++++++++++IIII****IIIIIIII****II++II****IIIIIIII****IIII+++++++++++++++++++++++++++++++++IIIIIIIIIIIIIII+++++++++++++++++++++++I+
+1104 I+++++++++++++++++++++++IIIIIIIIIIIIIII+++IIIIIIIIIIIIIIII+++++++++++++IIIII***IIIIIIII****III++III****IIIIIIII***IIIII+++++++++++++IIIIIIIIIIIIIIII+++IIIIIIIIIIIIIII+++++++++++++++++++++++I+
+1106 I+++++++++++++++++++++++IIIIIIIIIII*III++IIIIIIIIIIIIIIIIII+++++++++++IIIIII*IIIIIIIIII****II++++II****IIIIIIIIII*IIIIII+++++++++++IIIIIIIIIIIIIIIIII++III*IIIIIIIIIII+++++++++++++++++++++++I+
+1108 I++++++++++++++++++++++IIIIIIIIIII**IIIIIIIIIIIIIIIIIIIIIIIII++++++++IIIIIIIIIIIII+III****III++++III****III+IIIIIIIIIIIII++++++++IIIIIIIIIIIIIIIIIIIIIIIII**IIIIIIIIIII++++++++++++++++++++++I+
+1110 I++++++++++++++++++++++IIIIIIIII****IIII+++++++++++++IIIIIIIIII++++++IIIIIIIIIII+++III****III++++III****III+++IIIIIIIIIII++++++IIIIIIIIII+++++++++++++IIII****IIIIIIIII++++++++++++++++++++++I+
+1112 II+++++++++++++++++++++IIIIIIIII***IIII++++++++++++++++IIIIIIIIIIIIIIIIIIIIIII+++++II*****III++++III*****II+++++IIIIIIIIIIIIIIIIIIIIIII++++++++++++++++IIII***IIIIIIIII+++++++++++++++++++++II+
+1114 II++++++++++++++++++++IIIIIIIII***IIII++++++++++++++++++++IIIIIIIIIIIIIIIIIII+++++III*****II++++++II*****III+++++IIIIIIIIIIIIIIIIIII++++++++++++++++++++IIII***IIIIIIIII++++++++++++++++++++II+
+1116 II+++++++++++++++++++IIIIIIII*****III+++++++++++++++++++++IIIIIIIIIIIIIIIIII++++IIII******II++++++II******IIII++++IIIIIIIIIIIIIIIIII+++++++++++++++++++++III*****IIIIIIII+++++++++++++++++++II+
+1118 II+++++++++++++++++IIIIIIIII******II+++++++++++++++++++++++IIIIIIIIIIIIIIII+++++III******III++++++III******III+++++IIIIIIIIIIIIIIII+++++++++++++++++++++++II******IIIIIIIII+++++++++++++++++II+
+1120 III+I++++++++++++IIIIIIIIII*******III++++++++++++++++++++++IIIIIIIIIIIIII++++++III*******III++++++III*******III++++++IIIIIIIIIIIIII++++++++++++++++++++++III*******IIIIIIIIII++++++++++++I+III+
+1122 IIIIII+++++++IIIIIIIIIIIII*******IIII+++++++IIIII+++++++++++++IIIIIIIIII+++++++III*****IIII++++++++IIII*****III+++++++IIIIIIIIII+++++++++++++IIIII+++++++IIII*******IIIIIIIIIIIII+++++++IIIIII+
+1124 IIIIIIIIIIIIIIIIIIIIIIIII*******IIIIII++++++IIIIIIII+++++++++++IIIIIIIII+++++++III*****IIII++++++++IIII*****III+++++++IIIIIIIII+++++++++++IIIIIIII++++++IIIIII*******IIIIIIIIIIIIIIIIIIIIIIIII+
+1126 IIIIIIIIIIIIIIIIIIIIIIII*******II++++II+++++++IIIIIIIIII++++++++IIIIIII+++++++III******IIII++++++++IIII******III+++++++IIIIIII++++++++IIIIIIIIII+++++++II++++II*******IIIIIIIIIIIIIIIIIIIIIIII+
+1128 IIIIIIIIIIIIIIIIIIIIIII*******II++++++II+++++++IIIIIIIIII++++++++IIIII++++++++III*****IIII++++++++++IIII*****III++++++++IIIII++++++++IIIIIIIIII+++++++II++++++II*******IIIIIIIIIIIIIIIIIIIIIII+
+1130 IIIIIIIIIIIIIIIIIIIIII********I++++++++I++++++++IIIIIIIIII++++++++IIII+++++++IIII*****IIII++++++++++IIII*****IIII+++++++IIII++++++++IIIIIIIIII++++++++I++++++++I********IIIIIIIIIIIIIIIIIIIIII+
+1132 IIIIIIIIIIIIIIIIIIIIII*******I++++++++++++++++++IIIIIIIIIII+++++++IIII+++++++IIII*****IIII++++++++++IIII*****IIII+++++++IIII+++++++IIIIIIIIIII++++++++++++++++++I*******IIIIIIIIIIIIIIIIIIIIII+
+1134 IIIIIIIIIIIIIIIIIIIIII******II++++++++++++++++++IIIIIIIIIII+++++++III+++++++IIIII****IIIII++++++++++IIIII****IIIII+++++++III+++++++IIIIIIIIIII++++++++++++++++++II******IIIIIIIIIIIIIIIIIIIIII+
+1136 IIIIIIIIIIIIIIIIIIIIII*******I++++++++++++++++++IIIIIIIIIII++++++IIII+++++++IIII*****IIIII++++++++++IIIII*****IIII+++++++IIII++++++IIIIIIIIIII++++++++++++++++++I*******IIIIIIIIIIIIIIIIIIIIII+
+1138 IIIIIIIIIIIIIIIIIIIIII*******II+++++++++++++++++IIIIIIIIII++++++IIII++++++++IIII*****IIIII++++++++++IIIII*****IIII++++++++IIII++++++IIIIIIIIII+++++++++++++++++II*******IIIIIIIIIIIIIIIIIIIIII+
+1140 IIIIIIIIIIIIIIIIIII**II*******II++++++++++++++++IIIIIIIII+++++++IIII+++++++IIIII*****IIIII++++++++++IIIII*****IIIII+++++++IIII+++++++IIIIIIIII++++++++++++++++II*******II**IIIIIIIIIIIIIIIIIII+
+1142 IIIIIIIIIIIIIIIIII****III*****III++++++++++++++II+++++++++++++IIIIII+++++++IIIII*****IIII++++++++++++IIII*****IIIII+++++++IIIIII+++++++++++++II++++++++++++++III*****III****IIIIIIIIIIIIIIIIII+
+1144 IIIIIIIIIIIIIIIII*************IIIII++++++++++++I++++++++++++++IIIII++++++++IIIII*****IIII++++++++++++IIII*****IIIII++++++++IIIII++++++++++++++II+++++++++++IIIII*************IIIIIIIIIIIIIIIII+
+1146 IIIIIIIIIIIIIIII****************IIIII++++++++II++++++++++++++++IIII+++++++IIIIII******III++++++++++++III******IIIIII+++++++IIII++++++++++++++++II++++++++IIIII****************IIIIIIIIIIIIIIII+
+1148 IIIIIIIIIIIIIII******************IIIIIII+++++I++++++++++++++++IIIII+++++++IIIIII******III++++++++++++III******IIIIII+++++++IIIII++++++++++++++++I+++++IIIIIII******************IIIIIIIIIIIIIII+
+1150 IIIIIIIIIIIIII********************IIIIIIIIIII+++++++++++++++++IIIII++++++IIIIIIII*****III++++++++++++III*****IIIIIIII++++++IIIII+++++++++++++++++IIIIIIIIIII********************IIIIIIIIIIIIII+
+1152 IIIIIIIII**************************IIIIIIIIII+++++++II++++++IIIIIII++++++IIIIIIII*****III++I++++++I++III*****IIIIIIII++++++IIIIIII++++++II+++++++IIIIIIIIII**************************IIIIIIIII+
+1154 IIIIIIIII**********II**************IIIIIIIIII+++++++IIIIIIIIIIIIIII++++++IIIIIIIII****II++III++++III++II****IIIIIIIII++++++IIIIIIIIIIIIIII+++++++IIIIIIIIII**************II**********IIIIIIIII+
+1156 IIIIIII***********IIIII************IIIIIIIIII++++++++IIIIIIIIIIIIII++++++IIIIIIIII****IIIIIII++++IIIIIII****IIIIIIIII++++++IIIIIIIIIIIIII++++++++IIIIIIIIII************IIIII***********IIIIIII+
+1158 IIIIII************IIIIII***********IIIIIIIIII+++++++++IIIIIIIII+++++++++IIIIIIIIII****IIIIIII++++IIIIIII****IIIIIIIIII+++++++++IIIIIIIII+++++++++IIIIIIIIII***********IIIIII************IIIIII+
+1160 IIIII************IIIIIIII**********IIIIIIIIII++++++++++IIIIII+++++++++++IIIIIIIIIII***IIIIIII++++IIIIIII***IIIIIIIIIII+++++++++++IIIIII++++++++++IIIIIIIIII**********IIIIIIII************IIIII+
+1162 IIII******I***IIIIIIIIIIIII********IIIIIIIIII++++++++++III++++++++++++++IIIIIIIIIII****IIIIII++++IIIIII****IIIIIIIIIII++++++++++++++III++++++++++IIIIIIIIII********IIIIIIIIIIIII***I******IIII+
+1164 III*******IIIIIIIIII+IIIIII********IIIIIIIIII+++++++++II++++++++++++++++IIIIIIIIIII****IIIIII++++IIIIII****IIIIIIIIIII++++++++++++++++III++++++++IIIIIIIIII********IIIIII+IIIIIIIIII*******III+
+1166 III*******IIIIIIIIII++IIIIII******IIIIIIIIIII++++++++I++++++++++++++++++IIIIIIIIIII****IIIIII++++IIIIII****IIIIIIIIIII++++++++++++++++++I++++++++IIIIIIIIIII******IIIIII++IIIIIIIIII*******III+
+1168 II********IIIIIIIII++++IIIIIIIIIIIIIIIIIIIIIII+++++II++++++++++++++II++++IIIIIIIIII****IIIIII++++IIIIII****IIIIIIIIII++++II++++++++++++++II+++++IIIIIIIIIIIIIIIIIIIIIII++++IIIIIIIII********II+
+1170 I******II*IIIII+++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIII++++++++++++++IIIIIIIIIIIIIIII*****IIIII++++++IIIII*****IIIIIIIIIIIIIIII++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++IIIII*II******I+
+1172 I****IIIIIIIIII+++++++++IIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++++++IIIIIIIIIIIIIIIII******III++++++++III******IIIIIIIIIIIIIIIII+++++++++++++++IIIIIIIIIIIIIIIIIIIIIIIIII+++++++++IIIIIIIIII****I+
+1174 I***IIIIIIIIIIII+++++++IIIIIIIIIIIIIIIIIIIIIIIIII++++++++++II++++IIIIIIIIIIIIIIIII*******II++++++++II*******IIIIIIIIIIIIIIIII++++II++++++++++IIIIIIIIIIIIIIIIIIIIIIIIII+++++++IIIIIIIIIIII***I+
+1176 I**IIIIIIIII+IIII+++++IIIII++IIIIIIIIIIIIIIIIIII++++++++IIIIII++IIIIIIIIIIIIIIIIII*******II++++++++II*******IIIIIIIIIIIIIIIIII++IIIIII++++++++IIIIIIIIIIIIIIIIIII++IIIII+++++IIII+IIIIIIIII**I+
+1178 I**IIIIIIIII++III+++++IIIII++IIIIIIIIIIIIIII+++++++++IIIIIIIII++IIII**IIIIIIIIIII********II+I++++I+II********IIIIIIIIIII**IIII++IIIIIIIII+++++++++IIIIIIIIIIIIIII++IIIII+++++III++IIIIIIIII**I+
+1180 II*IIIIIIIII+++++++++++IIII++IIIIIIIIIIIII++++++++++IIIIIIIIII++III****IIIIIIIIII*********IIII++IIII*********IIIIIIIIII****III++IIIIIIIIII++++++++++IIIIIIIIIIIII++IIII+++++++++++IIIIIIIII*II+
+1182 IIIIII****IIII+++++++++III++++IIIIIIIIIII++++++++++IIIIIIIIIII++II*****IIIIIIIIII*********IIII++IIII*********IIIIIIIIII*****II++IIIIIIIIIII++++++++++IIIIIIIIIII++++III+++++++++IIII****IIIIII+
+1184 IIII*******IIIII++++++++++++++IIIIIIIII+++++++++++IIIIIIIIIIII+III*****IIIIIIIIII**********IIIIIIII**********IIIIIIIIII*****III+IIIIIIIIIIII+++++++++++IIIIIIIII++++++++++++++IIIII*******IIII+
+1186 III********IIIIIIII++++++++++++IIIIIIII+++++++++++IIIIIIIII++IIII******IIIIIIIIII****************************IIIIIIIIII******IIII++IIIIIIIII+++++++++++IIIIIIII++++++++++++IIIIIIII********III+
+1188 III********IIIIIIIII+++++++++++++IIIII+++++++++++II++IIII+++IIIII******IIIIIIIIII****************************IIIIIIIIII******IIIII+++IIII++II+++++++++++IIIII+++++++++++++IIIIIIIII********III+
+1190 III********IIIIIIIII++++++++++++++IIII+++++III++II++++++++++IIII********IIIIIIIII****************************IIIIIIIII********IIII++++++++++II++III+++++IIII++++++++++++++IIIIIIIII********III+
+1192 III******IIIIIIIIIII+++++II++++++++III++++IIII+++I++++++++++IIII********IIIIIIIII****************************IIIIIIIII********IIII++++++++++I+++IIII++++III++++++++II+++++IIIIIIIIIII******III+
+1194 IIII******IIIII++II++++++III+++++++III+++IIIII+++III++++++++IIII********IIIIIIIII****************************IIIIIIIII********IIII++++++++III+++IIIII+++III+++++++III++++++II++IIIII******IIII+
+1196 IIII******IIII+++++++++++IIII++IIIIIIII+IIIIIIIIIIIII++++++IIIII********IIIIIIIII****************************IIIIIIIII********IIIII++++++IIIIIIIIIIIII+IIIIIIII++IIII+++++++++++IIII******IIII+
+1198 IIIII******IIII+++++++++++IIIIIIIIIIIIIIIIIIIIIIIIIIII+++++IIIII*********IIIIIIII****************************IIIIIIII*********IIIII+++++IIIIIIIIIIIIIIIIIIIIIIIIIIII+++++++++++IIII******IIIII+
+1200 IIIIII*****IIIIII+++++++++++IIIIIIIIIIIIIIIII++IIIIII++++++IIII**********IIIIIIIII**************************IIIIIIIII**********IIII++++++IIIIII++IIIIIIIIIIIIIIIII+++++++++++IIIIII*****IIIIII+
+1202 IIIIII*****IIIIIIIII++++++++++IIIIIIIIIIIII+++IIIIIII++++++IIII**********IIIIIIIIII************************IIIIIIIIII**********IIII++++++IIIIIII+++IIIIIIIIIIIII++++++++++IIIIIIIII*****IIIIII+
+1204 IIIIIII*****IIIIIIIIII++++++++++++++++++++++++IIIIIII++++++IIII**********IIIIIIIIII************************IIIIIIIIII**********IIII++++++IIIIIII++++++++++++++++++++++++IIIIIIIIII*****IIIIIII+
+1206 IIIIIII*****II**IIIIIIIII+++++++++++++++++++++IIIIII+++++++IIII***********IIIIIIIII************************IIIIIIIII***********IIII+++++++IIIIII+++++++++++++++++++++IIIIIIIII**II*****IIIIIII+
+1208 IIIIIII*************IIIIII+++++++++++++++++++++IIII++++++++IIII***********IIIIIIIII************************IIIIIIIII***********IIII++++++++IIII+++++++++++++++++++++IIIIII*************IIIIIII+
+1210 IIIIIIII**************IIIIIII++++++++++++++++++++++++++++++IIII************IIIIIII**************************IIIIIII************IIII++++++++++++++++++++++++++++++IIIIIII**************IIIIIIII+
+1212 IIIIIIII***************IIIIIIII++++++++++++++++++++++++++++IIII**************IIIII**************************IIIII**************IIII++++++++++++++++++++++++++++IIIIIIII***************IIIIIIII+
+1214 III***III****************IIIIIIII++++++++++++++++++++++++++IIII****************************************************************IIII++++++++++++++++++++++++++IIIIIIII****************III***III+
+1216 I******III*****************IIIIIIIIIII++++++++++++++++++++++III****************************************************************III++++++++++++++++++++++IIIIIIIIIII*****************III******I+
+1218 I*******IIIIIIIIIIIIII********IIIIIIIIII++++++++++++++++++++III****************************************************************III++++++++++++++++++++IIIIIIIIII********IIIIIIIIIIIIII*******I+
+1220 I*******IIIIIIIIIIIIIIII********IIIIIIIIIIII++++++++++++++++III****************************************************************III++++++++++++++++IIIIIIIIIIII********IIIIIIIIIIIIIIII*******I+
+1222 I*******IIIIIII***IIIIIII********IIIIIIIIIIIII++++++++++++++III****************************************************************III++++++++++++++IIIIIIIIIIIII********IIIIIII***IIIIIII*******I+
+1224 I*******IIIII********IIIIIII******IIII**IIIIIII+++++++++++++III****************************************************************III+++++++++++++IIIIIII**IIII******IIIIIII********IIIII*******I+
+1226 I********III***********IIIIII******III****IIIIII+++++++++++++II****************************************************************II+++++++++++++IIIIII****III******IIIIII***********III********I+
+1228 I********II************IIIIIII*****III******IIIII+++++++++++++I**********************************************IIIIIIIIIIII******I+++++++++++++IIIII******III*****IIIIIII************II********I+
+1230 I********I*************IIIIIII******III*******IIII++++++++++++I**IIIIIIIIIIIIIII*II************************IIIIIIIIIIIIIIIIII**I++++++++++++IIII*******III******IIIIIII*************I********I+
+1232 II*********************IIIIIII******IIII*******IIIII++++++++++I*IIIIIIIIIIIIIIIIIIIII**********************IIIIIIIIIIIIIIIIIII*I++++++++++IIIII*******IIII******IIIIIII*********************II+
+1234 IIII*I*****************IIIII********IIII********IIIII+++++++++IIIIIIIIIIIIIIIIIIIIIII*******************IIIIIIIIIIIIIIIIIIIIIIII+++++++++IIIII********IIII********IIIII*****************I*IIII+
+1236 IIIIII*****************IIII*********IIIII********IIIII++++++++IIIIIIIIIIIIIIIIIIIIIIII******************IIIIIIIIIIIIIIIIIIIIIIII++++++++IIIII********IIIII*********IIII*****************IIIIII+
+1238 IIIIII*****************III**********IIIIII********IIIIII+++++IIIIIIIIIIIIIIIIIIIIIIIIII****************IIIIIIIIIIIIIIIIIIIIIIIIII+++++IIIIII********IIIIII**********III*****************IIIIII+
+1240 IIIIII****************II***********IIIIIIII********IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII****************IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII********IIIIIIII***********II****************IIIIII+
+1242 IIIIII***************III*********IIIIIIIIIII**********IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII****************IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII**********IIIIIIIIIII*********III***************IIIIII+
+1244 IIIIIIIIIIII********III*******IIIIIIIIIIIIII*************IIIIIIIIIIIIIIIIIIIIIIIIIIIIII****************IIIIIIIIIIIIIIIIIIIIIIIIIIIIII*************IIIIIIIIIIIIII*******III********IIIIIIIIIIII+
+1246 IIIIIIIIIII******IIIII*******IIIIIIIIIIIIIIIII*************IIIIIIIIIIIIIIIIIIIIIIIIIIII****************IIIIIIIIIIIIIIIIIIIIIIIIIIII*************IIIIIIIIIIIIIIIII*******IIIII******IIIIIIIIIII+
+1248 IIIIIIIIIII******IIIII******IIIIIIIIIIIIIIIIIII***************IIIIIIIIIIIIIIIIIIIIIIII*****************IIIIIIIIIIIIIIIIIIIIIIIII***************IIIIIIIIIIIIIIIIIII******IIIII******IIIIIIIIIII+
+1250 IIIIIIIIIIII*****IIII*******IIIIIIIIIIIIIIIIIII*******************IIIIIIIIIIIIIIIIIIII*****************IIIIIIIIIIIIIIIIIIIIII******************IIIIIIIIIIIIIIIIIII*******IIII*****IIIIIIIIIIII+
+1252 III******IIII****IIII*******IIII+IIIIIIIIIIIIIII******************IIIIIIIIIIIIIIIIIIII******************IIIIIIIIIIIIIIIIIIII******************IIIIIIIIIIIIIII+IIII*******IIII****IIII******III+
+1254 II*********III****III*******IIII++IIIIIIIIIIIIIII******************IIIIIIIIIIIIIIIIII*******************I*IIIIIIIIIIIIIIIIII*****************IIIIIIIIIIIIIII++IIII*******III****III*********II+
+1256 II*********III****III*******IIII+++IIIIIIIIIIIIIII******************IIIIIIIIIIIIIIII**********************IIIIIIIIIIIIIIII******************IIIIIIIIIIIIIII+++IIII*******III****III*********II+
+1258 II**********II****IIII******IIII+++IIIIIIIIIIIIIII*********************IIIIIIIIIII**************************IIIIIIIIIII*********************IIIIIIIIIIIIIII+++IIII******IIII****II**********II+
+1260 II**********II****IIII******IIII++++IIIIIIIIIIIIIII***********************************************************IIIIIIIII********************IIIIIIIIIIIIIII++++IIII******IIII****II**********II+
+1262 II*IIII*****II****IIIII*****IIII+++++IIIIIIIIIIIIIII**************************************************************************************IIIIIIIIIIIIIII+++++IIII*****IIIII****II*****IIII*II+
+1264 IIIIIII****II*****IIIII*****IIII+++++IIIIIIIIIIIIIII**************************************************************************************IIIIIIIIIIIIIII+++++IIII*****IIIII*****II****IIIIIII+
+1266 IIII******III****IIIIIII*****IIII+++++IIIIIIIIIIIIIII*****I*I********************************************************************III*****IIIIIIIIIIIIIII+++++IIII*****IIIIIII****III******IIII+
+1268 IIII******II****IIIIIIII*****IIII+++++IIIIIIIIIIIIIIII*****IIIII**************************************************************IIIIII****IIIIIIIIIIIIIIII+++++IIII*****IIIIIIII****II******IIII+
+1270 IIII******II***IIIIIIIII*****IIII+++++IIIIIIIIIIIIIIII*****IIIII**************************************************************IIIIII****IIIIIIIIIIIIIIII+++++IIII*****IIIIIIIII***II******IIII+
+1272 IIII******II***IIIIIII*******IIII++++++IIIIIIIIIIIIIIII****IIIIII************************************************************IIIIIII***IIIIIIIIIIIIIIII++++++IIII*******IIIIIII***II******IIII+
+1274 IIII******I****IIIIIII*******IIII++++++IIIIIIIIIIIIIIIII*IIIIIIIII**********************************************************IIIIIIIII*IIIIIIIIIIIIIIIII++++++IIII*******IIIIIII****I******IIII+
+1276 IIII******I****IIIIIII*******IIIII++++++IIIIIIIIIIIIIIII*IIIIIIIII**********************************************************IIIIIIIII*IIIIIIIIIIIIIIII++++++IIIII*******IIIIIII****I******IIII+
+1278 IIIII****II****IIIIII********IIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIIII********************************************************IIIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIII********IIIIII****II****IIIII+
+1280 IIIII****III***IIIIII********IIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIIII********************************************************IIIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIII********IIIIII***III****IIIII+
+1282 IIIII***IIII***IIIIII*******IIIIIIII++++++IIIIIIIIIIIIIIIIIIIIIIIII********************************************************IIIIIIIIIIIIIIIIIIIIIIIII++++++IIIIIIII*******IIIIII***IIII***IIIII+
+1284 IIIII***IIII***IIIIII******IIIIIIIII+++++++IIIIIIIIIIIIIII+IIIIIIII********************************************************IIIIIIII+IIIIIIIIIIIIIII+++++++IIIIIIIII******IIIIII***IIII***IIIII+
+1286 IIIII***IIII****IIIII*****IIII+++IIII+++++++IIIIIIIIIII++++++IIIIIII*****IIIIIII******************************IIIIIII*****IIIIIII++++++IIIIIIIIIII+++++++IIII+++IIII*****IIIII****IIII***IIIII+
+1288 IIII****IIII*****III******III+++++IIII+++++++IIIIIIIII+++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII+++++++++IIIIIIIII+++++++IIII+++++III******III*****IIII****IIII+
+1290 IIII****IIII*****III*****IIII+++++++II++++++++IIIIIIII+++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII+++++++++IIIIIIII++++++++II+++++++IIII*****III*****IIII****IIII+
+1292 IIII****IIII******II*****III++++++++II++++++++++IIIIII+++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII+++++++++IIIIII++++++++++II++++++++III*****II******IIII****IIII+
+1294 IIII****IIII*****III*****III+++++++++II++++++++++IIIII+++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII+++++++++IIIII++++++++++II+++++++++III*****III*****IIII****IIII+
+1296 IIII****IIII**IIIIII*****III++++++++++II++++++++++++II+++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII+++++++++II++++++++++++II++++++++++III*****IIIIII**IIII****IIII+
+1298 IIII****IIII***IIIII*****III+++++++++IIII++++++++++++++++++++++IIIII****IIIIIIIII****************************IIIIIIIII****IIIII++++++++++++++++++++++IIII+++++++++III*****IIIII***IIII****IIII+
+1300 IIII****IIII****IIII*****III++++++++++IIII+++++++++++++++++++++IIIIII****IIII*III****************************III*IIII****IIIIII+++++++++++++++++++++IIII++++++++++III*****IIII****IIII****IIII+
+1302 IIII****IIII****IIII*****III++++++++++IIII+++++++++++++++++++++IIIIII*******I*III**********IIIIIII***********III*I*******IIIIII+++++++++++++++++++++IIII++++++++++III*****IIII****IIII****IIII+
+1304 IIII****IIII****IIII*****IIII+++++++++IIIIII+++++++++++++++++++IIIIII*********III*********IIIIIIIIII*********III*********IIIIII+++++++++++++++++++IIIIII+++++++++IIII*****IIII****IIII****IIII+
+1306 IIII****IIII*****III******III+++++++++IIIIII++++++++++++++++++IIIIIII*********III*******IIIIIIIIIIII*********III*********IIIIIII++++++++++++++++++IIIIII+++++++++III******III*****IIII****IIII+
+1308 IIIII***IIIII****IIII*****IIII+++++++IIIIII+++++++++++++++++++IIIIIII*********III*******IIIIIIIIIIII*********III*********IIIIIII+++++++++++++++++++IIIIII+++++++IIII*****IIII****IIIII***IIIII+
+1310 IIIII***IIIII****IIII******III+++++++IIIIII+++++++++++++++++++IIIIII**********III*******IIIIIIIIIII**********III**********IIIIII+++++++++++++++++++IIIIII+++++++III******IIII****IIIII***IIIII+
+1312 IIIII***IIIII****IIII******IIII++++++IIII++++++++++++++++++++IIIIIII**********IIII*******IIIIIIIIIII********IIII**********IIIIIII++++++++++++++++++++IIII++++++IIII******IIII****IIIII***IIIII+
+1314 IIIII***IIIII****IIII******IIIII+++++IIII+++++++++++++++++++IIIIIIII*********IIIII*******IIIIIIIIII*********IIIII*********IIIIIIII+++++++++++++++++++IIII+++++IIIII******IIII****IIIII***IIIII+
+1316 IIII****IIIII****IIII******IIIIII++++IIII+++++++++++++++++++IIIIIII**********IIIII********IIIIIIIII*********IIIII**********IIIIIII+++++++++++++++++++IIII++++IIIIII******IIII****IIIII****IIII+
+1318 IIII****IIIII****IIIII******IIIII+++++II++++++++++++++++++++IIIIII**********IIIIII********IIIIIIII**********IIIIII**********IIIIII++++++++++++++++++++II+++++IIIII******IIIII****IIIII****IIII+
+1320 IIII*****IIII****IIIII******IIIII+++++III++++++++++++++++++IIIIIII*********IIIIIIII********IIIIII**********IIIIIIII*********IIIIIII++++++++++++++++++III+++++IIIII******IIIII****IIII*****IIII+
+1322 4I*2(4*4I)7*3I2(3I4+)13+8I8*4I2(5I9*)*9I8*8I17+3I4+6I3*2(4*4I)5*4I+
+1324 4I*2(4*4I)7*6I4+II2(I7+)++7I8*6I2(4I9*)**10I8*7I++2(7+I)II4+6I3*2(4*4I)5*4I+
+1326 4I*2(4*4I)6*7I4+I2(II6+)++7I8*10I2(II9*)**12I8*7I++2(6+II)I4+7I**2(4*4I)5*4I+
+1328 4I5*I2(3I4*)**8I4+4I2(3I+)7+6I8*13I22*13I8*6I8+3I+7I4+8I**2(4*3I)I5*4I+
+1330 4I5*I2(3I4*)*10I3+11I8+5I8*15I20*15I8*5I8+11I3+10I*2(4*3I)I5*4I+
+1332 4I5*I2(3I3*)3*II2(3I++)+11I7+5I9*15I20*15I9*5I7+11I+2(++3I)II3*2(3*3I)I5*4I+
+1334 5I4*I2(3I3*)**5I+2(3+II)4+5I6+4I*I8*17I18*17I8*I*4I6+5I+2(3+II)4+5I**2(3*3I)I4*5I+
+1336 II3(3I4*)*5I++2(3+I)6+3I7+4I2(9*19I7*)**4I7+3I3+2(3+I)5+5I*3(4*3I)II+
+1338 5I4*I*I*3*3I5*5I16+3I7+I2(8*24I6*)**I7+3I16+5I5*3I4*I*I*3*5I+
+1340 6I*2(4*I)II5*5I16+3I6+II3*12I4+14I12*14I4+12I3*II6+3I16+5I5*II2(I4*)*6I+
+1342 6I*2(4*I)II5*5I9+2(6+4I)11I8+13I10*13I8+11I2(4I6+)9+5I5*II2(I4*)*6I+
+1344 5I**2(4*I)II5*6I8+2(6+4I)9I11+12I10*12I11+9I2(4I6+)8+6I5*II2(I4*)**5I+
+1346 5I**2(4*I)II5*6I7+2(6+4I)9I12+13I8*13I12+9I2(4I6+)7+6I5*II2(I4*)**5I+
+1348 5I6*2(I4*3I)3I8+2(5+4I)8I15+13I6*13I15+8I2(4I5+)8+II2(4I4*)I6*5I+
+1350 4I3*2(4*I)3I5*6I7+2(4+5I)6I17+32I17+6I2(5I4+)7+6I5*3I2(I4*)3*4I+
+1352 3I7*2(3I4*I)5I6+2(4+6I)5I17+32I17+5I2(6I4+)6+II2(4I4*)3I7*3I+
+1354 II3*2(4*4I)5*6I5+2(3+7I)4I18+13I6*13I18+4I2(7I3+)5+6I*2(4*4I)7*II+
+1356 I3*2(**I)2(4I3*)**6I4+2(3+8I)3I18+13I6*13I18+3I2(8I3+)4+6I**2(3*4I)2(I**)3*I+
+1358 I5*4I2(4I3*)3*6I++2(4+7I)3I19+12I8*12I19+3I2(7I4+)++6I3*2(3*4I)4I5*I+
+1360 I9*2(4I3*3I)3I++2(3+8I)2(II7+)3+12I10*12I3+2(7+II)2(8I3+)++2(6I3*I)3I9*I+
+1362 I7*2(3*3I)4I4*5I3+2(++8I)2(3I6+)4+10I14*10I4+2(6+3I)2(8I++)3+5I4*4I2(3I3*)7*I+
+1364 5I*2(5*II)6I3*4I3+2(+9I)II6+4I10+10I14*10I4+2(6+4I)7I+9I4+4I3*6I2(II5*)*5I+
+1366 II**2(I6*I)7I3*3I++2(+10I)I5+5I10+8I18*8I10+5I5+I2(10I+)++3I3*6I2(II6*)I**II+
+1368 II17*9I**3I3+15I2(6I6+)++9I18*9I++2(6+6I)15I3+3I**9I17*II+
+1370 II10*17I*3I++22I3+2(3+7I)5I20*5I2(7I3+)3+22I++3I*17I10*II+
+1372 II10*17I*3I++22I6+21I22*21I6+22I++3I*17I10*II+
+1374 II10*2(21I++)4+15I36*15I4+2(++21I)10*II+
+1376 3I8*2(22I+)5+13I40*13I5+2(+22I)8*3I+
+1378 4I4*4I2(21I+)5+12I44*12I5+2(+21I)4I4*4I+
+1380 17I++2(++12I)7I6+12I46*12I6+7I2(12I++)++17I+
+1382 15I7+31I7+9I52*9I7+31I7+15I+
+1384 13I9+31I6+10I52*10I6+31I9+13I+
+1386 13I8+30I7+9I56*9I7+30I8+13I+
+1388 13I3+2(5+7I)9I8+9I58*9I8+9I2(7I5+)3+13I+
+1390 6I2(6I8+)++12I7+11I58*11I7+12I++2(8+6I)6I+
+1392 12I6+7I4+2(7+11I)I58*I2(11I7+)4+7I6+12I+
+1394 4I2(7I6+)2(7+9I)3I60*3I2(9I7+)2(6+7I)4I+
+1396 3I2(7I7+)II4+9I7+12I60*12I7+9I4+2(II7+5I)5I+
+1398 9I7+8I++2(3+5I)4I7+12I60*12I7+4I2(5I3+)++8I7+9I+
+1400 9I6+9I3+2(++6I)I8+13I60*13I8+7I++6I2(5+9I+)
+1402 7I7+10I++2(++7I)8+13I60*13I6+2(++7I)4+10I7+7I+
+1404 7I6+II2(3I3+)2(+7I)8+14I60*14I7+2(+7I)+2(3+3I)II6+7I+
+1406 7I6+I2(3I4+)+13I8+15I**2(18*I)20*15I8+13I+2(4+3I)I6+7I+
+1408 6I++2(4+4I)5+10I11+15I**2(18*I)20*15I11+10I+2(4+4I)6+6I+
+1410 6I+2(4+4I)I5+9I11+16I4*2(16*II)20*16I11+9I5+I2(4I4+)+6I+
+1412 6I4+4I2(4+6I3+)7+19I**2(16*3I)18*19I3+2(7+6I)2(4+4I)II+
+1414 5I+2(4+4I)II22+20I4*2(14*4I)18*20I22+II2(4I4+)+5I+
+1416 4I+2(4+5I)II20+22I**2(14*5I)16*22I20+II2(5I4+)+4I+
+1418 3I+2(4+6I)I19+24I5*2(10*7I)15*24I19+I2(6I4+)+3I+
+1420 2(3I5+II)6I17+27I4*2(3*I)8I10*8I2(I3*)4*27I17+3I2(5I5+)3I+
+1422 II+2(5+5I)4I7+2(7+21I)I8*I2(21I7+)7+4I2(5I5+)+II+
+1424 II+2(5+5I)5I10+23I8+22I8*22I8+23I10+5I2(5I5+)+II+
+1426 II6+5I++2(4+11I)14I11+22I6*22I11+14I2(11I4+)++5I6+II+
+1428 II6+5I7+38I13+21I6*21I13+38I7+5I6+II+
+1430 2(II6+4I)32I15+21I6*21I15+36I6+6I6+II+
+1432 II+2(8+4I)26I19+20I6*20I19+26I2(4I8+)+II+
+1434 II++2(8+3I)26I20+20I6*20I20+26I2(3I8+)++II+
+1436 II++2(8+4I)23I21+20I6*20I21+27I8+4I10+II+
+1438 II+2(9+4I)20I23+20I6*20I23+20I2(4I9+)+II+
+1440 2(3I10+)22I24+20I6*20I24+19I2(3I10+)3I+
+1442 2(4I9+)+17I28+20I6*20I28+17I+2(9+4I)+
+1444 5I7+II2(3I12+)28+20I6*20I40+3I5+2(7+5I)+
+1446 18I36+3I14+21I6*18I2(3I14+)22+18I+
+1448 18I20+2(14+5I)16I6*16I2(5I14+)20+18I+
+1450 19I21+2(11+7I)16I6*16I2(7I11+)21+19I+
+1452 21I19+2(8+12I)12I6*12I2(12I8+)19+21I+
+1454 8I8*9I18+49I6*49I18+9I8*8I+
+1456 7I11*8I7+37I*II2(4*15I**)*2(*II)35I7+8I11*7I+
+1458 7I11*51I5*2(6*12I)11*51I11*7I+
+1460 6I12*48I9*2(6*11I)15*48I12*6I+
+1462 5I13*7I8*6I2(9I7*)5*2(6*10I)11*2(7*9I)6I8*7I13*5I+
+1464 5I**2(4*II)3I14*10I11*7I2(**2(4*8I)4*)**7I11*10I14*3I2(II4*)**5I+
+1466 5I6*9I19*6I8*2(5*5I)6I3*7I9*2(3*7I)4I5*5I13*6I19*9I6*5I+
+1468 5I6*7I23*3I2(II**)**2(4*5I)II2(6I3*)6*2(3*6I)II2(5I4*)**2(**II)3I23*7I6*5I+
+1470 I2(4I7*)20*8I4*2(4*3I)12I**4I14*2(**4I)11I3*4I8*8I27*4I7*5I+
+1472 5I21*8I12*5I4*2(4*3I)18I16*21I4*3I8*5I12*8I21*5I+
+1474 6I19*12I22*3I4*21I16*21I4*3I22*12I19*6I+
+1476 7I16*16I20*3I3*21I18*18I2(3I3*)17*16I16*7I+
+1478 9I12*19I15*2(3*4I)17I18*21I3*4I18*19I12*9I+
+1480 13I6*23I12*2(3*5I)16I18*16I2(5I3*)12*23I6*13I+
+1482 44I8*2(3*7I)14I18*21I3*7I11*44I+
+1484 47I**2(3*10I)11I18*11I2(10I3*)**47I+
+1486 6I++54I4*20I14*2(4*20I)34I++6I+
+1488 5I6+51I4*19I16*2(4*19I)32I6+5I+
+1490 5I7+50I4*19I16*2(4*19I)31I7+5I+
+1492 4I+2(9+18I)3I5*17I2(6*I**)4*17I5*3I2(18I9+)+4I+
+1494 4I13+12I15+4I2(14I7*)I8*2(I7*13I)5I15+12I13+4I+
+1496 3I16+9I17+5I2(6I*)8*9I3*2(6*II)9*9I8*2(*6I)5I17+9I16+3I+
+1498 3I16+8I19+3I2(7I*)19*2(5*II3*)21*2(*7I)3I19+8I16+3I+
+1500 II2(I5+)6+6I22+2(8I*)19*2(3*4I3*)19*2(*8I)22+6I6+2(5+I)II+
+1502 2(3I5+)4+5I25+I2(5I4*)16*2(**6I**)20*5I4*6I25+5I4+2(5+3I)+
+1504 4I4+4I2(9+3I5+)4+I2(5I5*)13*2(**8I)15*2(5*5I)I2(9+3I5+)2(4+4I)+
+1506 4I5+5I2(I7+)4+8I9+4I7*8I*2(5*3I)19I5*3I6*8I7*4I9+8I4+2(7+I)5I5+4I+
+1508 3I6+7I16+12I7+4I8*64I8*4I7+12I16+7I6+3I+
+1510 3I6+8I13+14I7+5I9*60I9*5I7+14I13+8I6+3I+
+1512 3I+14I11+15I7+9I6*58I6*9I7+15I11+14I+3I+
+1514 19I9+15I8+9I7*56I7*9I8+15I9+19I+
+1516 20I7+12I+3I+2(+4I)7I8*52I8*11I+4I+2(+3I)9I7+20I+
+1518 22I3+14I+2(23I9*23I)+14I3+22I+
+1520 16I2(7I+)+6I++2(22I11*20I)2(II++4I)3I+23I+
+1522 32I+6I++3I2(20I21*)23I+2(+6I)26I+
+1524 7I2(12I+)5I4+6I2(16I23*)22I4+2(5I+7I)12I+
+1526 8I2(10I3+)+II7+10I2(12I23*)22I7+II+2(3+10I)8I+
+1528 9I2(8I6+)4+17I2(12I19*)29I4+2(6+8I)9I+
+1530 8I2(8I7+)++36I2(6I8*4I)38I++2(7+8I)8I+
+1532 8I2(6I10+)37I4*II8*8I4*2(4*II)30I2(5I10+I)13I+
+1534 13I21+2(6+13I)I2(II7*)*6I*2(7*II)I2(13I6+)21+13I+
+1536 17I17+2(7+11I)4I**2(7*II)II2(II7*)**4I2(11I7+)17+17I+
+1538 19I16+I6+9I11+12I3*2(7*I)4I2(I7*)3*12I11+8I2(I6+)10+19I+
+1540 7I6*7I6+2(8+3I)I2(II4+)++11I6*2(5I7*I)4I6*11I++2(4+II)I2(3I8+)6+7I6*7I+
+1542 6I9*4I++2(6+I)3I7+I2(4I5+)+7I2(II7*)**6I**2(7*II)7I+2(5+4I)I7+3I2(I6+)++4I9*6I+
+1544 5I12*II7+4I4+I2(7I++)4+3I6+2(8I17*)5I2(3I6+)7I++4I2(4I4+)3+II12*5I+
+1546 4I13*3I6+21I2(5I5+)++2(6I16*II)4I++2(5+5I)21I6+3I13*4I+
+1548 2(4I5*)35I4+7I4+2(8I11*8I)2(4+7I)27I2(I5*3I)I+
+1550 4I4*5I5*46I5+2(12I4*8I)4I5+46I5*5I4*4I+
+1552 3I4*6I5*2(36I2(I4+4I)13I)20I5*6I4*3I+
+1554 3I4*4I7*18I9*8I6++I+I4+56I4+I+I+6+8I9*18I7*4I4*3I+
+1556 4I3*5I6*16I13*5I3+2(5+II)5I2(10I6+)15I2(II5+)3+5I13*16I6*5I3*4I+
+1558 4I3*5I5*16I14*5I++2(4+3I)12I2(II+)6+6I6+2(+II)12I2(3I4+)++5I14*16I5*5I3*4I+
+1560 4I3*24I5*2(5*I)5I12+12I2(4I3+6I3+)16I12+5I2(I5*)5*24I3*4I+
+1562 4I4*21I7*7I5*6I11+16I7+2(II3+II)7+16I11+6I5*7I7*21I4*4I+
+1564 4I8*14I8*9I5*6I10+13I3(3I8+)16I10+6I5*9I8*14I8*4I+
+1566 5I29*3I2(II*)5*7I9+16I+2(++3I)6+2(++3I)3+16I9+7I6*II*5I29*5I+
+1568 6I17*2(10*5I)4I5+16I2(II3+)3I8+I2(II3+)18I5+4I2(5I10*)17*6I+
+1570 12I9*2(10*7I)22I2(4I3+6I3+)26I2(7I10*)9*12I+
+1572 16I*2(10*11I)22I3+2(II7+II)3+22I2(11I10*)*16I+
+1574 7I2(14I4*)4*32I2(3I10+3I)32I4*2(4*14I)7I+
+1576 80I2(4I6+6I)78I+
+1578 190I+
+1580 191+

@@ -1,0 +1,170 @@
+  1   C*********************************************************************
+  10  C  836CCSV.sin 
+  11  C  Ciklusok:
+  12  C  TEST    RS19=0 RS15=0 
+  13  C   RS17=1   gumi  
+  14  C   RS1=?  passe
+  15  C   RS2=?  test hossza 
+  16  C   RS3=?  balbal hossza
+  17  C   RS4=?  3/3 csavaras szama
+  18  C   RS5=?  balbal + 3/3 csavaras hossza
+  19  C   RS9=1  csavarasok kîzîtt 4sor balbal rÇszt kît
+  20  C   RS9=0  csavarasok kîzîtt nincs balbal rÇsz
+  21  C  HèTA    RS19=1 RS15=0
+  22  C   RS17=1  gumi   
+  23  C   RS1=?  passe
+  24  C   RS2=?  test hossza 
+  25  C  NYAK    RS19=0 RS15=1 
+  26  C   RS17=1   gumi  
+  27  C   RS1=?  passe
+  28  C   RS2=?  test hossza 
+  29  C   RS6=?  2/2 csavaras szama
+  30  C   RS7=?  balbal
+  32  C*********************************************************************
+  50    START
+  51    IF RS15=1 GOTO 800    C NYAK
+  52    YG:6/256;
+  54 << S:R-R/R-R;                Y:2/5;        NP4-4          ML    S1 S2
+  56 >> S:0-R/R-0/UVN R;          Y:2/5;                       ML    S1 S2 T2
+  57 << S:R-DI./R-0;              Y:2/5;                V0           S1 S2
+  58 >> S:R-0;                    Y:2;                               S1
+  59 << S:R-0;                    Y:2;                               S1
+  60 >> S:R-0;                    Y:5/6;                             S1 S2
+  62 << S:R-DI./R-0;              Y:6/0;                             S1 S2
+  70 >> S:D.I-DI.;                Y:2;          NP2-2                S1
+  72  Y:2/5;
+  74  IF RS17=1   Y:6/2;
+  76 << S:D.I-0/0-DI.;                                 V# ML         S1 S2
+  78 >> S:D.I-0/D.I-DI.;                        NP3-3  V# ML         S1 S2
+  82   RBEG* RS1
+  84 << S:D.I-DI.;                Y:2/5;               V#            S1 S2
+  86 >>                                                V#            S1 S2
+  90   REND
+  92 << S:D.I-DI.;                                     V#            S1 S2
+  94 >>                                         NP4-4  V#            S1 S2
+  96  IF RS19=1   GOTO  135    C HATA
+  97  #1=1999
+  98  JA1=1002(1002-1032) PA:JA1;
+  100   PM:9(+)+ FB 5(+)+ FB 5(+)+FB <+>; FB=10-210; 
+  102 << S:U^N R;                             NP01-01    ML        T1
+  104 >> S:UVN .O;                            NP0-0    ML                T2
+  106 IF  #1>0 #2=RS3                        GOSUB 600  C  BALBAL
+  108 IF  #1>0 #2=RS4                        GOSUB 650  C  3/3 CSAVARAS
+  110   GOSUB 106-108*RS5
+  130 GOTO 138
+  135 #1=RS2
+  136 IF  #1>0 #2=1999                       GOSUB 700  C  HATA
+  138 <<                                    NP0-0 ML               S0 
+  142 >>S:U^N R;    NP0-0         ML       V0                     T1
+  144 END 
+  150 C.....................................................................
+  600   GOSUB 602-614    C  *  BAL-BAL *           
+  602    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  608    REP*#3
+  610  << S:.%O-*YTAI+/.%O-*TAI+/<1+>UVN .; Y:2/5;               S1 S2 T2   
+  612  >> S:U^N Y*/.O-*YTAI+/.O-*TAI+;                        T1 S1 S2   
+  614    REPEND                                                  
+  616 C ......................................................................
+  650     GOSUB 651-668  C   * CSAVARAS 3/3 * 
+  651    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  654    REP*#3
+  656  << S:UVN N+;                  NP0-0 ML     V0                 T2 
+  657  >> S:U^N TA;                   NP0-0   ML     VL3           T1    
+  658  << S:U^N *Y;                  NP0-0   ML     V0                 T1
+  659  >>                            NP0-0  ML                S0
+  660  << S:.%O-*YI+/.I%O-*A+/<1+>UVN .; Y:2/5;    V0    ML       S1 S2 T2
+  662  >> S:0-A/UVN *Y;                 Y:0;    NP0-0                S2  T2
+  664  << S:U^N I;                     NP0-0          VR3   ML        T1
+  666  >> S:U^N Y*/.O-*YTAI+/.O-*TAI+;    Y:2/5;        V0    ML  T1 S1 S2 
+  667  IF RS9=1 GOSUB 610-612*1
+  668    REPEND                                                  
+  672  C ...........................HATA...........................................
+  700   GOSUB 701-714    C  *  BAL-BAL *           
+  701  JA1=1002  PA:JA1;
+  702   PM:10(+)<FB>625:<+>; FB=1-2; 
+  703 << S:U^N R;                             NP01-01    ML         T1
+  704 >> S:UVN O;                            NP0-0    ML                  T2
+  706    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  708    REP*#3
+  710  << S:%O-*+/%O-*+;              Y:2/5;     S1 S2    
+  712  >> S:O-*+/O-*+;                                  S1 S2   
+  714    REPEND                                                  
+  800 C.............................nyak......................................
+  802   YG:6/256;
+  804 << S:R-R/R-0;                Y:2/5;        NP4-4          ML    S1 S2
+  806 >> S:0-R/R-0/UVN R;          Y:2/5;                       ML    S1 S2 T2
+  808 << S:R-DI./R-0;              Y:2/5;                V0           S1 S2
+  810 >> S:R-0;                    Y:5/6;                             S1 S2
+  812 << S:R-DI./R-0;              Y:6/0;                             S1 S2
+  814 >> S:D.I-DI.;                Y:2;          NP2-2                S1
+  816  Y:2/5;
+  818  IF RS17=1   Y:6/2;
+  820 << S:D.I-0/0-DI.;                                 V# ML         S1 S2
+  822 >> S:D.I-0/D.I-DI.;                        NP3-3  V# ML         S1 S2
+  824   RBEG* RS1
+  826 << S:D.I-DI.;                Y:2;                 V#            S1  
+  828 >>                                                V#            S1 
+  829   REND
+  830 << S:D.I-DI.;                                     V#            S1 
+  831 >>                                         NP4-4  V#            S2 
+  832 #1=RS2 
+  834  JA1=1042    PA:JA1;
+  836   PM:10(+) <FB> 625: <+>; FB=1-6; 
+  838 << S:U^N R;                            NP02-02    ML          T1
+  840 >> S:UVN .;                            NP0-0    ML               T2
+  842 IF  #1>0 #2=RS6                        GOSUB 860  C  2/2 CSAVARAS
+  844 IF  #1>0 #2=RS7                        GOSUB 880  C  BALBAL
+  846 IF  #1>0 #2=1999                       GOSUB 900  C  1/1
+  848 <<                                  NP0-0 ML              S0 
+  850 >>S:U^N R;                          NP0-0 ML       V0           T1
+  852 END 
+  854 C......................................................................
+  860     GOSUB 862-875  C   * 2X2 CSAVARAS * 
+  862    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  864    REP*#3  
+  868  << S:.-N./.-N./UVN R;  Y:2/5;            ML                    S1 S2 T2
+  870  >> S:U^N T;            Y:0;       NP0-0  ML   VL2           T1            
+  872  << S:U^N I;            Y:0;       NP0-0  ML   VR2           T1        
+  874  >> S:U^N N./.-N./.-N.; Y:2/5;            ML   V0            T1 S1 S2 
+  875    REPEND 
+  878 C..................................................................... 
+  880   GOSUB 882-894    C  *  BAL-BAL *           
+  882    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  884  << S:U^N N./.-N./.-N.;      Y:2/5;       NP3-3          T1 S1 S2
+  886  >> S:.-N./.-N.;                                      V#        S1 S2
+  888    REP*#3
+  890  << S:.-N./.-N.;             Y:2/5;                        V#   S1 S2   
+  892  >>                                                        V#   S1 S2   
+  894    REPEND                                                  
+  896 C.....................................................................
+  900    GOSUB 902-914    C  * 1/1 *           
+  902    #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+  904  << S:U^N DI.;                NP0-0   ML                  T1
+  906  >> S:UVN D.I;                NP03-03   ML                       T2
+  908    REP*#3
+  910 << S:D.I-DI.;                Y:2/5;               V#            S1 S2
+  912 >>                                                V#            S1 S2
+  914   REPEND
+  916 C.....................................................................
+ 1002 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y..YY..........Y..TTAIII..Y..YY..........Y..TTAIII..Y..........YY..YY...YY..YY..........Y..TTAIII..Y..........YY..Y..TTAIII..Y..........YY..Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1004 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y...YY.........Y..TTAIII..Y...YY.........Y..TTAIII..Y.........YY..YY.....YY..YY.........Y..TTAIII..Y.........YY...Y..TTAIII..Y.........YY...Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1006 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y....YY........Y..TTAIII..Y....YY........Y..TTAIII..Y........YY..YY.O*O*O.YY..YY........Y..TTAIII..Y........YY....Y..TTAIII..Y........YY....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1008 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.....YY.......Y..TTAIII..Y.....YY.......Y..TTAIII..Y.......YY..YY.*O*O*O*.YY..YY.......Y..TTAIII..Y.......YY.....Y..TTAIII..Y.......YY.....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1010 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y......YY......Y..TTAIII..Y......YY......Y..TTAIII..Y......YY..YY.O*O*O*O*O.YY..YY......Y..TTAIII..Y......YY......Y..TTAIII..Y......YY......Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1012 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.......YY.....Y..TTAIII..Y.......YY.....Y..TTAIII..Y.....YY..YY.*O*O*O*O*O*.YY..YY.....Y..TTAIII..Y.....YY.......Y..TTAIII..Y.....YY.......Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1014 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y........YY....Y..TTAIII..Y........YY....Y..TTAIII..Y....YY..YY.O*O*O*O*O*O*O.YY..YY....Y..TTAIII..Y....YY........Y..TTAIII..Y....YY........Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1016 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.........YY...Y..TTAIII..Y.........YY...Y..TTAIII..Y...YY..YY.*O*O*O*O*O*O*O*.YY..YY...Y..TTAIII..Y...YY.........Y..TTAIII..Y...YY.........Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1018 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y..........YY..Y..TTAIII..Y..........YY..Y..TTAIII..Y..YY..YY.O*O*O*O*O*O*O*O*O.YY..YY..Y..TTAIII..Y..YY..........Y..TTAIII..Y..YY..........Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1020 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.........YY...Y..TTAIII..Y.........YY...Y..TTAIII..Y...YY..YY.*O*O*O*O*O*O*O*.YY..YY...Y..TTAIII..Y...YY.........Y..TTAIII..Y...YY.........Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1022 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y........YY....Y..TTAIII..Y........YY....Y..TTAIII..Y....YY..YY.O*O*O*O*O*O*O.YY..YY....Y..TTAIII..Y....YY........Y..TTAIII..Y....YY........Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1024 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.......YY.....Y..TTAIII..Y.......YY.....Y..TTAIII..Y.....YY..YY.*O*O*O*O*O*.YY..YY.....Y..TTAIII..Y.....YY.......Y..TTAIII..Y.....YY.......Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1026 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y......YY......Y..TTAIII..Y......YY......Y..TTAIII..Y......YY..YY.O*O*O*O*O.YY..YY......Y..TTAIII..Y......YY......Y..TTAIII..Y......YY......Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1028 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.....YY.......Y..TTAIII..Y.....YY.......Y..TTAIII..Y.......YY..YY.*O*O*O*.YY..YY.......Y..TTAIII..Y.......YY.....Y..TTAIII..Y.......YY.....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1030 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y....YY........Y..TTAIII..Y....YY........Y..TTAIII..Y........YY..YY.O*O*O.YY..YY........Y..TTAIII..Y........YY....Y..TTAIII..Y........YY....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1032 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y...YY.........Y..TTAIII..Y...YY.........Y..TTAIII..Y.........YY..YY.....YY..YY.........Y..TTAIII..Y.........YY...Y..TTAIII..Y.........YY...Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1034 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y..YY..........Y..TTAIII..Y..YY..........Y..TTAIII..Y..........YY..YY...YY..YY..........Y..TTAIII..Y..........YY..Y..TTAIII..Y..........YY..Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1036 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y...YY.........Y..TTAIII..Y...YY.........Y..TTAIII..Y.........YY..YY.....YY..YY.........Y..TTAIII..Y.........YY...Y..TTAIII..Y.........YY...Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1038 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y....YY........Y..TTAIII..Y....YY........Y..TTAIII..Y........YY..YY.O*O*O.YY..YY........Y..TTAIII..Y........YY....Y..TTAIII..Y........YY....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1040 O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*..Y.....YY.......Y..TTAIII..Y.....YY.......Y..TTAIII..Y.......YY..YY.*O*O*O*.YY..YY.......Y..TTAIII..Y.......YY.....Y..TTAIII..Y.......YY.....Y..*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*O*
+ 1042 ..TTII..TTII........................................................................................
+ 1044 ............................

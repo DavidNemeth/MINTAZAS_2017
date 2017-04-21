@@ -1,0 +1,34 @@
+ 500 C******* 4CM-ES 1/1-ES PASSZE NYAK A TOROK KK.-HOZ *******
+ 500 C******* 1/1 AZ ELSO TUAGYON - GUMI:HATUL*****************
+ 500 C******* 1HB + 3PAMUT NPK=0************************************
+ 500 C******* 2HB + 3PAMUT NPK=0.6************************************
+-------------------------------
+C KT  FEKETE  NPK=0
+C KT  FEHER   NPK=-0.2 
+C PKT FEHER   NPK=0     1'41
+C PKT FEKETE  NPK=+0.2 
+-------------------------------
+ 504 NP4=13.0     C:LEVALASZTAS
+ 506 NP12=11.5    C:BEKEZDES,GUMI
+ 508 NP13=13.2    C:1/1-ES PASSZE
+ 510 START
+ 512 YG:6/256;
+ 514 WM=17 WMI=7
+ 516 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4   VU V0	       S1 S2
+ 518 >>	S:D.I-DI./UVNDI.;   	        Y:5;	    	                      S1    T2
+ 520 <<	S:U^ND.I/DI.-D.I;		              			                      T1 S1
+ 522 >>	S:DI.-D.I;		                 Y:2;	                 VR1	  	   S1
+ 524 <<	S:UVSD.I;		                      	                                 T2
+ 526 >> S:DI.-D.I;		                	Y:6;	              VU V0           S2
+ 528 << S:DI.-0/0-D.I;		            	Y:6/0;	            VU           S1 S2
+ 530 >>	S:DI.-D.I;		                	Y:5;	      NP12-12 VU V0        S1
+ 532 << S:0-D.I(8.8);                Y:6;               VU           S1
+ 534 >>                                                 VU              S2
+ 536 << S:DI.-0/DI.-D.I;             Y:5/2;     NP13-13 VU           S1 S2
+ 538 RS1=3
+ 540 RBEG*RS1
+ 542 >> S:DI.-D.I;                                      VU           S1 S2
+ 544 <<                                                 VU           S1 S2
+ 546 REND
+ 548 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                    S1 S2 T2
+ 550 END C*************************************************************************

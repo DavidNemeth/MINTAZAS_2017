@@ -1,0 +1,185 @@
+   1 C CP MADONNAC  RS10=0 RS17=0/1/2 RS1=60 (61-62CM HOSSZU A VASALT LAP. KESZEN: 50X60)
+   2 C ********NP1-2:ELOL:14.75 KULONBEN SZORJA A SZEMET ELOL !!!***A TRIKONAL ELOL IS  16.**********
+   3 C       16.0    0            0     16.0
+   4 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   5 C       14.75   0            0     14.75   ELOL:14.75 KULONBEN SZORJA A SZEMET!!!
+   6 C       16.0   16.0          -      -
+   7 C J2: <-------------       ------------->  MINTA <-
+   8 C       14.75  14.75         -      -
+   9 C      
+  10 C B2: <-------------       ------------->
+  11 C       
+  12 C        0     15.5         15.0    0
+  13 C J3: <-------------       ------------->  PASSZE
+  14 C        0     15.0         15.5    0
+  15 C        -      -            -      -
+  16 C B3: <-------------       -------------> 
+  17 C        -      -            -      -
+  18 C       13.5   12.5         13.5   13.5
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.5   12.5         13.5   13.5
+  21 C        -      -           16.0   16.0 
+  22 C B4: <-------------       ------------->  MINTA -> 
+  23 C        -      -           14.75  14.75
+  24 C TUAGYKORREKCIOK: V0:->1.5
+  25 C                  R1:->2 _________R2: - ________R3:-
+  26 C                  L1:<-1 _________L2: - ________L3:-
+  27 C                          NP1=           E-H:
+  28 C  3X16/1 LUSIFIL:         NP2=           RS1=            U:         NYAK:
+  29 C-----------------------+-------+-------------------+-----------+--------------
+  30 C MADONNA 0.23KG  20'     16.0    RS17=0 RS1=60          RS17=1     RS17=2
+  31 C-----------------------+------------+------+------+----------------------------
+  32 C     LAMBADA:  (SZINES/FEHER)     RS17=3 RS1=60/57      RS17=4     RS17=2
+  33 C-----------------------+------------+------+------+----------------------------
+  34 C***********NP1-2:ELOL:14.75 KULONBEN SZORJA A SZEMET ELOL !!!**************
+  35 C   8-9 SULY 
+  40 START
+  50 YG:6/256;
+  51 IF RS10=5   RS17=0  C  MADONNA TEST
+  52 IF RS10=10  RS17=2  C  NYAK
+  53 IF RS10=15  RS17=1  C  MADONNA UJJA 
+  54C IF RS10=32  RS17=3  C  LAMBADA TEST 
+  55C IF RS10=13  RS17=4  C  LAMBADA UJJA 
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;     Y:5/2;                     ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+ 100 C
+ 105 JA1=1314(1314-1320);
+ 110 PA:1:<JA1>;
+ 115           FA=9-142                     C*4LAP******
+ 120           PM:<.>7:4(IFA)I;             C*4LAP******
+ 125 IF RS17=3 FA=6-183;                    C*3LAP******
+ 130 IF RS17=3 PM:<.>9:3(IFA)I7.;           C*3LAP******
+ 135 IF RS17=2 FB=5-14                      C*2LAP NYAK*
+ 140 IF RS17=2 PM:<.>7:54FB;                C*2LAP NYAK*
+ 142 IF RS17=3 GOTO 700 C LOCKOLT SZELU LAMBADA (PASSZE KIMARAD)
+ 143 IF RS17=4 GOTO 700 C LOCKOLT SZELU LAMBADA (PASSZE KIMARAD)
+ 145 Y:2/2/5/5;
+ 146 << S:R-0;                                ML       NP3-03        S2
+ 147 >> S:0-R;                                ML       NP0-          S2
+ 150 << S:R-0/UVN+*.I;                        ML       NP3-03        S2 T2
+ 155 >> S:U^NAO/.I+*-OA;                      ML               T1    S2
+ 160 REP*4 C****************PASSZE*************************
+ 165 << S:U^N+;                                   VR1 NP0-0   T1
+ 170 >> S:U^N*;                                   VL1 NP0-0   T1
+ 175 << S:U^NO/.I-N.I/UVN<1+>O+*;                 V0          T1    S2 T2 
+ 180 >> S:.IO+*-A;                                V#                S2
+ 185 REPEND C**********************************************
+ 190 << S:U^NN.I/.I-N.I/UVNN.I;                    T1    S2 T2
+ 195 >> S:R-0;                         NP1-1          S1
+ 200 IF RS17=2 GOTO 600 C*NYAK*
+ 205 JA1=1152(1066-1068);
+ 210 Y:2/2/5/5;
+ 220 #1=50            C ***E-H
+ 225 IF RS17=1 #1=13  C ***MADONNA U
+ 230 IF RS17=4 #1=50  C ***LAMBADAROVID U
+ 235 REP*#1
+ 240 << S:U^NI/.-N./UVN<1->AY.;                          T1 S1    T2
+ 245 >> S:U^NY;                         VR1    NP0-0     T1
+ 250 << S:U^NA;                         VL1    NP0-0     T1
+ 255 >> S:U^NI/.-N./UVN<1->.;            V0               T1 S1    T2
+ 260 REPEND
+ 265 IF RS17=1 GOTO 300
+ 270 IF RS17=4 GOTO 300
+ 275 JA1=1064(1004-1042);
+ 280 RBEG*RS1
+ 285 GOSUB 240-255
+ 290 REND
+ 300 << S:U^NI/.-N./UVNDI.;              NP4-4     T1 S1    T2
+ 310 >> S:U^ND.I/DI.-D.I/UVND.I;                   T1 S1    T2
+ 330 RS10=RS10-1
+ 340 IF RS10>0 GOTO 51
+ 350 END
+ 600 C* A NYAK VEGE *
+ 602 << S:U^NN./.-N./UVNN.;                    T1 S1   T2
+ 604 >> S:R-0;                     NP-0           S1
+ 606 RS10=RS10-1
+ 608 IF RS10>0 GOTO 51
+ 610 END
+ 700 << S:R-0;                        ML       NP-0       S1
+ 702 >> S:0-R/UVN.;                   ML       NP0-       S1 T2
+ 704 GOTO 205
+1002 3I2(II.)2(65I.I)39I.6I
+1004 W9(.5I3.9I..).5I.I
+1006 9(..IYIAI..5AI5Y)..IYIAI.I
+1008 9(3.3I5.7I..)3.3I..I
+1010 9(..IAIYI3.4AI4Y.)..IAIYI.I
+1012 9(2(.II..)9I.).II3.3I
+1014 .9(AI3.IYI11.I)AI3.IYI
+1016 .9(2(3.I)12I)2(3.I)
+1018 .9(..AIY..IYI7.IAI)..AIY..I
+1020 9(..5I3.9I.)..5I.I
+1022 9(.3AI3Y..IYI3.IAI.).3AI3YI
+1024 .9(3I2(5I3.)I)8I
+1026 .9(3AI5Y..IYIAI..AA)3AI3YI
+1028 9(.7I5.3I4.).8I
+1030 .9(3AI4Y3.IAIYI3.A)3AI3YI
+1032 .9(8I2(..II.).I)8I
+1034 9(10.IAI3.IYI.)8.I
+1036 .9(9I2(I3.)3I)8I
+1038 .9(7.IAI..AIY..IYI)7.I
+1040 .9(3I2(5I3.)I)8I
+1042 W9(YI3.IAI..3AI3Y..I)YI3.IAI
+1044 9(..5I3.9I.)..5I.I
+1046 9(..IYIAI..5AI5Y)..IYIAI.I
+1048 9(3.3I5.7I..)3.3I..I
+1050 9(.2(.II)3.4AI4Y.).2(.II).I
+1052 9(2(.3I)..9I.)2(.3I)I
+1054 .9(IAI.IYII11.I)IAI.IYII
+1056 .3(IAI.IY14I)I2(II.17I)A4(I.IY15IA)I.IYII
+1058 .9(IAI.IYIYII7.IIA)IAI.IYII
+1060 .2(IAI.IYIY11IA)IAI.IYIY2(15I.4I)I4(10IAIAI.IYIYI)10IAIAI.IYII
+1062 .9(IAI.3(IY)I5.IAIA)IAI.IYII
+1064 W2(IAI.3(IY)7IAIA)IAI.3(IY)2(13I.6I)I4(6I3(AI).3(IY)I)6I3(AI).IYII
+1066 W9(IAI.4(IY)I.3(IA))IAI.IYII
+1068 W2(IAI.4(IY)I.3(IA))IAI.4(IY)4(I.8I)4(I.4(IA)I.4(IY))I.4(IA)I.IYII
+1070 .9(IAI.4(IY)II3(IA))IAI.IYII
+1072 .2(IAI.3(IY)7IAIA)IAI.3(IY)2(13I.6I)I4(6I3(AI).3(IY)I)6I3(AI).IYII
+1074 .2(IAI.3(IY)7IAIA)I3(AI.3(IY)3I.IIIAIAI)A4(I.3(IY)7IAIAIA)I.IYII
+1076 .2(IAI.IYIY4I3.4IA)IAI.IYIY2(4I3.8I.4I)I4(3I3.4IAIAI.IYIYI)3I3.4IAIAI.IYII
+1078 .9(IAI.IYIY3I5.3IA)IAI.IYII
+1080 .3(IAI.IY3I2(I3.)3I)I2(II.5I2(I3.)4I)A4(I.IY3I2(I3.)4IA)I.IYII
+1082 .9(IAI.IY3I3.AIY3.II)IAI.IYII
+1084 .9(3I.2(4I3.I))3I.4I
+1086 9(2(.3I)3.3AI3Y..)2(.3I)I
+1088 9(..5I3.9I.)..5I.I
+1090 9(3.3I3.5AI5Y)3.3I..I
+1092 9(3.3I5.7I..)3.3I..I
+1094 9(..IIYII3.4AI4Y.)..IIYII.I
+1096 9(.7I..9I.).8I
+1098 9(I3(IA)II11.)I3(IA)II
+1100 189I
+1102 9(5(YI)I7.II)4(YI)I
+1104 189I
+1106 9(6(AI)5.IAI)4(AI)I
+1108 189I
+1110 9(7(YI)IIYIYI)4(YI)I
+1112 189I
+1114 6(AI)3I4(II7(IA)3I.)2(II7(IA)3I.II7(IA)4I)II5(IA)II
+1116 9(13I3.4I)9I
+1118 9(5(YI)II5.3I)4(YI)I
+1120 9(10I2(I3.)II)9I
+1122 9(I3(IA)3I3.AIY3.I)I3(IA)II
+1124 9(4I2(5I3.))9I
+1126 9(.3IY3I3.3AI3Y..).3IY4I
+1128 9(..5I3.9I.)..5I.I
+1130 9(3.3I3.5AI5Y)3.3I..I
+1132 9(3.3I5.7I..)3.3I..I
+1134 9(..IIYII3.4AI4Y.)..IIYII.I
+1136 9(.7I..9I.).8I
+1138 9(I3(IA)II11.)I3(IA)II
+1140 189I
+1142 9(5(YI)I7.II)4(YI)I
+1144 189I
+1146 9(6(AI)5.IAI)4(AI)I
+1148 189I
+1150 9(7(YI)IIYIYI)4(YI)I
+1152 W188I
+1154 3I2(II.)2(65I.I)39I.6I
+1314 4+O4*A
+1316 3+3O3*A
+1318 ++5O**A
+1320 +7O*A

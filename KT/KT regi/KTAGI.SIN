@@ -1,0 +1,106 @@
+  1 C--UJJ:RS1=17,TEST:RS1=25 1/1-ES NYAK:RS2=16;(505.SOR) ZIPPES NYAK:RS3=20,RS4=13;(615.SOR)---
+  2 C------3*3-AS+2*3-AS FONASSAL,2 SZALVEZETOVEL-------*
+ 10    START
+ 12    NP1=15.0   C:MINTA
+ 13    NP2=12.0   C:1/1-ES PASSZE
+ 15    NP4=11.5   C:LEVALASZTAS
+ 50    YG:6/25;
+ 51    WM=20
+ 59 << S:R-R/R-0;                      Y:5/2;      NP4-4  V0          S1 S2
+ 60 >> S:R-R/R-R;                                                     S1 S2
+ 61 << S:R-R/R-0;                                                     S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:5/2;      NP1-1              S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:5;                        T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#       T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/5;             V# V0 ML T1 S1   
+ 71 << S:DI.-0/0-D.I;                  Y:5/2;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;          Y:5/2;             V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+ 80  JA1=1200(1200-1205)
+ 85  JA2=1306(1306-1311)
+ 90  PA:JA1:JA2;
+100   C --UJJA,TELI TUAGYRA(581 TU),4 LAP-------------------
+105    FD=66-76 C 3*3-AS CSAVARAS 11TU
+110    FK=41-48 C 2*3-AS CSAVARAS  8TU
+115  C FI=18-38 C KREPP           21TU
+120  C FF=29-38 C KREPP           13TU
+121  C FJ=18-27 C KREPP           10TU
+122  C PM:<.> 9:4(FF 2FI.FD.FK.FD.2FI FJ...);
+123  C IF RS1<18 GOTO 150
+124  C ---TEST,553 TU,3LAP---------------------
+126    FI=20-38 C KREPP           19TU
+145    PM:<.> 10:3(FI.FD.FK.FD.FI.FK.FD.FK.FI.FD.FK.FD.FI.....);                                                    
+149  C-------------------------------------------------------
+150 << S:DI.-D.I/DI.-D.I/UVSD.I;                     Y:5/2;              S1 S2 T2
+160    RBEG*RS1
+210 >> S:U^S<1+ 2+>N./.(1)-N.(1)/.-N.H/UVSIH;        Y:5/2; V0        T1 S1 S2 T2
+215    VJA^0
+220 << S:U^S<2+>IH/.-N.*/0-O(8.5)/UVS+IAH;           Y:5/0; VL3 VKA>7 T1 S1 S2 T2
+230 >> S:U^SIH/.(1)-N.*(1)/0-A(8.5)/UVSIH;           Y:5/0; VR1       T1 S1 S2 T2
+240 << S:U^S<2+>+AIH/.(1)-N.(1)/.-N./UVSN.;          Y:5/2; VR3       T1 S1 S2 T2
+245 C
+250 >> S:U^S<1+ 2+>N./.(1)-N.(1)/.-N.H/UVSIH;        Y:5/2; V0        T1 S1 S2 T2
+260 << S:U^S<2+>IH/.-N.*/0-O(8.5)/UVS+IAH;           Y:5/0; VR3 VKB<3 T1 S1 S2 T2
+270 >> S:U^SIH/.(1)-N.*(1)/0-A(8.5)/UVSIH;           Y:5/0; VL1       T1 S1 S2 T2
+280 << S:U^S<2+>+AIH/.(1)-N.(1)/.-N./UVSN.;          Y:5/2; VL3       T1 S1 S2 T2
+300    REND
+310 >> S:R-0/R-0;                                  Y:5/2; V0           S1 S2
+320    END
+500 C---1/1-ES PASSE,555 TU,3LAP---------------
+501    START
+505    RS2=16
+510    GOSUB 12-71
+512    GOSUB 622-660
+514    GOSUB 705-720
+520    RBEG*RS2
+525 <> S:.-I/.-I;                                     V#            S1 S2
+530    GOSUB 525
+540    REND
+545 >> S:.-I/.-I/UVSI;                                              S1 S2 T2
+550    END
+600 C-----ZIPPZARAS NYAK,555 TU,3LAP--------
+610    START
+615    RS3=20;RS4=13
+620    GOSUB 12-71
+622 >> S:DI.-D.I/DI.-D.I/UVSD.I;                Y:5/2;              S1 S2 T2
+625    NP2=12.8
+626    NP1=14.7
+640    JA1=1300(1300-1305)
+645    JA2=1300
+650    FA=18-38
+655    FB=20-21
+660    PA:JA1;
+670  C PM:8.<FA>149:..291:..433:..575:7.;
+675    PM:10.<FA>187:..366:..546:<.>;
+680    RBEG*RS3
+690 <> S:U^S<1+>I/.(1)-I(1)/.-I/UVSI;           Y:5/2;           T1 S1 S2 T2
+695    GOSUB 690
+700    REND
+705    PA:JA2;
+710  C PM:8.<FB>149:..291:..433:..575:7.;
+715    PM:10.<FA>187:..366:..546:<.>;
+720 << S:U^SI/.(2)-I(2)/.-I;                    Y:5/2;    V#     T1 S1 S2
+730    RBEG*RS4
+735 <> S:.-I/.-I;                                         V#        S1 S2
+740    GOSUB 735
+750    REND
+755 >> S:.-I/.-I/UVSI;                                              S1 S2 T2
+760    GOSUB 660-700
+770    END
+1100 AAAAAA+O
+1200 .A++O**...A++O**.........................A++O**.....A++O**...III..A++O**HHH.
+1201 ....**O++A...III.........................**O++A..**O++A...**O++A..HHH**O++A.
+1202 .III...A++O**............................A++O**..III...A++O**.....A++O**HHH.
+1203 .**O++A...**O++A.........................**O++A.....**O++A...III..HHH**O++A.
+1204 ....A++O**...III.........................A++O**..A++O**...A++O**..A++O**HHH.
+1205 .III...**O++A............................**O++A..III...**O++A.....HHH**O++A.
+1306 XXXXXXXXXXXXXXXXX..II..III...III...IIIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1307 XXXXXXXXXXXXXXXXXII..III...III...II...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1308 XXXXXXXXXXXXXXXXX..II...III...II...IIIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1309 XXXXXXXXXXXXXXXXXIII..III...III...II..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1310 XXXXXXXXXXXXXXXXX...II...III...II..IIIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1311 XXXXXXXXXXXXXXXXXII..III...II...II..IIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

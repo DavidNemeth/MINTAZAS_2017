@@ -1,0 +1,27 @@
+  40 START 
+  42 YG:6/256;
+  44 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  46 JA1=1991;
+  48 PA:<JA1>; 
+  50 FA=2-7; C FA=1-7 VAGY 2-7;
+  52 PM:<.>5:<FA>547:<.>;
+  54 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  56 << S:U^NA/.I-A;                         ML                     T1 S1
+  58 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  60 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  62 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  64 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  66 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  68 << S:0-./.-.;                           ML                        S1 S2
+  70 >> S:.-.;                               ML                        S1 S2
+  72 <<                                      ML                        S1 S2
+  74 >> S:.-./.I-.I;                         ML                        S1 S2
+  75 << S:R-R;                                                         S1 S2
+  76 >> S:R-R;                                                         S1 S2
+  77 Y:5/5/2/2;
+  80 REP*4
+  82 << S:R-0;                                       NP1-01            S1
+  84 >> S:0-R;                                       NP0-              S1
+  86 REPEND
+  88 END
+1991 ....AIA

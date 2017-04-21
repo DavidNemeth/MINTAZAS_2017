@@ -1,0 +1,114 @@
+   1 C ZIIPPZARAS GYONGY KENGURUZSEBBEL ES KAPUCNIVAL, GOROGMINTAS JAC. PASSZEVAL
+   2 C CP GOROG RS19=... RS1=... KT:2005TELI
+   3 C A OASSZEBA KUKAC VAN FUZVE ZSINORVEGGEL.:2X3TU NP=15.0 4SZAL LUSIFIL 1DB:4'/1.3M
+   4 C 0.95KG NYERS-SZINES:500FT/KG
+   5 C              SZINES:560FT/KG*0.95KG.
+   6 C     FONAL:475-532
+   7 C   CIPPZAR: 40-120
+   8 C VALLTOMES:      4
+   9 C ZSINORVEG:      6
+  10 C    VARRAS:250-300
+  11 C   VASALAS:     40
+  12 C     OSSZ.:815-1000
+  13 C        E.:1250                                  KESZEN:55-58
+  14 C        H.:250-430                 (ZIPPES)     (PULCSI)
+  15 C                                   E-H:68CM     E-H:60CM     U:60CM     KAPUCNI+ZSEB:23CM        21'
+  16 C--------------------------------+------------+------------+-----------+-----------+
+  17 C    2X4SZAL LUSI:(NPK=+0.1--0.1)     107           94           94             39
+  18 C 2X4SZAL GILETTI:(NPK=-0.1--0.2)     104           92           92             38 (NEM KELL BEPARAFINOZNI)
+  19 C 3X4SZAL LUSI NP1=12.8
+  20 C Y2:4XNYERS 60%            113           94             41 
+  21 C Y5:4XFUST  40%              
+  22 C Y3:3XFEHER V. S.KEK
+  23 C                                 
+  24 C E-U-K:DUPLAN HAJTVA 110 CM-RE KELL VASALNI.
+  25 C-----------------------+------------+------------+------------+-------------+
+  26 C NP4=13.5;            C:LEVALASZTAS
+  27 C  B2=11.7;            C:BEKEZDES
+  28 C NP1=15.5;            C:KORSLAG
+  29 C  J3=E:13.5 H:13.0;   C GYONGY
+  30 C  J2=13.7             C:ZSAK
+  40 START        
+  50 YG:6/2356;
+  51 C---------ZIPPES KK.:-----------------------------------------------------------
+  52 IF RS10=32 RS19=0           C 19' 4TEST.............1TEST+1UJJA+1KAPUC.=2DB. KOMPLETT KARDIGAN
+  53 IF RS10=22 RS19=1           C 15' 4U
+  54 IF RS10=12 RS19=2           C  7' 2KAPUCNI+1ZSEB
+  55 IF RS10=2 RS19=6           C  5' 10ZSEB NEM KELL
+  56 C---------ROVID PULCSI:---------------------------------------------------------
+  57 C IF RS10=10   RS19=5           C 18' 4TEST
+  58 C IF RS10=10  RS19=1           C 15' 4U
+  59 C IF RS10=10  RS19=2           C  7' 2KAPUCNI+1ZSEB
+  60 C------------------------------------------------------------------------------
+  61 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  62 C------------------------------------------------------------------------------
+  63 IF RS19=0  RS1=104  C104-107  C 68CM. 4DB.TEST:            19'  5-8CM HIJJAN A VALYU ALJAIG ER.
+  64 IF RS19=5  RS1=92   C 92-94   C 60CM. 4DB.TEST ROVID PULCSIHOZ 
+  65 IF RS19=1  RS1=92   C 92-94   C 60CM. 2PAR UJJA:           15'
+  66 IF RS19=3  RS1=92             C 60CM. 2PAR UJJA:           15'
+  67 IF RS19=2  RS1=36   C 36-37   C 23CM. 2KAPUCNI+1DB. ZSEB:   7'
+  68 IF RS19=4  RS1=36             C 23CM. 2KAPUCNI+1DB. ZSEB:   7'
+  69 IF RS19=6  RS1=28   C 28-29   C       5PAR ZSEB:            5'
+  70 C------------------------------------------------------------------------------
+  72 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+  84 >> S:R-R;		                      Y:6;	                    ML          S2
+  86 << S:R-0/0-R;                    Y:6/0;            	      ML       S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2        ML       S1
+ 100 JA1=1022(1010-1022);
+ 101 PA:1:<JA1>;
+ 102 C
+ 103 FA=2-136                       C**4 LAP U-H
+ 104 PM:<*>7:4(FA);                 C**4 LAP
+ 105 C
+ 106 IF RS19=2 FA=1-271             C**2KAPUCNI+2ZSEB
+ 107 IF RS19=2 PM:<*>7:2FA;         C**
+ 108 C
+ 109 IF RS19=4 FA=1-271             C**2KAPUCNI+2ZSEB
+ 110 IF RS19=4 PM:<*>7:2FA;         C**
+ 111 C
+ 112 IF RS19=6 FA=2-54;FB=2-6       C**10ZSEB
+ 113 IF RS19=6 PM:<*>8:5FA2FB5FA;   C**
+ 114 C
+ 120 Y:3;
+ 122 REP*1
+ 124 << S:R-0;		                                      NP1-01    ML    S1
+ 126 >> S:0-R;		                                      NP0-      ML    S1
+ 128 REPEND
+ 130 JA1=1022(1010-1022); REP*3 
+ 132 Y:5/3;
+ 134 NP2-2
+ 136 REP*3 C************* ZSAKKOTESU NORVEG MINTA****************
+ 138 << S:<1->I-.*/.*-I;           V#    ML    S1 S2
+ 140 >> S:<1->I*-./.-I*;           V#    ML    S1 S2
+ 142 REPEND C****************************************************
+ 144 << S:<1->I-.*/.*-I;           V#    ML    S1 S2
+ 146 >> S:0-R;          Y:5;   NP01-1    ML    S1
+ 148 << S:0-0;          Y:0;   NP0-0    ML    S1
+ 150 >> S:R-0;          Y:3;   NP-0      ML    S1
+ 152 Y:5;
+ 154 REP*2
+ 156 << S:R-0;		                                        VU    ML    S1
+ 158 >> S:0-R;		                                        VU    ML    S1
+ 160 REPEND
+ 162 JA1=1004;
+ 164 C
+ 166 << S:U^N./UVNI*;   NP03-03     ML T1 T2
+ 168 >>                 NP0-0       ML T1 T2
+ 170 RBEG*RS1 C*****GYONGY*************************************
+ 172 << S:I*-./I*-%.;   Y:5/2; V#      S1 S2  C
+ 174 >> S:I*-./I*-%.;          V#      S1 S2  C
+ 176 REND C****************************************************
+ 178 << S:I*-./I*-%.;          V#      S1 S2
+ 180 >> S:I*-./I*-./UVN.;         ML   S1 S2 T2
+ 182 RS10=RS10-1
+ 184 IF RS10>0 GOTO 52
+ 186 END
+1004 .I
+1010 .......
+1012 IIIIII.
+1014 I....I.
+1016 I.IIII.
+1018 I.I....
+1020 I.IIIII
+1022 .......

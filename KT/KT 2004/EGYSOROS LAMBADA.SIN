@@ -1,0 +1,118 @@
+   1 C*EGYSOROSM LAMBADA ************************
+   1 C JAC.:KT2004/MADONNA
+   1 C                        NP1=   NP6=       RS1=
+   1 C  TEST(0.17)+NYAK+UJJA(0.05)=0.22KG           E-H         U          NYAK
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 3XLUSIFIL:                                RS17=0       RS17=1       RS17=2
+   1 C 62CM-ES TRIKO:                 FIX:58.SOR:RS1=54/52 (SZINES/FEHER) 
+   1 C  4 LAP NPK=0.1-0.2   0.2KG
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 65CM-ES LAMBADA :                         RS17=3       RS17=4       RS17=2
+   1 C  3 LAP  NPK=0-0.1  0.34KG     FIX:59.SOR: RS1=62/60 (SZINES/FEHER)
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C***MADONNA IDEJE: E-H:RS17=0 2PAR 17'     LAMBADA IDEJE:  E-H:RS17=3 2PAR 17'
+   1 C***1DB:11'****** UJJA:RS17=1 2PAR  4'     ***1DB:17'**** UJJA:RS17=4 2PAR  8'
+   1 C***0.2KG******** NYAK:RS17=2 2DB   2'     ***0.34KG***** NYAK:RS17=2 2DB   2'
+   1 C 3LAP:RS19=3
+   1 C 4LAP:RS19=BARMI MAS
+  10 NP1=14.8  C:MINTA
+  12 NP2=11.0 C:1/1
+  16 NP4=12.5  C:LEVALASZTAS
+  40 START        
+  42 YG:6/256;
+  44 WM=18; WMI=7
+  46 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+
+  51 C   IF RS10=2   RS17=1    C MADONNA UJJA 
+  52 C   IF #100=50  RS17=0    C MADONNA E-H*********************4LAP
+  53 C   IF #100=100 RS17=1    C MADONNA UJJ*********************4LAP
+  54 IF #100=176 RS17=3    C LAMBADA E-H*********************3LAP
+  55 IF #100=104 RS17=4    C LAMBADA ROVID UJJ***************4LAP
+  56 IF #100=62  RS17=2    C NYAK (MADONNA-LAMBADA)**********2LAP
+
+  58   IF RS17=0  RS1=52    C 54/52 (SZINES/FEHER):MADONNA E-H HOSSZA
+  59   IF RS17=3  RS1=60    C 62/60 (SZINES/FEHER):LAMBADA E-H HOSSZA
+  60           NP3=14.8  C:CSIPKE PASSZE
+  61 IF RS17=2 NP3=14.5  C:CSIPKE PASSZE A NYAKHOZ
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+  66 >> S:DI.-D.I;                   Y:5;                   VR1        S1
+  68 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+  70 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+  72 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+  74 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	        NP2-2   V0 VU      S1 S2
+  76 Y:5/5/2/2;
+  78 << S:DI.-0;                                               VU      S1
+  86 JA1=1160(1154-1160);
+  88 PA:1:<JA1>;
+ 100           FA=9-142                   C*4LAP************
+ 105           PM:<.>7:4(IFA)I;           C*4LAP************
+ 110 IF RS17=3 FA=5-182;                  C*3LAP************
+ 115 IF RS17=3 PM:<.>9:3(IFA)I7.;         C*3LAP************
+ 116 IF RS17=2 FA=5-14;                   C*2LAP NYAK ******
+ 118 IF RS17=2 PM:9.I<FA>545:I<.>;        C*2LAP NYAK ******
+
+ 120 >> S:DI.-D.I/UVND.I;                                          S1    T2
+ 122 C*****IF RS17=4 GOTO 155 C**** A LAMBADA UJJANAK LOCKOLT PASSZEJA VAN*******
+ 123 C*****IF RS17=3 GOTO 155 C**** A LAMBADA TESTNEK LOCKOLT PASSZEJA VAN*******
+ 125 REP*4 
+ 130 << S:U^NN./.-N./UVNI;             NP3-3                  T1 S1    T2
+ 132 WM=0
+ 135 >> S:UVNY;                                   VL1 VKB>6   T2
+ 140 << S:UVNA;                                   VR1 VKA>1   T2
+ 142 WM=18
+ 145 >> S:R<1->-0;                                VU V0          S1
+ 150 REPEND
+ 152 IF RS17=2 GOTO 300 C *****************NYAK
+
+C**********************************************************************************
+
+ 155 JA1=1152(1066-1068);
+ 160 VJA^0
+ 165 WM=20
+ 170 NP1-1
+ 175 Y:2/2/5/5;
+ 176 #1=50            C *E-H
+ 177 IF RS17=1 #1=13  C *MADONNA U
+ 178 IF RS17=4 #1=50  C *LAMBADAROVID U
+ 180 REP*#1 C11-50
+
+ 202 Y:2/2/5/5;
+ 204 << S:U^N<1-2->N./.-N./UVNNY.*;                      VR3  VKL>3   T1 S1    T2
+ 206 >> S:U^N<1-2->N./.-N./UVNNY.*;                      VR2  VKB>8   T1 S1    T2
+ 208 << S:U^N<1-2->N./.-N./UVNNY.*;                      VR1  VKC>8   T1 S1    T2
+ 210 >> S:U^N<1-2->N./.-N./UVNNY.*;                      V0   VKD>3   T1 S1    T2
+ 212 << S:U^N<1-2->N./.-N./UVNNY.*;                      VL1  VKE>6   T1 S1    T2
+ 214 >> S:U^N<1-2->N./.-N./UVNNY.*;                      VL2  VKF>4   T1 S1    T2
+ 216 << S:U^N<1-2->N./.-N./UVNNA.*;                      VL3  VKG>0   T1 S1    T2
+ 218 >> S:U^N<1-2->N./.-N./UVNNA.*;                      VL2  VKH<0   T1 S1    T2
+ 220 << S:U^N<1-2->N./.-N./UVNNA.*;                      VL1  VKI<1   T1 S1    T2
+ 222 >> S:U^N<1-2->N./.-N./UVNNA.*;                      V0   VKJ<2   T1 S1    T2
+ 224 << S:U^N<1-2->N./.-N./UVNNA.*;                      VR1  VKK>3   T1 S1    T2
+ 226 >> S:U^N<1-2->N./.-N./UVNNA.*;                      VR2  VKL>3   T1 S1    T2
+
+ 195 REPEND
+ 196 IF RS17=1 GOTO 215
+ 197 IF RS17=4 GOTO 215
+ 198 JA1=1064(1004-1042);
+ 200 RBEG*RS1
+ 205 GOSUB 185-190 C****************
+ 210 REND
+ 215 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 220 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;                            T1 S1 S2 T2
+ 225 END
+
+C**********************************************************************************
+
+ 300 C NYAK VEGE
+ 302 REP*2
+ 304 << S:U^NN./.-N./UVNN.;                                   T1 S1    T2
+ 306 >> S:R<1->-0;                                 VU            S1
+ 308 REPEND
+ 314 END
+
+1154 *IIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAIYIIIIIIIAI
+1156 YYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAIYYIIIIIAAI
+1158 YYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAIYYYIIIAAAI
+1160 *YYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAIYYYYIAAAAI
+1162 IIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII

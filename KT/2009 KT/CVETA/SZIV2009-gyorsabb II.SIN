@@ -1,0 +1,349 @@
+   1 C 8-AS KARCSUSITOTT MADONNA AZSUR 1 - HAROMSZOG ALAKU PASSZEVAL
+   2 C  JAC.:RAJZOK 7/SZIV
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=10.0               C BEKEZDES
+  12 NP3=14.8              C KORSLAG
+  13 NP5=14.5              C PASSZE
+  16 NP1=13.6              C:CSIPKE
+  18 NP7=14.0              C:CSIPKE
+
+  40 START        
+  50 YG:6/256;
+  51 WM=18;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+  54 C**********NYAK**********************************
+  56 C IF #100=10 RS17=50        C CSIPKE NYAK
+  62 C*****1.MINTA************************************
+  64 C IF #100=16  RS17=0         C E-H 3LAPOS MADONNA L
+  65 C IF #100=36 RS17=1         C E-H 4LAPOS MADONNA S  30' 
+  66  IF #100=33 RS17=2         C E-H 4LAPOS MADONNA M  34' 0.2+0.03+0.01=0.24KG
+  70 C IF #100=35  RS17=3         C MU   5LAPOS
+  72  IF #100=13  RS17=4         C HU   5LAPOS
+  92 C************************************************
+  94 IF RS17=50 GOTO 500          C CSIPKE NYAK
+ 100 C*****1.MINTA**********************************VASALAS:*****KESZ MERET:*********
+ 102 IF RS17=0  RS19=3 RS1=12 RS2=    C 3 E-H L
+ 104 IF RS17=1  RS19=4 RS1=12 RS2=74  C 4 E-H S:(64)74 60*65     45*57            35      33  
+ 105 IF RS17=2  RS19=4 RS1=12 RS2=84  C 4 E-H M:84     65*70     54*65  MB:44 DER:41 VALL:35  
+ 108 IF RS17=3  RS19=5 RS1=0  RS2=14  C 5 MU    14               KAROLTO:19
+ 109 IF RS17=4  RS19=5 RS1=0  RS2=117 C 5 HU   117    180*60     KAROLTO:19
+ 130 C************************************************
+
+ 180 C************581TU**************************************************************
+ 181 JA1=1026(1006-1008)    C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 188 IF RS19=3  FA=6-191;  PM:<.>7:3(IIFA)II;     C*3TEST
+ 190 IF RS19=4  FA=29-168; PM:<.>7:4(IIFA)I;      C*4TEST
+ 192 IF RS19=5  FA=35-146; PM:<.>7:I5(IFA)II;     C*5U   43-154
+ 194 C********************************************************************************
+
+ 200 >> S:D.I-DI./UVNDI.;             Y:5;                     ML       S1    T2
+ 202 << S:DI.-D.I/UVND.I;             	                 	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R(2)-R(2)/0-R(3);           Y:5/2;                VU ML       S1 S2
+ 214 << S:R-0/0-R;		                         ML   NP3-3     VU          S1 S2
+ 216 >> S:R-0/UVS.;		                 Y:5;   ML             VU          S1    T2
+ 218 Y:5/2/2/5;
+  220 << S:U^SN./.-N./UVSAY;                  ML  NP3-3               T1 S1    T2
+  222 >> S:NI-I;                              ML             VU          S1
+  220 << S:U^SN./.-N./UVSN.;                  ML  NP3-3               T1 S1    T2
+  222 >> S:R-0;                              ML             VU          S1
+
+  1026 AIIYYYYYIIIIAAAA
+  1026 AIIYYYYYYIIAAAAA
+
+ 224 REP*4
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+
+   234 << S:U^NI/.-N./UVN<1->.;            NP5-5 V0 VKA>0  T1 S1 T2 
+   234 << S:U^NI/.-N./UVNNI;               NP5-5 V0 VKA>0  T1 S1 T2 
+
+   236 >> S:U^NI/.-I/UVN<1->NI;            NP3-3           T1 S1 T2
+   236 >> S:U^NI/NI-I/UVNNI;               NP3-3           T1 S1 T2
+
+ 238 REPEND
+ 240  GOSUB 226-234
+
+  242  >> S:U^NI/.-I/UVNI;                    NP3-3           T1 S1 T2
+  242  >> S:U^NI/NI-I/UVNI;                   NP3-3           T1 S1 T2
+
+ 249 C********************************************************
+
+ 300 C ******************1SZV. CSIPKE*************************
+ 302           JA1=1360(1106-1120) C TEST
+ 304 IF RS19=5 JA1=1120(1106-1120) C UJJA
+ 306 C********************************************************
+ 312 NP1-1
+ 314 IF RS1=0 GOTO370
+
+ 316 RBEG*RS1
+ 317 Y:5/2/2/5;
+ 318 WM=10
+ 320 VJA^0
+ 322 << S:U^S<1->N.*/.*-N.*/UVNNY.;   NP1-1     V0  VKA>4  T1 S1    T2
+ 323 WM=15
+ 324 >> S:U^S<1->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 326 << S:U^S<1->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 327 WM=12
+ 328 >> S:U^S<1->N.*/.*-N.*/UVSNA.;   NP7-7     VL1        T1 S1    T2
+ 330 WM=0
+ 332 << S:U^S<1->IH+;                           V0         T1
+ 334 VJA^1
+ 336 >> S:UVS+;                                 VL1           T2
+ 338 << S:UVSH;                                 VR1           T2
+
+ 340 WM=10
+ 341 Y:2/5/5/2;
+ 342 VJA^0
+ 344 >> S:U^S<1->N.*/.*-N.*/UVNNY.;   NP1-1     V0  VKA>4    T1 S1    T2
+ 345 WM=15
+ 346 << S:U^S<1->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 348 >> S:U^S<1->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 349 WM=12
+ 350 << S:U^S<1->N.*/.*-N.*/UVSNA.;   NP7-7     VL1        T1 S1    T2
+ 352 WM=0
+ 354 >> S:U^S<1->IH+;                           V0         T1
+ 356 VJA^1
+ 358 << S:UVS+;                                 VL1           T2
+ 360 >> S:UVSH;                                 VR1           T2
+ 362 REND
+
+ 370 VJA^0
+ 371 WM=10
+ 372 Y:5/2/2/5;
+ 373 << S:U^S<1->N.*/.*-N.*/UVNNY.;             V0  VKA    T1 S1    T2
+ 374 WM=15
+ 375 >> S:U^S<1->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 376 RBEG*RS2
+ 377 << S:U^S<1->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 378 >> S:U^S<1->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 380 REND
+ 382 << S:U^S<1->N./.-N./UVNN.;                 V0         T1 S1    T2
+ 384 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVNR;   Y:5/2;   NP4-4    T1 S1 S2 T2
+ 386 END C************************************************
+
+ 500 C***EZ A LJOBB********** MADONNA NYAK 2007.04.23.******************
+ 501 C 2LUSI+1TX:NPK=0  MADONNAHOZ:NPK=0.2-0.4
+ 502 C 1'31"
+ 503 C*******************
+ 504 NP4=12.6   C:LEVALASZTAS
+ 505 NP15=12.2  C:BEKEZDES,1/1
+ 506 NP14=10.8  C:2SZV. CSIPKE NYAK HATUL
+ 507 NP13=11.0  C:2SZV. CSIPKE NYAK ELOL
+508C START        
+509C YG:6/256;	
+ 510 WM=16;WMI=7
+511C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                  VR1      T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	          NP15-15 V0 VU      S1
+ 518 << S:0-D.I;                     Y:6;                      VU      S1
+ 519 >> S:DI.-0/0-D.I;               Y:5/6;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 521 JA1=1992;
+ 522 PA:1:<JA1>;
+ 523 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 524 >> S:DI.-D.I/DI.(13)-D.I(14)/UVS.Y*;                   S1 S2 T2
+ 525 VJA^0
+ 526 NP13-14
+ 527 REP*2
+ 528 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 529 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0        T1 S1 S2 T2
+ 530 REPEND
+ 531 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 532 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;             V0        T1 S1 S2 T2
+ 533 END C**********************************************************
+
+ 999 <> S0 W0
+
+1992 IY
+
+
+1004 WWWWWWWWWWWWWWWW
+1006 IIIIIIIIIIIIIIII
+1008 IIIIIIIIIIIIIIII
+1010 AIIYIYIYIIIIAIAI
+1012 .II.IIIIIIIIIIII
+1014 AIIYYIYIYIIAIAIA
+1016 .II..IIIIIIIIII.
+1018 AIIYYYIYIIIIAIAA
+1020 .II...IIIIIIII..
+1022 AIIYYYYIYIIAIAAA
+1024 .II....IIIIII...
+1026 AIIYYYYYIIIIAAAA
+1028 WWWWWWWWWWWWWWWW
+1026 AIIYYYYYYIIAAAAA
+
+1104 97W..97W
+1106 W12(II..2(I3.I)..)IIW
+1108 I12(II..2(.Y..I)..)3I
+1110 I12(II.2(..I.A)3.)3I
+1112 I12(II2(4.Y)4.)3I
+1114 I12(I2(I3.A)I4.)3I
+1116 I12(II.2(..I.Y)3.)3I
+1118 I12(II.2(.A..I)3.)3I
+1120 W12(II..2(I3.Y)..)IIW
+1122 I96HII96+I
+1124 2(6(II..2(I3.I)..)II)
+1126 2(6(II..2(.Y..I)..)II)
+1128 2(6(II.2(..I.A)3.)II)
+1130 2(6(II2(4.Y)4.)II)
+1132 I96HII96+I
+1134 6(2(I3.A)I4.I)3I6(I2(I3.A)I4.)I
+1136 6(I.2(..I.Y)3.I)3I6(II.2(..I.Y)3.)I
+1138 6(I.2(.A..I)3.I)3I6(II.2(.A..I)3.)I
+1140 6(I..2(I3.Y)..I)3I6(II..2(I3.Y)..)I
+1142 I96HII96+I
+1144 I6(.2(I3.I)..II.)II6(.II..2(I3.I).)I
+1146 I3.5(..I.Y2(..I)I3.Y)..I.Y2(..I)I.II6(.II..2(.Y..I).)I
+1148 2(I..)5(..I.A3.II3.I.A)..I.A..2(.II)6(.II.2(..I.A)..)I
+1150 I3.Y5.5(4.II2(4.Y))3.2(.II)6(.II2(4.Y)3.)I
+1152 I96HII96+I
+1154 I6(2(.AI..)..II..)II6(..I2(I3.A)I..)I
+1156 I6(2(.I.Y.)..II..)II6(..II.2(..I.Y).)I
+1158 I6(2(A..I.)..II..)II6(..II.2(.A..I).)I
+1160 I6(2(I3.Y)..II..)II6(..II..2(I3.Y))I
+1162 I96HII96+I
+1164 6(2(I3.I)..II..)3I6(2(I..I)3.II3.)I
+1166 I6(2(Y..I.).II3.)II6(I..II3.Y..I.Y..)I
+1168 I6(2(I.A..).II3.)II6(3.II.2(..I.A))I
+1170 I6(2(.Y3.).II3.)II6(3.II2(4.Y).)I
+1172 I96HII96+I
+1174 I5(I3.AI4.II3.A)I3.AI.2(3.II)6(I4.I2(I3.A))II
+1176 6(2(I.Y..).II3.)4I5(3.II.2(..I.Y))3.II3.I.Y..I.I
+1178 I6(.I.A..I3.II..A.)II6(I3.II..A..I.A..)I
+1180 I6(..YI3.Y..II..I.)II6(.Y..I2(I..).YI..)I
+1182 I96HII96+I
+1184 I6(.II3.2(I..I)..)II6(..2(I..I)3.II.)I
+1186 I6(.I.Y2(..I)I3.Y.)II6(2(..I)I3.Y..I.Y)I
+1188 I6(A..I.A3.II3.I.)I6(I.A3.II3.I.A..)II
+1190 I5(4.Y4.II4.Y)4.Y2(4.II)II5(4.II2(4.Y))4.II4.Y4.I
+1192 I96HII96+I
+1194 I6(..AI4.II3.AI.)3I5(I4.I2(I3.A))I4.II3.AI3.I
+1196 I5(..I.Y3.II3.I.Y)..I.Y3.II...I.III6(I.Y3.II3.I.Y..)I
+1198 6(I.A..I3.II..A..)3I6(..I3.II..A..I.A)I
+1200 I6(YI3.Y..I2(I..).)I6(I3.Y..I2(I..).Y)II
+1202 I96HII96+I
+1204 2(6(II3.2(I..I)3.)II)
+1206 2(6(I.Y2(..I)I3.Y..)II)
+1208 2(I6(.I.A3.II3.I.A.)I)
+1210 2(I6(..Y4.II4.Y..)I)
+1212 I96HII96+I
+1214 I6(AI4.II3.AI3.)II6(..AI4.II3.AI.)I
+1216 I6(I.Y3.II3.I.Y..)II6(..I.Y3.II3.I.Y)I
+1218 I5(..I3.II..A..I.A)..I3.II..A..I.II6(I.A..I3.II..A..)II
+1220 6(I3.Y..I2(I..).Y)4I5(I3.Y..I2(I..).Y)I3.Y..I2(I..).I
+1222 I96HII96+I
+1224 I6(..2(I..I)3.II.)II6(.II3.2(I..I)..)I
+1226 I5(2(..I)I3.Y..I.Y)2(..I)I6.I.3I6(.I.Y2(..I)I3.Y.)I
+1228 5(I.A3.II3.I.A..)I.A3.I2(I3.).4I5(..I.A3.II3.I.A)..I.A3.II...I.I
+1230 I.5(4.II2(4.Y))4.II4.Y4.II6(4.Y4.II4.Y)I
+1232 I96HII96+I
+1234 6(I4.I2(I3.A))3I6(I3.AI4.II3.A)I
+1236 I6(Y3.II3.I.Y..I.)I6(2(I.Y..).II3.)II
+1238 I6(I3.II..A..I.A..)II6(.I.A..I3.II..A.)I
+1240 I6(.Y..I2(I..).YI..)II6(..YI3.Y..II..I.)I
+1242 I96HII96+I
+1244 2(II..)2(5(2(I3.I)..II..)2(I3.I))2(..II)
+1246 I6(I..II3.Y..I.Y..)3I5(..I.Y2(..I)I3.Y)..I.Y2(..I)I3.I
+1248 I5(3.II.2(..I.A))3.II3.I.A..I.III6(2(I.A..).II3.)I
+1250 I6(3.II2(4.Y).)II6(2(.Y3.).II3.)I
+1252 I96HII96+I
+1254 I6(..I2(I3.A)I..)II6(2(.AI..)..II..)I
+1256 I6(..II.2(..I.Y).)II6(2(.I.Y.)..II..)I
+1258 I6(..II.2(.A..I).)3I5(..I.A..I3.II..A)..I.A..I3.II..I
+1260 I5(..II..2(I3.Y))..I2(I..).YI3.3I6(2(I3.Y)..II..)I
+1262 I96HII96+I
+1264 I6(.II..2(I3.I).)II6(.2(I3.I)..II.)I
+1266 I6(.II..2(.Y..I).)II6(.2(.Y..I)..II.)I
+1268 I6(.II.2(..I.A)..)II6(2(..I.A)3.II.)I
+1270 I6(.II2(4.Y)3.)II6(2(3.Y.)3.II.)I
+1272 I96HII96+I
+1274 I12(I2(I3.A)I4.)3I
+1276 I12(II.2(..I.Y)3.)3I
+1278 I12(II.2(.A..I)3.)3I
+1280 I12(II..2(I3.Y)..)3I
+1282 I96HII96+I
+1284 2(6(II..2(I3.I)..)II)
+1286 2(6(II..2(.Y..I)..)II)
+1288 2(6(II.2(..I.A)3.)II)
+1290 2(6(II2(4.Y)4.)II)
+1292 I96HII96+I
+1294 6(2(I3.A)I4.I)3I6(I2(I3.A)I4.)I
+1296 6(I.2(..I.Y)3.I)3I6(II.2(..I.Y)3.)I
+1298 6(I.2(.A..I)3.I)3I6(II.2(.A..I)3.)I
+1300 6(I..2(I3.Y)..I)3I6(II..2(I3.Y)..)I
+1302 I96HII96+I
+1304 I6(.2(I3.I)..II.)II6(.II..2(I3.I).)I
+1306 I5(.2(.Y..I)..II.)5.I.Y2(..I)I.II6(.II..2(.Y..I).)I
+1308 I5(2(..I.A)3.II.)..I4.I.A..2(.II)6(.II.2(..I.A)..)I
+1310 I5(2(3.Y.)3.II.)3.Y9.II.II6(.II2(4.Y)3.)I
+1312 I96HII96+I
+1314 I6(2(.AI..)..II..)II6(..I2(I3.A)I..)I
+1316 I6(2(.I.Y.)..II..)II6(..II.2(..I.Y).)I
+1318 I6(2(A..I.)..II..)II6(..II.2(.A..I).)I
+1320 I6(2(I3.Y)..II..)II6(..II..2(I3.Y))I
+1322 I96HII96+I
+1324 6(2(I3.I)..II..)3I6(2(I..I)3.II3.)I
+1326 I6(2(Y..I.).II3.)II6(I..II3.Y..I.Y..)I
+1328 I6(2(I.A..).II3.)II6(3.II.2(..I.A))I
+1330 I6(2(.Y3.).II3.)II6(3.II2(4.Y).)I
+1332 I96HII96+I
+1334 I5(I3.AI4.II3.A)I3.AI.2(3.II)6(I4.I2(I3.A))II
+1336 6(2(I.Y..).II3.)4I5(3.II.2(..I.Y))3.II3.I.Y..I.I
+1338 I6(.I.A..I3.II..A.)II6(I3.II..A..I.A..)I
+1340 I6(..YI3.Y..II..I.)II6(.Y..I2(I..).YI..)I
+1342 I96HII96+I
+1344 I6(.II3.2(I..I)..)II6(..2(I..I)3.II.)I
+1346 I6(.I.Y2(..I)I3.Y.)II6(2(..I)I3.Y..I.Y)I
+1348 I6(A..I.A3.II3.I.)I6(I.A3.II3.I.A..)II
+1350 I5(4.Y4.II4.Y)4.Y2(4.II)II5(4.II2(4.Y))4.II4.Y4.I
+1352 I96HII96+I
+1354 I6(..AI4.II3.AI.)3I5(I4.I2(I3.A))I4.II3.AI3.I
+1356 I5(..I.Y3.II3.I.Y)..I.Y3.II...I.III6(I.Y3.II3.I.Y..)I
+1358 6(I.A..I3.II..A..)3I6(..I3.II..A..I.A)I
+1360 I6(YI3.Y..I2(I..).)I6(I3.Y..I2(I..).Y)II
+1362 I96HII96+I
+1364 2(6(II3.2(I..I)3.)II)
+1366 2(6(I.Y2(..I)I3.Y..)II)
+1368 2(I6(.I.A3.II3.I.A.)I)
+1370 2(I6(..Y4.II4.Y..)I)
+1372 I96HII96+I
+1374 I6(AI4.II3.AI3.)II6(..AI4.II3.AI.)I
+1376 I6(I.Y3.II3.I.Y..)II6(..I.Y3.II3.I.Y)I
+1378 I5(..I3.II..A..I.A)..I3.II..A..I.II6(I.A..I3.II..A..)II
+1380 6(I3.Y..I2(I..).Y)4I5(I3.Y..I2(I..).Y)I3.Y..I2(I..).I
+1382 I96HII96+I
+1384 I6(..2(I..I)3.II.)II6(.II3.2(I..I)..)I
+1386 I5(2(..I)I3.Y..I.Y)2(..I)I3.Y..I.III6(.I.Y2(..I)I3.Y.)I
+1388 6(I.A3.II3.I.A..)4I5(..I.A3.II3.I.A)..I.A3.II...I.I
+1390 I6(Y4.II4.Y4.)II6(4.Y4.II4.Y)I
+1392 I96HII96+I
+1394 6(I4.I2(I3.A))3I6(I3.AI4.II3.A)I
+1396 I6(Y3.II3.I.Y..I.)I6(2(I.Y..).II3.)II
+1398 I6(I3.II..A..I.A..)II6(.I.A..I3.II..A.)I
+1400 I6(.Y..I2(I..).YI..)II6(..YI3.Y..II..I.)I
+1402 I96HII96+I
+1404 2(II..)2(5(2(I3.I)..II..)2(I3.I))2(..II)
+1406 I6(I..II3.Y..I.Y..)3I5(..I.Y2(..I)I3.Y)..I.Y2(..I)I3.I
+1408 I5(3.II.2(..I.A))3.II3.I.A..I.III6(2(I.A..).II3.)I
+1410 I6(3.II2(4.Y).)II6(2(.Y3.).II3.)I
+1412 I96HII96+I
+1414 I6(..I2(I3.A)I..)II6(2(.AI..)..II..)I
+1416 I6(..II.2(..I.Y).)II6(2(.I.Y.)..II..)I
+1418 I6(..II.2(.A..I).)3I5(..I.A..I3.II..A)..I.A..I3.II..I
+1420 I5(..II..2(I3.Y))..I2(I..).YI3.3I6(2(I3.Y)..II..)I
+1422 I96HII96+I
+1424 I6(.II..2(I3.I).)II6(.2(I3.I)..II.)I
+1426 I6(.II..2(.Y..I).)II6(.2(.Y..I)..II.)I
+1428 I6(.II.2(..I.A)..)II6(2(..I.A)3.II.)I
+1430 I6(.II2(4.Y)3.)II6(2(3.Y.)3.II.)I
+1432 I95W..97WI

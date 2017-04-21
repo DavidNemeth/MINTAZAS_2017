@@ -1,0 +1,252 @@
+ 
+   C ******************  EZ AJOOOOOOOOOO ******************** CSIKOS ES SIMA IS ***************
+   C**FONOTT BOLERO***XXL:0.37KG
+
+  CSAK AZ UJ GEP ES A PKT KOTI. A REGI KT VR3 NAL NEM RETESZEL RENDESEN!!!!!!!!!!
+
+   1 C 
+   1 C  3*3-AS SZEMLEDOBASOS FONOTT MINTA + SZEMLEDOBASOS BAL-BAL
+
+   10 NP4=12.6   C:LEVALASZTAS
+  12 NP1=14.0   C BAL-BAL  14.0-14.2
+  14 NP2=10.6               C:1/1
+  16 NP11=9.8               C BEKEZDES       9.6-10.0     
+  18 NP12=14.0              C PASSZE        13.8-14.0
+  20 NP13=14.2              C PASSZE        14.0-14.2
+
+C-------------------------------ELLA-----------------
+C   MERETEK:   S      M    L     XL   2XL    3XL
+C SZELESSEG:   
+C HOSSZUSAG:   
+C----------------------------------------------------
+C KG-RU     :      
+C   *900FT  =        
+C VARRAS+GOZ:        
+C      GOMB           
+C     SUM:      
+C ELADAS:      
+C----------------------------------------------------
+C    H:         
+C  ML MIN:            
+C----------------------------------------------------
+C UJ:NPK=0
+C  P:NPK=0
+C KT:NPK=-0.2
+  40 START
+  50 YG:6/2356;
+  50 YG:6/256;
+  51 WM=14;WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	      NP4-4   V0	VU      S1 S2
+ C**********2XL BOLERO 2 SZINNEL (Y:3-MAL KOTI A FONAST)**********************************
+  53 C IF #100=30  RS17=50        C BOLERO PANT   
+  54 C IF #100=31  RS17=0         C HHH      2XL           
+  55 C IF #100=32  RS17=1         C EEEE                                ST=13
+  56 C IF #100=60  RS17=5         C 3/4 UUUUU             
+
+  57 C IF #100=20  RS17=50        C BOLERO PANT   
+  58 C IF #100=4   RS17=0         C HHH      2XL           
+  59 C IF #100=3   RS17=1         C EEEE                                ST=13
+  60 C IF #100=4   RS17=5         C 3/4 UUUUU             
+ C***2XL BOLERO 1 SZINNEL (Y:3-MAL CSAK 2 SORT KOT A VEGEN, HOGY NE HUZZA - DE KIIKTATHATO A 730.SORBAN, HA NINCS BEFUZVE )*29'***
+  61 C IF #100=31  RS17=50         C BOLERO PANT GY: 6'   ML:8'    150   ----60DB:---30:----20:----15:----12:----
+  62 C IF #100=28  RS17=10         C HHH         GY:25'   ML:32'   220        20     10     7(1)    5      4
+  63 C IF #100=19  RS17=11         C EEEE        GY:22'   ML:29'   145        15      8(2)  5       4(1)   3
+  64 C IF #100=12  RS17=15         C 3/4 UUUUU   GY:20'   ML:27'   210        24     12     8       6      5(1)
+C                                             ------------------------
+C                                            SUM GY:29'   ML:37'
+  65 C IF #100=7  RS17=50         C BOLERO PANT GY: 6'   ML:8'          ----60DB:---30:----15:----12:----
+  66 C IF #100=3  RS17=10         C HHH                              
+  67 C IF #100=8  RS17=11         C EEEE                              
+  68 C IF #100=2  RS17=15         C 3/4 UUUUU                       
+
+  69  IF #100=39 RS17=50         C BOLERO PANT GY: 6'   ML:8'          ----60DB:---30:----15:----12:----
+  70  IF #100=6  RS17=10         C HHH                              
+  71  IF #100=11 RS17=11         C EEEE                              
+  72  IF #100=19 RS17=15         C 3/4 UUUUU                        
+
+  C***********************************2SZINU:**************************SUM:GY:29'* 0.37KG**
+ 100 IF RS17=50 RS1=4  RS2=0                  C BOLERO PANT              GY:6'
+ 102 IF RS17=0  RS1=3  RS2=12  RS19=3 RS18=0  C HHH                      GY:25'
+ 104 IF RS17=1  RS1=0  RS2=12  RS19=4 RS18=0  C EEEE                     GY:21'
+ 106 IF RS17=4  RS1=1  RS2=9   RS19=4 RS18=0  C 3/4 UUUU       ML:24'    GY:18'  
+ 108 IF RS17=5  RS1=1  RS2=9   RS19=5 RS18=0  C 3/4 UUUUU   
+ C************************************1SZINU:**********************
+ 110 IF RS17=50 RS1=4  RS2=0                  C BOLERO PANT
+ 112 IF RS17=10 RS1=3  RS2=12  RS19=3 RS18=1  C HHH                      GY:26'
+ 114 IF RS17=11 RS1=0  RS2=13  RS19=4 RS18=1  C EEEE                     GY:22'
+ 116 IF RS17=14 RS1=1  RS2=10  RS19=4 RS18=1  C 3/4 UUUU       ML:       GY:   
+ 118 IF RS17=15 RS1=1  RS2=10  RS19=5 RS18=1  C 3/4 UUUUU                GY:19'44
+ C***************************************************************************
+      
+ C************581TU**************************************************************
+ 200 JA1=1110(1100-1110)   C CSIPKE PASSZE
+ 202 PA:1:<JA1>;
+ 204 FA=1-8; PM:Z 6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ C********************************************************************************
+ 206 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 208 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 210 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1
+ 212 <<	S:UVSDI.;		                      	                               T2
+ 214 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 216 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 218 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 220 IF RS1=0 GOTO 580 C**************************************************** ELEJE CSIPKE PASSZE NELKUL*************
+ 222 Y:2/2/5/5;
+ 224 << S:D.I-0;                                NP13-13 VU           S1
+ 226 >> S:0-DI./UVS.Z;                                              S1    T2
+ 228 << S:U^SN.Z/.Z-N.Z/UVSR;                                      T1 S1    T2   CCCCCCCCCCCCC S1
+ 230 >> S:NZ-0;                          NP13-13         VU           S2        CCCCCCCCCCCC S1
+ 232 VJA^1
+ 234 RBEG*RS1 C ******  AZSUR PASSZE *********
+
+ 236 REP*3
+ 238 WM=0
+ 240 << S:U^SA;                                   VL1      T1
+ 242 >> S:U^SY;                                   VR1      T1
+ 244 WM=12
+ 246 << S:U^SI*/.Z-N.Z/UVS<1->N.Z;         NP12-12    V0       T1 S1 T2   C CCCCCCCCCCC S1
+ 248 >> S:NZ-0;                          NP13-13         VU     S2
+ 250 REPEND
+
+ 252 << S:U^SN.Z/.Z-N.Z/UVSN.Z;             NP12-12             T1 S1 T2    CCCCCCCCCCCCC S1
+ 254 >> S:NZ-0;                          NP13-13         VU     S2
+ 256 REND C*********************************
+ 258 IF RS17=50 GOTO 600
+ 260 JA1=1098(1092-1098)   C********** CSIPKE PASSZE KILEPO HA RS1 PARATLAN************
+ 262 C IF RS1=2 JA1=    C********** CSIPKE PASSZE KILEPO, HA RS1 PAROS ************
+ 264 C IF RS1=4 JA1=    C********** CSIPKE PASSZE KILEPO, HA RS1 PAROS ************
+ 266 GOSUB 236-250
+
+  C************581TU**************************************************************
+ 300 JA1=1000   C 1000 BBBTTT
+ 302 PA:1:<JA1>; FA=1-6;
+ 304 IF RS19=3                      PM:*<.>7:II 2(31FA I.I)  31FA II581:*;   C*TTT
+ 306 IF RS19=4                      PM:*<.>7:II 3(23FA I..I) 23FA 3I581:*;   C*TTTT V. UUUU
+ 308 IF RS19=5                      PM:*<.>8:4I 4(18FA II.II)18FA 3I581:*;   C*UUUUU
+
+ 310 C IF RS19=7 FA=14-171; FB=14-92; PM:*<.>8:IFAI..IFAI..IFBI..IFAI581:*;       C*T-T-1/2T-T
+ 312 C IF RS19=7 FA=13-172; FB=13-92; PM:*<.>7:IFAIIFAIIFBIIFAI581:*;             C*T-T-1/2T-T
+ 314 C          FA=1-6;              PM:*<.>8:II 94FA 574:II<.>581:*;              C* OSZTAS NELKUL
+ C********************************************************************************
+
+ 400 C*******BAL-BAL*************************************************
+ 402 WM=14
+ 404 REP*2 C***************************
+ 410 << S:U^SN.*/.*-N.*/UVNN.*;   Y:2;  NP1-1      V0     T1 S1    T2   C /UVN N.* VAGY R   
+ 412 >> S:N*-0;                             VU        S1
+ 420 << S:U^SN.*/.*-N.*/UVNN.*;   Y:5;                    T1 S1    T2
+ C----LEDOBAS------------
+ 422 >> S:N*-N.*(6.0)/0-N.*(1);   Y:5/0;       VU        S1 S2
+ 432 << S:U^SN.*/.*-N.*/UVSN.*;   Y:2;               T1 S1    T2
+ 434 >> S:N*-0;                             VU        S1
+ 436 REPEND
+ C********************************************************
+ 438 IF RS18=1 GOTO 700 C%%%%%%%%%%%%%%%%%%%%%% 1 SZINU %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 439 #1=0
+ 440 RBEG*RS2 C----------------------------------------------------------------------
+ 442 IF #1=0 GOTO 500
+ 444 IF #1=1 GOTO 550
+ 446 GOSUB 410-434*2
+ 450 REND
+ 455 IF #1=1 GOTO 470
+ 460 << S:U^SN.*/.*-N.*/.*-N.*/UVNN.*;        Y:2/5;       V0     T1 S1 S2 T2
+ 462 >> S:U^ND.I/DI.-D.I/DI.-D.I;       NP4-4        T1 S1 S2
+ 464 << S:DI.-D.I/DI.-D.I;                VU  Y:2/3;    S1 S2
+ 466 >> S:DI.-D.I/DI.-D.I/UVND.I;                       S1 S2 T2
+ 468 END C-------------------------------------------------------
+ 470 << S:U^SN.*/.*-N.*/.*-N.*/UVNN.*;        Y:2/5;    V0   T1 S1 S2 T2
+ 472 >> S:U^ND.I/DI.-D.I/DI.-D.I;       NP4-4                T1 S1 S2
+ 474 << S:DI.-D.I;                            Y:2;      VU      S1
+ 476 >> S:DI.-D.I/DI.-D.I/UVND.I;             Y:2/3;            S1 S2 T2
+ 478 END C--------------------------------------------------------------
+
+C---SUB 1.---------------6/5------------------------------------------
+ 500 C 
+ 502 C
+ 504 WM=18
+ 506 << S:U^SN.*/.*-IBT/.*-IBT;                Y:5/3;  T1 S1 S2      
+ 508 >> S:N*(12.5)-IBT(14.5)/IBT-0/UVSBT;      Y:3/0;     S1 S2 T2   C (12.5)-IBT(14.5) HA SZORJA JOBB O.:(13.5)-IBT(13.5)
+ 510 WM=0
+C HA HIBAZIK, AZ 508. SORT 3 LOKETBEN KELL KOTNI:
+ 512 C >> S:IBT-0;                        VU   Y:0/0;     S1 S2
+ 514 C << S:UVSBT;                                              T2
+ 516 << S:U^SB;                           VL3          T1
+ 518 >> S:U^ST;                           VR3          T1
+ 520 WM=14
+ 522 << S:.*-N.*;        NP1-1         V0 VU   Y:3;       S1
+ 524 >>                                   VU   Y:5;       S1
+ 526 #1=1
+ 528 GOTO 446 
+C-------------------Y:3/ (NEM ALAPALLAS)--------------------------------
+C---SUB 2.----------------------------------------------------------
+ 550 C 
+ 552 C 
+ 554 WM=18
+ 556 << S:U^SN.*/.*-IBT;                       Y:5;    T1 S1
+ 558 >> S:.*-IBT;                         VU   Y:3;       S1
+ 560 << S:N*(12.5)-IBT(14.5)/IBT-0/UVSBT;      Y:3/0;     S1 S2 T2  C (12.5)-IBT(14.5) HA SZORJA JOBB O.:(13.5)-IBT(13.5)
+ 562 WM=0
+C HA HIBAZIK, AZ 560. SORT 3 LOKETBEN KELL KOTNI:
+ 564 C >> S:IBT-0;                        VU   Y:0/0;     S1 S2
+ 566 C << S:UVSBT;                                              T2
+ 568 >> S:U^SB;                           VL3      T1
+ 570 << S:U^ST;                           VR3      T1
+ 572 WM=14
+ 574 >> S:.*-N.*;    NP1-1    V0  VU   Y:3/5;      S1 S2
+ 576 #1=0
+ 578 GOTO 446
+C--------------------Y: /3 (ALAPALLAS)--------------------------------------------
+
+ 580 C 1/1  ELEJE PASSZEJA
+ 582 << S:D.I-0/0-DI.;                 Y:5/2;    NP13-13 VU       S1 S2
+ 584 REP*1
+ 586 >> S:D.I-DI.;                               NP4-4   VU       S1 S2
+ 588 <<                                                  VU       S1 S2 
+ 590 REPEND
+ 592 >> S:D.I-DI./D.I(13.5)-DI.(13.5)/UVSDI.;	                    S1 S2 T2
+ 594 GOTO 300
+  
+ 600 C PANT VEGE:
+ 602 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP2-2  T1 S1 S2 
+ 604 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+ 606 END
+
+ C%%%%%%%%%%%%%%% 1 SZINU %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 700 RBEG*RS2                                                      C IGY SZORJA A JOBB SZELEN:
+ 702 WM=18 WMI=1                                                   C WMI=7
+ 704 << S:U^SN.*/.*-IBT/N*(12.5)-IBT(13.5);   Y:2/5;   T1 S1 S2    C N*(13.5)-IBT(13.5) V. N*(12.5)-IBT(14.5)    Y:2/5 V. 5/2
+ 706 WM=10 WMI=7                                                   C                    V. N*(12.5)-IBT(13.5)
+ 708 >> S:IBT-0/UVSBT;                        Y:0;        S1    T2  
+ 709 WM=0
+ 710 << S:U^SB;                           VL3          T1
+ 712 >> S:U^ST;                           VR3          T1
+ 714 << W0 VU V0 S0                           
+ 716 WM=14
+ 718 >> S:.*-N.*/.*-N.*;       NP1-1      VU  Y:5/2;;      S1 S2
+ 720 GOSUB 410-434*2
+ 722 REND
+ 724 C GOSUB 410-434*2 C CSAK AKKOR KELL, HA ROVID
+ 726 << S:U^SN.*/.*-N.*/.*-N.*/UVNN.*;  Y:2/5; V0     T1 S1 S2 T2
+ 728 >> S:U^ND.I/DI.-D.I/DI.-D.I;       NP4-4         T1 S1 S2
+ 730 << S:DI.-D.I/DI.-D.I;              Y:2/5; VU        S1 S2           C************** Y:2/5; VAGY Y:2/3;************
+ 732 >> S:DI.-D.I/DI.-D.I/UVND.I;                        S1 S2 T2
+ 734 END 
+ C%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ 999 <> W0 VU ML S0
+
+1000 BBBTTT
+
+1092 IIIIIIII
+1094 IYIIIIIA
+1096 IYYIIIAA
+1098 IYYYIAAA
+
+1100 IYYYIAAA
+1102 IYYIIIAA
+1104 IYYYIAAA
+1106 IAAAIYYY
+1108 IIAAIYYI
+1110 IAAAIYYY
+

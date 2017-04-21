@@ -1,0 +1,98 @@
+ C
+   1 C*VAJAS MARIKA MADONNAJA *KESZEN:56-58CM*
+   1 C-----------------------+---------------+------------+------------+-------------+
+  10 NP1=14.6  C:MINTA 2SZV.CSIPKE
+  13 NP2=12.6  C:1/1
+  16 NP4=12.8  C:LEVALASZTAS
+  20 C
+  40 START        
+  42 YG:6/256;
+  44 WM=18; WMI=7
+  46 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  47 VJA^1
+
+C********************************************************************************
+  50 IF #100=60  RS17=0    C MADONNA E-H*********************4LAP 11'
+  51 IF #100=40  RS17=1    C MADONNA UJJ*********************4LAP  3'
+  52 IF #100=20  RS17=50   C 2SZV. CSIPKE NYAK (GYONGYI)*****      1'20
+C********************************************************************************
+
+C********3X15/1: NPK=0************************************************************************
+  58 IF RS17=0  RS1=57     C PKT 3X15/1:    MADONNA:61 TRIKO:57
+  59 IF RS17=1  RS1=9      C 
+C******2X15/1+TX: NPK=0*****************A VALYU PEREME FOLOTT ERJEN!!!********************************
+  58 IF RS17=0  RS1=60     C PKT 2X15/1+TX: MADONNA:62 TRIKO:60
+  59 IF RS17=1  RS1=10     C 
+C********************************************************************************
+  60 IF RS17=50  GOTO 500   C NYAK
+
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+  66 >> S:DI.-D.I;                   Y:5;                   VR1VU      S1
+  68 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+  70 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+  72 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+  74 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	        NP2-2   V0 VU      S1 S2
+  78 << S:DI.-0;                     Y:5;                      VU      S1
+
+C********************************************************************************
+  85 JA1=1002;
+  88 PA:<JA1>;
+  90 FA=6-144; PM:<.>7:4(IIFAI)I;         C*4LAP************581TU
+C********************************************************************************
+
+ 100 >> S:DI.-D.I/UVS.;                           NP4-4              S1    T2
+ 160 VJA^0
+ 165 WM=18
+ 170 NP1-1
+ 175 Y:2/5;
+ 180 REP*RS1
+ 182 << S:U^SN./.-N./.-N./UVSNY.;                      V0         T1 S1 S2 T2
+ 184 >> S:U^SN./.-N./.-N./UVSNA.;                      VL1        T1 S1 S2 T2
+ 186 REPEND
+ 188 << S:U^NN./.-N./.-N./UVNN.;                       V0         T1 S1 S2 T2
+ 190 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;       NP4-4              T1 S1 S2 T2
+ 192 END
+
+ 500 C************* MADONNA NYAK 2007.04.23.**********EZ A LEGJOBB********
+ 500 C KONNYEBBEN KOTI A GEP-1/1-BEN VAN- ES SOKKAL SZEBBEN LEHET VARRNI, MERT NEM PONDORODIK ES BUGGYOSODIK.
+ 501 C 1'31"
+ 502 C*******************
+ 503 NP4=13.0   C:LEVALASZTAS
+ 504 NP12=12.0  C:BEKEZDES
+ 505 NP15=13.0  C:1/1
+ 506 NP14=10.8  C:2SZV. CSIPKE NYAK HATUL
+ 507 NP13=11.0  C:2SZV. CSIPKE NYAK ELOL
+ 508C START        
+ 509C YG:6/256;	
+ 510 WM=16;WMI=7
+ 511C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                  VR1      T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 518 << S:0-D.I;                     Y:6;           NP15-15    VU      S1
+ 519 >> S:0-D.I/DI.-0;               Y:6/5;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 521 JA1=1992;
+ 522 PA:1:<JA1>;
+ 523 FA=1-2; PM:<.>7:*<FA>514:*<.>;   C******NYAK OSZTAS NELKUL********521TU
+ 523 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 524 >> S:DI.-D.I/DI.(13)-D.I(14)/UVS.Y*;                   S1 S2 T2
+ 525 VJA^0
+ 526 NP13-14
+ 527 REP*2
+ 528 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 529 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0  VKA<2   T1 S1 S2 T2
+ 530 REPEND
+ 531 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 532 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;             V0  VKA  T1 S1 S2 T2
+ 533 END C**********************************************************
+
+ 999 <> W0 S0
+
+
+1002 ..AIIY.
+1992 IY

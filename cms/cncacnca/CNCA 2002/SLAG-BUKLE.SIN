@@ -1,0 +1,116 @@
+   1 C**SLAG BUKLE TUNIKA 1/1-ES PASSZEVAL, PODROS NYAKKAL CP SLAG RS19=0 RS1=
+   2 C******* 2 FELE PM, HA CSIKOZNA!!!******(A BEALLITAS A LAMBADAHOZ IS JO)
+   3 C RS19=1:PODROS NYAK
+   4 C RS19=2:1/1-ES ZSEB A KARDIGANHOZ (1/1-ES GOMBLYUKAS PANT CSAK A KT-N)
+   5 C RS19=3:1/1-ES GUMIS NYAK
+   6 C                           NP1=                   TEST RS1=57-77 UJJA RS1=-56
+   7 C-----------------------+------------+------------+------------+-------------+
+   8 C BUKLE+15/1:               14.5-14.65             75   (76CM)    56 (57CM)
+   9 C CIRMOS:             PRAFINOZVA-PARAFIN NELKUL    77             57
+  10 C NYERS:PAMUT NELKUL?
+  11 C VASTAG OLASZ PAMUT NELKUL:15.0                   63           48 0.35KG 600FT
+  12 C-----------------------+------------+------------+------------+-------------+
+  13 C RAGLAN UJJU:70CM H-U, E:KT2003/ZSEBES BUKLE      H:              U:2/2  RS1=78-
+  14 C-----------------------+------------+------------+------------+-------------+
+  15 C BUKLE+15/1:               14.5-14.65             70             83 J2=13.25
+  16 C CIRMOS:                                          72             85
+  17 C NYERS:PAMUT NELKUL?
+  18 C 1 SZAL VASTAG OLASZ PAMUT NELKUL: 
+  19 C-----------------------+------------+------------+------------+-------------+
+  20 C BUKLE/PAMUT=60%/40%  1250-1430FT/KG (PAMUT:560, BUKLE:2000,CSABA BUKLEJA:1700FT)
+  21 C T:0.3+U:0.16+NY:0.01=0.5KG 
+  22 C 0.5*1250-1430=630-720FT 
+  23 C  BAL:                 JOBB:
+  24 C  6:ELV. SZAL          2,5: - 1 BUKLE+1 15/1 PAMUT (FARMER,MOGYI,BORDO,STB)
+  25 C  RS19=1:NYAK                      
+  26 C       14.3   14.3         14.3   14.3    HATUL:SLAG A MINTAHOZ
+  27 C J3: <------+------       ------+------> 
+  28 C       14.0   14.0         14.0   14.0    ELOL:SLAG A PODROS NYAKHOZ (RS19=1)
+  29 C       12.0   12.0         12.0   12.0
+  30 C B2: <------+------       ------+------> 1/1 PASSZE,NYAK  11.5
+  31 C       12.0   12.0         12.0   12.0
+  32 C J2: 13.5  UJJA(2/2)
+  33 C J4: 13.0 
+  34 C    
+  35 C TUAGYKORREKCIOK:
+  36 C   V0:->1-2
+  37 C   R1:->0-1   ______R2:-     ________R3:-
+  38 C   L1:-    __________L2:-     ________L3:-
+  39 C 10 SULY. *******A DIOKAT A LEHETO LEGKOZELEBB KELL TENNI A KOTES SZELEHEZ.*****
+  40 START
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+  74 IF RS19=1 GOTO 700 C PODROS NYAK
+  75 IF RS19=2 GOTO 800 C ZSEB
+  76 IF RS19=3 GOTO 900 C 1/1-ES GUMIS NYAK
+  77 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+  78 << S:0-D.I/DI.-D.I;                                       V#      S1 S2
+  80 REP*4
+  82 >> S:DI.-D.I;                                     V#           S1 S2
+  84 <<                                                V#           S1 S2
+ 100 REPEND
+ 105 JA1=1002;
+ 110 IF RS1>77 JA1=1000;
+ 115 PA:<JA1>;
+ 120 FA=1-4
+ 125 C 2 FELE PM (HA ELTER A PAMUT SZINE A BUKLETOL ES EZERT CSIKOZ, AKKOR AZ I. KELL)
+ 130 PM:<FA>1:6I2.3I 189:2I 368:2I 547:7I;          C 3 LAP             I. TUKIOSZTAS
+ 135 PM:<FA>1:6I     186:2I 367:2I 548:6I;          C 3 LAP            II. TUKIOSZTAS
+ 140 IF RS1<57 PM:<FA>1:6I2.3I 144:2I 278:2I 412:2I 547:7I;   C 4 LAP   I. TUKIOSZTAS
+ 150 IF RS1<57 PM:<FA>1:6I     140:2I 276:2I 412:2I 548:6I;   C 4 LAP  II. TUKIOSZTAS
+ 155 IF RS1>77 PM:<FA>1:6I     140:2I 276:2I 412:2I 548:6I;   C 4 LAP  II. TUKIOSZTAS
+ 160 >> S:DI.-D.I/DI.-D.I/UVNI;      Y:5/2;                        S1 S2 T2
+ 165 NP3-3
+ 170 IF RS1>77 NP2-2
+ 175 << S:U^N./I-./I-.;            Y:2/5;                    T1 S1 S2
+ 180 >> S:I-./I-.;                                  V#          S1 S2
+ 185 RBEG*RS1
+ 190 <<                                               V#          S1 S2
+ 195 >>                                               V#          S1 S2
+ 200 REND
+ 205 <<                                               V#          S1 S2
+ 210 >> S:I-./I-./UVNDI.;                                       S1 S2 T2
+ 215 << S:U^ND.I/DI.-D.I/DI.-D.I;              NP4-4           T1 S1 S2
+ 220 >> S:DI.-D.I/DI.-D.I/UVND.I;                                 S1 S2 T2
+ 225 END
+ 700 C************************  PODROS NYAK *********************
+ 702 >>	S:DI.-D.I/DI.-D.I/UVND.I;			Y:2/5;	     NP2-2   V0 ML     S1 S2 T2
+ 704 REP*2
+ 706 << S:R-0;     NP3-0     S1 S2
+ 708 >>          NP-0      S1 S2
+ 710 REPEND
+ 712 <<          NP-0      S1 S2
+ 714 >> S:U^NDI./D.I-DI./D.I-DI.;              NP2-2           T1 S1 S2
+ 716 << S:D.I-DI.;                                    V#          S1 S2
+ 718 >>                                               V#          S1 S2
+ 722 <<                                        NP4-4  V#          S1 S2
+ 724 >> S:D.I-DI./D.I-DI./UVNDI.;                                 S1 S2 T2
+ 726 END
+ 800 C************************  1/1-ES ZSEB *********************
+ 802 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+ 804 << S:0-D.I/DI.-D.I;                                       V#      S1 S2
+ 806 REP*15
+ 808 >> S:DI.-D.I;                                     V#           S1 S2
+ 810 <<                                                V#           S1 S2
+ 812 REPEND
+ 814 >> S:DI.-D.I/DI.-D.I/UVND.I;                                   S1 S2 T2
+ 816 END
+ 900 C *****1/1 NYAK***********
+ 902 >>	S:DI.-D.I;		           Y:2;	 ML     NP2-2      V#      S1
+ 904 << S:DI.-0;               Y:6;  ML     NP-0       V#      S1
+ 906 >> S:DI.-0/0-D.I;         Y:6/5;  ML              V#      S1 S2
+ 908 << S:DI.-D.I;             Y:2/5;                  V#      S1 S2
+ 910 REP*4
+ 912 >> S:DI.-D.I;                                     V#           S1 S2
+ 914 <<                                                V#           S1 S2
+ 916 REPEND
+ 924 >> S:DI.-D.I/DI.-D.I/UVND.I;                                 S1 S2 T2
+ 926 END
+1000 ..II
+1002 ....

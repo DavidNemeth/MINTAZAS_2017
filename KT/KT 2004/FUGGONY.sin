@@ -1,0 +1,135 @@
+ C(14)OK   VAGY RIZZSEL:FUGGONY 2005
+1C  REX PIKO+1SZV CSIPKE*****SZELSZEMEK A HATSO TUAGYON, CSAK SZINSZEMEK!!
+1C     ELEJE FUZVE:1.6M   (JAC./RAJZOK4/KINAI)
+1C                                         E-H:         UJJA:
+1C                                          19'            9'                              
+1C                                     RS1= 70-          -69          
+1C-----------------------+------------+------------+------------+-------------+
+1C   3X16/1 LUSI                      
+1C   2LUSI+1TOROK:NPK=+0.1-0.2   65CM:100  74CM:         34
+1C   3LUSI FEHER :NPK=0-0.1      65CM:     74CM:110
+1C-----------------------+------------+------------+------------+-------------+
+  10 C---------------------
+  14 NP1=14.8  C:MINTA            
+  18 NP2=11.2  C:REX PASSZE
+  20 NP4=12.5  C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52  IF #100=35 RS1=115 C **************** E-H	****************
+  53  IF #100=15 RS1=34	C  ****************  U	****************
+  54 WM=18 WMI=7
+  55 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  56 JA1=1994; 
+  58 PA:<JA1>; 
+  60 FA=1-7; C FA=1-7 VAGY 2-7;
+  62 PM:<.>5:<FA>547:<.>;
+  64 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  66 << S:U^NA/.I-A;                         ML                     T1 S1
+  68 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  70 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  72 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  73 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML                        S1 S2
+  80 >> S:.-./.-.;                           ML                        S1 S2
+  82 << S:.-./.-.;                           ML                        S1 S2
+  84 >> S:.-./.I-.I;                         ML                        S1 S2
+  86 << S:R-R/R-R;                           ML                        S1 S2
+  88 >> S:R-R/R-R;                           ML                        S1 S2
+  90 << S:R-R;                      Y:5;     ML                        S1
+  92 >>                                                                S1
+
+ 100 JA1=1100;
+ 102 FA=6-184;
+ 104 PA:2:<JA1>;
+ 106 PM:<.>6:*3(FA**);
+ 110 IF RS1<70 FA=4-137                   C*4LAP************
+ 114 IF RS1<70 PM:<.>6:*FA*FA**FA*FA*;    C*4LAP************
+
+ 122 WM=0
+ 125 << S:U^NDI.;      VKA>3    T1
+ 130 >> S:U^ND.I;      VKA      T1
+ 140 VJA^1
+ 150 Y:2/2/5/5;
+ 155 NP1-1
+ 158 WM=16
+ 160 JA1=1100(1048-1100);
+ 162 REP*13 C**********************************************
+ 164 PKV:1:<JA1>;
+ 166 << S:U^NY*/0-R/UVN<1->A;                          V0        T1    S1 T2
+ 168 PKV:0;
+ 170 >> S:U^NA*/0-R/UVN<1->Y;                          VL1 VKB>5 T1    S1 T2
+ 172 REPEND C**********************************************
+
+ 174 PKV:1:<JA1>;
+ 176 << S:U^NY*/0-R;                                   V0       T1 S1
+ 178 >> S:0-R/UVNN*;                                               S1    T2
+ 180 << S:N*-*/N*-*;               Y:2/5;              V#          S1 S2
+ 182 >> S:N*-*/N*-*;                                   V#          S1 S2
+ 184 JA1=1044(1004-1042);
+ 186 Y:2/2/5/5;
+ 188 << S:U^NN*/0-R/UVN<1->A;                          V0        T1    S1 T2
+ 190 PKV:0;
+ 192 >> S:U^NA*/0-R/UVN<1->Y;                          VL1 VKB>5 T1    S1 T2
+
+ 194 RBEG*RS1 C******************************************
+ 196 GOSUB 164-170
+ 198 REND C**********************************************
+
+ 200 << S:U^NY*/0-R/0-R/UVND.I;             Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 202 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;                            T1 S1 S2 T2
+ 204 END
+
+1994 ....AIA
+
+1002 IIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII
+1004 W..I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y......I
+1006 ....A.A.A.A.A.A....A..I....I.I.I.I.I.I.I...A..I.....A.A.A.A.A.A....A..I....I.I.I.I.I.I.I...A..I.....A.A.A.A.A.A....A..I....I.I.I.I.I.I.I...A..I.....A.A.A.A.A.A....A..I....I.I.I.I.I.I.I......I
+1008 ....I.I.I.I.I.I....I...Y....Y.Y.Y.Y.Y.Y....I...Y....I.I.I.I.I.I....I...Y....Y.Y.Y.Y.Y.Y....I...Y....I.I.I.I.I.I....I...Y....Y.Y.Y.Y.Y.Y....I...Y....I.I.I.I.I.I....I...Y....Y.Y.Y.Y.Y.Y.......I
+1010 .....A.A.A.A.A....A....I....I.I.I.I.I.I...A....I.....A.A.A.A.A....A....I....I.I.I.I.I.I...A....I.....A.A.A.A.A....A....I....I.I.I.I.I.I...A....I.....A.A.A.A.A....A....I....I.I.I.I.I.I.......I
+1012 .....I.I.I.I.I....I.....Y....Y.Y.Y.Y.Y....I.....Y....I.I.I.I.I....I.....Y....Y.Y.Y.Y.Y....I.....Y....I.I.I.I.I....I.....Y....Y.Y.Y.Y.Y....I.....Y....I.I.I.I.I....I.....Y....Y.Y.Y.Y.Y........I
+1014 ......A.A.A.A....AI.....I....I.I.I.I.I...AI.....I.....A.A.A.A....AI.....I....I.I.I.I.I...AI.....I.....A.A.A.A....AI.....I....I.I.I.I.I...AI.....I.....A.A.A.A....AI.....I....I.I.I.I.I........I
+1016 ......I.I.I.I....I.Y....IY....Y.Y.Y.Y....I.Y....IY....I.I.I.I....I.Y....IY....Y.Y.Y.Y....I.Y....IY....I.I.I.I....I.Y....IY....Y.Y.Y.Y....I.Y....IY....I.I.I.I....I.Y....IY....Y.Y.Y.Y.........I
+1018 .......A.A.A....A..I...A.I....I.I.I.I...A..I...A.I.....A.A.A....A..I...A.I....I.I.I.I...A..I...A.I.....A.A.A....A..I...A.I....I.I.I.I...A..I...A.I.....A.A.A....A..I...A.I....I.I.I.I.........I
+1020 .......I.I.I....I...Y..I..Y....Y.Y.Y....I...Y..I..Y....I.I.I....I...Y..I..Y....Y.Y.Y....I...Y..I..Y....I.I.I....I...Y..I..Y....Y.Y.Y....I...Y..I..Y....I.I.I....I...Y..I..Y....Y.Y.Y..........I
+1022 ........A.A....A....I.A...I....I.I.I...A....I.A...I.....A.A....A....I.A...I....I.I.I...A....I.A...I.....A.A....A....I.A...I....I.I.I...A....I.A...I.....A.A....A....I.A...I....I.I.I..........I
+1024 ........I.I.....Y....YI....Y....Y.Y.....Y....YI....Y....I.I.....Y....YI....Y....Y.Y.....Y....YI....Y....I.I.....Y....YI....Y....Y.Y.....Y....YI....Y....I.I.....Y....YI....Y....Y.Y...........I
+1026 .......A.A.A....I...AI....A.....I.I.....I...AI....A....A.A.A....I...AI....A.....I.I.....I...AI....A....A.A.A....I...AI....A.....I.I.....I...AI....A....A.A.A....I...AI....A.....I.I...........I
+1028 .......I.I.I.....Y..I.Y...I....Y.Y.Y.....Y..I.Y...I....I.I.I.....Y..I.Y...I....Y.Y.Y.....Y..I.Y...I....I.I.I.....Y..I.Y...I....Y.Y.Y.....Y..I.Y...I....I.I.I.....Y..I.Y...I....Y.Y.Y..........I
+1030 ......A.A.A.A....I.A..I..A.....I.I.I.....I.A..I..A....A.A.A.A....I.A..I..A.....I.I.I.....I.A..I..A....A.A.A.A....I.A..I..A.....I.I.I.....I.A..I..A....A.A.A.A....I.A..I..A.....I.I.I..........I
+1032 ......I.I.I.I.....YI...Y.I....Y.Y.Y.Y.....YI...Y.I....I.I.I.I.....YI...Y.I....Y.Y.Y.Y.....YI...Y.I....I.I.I.I.....YI...Y.I....Y.Y.Y.Y.....YI...Y.I....I.I.I.I.....YI...Y.I....Y.Y.Y.Y.........I
+1034 .....A.A.A.A.A....I.....A.....I.I.I.I.....I.....A....A.A.A.A.A....I.....A.....I.I.I.I.....I.....A....A.A.A.A.A....I.....A.....I.I.I.I.....I.....A....A.A.A.A.A....I.....A.....I.I.I.I.........I
+1036 .....I.I.I.I.I.....Y....I....Y.Y.Y.Y.Y.....Y....I....I.I.I.I.I.....Y....I....Y.Y.Y.Y.Y.....Y....I....I.I.I.I.I.....Y....I....Y.Y.Y.Y.Y.....Y....I....I.I.I.I.I.....Y....I....Y.Y.Y.Y.Y........I
+1038 ....A.A.A.A.A.A....I...A.....I.I.I.I.I.....I...A....A.A.A.A.A.A....I...A.....I.I.I.I.I.....I...A....A.A.A.A.A.A....I...A.....I.I.I.I.I.....I...A....A.A.A.A.A.A....I...A.....I.I.I.I.I........I
+1040 ....I.I.I.I.I.I.....Y..I....Y.Y.Y.Y.Y.Y.....Y..I....I.I.I.I.I.I.....Y..I....Y.Y.Y.Y.Y.Y.....Y..I....I.I.I.I.I.I.....Y..I....Y.Y.Y.Y.Y.Y.....Y..I....I.I.I.I.I.I.....Y..I....Y.Y.Y.Y.Y.Y.......I
+1042 W..A.A.A.A.A.A.A....I.A.....I.I.I.I.I.I.....I.A....A.A.A.A.A.A.A....I.A.....I.I.I.I.I.I.....I.A....A.A.A.A.A.A.A....I.A.....I.I.I.I.I.I.....I.A....A.A.A.A.A.A.A....I.A.....I.I.I.I.I.I.......I
+1044 W..I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y....I.I....I.I.I.I.I.I.I....I.I....Y.Y.Y.Y.Y.Y.Y......I
+1046 ..............................................................................................................................................................................................I
+1048 WY.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.Y.YI
+1050 .IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.I.I.IAI.I.I.II
+1052 ..I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.Y.Y.I.Y.Y.Y.I
+1054 .A..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I.IA..I.I.I.I
+1056 .I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.Y.Y.I...Y.Y.YI
+1058 .....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.I.IA....I.I.II
+1060 ...Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.Y.I..Y..Y.Y.I
+1062 ..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.IA..AI..I.I.I
+1064 ..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.Y.I..I.Y..Y.YI
+1066 .A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.IA..A..I..I.II
+1068 .I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I..I...Y..Y.I
+1070 .....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IA..A....I..IAI
+1072 ......Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..I..I.....Y..II
+1074 ......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I....A......I...I
+1076 ...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y...I...Y...Y..I
+1078 ..AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..A...AI...I..I
+1080 ..IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I...IIY...Y.I
+1082 .A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IA...A.AI...IAI
+1084 .I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...I...I.I.Y...II
+1086 ..A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI......A.A.AI....I
+1088 ..I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y.....I.I.I.Y...I
+1090 .A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI....A.A.A.AI...I
+1092 .I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y...I.I.I.I.Y..I
+1094 ..A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..A.A.A.A.AI..I
+1096 ..I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I.I.I.I.I.Y.I
+1098 .A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIA.A.A.A.A.AIAI
+1100 WI.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1102 IIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII

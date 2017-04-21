@@ -1,0 +1,48 @@
+  10 C          1991 ....AIA
+  40 START 
+  42 YG:6/2356;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  48 JA1=1991;
+  50 PA:<JA1>; 
+  52 FA=2-8; 
+  54 PM:<.>6:77FA;
+  56 >> S:D.I-DI./DI.-D.I/UVN.I;	           	ML     NP4-4   V#  	      S1 S2 T2
+  58 << S:U^NA/.I-A;                 Y:2;    ML     NP1-1           T1 S1
+  60 >> S:UVSA;                              ML     NP0-0   VR1              T2
+  62 << S:.I-0;                      Y:5;    ML             V0         S1
+  64 >> S:.I-.I/0-.I;                Y:6/0;  ML             V0         S1 S2
+  66 << S:.I-0;                      Y:6;    ML     NP-0               S1
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  70 << S:0-./.-.;                           ML                        S1 S2
+  72 >> S:.-.;                               ML                        S1 S2
+  74 <<                                      ML                        S1 S2
+  76 >> S:.-./.I-.I;                         ML                        S1 S2
+  78 << S:R-R;                               ML                        S1 S2
+  80 >> S:R-R;                               ML                        S1 S2
+ 101 FA=8-183;          IF RS1<36  FA=29-160          C======4LAP======
+ 104 PM:<.>9:3(FA...);  IF RS1<36  PM:<.> 10:4(FA ..);
+ 152 JA2=1004(1004-1014)
+ 153 PA:<JA2>;
+ 154 << S:R-R;                        Y:2;   ML                        S1
+ 156 >> S:U^NDI.;                            ML       NP0-0       T1
+ 158 << S:U^ND.I;                            ML       NP01-01       T1
+ 160 >> S:0-.*;                              ML       NP0-             S1
+ 200                                                  NP2-2
+ 205                                Y:2/5/3;
+ 210 RBEG*RS1
+ 212 REP*2
+ 215 <<S:<2->0-.*/0-.*/0-.%*;  NP0-      T1 S1 S2
+ 220 >>                        NP0-      T1 S1 S2
+ 225 REPEND
+ 235 REND
+ 471 Y:2/5;
+ 472 << S:0-R/0-R/UVNDI.;                        ML      S1 S2 T2
+ 474 >> S:DI.-D.I/DI.-D.I/UVSD.I;                ML      S1 S2 T2
+ 480 END
+1004 *.....
+1006 .*...*
+1008 ..*.*.
+1010 ...*..
+1012 ..*.*.
+1014 .*...*
+1991 ....AIA

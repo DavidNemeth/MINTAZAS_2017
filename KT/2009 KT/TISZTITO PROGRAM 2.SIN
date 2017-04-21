@@ -1,0 +1,33 @@
+
+   1 C TISZTITO PROGRAM (UA MINT A MASIK, CSAK AZ URES TUKET FELTOLJA ATRAKASRA, HOGY HORDJA KI A SZEMETET!)
+
+   3 C A CNCA-N:CP TISZTIT
+   5 NP1=14.0;    C **KT**
+   7 NP4=12.5;    C **KT**
+  40 START
+  50 YG:/25;
+  55 WM=20        C **KT**
+  60 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4     V0      S1 S2
+  65 >> S:DI.-D.I/D.I-DI./UVNDI.;                             S1 S2 T2
+  70 Y:2/2/5/5;
+  75 << S:DI.-D.I/UVND.I;                                     S1    T2
+  80 >> S:R-0/UVSR;                         NP1-0             S1    T2
+
+  85 REP*1
+  90 <<                                     NP-0              S1    T2
+  95 >>                                     NP-0              S1    T2
+ 100 REPEND
+
+ 105 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4             S1 S2
+ 110 >> S:DI.-D.I/D.I-DI.;                                    S1 S2
+ 115 Y:2/2/5/5;
+ 120 << S:U^ND.I/DI.-D.I;                                  T1 S1
+ 125 >> S:U^NDI./0-R;                       NP0-1          T1 S1
+
+ 130 REP*2
+ 135 << S:U^SR/0-R;                         NP0-           T1 S1
+ 140 >>                                     NP0-           T1 S1
+ 145 REPEND
+
+ 150 END
+ 999 <> W0 S0

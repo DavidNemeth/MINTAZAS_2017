@@ -1,0 +1,244 @@
+1C TUNIKA 1 TX 3X3 DUPLA CSAVAR
+1C JAC/RAJZOK 4./TUN1
+1C H-U:CP Y RS18=3 RS19=0 RS10=0(VAGY OSSZ. DB.) RS1=
+1C KAGYLO NYAK:SP800
+1C
+1C         
+1C                             E:77CM        H:77CM     KREPP U<32
+1C                             RS17=0        RS17=1       RS17=1  
+1C--------------------------+------------+-------------+-----------+-----------+
+1C   3TX                      RS1=28            40          30
+1C    MAJVA,BORDO:  NPK=-0.8                               (CNCA:15.2)
+1C  PENESZ,FARMER:  NPK=0                                  (CNCA:15.8)
+1C--------------------------+------------+-------------+------------+-----------+
+  
+  11 NP1=14.6   C:MINTA
+  12 NP14=12.6  C:MINTA (14)
+  14 NP7=14.6   C:MINTA  HATUL
+  15 NP6=15.0   C:HATA-UJJA
+  16 NP12=13.5   C:HATA-UJJA
+  18 NP3=11.2   C:REX PASSZE
+  19 NP13=10.0  C:REX PASSZE (14)
+  20 NP4=12.5  C:LEVALASZTAS
+  22 NP5=14.5  C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52 WM=18 WMI=7
+  54 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  56 JA1=1991(1991-1993); 
+  58 PA:<JA1>; 
+  60 FA=1-7; 
+  62 PM:<.>5:77FA;
+  64 VJA^0
+  66 >> S:U^SA /.-A/UVS.;            Y:5;    ML     NP5-5           T1 S1    T2
+  68 << S:<1+>.-A/UVSA;                      ML          VL1 VKA>3     S1    T2
+  70 >> S:<1+>.I-.I/0-.I;            Y:6/0;  ML              V0        S1 S2
+  72 << S:.I-0;                      Y:6;    ML                        S1
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  80 >> S:.-./.(13)-.;                       ML                        S1 S2
+  82 << S:.-./.-.;                           ML     NP3-3              S1 S2
+  84 >> S:.-./.I(13)-.I;                     ML                        S1 S2
+  86 << S:R-R/R-R;                                  NP3-3              S1 S2
+  88 >> S:R-R/R(13)-R;                                                 S1 S2
+ 100 << S:R-R;                      Y:5;            NP3-3   S1
+ 102 IF RS17=1 GOTO 500
+ 104 JA1=1001(1001-1070); C FONAS
+ 106 JA2=1804(1804-1806); C KREPP .Z
+ 108 PA:<JA2>:JA1;
+ 110 FA=7-184;
+ 112 PM:<.>9:3(FA.);
+ 114 >> S:UVS.Z;            VKB>3       T2
+ 116 << S:U^SN.Z;           VKB    T1
+ 118 >> S:.Z-N.Z/UVNN.Z;           V#           NP1-7            S1 T2
+C****************************PANP*********************
+ 125 JA3=1500;
+ 130 PANP:1:JA3;
+ 135 FB=7-184
+ 140 PMNP:<.>9:3(FB.);
+ 145 NPJ1:.=14.2 I=14.6 ; C MINTA HATUL
+ 150 VJA^0
+C****************************PANP*********************
+ 155C IF#100=21  RS17=0;IF RS17=0 RS1=12  C E  10-12 
+ 156C IF#100=15  RS17=1;IF RS17=1 RS1=72  C H  66-72 
+ 157C IF#100=9   RS17=2;IF RS17=2 RS1=54  C U  54
+
+ 158 IF RS17=1 GOTO 400 C***H***
+ 159 IF RS17=2 GOTO 400 C***U***
+ 160 WM=18
+ 210 RBEG*RS1 C***  FONASOK SZAMA X2  ****...OTBW+G...**************************************
+ 239 Y:2/2/5/5;
+ 215 REP*1 C 1-2-3
+ 220 << S:U^N<1-2->N.Z/.%Z(1)-N.Z(7)/UVNI;                VKA>2  V0   T1 S2     T2
+ 225 >> S:U^N<1-2->N.Z/.%Z(14)-N.Z(7)/UVNI;               VKA         T1 S2     T2
+ 230 REPEND
+ 232 << S:U^N<1-2->N.Z/.%Z(1)-N.Z(7)/UVNI;         Y:5;   VKA         T1 S2     T2
+ 234 >> S:U^S<1-2->IZ/.Z-IOTB+/0-+(8.0)/UVSIOTBZ;  Y:5/0; VL3         T1 S1 S2  T2
+ 236 << S:U^S<1-2->IZ/.Z-ITBWO(7)/0-O(8.0)/UVSIZ;  Y:2/0; VKB>3  VR1  T1 S1 S2  T2
+ 238 >> S:U^S<1-2->IOTB/.%Z(14)-N.Z(7)/UVSN.Z;     Y:2;   VKC>6  VR3  T1 S2     T2
+ 239 Y:5/5/2/2;
+ 240 REP*1 C 1-2-3
+ 242 << S:U^N<1-2->N.Z/.%Z(1)-N.Z(7)/UVNI;                VKA>2  V0   T1 S2     T2
+ 244 >> S:U^N<1-2->N.Z/.%Z(14)-N.Z(7)/UVNI;               VKA         T1 S2     T2
+ 246 REPEND
+ 248 << S:U^N<1-2->N.Z/.%Z(1)-N.Z(7)/UVNI;         Y:2;   VKA         T1 S2     T2
+ 250 >> S:U^S<1-2->IZ/.Z-ITW+G/0-T(8.0)/UVSIW+GZ;  Y:2/0;        VR3  T1 S1 S2  T2
+ 252 << S:U^S<1-2->IZ/.Z-IBW+G(7)/0-G(8.0)/UVSIZ;  Y:5/0; VKD>0  VL1  T1 S1 S2  T2
+ 254 >> S:U^S<1-2->IW+G/.%Z(14)-N.Z(7)/UVSN.Z;     Y:5;   VKE>0  VL3  T1 S2     T2
+ 256 REND C******************** ...OTBW+G... *******************************
+ 260 Y:2/2/5/5;
+ 272 GOSUB 220-225*3
+ 282 GOSUB 220
+ 285 >> S:U^N<2->N.Z/.Z-N.Z/UVSDI.;                  VKA    V0        T1 S1     T2
+ 290 << S:U^SD.I/DI.-D.I;                                 NP4-4       T1 S1
+ 295 >> S:DI.-D.I/UVSD.I;                                                S1     T2
+ 300 END
+ 500 C*********H-U*******************
+ 502 JA2=1804(1804-1806); C KREPP .Z
+ 504 PA:<JA2>;
+ 506 FA=7-184;                IF RS1<32  FA=29-160          C*****UJJA*****
+ 508 PM:<.>9:3(FA.);          IF RS1<32  PM:<.> 10:4(FA..); C*****UJJA*****
+ 510 WM=0
+ 512 >> S:UVSD.I;             VKB>3          T2
+ 514 << S:UVSDI.;             VKB    T2
+ 516 WM=18
+ 518 >> S:.%Z-0;    NP6-6               S1
+ 520 WM=24
+ 522 RBEG*RS1
+ 524 REP*2
+ 526 << S:<2->.%Z(6)-0/<2->.%Z(6)-0;   Y:2/5;          S1 S2
+ 528 >> S:<2->.%Z(6)-0/<2->.%Z(12)-0;                  S1 S2
+ 530 REPEND
+ 532 REND
+ 534 GOSUB 526-528
+ 536 << S:U^ND.I/DI.-D.I/DI.-D.I;  NP4-4  ML  T1 S1 S2
+ 538 >> S:DI.-D.I/DI.-D.I/UVND.I;         ML     S1 S2 T2
+ 540 END
+ 800 CKAGYLO NYAK********************
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:BEKEZDES
+ 808 NP5=12.5   C:LEVALASZTAS
+ 810 NP3=10.5   C:1/1
+ 811 NP6=12.5   C:1/1 A VARROSZEGELYNEL
+ 812 NP4=14.0   C:SLAG
+ 813 NP10=12.0  C:SLAG(14)
+ 814 YG:6/256;
+ 816 WM=16
+ 818 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP5-5  VU V0	      S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	      VKC>3       S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP1-1  VKC      T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+ 826 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+ 830 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 832 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 834 << S:0-D.I/DI.-D.I;                    Y:2/5;   NP3-3  VU          S1 S2
+ 836 JA1=1998
+ 838 FA=1-8
+ 840 PA:JA1;
+ 842 PM:<.> 9:<FA> 543:<.>;
+ 844 >> S:DI.-D.I/DI.-D.I;                             VU     S1 S2
+ 846 << S:DI.-D.I/DI.-D.I/UVS.;                               S1 S2 T2
+ 848 >> S:U^SN./.(4)-N.(4)/.(12.0)-N.(14.8)/UVSN.;         T1 S1 S2 T2
+ 850 << S:*.(4)-A(15.0)/*.-0;                          VU     S1 S2
+ 852 WM=28
+ 854 >> S:.*-0;                 Y:5;    VU   S1     C KAGYLO
+ 855 <<                                 VU   S2     C KAGYLO
+ 856 >>                                 VU   S1
+ 857 <<                                 VU   S2
+ 858 FA=5-6
+ 860 >> S:U^S*;                                            T1
+ 862 << S:U^SY;                                            T1
+ 864 WM=20
+ 866 >> S:.-N.(4)/.(10)-N./UVSY;             Y:2/5;           S1 S2 T2
+ 868 << S:.Y-*;                                 NP3-3  VU     S1 S2
+ 870 >>                                                VU     S1 S2
+ 872 << S:U^SY/.-N./.-N./UVSN.;                 NP4-4      T1 S1 S2 T2
+ 874 >> S:R-0/R(10)-0;                                        S1 S2
+ 876 << S:U^SN./.-N./.-N./UVSD.I;              NP4-4       T1 S1 S2 T2
+ 878 >> S:U^SDI./D.I-DI./D.I-DI.;              NP6-6       T1 S1 S2
+ 880 << S:D.I-DI. ;                   Y:2;              VU    S1
+ 882 >> S:D.I-DI. /UVSDI.;                              VU    S1    T2
+ 884 END
+ 999 <> W0 S0
+1998 5*YAY
+
+1000 I..I
+1804 Z.
+1806 .Z
+1991 4.A.A
+1992 3.A*A*
+1993 4.*I*
+1080 2(6I.81I)5I.8I
+1001 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1002 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1003 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1004 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1005 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1006 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1007 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1008 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1009 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1010 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1011 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1012 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1013 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1014 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1015 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1016 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1017 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1018 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1019 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1020 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1021 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1022 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1023 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1024 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1025 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1026 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1027 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1028 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1029 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1030 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1031 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1032 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1033 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1034 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1035 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1036 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1037 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1038 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1039 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1040 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1041 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1042 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1043 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1044 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1045 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1046 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1047 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1048 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1049 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1050 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1051 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1052 73X3.OTBW+G26.OTBW+G3.73XI
+1053 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1054 73X3.OTBW+G26.OTBW+G3.73XI
+1055 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1056 73X3.OTBW+G26.OTBW+G3.73XI
+1057 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1058 73X3.OTBW+G26.OTBW+G3.73XI
+1059 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1060 73X3.OTBW+G26.OTBW+G3.73XI
+1061 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1062 73X3.OTBW+G26.OTBW+G3.73XI
+1063 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1064 73X3.OTBW+G26.OTBW+G3.73XI
+1065 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1066 73X3.OTBW+G26.OTBW+G3.73XI
+1067 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1068 73X3.OTBW+G26.OTBW+G3.73XI
+1069 73X3.OTBW+G3.20I3.OTBW+G3.73XI
+1070 73X3.OTBW+G26.OTBW+G3.73XI
+1500 73.44I73.

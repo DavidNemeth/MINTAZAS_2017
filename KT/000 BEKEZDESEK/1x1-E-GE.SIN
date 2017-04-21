@@ -1,0 +1,30 @@
+
+  10 C *** 1/1 AZ ELSO TUAGYON LOOG, A GUMI IS ELOL VAN.***
+  12 C 
+  14 C *** A LEVALASZTAST IS JAC.-BOL KOTI.***
+  16 C
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP12=12.0  C:BEKEZDES
+  22 NP15=12.0  C:1/1
+  40  START        
+  50  YG:6/256;	
+  55 WM=14;WMI=7
+  60  << S:D.I-DI./DI.-D.I; Y:5/2; NP4-4 VU V0 S1 S2 C******** SPF ****************
+
+ 100 JA1=1001; C1001 *I
+ 102 PA:1:<JA1>;
+ 104 FA=1-2; 
+ 106 PM:<.>7:<FA>575:<.>;
+ 108 >>	S:U^SI/.*-I/UVS.*;   	     Y:5;                           T1 S1    T2
+ 110 <<	S:.*-0/UVSI;		              			                  VR1         S1    T2
+ 112 >> S:.*-I;                    Y:6;                  V0  VU         S2
+ 114 << S:.*-0/0-I;                Y:6/0;                    VU      S1 S2
+ 116 >>	S:.*-I;		                  Y:2;	         NP12-12 V0  VU      S1
+ 118 << S:.*-0;                    Y:6;          NP15-15     VU      S1
+ 120 >> S:.-I/.*-0;                Y:5/6;                    VU      S1 S2
+ 122 REP*1 C 1/1
+ 124 << S:.*-I;                    Y:2/5;                    VU      S1 S2
+ 126 >>                                                      VU      S1 S2
+ 128 REPEND
+
+1001 *I

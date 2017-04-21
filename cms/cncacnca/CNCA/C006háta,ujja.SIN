@@ -1,0 +1,52 @@
+ 500 START
+ 505 C---C006.SIN HATA UJJA.  (ELEJE A KT-N MEGY)---
+ 510 YG:6/25;
+ 515 << S:R-R/R-0;              Y:2/5;      NP4-4    V0 ML    S1 S2
+ 520 C>> S:D.I-DI./0-R;                                     V#    ML    S1 S2
+ 525 C<< S:DI.-D.I/R-0;                                     V#    ML    S1 S2
+ 530 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP1-1        ML    S1 S2 T2
+ 535 << S:U^ND.I/DI.-D.I;               Y:2;        NP1-1        ML T1 S1
+ 540 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1   ML T1    S2
+ 545 << S:R-0/R-0/0-D.I;                Y:0/0/6;    NP4-4  V#    ML T1 S1 S2
+ 550 >> S:R-0/DI.-D.I;                  Y:0/2;             V# V0 ML T1 S1   
+ 555 << S:DI.-0/0-D.I;                  Y:5/2;             V#          S1 S2
+ 560 >> S:DI.I.I...-D.I.I.I..;          Y:2/5;             V#          S1 S2
+ 565 <<                                                    V#          S1 S2
+ 570 >>                                                    V#          S1 S2
+ 575 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 580 >>                                             NP4-4  V#          S1 S2
+ 585 << S:DI.-D.I/DI.-D.I/UVND.I;                   NP2-2              S1 S2 T2
+ 590 C------UJJA TELI TUAGYRA (553TU)------
+ 595 JA1=1503(1501-1503)
+ 600 PA:1:;
+ 605 PK^:JA1;
+ 610 PKV:JA1;
+ 615 FA=25-158
+ 620 PM:<.> 10:4FA;
+ 625 IF RS1<20 GOTO 650
+ 630 C------HATA 523TU------
+ 635 JA1=1508(1506-1508)
+ 640 FA=7-175
+ 645 PM:<.> 7:3FA;
+ 650 RBEG*RS1          C
+ 655 REP*3
+ 660 PK^:JA1;
+ 665 >> S:U^N<1->N./.-N./.-N./UVNNT.;          Y:2/5; NP1-1  V0       T1 S1 S2 T2
+ 670 PK^:2:JA1;
+ 675 << S:U^N<1->N./.-N./.-N./UVNNY.;          Y:2/5;       VL1       T1 S1 S2 T2
+ 680 REPEND
+ 685 REND
+ 690 PK^:JA1;
+ 695 >> S:U^N<1->N./.-N./.-N./UVNN.;           Y:2/5;        V0    T1 S1 S2 T2
+ 700 END
+ 705 C FEHER     . FONAK 
+ 710 C FEKETE    I SZIN
+ 715 C SARGA     Y SZIN ->
+ 720 C OKKERS.   T SZIN <-
+1500 181.
+1501 I23.3(2(..6I)3(.IYIYI).6I)..6I25.I
+1503 I23.3(2(..6I)3(.ITITI).6I)..6I25.I
+1505 I179.I
+1506 I9.6I.3(3(.6I.)2(IYIYI.)IYIYI)4(.6I.)8.I
+1508 I9.6I.3(3(.6I.)2(ITITI.)ITITI)4(.6I.)8.I
+1510 I179.I

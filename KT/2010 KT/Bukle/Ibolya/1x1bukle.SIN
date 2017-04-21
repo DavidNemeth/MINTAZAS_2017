@@ -1,0 +1,30 @@
+   1 C 2/2 BUKLE
+   2 C LEVALASZTAS:1/1 AZ ELSO TUAGYON
+
+  10 NP4=13.0   C:LEVALASZTAS
+  12 NP2=10.2    C:BEKEZDES       9.8 10.2
+  14 NP5=10.8   C:1/1             9.8 10.8
+  16 NP3=11.3   C:2/2 PASSZE     
+  18 NP1=12.3   C:2/2 TEST       
+  40 START
+  50 YG:6/23456;
+  51 WM=16 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+C TUKIOSZTAS NELKUL DIREKVALOGATASSAL
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0 ML        S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU    ML     S1 S2
+ 212 >>	S:D.I-DI.;		                	Y:5;	      NP2-2 VU V0 ML     S1
+
+ 214 << S:0-DI./D.I-0;      Y:2/5;     NP5-5 VU           S1 S2
+ 216 RBEG*RS2
+ 218 >> S:D.I-DI.;                       NP5-5 VU           S1 S2
+ 220 <<                                        VU           S1 S2
+ 222 REND
+ 224 >> S:D.I-DI./D.I-DI./UVSDI.;                           S1 S2 T2
+ 226 END

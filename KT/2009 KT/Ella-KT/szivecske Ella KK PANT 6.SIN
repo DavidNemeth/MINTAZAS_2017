@@ -1,0 +1,84 @@
+ 700 C SZIVECSKES KARDIGANHOZ KK PANT 2 GOMBLYUKKAL - FREDI GOMBBAL
+ C 3*15/1 + 1TX 
+
+ C -AZSUR 2 PASSZE(ROMBUSZ) 1/1 BEKEZDESSEL (ELSO TUAGYON)
+
+ 702 NP4=12.6   C:LEVALASZTAS
+ 704 NP12=10.2   C:BEKEZDES,1/1-ES PASSZE
+ 706 NP13=14.0   C: 
+ 708 NP15=15.0              C PASSZE  
+
+ 710 START
+ 712 YG:6/23456;
+ 714 WM=17 WMI=7
+ 716 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+ 718 C************581TU**************************************************************
+ 720 JA1=1010(1010-1012)   C PASSZE
+ 722 PA:1:<JA1>;FA=1-11;FB=12-22;   PM:6.II 39FA 6(FBFA) <FA> 574:II6.;
+ 724 C********************************************************************************
+
+ 726 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 728 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 730 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 732 <<	S:UVSDI.;		                      	                               T2
+ 734 >> S:D.I-DI.;		                	Y:6;	      NP12-12 VU V0 ML        S2
+ 736 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU    ML     S1 S2
+ 738 >>	S:D.I-DI.;		                	Y:5;	      NP12-12  VU V0 ML     S1
+
+ 740 Y:2/2/5/5;
+ 742 << S:D.I-0;                                NP13-13 VU           S1
+ 744 >> S:0-DI.;                                      VU           S1
+ 746 << S:U^SD.I/0-R/UVSR;                      NP15-15           T1 S1    T2
+ 748 >> S:R-0;                                        VU           S1
+ 750 REP*1 C ****** ROMBUSZ AZSUR PASSZE *********
+ 752 WM=0
+ 754 << S:U^SA;                                   VL1      T1
+ 756 >> S:U^SY;                                   VR1      T1
+ 758 WM=17
+ 760 << S:U^SI*/.-N./UVSN.;                       V0       T1 S1 T2 
+ 762 >> S:R-0;                                        VU      S1
+ 764 REPEND
+ 766 C********************************************************
+ 768 GOSUB 752-760
+
+------------------- 4 TU SZELES GOMBLYUK (FREDIHEZ)------------------------------------------------------
+ 770 >> S:<1->R-+(15.0)/0-+;      Y:5/0;               VU      S1 S2
+ 772 WM=0
+ 774 << S:U^SA;                                   VL1      T1
+ 776 >> S:U^SGH;                                  VL2      T1
+ 778 << S:U^SY;                                   VR1      T1
+ 780 >> S:U^SO+;                                  VR2      T1
+ 782 WM=17
+ 784 Y:2/2/5/5;
+ 786 << S:U^SI*/.O+H(12)-IAY*(15)/UVSIAY*;           V0       T1 S1 T2 
+ 788 >> S:N+(15)-0/UVS<1->.;                                   S1 T2
+------------------- 2 TU SZELES GOMBLYUK ------------------------------------------------------
+ 770 >> S:<1->R-+(7.0)/0-+(9.0);      Y:5/0;               VU      S1 S2
+ 772 WM=0
+ 774 << S:U^SAGH;                                   VL1      T1
+ 776C >> S:U^SGH;                                  VL2      T1
+ 778 >> S:U^SYO+;                                   VR1      T1
+ 780C >> S:U^SO+;                                  VR2      T1
+ 782 WM=17
+ 784 Y:2/2/5/5;
+ 786 << S:U^SI*/.+G(12)-IAYOH*(15)/UVSIAYOH*;           V0       T1 S1 T2 
+ 788 >> S:N+(15)-0/UVS<1->.;                                   S1 T2
+------------------- 3 TU SZELES GOMBLYUK (28-AS LENCSEHEZ)------------------------------------------------------
+ 770 >> S:<1->R-+(7.0)/0-+(9.0);      Y:5/0;               VU      S1 S2
+ 772 WM=0
+ 774 << S:U^SA;                                   VL1      T1
+ 776 >> S:U^SGH;                                  VL2      T1
+ 778 << S:U^SYO+;                                   VR1      T1
+ 780 >> W0S0VU
+ 782 WM=17
+ 784 Y:2/2/5/5;
+ 786 << S:U^SI*/.+H(12)-IAYO*(15)/UVSIAYO*;           V0       T1 S1 T2 
+ 788 >> S:R(15)-0/UVS<1->.;                                   S1 T2
+-------------------------------------------------------------------------
+
+ 790 GOSUB 752-762*4
+ 792 END
+
+1010 YYYY**AAAA*YYYY**AAAA*
+1012 YYYY**AAAA*YYYO+GHAAA*

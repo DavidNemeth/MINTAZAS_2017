@@ -1,0 +1,10 @@
+
+  SZELKTÍV SZOROSSÁG MEGADÁSA:
+
+  57 PA:1:JA1;
+  58 PANP:1:JA2;
+  59 F1=3-170
+  60 PM:<.>9:3(4W F1 5W..);
+  61 PMNP:<.>9:3(4. F1 7.);
+  62 NPJ1:.=13.2 I=14.2;
+  74 >>S:U^N<1-2->N.Z/.Z(J1)-N.Z(J1)/.%Z-N.Z/UVNN.;  Y:5/2;            T1 S1 S2 T2

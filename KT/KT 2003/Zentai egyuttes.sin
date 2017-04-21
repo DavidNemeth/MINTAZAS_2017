@@ -1,0 +1,165 @@
+C (14)OK
+   1 C ZENTAI EGYUTTES - TUNIKA - KISKABAT - TRIKO  (0.38+0.25=0.63KG=310-360FT)
+   1 C VAGY: PETIKT 2005/ZENTAI P
+   1 C H-U:CNCA 2004/ZENTAIH-U
+   1 C 2SZV.CSIPKE PASSZE+ 1SZV.CSIPKE, B-B KREPPEL (ELADAS:900)
+   1 C  FORDITVA PLATIROYVA
+   1 C NYAK:SP500 (1'40")(1 CSIK=2.5 NYAK. 30 TUNIKAHOZ 12 CSIK NYAK KELL)
+   1 C                                    RS1=  ELEJE 20'  HATA 11' UJJA4'/   TRIKO 9'
+   1 C                                      RS17=0          1         2        3
+   1 C---------------------+-------------------+---------+--------+--------+--------+
+   1 C                       LUSIFIL:      (75CM)136        67      22/52      52
+   1 C                       GILETTI:NPK=-0.2    134        66      21/51
+   1 C---------------------+-------------------+---------+--------+--------+--------+
+   1 C IF RS19=6 6 BAL OLDALI FEL LAP
+   1 C IF RS19=5 6 JOBB OLDALI FEL LAP
+  10 NP1=14.6   C:MINTA
+  12 NP3=14.2   C:PASSZE
+  16 NP6=14.6   C:U-H
+  18 NP2=11.4   C:1/1-ES PASSZE
+  20 NP4=12.6   C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52 WM=20
+  54 <<	S:D.I-DI./DI.-D.I;		        Y:5/2;	   ML  NP4-4 VU V0	       S1 S2
+  56 >>	S:D.I-DI./UVNDI.;          	Y:5;	     ML     	               S1    T2
+  58 <<	S:U^ND.I/DI.-D.I;		             			   ML                  T1 S1
+  60 >>	S:U^NDI./0-D.I/D.I-D.I;		   Y:2/6;	   ML        VR1	      T1	S1 S2
+  62 <<	S:R-0/0-D.I/R-0;		          Y:0/6/0;  ML  NP2-2 VU	       T1 S1 S2
+  64 >>	S:DI.-D.I;		               	Y:5;	     ML        VU V0        S1
+  66 << S:DI.-0/0-D.I;              Y:5/2;    ML        VU           S1 S2
+  68 >> S:DI.-D.I/DI.-D.I/UVSD.I;             ML        VU           S1 S2 T2
+
+  70 C 30 TUNIKA(10E,10H,15U), 30 KISKABAT(10E,10H,15U), 30 TRIKO(20T): ST=90
+
+  73   IF#100=21  RS17=0   C    ELEJE
+  74C  IF#100=15  RS17=1   C    HATA
+  75C  IF#100=9   RS17=2   C    UJJA
+  76C  IF#100=6   RS17=3   C    TRIKO
+
+  77   IF RS17=0   RS1=136   C    ELEJE
+  78   IF RS17=1   RS1=67    C    HATA
+  79   IF RS17=2   RS1=22    C    UJJA R/H 22/52
+  80   IF RS17=3   RS1=52    C    TRIKO 
+
+
+
+
+  82 JA1=1052(1004-1050);
+  84 JA2=1716(1702-1716) C SURUBB RIZS
+  86 FA=5-182;
+  88 PM:<.>8:3(IFAI);
+  90 IF RS19=6         FA=93-180;        C 6 BAL OLDALI FEL LAP
+  92 IF RS19=6         PM:<.>8:6(IFAI);  C 6 BAL OLDALI FEL LAP
+  94 IF RS19=5         FA=8-95;          C 6JOBB OLDALI FEL LAP
+  96 IF RS19=5         PM:<.>8:6(IFAI);  C 6JOBB OLDALI FEL LAP
+  98 FD=28-160
+ 100 IF RS17=2 PM:<.>7:4(IFDI);  C********* UJJA **********
+ 102 PA:1:<JA2>:1:<JA1>;
+ 104 VJA^0 
+ 106 #2=4
+ 108 IF RS17=2 #2=3 C UJJA
+ 110 WM=22
+ 112 REP*#2
+ 114 << S:U^SN./.-N./.-N./UVSNY.;          NP3-3       V0        T1 S1 S2 T2
+ 116 >> S:U^SN./.-N./.-N./UVSNY.;                      VL1 VKB>5 T1 S1 S2 T2
+ 118 REPEND
+ 120 << S:U^SN./.-N./.-N.;                 NP3-3   V0            T1 S1 S2
+ 122 >> S:.-N./.-N./UVNR;                                           S1 S2 T2
+ 124 IF RS17>0 GOTO400 C...............H-U........................................
+ 135 VJA^0
+ 140 Y:5/5/2/2;
+ 145 << S:U^S<1->N./.-N./UVNNY.;       NP1-1    V0           T1    S1 T2
+ 150 RBEG*RS1
+ 160 >> S:U^S<1->N./.-N./UVSNA.;                VL1 VKB>6    T1    S1 T2
+ 165 << S:U^S<1-2->N./.-N./UVNNY.;              V0           T1    S1 T2
+ 175 REND
+ 180 >> S:U^N<1->N./.-N./UVNN.;                 V0           T1 S1    T2
+ 185 << S:U^ND.I/DI.-D.I;              NP4-4                 T1 S1
+ 190 >> S:DI.-D.I/UVNR;                                         S1    T2
+ 195 END
+
+
+ 400 C ........H-U---------------
+ 420 PA:1:<JA2>;
+ 422 WM=28
+ 424 Y:2/5;  
+ 426 NP6-6
+ 428 RBEG*RS1
+ 430 << S:U^N<2->N./.-N./.-N./UVNN.;         VKA>2 NP6-6      T1 S1 S2 T2
+ 432 >> S:U^N<2->N./.-N./.-N./UVNN.;         VKA              T1 S1 S2 T2 
+ 434 REND
+ 438 << S:U^SD.I/DI.-D.I/DI.-D.I;             Y:2/5;   NP4-4  T1 S1 S2
+ 440 >> S:DI.-D.I/DI.-D.I/UVNR;                                  S1 S2  T2
+ 442 END
+
+ 500 C ---------------------NYAK -------------------------------------------------
+ 502 NP3=13.5   C:PASSZE
+ 503 NP13=13.5   C:PASSZE
+ 504 NP2=11.2   C:1/1-ES PASSZE
+ 506 NP4=13.0   C:LEVALASZTAS
+ 508 START
+ 510 YG:6/256;
+ 512 WM=20
+ 514 <<	S:D.I-DI./DI.-D.I;		        Y:5/2;	   ML  NP4-4 VU V0	       S1 S2
+ 516 >>	S:D.I-DI./UVNDI.;          	Y:5;	     ML     	               S1    T2
+ 518 <<	S:U^ND.I/DI.-D.I;		             			   ML                  T1 S1
+ 520 >>	S:U^NDI./0-D.I/D.I-D.I;		   Y:2/6;	   ML        VR1	      T1	S1 S2
+ 522 <<	S:R-0/0-D.I/R-0;		          Y:0/6/0;  ML  NP2-2 VU	       T1 S1 S2
+ 524 >>	S:DI.-D.I;		               	Y:5;	     ML        VU V0        S1
+ 526 << S:DI.-0/0-D.I;              Y:6/2;    ML        VU           S1 S2
+ 528 >> S:DI.-0/DI.-D.I;                      ML        VU           S1 S2
+ 530 << S:DI.-D.I/DI.-D.I;          Y:5/2;              VU           S1 S2
+ 532 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                    S1 S2 T2
+ 534 JA1=1052;
+ 536 FA=1-6;
+ 538 PM:<.>7:II<FA>546:II<.>;
+ 540 PA:<JA1>;
+ 542 VJA^0
+ 544 WM=22
+ 546 REP*3
+ 548 << S:U^SN./.-N./.-N./UVSNY.;          NP3-3       V0        T1 S1 S2 T2
+ 550 >> >> S:U^SN./.-N./.-N./UVSNY.;                   VL1 VKB>5 T1 S1 S2 T2
+ 552 REPEND
+ 554 << S:U^SN./.-N./.-N.;                 NP3-3       V0        T1 S1 S2
+ 556 >> S:.-N./.-N./UVNR;                                           S1 S2 T2
+ 558 << S:U^SD.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP2-2   T1 S1 S2
+ 560 >> S:DI.-D.I/DI.-D.I/UVNR;                                     S1 S2  T2
+ 562 END
+
+1002 190I
+1004 39X.6I.23X3I..3A..I.III3.3I.3X.3I..3A..I.III3.3I24X.6I.40XI
+1006 38X.4I4Y.22X2(3I..)I..3Y..3I.3X2(.3I.).I..3Y..3I23X.4I4Y.39XI
+1008 37X.4A5I.22X3I.3A3.2(I..II)I.3X.3I.3A3.2(I..II)I22X.4A5I.39XI
+1010 37X.5I5Y.21X2(3I.)..I3.3Y.3I.3X2(.3I)3.I3.3Y.3I22X.5I5Y.38XI
+1012 36X.5A6I.21X3I3A3.AI..2(.3I).3X.3I3A3.AI..2(.3I)21X.5A6I.38XI
+1014 36X.6I6Y.20X6I3.IIY3.3Y3I.3X.6I3.IIY3.3Y3I21X.6I6Y.37XI
+1016 35X.6A7I.20XII3A3.AAII3.6I.3X.II3A3.AAII3.6I20X.6A7I.37XI
+1018 35X.7I7Y.19X5I3.3IYY3.3YII.3X.5I3.3IYY3.3YII20X.7I7Y.36XI
+1020 34X.7A8I.19XI3A3.3A3I3.5I.3X.I3A3.3A3I3.5I19X.7A8I.36XI
+1022 34X.8I8Y19X4I3.4I3Y3.3YI.3X.4I3.4I3Y3.3YI19X.8I8Y36XI
+1024 34X8A9I19X3A3.3A.4I3.4I.3X.3A3.3A.4I3.4I19X8A9I36XI
+1026 34X17I19X3I3.III.I.3Y3.3Y.3X.3I3.III.I.3Y3.3Y19X17I36XI
+1028 34X9I7A.19X3I..3A..I.III3.3I.3X.3I..3A..I.III3.3I19X9I7A.36XI
+1030 34X.7Y8I.19X2(3I..)I..3Y..3I.3X2(.3I.).I..3Y..3I19X.7Y8I.36XI
+1032 34X.8I6A.20X3I.3A3.2(I..II)I.3X.3I.3A3.2(I..II)I19X.8I6A.37XI
+1034 35X.6Y7I.20X2(3I.)..I3.3Y.3I.3X2(.3I)3.I3.3Y.3I20X.6Y7I.37XI
+1036 35X.7I5A.21X3I3A3.AI..2(.3I).3X.3I3A3.AI..2(.3I)20X.7I5A.38XI
+1038 36X.5Y6I.21X6I3.IIY3.3Y3I.3X.6I3.IIY3.3Y3I21X.5Y6I.38XI
+1040 36X.6I4A.22XII3A3.AAII3.6I.3X.II3A3.AAII3.6I21X.6I4A.39XI
+1042 37X.4Y5I.22X5I3.3IYY3.3YII.3X.5I3.3IYY3.3YII22X.4Y5I.39XI
+1044 37X.5I3A.23XI3A3.3A3I3.5I.3X.I3A3.3A3I3.5I22X.5I3A.40XI
+1046 38X.3Y4I.23X4I3.4I3Y3.3YI.3X.4I3.4I3Y3.3YI23X.3Y4I.40XI
+1048 38X.6I.24X3A3.3A.4I3.4I.3X.3A3.3A.4I3.4I23X.6I.41XI
+1050 39X.5I.24X3I3.III.I.3Y3.3Y.3X.3I3.III.I.3Y3.3Y24X.5I.41XI
+1052 ..IYI.
+1054 4I2(.87I.)8I
+1634 IIIIIIIIIIII
+1702 I...II.II...
+1704 .II.I...I.II
+1706 I..I.III.I..
+1708 II..I.I.I..I
+1710 ..II.I.I.II.
+1712 I..III.III..
+1714 .II...I...II
+1716 .III..I..III

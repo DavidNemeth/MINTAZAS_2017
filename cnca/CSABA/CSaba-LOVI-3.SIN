@@ -1,0 +1,232 @@
+  1    START
+  50 YG:6/346;
+ 51    IF RS17=2 GOTO 410 C---UJJA********************************************************
+ 52 <<	S:D.I-DI./DI.-D.I;		Y:4/3;	                       NP4-4 V# V0	  S1 S2
+ 54 >> S:R-0/0-R;                             Y:4/3;      NP1-1         S1 S2
+ 55 <<	S:D.I-DI./DI.-D.I/UVNR;	               Y:4/3;	    NP4-4	       S1 S2 T2
+ 57 >>	S:R-R;		                               Y:6;	      NP2-2   	        S2
+ 58 <<	S:R-0/0-R;		                           Y:6/0;             	     S1 S2
+ 59 >>	S:R-R/0-R;	                             Y:4/3;	            ML   S1 S2  
+ 60 <<	S:R-0;		                              	Y:4;		   	 NP-0        S1
+ 62 >> S:0-R;                                              NP0-           S2
+ 66    JA1=1136(1136-1138)
+ 68    FA=3-7
+ 70    PA:JA1;
+ 72    PM:<.> 12:<FA> 578:<.>;
+ 74 << S:R-0/0-R/UVN.;                  Y:4/3;      NP2-2            S1 S2 T2
+ 76   REP*4
+ 78 >> S:U^N<1->N./.-N./.-N./UVNNT.;   Y:3/4;        V0             T1 S1 S2 T2
+ 80    VJA^0
+ 82 << S:U^N<1->N./.-N./.-N./UVNNY.;   Y:3/4;        VL1            T1 S1 S2 T2
+ 84   REPEND
+ 86 >> S:U^N<1->N./.-N./.-N./UVNNT.;   Y:3/4;       V0             T1 S1 S2 T2
+ 88 << S:U^N<1->N./.-N./.-N./UVNN.;   Y:3/4;        VL1            T1 S1 S2 T2
+ 150 C ---ELEJE-----------------------
+ 152 JA1=1132(1101-1130)
+ 153 IF RS18=1 JA1=1475(1401-1479)
+ 154 PA:JA1;
+ 155 FC=10-177
+ 156 FA=6-86
+ 157 FB=103-184
+ 158 CPM:<.> 11:FAFB III FAFB III FAFB;                          
+ 159 PM:<.> 11:FC III FC III FC;                          
+ 160 IF RS17=1 GOTO 375 C--HATA************************************************************
+200    C--------------------------------------------------------------------
+202 >> S:U^N<1->N./.-N./.-N./UVNNT.;  Y:3/4; NP1-1 V0   T1 S1 S2 T2
+204    VJA^0
+206 << S:U^N<1->N./.-N./.-N./UVNNY.;  Y:3/4;      VL1  T1 S1 S2 T2
+208 RBEG*RS2 C--------------------------------------------------------------
+210 >> S:U^N<1->N./.-N.WZ/.-N.WG/UVNYIHWGZ;      Y:3/4;       V0   T1 S1 S2 T2
+220 << S:U^N<1->TYIHWGZ/.-N.A+WZ/0-B/UVNTYIHWZG; Y:3/0; NP3-3 VL1  T1 S1 S2 T2
+230 >> S:UVNA+O;                                          NP0-0 VL3           T2
+240 << S:U^NTYIHWZG/.-TYI+O*Z/0-+/UVNTIHWZG;       Y:4/0;       VR2  T1 S1 S2 T2
+250 >> S:U^N<1->N.*B/.-N.WZ/UVNN.;               Y:3;         VR3  T1 S1    T2
+260 << S:U^NN./.-N.WG/UVNNT.;                      Y:3;         VR1  T1 S1    T2
+265    C--------------------------------------------------------------------
+270 >> S:U^N<1->N./.-N.WZ/.-N.WG/UVNTIHWZG;      Y:4/3; NP1-1 V0   T1 S1 S2 T2
+280 << S:U^N<1->TYIHWZG/.-N.A+WZ/0-B/UVNTYIHWZG; Y:4/0; NP3-3 VR1  T1 S1 S2 T2
+290 >> S:UVNA+O;                                          NP0-0 VR3           T2
+300 << S:U^NTYIHWZG/.-TYI+O*Z/0-+/UVNYIHWZG;       Y:3/0;       VL2  T1 S1 S2 T2
+310 >> S:U^N<1->N.*B/.-N.WZ/UVNN.;               Y:4;         VL3  T1 S1    T2
+320 << S:U^NN./.-N.WG/UVNNY.;                      Y:4;         VL1  T1 S1    T2 
+330 REND C-------------------------------------------------------------------
+340 >> S:U^N<1->N./.-N./.-N.W/UVNN.;             Y:3/4; NP1-1 V0   T1 S1 S2 T2
+350 << S:DI.-D.I/D.I-DI.;                                 NP4-4         S1 S2
+360 >>                                                                  S1 S2
+370 END
+375  C-----HATA-----**********************************************************************
+390   >> S:R-0/R-0;   Y:3/4;       V0  NP1-1            S1 S2
+392   RBEG*RS2
+393   REP*3
+394 << S:R-0/R-0;   Y:3/4;       V0                     S1 S2
+396 >> S:R-0/R-0;   Y:3/4;       V0                     S1 S2
+397   REPEND
+398   REND
+400   END
+410  C---UJJA*****NP3-3 :1/1-  PASSZ.********************************************************************
+425 << S:R-R/R-0;                      Y:3/4;      NP4-4  V0          S1 S2
+430 >> S:R-R/R-R;                                                     S1 S2
+435 << S:R-R/R-0;                                                     S1 S2
+440 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:3/4;      NP1-1              S1 S2 T2
+445 << S:U^ND.I/DI.-D.I;               Y:3;                        T1 S1
+450 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+455 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#       T1 S1 S2
+460 >> S:R-0/DI.-D.I;                  Y:0/3;      NP03-3 V# V0    T1 S1   
+465 << S:DI.I.I.I.-0/0-D.I;            Y:6/3;      NP0-   V#          S1 S2
+470 >> S:DI.I.I.I.-0/DI.I.I.I.-D.I.I.I.I; Y:6/3;          V#          S1 S2
+472    RBEG*RS1
+475 << S:DI.I.I.I.-D.I.I.I.I;          Y:3/4;             V#          S1 S2
+480 >> S:DI.I.I.I.-D.I.I.I.I;          Y:3/4;             V#          S1 S2
+485    REND
+488 << S:DI.I.I.I.-D.I.I.I.I;          Y:3/4;             V#          S1 S2
+490 >> S:DI.-D.I/DI.-D.I/UVND.I;       Y:3/4;             V#          S1 S2 T2
+493   GOTO 392
+1002 10(*I9Y*9AT)
+1004 10(*3(IYY)I*3(TAA)T)
+1006 10(*3(YIY)Y*3(AAT)A)
+1008 10(*I3(YIY)*3(ATA)T)
+1010 10(..I2(YIY)YI*2(TAA)TAT.)
+1012 10(3*I2(YIY)Y*2(AAT)AT**)
+1014 10(4.I2(YIY)*2(ATA)T3.)
+1016 10(5*IYIYYI*TAATAT4*)
+1018 10(6.IYIYY*AATAT5.)
+1020 10(7*IYIY*ATAT6*)
+1022 10(8.IYI*TAT7.)
+1024 10(9*IY*AT8*)
+1026 10(10.I*T9.)
+1028 10(*3(TAA)T*3(IYY)I)
+1030 10(*3(AAT)A*3(YIY)Y)
+1032 10(*3(ATA)T*I3(YIY))
+1034 10(*2(TAA)TAT3.I2(YIY)YI)
+1036 10(*2(AAT)AT5*I2(YIY)Y)
+1038 10(*2(ATA)T7.I2(YIY))
+1040 10(*TAATAT9*IYIYYI)
+1042 10(*AATAT11.IYIYY)
+1044 10(*ATAT13*IYIY)
+1046 10(*TAT15.IYI)
+1048 10(*AT17*IY)
+1050 10(*T19.I)
+1052 220.
+1054 220.
+1056 220.
+1058 220*
+1101 11.2(13.IYI..B**O+A..IY2(I15.)IYI..B**O+A..IYI)25.
+1102 11.2(13.ITI..B**O+A..IT2(I15.)ITI..B**O+A..ITI)25.
+1103 11.2(13.IYI..B**O+A..IYI14.3I14.IYI..B**O+A..IYI)25.
+1104 11.2(13.ITI..A+O**B..ITI13.5I13.ITI..A+O**B..ITI)25.
+1105 11.2(13.IYI..A+O**B..IYI12.2(3I.)11.IYI..A+O**B..IYI)25.
+1106 11.2(13.ITI..A+O**B..ITI8.2(3.3I)11.ITI..A+O**B..ITI)25.
+1107 11.2(13.IYI..B**O+A..IYI10.II2(I..)3I10.IYI..B**O+A..IYI)25.
+1108 11.2(13.ITI..B**O+A..ITI7.3(..3I)9.ITI..B**O+A..ITI)25.
+1109 11.2(13.IYI..B**O+A..IYI8.2(3I..II)I8.IYI..B**O+A..IYI)25.
+1110 11.2(13.ITI..A+O**B..ITI5.2(..3I)T2(3I..)5.ITI..A+O**B..ITI)25.
+1111 11.2(13.IYI..A+O**B..IYI4.2(..3I)YIY2(3I..)4.IYI..A+O**B..IYI)25.
+1112 11.2(13.ITI..A+O**B..ITI5.3I..I4(IT)II..3I5.ITI..A+O**B..ITI)25.
+1113 11.2(13.IYI..B**O+A..IYI4.3I..I5(IY)II..3I4.IYI..B**O+A..IYI)25.
+1114 11.2(13.ITI..B**O+A..ITI.2(..3I)4(TI)T2(3I..).ITI..B**O+A..ITI)25.
+1115 11.2(13.IYI..B**O+A..IYI..4I.II6(IY)3I.4I..IYI..B**O+A..IYI)25.
+1116 11.2(13.ITI..A+O**B..ITI..3I.I7(IT)I2(3I.).ITI..A+O**B..ITI)25.
+1117 11.2(13.IYI..A+O**B..IYI..4I.I7(IY)II.4I..IYI..A+O**B..IYI)25.
+1118 11.2(13.ITI..A+O**B..ITI3.3I..6(IT)2(3I..).ITI..A+O**B..ITI)25.
+1119 11.2(13.IYI..B**O+A..IYI4.3I..6(IY)I..3I4.IYI..B**O+A..IYI)25.
+1120 11.2(13.ITI..B**O+A..ITI5.3I..I4(IT)II..3I5.ITI..B**O+A..ITI)25.
+1121 11.2(13.IYI..B**O+A..IYI6.3I..I3(IY)II..3I6.IYI..B**O+A..IYI)25.
+1122 11.2(13.ITI..A+O**B..ITI7.3I..ITIT2(3I..)5.ITI..A+O**B..ITI)25.
+1123 11.2(13.IYI..A+O**B..IYI8.3I..IYIYI..3I8.IYI..A+O**B..IYI)25.
+1124 11.2(13.ITI..A+O**B..ITI7.3(..3I)9.ITI..A+O**B..ITI)25.
+1125 11.2(13.IYI..B**O+A..IYI10.II2(I..)3I10.IYI..B**O+A..IYI)25.
+1126 11.2(13.ITI..B**O+A..ITI8.2(3.3I)11.ITI..B**O+A..ITI)25.
+1127 11.2(13.IYI..B**O+A..IYI12.2(3I.)11.IYI..B**O+A..IYI)25.
+1128 11.2(13.ITI..A+O**B..ITI13.5I13.ITI..A+O**B..ITI)25.
+1129 11.2(13.IYI..A+O**B..IYI14.3I14.IYI..A+O**B..IYI)25.
+1130 11.2(13.ITI..A+O**B..IT2(I15.)ITI..A+O**B..ITI)25.
+1131 11.2(13.IYI..6I..IY2(I15.)IYI..6I..IYI)25.
+1132 11.2(13.ITI..6I..IT2(I15.)ITI..6I..ITI)25.
+1136 .37(..IYI)..
+1138 .37(..ITI)..
+1200 200.
+1266 35.ITI5.3I..6(IT)2(3I..)3.IT2(I17.)ITI5.3I..6(IT)2(3I..)3.ITI36.
+1268 35.IYI6.3I..6(IY)I..3I6.IYI16.3I16.IYI6.3I..6(IY)I..3I6.IYI36.
+1270 35.ITI7.3I..I4(IT)II..3I7.ITI15.5I15.ITI7.3I..I4(IT)II..3I7.ITI36.
+1272 35.IYI8.3I..I3(IY)II..3I8.IYI13.2(.3I)14.IYI8.3I..I3(IY)II..3I8.IYI36.
+1274 35.ITI9.3I..ITIT2(3I..)7.ITI12.2(.3I..)11.ITI9.3I..ITIT2(3I..)7.ITI36.
+1276 35.IYI10.3I..IYIYI..3I10.IYI12.II2(I..)3I12.IYI10.3I..IYIYI..3I10.IYI36.
+1278 24.3(11.ITI10.2(.3I.).3I)11.ITI36.
+1280 35.IYI12.II2(I..)3I12.IYI10.2(3I..II)I10.IYI12.II2(I..)3I12.IYI36.
+1282 35.ITI12.2(.3I..)11.ITI7.2(..3I)T2(3I..)7.ITI12.2(.3I..)11.ITI36.
+1284 35.IYI13.2(.3I)14.IYI6.2(..3I)YIY2(3I..)6.IYI13.2(.3I)14.IYI36.
+1286 35.ITI15.5I15.ITI7.3I..I4(IT)II..3I7.ITI15.5I15.ITI36.
+1288 35.IYI16.3I16.IYI6.3I..I5(IY)II..3I6.IYI16.3I16.IYI36.
+1290 35.IT2(I17.)ITI3.2(..3I)4(TI)T2(3I..)3.IT2(I17.)ITI36.
+1292 35.IY2(I17.)IYI4.4I.II6(IY)3I.4I4.IY2(I17.)IYI36.
+1294 35.IT2(I17.)ITI4.3I.I7(IT)I2(3I.)3.IT2(I17.)ITI36.
+1296 35.IYI16.3I16.IYI4.4I.I7(IY)II.4I4.IYI16.3I16.IYI36.
+1298 35.ITI15.5I15.ITI5.3I..6(IT)2(3I..)3.ITI15.5I15.ITI36.
+1300 35.IYI13.2(.3I)14.IYI6.3I..6(IY)I..3I6.IYI13.2(.3I)14.IYI36.
+1302 35.ITI12.2(.3I..)11.ITI7.3I..I4(IT)II..3I7.ITI12.2(.3I..)11.ITI36.
+1304 35.IYI12.II2(I..)3I12.IYI8.3I..I3(IY)II..3I8.IYI12.II2(I..)3I12.IYI36.
+1306 35.ITI10.3(.3I.)10.ITI9.3I..ITIT2(3I..)7.ITI10.3(.3I.)10.ITI36.
+1308 35.IYI10.2(3I..II)I10.IYI10.3I..IYIYI..3I10.IYI10.2(3I..II)I10.IYI36.
+1310 35.ITI7.2(..3I)T2(3I..)7.ITI10.3(.3I.)10.ITI7.2(..3I)T2(3I..)7.ITI36.
+1312 35.IYI6.2(..3I)YIY2(3I..)6.IYI12.II2(I..)3I12.IYI6.2(..3I)YIY2(3I..)6.IYI36.
+1314 35.ITI7.3I..I4(IT)II..3I7.ITI12.2(.3I..)11.ITI7.3I..I4(IT)II..3I7.ITI36.
+1316 35.IYI6.3I..I5(IY)II..3I6.IYI13.2(.3I)14.IYI6.3I..I5(IY)II..3I6.IYI36.
+1318 35.ITI3.2(..3I)4(TI)T2(3I..)3.ITI15.5I15.ITI3.2(..3I)4(TI)T2(3I..)3.ITI36.
+1320 35.IYI4.4I.II6(IY)3I.4I4.IYI16.3I16.IYI4.4I.II6(IY)3I.4I4.IYI36.
+1322 35.ITI4.3I.I7(IT)I2(3I.)3.IT2(I17.)ITI4.3I.I7(IT)I2(3I.)3.ITI36.
+1324 35.IYI4.4I.I7(IY)II.4I4.IY2(I17.)IYI4.4I.I7(IY)II.4I4.IYI36.
+1326 2(35.ITI5.3I..6(IT)2(3I..)3.ITI)36.
+1328 2(35.IYI6.3I..6(IY)I..3I6.IYI)36.
+1330 2(35.ITI7.3I..I4(IT)II..3I7.ITI)36.
+1332 2(35.IYI8.3I..I3(IY)II..3I8.IYI)36.
+1334 2(35.ITI9.3I..ITIT2(3I..)7.ITI)36.
+1336 2(35.IYI10.3I..IYIYI..3I10.IYI)36.
+1338 2(35.ITI10.3(.3I.)10.ITI)36.
+1340 2(35.IYI12.II2(I..)3I12.IYI)36.
+1342 2(35.ITI12.2(.3I..)11.ITI)36.
+1344 2(35.IYI13.2(.3I)14.IYI)36.
+1346 2(35.ITI15.5I15.ITI)36.
+1348 2(35.IYI16.3I16.IYI)36.
+1350 2(35.ITI16.3I16.ITI)36.
+1352 2(35.IY2(I17.)IYI)36.
+1354 2(35.IT2(I17.)ITI)36.
+1401 24.IYI..B**O+A..IY2(I15.)IYI..B**O+A..IYI..3HB**O+A..IYI..B**O+A..IY2(I15.)IYI..B**O+A..IYI25.
+1403 24.ITI..B**O+A..IT2(I15.)ITI..B**O+A..ITI..3HB**O+A..ITI..B**O+A..IT2(I15.)ITI..B**O+A..ITI25.
+1405 24.IYI..B**O+A..IYI14.3I14.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)12.3I14.IYI..B**O+A..IYI25.
+1407 24.ITI..A+O**B..ITI13.5I11.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI13.5I13.ITI..A+O**B..ITI25.
+1409 24.IYI..A+O**B..IYI12.2(3I.)9.2(..IYI..A+O**B)3H..IYI..A+O**B..IYI12.2(3I.)11.IYI..A+O**B..IYI25.
+1411 24.ITI..A+O**B..ITI8.2(3.3I)9.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI8.2(3.3I)11.ITI..A+O**B..ITI25.
+1413 24.IYI..B**O+A..IYI10.II2(I..)3I10.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)8.II2(I..)3I10.IYI..B**O+A..IYI25.
+1415 24.ITI..B**O+A..ITI7.3(..3I)9.ITI..B**O+A..ITI..3H2(B**O+A..ITI..)5.3(..3I)9.ITI..B**O+A..ITI25.
+1417 24.IYI..B**O+A..IYI8.2(3I..II)I8.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)6.2(3I..II)I8.IYI..B**O+A..IYI25.
+1419 24.ITI..A+O**B..ITI5.2(..3I)T2(3I..)3.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI5.2(..3I)T2(3I..)5.ITI..A+O**B..ITI25.
+1421 24.IYI..A+O**B..IYI4.2(..3I)YIY2(3I..)..2(..IYI..A+O**B)3H..IYI..A+O**B..IYI4.2(..3I)YIY2(3I..)4.IYI..A+O**B..I$
+1423 $YI25.
+1425 24.ITI..A+O**B..ITI5.3I..I4(IT)II..3I3.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI5.3I..I4(IT)II..3I5.ITI..A+O**B..I$
+1427 $TI25.
+1429 24.IYI..B**O+A..IYI4.3I..I5(IY)II..3I4.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)..3I..I5(IY)II..3I4.IYI..B**O+A..I$
+1431 $YI25.
+1433 24.ITI..B**O+A..ITI.2(..3I)4(TI)T2(3I..).ITI..B**O+A..ITI..3H2(B**O+A..ITI..).3I..II5(IT)2(3I..).ITI..B**O+A..ITI$
+1435 $25.
+1437 24.IYI..B**O+A..IYI..4I.II6(IY)3I.4I..IYI..B**O+A..IYI..3H2(B**O+A..IYI..)4I.II6(IY)3I.4I..IYI..B**O+A..IYI25.
+1439 24.ITI..A+O**B..ITI..3I.I7(IT)4I.3I2(..ITI..A+O**B)3H..ITI..A+O**B..ITI..3I.I7(IT)I2(3I.).ITI..A+O**B..ITI25.
+1441 24.IYI..A+O**B..IYI..4I.I7(IY)II.4I2(..IYI..A+O**B)3H..IYI..A+O**B..IYI..4I.I7(IY)II.4I..IYI..A+O**B..IYI25.
+1443 24.ITI..A+O**B..ITI3.3I..6(IT)3I..3I.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI3.3I..6(IT)2(3I..).ITI..A+O**B..ITI25.
+1445 24.IYI..B**O+A..IYI4.3I..6(IY)I..3I4.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)..3I..6(IY)I..3I4.IYI..B**O+A..IYI.$
+1447 $4.
+1449 24.ITI..B**O+A..ITI5.3I..I4(IT)II..3I5.ITI..B**O+A..ITI..3H2(B**O+A..ITI..)3.3I..I4(IT)II..3I5.ITI..B**O+A..I$
+1451 $TI25.
+1453 24.IYI..B**O+A..IYI6.3I..I3(IY)II..3I6.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)4.3I..I3(IY)II..3I6.IYI..B**O+A..I$
+1455 $YI25.
+1457 24.ITI..A+O**B..ITI7.3I..ITIT2(3I..)3.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI7.3I..ITIT2(3I..)5.ITI..A+O**B..ITI.$
+1459 $4.
+1461 24.IYI..A+O**B..IYI8.3I..IYIYI..3I6.2(..IYI..A+O**B)3H..IYI..A+O**B..IYI8.3I..IYIYI..3I8.IYI..A+O**B..IYI25.
+1463 24.ITI..A+O**B..ITI7.3(..3I)7.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI7.3(..3I)9.ITI..A+O**B..ITI25.
+1465 24.IYI..B**O+A..IYI10.II2(I..)3I10.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)8.II2(I..)3I10.IYI..B**O+A..IYI25.
+1467 24.ITI..B**O+A..ITI8.2(3.3I)11.ITI..B**O+A..ITI..3H2(B**O+A..ITI..)6.2(3.3I)11.ITI..B**O+A..ITI25.
+1469 24.IYI..B**O+A..IYI12.2(3I.)11.IYI..B**O+A..IYI..3H2(B**O+A..IYI..)9.2(.3I)12.IYI..B**O+A..IYI25.
+1471 24.ITI..A+O**B..ITI13.5I11.2(..ITI..A+O**B)3H..ITI..A+O**B..ITI13.5I13.ITI..A+O**B..ITI25.
+1473 24.IYI..A+O**B..IYI14.3I12.2(..IYI..A+O**B)3H..IYI..A+O**B..IYI14.3I14.IYI..A+O**B..IYI25.
+1475 24.ITI..A+O**B..IT2(I15.)ITI..A+O**B..ITI..A+O**B3H..ITI..A+O**B..IT2(I15.)ITI..A+O**B..ITI25.
+1477 24.IYI..6I..IY2(I15.)IYI..2(6I..IYI..3I)3I..IY2(I15.)IYI..6I..IYI25.
+1479 24.ITI..6I..IT2(I15.)ITI..2(6I..ITI..3I)3I..IT2(I15.)ITI..6I..ITI25.

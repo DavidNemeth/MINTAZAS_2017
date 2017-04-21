@@ -1,0 +1,64 @@
+  20 NP7=13.3              C:1SZV KREPP
+
+--------- Ez a rész a passze után kell! -------
+ 290 IF RS17=1  GOTO 400 C 1 H. KR
+ 291 IF RS17=2  GOTO 400 C 1 HU KR
+ 292 IF RS17=5  GOTO 400 C 1 MH KR
+ 293 IF RS17=13 GOTO 400 C 2 H. KR
+ 294 IF RS17=16 GOTO 400 C 2 HU KR
+-------------------------------------------------
+
+ 400 C** HATA-UJJA ** 1SZV.KREPP **
+ 402 PA:1:<JA2>;
+ 412 WM=15
+ 414 Y:2/2/5/5;
+ 416 NP7-7
+ 418 RBEG*RS1
+ 420 << S:U^N<2->N./.-N./UVNI;                     T1 S1     T2
+ 422 >>                                            T1 S1     T2
+ 424 REND
+ 426 << S:U^SD.I/DI.-D.I;              NP4-4       T1 S1
+ 428 >> S:DI.-D.I/UVSD.I;                             S1     T2
+ 430 END
+
+C$$$$$$ BUKLÉVAL (LE KELL DOBNI S2-VEL A FENNAKADT SZEMEKET): $$$
+ 260 WM=15
+ 262 Y:2/0/2/0/5/0/5/0;
+ 264 NP7-7
+ 266 RBEG*RS2
+ 268 << S:U^SI/.-I/I-./UVS<1->.;                 T1 S1 S2 T2
+ 270 >>                                          T1 S1 S2 T2
+ 272 REND
+ 274 <<                                          T1 S1 S2 T2
+ 276 >> S:U^SI/.-I/I-./UVSI;                     T1 S1 S2 T2
+ 278 << S:U^SD.I/DI.-D.I;              NP4-4       T1 S1
+ 280 >> S:DI.-D.I/UVSD.I;                             S1     T2
+ 299 END
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+1050 WWWWWWWWWWWW
+1052 II.II...I...
+1054 I.I.I..III..
+1056 .I.I.II...II
+1058 .III..I.I.I.
+1060 I...II.I.I.I
+1062 ..I..III.III
+1064 II.II...I...
+1066 II.III..I..I
+1068 ..I...II.II.
+1070 II.II.I...I.
+1072 ..I..I.III.I
+1074 I...I.II.II.
+1076 .III.I..I..I
+1078 II.III..I..I
+1080 ..I...II.II.
+1082 WWWWWWWWWWWW
+VAGY 2SZV:
+1704 I...II.II...
+1706 .II.I...I.II
+1708 I..I.III.I..
+1710 II..I.I.I..I
+1712 ..II.I.I.II.
+1714 I..III.III..
+1716 .II...I...II
+1718 .III..I..III

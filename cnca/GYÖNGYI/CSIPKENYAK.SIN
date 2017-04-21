@@ -1,0 +1,46 @@
+   1 C CSIPKE NYAK CP CSN RS1= RS2=
+   2 C 
+   3 C NYERS LUSI+TX:      
+   5 C J2:14.5  CS.PASSZE
+  19 C B2:11.7 BEKEZDES
+  20 C J4:12.5 LEVALASZTAS,1/1               
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  78 C************************************
+  80 JA1=1998(1992-1994);  C  CSIPKE PASSZE
+  84 PA:1:<JA1>;
+  94 FA=1-10;PM:<.>11:<FA>544:<.>;
+  98 C************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	               S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	          S1
+ 106 << S:R-0/0-R;                    Y:6/0;            	               S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2                 S1
+ 110 Y:2/2/5/5;
+ 112 RBEG*RS1
+ 114 << S:R-0;		                                NP2-02           S1
+ 116 >> S:0-R;		                                NP0-             S1
+ 118 REND
+ 120 << S:R-0;                                  NP-0             S1
+ 122 >> S:0-R/UVN.;                             NP0-             S1 T2
+ 124 << S:U^NN./.-N./UVNN.;                                   T1 S1    T2
+ 126 >> S:R-0;                            V#                     S1
+ 128 REP*4
+ 130 << S:U^NY;                                    VR1 NP0-0     T1
+ 132 >> S:U^NA;                                    VL1 NP0-0     T1
+ 134 << S:U^NI/.-N./UVN<1->AYI.;                   V0            T1 S1 T2 
+ 136 >> S:R-0;                                                      S1
+ 138 REPEND
+ 140 RBEG*RS2
+ 142 << S:U^NI/.-N./UVNN.;                               T1 S1 T2 
+ 144 >> S:R-0;                                              S1
+ 146 REND
+ 148 END
+1992 IIIIIIIIII
+1994 IIIIIIIIII
+1995 IIIIAIYIII
+1996 IIIAAIYYII
+1997 IIAAAIYYYI
+1998 IAAAAIYYYY

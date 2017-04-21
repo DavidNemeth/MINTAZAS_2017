@@ -1,0 +1,82 @@
+   1 C RIZS 1X1 PASSZEVAL(2SZV. BAL-BAL KREPP)  ********** CP RIZS1X1 RS10=0 RS1= ************
+   2 C        
+   3 C  1: <-------------       ------------->   
+   4 C            
+   5 C     
+   6 C J2: <-------------       ------------->
+   7 C         -     -              -     - 
+   8 C       11.75 11.75          11.75 11.75
+   9 C B2: <-------------       ------------->  BEKEZDES,PASSZE 1X1
+  10 C       11.75 11.75          11.75 11.75      
+  11 C         -     -              -     -    
+  12 C J3: <-------------       ------------->   
+  13 C         -     -              -     -
+  14 C       15.0  15.0           15.0   15.0
+  15 C B3: <-------------       ------------->  BAL-BAL KREPP
+  16 C       15.2  15.2           15.2   15.2
+  17 C       13.0   13.0         13.0   13.0
+  18 C J4: <-------------       ------------->  LEVALASZTAS
+  19 C       13.0   13.0         13.0   13.0
+  20 C B4:=J4
+  21 C TUAGYKORREKCIOK:  V0:->1-2.25
+  22 C                   R1:->0-3     _________R2:- ________R3:-
+  23 C                   L1:-         _________L2:- ________L3:-
+  24 C                                                       HATA:        UJJA:
+  25 C    10 SULY                                            57-           -56
+  26 C TUN:0.54KG*497=270FT.           NP3=                    RS1=          RS1=
+  27 C-----------------------+----------------+------------+-----------+------------+
+  28 C                                                      65CM:   (FARKAS)
+  34 C   3X16/1 LUSIFIL:    H.TUAGY:   15.0                 68CM:   (PULI)
+  35 C                                      (FEHER:-1--2)   73CM:64 (KISK)  (FEHER:-1)
+  36 C                      E.TUAGY:   15.2                 76CM:65 (TUNI)  23-51  0.54KG
+  37 C   GILETTI:                                           73CM:64 (KISK)     50
+  38 C-----------------------+----------------+------------+-----------+------------+
+  40 START
+  50 YG:6/256;
+  53  IF RS10=15  RS1=51 C  R-H UJJA
+  54  IF RS10=25  RS1=65 C  HATA
+  55 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+  56 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  58 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  60 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  62 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  64 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+  66 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+  68 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+  70 << S:DI.-0/DI.-D.I;                                       V#      S1 S2
+  72 REP*3
+  74 >> S:DI.-D.I;                                     V#           S1 S2
+  76 <<                                                V#           S1 S2
+  78 REPEND
+  80 >> S:DI.-D.I;                                     V#           S1 S2
+ 105 JA2=1018(1004-1018)
+ 400 C******** H-U ***********
+ 410 FA=5-183;
+ 412 PM:<.>8:FAIFAIFA;
+ 414 FD=27-160
+ 416 IF RS1<57 PM:<.>8:FDIFDIFDIFD;  C********* UJJA **********
+ 418 PA:<JA2>;
+ 422 << S:U^NN./UVN.;    NP0-0                  T1  T2
+ 424 >> S:U^NN./UVN.;    NP03-03                T1  T2
+ 426 << S:.-N./.-N./UVNN.;             Y:2/5;            V0      S1 S2 T2
+ 428 RBEG*RS1
+ 430 >> S:U^N<2->N./.-N./.-N./UVNN.;                     V0   T1 S1 S2 T2
+ 432 << S:U^N<2->N./.-N./.-N./UVNN.;                          T1 S1 S2 T2 
+ 434 REND
+ 436 GOSUB 430
+ 438C << S:U^ND.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP4-4  T1 S1 S2
+ 440C >> S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2  T2
+ 450 RS10=RS10-1
+ 460 IF RS10>0 GOTO 53
+ 470 END
+1002 WWWWWWWWWWWW
+1004 I...II.II...
+1006 .II.I...I.II
+1008 I..I.III.I..
+1010 II..I.I.I..I
+1012 ..II.I.I.II.
+1014 I..III.III..
+1016 .II...I...II
+1018 .III..I..III
+1020 WWWWWWWWWWWW
+1991 ....AIA

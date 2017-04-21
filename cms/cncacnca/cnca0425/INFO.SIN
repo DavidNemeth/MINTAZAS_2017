@@ -1,0 +1,93 @@
+Tesztelés:
+:CP név.SIN RS1=...
+:CP-S név.SIN RS1=...  soronként tesztel
+:ED a program megnyitható,javítható
+Lyukasztás:
+C:\MINTÁZÁS\CNCA>ADDPAR név.SIN név.SPA
+C:\MINTÁZÁS\CNCA>PUNCH név.SPA
+Port 1 megnyitása:
+BR9600
+BOOT:1 SPACE,2 SPACE, 7,Y,R,P,ML RETURN
+BOOT törlése:CTRL B
+
+CNCA-n:
+-lista:
+ ::dir a:
+-másolás C-be flopiról:
+ ::copy a:... .sin
+-CLEAR fordítása:
+  SP
+  CTRL A
+  CPF CLEAR.SIN
+
+REPORT:
+SIN.............TELJES IDÕ
+RUN.............TISZTA ÜZEMIDÕ
+V=V.............TÚLTERHELÉS-KAR
+/_\.............FONALÕR
+000.............DARABSZÁMLÁLÓ
+>!..............TÚLTERHELÉS
+_/].............TÛÕR
+%...............ÁRULEHÚZÓ
+PR..............PROGRAMOZÁS
+MS~.............PROGRAMOZOTT ÁLJ!
+->/.............ÜTKÖZÉS(HANGDETEKTOR)
+V[].............TÛÁGYVÁLTÓ HIBA
+#<>.............LÖKETEK SZÁMA
+ML..............LASSÚ LÖKETEK SZÁMA
+ST..............DARABSZÁM
+CNCA JACQUARD SZIMBÓLUMOK:X.AY*TI+O
+ KT  JACQUARD SZIMBÓLUMOK:X.AY*TI+OBGHWZ
+
+ 150 JA1=1774(1004-1682); :(X)MINTA;EBBEN VANNAK AZ X-EK
+ 152 JA2=1804(1804-1810)  :ALAP;EZ LÁTSZIK AZ X-EK HELYÉN
+ 153 PA:<JA2>1:<JA1>8:II182:II; IF RS17=1 PA:<JA2>;
+
+ SÜLLYESZTÕ LAKATOK ÁTFEDÉSE A CNCA-N:
+   1C         -      -            X      X
+   1C J4: <-------------       ------------->  LEVALASZTAS
+   1C         -      -            X      X 
+   1C         X      X            -      - 
+   1C B4: <-------------       ------------->  LEVALASZTAS
+   1C         X      X            -      - 
+
+
+  PM MEGADÁSOK 552 TÛRE:
+ 415 FA=1-6
+ 420 3 LAP: PM:<FA>1:9. 186:3. 365:3. 544:9.;
+     4 LAP: PM:<FA>1:9. 141:3. 275:3. 409:3. 543:10.;
+
+ VAGY:
+ 3 LAP:
+ 415 FA=1-176
+ 420  PM:<.>10:3(FA...);
+
+ 4 LAP:
+ 415 FA=1-131
+ 420  PM:<.>10:4(FA...);
+
+
+  PATRONKORREKCIÓ A CNCA-N:
+  FA=11-186;
+  PM:<.>9:3(FA....);
+  PA:4:JA1 11:I  185:I.;
+     PK^:0; PKV:0;               V0
+
+     PK^:5:JA1   11:.I 186:I;     VL1
+      PA:4:JA1    11:I 185:I.;    VL1
+
+     PK^:6:JA1  11:..I 186:I;     VL2
+     PKV:4:JA1    11:I 184:I..;   VL2
+
+     PK^:2:JA1    11:I 183:I...;  VR2
+     PKV:4:JA1  11:..I 185:I.;    VR2
+
+     PK^:1:JA1    11:I 182:I....; VR3
+     PKV:4:JA1 11:...I 185:I.;    VR3
+
+ ÜRES SOR:
+ 999 <> W0 S0
+
+ BIOSCODETAMAS
+ FELH.AZONOSÍTÓ:dob16587
+ JELSZÓ:5eWG3FRX

@@ -1,0 +1,60 @@
+
+C 2 LAJTOS FEHER + 1TX NPK=0   
+
+C  4 DB ---- ----SZELES NYAK RS1=7 --- CSAK ELOL -- HATUL LETUZVE
+C  2 V 3 DB ---- KESKENY NYAK RS1=3 --- KORBE MEGY (HA HATUL IS KI VAN KEREKITVE, CSAK 2 JON KI BELOLE)
+C  RS1 MEGADASA: 850.SORBAN
+
+C**********NYAK********************************
+  44 C IF #100=130 RS17=50          C CSIPKE NYAK  A LEVALASZTAS IS JAC.
+C************************************
+  71 C IF RS17=50 GOTO 800
+C************************************
+
+ 800 C************* MADONNA NYAK 2007.12.01.**********EZ A LEGJOBB********
+ 802 C *** NEM RAGJA A SZELET, MERT A LEVALASZTAST IS JAC.-BOL KOTI.*********************
+ 804 C 1'31"
+ 806 C*******************
+ 808 NP4=12.4   C:LEVALASZTAS
+ 810 NP12=11.5  C:BEKEZDES
+ 816 NP13=11.2  C:2SZV. CSIPKE    
+
+818   START        
+820   YG:6/256;	
+ 822 WM=16;WMI=7
+824   << S:D.I-DI./DI.-D.I;        Y:5/2;         NP4-4   VU V0      S1 S2
+ 826 C** CSIPKE NYAK ************
+ 830 JA1=1001;PA:1:<JA1>;
+ 832 FA=1-2; PM:<.>7:*<FA>576:<.>;   C*581TU  VAGY: PM:<.>7:*<FA>575:*<.>;
+ 834 >>	S:D.I-DI./UVS.*Y;   	      Y:5;                              S1    T2
+ 836 <<	S:U^SI/.*Y-I;		              			                          T1 S1
+ 838 >> S:U^SY/.*I-I;              Y:6;                   VR1     T1    S2
+ 840 << S:.*-I/I-0;                Y:6/0;                    VU      S1 S2
+ 842 >>	S:.*Y-I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 844 << S:.-I;                     Y:6;                      VU      S1
+ 846 >> S:.*Y-0/.-I;               Y:5/6;                    VU      S1 S2
+ 847 << S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+
+C---------KICSIT HOSZABB AZ 1/1 (2SOR)---KICEZHETO-------------------------
+ 848 >> S:.*Y-I;                   Y:5;                    VU      S1
+ 849 << S:.*Y-I;                   Y:5;                    VU      S1
+C---------------------------------------------------------------------------
+ 850 RS1=3
+
+ 851 >> S:.*Y-I/.*Y(13)-I(13)/UVS.*Y;       Y:5/2;                         S1 S2 T2
+ 852 VJA^0
+ 854 NP13-13
+ 855 RBEG*RS1
+ 856 CREP*2
+ 858 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 860 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;                         V0      T1 S1 S2 T2 C  VKA<2
+ 862 CREPEND
+ 863 REND
+ 864 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 866 >> S:U^SI*/.Y-I*/.Y(4)-I*(4)/UVSI*;                        V0      T1 S1 S2 T2 C VKA 
+ 868 END C**********************************************************
+
+
+ 999 <> W0 S0
+
+1001 IY

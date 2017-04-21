@@ -1,0 +1,103 @@
+   1 C ZENTAI HATA-UJJA*****CP ZENTAI RS10= RS17=***********
+   2 C       15.00  15.00        15.00  15.00
+   3 C  1: <------+------       ------+------> 2 SZALVEZ.CSIPKE (VAGY B3)
+   4 C       14.00  14.00        14.00  14.00
+   5 C     
+   6 C J2: <-------------       ------------->
+   7 C         -     -              -     - 
+   8 C       
+   9 C B2: <-------------       -------------> 
+  10 C          
+  11 C         -     -              -     -    
+  12 C J3: <-------------       ------------->   
+  13 C         -     -              -     -
+  14 C       14.9  14.9           14.9   14.9
+  15 C B3: <-------------       ------------->  BAL-BAL KREPP
+  16 C       15.3  15.3           15.3   15.3
+  17 C       13.0   13.0         13.0   13.0
+  18 C J4: <-------------       ------------->  LEVALASZTAS
+  19 C       13.0   13.0         13.0   13.0
+  20 C B4:=J4
+  21 C TUAGYKORREKCIOK:  V0:->3
+  22 C                   R1:->0-3 __________R2:     _________R3:
+  23 C                   L1:<-1.0 __________L2:     _________L3:
+  24 C
+  25 C    10 SULY
+  26 C                                                   HATA 11'  UJJA 4' TRIKO 9'
+  27 C                                                   RS17=1      2         3
+  28 C---------------------+-------------------+---------+--------+--------+--------+
+  29 C                    H.TUAGY:15.0  LUSIFIL:(75CM) RS1=  67       22       52
+  30 C                    E.TUAGY:15.4  GILETTI:             66       21       51
+  31 C---------------------+-------------------+---------+--------+--------+--------+
+  32 C H-U KULON KOTVE:RS10=0 ...  EGYBE KOTVE:RS10=OSSZ.DARABSZAM, ST=1
+  40 START 
+  50 YG:6/256;
+  52 C IF RS10=21  RS17=0   C    ELEJE NINCS BENNE!!!
+  54   IF RS10=15  RS17=1   C    HATA
+  56   IF RS10=9   RS17=2   C    UJJA
+  58 C IF RS10=6   RS17=3   C    TRIKO
+  60 IF RS17=0   RS1=136   C    ELEJE
+  62 IF RS17=1   RS1=67    C    HATA
+  64 IF RS17=2   RS1=22    C    UJJA R/H 22/52
+  66 IF RS17=3   RS1=52    C    TRIKO 
+  70 << S:D.I-DI./DI.-D.I;	         Y:2/5; 	 ML     NP4-4   V0 V# 	    S1 S2
+  72 VJA^1 
+  74 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  76 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  78 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  80 << S:U^NDI.;                            ML     NP0-0           T1
+  82 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+  84 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+  86 >>	S:DI.-D.I;		                 Y:2;	   ML     NP0-       V#         S2
+  88 << S:0-D.I/DI.-0;               Y:5/2;  ML                V#      S1 S2
+  90 >> S:DI.-D.I/DI.-D.I/UVSD.I;            ML                V#      S1 S2 T2
+  92 JA1=1052;
+  94 FA=6-182;
+  96 PM:<.>9:3(FA...);
+  98 FD=30-164
+ 100 IF RS17=2 PM:<.>6:4(FD.);  C********* UJJA **********
+ 102 PA:1:<JA1>;
+ 104 VJA^0 
+ 106 << S:0-0;    NP0-0          Y:0;        ML  S1
+ 108 >> S:0-0;    NP01-01                    ML  S1  C VAGY NP03-03
+ 110 #2=4
+ 112 IF RS1<45 #2=3
+ 114 Y:5/2;
+ 116 REP*#2
+ 118 << S:U^NN./.-N./.-N./UVNNY.;             ML         V0        T1 S1 S2 T2
+ 120 >> S:U^NN./.-N./.-N./UVNNY.;             ML         VL1       T1 S1 S2 T2
+ 122 REPEND
+ 124 << S:U^NN./.-N./.-N.;                    ML         V0        T1 S1 S2
+ 126 >> S:.-N./.-N./UVNR;                     ML                      S1 S2 T2
+ 205 JA2=1018(1004-1018)
+ 400 C******** H-U ***********
+ 410 FA=5-183;
+ 412 PM:<.>8:FAIFAIFA;
+ 414 FD=27-160
+ 416 IF RS17=2 PM:<.>8:FDIFDIFDIFD;  C********* UJJA **********
+ 418 PA:<JA2>;
+ 422 << S:U^NN./UVN.;    NP0-0                ML  T1  T2
+ 424 >> S:U^NN./UVN.;    NP03-03              ML  T1  T2
+ 426 << S:.-N./.-N./UVNN.;             Y:2/5; ML           V0      S1 S2 T2
+ 428 RBEG*RS1
+ 430 >> S:U^N<2->N./.-N./.-N./UVNN.;                     V0   T1 S1 S2 T2
+ 432 << S:U^N<2->N./.-N./.-N./UVNN.;                          T1 S1 S2 T2 
+ 434 REND
+ 436 GOSUB 430
+ 438C << S:U^ND.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP4-4  T1 S1 S2
+ 440C >> S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2  T2
+ 450 RS10=RS10-1
+ 460 IF RS10>0 GOTO 52
+ 470 END
+1002 WWWWWWWWWWWW
+1004 I...II.II...
+1006 .II.I...I.II
+1008 I..I.III.I..
+1010 II..I.I.I..I
+1012 ..II.I.I.II.
+1014 I..III.III..
+1016 .II...I...II
+1018 .III..I..III
+1020 WWWWWWWWWWWW
+1052 ..IYI.
+1991 ....AIA

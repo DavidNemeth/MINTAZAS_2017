@@ -1,0 +1,218 @@
+1C
+C!!!!!!!!! AZ UJ KT SZAKITJA - NEM TUDOK VELE MIT CSINALNI!!!!!!!!!!!!!!
+C
+C NECCES VAGY NAGYLYUKU KORSLAG PASSZEVAL A MELLENY ES A KARDI PANTJA IS ELOL MEG VAN KOTVE 20CM-ES KUKACCAL
+C 3 15/1 PAMUT - MINEL TOBBET ATPARAFINOZNI!!!!!!!!!!!!
+C
+
+C Y2: 3 PAMUT
+C Y3: 3 PAMUT   1 DOBOZ LAJTOS FEKETE :30KG - KB.54-60DB.KK
+C Y4: 3 PAMUT       NINCS 30KG EZERT 4-5 DKGR-AL TOBBET KELL SZAMOLNI,DE CSAK EZ A FONAL A JO,
+C Y5: 3 PAMUT       MERT ORSOZAS NELKUL LEMEGY. A FEHERBOL JO A TAMASE IS. Y:5-NEL 1-2 PAMUTOT NEM ART ATORSOZNI!
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+CMELLENY I 3*15/1 I 0.37-0.38I  140    I     5    I       I       I         I     IML:24'I       I     I 
+CTIMI:56*77        *690=260                          70      470   ELLA:750   280 IGY:17'I  700  I 37% I
+CELLA:58*77                                                        TIMI:900   430          1075    47%
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C KK HU  I 3*15/1 I 0.52     I  140    I     5    I       I       IELLA:850 I 270 IML:37'I  440  I 31% I 
+C                         2016.01.21.-EN MEGBESZELTUK, HOGY LEGKOZELEBB 950 LESZ
+C 54*77  I        I          I         I          I       I       I         I     I      I       I     I
+C 58*77            *690=360                          70      580   TIMI:1000  420           680    42%
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C56*77HUKK 12.05.:0.47*790=372  140    I      5   I   60  I  577  I  850    I 273 IUJGY23I  712  I 32% I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C KK RU  I 3*15/1 I 0.45*550 I  140    I     4    I       I  392  I  700    I 308 I 19'  I  972  I 44% I 
+C 56*77  I        I   248    I         I          I       I       I         I     I      I       I     I
+C 58*77            *660=297                                  441
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 56*60            0.54                                            750-800
+C HU KAPUCNIS
+C
+C !!!!!!!PLATIR:SZINES PAMUT:ALUL (HOLD) FEHER PAMUT:FEUL (LYUK)!!!!!!!!!!!!!!!!!!
+ C    KT:NPK=0
+ C   PKT:NPK=0.2  WM%=-5
+ C   UJ:NPK=0.3  WM%=+15
+ C FKETE:NPK=0
+ C FEHER:NPK=0
+  10 C PANT: CP NP
+  12 NP4=12.6               C LEVALASZTAS
+  14 NP2=10.2   C BEKEZDES    
+  16 NP3=13.8   C SLAG PASSZE 
+
+
+  18 NP1=14.0    C MINTA     
+  20 NP7=13.4    C MINTA    
+  22 NP5=11.5    C VAKSZEM   C VAKSZEM KT=12.0 PKT=11.5  UJ=11.5
+
+  24 NP8=14.0    C MINTA     
+  26 NP9=13.4    C MINTA     
+  28 NP6=12.0    C VAKSZEM   
+
+  40 START        
+  50 YG:6/23456; C VAGY !!!!!!!!!!242-256 ES 632 SOROKAT BE KELL ALLITANI!!!!!!!
+  50 YG:6/256;   C VAGY !!!!!!!!!!242-256 ES 632 SOROKAT BE KELL ALLITANI!!!!!!!
+
+  51 WM=16;WMI=7
+  52 << S:0-R(3)/R(2)-R(4);            Y:5/2;  NP4-4    VU V0       S1 S2
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+  54 C
+
+C-----------------------------------------YG:6/256;:-(LASSU)------I-------------YG:6/23456;-(GYORS)------ 
+  60 IF #100=13  RS17=50 C 1PANT        2'-2'30        0.05KG    
+  62	CIF #100=13  RS17=0  C T-T-T        GY:23' ML:32'  0.45KG
+  64 CIF #100=70   RS17=1  C H UUUU       GY:17' ML:26' 0.32KG
+
+  66C IF #100=30   RS17=50 C 1PANT        2'-2'30                         
+  68C IF #100=38   RS17=0  C T-T-T        KTGY:23' PKTML:35' UJML:  I  KTGY:     UJML:     UJGY:21'
+  70C IF #100=39   RS17=1  C H UUUU       KTML:32' PKTML:28' UJML:  I  KTGY:     UJML:     UJGY:16'
+
+  72C IF #100=52  RS17=50 C 1PANT        2'-2'30                         
+  74C IF #100=69 RS17=0  C T-T-T        KTGY:23' PKTML:35' UJML:  I  KTGY:     UJML:     UJGY:21'     
+  76C IF #100=113 RS17=1  C H UUUU       KTML:26' PKTML:28' UJML:  I  KTGY:     UJML:     UJGY:16'     
+
+  78C IF #100=9 RS17=6  C T-T-T-1/2T  ( 50CM SZELES KK-HOZ. HOSSZAT BE KELL ALLITANI!) 
+ C----------------------------------------------------------------------------------------------------------------------
+
+  80 C IF #100=15   RS17=2         C RU       0.15                   8'
+  82 C IF #100=1    RS17=3         C KK
+  84 C IF #100=2    RS17=4         C KAPUCNI
+  92 C************************************************
+  94 IF RS17=50 GOTO 600          C  PANT                                    0.045KG
+ 100 C*********************************************KESZ MERET:****VASALVA:****************
+ 102 IF RS17=0  RS19=3 RS1=73  C TTT      72-75           77   I     82      0.45 KG
+ 104 IF RS17=1  RS19=4 RS1=54  C 4HU      53-56           58   I     62      0.35 KG
+ 106 IF RS17=2  RS19=4 RS1=27  C 4RU      26-27           27   I     29
+ 108 IF RS17=6  RS19=6 RS1=    C TTT+1/2T                  
+ 112 IF RS17=3  RS19=1 RS1=55  C KK
+ 114 IF RS17=4  RS19=1 RS1=26  C KAPUCNI
+C------------------------------------------------------------------------------------------------------------
+C                                     LAJT.30        TAMAS       TAMAS       TAMAS FEH.
+C                                     FEKETE:        FEHER       NYERS     + FUST,MOGYI
+C            PARAFINOZNI:             4SZAL  
+C ELLA:+0.2-+0.3
+C------------------------------------------------------------------------------------------------------------
+C KT :WM%=0       NPK=0               -0.1-0.1         0.2 
+C                 RS17=0                                                                       
+C------------------------------------------------------------------------------------------------------------
+CPKT :WM%=-10     NPK=0                  
+C                 RS17=0                                                                        
+C------------------------------------------------------------------------------------------------------------
+C UJ :WM%=15-20   NPK=0                             0.3
+C                 RS17=0                   
+C------------------------------------------------------------------------------------------------------------
+
+ 150 JA1=1100(1100-1102);
+ 152 PA:<JA1>; 
+ 154 FA=1-6
+ 156 PM:8.<FA>576:<.>;                         C TELI TUAGYRA (581TU)
+ 158 IF RS19=3 PM:8. 3(31FA 3.)       6.;      C 3LAP
+ 160 IF RS19=4 PM:8. 4(23FA 4.)       5.;      C 4LAP
+ 162 IF RS19=5 PM:10.5(18FA 5.)       6.;      C 5LAP
+ 164 IF RS19=6 PM:8. 3(26FA 4.)14FA   9.;      C T-T-T-1/2T
+ 166 IF RS19=1 PM:8.   94FA           9.;      C 1LAP
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                                     S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	               	           S1    T2
+ 204 >> S:R-R;		                      Y:6;	                 VU            S2
+ 206 << S:R-0/0-R;                    Y:6/0;                VU	        S1 S2
+ 208 >> S:R-R;                        Y:5;    NP2-2         VU         S1
+ 210 NP3-3
+ 212 Y:5/2;
+ 214 WM=18
+ 216 REP*4
+ 218 << S:R-0/0-R;       Y:5/2;                              VU         S1 S2
+ 220 >> S:0-R/R-0;                                          VU         S1 S2
+ 222 REPEND
+ 224 << S:UVNDI.;                                                            T2
+ 226 >> S:UVND.I;                                                            T2
+ 228 << S:R-0;                          Y:5;   NP1-1        VU            S2
+ 230 WM=0
+ 232 >> S:U^ND.I;                                           T1
+ 234 WM=16
+ 236 << S:U^NDI./0-R;                   Y:2;                T1 S1
+ 238 >> S:0-R/0-R(14.2);                      Y:5/2;       VU        S1 S2
+ 240 VJA^1
+
+
+C-------VAGY----YG:6/23456;------ IB*+AY --------------------------------------
+C  24 NP8=13.8    C MINTA  NP1 VAGY 8 
+C  26 NP9=13.2    C MINTA  NP7 VAGY 9 
+C  28 NP6=11.5    C VAKSZEM 
+C---VAGY--YG:6/23456;LEGYORSABB ----IB*+AY-----3/4---SZAKITJA A FEKETET- LEHET HOGY ATKELL PARAFINOZNI 1-1 SZALAT,FOLEG Y:5-NEL!?
+ 242 RBEG*RS1
+ 243 WM=12
+ 244 <> S:<1->0-R(1)/+(6)-R(8)/UVN*;   Y:3/5;       V0        S1 S2 T2 C Y:5 SZAKITJA HA SZAR A FONAL
+ 246 WM=0
+ 248 <> S:U^N*/+(4)-0/UVSA+;           Y:0;         VR1    T1    S1 T2
+ 250 WM=18
+ 252 <> S:U^NAY/0-N+(7)/0-R(1);        Y:2/4;       VL1    T1 S1 S2
+ 254 C
+ 256 REND
+C-----VAGY---YG:6/256;(MAJDNEM IGY KOTI A CNCA IS)--- IB*+AY ---------------4/4----
+C  18 NP1=14.0    C MINTA   KT:13.8 PKT:13.8
+C  20 NP7=13.4    C MINTA   KT:13.2 PKT:13.2
+C  22 NP5=12.0    C VAKSZEM KT=12.0 PKT=11.5  UJ=11.0
+ 242 RBEG*RS1
+ 243 WM=12
+ 244 << S:<1->+(5)-R(1)/+(4)-0/UVNA+;  Y:5/0;       V0        S1 S2 T2
+ 246 WM=0
+ 248 >> S:U^NA+/UVS*;                               VL2    T1       T2
+ 250 WM=18
+ 252 << S:U^NI/0-N+(7);                Y:2;         VL1    T1    S1
+ 254 >> S:0-R(1)/0-R;                  Y:5/2;   VU  V0        S1 S2
+ 256 REND
+C------------------------------------------------------------------------
+
+ 257 IF #124=0 GOTO 270
+ 258 << S:0-R/0-R/UVND.I;             Y:5/2; V0 S1 S2 T2      C Y:5/2; VAGY Y:3/4;
+ 260 >> S:D.I-DI.;              NP4-4        VU S1 S2
+ 262 << S:D.I-DI.;                           VU S1 S2
+ 264 >> S:D.I-DI./D.I-DI./UVNDI.;               S1 S2 T2
+ 266 END
+
+ 270 >> S:0-R/0-R/UVND.I;             Y:5/2; V0 S1 S2 T2
+ 272 << S0 W0 VU
+ 274 >> S:D.I-DI.;              NP4-4 Y:3/4; VU S1 S2
+ 276 << S:D.I-DI.;                           VU S1 S2
+ 278 >> S:D.I-DI./D.I-DI./UVNDI.;               S1 S2 T2
+ 280 END
+
+ 600 C ************** ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL ************
+ 602 C CNCA 2010/ CP NP
+ 604 NP4=12.5               C LEVALASZTAS
+ 606 NP12=9.4   C BEKEZDES
+ 608 NP14=12.4   C 1/1
+ 610 NP13=13.4   C SLAG PASSZE
+ 612 C START
+ 614 C YG:6/256;
+ 616 C <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	      NP4-4   V0	VU      S1 S2
+ 618 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                            S1    T2
+ 620 <<	S:U^ND.I/DI.-D.I;		              			                      T1 S1
+ 622 >> S:DI.-D.I;                   Y:5;                 VR1 VU     S1
+ 624 << S:U^NDI./0-D.I;                                           T1 S1
+ 626 >> S:0-D.I/DI.-D.I;             Y:2/6;               V0 VU      S1 S2
+ 628 << S:0-D.I/R-0;                 Y:6/0;                  VU      S1 S2
+ 630 >>	S:D.I-D.I;		                 Y:5;	          NP12-12   VU      S1
+ 632 Y:2/5;
+ 634 REP*1
+ 636 << S:0-D.I/D.I-0;                              NP14-14    VU      S1 S2
+ 638 >>                                                        VU      S1 S2
+ 640 REPEND
+ 642 << S:D.I(14)-DI.(12);                      Y:2;                       VU      S1
+ 644 >> S:DI.(12)-D.I(14);                                                 VU      S1
+ 648 WM=18
+C---------------------------------VAGY-VAGY:--------------
+C                             Y:3/4; VAGY Y:2/5;
+C---------------------------------------------------------
+ 650 REP*6
+ 652 << S:R-0/0-R;                   Y:5/2;         NP13-13    VU      S1 S2
+ 654 >> S:0-R/R-0;                                             VU      S1 S2
+ 656 REPEND
+ 658 END
+
+ 999 <> S0 W0 VU
+
+1100 IB*+AY
+1102 +AYIB*

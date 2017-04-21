@@ -1,0 +1,52 @@
+   1 C RUHA PANT --------- OVES 2 PASSZEJABOL ---------
+
+  10 NP4=12.3;              C LEVALASZTAS
+  12 NP11=9.5               C BEKEZDES     2
+  14 NP12=14.0              C PASSZE       5
+  16 NP13=14.4              C PASSZE       6
+  18 NP10=11.8              C:SLAG
+C     KT:NPK=0
+C    PKT:NPK=0.2 WM%=-10
+C     UJ:NPK=0.2
+C FEKETE:NPK=0.3
+  40  START
+  42  YG:6/256;
+  44 WM=17 WMI=7
+  50  <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+    
+ 100 C************581TU**************************************************************
+ 102 JA1=1106(1100-1102)   C CSIPKE PASSZE
+ 104 PA:1:<JA1>;
+ 106 FA=1-8; PM:6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 108 C********************************************************************************
+ 110 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 112 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 114 >>	S:D.I-DI.;		                 Y:2;	               VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 116 <<	S:UVSDI.;		                      	                               T2
+ 118 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 120 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 122 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 124 Y:2/2/5/5;
+ 128 << S:D.I-0/UVSDI.;                                              S1    T2
+ 132 >> S:R-0;                          NP13-13         VU           S1
+ 134 REP*2 C ******  AZSUR PASSZE *********
+ 136 WM=0
+ 138 << S:U^SA;                                   VL1      T1
+ 140 >> S:U^SY;                                   VR1      T1
+ 142 WM=17
+ 144 << S:U^SI*/.-N./UVS<1->N.;         NP12-12    V0       T1 S1 T2 
+ 146 >> S:R-0;                          NP13-13         VU      S1
+ 148 REPEND C*********************************
+ 150 GOSUB 136-142
+ 152 << S:U^SI*/.-N./.-N.;    Y:2/5;     NP10-10    V0       T1 S1 S2 
+ 153 REP*4 C** SLAG**
+ 154 >> S:.-N.;                     VU     S1 S2
+ 156 <<                             VU     S1 S2
+ 158 REPEND
+ 160 >> S:.-N./.(4)-N.(4);          VU     S1 S2
+ 162 END
+
+1100 IIIIIIII
+1102 IAAAIYYY
+1104 IIAAIYYI
+1106 IAAAIYYY

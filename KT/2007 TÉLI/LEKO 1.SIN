@@ -1,0 +1,214 @@
+   1 C  GYONGY-KUKORICAS***LEKO MINTAJA 
+   1 C ZIIPPZARAS*KOCKAZSEBBEL*KAPUCNIVAL*VISSZAHAJTOTT MANDZSETTA***********
+   1 C          NYERS:400FT/KG
+   1 C         SZINES:450FT/KG
+   1 C             HB:1100FT/KG    SUM.:530FT/KG
+C------------------------------------------------------------------------------
+  1 C   ZIPPES KK.:                  
+  1 C     FONAL:    560                  
+  1 C   CIPPZAR:     55 (55-60CM)
+  1 C VALLTOMES:      5              
+  1 C    VARRAS:    280                
+  1 C     OSSZ.:    900                 
+  1 C        E.:   1400
+  1 C        H.:    500                     
+C------------------------------------------------------------------VAGY:------------
+  1 C Y2:3XNYERS LUSI+1HB 60% ------------GYONGY-KUKORICA          
+  1 C Y5:3XNYERS LUSI     15% ------------KUKOPRICA                
+  1 C Y4:4XFUST  LUSI     25% ------------GYONGY                   
+  1 C Y3:3HB -----------------------------SORMINTA                 
+  1 C-----------------------+------------+------------+------------+-------------+
+
+
+  10 NP4=12.8;   C:LEVALASZTAS
+  11 NP2=11.0;   C:BEKEZDES
+  12 NP3=14.4;   C:KORSLA
+
+  13 NP7=13.8;   C:SORMINTA    
+  14 NP8=8.0;    C:SORMINTA    
+  16 NP5=10.0;   C:REX A SORMINTABAN
+  18 NP6=13.2;   C:SORMINTA
+  19 NP9=11.0;   C:SORMINTA
+
+  20 NP1=12.0;   C KUKORICA
+  22 NP6=13.0;   C GYONGY
+  40 START        
+  50 YG:6/23456;
+C-------------------------------------------------
+C !!!MEG NEM JO!!!4  51 C IF #100=12    RS17=5     C*U-E-H-U !!!MEG NEM JO!!!
+
+  52 C IF #100=17     RS17=0     C*ELEJE 4 LAP (2X60CM-RE KELL VASALNI!!)
+  54 C IF #100=13     RS17=1     C*HATA  4 LAP (2X60CM-RE KELL VASALNI!!)
+
+  56 C IF #100=3     RS17=3     C*ELEJE 3 LAP
+  58 C IF #100=1     RS17=4     C*HATA  3 LAP
+
+  60   IF #100=9     RS17=2     C*UJJA  4 LAP VAGY 5 LAP (!!!!!A 84. ES A 112.SORBAN KELL BEALLITANI!!!!!!)
+
+  62  IF #100=11    RS17=10    C 2KAPUCNI+2PAR ZSEB
+  64 C IF #100=3     RS17=11    C 2GALLER+2PAR ZSEB
+
+C-------------------------------------------------
+  72 WM=18;WMI=7
+  74 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C------------------------------------------------------------------------------
+
+  75 IF RS17=5   RS1=14  RS2=16   RS3=18  RS4=20   C   U-E-H-U  55CM ZIPPEL KESZEN:65CM
+
+  76 IF RS17=0   RS1=32  RS2=16   RS3=18  RS4=38   C   E 4 LAP  55CM ZIPPEL KESZEN:65CM
+  78 IF RS17=1   RS1=32  RS2=76                    C   H 4 LAP                         
+
+  80 IF RS17=3   RS1=32  RS2=16   RS3=18  RS4=30   C   E 3 LAP  60CM ZIPPEL KESZEN:70CM
+  82 IF RS17=4   RS1=32  RS2=68                    C   H 3 LAP                         
+
+  84 IF RS17=2   RS1=9   RS2=85                    C   U 4 LAP MANDZSETTA VISSZAHAJTVA   !!!!!!!!VAGY!!!!!!!!
+  84 IF RS17=2   RS1=9   RS2=93                    C   U 5 LAP MANDZSETTA VISSZAHAJTVA   !!!!!!!!VAGY!!!!!!!!
+
+  86 IF RS17=10  RS1=4   RS2=38                    C   2KAPUCNI+2PAR ZSEB                 
+  88 IF RS17=11  RS1=4   RS2=20                    C   2GALLER+2PAR ZSEB                          
+
+C------------------------------------------------------------------------------
+
+  90 >> S:D.I-DI./DI.-D.I/UVNDI.;                            ML       S1 S2 T2
+  91 << S:DI.-D.I/UVND.I;             Y:2;	             	  VU   ML       S1    T2
+  92 >> S:R-R;		                      Y:6;	       NP2-2    VU  	   ML          S2
+  93 << S:R-0/0-R;                    Y:6/0;      NP4-4 	  VU      ML       S1 S2
+  94 >> S:R-R;                        Y:2;        NP2-2    VU      ML       S1
+  95 NP3-3
+  96 REP*5C5
+  97 << S:R-0;		                                           VU   ML    S1
+  98 >> S:0-R;		                                           VU   ML    S1
+  99 REPEND
+
+ 100 JA1=1004;JA2=1006;JA3=1008(1008-1010)
+ 102 PA:1:<JA1>:501:<JA2>;  C JA1:.I.I    JA2:+Y+Y
+
+C--------------581TU--------------------------------------------------------
+ 108 IF RS17=5  FA=2-156;FB=502-628;  PM:<*>8:FB*FA*FA*FB;    C**U-E-H-U
+ 110            FA=2-144;             PM:<*>6:4FA 576:*;      C**4 LAP H
+
+ 112 IF RS17=2  FA=502-644;           PM:<*>6:4FA 576:*;      C**4 LAP U             !!!!!!!!VAGY!!!!!!!!
+ 112 IF RS17=2  FA=502-614;           PM:<*>7:5(FA*) 576:*;   C**5 LAP U             !!!!!!!!VAGY!!!!!!!!
+
+
+ 114 IF RS17=10 FA=1-284;             PM:<*>7:2FA;            C**2KAPUCNI+2PAR ZSEB
+ 115 IF RS17=11 FA=1-284;             PM:<*>7:2FA;            C**2GALLER+2PAR ZSEB
+C----------------------------------------------------------------------
+ 116 IF RS17=3 FA=1-187;              PM:<*>9:3(FA**);        C*3 LAP E 581TU
+ 118 IF RS17=4 FA=1-187;              PM:<*>9:3(FA**);        C*3 LAP H 581TU
+C----------------------------------------------------------------------
+ 150 WM=0
+ 155 << S:U^N.+/UVNIY*;          ML T1 T2
+ 160 >> S:0-0;   Y:0; VU S1
+
+
+ 200 RBEG*RS1
+ 202 GOSUB 350-358 C KUKORICA
+ 204 REND
+
+ 206 IF RS17=2 GOSUB 400-410 C SLAG AZ UJJAN
+ 208 IF RS17=2 GOTO 214
+ 
+ 210 GOSUB 460-466
+ 212 GOSUB 500-544 C SORMINTA
+
+ 214 RBEG*RS2
+ 216 GOSUB 550-558 C GYONGY
+ 218 REND
+
+ 220 IF RS17=1  GOTO 300 C END H 
+ 222 IF RS17=2  GOTO 300 C END U
+ 224 IF RS17=4  GOTO 300 C END H
+ 226 IF RS17=10 GOTO 300 C END KAPUCNI
+ 227 IF RS17=11 GOTO 300 C END GALLER
+
+ 228 GOSUB 480-486
+ 230 GOSUB 500-544 C SORMINTA
+
+ 232 RBEG*RS3
+ 234 GOSUB 450-458 C KUKORICA
+ 236 REND
+
+ 238 GOSUB 460-466
+ 240 GOSUB 500-544 C SORMINTA
+
+ 242 RBEG*RS4
+ 244 GOSUB 550-558 C GYONGY
+ 246 REND
+
+
+ 300 << S:IY*-.+/IY*-%.+;          VU      S1 S2
+ 302 >> S:IY*-.+/IY*-.+/UVN.+;         ML   S1 S2 T2
+ 304 END
+
+
+
+ 350 C*****KUKORICA AZ UJJAN FORDITVA*************************************
+ 352 NP1-1;WM=30
+ 354 << S:IY*-.+/I*%Y-+%.;   Y:5/2;  VU      S1 S2
+ 356 >> S:I*%Y-+%./IY*-.+;   Y:2/5;  VU      S1 S2
+ 358 C****************************************************
+
+ 400 C*****SLAG AZ UJJAHOZ******************************************
+ 402 << S:IY*-.+/I*%Y-+%./UVS+;   Y:5/2;  NP1-1   S1 S2 T2
+ 404 >> S:IY*+-%./IY*+-.;         Y:5/2;  VU      S1 S2
+ 406 << S:IY*+-./IY*+-%.;         Y:5/2;  VU      S1 S2
+ 408 >> S:U^S+/IY*-%.+/IY*-.+;    Y:5/2;       T1 S1 S2
+ 410 C**************************************************************
+
+ 450 C*****************KUKORICA*****************************
+ 452 NP1-1;WM=30
+ 454 << S:IY*-.+/IY*-%.+;   Y:5/2;  VU      S1 S2  C
+ 456 >> S:IY*-%.+/IY*-.+;   Y:2/5;  VU      S1 S2  C
+ 458 C****************************************************
+
+
+C  13 NP7=13.8;   C:SORMINTA    
+C  14 NP8=8.0;    C:SORMINTA    
+C  16 NP5=10.0;   C:REX A SORMINTABAN
+C  18 NP6=13.2;   C:SORMINTA
+C  19 NP9=11.0;   C:SORMINTA
+ 460 C****ATMENET KUKORICA***********************
+ 462 WM=24
+ 464 << S:IY*-%.+;      Y:3;       VU    S1
+ 466 C**************************************
+ 480 C****ATMENET GYONGY***********************
+ 482 WM=24
+ 484 << S:IY*-.+;      Y:3;       VU    S1
+ 486 C**************************************
+
+ 500 C*******SORMINTA****************************
+ 506 JA3=1008(1008-1010);PA:1:<JA3>:501:<JA3>;
+ 508 >> S:U^SI./R-I.;       NP8-5    T1 S1
+ 510 WM=24
+ 512 REP*2
+ 514 << S:*.I-%I;           NP6-8       S1
+ 516 >> S:*-.I;             NP9-7       S1
+ 518 REPEND
+ 520 << S:*.I-%I;           NP6-8       S1
+ 522 >> S:R-<3->I.;         NP5-5  VR1  S1
+ 524 REP*2
+ 526 << S:*.I-%I;           NP6-9       S1
+ 528 >> S:*-.I;             NP2-7       S1
+ 530 REPEND
+ 532 << S:*.I-%I;           NP6-8       S1
+ 534 >> S:R-I.;             NP5-5  V0   S1
+ 536 PA:1:<JA1>:501:<JA2>;
+ 538 WM=10
+ 540 << S:U^S.+/UVSN.+;              T1    T2
+ 542 >> W0 S0
+ 544 C****************************************************
+
+ 550 C*****GYONGY**********************************
+ 552 WM=26;NP6-6 
+ 554 << S:IY*-.+/IY*-%.+;   Y:4/2; VU      S1 S2
+ 556 >> S:IY*-.+/IY*-%.+;          VU      S1 S2
+ 558 C****************************************************
+
+1004 .I
+1006 +Y
+1008 ..I
+C VAGY:
+1010 .I.
+C VAGY:
+1010 I..

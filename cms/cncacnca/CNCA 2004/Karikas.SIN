@@ -1,0 +1,264 @@
+   1 C KARIKAS *****KISKABAT+TRIKO CP KARIKAS RS19=0 RS10=(DB.) RS1=
+   2 C           RS19=0:VAR.I.:  RITKABBAK A LUKAK, GYORSABB. EZ A JO!!!!!!4
+   3 C           RS19=1:VAR.II.: SURUBBEK A LUKAK, LASSABB
+   4 C                             NP1=    RS1=
+   5 C                             E/H     ELEJE-HATA:    UJJA:        TRIKO:63CM.
+   6 C TUNIKA                               RS1 (73CM)    (30CM)         (64CM)
+   7 C                                         15-30       -15               31-
+   8 C-----------------------+-----------+-------------+----------+------------------+
+   9 C 3X16/1 LUSIFIL:                     T.:  22 75CM     9            57
+  10 C                                    KK.:  21 72CM     9        
+  11 C-----------------------+-----------+-------------+----------+------------------+
+  12 C          1991 ....AIA
+  13 C       15.0  15.0           15.0  15.0
+  14 C 1: <-------------       ------------->  MINTA
+  15 C       14.5  14.5           14.5  14.5  
+  16 C       11.5  11.5           11.5  11.5
+  17 C B2: <-------------       ------------->  BEKEZDES,PASSZE
+  18 C       11.5  11.5           11.5  11.5     (PIKO PANT)
+  19 C       15.0  15.0           15.0  15.0
+  20 C B3: <------+------       ------+------> TRIKO
+  21 C       15.2  15.2           15.2  15.2
+  22 C       13.0   13.0         13.0   13.0
+  23 C J4: <------+------       ------+------> ELVALASZTAS
+  24 C       13.0   13.0         13.0   13.0
+  25 C 10 SULY
+  26 C TUAGYKORREKCIOK: V0:->1.5
+  27 C                  R1:->3__________R2: - ________R3:-
+  28 C                  L1:<-3   _______L2: - ________L3:-
+  40 START 
+  50 YG:6/256;
+  52   IF RS10=23  RS1=14 C  E-H
+  54   IF RS10=14  RS1=6  C  UJJA 
+  56 C IF RS10=31  RS1=56 C  TRIKO
+  58 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  60 JA1=1991;
+  62 PA:<JA1>; 
+  64 FA=2-8; 
+  66 PM:<.>6:77FA;
+  67 VJA^1
+  68 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S2    T2
+  70 << S:U^NA/.I-A;                         ML                     T1 S1
+  72 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  74 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  76 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  78 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  80 Y:5/2/2/5;
+  82 >> S:.I-.I/.-0;                         ML     NP2-2              S1 S2
+  84 << S:0-./.-.;                           ML                        S1 S2
+  86 >> S:.-.;                               ML                        S1 S2
+  88 <<                                      ML                        S1 S2
+  90 >> S:.-./.I-.I;                         ML                        S1 S2
+  92 << S:R-R;                               ML                        S1 S2
+  94 >> S:R-R;                               ML                        S1 S2
+  96 <<                                      ML                        S1 S2
+  97 IF RS1>30 GOTO 400 C*********TRIKO***************
+  98 IF RS19=0 GOTO 300
+ 100 C *********VAR.II.:*****SURUBBEK A LUKAK, LASSABB********
+ 101 JA1=1244(1118-1244)
+ 110 PA:JA1;
+ 120 FA=6-182;
+ 130 PM:<.>8:3(IFAI.);
+ 132 >> S:UVN.;            NP0-0      T2
+ 134 << S:U^NN.;           NP01-01    T1
+ 160 >> S:.-N./.-N./UVNYA;                    S1 S2 T2
+ 170 RBEG*RS1
+ 174 << S:U^NY;             NP0-0                     VR1         T1
+ 176 >> S:U^SA;             NP0-0                     VL1         T1
+ 180 << S:.Y-IA;                                   V# V0             S1 S2
+ 182 >> S:U^S<1->Y/<1->.-N./<1->.-N./UVN<1->AY;                   T1 S1 S2 T2
+ 184 REND
+ 220 GOSUB 174-180
+ 225 >> S:U^N<1->Y/<1->.-N./<1->.-N./UVNDI.;                      T1 S1 S2 T2
+ 245 << S:U^ND.I/DI.-D.I;                            Y:5;  NP4-4  T1 S1
+ 250 >> S:DI.-D.I/UVSD.I;                                            S1    T2
+ 252 RS10=RS10-1
+ 254 IF RS10>0 GOTO 52
+ 256 END
+ 300 C *********VAR. I.:****RITKABBAK A LUKAK, GYORSABB*********
+ 301 JA1=1114(1004-1114)
+ 302 PA:JA1;
+ 304 FA=6-182;
+ 305 FB=29-160
+ 306 PM:<.>8:3(IFAI.);
+ 307 IF RS1<15 PM:<.>8:4(IFBI.);  C**U**
+ 308 >> S:UVN.;             NP0-0       T2
+ 310 << S:U^NN.;            NP01-01     T1
+ 316 >> S:.-N./.-N./UVNYA;                    S1 S2 T2
+ 318 RBEG*RS1
+ 322 << S:U^NY;             NP0-0                    VR1          T1
+ 324 >> S:U^SA;             NP0-0                    VL1          T1
+ 328 << S:.Y-IA;                                  V# V0              S1 S2
+ 330 >> S:U^S<1->Y/<1->.-N./<1->.-N.;                             T1 S1 S2
+ 332 << S:.-N./.-N./UVN<1->AY;                                       S1 S2 T2
+ 336 >> S:U^NY;             NP0-0                     VR1         T1
+ 338 << S:U^SA;             NP0-0                     VL1         T1
+ 342 >> S:.Y-IA/.Y-IA;                             V# V0             S1 S2
+ 344 << S:U^S<1->Y/<1->.-N./<1->.-N.;                             T1 S1 S2
+ 346 >> S:.-N./.-N./UVN<1->AY;                                       S1 S2 T2
+ 348 REND
+ 350 GOSUB 322-328
+ 352 >> S:U^N<1->Y/<1->.-N./<1->.-N./UVNDI.;                      T1 S1 S2 T2
+ 354 << S:U^ND.I/DI.-D.I;                           Y:5;  NP4-4   T1 S1
+ 356 >> S:DI.-D.I/UVSD.I;                                            S1    T2
+ 358 RS10=RS10-1
+ 360 IF RS10>0 GOTO 52
+ 362 END
+ 400 C******** H-U ***********
+ 401 JA2=1632(1602-1632)
+ 410 FA=6-183;
+ 412 PM:<.>8:3(IFAI);
+ 414 FD=28-160
+ 416 IF RS1<57 PM:<.>7:4(IFDI);  C********* UJJA **********
+ 418 PA:<JA2>;
+ 422 >> S:U^NN./UVN.;    NP03-03                  T1  T2
+ 424 << S:U^NN./UVN.;    NP0-0                T1  T2
+ 426 >> S:.-N./.-N./UVNN.;             Y:2/5;            V0      S1 S2 T2
+ 428 RBEG*RS1
+ 430 << S:U^N<2->N./.-N./.-N./UVNN.;                     V0   T1 S1 S2 T2
+ 432 >> S:U^N<2->N./.-N./.-N./UVNN.;                          T1 S1 S2 T2 
+ 434 REND
+ 438 << S:U^ND.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP4-4  T1 S1 S2
+ 440 >> S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2  T2
+ 450 RS10=RS10-1
+ 460 IF RS10>0 GOTO 52
+ 470 END
+1004 191I
+1006 191I
+1008 47(YAII)YAI
+1010 47(YAII)YAI
+1012 191I
+1014 191I
+1016 47(IIYA)3I
+1018 47(IIYA)3I
+1020 191I
+1022 191I
+1024 47(YAII)YAI
+1026 47(YAII)YAI
+1028 191I
+1030 191I
+1032 47(IIYA)3I
+1034 47(IIYA)3I
+1036 191I
+1038 191I
+1040 47(YAII)YAI
+1042 47(YAII)YAI
+1044 191I
+1046 191I
+1048 3(A13I2(I2(IIYA))3(IIYA)2(IIYAI)IY)A16IYAIIYI
+1050 3(A13I2(I2(IIYA))3(IIYA)2(IIYAI)IY)A16IYAIIYI
+1052 191I
+1054 191I
+1056 3(4I2(IIYA)9IYA7(IYAI)YA3I)4I2(IIYA)9IYI
+1058 3(4I2(IIYA)9IYA7(IYAI)YA3I)4I2(IIYA)9IYI
+1060 191I
+1062 191I
+1064 3(IIYA3I2(7IYA)6(IYAI)YA5I)IIYA10IYA7I
+1066 3(IIYA3I2(7IYA)6(IYAI)YA5I)IIYA10IYA7I
+1068 191I
+1070 191I
+1072 3(3(IYA4I)II2(IYA)3(IIYAI)2(IYA)6I)3(IYA4I)II
+1074 3(3(IYA4I)II2(IYA)3(IIYAI)2(IYA)6I)3(IYA4I)II
+1076 191I
+1078 191I
+1080 3(IIYA3I2(7IYA)6(IYAI)YA5I)IIYA10IYA7I
+1082 3(IIYA3I2(7IYA)6(IYAI)YA5I)IIYA10IYA7I
+1084 191I
+1086 191I
+1088 3(4I2(IIYA)9IYA7(IYAI)YA3I)4I2(IIYA)9IYI
+1090 3(4I2(IIYA)9IYA7(IYAI)YA3I)4I2(IIYA)9IYI
+1092 191I
+1094 191I
+1096 3(A13I2(I2(IIYA))3(IIYA)2(IIYAI)IY)A16IYAIIYI
+1098 3(A13I2(I2(IIYA))3(IIYA)2(IIYAI)IY)A16IYAIIYI
+1100 191I
+1102 191I
+1104 47(YAII)YAI
+1106 47(YAII)YAI
+1108 191I
+1110 191I
+1112 47(IIYA)3I
+1114 47(IIYA)3I
+1118 191I
+1120 191I
+1122 47(IIYA)3I
+1124 47(IIYA)3I
+1126 191I
+1128 191I
+1130 47(YAII)YAI
+1132 47(YAII)YAI
+1134 191I
+1136 191I
+1138 47(IIYA)3I
+1140 47(IIYA)3I
+1142 191I
+1144 191I
+1146 47(YAII)YAI
+1148 47(YAII)YAI
+1150 191I
+1152 191I
+1154 47(IIYA)3I
+1156 47(IIYA)3I
+1158 191I
+1160 191I
+1162 3(A16IYA9(IYAI)Y)A15I2(IYA)I
+1164 3(A16IYA9(IYAI)Y)A15I2(IYA)I
+1166 191I
+1168 191I
+1170 3(19I2(IYA)6(IYAI)2(YAI)I)20IYAI
+1172 3(19I2(IYA)6(IYAI)2(YAI)I)20IYAI
+1174 191I
+1176 191I
+1178 3(4I2(IIYA)9I2(IYA)5(IYAI)2(YAI)3I)4I2(IIYA)11I
+1180 3(4I2(IIYA)9I2(IYA)5(IYAI)2(YAI)3I)4I2(IIYA)11I
+1182 191I
+1184 191I
+1186 3(2(3IYA5I)3IYA6(IYAI)YA5I)2(3IYA5I)3I
+1188 3(2(3IYA5I)3IYA6(IYAI)YA5I)2(3IYA5I)3I
+1190 191I
+1192 191I
+1194 3(3(IIYAII)3I2(IIYA)3(IIYAI)2(IYAI)4I)3(IIYAII)5I
+1196 3(3(IIYAII)3I2(IIYA)3(IIYAI)2(IYAI)4I)3(IIYAII)5I
+1198 191I
+1200 191I
+1202 3(2(3IYA5I)3IYA6(IYAI)YA5I)2(3IYA5I)3I
+1204 3(2(3IYA5I)3IYA6(IYAI)YA5I)2(3IYA5I)3I
+1206 191I
+1208 191I
+1210 3(4I2(IIYA)9I2(IYA)5(IYAI)2(YAI)3I)4I2(IIYA)11I
+1212 3(4I2(IIYA)9I2(IYA)5(IYAI)2(YAI)3I)4I2(IIYA)11I
+1214 191I
+1216 191I
+1218 3(19I2(IYA)6(IYAI)2(YAI)I)20IYAI
+1220 3(19I2(IYA)6(IYAI)2(YAI)I)20IYAI
+1222 191I
+1224 191I
+1226 3(A16IYA9(IYAI)Y)A15I2(IYA)I
+1228 3(A16IYA9(IYAI)Y)A15I2(IYA)I
+1230 191I
+1232 191I
+1234 47(IIYA)3I
+1236 47(IIYA)3I
+1238 191I
+1240 191I
+1242 47(YAII)YAI
+1244 47(YAII)YAI
+1600 IIIIIIIIIIII
+1602 .......Z..Z.
+1604 ..Z..Z..Z..Z
+1606 .Z.Z...Z....
+1608 Z....Z......
+1610 ....Z...Z..Z
+1612 .Z.Z..Z..Z..
+1614 Z......Z....
+1616 ..Z.Z...Z.Z.
+1618 .Z....Z.....
+1620 Z..Z.Z...Z..
+1622 ......Z...Z.
+1624 Z..Z...Z.Z..
+1626 ......Z....Z
+1628 ..Z.Z...Z.Z.
+1630 Z....Z......
+1632 .Z.Z..Z..Z..
+1634 IIIIIIIIIIII
+1991 ....AIA

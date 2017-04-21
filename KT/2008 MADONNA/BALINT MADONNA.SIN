@@ -1,0 +1,133 @@
+   1 C BALINT MADONNA (ALUL CSIPKE FELUL NAGY LYUKU)------A BALINT KK.-BOL(2008 KT)   VAGY A CNCA-N:*CP B RS10= RS17= (KK)
+1C------------NYERS LUSI+HB:NPK=0
+  10 NP1=14.8              C:CSIPKE
+  12 NP7=14.8              C NAGYLYUKU
+  13 NP8=12.0              C NAGYLYUKU-A SZEMEK FELVETELE A LYUKBAN
+  20 NP5=14.8              C:KORSLAG
+  22 NP4=12.5;             C:LEVALASZTAS
+  24 NP2=10.0              C BEKEZDES
+
+
+  40 START        
+  50 YG:6/256;
+  52 WM=18;WMI=7
+  54 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4      V0  VU ML    S1 S2
+
+C**********NYAKAK,PANTOK********************************
+  58 C IF #100=42  RS17=50         C  CSIPKE NYAK
+ C******************************************
+  62 C IF #100=19  RS17=0          C E-H
+  64 C IF #100=16  RS17=1          C U
+C************************************
+  72 IF RS17=50 GOTO 800
+
+  80 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  84 >> S:R-R;		                      Y:6;	       NP4-2     VU   ML          S2
+  86 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU   ML       S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2      VU  ML       S1
+  90 Y:2/2/5/5;
+  92 << S:R-0;		                             ML   NP5-5  VU         S1
+  94 >> S:0-R;		                             ML          VU         S1
+  96 << S:R-0;                               ML          VU         S1
+
+ 100 C**********************************************************************
+ 102 IF RS17=0  RS1=15  RS2=13     C E-H     45+78=120 KOR
+ 106 IF RS17=1  RS1=5   RS2=0      C U
+ 114 C********************************************************************************
+ 116 JA1=1012; PA:<JA1>; FA=27-166
+ 122 PM:<.>7:4(IIFA)I;
+ 126 C********************************************************************************
+
+ 200 C****************1SZV. CSIPKE ***********************************
+ 202 >> S:0-R/UVN.;                         ML                    S1  T2
+ 204 JA1=1012(1002-1012);             C CSIPKE
+ 206 VJA^0
+ 208 NP5-5
+ 210 WM=16
+ 212 RBEG*RS1
+ 214 REP*3
+ 216 << S:U^S<1->N.*/.*-N.*/UVSNY;                V0           T1 S1    T2
+ 218 >> S:U^S<1->N.*/.*-N.*/UVSNA;       NP1-1    VL1          T1 S1    T2
+ 220 REPEND
+ 222 REND
+ 224 << S:U^S<1->N.*/.*-N.*/UVSN.*;               V0           T1 S1    T2
+ 226 >> S:R-0;                                        VU          S1
+ 228 C********************************************************************************
+
+ 230 IF RS2=0 GOTO 292 C UJJA
+
+ 250 C*****NAGY LYUKU***********************************************************
+ 252 JA1=1200 C 1200 AIIYAIIYAIIY
+ 254 RBEG*RS2
+ 256 WM=18
+ 258 << S:U^NN./.-N./.-N./UVNAY;    NP7-7    Y:2/5;         T1 S1 S2 T2
+ 260 WM=0
+ 262 >> S:U^NY;                                      VR1    T1
+ 264 << S:U^NA;                                      VL1    T1
+ 266 WM=18
+ 268 >> S:.YA-I/.Y-I/UVNI;          NP8-     Y:2/5;  V0        S1 S2 T2
+ 270 << S:R-0;                      NP7-                 VU    S1 S2
+ 272 C
+ 274 >> S:U^NN./.-N./.-N./UVNAY;                            T1 S1 S2 T2
+ 276 WM=0
+ 278 << S:U^NY;                                      VR1    T1
+ 280 >> S:U^NA;                                      VL1    T1
+ 282 WM=18
+ 284 << S:.YA-I/.Y-I/UVNI;          NP8-     Y:2/5;  V0        S1 S2 T2
+ 286 >> S:R-0;                      NP7-7                VU    S1 S2
+ 288 REND
+ 290 WM=16
+ 292 << S:U^ND.I/DI.-D.I;           NP4-4    Y:2;           T1 S1
+ 294 >> S:DI.-D.I/UVND.I;                                      S1    T2
+ 296 C*********************************************************************
+ 298 END 
+
+ 800 C************* MADONNA NYAK 2007.12.01.**********EZ A LEGJOBB********
+ 802 C *** NEM RAGJA A SZELET, MERT A LEVALASZTAST IS JAC.-BOL KOTI.*********************
+ 804 C 1'31"
+ 806 C*******************
+ 808 NP4=13.0   C:LEVALASZTAS
+ 810 NP12=12.0  C:BEKEZDES
+ 812 NP15=13.0  C:1/1
+ 814 NP14=11.0  C:2SZV. CSIPKE NYAK HATUL
+ 816 NP13=11.2  C:2SZV. CSIPKE NYAK ELOL
+818 C  START        
+820 C  YG:6/256;	
+ 822 WM=16;WMI=7
+824 C  << S:D.I-DI./DI.-D.I;        Y:5/2;         NP4-4   VU V0      S1 S2
+ 826 C** CSIPKE NYAK ************
+ 830 JA1=1001;PA:1:<JA1>;
+ 832 FA=1-2; PM:<.>7:*<FA>576:<.>;   C*581TU  VAGY: PM:<.>7:*<FA>575:*<.>;
+ 834 >>	S:D.I-DI./UVS.*Y;   	      Y:5;                              S1    T2
+ 836 <<	S:U^SI/.*Y-I;		              			                          T1 S1
+ 838 >> S:U^SY/.*I-I;              Y:6;                   VR1     T1    S2
+ 840 << S:.*-I/I-0;                Y:6/0;                    VU      S1 S2
+ 842 >>	S:.*Y-I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 844 << S:.-I;                     Y:6;           NP15-15    VU      S1
+ 846 >> S:.-I/.*Y-0;               Y:6/5;                    VU      S1 S2
+ 848 << S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+ 850 >> S:.*Y-I/.*Y(13)-I(14)/UVS.*Y;                                S1 S2 T2
+ 852 VJA^0
+ 854 NP13-14
+ 856 REP*2
+ 858 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 860 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;                  VKA<2  V0      T1 S1 S2 T2
+ 862 REPEND
+ 864 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 866 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;                  VKA   V0      T1 S1 S2 T2
+ 868 END C**********************************************************
+
+ 999 <> W0 S0
+
+1001 IY
+
+1002 IIAIIIII
+1004 ..IIY...
+1006 IAAIIIII
+1008 .IIIYY..
+1010 AAAIIIII
+1012 IIIIYYY.
+
+
+1200 AIIY

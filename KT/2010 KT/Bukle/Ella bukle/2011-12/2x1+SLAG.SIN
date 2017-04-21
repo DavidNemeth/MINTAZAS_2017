@@ -1,0 +1,53 @@
+1C                       PASSZE:RS1=     SLAG:RS2=
+1C-----------------------+------------+------------+------------+-------------+
+1C   ELEJE:                    8          30 3 ELEJE
+1C-----------------------+------------+------------+------------+-------------+
+1C   HATA:                     8          80 3 HATA VAGY U-H-H-U
+1C-----------------------+------------+------------+------------+-------------+
+1C   ELEJE BETET:             70           0 2.5 ELEJE BETET 48CM (GARBO:RS1=29 20CM)
+1C-----------------------+------------+------------+------------+-------------+
+1C   UJJA:                     8          70 5 UJJA
+1C-----------------------+------------+------------+------------+-------------+
+
+1C   SZALVEZETOK:
+1C-----------------------+------------+------------+------------+-------------+
+1C   Y:2/5       1HB:LYUK+1BUKLE:HOLD (EZ KOTI A SLAGOT ES A BAL LESSZ A SZIN)
+1C-----------------------+------------+------------+------------+-------------+
+1C   Y:3/4       1HB+1BUKLE NEM SZABAD PLATIROZNI!!! (CSAK A 2/1-ET KOTI)
+1C-----------------------+------------+------------+------------+-------------+
+  10 C 2/1 LEVALASZTAS ELSO TUAGYON:
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP2=11.0  C:BEKEZDES
+  22 NP3=11.6  C:2/1
+  23 NP1=13.5  C SLAG
+  40 START
+  51 WM=12;WMI=4
+  50 YG:6/256;
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  54 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+  56 <<	S:DI..-D..I/UVND..I;		       Y:2; 		 ML             VL1        S1    T2
+  58 >> S:DII.-D.II;                 Y:6;    ML                           S2
+  60 << S:DII.-0/0-R;                Y:6/0;  ML                        S1 S2            
+  62 >>	S:DII.(2)-D.II(2)/DII.(3)-0; Y:2/5;	 ML                        S1 S2
+  64 << S:0-D.II/DII.-D.II;          Y:2/5;  ML     NP3-3   V0         S1 S2
+  80 RBEG*RS1
+  82 >> S:DII.-D.II;                                                   S1 S2
+  84 <<                                                                S1 S2
+  86 REND
+  90 >> S:DII.-D.II/DII.-D.II/UVND.II;                                 S1 S2 T2
+  92 IF RS2=0 END
+
+  94 WM=0
+  96 << S:0-R/0-R/UVNR;              Y:0/0;        NP1-1               S1 S2 T2
+  98 >>                                                                S1 S2 T2
+
+  99 WM=12
+ 100 RBEG*RS2
+ 102 << S:R-0;                       Y:5/2;        NP1-1    VU         S1 S2
+ 104 >>                                                     VU         S1 S2
+ 106 REND
+ 122 << S:U^ND.I/DI.-D.I/DI.-D.I/UVNDI.;  NP3-3        T1 S1 S2 T2
+ 124 >>                                                T1 S1 S2 T2
+ 128 <<                                                T1 S1 S2 T2
+ 130 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVNR;    NP4-4        T1 S1 S2 T2
+ 132 END

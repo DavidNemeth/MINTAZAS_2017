@@ -1,0 +1,96 @@
+  1 C---------RAGYA FONASSAL KT-RA (CNCA MINTA)---------------(581TU)-------KT104.SST----
+  2 C TEST:RS1=18 UJJ:RS1=12 NYAK:RS2=16;(502.SOR)
+ 10    START
+ 12    NP1=14.5   C:MINTA
+ 13    NP2=12     C:1/1-ES PASSZE
+ 15    NP4=11.5   C:LEVALASZTAS
+ 50    YG:6/25;
+ 51    WM=20
+ 59 << S:R-R/R-0;                      Y:5/2;      NP4-4  V0          S1 S2
+ 60 C >> S:R-R/R-R;                                                     S1 S2
+ 61 C << S:R-R/R-0;                                                     S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVSDI.;       Y:5/2;      NP1-1              S1 S2 T2
+ 64 << S:U^SD.I/DI.-D.I;               Y:5;                        T1 S1
+ 66 >> S:U^SDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#       T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/5;             V# V0 ML    S1 S2  
+ 71 << S:DI.-0/0-D.I;                  Y:2/5;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;            Y:5/2;           V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+100    JA1=1100
+101    JA2=1101
+102    IF RS1<14 GOTO 700
+104 C:-------3 LAP,5-5 FONASSAL,553 TURE-------------------------------------
+106    FA=4-23
+108    FB=34-61
+110    FC=54-72
+112    PA:JA1;
+118    PM:<A> 6:FA 5FB FC A FA 5FB FC A FA 5FB FC;
+131 C:----------------------------------------------------------------------
+140 << S:DI.-D.I/DI.-D.I/UVSAOY;             Y:5/2;               S1 S2 T2
+150 >> S:U^SNAOY/AOY-NAOY/AOY-NAOY/UVS+;     Y:5/2;  NP1-1        T1 S1 S2 T2
+155    VJA^0
+160    RBEG*RS1
+180 <> S:U^SO/A+Y-NA+Y/A+Y-NA+Y/UVSO;        Y:5/2;               T1 S1 S2 T2
+200 <> S:U^S+/AOY-NAOY/AOY-NAOY/UVS+;        Y:5/2;               T1 S1 S2 T2
+220    GOSUB 180
+230 <> S:U^S+/AOY*-+T/*(8.5)-0/UVS+T;        Y:5/0;         VL3   T1 S1 S2 T2
+255    PK^:JA1:JA2;
+256    PKV:JA1:JA2;
+260 <> S:U^S+/AO-+TY/0-Y(8.5)/UVS+;          Y:5/0;   NP1-1 VR1   T1 S1 S2 T2
+265    PK^:JA1;
+266    PKV:JA1;
+270 <> S:U^SOT/A+Y-NA+Y/A+Y-NA+Y/UVSNA+Y;    Y:5/2;   NP1-1 VR3   T1 S1 S2 T2
+280 <> S:U^SNAOY/AOY-NAOY/AOY-NAOY/UVS+;     Y:5/2;         V0    T1 S1 S2 T2
+290    GOSUB 180-200
+295    REND
+300    IF #124=0 GOSUB 180
+310    VJA^1
+330    END
+371 C:---------1/1-ES PIKOS PANT--------------------------------------------
+400    GOSUB 10-79
+401    END
+490 C:---------KAMZSA NYAK,4LAP,581 TURE-------------------------------------
+500    START
+501    RS2=16
+502    NP3=13.2   C:NYAK
+503    NP1=14.5   C:MINTA
+504    NP2=12     C:1/1-ES PASSZE
+505    NP4=11.5   C:LEVALASZTAS
+506    YG:6/25;
+507    WM=20
+510    YG:6/25;
+520 << S:R-R/R-0;                      Y:5/2;      NP4-4  V0          S1 S2
+530 C >> S:R-R/R-R;                                                     S1 S2
+540 C << S:R-R/R-0;                                                     S1 S2
+545 >> S:D.I-DI./DI.-D.I/UVSDI.;       Y:5/2;      NP1-1              S1 S2 T2
+550 << S:U^SD.I/DI.-D.I;               Y:5;                        T1 S1
+555 >> S:U^SDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+560 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#       T1 S1 S2
+570 >> S:R-0/DI.-D.I;                  Y:0/5;             V# V0 ML T1 S1   
+571 << S:DI.-0/0-D.I;                  Y:5/2;             V#          S1 S2
+574 >> S:DI.I.I.I.-D.I.I.I.I;            Y:5/2;           V#          S1 S2
+600    JA1=1100
+615    FA=7-8
+625    PA:JA1;
+630    PM:<A> 11:<FA> 151:AA<FA> 293:AA<FA> 435:AA<FA> 573:<A>;
+631 C:----------------------------------------------------------------------
+640 << S:DI.-D.I/DI.-D.I/UVSA;             Y:5/2;  NP3-3           S1 S2 T2
+650 >> S:A+-O/A+-O/UVSO;                   Y:5/2;                  S1 S2 T2
+652    RBEG*RS2
+655 << S:U^S+/AO-+/AO-+/UVS+;              Y:5/2;               T1 S1 S2 T2
+660 >> S:U^SO/A+-O/A+-O/UVSO;              Y:5/2;               T1 S1 S2 T2
+665    REND
+670    END
+700 C:-------4LAP 4-4 FONASSAL,581 TURE--------------------------------------
+702    FA=6-19
+704    FB=34-61
+706    FC=70-84
+708    PA:JA1;
+714    PM:<A> 7:FA 4FB FC 149:FA 4FB FC 292:FA 4FB FC 434:FA 4FB FC;
+718    GOTO140
+1100 6A18(+O)AY3TI*IAA16(+O)11A
+1101 43XAY3TII45X

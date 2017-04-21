@@ -1,0 +1,286 @@
+ C 34.163 - PKT KOTI A LEGJOBBAN A MINTAT ES A PANTOT IS!
+
+ C LEBEGOSZALAS KK - A LEBEGOSZALAS BOLERO MINTAJABOL
+
+ C PANT: A SZIVECSKES PANTJA (SLAG PIKO) 3'30 0.06KG
+ C JAC: R2015/LEBEGOSZ BOLERO
+
+   1 C PASSZE: AZSUR 2B  - PARALELOGRAMMA ALAKU ---- 1 JAC.SOR
+C-------------------------------------------------------------------------
+C  2T.P+1TX       FEHER     FUST     MOGYI    MAKOS    NYERS    FEKETE
+C-------------------------------------------------------------------------
+C KT  WM%=15                         0.2            
+C-------------------------------------------------------------------------
+C PKT WM%=5                          0.1                            
+C-------------------------------------------------------------------------
+C UJ  WM%=20         
+1C-------------------------------------------------------------------------
+ 
+  10 NP4=12.2   C:LEVALASZTAS 
+  12 NP2=11.0   C:BEKEZDES,1/1-ES PASSZE
+  14 NP5=13.8              C PASSZE*
+  16 NP1=14.8              C:MINTA 14.6-15.0
+
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
+
+C--------------------------------ELLA-----------------
+C   MERETEK:   S      M    L      XL    2XL    3XL
+C SZELESSEG:  47.5   50   52.5    55    57.5   60 
+C HOSSZUSAG:  60     63   66      69    72     74 
+C----------------------------------------------------
+C KG-RU     : 0,36  0,37  0,37   0,42  0,45   0.48      ATLAG:0.42 KB
+C   *930FT  =                                                  390
+C VARRAS+GOZ:  200   200   200    200   200    200             200
+C      GOMB     20    20    20     20    20     20              20
+C     SUM:                                                     610
+  ELADAS:     1000  1000  1000   1000  1000   1000            1000
+C------------------------------------------------------------------
+C    H:                                                        390
+C   MIN                    36'                 44'              40'
+C  FT/O                                                        585
+C--------------------------------------------------------------------
+
+C GOMBLYUKAS PIKO PANT:SP600
+C----------------------------------------------TM:4.5-MIN: ----KG:-------------------------------------------------
+  64 C IF #100=18 RS17=0         C 2.5T  3XL      40'           0.40 
+  66 C IF #100=7  RS17=1         C 2.5T  2XL      37'           0.37
+  68 C IF #100=11 RS17=2         C 2.5T   XL      35'           0.34
+
+  70 C IF #100=7  RS17=3         C TTT    L       35'           0.34
+  72 C IF #100=3  RS17=4         C TTT    M       32'           0.33
+  74 C IF #100=3  RS17=5         C TTT    S       30'30         0.31
+
+  75 C IF #100=11 RS17=6         C UUUU           16'           0.16
+  76 C IF #100=2  RS17=7         C UUUU           18'           0.18
+C--KT:NPK=0.2 WM%=10 PKT:NPK=0.1 WM%=5 ---------------------VASALVA:----------------------------------
+ 100 IF RS17=0  RS19=2  RS1=2  RS2=16     C 16-17 2.5T  3XL  170*79
+ 102 IF RS17=1  RS19=2  RS1=2  RS2=15     C 15-16 2.5T  2XL  170*77
+ 104 IF RS17=2  RS19=2  RS1=2  RS2=14     C 14-15 2.5T   XL  170*74
+ 106 IF RS17=3  RS19=3  RS1=2  RS2=14     C 14-15 TTT    L   170*71
+ 108 IF RS17=4  RS19=3  RS1=2  RS2=13     C 13-14 TTT    M   170*68
+ 110 IF RS17=5  RS19=3  RS1=2  RS2=12     C 12-13 TTT    S   170*65
+
+ 112 IF RS17=6  RS19=4  RS1=2  RS2=6      C  5-6  UUUU       170*30
+ 114 IF RS17=7  RS19=4  RS1=2  RS2=5      C  5-6  UUUU       180*33
+C ------------------------------------------------------------------------------------------------------------
+ 130 C************581TU******* 1100 IAAAAIYYY ***********************************************
+ 132 JA1=1056(1042-1056)   C PASSZE
+ 136 PA:2:<JA1>
+ 138 IF RS19=1  FA=2-19;FB=2-4;        PM:*<I>11:31FAFB;                           C*1 LAP   
+ 139 IF RS19=2  FA=2-220;FB=2-112;     PM:*<I>10:FA  7I FB  7I FA;                 C*2.5 LAP   
+ 140 IF RS19=3  FA=2-184;              PM:*<I>10:FA  7I FA  7I FA;                 C*3 LAP      
+ 142 IF RS19=4  FA=2-130;              PM:*<I>14:FA 13I FA 13I FA 13I FA;          C*4 LAP
+C*********************************************************************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	            VU VR1	  	   S1
+ 206 <<	S:D.I-0/UVSDI.;		                      	                   S1    T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI./0-DI.;		          	Y:5/2;;	         VU V0        S1 S2
+
+ 213 IF RS1=0 GOTO 600      C EEEE
+ 214 << S:D.I-0;                     Y:5;             VU           S1
+ 216 >> S:D.I-DI.;                             NP2-2  VU           S1    
+ C********************************
+ 218 Y:5/5/2/2;
+ 220 << S:U^SD.I/0-R/UVSAY+;                   NP1-1           T1 S1    T2
+  223 >> S:AY+-I;                             NP5-5  VU           S1
+
+  224 RBEG*RS1
+  225 REP*3
+  226 WM=0
+  228 << S:U^SA;                                   VL1 T1
+  230 >> S:U^SY;                                   VR1 T1
+  232 WM=15
+  234 << S:U^S+/0-R/UVS<1->AY+;              NP5-5 V0   T1 S1 T2 
+  235 >> S:AY+-I;                                 VU     S1
+  236 REPEND
+  237 << S:U^S+/0-R/UVS<1->AY+;              NP5-5 V0   T1 S1 T2 
+  238 >> S:AY+-I;                                 VU     S1
+  239 REND
+
+ 300 C ******************1SZV. CSIPKE*************************
+ 302 JA1=1040(1004-1038) C MINTA
+ 304 VJA^1
+ 306 WM=15 C10
+ 308 Y:5/0/5/0/2/0/2/0;
+ 310 NP1-1
+ 312 RBEG*RS2
+ 314 REP*9
+C-------------------------------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYO/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OIY/+(7.0)-0/UVSY;           VL1    T1 S1 S2 T2
+C---------------NO.2:----------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYOH/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OHIY/+(7.0)-0/UVSYH;           VL1    T1 S1 S2 T2
+C------------------------------------------------
+ 320 REPEND
+ 322 REND
+ 342 GOSUB 315-318*8
+ 343 PKV:1:<JA1>;
+ 344 << S:U^SYO/<1->+ (6.5)- OIA/+(8.0)-0/UVSDI.;            V0   T1 S1 S2 T2
+ 345 WM=16
+ 346 >> S:U^ND.I/DI.-D.I;                 NP4-4       T1 S1
+ 348 << S:DI.-D.I;                        Y:5/2;  VU     S1 S2
+ 350 >> S:DI.-D.I/DI.-D.I/UVND.I;                        S1 S2 T2
+ 352 END C************************************************
+
+ 400 C PANT VEGE *************
+ 402 << S:U^S+/0-R/0-R/UVSD.I;    Y:2/5;  NP5-5 V0   T1 S1 S2 T2 
+ 404 >> S:D.I-DI./D.I-DI./UVSDI.;         NP2-2         S1 S2 T2
+ 408 END
+
+ 600 C---KORSLAG PIKO ZSAKKAL--2LUSI+1HB:---------------------------------------
+ 601 NP4=12.4               C LEVALASZTAS
+ 602 NP10=11.0   C:REX                  11.2
+ 603 NP12=14.6   C:SLAG GOMBLYUK ELOTT  14.6
+ 604 NP13=14.0   C:SLAG PASSZE          13.6-14.0
+ 605 NP11=7.0    C:GOMBLYUK  6.0-7.0 (KISEBB V. NAGYOBB LYUK)
+ 606 NP14=8.5    C BEKEZDES              9.5 9.8 9.4 8.0 8.5
+ 607 NP15=10.4   C BEKEZDES A ZSAKHOZ 10-10.5
+
+608  START        
+610  YG:6/256;
+ 612 WM=18;WMI=7
+614  << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+ 616 C********KORSLAG PIKO PASSZE***************************
+ 618 JA1=1990;  C 1990 *+*+*AA
+ 620 PA:<JA1>; 
+ 622 FA=1-7; C FA=1-7; VAGY FA=1-6;
+ 624 PM:12.<FA>571:<.>; C TELI TUAGYRA (581TU)
+
+C----------VAGY--------------------
+ 626 >> S:D.I-DI./DI.-D.I;                                  VU        S1 S2
+ 628 << S:U^ND.I/DI.-D.I;             Y:5;	               	        T1 S1
+ 630 >> S:U^NDI./R-R;		               Y:6;	                        T1     S2
+ 632 << S:0-R/R-0;                    Y:6/0;                VU	        S1 S2
+C----------VAGY----KONNYEBB KIHUZNI----------------
+ 626 >> S:D.I-DI./UVSA;               Y:5;               VU           S1     T2
+ 628 << S:U^SNA/A-NA;      NP12-12                           	        T1 S1
+ 629 >> S:U^SA/0-NA;		     NP4-4      Y:2;	                 VR2       T1 S1
+ 630 << S:0-0;                        Y:0;                  V0 VU        S1
+ 631 >> S:NA-NA;		                    Y:6;	                 VU              S2
+ 632 << S:0-NA/R-0;                   Y:6/0;                VU	          S1 S2
+C--------------------------------------------------------
+
+ 634 >> S:R-R;                        Y:5;    NP14-14       VU         S1
+ 636 << S:0-R/R-0;                    Y:2/5;  NP13-13       VU         S1 S2   CNP4-4
+ 638 WM=20 C18 C22
+ 640 REP*2 C***PIKO***
+ 642 >> S:0-NA/NA-0;                  Y:5/2;  NP13-13      VU        S1 S2
+ 644 << S:0-NA/NA-0;                  Y:2/5;                VU        S1 S2
+ 646 REPEND
+
+C***********ZSAKKAL************* VAGY ***********SPANYOL-ALJA EGYENES, VISSZATUZVE **********************
+ 648 >> S:0-R/R-0/UVN+*;              Y:5/2;                           S1 S2 T2
+ 650 << S:0-N+/R-0;                   Y:2/5;  NP-15         VU         S1 S2
+ 652 >> S:R-0/0-N*;                                         VU         S1 S2
+ 654 << S:R-0/0-R;                            NP13-13       VU         S1 S2
+C***********ZSAK NELKUL********* VAGY ************NEMET-ALJA LEKERKITVE **********************************
+ 648 >> S:0-R/R-0;              Y:5/2;  NP13-13       VU         S1 S2
+ 650 << S:0-R/R-0;              Y:2/5;                VU         S1 S2
+ 652 >> S:0-R/R-0;              Y:5/2;                VU         S1 S2
+ 654 << S:0-R/R-0;              Y:2/5;  NP13-13       VU         S1 S2
+C**********************************************************************************************************
+ 659 VJA^1
+C***********GOMBLYUKAK JOBB OLDALT ***************
+ 660 PM:15.<*>400:7(19*YTI)<.>; C KK 70CM:7GOMBLYUK:50CM --- KK 65CM:6GOMBLYUK:45CM ---- KK 60CM: 5GOMBLYUK:40CM
+C***********GOMBLYUKAK BAL OLDALT ***************
+ 660 PM:15.<*>11:7(19*YTI)<.>;               C S-M-L-XL  1.-7.:41CM  S-M:6LYUK  L-XL:7LYUK
+ 660 PM:15.<*>11:7(21*YTI)<.>;    C 2XL-3XL   1.-7.:45CM  2XL-3XL:7LYUK 
+ C************************************
+ 661 WM=20
+ 662 IF RS17=50 GOTO 664 C KK PANT GOMBLYUKKAL
+ 663            GOTO 690 C MELLENY PANT VAGY NYAK
+ 664 >> S:0-R/R-0;                         VU    NP12-12                S1 S2
+C----------- 24-ESS GOMB: ------YTI------------2TUS LYUK 24 V.28-AS GOMB (MINDKETTO BELEMEGY, HA HB-VAL KOTOM)
+ 665 << S:0-R/UVSTI;             Y:5;         NP12-12                S1    T2
+ 666 >> S:R-T(11)/0-T(8.0);       Y:5/0;     VU         S1 S2  C(8.0)
+ 667 C GOMBLYUKAK:
+ 668 WM=0
+ 669 << S:U^SI;                          VL1                T1
+ 670 >> S:U^ST;                          VR1                T1
+ 671 WM=20
+ 672 << S:T(11)-.*Y I(13);         Y:2;   V0  VU               S1
+ 673 WM=20
+ 674 >> S:.*Y I(13)-T(11);                    VU               S1
+C----------- 28-AS GOMB: ------YTI-----------3TUS LYUK-----------------------------------
+ 665 << S:0-R/UVSYTI;             Y:5;         NP12-12                S1    T2
+ 666 >> S:R-T(11)/0-T(7.0);       Y:5/0;     VU         S1 S2  C(8.0)
+ 667 C GOMBLYUKAK:
+ 668 WM=0
+ 669 << S:U^SI;                          VL1                T1
+ 670 >> S:U^SYT;                         VR2                T1
+ 671 WM=20
+ 672 << S:T(11)-.*YI(13);         Y:2;   V0  VU               S1
+ 673 WM=20
+ 674 >> S:.*YI(13)-T(11);                VL1 VU               S1
+C-------------------------------------------------------------------------------------
+ 675 NP13-13
+ 676 << S:0-R/R-0;                Y:5/2; VR1 VU               S1 S2
+ 677 >>                                      VU               S1 S2
+ 678 REP*3
+ 679 <<                                  V0  VU               S1 S2
+ 680 >>                                      VU               S1 S2
+ 681 REPEND
+ 682 END
+
+ 690 >> S:0-R/R-0;              NP13-13                     VU         S1 S2
+ 691 REP*5
+ 692 << S:R-0/0-R;                                          VU         S1 S2
+ 693 >> S:0-R/R-0;                                          VU         S1 S2
+ 694 REPEND
+ 695 END
+
+ 999 <> W0 VU S0
+
+1990 *+*+*AA
+
+1002 WWWWWWWWWWWWWWWWWW
+1004 IWO.YYYIIIWOIIIIII
+1006 III.IIIIIIIIIIAAA.
+1008 IWO..YYYIIWOIIIII.
+1010 III..IIIIIIIIAAA..
+1012 IWO+..YYYIWOIIII..
+1014 III..+IIIIIIAAA..+
+1016 IWO.+..YYYWOIII+..
+1018 III...+IIIIAAA...+
+1020 IWO.+..IIIWOII.+..
+1022 III..+AAAIIIII...+
+1024 IWO+..IIIIWOYYY+..
+1026 III..AAAIIIIIII..+
+1028 IWO..IIIIIWOIYYY..
+1030 III.AAAIAIIIIIII..
+1032 IWO.IIIIIIWOYIYYY.
+1034 IIIAAAIAIIIIIIIII.
+1036 IWOIIIIIIIWOIYIYYY
+1038 IIIIIIIIIIIIIIIIII
+1040 YYYYYYYYYYYYYYYYYY
+
+C-------NO.2:---------
+1026 III..AAAIAIIIII..+
+1028 IWO..IIIIIWHIYYY..
+
+
+
+1042 ++++++++++++++++++
+1044 ++Y+++++A++Y+++++A
+1046 ++YY+++AA++YY+++AA
+1048 ++YYY+AAA++YYY+AAA
+1050 ++++++++++++++++++
+1052 ++++A+Y++++++A+Y++
+1054 +++AA+YY++++AA+YY+
+1056 ++AAA+YYY++AAA+YYY
+1058 WWWWWWWWWWWWWWWWWW

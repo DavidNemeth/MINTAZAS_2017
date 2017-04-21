@@ -1,0 +1,31 @@
+1C 
+1C
+1C-----------------------+------------+------------+------------+-------------+
+1C 
+1C-----------------------+------------+------------+------------+-------------+
+1C 
+1C-----------------------+------------+------------+------------+-------------+
+
+
+
+   A különbözõ kötésekhez használt hozzávetõleges szorosságok:
+
+
+  10 NP1=14.6              C:MINTA CSIPKE
+  12 NP4=12.5;             C:LEVALASZTAS
+  14 NP3=14.4;             C:CSIPKE PASSZE
+  16 NP5=13.8              C:KORSLAG PIKO
+  18 NP6=14.6;             C:U-H 2SZV.BAL-BAL KREPP (RIZS)
+  19 NP2=11.2;             C:1/1-ES PASSZE
+   40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  54 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+
+  60 IF #100=35  RS17=0            C E
+  62 IF #100=25  RS17=1            C H
+  64 IF #100=15  RS17=2            C U
+  66 IF RS17=0  RS1=6             C E
+  68 IF RS17=1  RS1=67            C H
+  70 IF RS17=2  RS1=52            C U

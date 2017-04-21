@@ -1,0 +1,39 @@
+C EZ A JO
+  16 NP4=12.6              C LEVALASZTAS
+  20 NP11=14.2              C    
+  22 NP15=14.0              C:KORSLAG PIKO
+
+  40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  VKA>1  VU V0 ML       S1 S2
+
+ C********KORSLAG PIKO PASSZE***************************
+  80 JA1=1990;  C 1990 IIIIAI
+  82 PA:<JA1>; 
+  84 FA=1-6;
+
+C************************************************************************
+  86 PM:6.<FA>547:<.>; C 553 TURE
+C************************************************************************
+  86 PM:6.<FA>575:<.>; C TELI TUAGYRA (581TU)
+C************************************************************************
+
+  88 >> S:D.I-DI./DI.-D.I/UVNDI.;                       VKA      ML    S1 S2 T2
+  90 << S:DI.-D.I/UVND.I;             Y:2;	             VKA	     ML    S1    T2
+  92 >> S:R-R;		                      Y:6;	             VKA VU   ML       S2
+  94 << S:R-0/0-R;                    Y:6/0;            VKA VU	  ML    S1 S2
+  95 WM=26
+  96 >> S:R-R;                        Y:2;    NP11-011  VKA VU   ML    S1
+  98 << S:0-NA/NA-0;                  Y:5/2;  NP15-15   VKA VU         S1 S2
+ 100 REP*2 C***PIKO***
+ 102 >> S:NA-0/0-NA;                                    VKA VU         S1 S2
+ 104 << S:0-NA/NA-0;                                    VKA VU         S1 S2
+ 106 REPEND
+ 108 REP*4
+ 110 >> S:R-0/0-R;                                       VKA VU        S1 S2
+ 112 << S:0-R/R-0;                                       VKA VU        S1 S2
+ 114 REPEND
+ 116 >> S:R-R/R-R;                            NP4-4                   S1 S2
+ 118 END
+1990 IIIAII

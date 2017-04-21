@@ -1,0 +1,93 @@
+   1 C PRAGA ES RAKOS MADONNA
+  10 NP1=14.8              C:CSIPKE SZIM.
+  15 NP5=14.8;             C:KORSLAG
+  16 NP4=12.5;             C:LEVALASZTAS
+  18 NP2=10.6              C BEKEZDES
+
+  40 START        
+  50 YG:6/256;
+  52 WM=16;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C********************************************************************************TUN:40' PUL:33'
+  70  IF #100=4  RS17=0      C*** MADONNA TEST         PRAGA
+  72  IF #100=9  RS17=1      C*** MADONNA U            PRAGA
+  74  IF #100=13 RS17=2      C*** MADONNA TEST         RAKOS
+  76  IF #100=18 RS17=3      C*** MADONNA U            RAKOS
+  78 C*************************************************************
+  80 IF RS17=0  RS1=125          C T LUSI+TX:123
+  82 IF RS17=1  RS1=17           C U          17
+  84 IF RS17=2  RS1=130          C T LUSI+TX:133
+  86 IF RS17=3  RS1=17           C U          17            
+  88 C********************************************************************************
+
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:5;         NP2-2         ML       S1
+ 110           JA1=1030(1004-1030)   C   PRAGA
+ 112 IF RS17>1 JA1=1334(1304-1334)   C   RAKOS
+ 116 PA:1:<JA1>;
+ 117 FA=21-160; PM:<.>8:4(FA..);           C*4LAP***********581TU
+
+ 119 Y:2/2/5/5;
+ 120 REP*2
+ 121 << S:R-0;		                             ML   NP5-5           S1
+ 122 >> S:0-R;		                             ML                    S1
+ 123 REPEND
+ 124 << S:R-0/UVNNI;                         ML                    S1 T2
+ 125 >> S:U^NI/NI-I;                         ML                 T1 S1
+
+C*************CIKLUS***SZIMMETRIKUS CSIPKE***********************************
+ 136 RBEG*RS1
+ 137 WM=0
+ 138 << S:U^NAW;                                  VL1      T1
+ 140 >> S:U^NY;                                   VR1      T1
+ 141 WM=16
+ 142 << S:U^NI/.-N.W/UVN<1->.;         NP1-1      V0       T1 S1 T2 
+ 144 >> S:U^NI/.-I(13.8)/UVN<1->NI;                        T1 S1 T2
+ 146 REND
+C*************CIKLUS**********************************************************
+ 148 GOSUB 137-142
+ 150 >> S:U^NI/.-I(13.8)/UVNDI.;                    T1 S1 T2
+ 154 << S:U^SD.I/DI.-D.I;                   NP4-4   T1 S1
+ 156 >> S:DI.-D.I/UVSD.I;                              S1     T2
+ 158 END
+
+ 999 <> W0 S0
+
+1002 WWWWWWWWW
+1004 ....I....
+1006 IIIAIYIII
+1008 ...I.I...
+1010 IIA*I*YII
+1012 ..I...I..
+1014 IA*III*YI
+1016 .I.....I.
+1018 W*IIIII*Y
+1020 I.......I
+1022 IYYYIAAAI
+1024 I...I...I
+1026 IYYYIAAAI
+1028 I...I...I
+1030 IYYYIAAAI
+1032 WWWWWWWWW
+
+1302 WWWWWWWWWW
+1304 IIIIIIIIII
+1306 IY.......A
+1308 II.......I
+1310 IYYIIIIIAA
+1312 IIIIIIIIII
+1314 IYYY...AAA
+1316 IIII...III
+1318 IIAIAIYIYI
+1320 IIII.I.III
+1322 IAIAAIYYIY
+1324 III..I..II
+1326 IIAAAIYYYI
+1328 II...I...I
+1330 IAAAAIYYYY
+1332 I....I....
+1334 IAAAAIYYYY
+1336 WWWWWWWWWW

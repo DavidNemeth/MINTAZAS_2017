@@ -1,0 +1,139 @@
+   4 C BAL-BALRAGYA LYUKACSOS SLAG MIKROPIKO PASSZEVAL
+   5 C       14.5    0             0    14.5
+   6 C  1: <------+------       ------+------> LEVALASZTAS
+   7 C       14.0    0             0    14.0
+   8 C       15.0   15.0         15.0   15.0                            
+   9 C J2: <------+------       ------+------> RAGYA 165.SOR:4FELE RAGYA
+  10 C       15.0   15.0         15.0   15.0                         
+  11 C                             -      -
+  12 C B2: <------+------       ------+------>  BEKEZDES
+  13 C                           14.0   14.0 
+  14 C       14.2    0            0     14.2
+  15 C J3: <------+------       ------+------> SLAG,MIKRO-PIKO
+  16 C        0     14.2         14.2    0
+  17 C      
+  18 C B3: <------+------       ------+------>
+  19 C      
+  20 C       13.0   13.0         13.0   13.0
+  21 C J4: <------+------       ------+------> ELVALASZTAS
+  22 C       13.0   13.0         13.0   13.0
+  23 C B4:=J4  OSSZES SULY
+  24 C TUAGYKORREKCIOK:  V0:->2.2
+  25 C                   R1:      __________R2:     _________R3:
+  26 C                   L1:->1.0 __________L2:     _________L3:
+  27 C:-------------+-----------------------+------------+
+  28 C:   RS1=         NPJ2=     HATA:(15')   RUJJA:(7')
+  29 C                            RS1=28-       RS1=-27 
+  30 C:-------------+----------+------------+------------+
+  31 C:2X15/1+1TX:     15.0        33           13/
+  32 C:-------------+----------+------------+------------+
+  33 C:3X15/1(F-F):    15.0         29            12/
+  34 C:-------------+----------+------------+------------+
+  35 C  OSSZES SULY  F-F:+3TARCSA
+  40 START
+  45 IF RS19=1 GOTO 600 C************ PANT *****************
+  50 YG:6/256;
+  55 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   V#   V0    S1 S2
+  60 JA1=1990; C1990 Y+AI
+  65 PA:<JA1>; 
+  70 FA=1-4; 
+  75 PM:9.<FA>548:<.>;    C1990 Y+AI
+  80 >> S:U^NA /NA-A/UVNNA;          Y:5;   ML      NP1-1    T1 S1    T2
+  85 << S:NA+-A/UVNA;                       ML      NP4-4 VL1   S1    T2
+  90 >> S:NA-NA;                     Y:6;   ML            V0       S2
+  95 << S:NA-0/0-R;                  Y:6/0; ML                  S1 S2
+ 100 >> S:R-R/NA-0;                  Y:2/5; ML      NP2-02  VL1   S1 S2
+ 105 NP3-3
+ 110 Y:2/5/5/2;
+ 115 C LYUKAK:
+ 120 << S:0-NA/NA-0;                        ML                      S1 S2
+ 125 >> S:0-NA/NA-0;                        ML                      S1 S2
+ 130 << S:0-NA/NA-0/UVNY;              VL1  ML                      S1 S2 T2
+ 135 >> S:U^NY/0-R/R-0;                     ML                   T1 S1 S2
+ 140 REP*3
+ 145 << S:0-R/R-0;                   V0      S1 S2
+ 150 >>                                      S1 S2
+ 155 REPEND
+ 160 << S:0-R/R-0;                           S1 S2
+ 165 JA1=1310(1300-1310); C VAGYJA1=1410(1400-1410); C VAGY   JA1=1500(1500-1530); C VAGY JA1=1600(1600-1618);
+ 170 PA:<JA1>;
+ 175 FA=1-12
+ 180           PM:<FA>1:6. 186:2. 367:2. 548:<.>;        C**** 3LAP ****
+ 185 IF RS1<28 PM:<FA>1:6. 141:2. 277:2. 413:2. 548:<.>; C**** 4LAP ****
+ 190 >> S:UVN.;                             NP01-01                    T2
+ 195 << S:U^NN.;                             NP02-02                  T1
+ 200 >> S:.-N./.-N./UVNN.;           Y:2/5;                             S1 S2 T2
+ 205 RBEG*RS1
+ 210 REP*2
+ 215 << S:U^N<1->N./.-N./.-N./UVNN.;               NP2-2             T1 S1 S2 T2
+ 220 >>                                                              T1 S1 S2 T2
+ 225 REPEND
+ 230 REND
+ 235 << S:U^ND.I/DI.-D.I/DI.-D.I;               NP4-4  T1 S1 S2
+ 240 >> S:DI.-D.I/DI.-D.I/UVND.I;                         S1 S2 T2
+ 245 END
+ 600 C************SLAG MIKRO PIKO PANT *****************
+ 601 YG:6/256;
+ 602 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   V#   V0    S1 S2
+ 603 JA1=1990; 
+ 604 PA:<JA1>; 
+ 605 FA=1-4; 
+ 606 PM:9.<FA>548:<.>;    C1990 Y+AI
+ 607 >> S:U^NA /NA-A/UVNNA;          Y:5;   ML      NP1-1    T1 S1    T2
+ 608 << S:NA+-A/UVNA;                       ML      NP4-4 VL1   S1    T2
+ 609 >> S:NA-NA;                     Y:6;   ML            V0       S2
+ 610 << S:NA-0/0-R;                  Y:6/0; ML                  S1 S2
+ 611 >> S:R-R/NA-0;                  Y:2/5; ML      NP2-02  VL1   S1 S2
+ 612 NP3-3
+ 613 Y:2/5/5/2;
+ 614 C LYUKAK:
+ 615 << S:0-NA/NA-0;                                                S1 S2
+ 616 >> S:0-NA/NA-0;                                                S1 S2
+ 617 << S:0-NA/NA-0/UVNY;              VL1                          S1 S2 T2
+ 618 >> S:U^NY/0-R/R-0;                                        T1 S1 S2
+ 619 REP*3
+ 620 << S:0-R/R-0;                   V0      S1 S2
+ 621 >>                                      S1 S2
+ 622 REPEND
+ 623 GOSUB 620
+ 624 >> S:R-R;                    NP4-4      S1 S2
+ 625 END
+1300 .II.II
+1302 II.I.I
+1304 I.III.
+1306 .II.II
+1308 I.III.
+1310 II.I.I
+1400 Z..Z..
+1402 ..Z.Z.
+1404 .Z...Z
+1406 Z..Z..
+1408 .Z...Z
+1410 ..Z.Z.
+1500 .I.II.II...I
+1502 I..I...IIIII
+1504 .II.I.I.III.
+1506 .I..IIII...I
+1508 I.II...IIII.
+1510 III..I......
+1512 ...II.II...I
+1514 ...II.III.II
+1516 ..II....III.
+1518 I.I..I.I.I..
+1520 ....I.II...I
+1522 ..III.I.I.II
+1524 II..II.I.II.
+1526 II.II.IIII..
+1528 I.II.I..I..I
+1530 II.....I.II.
+1600 I.I...I.I...
+1602 .I.I.I.I.I.I
+1604 III.I.I.I.I.
+1606 .I.I.I...I.I
+1608 I.I.I.I.I.I.
+1610 .I.III.I.III
+1612 I.I.I.I.I.I.
+1614 ...I.I.I.I.I
+1616 I.I.I.III.I.
+1618 .I.I.I.I.I.I
+1990 Y+AI

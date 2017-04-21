@@ -1,0 +1,117 @@
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I EGYEB I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+CMELLENY I 3*15/1 I 0.35*530 I  140    I     4    I       I  330  I 650     I 320 I 36'  I 533   I 49% I 
+C 55*74  I        I  186     I         I          I       I       I         I     I      I       I     I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C KK     I 3*15/1 I 0.45*530 I  140    I     4    I       I  384  I  750    I 366 I 53'  I 414'  I 48% I 
+C 55*74  I        I  240     I         I          I       I       I         I     I      I       I     I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+   1 C ELLA NAGYLYUKU KORSLAG PASSZEVAL- 6/4 CSAK 1 SZV.-VEL KOT (BIZTONSAGOSABB)
+   2 C   JAC.:ASZ
+   3 C CNCA2010: CP N RS10= RS1=
+   4 C 
+   5 C !*!*!*!*!* 3 LUSI DE FEKETEBEN CSAK A BAJAI A JO!!!!! !*!*!*!*!*!*!*     
+   6 C                            0 -14.2      14.0-0   
+   7 C  1:KORSLAG, MINTA:FEHER: ---------->   <----------  
+   8 C J3:-                      13.75-12.5     0-13.75       (12.5:VAKSZEM)
+   9 C J2:                                                    FEKETE:4-ET AT KELL ORSOZNI!!!!!
+  10 C B3:-
+  11 C B2:BEKEZDES:          
+  12 C J4:12.5 LEVALASZTAS,1/1
+  13 C 8 SULY !!!!!!!!!!!!! PANT:+TARCSAK
+  14 C TUAGYKORREKCIOK: V0:
+  15 C                  R1:<-1_________ !!!!!!!!!!!!!!!!!!!!BEALLITANI!!!!!!!
+  16 C                  R2:->1 
+  17 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:2/5;      NP4-4    V# V0 ML       S1 S2
+  54 VJA^1
+  56 C******************************************************************
+  58 C IF RS10=1   RS17=0     C*** E-H   3LAP     46'
+  60 C IF RS10=1   RS17=1     C*** HU    4LAP    38'
+  62 C IF RS10=6   RS17=2     C*** RU    4LAP
+  64 C IF RS10=6   RS17=3     C*** MELLENY       46'
+  66  IF RS10=2   RS17=50    C*** PANT            3'
+  68 C**************************************KESZ MERET:*****RS1=
+  70 IF RS17=0  RS1=72 RS19=3 C E-H             74           72       VASALVA:78-80
+  72 IF RS17=1  RS1=57 RS19=4 C HU              58           57
+  74 IF RS17=2  RS1=27 RS19=4 C RU              28           27
+  76 IF RS17=3  RS1=72 RS19=3 C MELLENY         74           72
+  78 IF RS17=50 GOTO 600      C PANT
+  79 C********************************************************************************
+  80 JA1=1100(1100-1102);
+  82 PA:<JA1>; 
+  88 IF RS19=3 FA=9-186; PM:<.> 9:3(FA..);                     C*3LAP************TELI TUAGY 554TU
+  90 IF RS19=4 FA=29-159;PM:<.>11:4(FA...);                     C*4LAP************TELI TUAGY 554TU
+  90 IF RS19=4 FA=27-159;PM:<.>9:4(FA..);                      C*4LAP************TELI TUAGY 554TU
+  92 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP2-02          ML       S1
+ 110 Y:5/2/2/5;
+ 112 NP1-1
+ 114 REP*4
+ 116 << S:0-R/R-0;                                   V#            S1 S2
+ 118 >> S:0-R/R-0;                                   V#            S1 S2
+ 120 REPEND
+ 122 << S:UVNDI.;                     NP0-0                    T2
+ 124 >> S:UVND.I;                     NP0-0                    T2
+ 126 << S:R-0;                 Y:5;   NP-0               S2
+ 128 >> S:U^ND.I;                     NP0-0        T1
+ 130 << S:U^NDI.;                     NP0-0        T1
+ 132 >> S:0-R;                        NP0-           S1
+ 140 Y:2/2/0/5/5;
+ 142 RBEG*RS1 C A+*YIB
+ 144 << S:0-R;              Y:2;     NP0-            S1
+ 146 >> S:<1->*-R/*-0;      Y:2/0;                   S1 S2
+ 148 << S:UVNA+;                     NP0-0                 T2
+ 150 >> S:U^NA+/UVN*;                NP0-0 VR2    T1       T2
+ 152 << S:U^NI./0-N+;       Y:5;     NP0-  VR1   T1 S1
+ 154 >> S:0-R;                       NP0-  V0        S1
+ 156 REND
+ 158 << S:0-R/UVND.I;       Y:2;     NP04-4          S1    T2
+ 160 >> S:D.I-DI.;                                   S1
+ 162 << S:D.I-DI./D.I-DI.;  Y:5/2;   NP4-4           S1 S2
+ 164 >> S:D.I-DI./D.I-DI./UVNDI.;                    S1 S2 T2
+ 166 RS10=RS10-1
+ 168 IF RS10>0 GOTO 52
+ 170 END
+ 600 C ************** ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL ************
+ 602 C CNCA 2010/ CP NP
+ 604 C J4:LEVALASZTAS
+ 606 C B2:BEKEZDES
+ 608 C J2 KORSLAG
+ 610 C 7-8 SULY
+ 612C START
+ 614C YG:6/256;
+ 616C <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+ 618 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+ 620 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+ 622 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+ 624 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+ 626 >> S:0-D.I/DI.-D.I;             Y:2/6;  ML             V0 V#      S1 S2
+ 628 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2
+ 630 >>	S:DI.-D.I;		                 Y:5;	          NP02-2     V#      S1
+ 632 Y:2/2/5/5;
+ 634 REP*2
+ 636 << S:0-D.I;                        NP04-4      V#      S1
+ 638 >> S:DI.-0;                        NP-0        V#      S1 
+ 640 REPEND
+ 642 << S:0-R;                          NP0-        V#      S1
+ 644 >> S:R-0;                          NP4-04      V#      S1
+ 646 NP1-1
+ 648 REP*5
+ 650 << S:0-R/R-0;                 Y:5/2;              S1 S2
+ 652 >> S:0-R/R-0;                                     S1 S2
+ 654 REPEND
+ 656 <<                                                S1 S2
+ 658 >>S:0-R/R-0;                                      S1 S2
+ 660 RS10=RS10-1
+ 662 IF RS10>0 GOTO 52
+ 664 END
+1100 YIBA+*
+1102 A+*YIB

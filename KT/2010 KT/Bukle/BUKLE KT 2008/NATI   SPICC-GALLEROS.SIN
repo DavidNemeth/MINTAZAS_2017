@@ -1,0 +1,95 @@
+
+1C 3 SZINU SLAG SPICCES GALLERRAL (A GALLER ES A SPICC OSSZE VAN VARRVA)
+1C  10-ESEVEL LEHETBKOTNI:5 LEV.TEST       30: 10 T.           OV:60CM.
+1C                        4 LEV.UJJA           12 U.
+1C                        4 LEV.NYAK           10 NY.
+1C                        1 LEV.SPICC           4 S.
+
+1C   (TEST+NYAK+OV): 0.5+0.06+0.02=0.58KG*1400FT=820FT              ICA:BUKLE: 0.41KG*1480FT
+1C                                      VARRAS:   - (150:NATI FIZETI)      HB: 0.17KG*1250FT
+1C                                     VASALAS:   60                      -------------------------
+1C                                       REZSI:   60                      SUM:0.58KG*1414FT=820FT
+1C                                     OVCSATT:    -(26:NATI FIZETI)
+1C                                     -----------------
+1C                                        SUM.:  940
+1C                                          E.: 1450
+1C                                          H.:  510
+1C   SZALVEZETOK:
+1C-----BUKLE A LYUKBA-----FONALFELHASZNALAS:  BUKLE:----HB:--------------------------------------
+1C   Y:2/5: ALAP                   KG.:    0.21-0.24   0.09
+1C   Y:3/3: 1.SZIN                            0.09     0.04
+1C   Y:4/4: 2.SZIN                            0.09     0.04
+1C-----------------------+------------+----7.5 BUKLE+HB:-----------+------6.0 BUKLE+HB----------+
+  10 C 2/1 LEVALASZTAS ELSO TUAGYON:
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP2=10.2  C:BEKEZDES  10.6                                            
+  22 NP3=12.2  C:2/1                           11.8-12.0                    12.0-12.2
+  23 NP1=13.8  C SLAG  13.6-13.8-14.0             13.6         PKT-KEK:13.8,NPK=0  KT-LILA:13.6,NPK=0
+  40 START
+  50 YG:6/233445;
+  51 WM=18;WMI=4
+C****************U-E-H-U******************************************VASALAS:***************KESZEN:***
+  52 C IF #100=3  RS17=0	          C U-E-H-U	 16'	                105*70CM.		            55*67CM.
+
+  53  IF #100=14 RS17=1		          C	4 TEST	 	16'	                120*70CM.	        
+  54  IF #100=26 RS17=2		          C	5 U	    	16'                	125-85*70CM.	        
+  55  IF #100=36 RS17=3		          C	3 DB.GALLER+0.5	DB.SPICC     NEM KEL VASALNI
+  56  IF #100=44 RS17=4	           C 6.5 DB. SPICC                NEM KEL VASALNI
+C*************1BUKLE+1HB*****************************************7.5 BUKLE+HB:***********6.0 BUKLE+HB:******
+  57 IF RS17=0   RS19=1 RS1=19 RS2=62        C 3 U-E-H-U          19   65                  18    60-62:KT-PKT
+  58 IF RS17=1   RS19=2 RS1=17 RS2=65        C 4 TEST             19   68                  18    63-65:KT-PKT
+  59 IF RS17=2   RS19=3 RS1=17 RS2=61        C 5 U                19   64                  18    59-61:KT-PKT
+  60 IF RS17=3          RS1=19 RS2=0         C 2/1 GALLER         19    0                  18     0
+  62 IF RS17=4          RS1=5  RS2=0         C 2/1 SPICC           5    0                   5     0
+C***********************************************************************************************************
+
+  80 <<	S:D.I-DI./DI.-D.I;		         Y:2/5;	 ML     NP4-4   V0	VU      S1 S2
+  82 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+  84 <<	S:DI..-D..I/0-DII./UVND..I;		Y:2/0; 	ML             VL1        S1 S2 T2
+  86 >> S:DII.-0/DII.-D.II;          Y:5/6;  ML                        S1 S2
+  88 << S:DII.-0/D..I-R;             Y:6/0;  ML                        S1 S2            
+  90 >>	S:DII.-D.II;                 Y:2;	   ML     NP2-2                 S2
+  92 << S:0-D.II/DII.-0;             Y:5/2;  ML     NP3-3              S1 S2
+  94 RBEG*RS1
+  96 >> S:DII.-D.II;                                        V0         S1 S2
+  98 <<                                                                S1 S2
+ 100 REND
+ 102 >> S:DII.-D.II/DII.-D.II/UVSD.II;                                 S1 S2 T2
+ 104 IF RS2=0 END
+
+C************581TU**********************************************************************************
+ 150 JA1=1002;
+ 152 PA:1:<JA1>;FA=1-2;
+ 154             PM:1:<FA>;                              C*NINCS JELOLES - IGY BARMI KOTHETO
+ 156 IF RS19=1   PM:1:<FA>291:*;                         C* U-E-H-U
+ 158 IF RS19=2   PM:1:<FA>145:* 291:* 437:*;             C* 4 TEST (1TEST:144TU)
+ 160 IF RS19=3   PM:1:<FA>116:* 232:* 348:* 465:*;       C* 5 UJJA (1UJJA:115TU)
+C***************************************************************************************************
+ 200 GOSUB 500-520
+ 202 << S:R-0/R-0/UVSR;                   NP1-2           S1 S2 T2
+ 204 >> S:R-0/R-0/UVSR;                                   S1 S2 T2
+ 206 WM=12
+ 208 RBEG*RS2
+ 210 GOSUB 500-520
+ 212 << S:R-*;                                            S1 S2
+ 214 >>                                                   S1 S2
+ 216 REND
+ 218 WM=18
+ 220 << S:U^NDI./D.I-DI./D.I-DI./UVND.I; NP3-3           T1 S1 S2 T2
+ 228 >> S:U^NDI./D.I-DI./D.I-DI./UVNDI.;                 T1 S1 S2 T2
+ 230 END
+
+ 500 C **CSIKOZAS*************
+ 502 #1=#1+1
+ 504 IF#1=1 Y:3/3;
+ 506 IF#1=2 Y:3/3;
+ 508 IF#1=3 Y:4/4;
+ 510 IF#1=4 Y:4/4;
+ 512 IF#1=5 Y:2/5;
+ 514 IF#1=6 Y:2/5;
+ 516 C
+ 518 IF#1=6 #1=0
+ 520 C **********************
+
+
+1002 I

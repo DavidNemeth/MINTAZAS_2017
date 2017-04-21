@@ -1,0 +1,115 @@
+   1 C CP TRIKO RS1=  RS17=   ************ 1SZV.CSIPKE
+   2 C                                      2MINTA: 1:RS17=0
+   3 C                                              2:RS17=1
+   4 C
+   5 C  REX PIKOPANT: CP PANT
+   6 C       14.5    0            0     14.5
+   7 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   8 C       14.5    0            0     14.5
+   9 C       
+  10 C J2: <-------------       ------------->  
+  11 C                 
+  12 C       10.5   10.5         10.5   10.5
+  13 C B2: <-------------       ------------->  REXPIKO PANT: CP PANT (2 SZAL)
+  14 C       10.5   10.5         10.5   10.5          
+  15 C        0     15.25        15.25    0
+  16 C J3: <-------------       ------------->  PASSZE
+  17 C        0     15.25        15.25    0
+  18 C       
+  19 C B3: <-------------       ------------->
+  20 C       
+  21 C       13.5   12.5         13.5   13.5
+  22 C J4: <-------------       ------------->  LEVALASZTAS
+  23 C       13.5   12.5         13.5   13.5
+  24 C B4:=J4=13.5                              BEKEZDES
+  25 C TUAGYKORREKCIOK: V0:->1.5
+  26 C                  R1:->2__________R2: - ________R3:-
+  27 C                  L1:<-2   _______L2: - ________L3:-
+  28 C                            NP1=          RS1=
+  29 C                                        ELEJE:       HATA:        UJJA:
+  30 C-----------------------+------------+------------+------------+-------------+
+  31 C 2X16/1 PAMUT+1BRILL:  
+  32 C            4LAP:RS19=4    16.0          110
+  33 C            3LAP:RS19=3    15.25         122
+  34 C -JELOLES NELKUL:RS19=0 ------------------------------------------------------
+  35 C    7 SULY 
+  40 START
+  50 YG:6/256;      C:MELLENY:
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  95 JA1=1044;           C**1.MINTA********
+  96 IF RS17=1 JA1=1022  C**2.MINTA********
+  98 PA:1:<JA1>;
+ 101 IF RS19=4 FA=7-140                     C*4LAP************
+ 102 IF RS19=4 PM:<.>7:FA.FA.FA.FA;         C*4LAP************
+ 103 IF RS19=3 FA=7-185;          C*3LAP************
+ 104 IF RS19=3 PM:<.>7:3(FA..);    C*3LAP************
+ 105 Y:2/2/5/5;
+ 106 REP*1
+ 108 << S:R-0;		                             ML       NP3-03        S2
+ 110 >> S:0-R;		                             ML       NP0-          S2
+ 112 REPEND
+ 114 << S:R-0/UVN+*.;                        ML       NP-0          S2 T2
+ 116 >> S:U^NOA/.+*-OA;                      ML               T1    S2
+ 118 REP*5
+ 120 << S:U^N*;                                   VL1 NP0-0   T1
+ 122 >> S:U^S+;                                   VR1 NP0-0   T1
+ 124 << S:.-N./UVN+*;                         V0                S2 T2 
+ 126 >> S:.+*-OA;                                     V#            S2
+ 128 REPEND
+ 136 GOSUB 120-124
+ 138 >> S:.+*-OA/UVNOA;                               NP1-1      S1    T2
+ 150           JA1=1040(1026-1040); C**1.MINTA*********
+ 151 IF RS17=1 JA1=1018(1004-1018); C**2.MINTA*********
+ 170 PA:1:<JA1>; 
+ 185 VJA^0
+ 190 RBEG*RS1
+ 200 << S:U^N<1->N./.-N./UVNNY.;        V0         T1 S1    T2
+ 205 >> S:U^N<1->N./.-N./UVNNA.;        VL1        T1 S1    T2
+ 215 REND
+ 220 GOSUB 200
+ 225 >> S:U^N<1->N./.-N./UVNR;          VL1        T1 S1    T2
+ 230 << S:U^ND.I/DI.-D.I;               V0  NP4-4  T1 S1
+ 235 >> S:DI.-D.I/UVND.I;                             S1    T2
+ 240 END
+1002 IIIIIIIIIIIIIII
+1004 IIIIIIIIIAAIIII
+1006 .........IIIYY.
+1008 IIIIIIIIAAIIIII
+1010 ........IIIIIYY
+1012 IIIIIIIAAIIIIII
+1014 Y......IIIIIIIY
+1016 IIIIIIAAIIIIIII
+1018 YY....IIIIIIIII
+1020 IIIIIIIIIIIIIII
+1022 +++OO******A+++
+1024 IIIIIIIIIIIIIII
+1026 IIIIIIAIII
+1028 ......IIY.
+1030 IIIIIAAIII
+1032 .....IIIYY
+1034 IIIIAAAIII
+1036 Y...IIIIYY
+1038 IIIAAAAIII
+1040 YY.IIIIIYY
+1042 IIIIIIIIII
+1044 ++O****A++
+1046 IIIIIIIIII
+1048 ..IIIIYYI.
+1050 ..IAA.III.
+1052 ..III..YY.
+1054 ..AA...II.
+1056 ..II...I.Y
+1058 .A.I...I.I
+1060 II.I...III
+1062 IIII...IAA
+1064 .YYI...III
+1066 .III...AA.
+1068 ..YY...II.
+1070 ..II..A.I.
+1072 ..I.Y.I.I.
+1074 ..I.IIIII.

@@ -1,0 +1,175 @@
+
+ C csak 800ft - nem szabad csinalni!!!!!!!!!!!
+  
+ C XXL BABOS FAZONU LEBEGOSZALAS BOLERO 1 NAGYIDA GOMBBAL------------- MINTA: V0-VL1 EZ A JOBB
+ C  SZELESSEGE:57 HOSSZA:52
+ C JAC: R2015/LEBEGOSZ BOLERO
+
+   1 C 
+C-------------------------------------------------------------------------
+C  2T.P+1TX       FEHER     FUST     MOGYI    MAKOS    NYERS    FEKETE
+C-------------------------------------------------------------------------
+C KT                                            0      
+C-------------------------------------------------------------------------
+C PKT                                                           +0.1-+0.2
+C-------------------------------------------------------------------------
+C UJ  WM%=10        0                                  -0.1
+1C-------------------------------------------------------------------------
+ 
+  10 NP4=12.2   C:LEVALASZTAS 
+  12 NP2=11.0   C:BEKEZDES,1/1-ES PASSZE
+  14 NP5=13.8              C PASSZE*
+  16 NP1=14.8              C:MINTA 14.6-15.0
+
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
+
+ C***** BOLERO *** 581 TU******************************** ---20:---32
+  60 C IF #100=55  RS17=50        C BOLERO PANT    6'22       20     32
+  64  IF #100=18  RS17=0         C HHH           30'         7(1)  11(1)
+  66  IF #100=4   RS17=1         C EEEE          24'48       5      8
+  68  IF #100=12  RS17=4         C UUUU  3/4    18'26       10     16
+c                                                      SUM: 42     67
+  70  IF #100=38  RS17=50        C BOLERO PANT    6'22
+  72  IF #100=39 RS17=0         C HHH           30'  
+  74  IF #100=40 RS17=1         C EEEE          24'48
+  76  IF #100=42 RS17=4         C UUUU  3/4    18'26
+ C********************************************SUM:33'****
+
+C -------------------------XXL BABOS FAZON ----57*52----------KG:-------KESZEN:-------VASALVA:-------------------
+ 100 IF RS17=50 RS19=1  RS1=4  RS2=0      C BOLERO PANT                            
+ 101 IF RS17=0  RS19=3  RS1=2  RS2=11     C TTT   11-12                  57*52          61*56
+ 102 IF RS17=1  RS19=4  RS1=0  RS2=12     C EEEE  12-13                                 52*52
+ 103 IF RS17=4  RS19=4  RS1=2  RS2=9      C UUUU   21'                                  45*45
+C ------------------------------------------------------------------------------------------------------------
+
+ 130 C************581TU**************************************************************
+ 132 JA1=1056(1042-1056)   C PASSZE
+ 136 PA:2:<JA1>
+C       ----------- 581TU ----1100 IAAAAIYYYY---130---------------------
+ 138 IF RS19=1  FA=2-19;FB=2-4;        PM:*<I>11:31FAFB;                           C*1 LAP   
+ 140 IF RS19=3  FA=2-184;              PM:*<I>10:FA  7I FA  7I FA;                 C*3 LAP      
+ 142 IF RS19=4  FA=2-130;              PM:*<I>14:FA 13I FA 13I FA 13I FA;          C*4 LAP
+    
+ 144 CCMEG NEM JO IF RS19=5  FA=2-103;              PM:*<I> 8:FA 14I FA 14I FA 14I FA 14I FA;   C*5 LAP    
+   
+ 146CCC IF RS19=6  FA=9-163;  FC=9-132;   PM:*<I>7:IFC 3I FA 3I FA 3I FC I;           C*U-T-T-U   
+ 148CCC IF RS19=7  FA=1-161;  FD=1-81;    PM:*<I>7: FA  I FD 2I FA  I FA;             C*T-T-T-1/2   
+C********************************************************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	            VU VR1	  	   S1
+ 206 <<	S:D.I-0/UVSDI.;		                      	                   S1    T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI./0-DI.;		          	Y:5/2;;	         VU V0        S1 S2
+
+ 213 IF RS1=0 GOTO 600      C EEEE
+ 214 << S:D.I-0;                     Y:5;             VU           S1
+ 216 >> S:D.I-DI.;                             NP2-2  VU           S1    
+ C********************************
+ 218 Y:5/5/2/2;
+ 220 << S:U^SD.I/0-R/UVSAY+;                   NP1-1           T1 S1    T2
+  223 >> S:AY+-I;                             NP5-5  VU           S1
+
+  224 RBEG*RS1
+  225 REP*3
+  226 WM=0
+  228 << S:U^SA;                                   VL1 T1
+  230 >> S:U^SY;                                   VR1 T1
+  232 WM=15
+  234 << S:U^S+/0-R/UVS<1->AY+;              NP5-5 V0   T1 S1 T2 
+  235 >> S:AY+-I;                                 VU     S1
+  236 REPEND
+  237 << S:U^S+/0-R/UVS<1->AY+;              NP5-5 V0   T1 S1 T2 
+  238 >> S:AY+-I;                                 VU     S1
+  239 REND
+
+  240 IF RS2=0 GOSUB 226-232 C PANT
+  242 IF RS2=0 GOTO 400      C PANT VAGY
+ 300 C ******************1SZV. CSIPKE*************************
+ 302 JA1=1040(1004-1038) C MINTA
+ 304 VJA^1
+ 306 WM=15 C10
+ 308 Y:5/0/5/0/2/0/2/0;
+ 310 NP1-1
+ 312 RBEG*RS2
+ 314 REP*9
+C-------------------------------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYO/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OIY/+(7.0)-0/UVSY;           VL1    T1 S1 S2 T2
+C---------------NO.2:----------------------------
+ 315 PKV:1:<JA1>;
+ 316 << S:U^SYOH/<1->+ (6.5)-  IA/+(8.0)-0/UVSA;            V0   T1 S1 S2 T2
+
+ 317 PKV:2:<JA1>;
+ 318 >> S:U^S A/<1->+W(6.5)-*OHIY/+(7.0)-0/UVSYH;           VL1    T1 S1 S2 T2
+C------------------------------------------------
+ 320 REPEND
+ 322 REND
+ 342 GOSUB 315-318*8
+ 343 PKV:1:<JA1>;
+ 344 << S:U^SYO/<1->+ (6.5)- OIA/+(8.0)-0/UVSDI.;            V0   T1 S1 S2 T2
+ 345 WM=16
+ 346 >> S:U^ND.I/DI.-D.I;                 NP4-4       T1 S1
+ 348 << S:DI.-D.I;                        Y:5/2;  VU     S1 S2
+ 350 >> S:DI.-D.I/DI.-D.I/UVND.I;                        S1 S2 T2
+ 352 END C************************************************
+
+ 400 C PANT VEGE *************
+ 402 << S:U^S+/0-R/0-R/UVSD.I;    Y:2/5;  NP5-5 V0   T1 S1 S2 T2 
+ 404 >> S:D.I-DI./D.I-DI./UVSDI.;         NP2-2         S1 S2 T2
+ 408 END
+
+ 600 C EEEE 1/1 PASSZE
+ 602 << S:D.I-0/D.I-DI.;          Y:2/5; NP4-4   VU     S1 S2
+ 603 >> S:D.I-DI./D.I-DI.;                       VU     S1 S2
+ 606 << S:D.I-DI.;                Y:2;           VU     S1
+ 608 >> S:U^SD.I/0-R;                    NP1-1       T1 S1
+ 609 GOTO 300
+
+ 999 <> W0 VU S0
+
+1002 WWWWWWWWWWWWWWWWWW
+1004 IWO.YYYIIIWOIIIIII
+1006 III.IIIIIIIIIIAAA.
+1008 IWO..YYYIIWOIIIII.
+1010 III..IIIIIIIIAAA..
+1012 IWO+..YYYIWOIIII..
+1014 III..+IIIIIIAAA..+
+1016 IWO.+..YYYWOIII+..
+1018 III...+IIIIAAA...+
+1020 IWO.+..IIIWOII.+..
+1022 III..+AAAIIIII...+
+1024 IWO+..IIIIWOYYY+..
+1026 III..AAAIIIIIII..+
+1028 IWO..IIIIIWOIYYY..
+1030 III.AAAIAIIIIIII..
+1032 IWO.IIIIIIWOYIYYY.
+1034 IIIAAAIAIIIIIIIII.
+1036 IWOIIIIIIIWOIYIYYY
+1038 IIIIIIIIIIIIIIIIII
+1040 YYYYYYYYYYYYYYYYYY
+
+C-------NO.2:---------
+1026 III..AAAIAIIIII..+
+1028 IWO..IIIIIWHIYYY..
+
+
+
+1042 ++++++++++++++++++
+1044 ++Y+++++A++Y+++++A
+1046 ++YY+++AA++YY+++AA
+1048 ++YYY+AAA++YYY+AAA
+1050 ++++++++++++++++++
+1052 ++++A+Y++++++A+Y++
+1054 +++AA+YY++++AA+YY+
+1056 ++AAA+YYY++AAA+YYY
+1058 WWWWWWWWWWWWWWWWWW

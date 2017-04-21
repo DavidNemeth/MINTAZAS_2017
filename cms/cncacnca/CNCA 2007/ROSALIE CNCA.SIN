@@ -1,0 +1,162 @@
+   1 C ROSALIE MELLENY CNCA : E: SLAG PIKO+4MENETES CS.  H:1SZV.KREPP
+   2 C   JAC/RAJZOK5/ROSALIE   3 MERET:XL,XXL,3XL
+   3 C CNCA2007: CP RO RS10= RS17=
+   4 C 
+   5 C NYERS LUSI+TX:      
+   6 C                                   0  -14.5
+   7 C  1:14.5 KORSLAG PIKO            <---------->
+   8 C J2:                              14.5- 0
+   9 C J3:                              13.5-14.0             
+  10 C B3:14.0 BAL-BAL          LUSI+TX:----------          14.0/14.0            14.5/14.75
+  11 C B2:11.7 BEKEZDES                   13.75
+  12 C J4:12.5 LEVALASZTAS,1/1               
+  13 C 4-6 SULY LUREX:+2 SULY                                    
+  14 C TUAGYKORREKCIOK: V0:->2.4 (2008.03.28.)
+  15 C                  R1:->2.2_________R2: - ________R3:-
+  16 C                  L1:<-1.0_________L2: - ________L3:-
+  17 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:2/5;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  59 C***********NYUSZIFUL KREPP H-U***554 TU (TELI TUAGY)*******************************
+  60C  IF RS10=2  RS17=0    C*** E       3LAP
+  61C  IF RS10=1  RS17=1    C*** H       3LAP
+  62 C IF RS10=1  RS17=2    C*** HU      4LAP
+  63 C IF RS10=6  RS17=3    C*** RU      4LAP
+  65 C IF RS10=6  RS17=4    C*** U-H-H-U **554TU CSIPKE PASSZEJU TOP
+  69 C**********2LUSI+1TX**LUREXXEL:+0.4**KESZEN: 75CM****71CM******70CM.:***65CM.:***60CM.:*****
+  70 IF RS17=0  RS1=177   RS19=3 RS15=1 C E       177     170         
+  71 IF RS17=1  RS1=172   RS19=3 RS15=0 C TUN.H   172     165       164      157      151
+  72 IF RS17=2  RS1=132   RS19=4 RS15=0 C HU TELI 
+  73 IF RS17=3  RS1=60    RS19=4 RS15=0 C RU TELI                           
+  75 IF RS17=4  RS1=156   RS19=2 RS15=0 C*** U-H-H-U *554TU CSIPKE PASSZEJU TOP
+  80 C********************************************************************************
+  81 JA1=1990   C PASSZE
+  82 PA:<JA1>;  C 3XL:18-128  XXL:21-125  XL:FA=19-196 AMELYIK NEM KELL AZT KICEZNI!!!!!
+  84C IF RS19=3 FA=18-128;PM:<.>7:4(IIFAI)I;              C*4FEL LAP*3XL*********** TU
+  86C IF RS19=3 FA=21-125;PM:<.>7:5(IIFAI)I;               C*5FEL LAP*XXL***********TELI TUAGY 553TU
+  88 IF RS19=3 FA=19-196;PM:<.>7:I3(FAII);                     C*3LAP*XL***********TELI TUAGY 553TU
+  89 C 
+  90 IF RS19=4 FA=30-162;PM:<.>9:4(FA..);                      C*4LAP************TELI TUAGY 553TU
+  93 IF RS19=2 FC=15-165;FB=33-147; PM:<.>7:..FBIIFCIIFCIIFB.; C*U-H-H-U*********TELI TUAGY 553TU
+  98 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP2-2          ML       S1
+ 110 << S:0-NA/NA-0;                  Y:2/5;      NP1-1     V#            S1 S2
+ 112 REP*2 C***PIKO***
+ 114 >> S:0-NA/NA-0;                  Y:5/2;                V#            S1 S2
+ 116 << S:0-NA/NA-0;                  Y:2/5;                V#            S1 S2
+ 118 REPEND
+ 120 >> S:0-R/R-0;                    Y:5/2;                              S1 S2
+ 122 REP*3
+ 124 << S:0-R/R-0;                                          V#            S1 S2
+ 126 >> S:0-R/R-0;                                          V#            S1 S2
+ 128 REPEND
+ 129 IF RS15=1 GOTO 500
+ 130 JA1=1040
+ 132 << S:UVN.;        NP 0-0       T2
+ 134 >> S:U^NN.;       NP03-03      T1
+ 400 C**********HATA-UJJA (KREPP)********
+ 402 Y:2/2/5/5;
+ 404 JA1=1040(1034-1062)   C KREPP
+ 406 RBEG*RS1
+ 408 << S:U^N<1->N./.-N./UVNR;             V0     T1    S2 T2
+ 410 >>                                           T1 S1    T2
+ 412 REND C******
+ 414 << S:U^ND.I/DI.-D.I;             NP4-4       T1    S2
+ 416 >> S:DI.-D.I/UVND.I;                            S1    T2
+ 418 RS10=RS10-1
+ 420 IF RS10>0 GOTO 52
+ 422 END
+ 500 C*********** ROSALIE ELEJE 4/2-ES CSIPKE **************
+ 502 JA1=1138
+ 504 << S:UVN.;        NP 0-0       T2
+ 506 >> S:U^NN.;       NP03-03      T1
+ 508 Y:2/2/5/5;
+ 509 JA1=1238(1202-1248)   C CSIPKE 1138(1102-1148) VAGY 1238(1202-1248)
+ 510 RBEG*RS1
+ 512 << S:U^N<1->N./.-N./UVN<1->.;      V0         T1    S2 T2 
+ 514 >> S:U^NN./.-N./UVNN*;                          T1 S1    T2
+ 516 << S:U^NY;                        VR1 NP0-0  T1
+ 518 >> S:U^NA;                        VL1 NP0-0  T1
+ 520 REND
+ 522 GOSUB 512-514
+ 526 << S:U^ND.I/DI.-D.I;             NP4-4       T1    S2
+ 528 >> S:DI.-D.I/UVND.I;                            S1    T2
+ 530 RS10=RS10-1
+ 532 IF RS10>0 GOTO 52
+ 534 END
+1032 WWWWWWWWWWWW
+1034 II.II...I...
+1036 I.I.I..III..
+1038 .I.I.II...II
+1040 .III..I.I.I.
+1042 I...II.I.I.I
+1044 ..I..III.III
+1046 II.II...I...
+1048 II.III..I..I
+1050 ..I...II.II.
+1052 II.II.I...I.
+1054 ..I..I.III.I
+1056 I...I.II.II.
+1058 .III.I..I..I
+1060 II.III..I..I
+1062 ..I...II.II.
+1064 WWWWWWWWWWWW
+1100 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1102 ...I.I.......II......I.......II...
+1104 ...I.I...IIIIIIYII..AIY..IIIIIIYII
+1106 I..I.I..I...II......III.....II....
+1108 .Y.I.I.A.IIAIIYIII.AIIIY.IIAIIYIII
+1110 .I.I.I.I.....I.....IIIII.....I....
+1112 ..YI.IA..IIIAIIIIIAIIIIIYIIIAIIIII
+1114 ..II.II......II...IIIIIII....II...
+1116 ...Y.A...IIIIIIYIIIIIIIIIIIIIIIYII
+1118 ...I.I......II....IIIIIII...II....
+1120 ...I.I...IIAIIYIII.YYIAA.IIAIIYIII
+1122 I..I.I..I....I.....IIIII.....I....
+1124 .Y.I.I.A.IIIAIIIII..YIA..IIIAIIIII
+1126 .I.I.I.I.....II......I.......II...
+1128 ..YI.IA..IIIIIIYII..AIY..IIIIIIYII
+1130 ..II.II.....II......III.....II....
+1132 ...Y.A...IIAIIYIII.AIIIY.IIAIIYIII
+1134 ...I.I.......I.....IIIII.....I....
+1136 ...I.I...IIIAIIIIIAIIIIIYIIIAIIIII
+1138 I..I.I..I....II...IIIIIII....II...
+1140 .Y.I.I.A.IIIIIIYIIIIIIIIIIIIIIIYII
+1142 .I.I.I.I....II....IIIIIII...II....
+1144 ..YI.IA..IIAIIYIII.YYIAA.IIAIIYIII
+1146 ..II.II......I.....IIIII.....I....
+1148 ...Y.A...IIIAIIIII..YIA..IIIAIIIII
+1150 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1200 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1202 ...I.I.......II......I.......II...
+1204 ...I.I...IIIII*YII..A*Y..IIIII*YII
+1206 I..I.I..I...II......III.....II....
+1208 *Y.I.I.A*IIA**YIII.A*I*Y.IIA**YIII
+1210 .I.I.I.I.....I.....IIIII.....I....
+1212 .*YI.IA*.IIIA*IIIIA*III*YIIIA*IIII
+1214 ..II.II......II...IIIIIII....II...
+1216 ..*Y.A*..IIIII*YIIIIIIIIIIIIII*YII
+1218 ...I.I......II....IIIIIII...II....
+1220 ...I.I...IIA**YIII*YYIAA*IIA**YIII
+1222 I..I.I..I....I.....IIIII.....I....
+1224 *Y.I.I.A*IIIA*IIII.*YIA*.IIIA*IIII
+1226 .I.I.I.I.....II......I.......II...
+1228 .*YI.IA*.IIIII*YII..A*Y..IIIII*YII
+1230 ..II.II.....II......III.....II....
+1232 ..*Y.A*..IIA**YIII.A*I*Y.IIA**YIII
+1234 ...I.I.......I.....IIIII.....I....
+1236 ...I.I...IIIA*IIIIA*III*YIIIA*IIII
+1238 I..I.I..I....II...IIIIIII....II...
+1240 *Y.I.I.A*IIIII*YIIIIIIIIIIIIII*YII
+1242 .I.I.I.I....II....IIIIIII...II....
+1244 .*YI.IA*.IIA**YIII*YYIAA*IIA**YIII
+1246 ..II.II......I.....IIIII.....I....
+1248 ..*Y.A*..IIIA*IIII.*YIA*.IIIA*IIII
+1250 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1990 *****AA

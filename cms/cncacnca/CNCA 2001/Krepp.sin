@@ -1,0 +1,109 @@
+   1 C KREPP H-U  2 SZALV.KREPP REX PIKO PASSZEVAL,HATSO TUAGYON
+   2 C---FELEMAS+PIKOTA 2.+BOHOC+CELTABLA STB -H-U--CNCA-------------
+   3 C       14.5   0              9.0  14.5
+   4 C  1: <-------------       ------------->  LEVALASZTS+1SOR MINTA14.0-15.0
+   5 C       14.5   0              0    14.5
+   6 C       14.75 14.75          14.75 14.75
+   7 C J2: <-------------       ------------->  2 SZALV.KREPP 
+   8 C         -     -              -     -
+   9 C       11.5  11.5           11.5  11.5
+  10 C B2: <-------------       ------------->  BEKEZDES,PASSZE
+  11 C       11.5  11.5           11.5  11.5     (PIKO PANT)
+  12 C         -     -              -     -
+  13 C J3: <-------------       ------------->
+  14 C         -     -              -     -
+  15 C       12.2  12.2           12.2  12.2
+  16 C B3: <-------------       -------------> 1/1-ES PASSZE RS19=2
+  17 C       12.2  12.2           12.2  12.2
+  18 C       13.0   13.0         13.0   13.0
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.0   13.0         13.0   13.0
+  21 C B4:=J4
+  22 C TUAGYKORREKCIOK:  V0:->1
+  23 C                   R1:- _________R2:- ________R3:-
+  24 C                   L1:<-1-3______L2:- ________L3:-
+  25 C  10 SULY+3 TARCSA, 3 TX-NEL CSAK 10 SULY
+  26 C                           NP2=         RS1=
+  27 C                                        ELEJE:       UJJA:        HATA:        
+  28 C TUNIKA                                               1-35        36-
+  29 C-----------------------+------------+------------+------------+-------------+
+  30 C   3X16/1 PAMUT(FEKETE):    15.5-          -          27/15           36
+  31 C               (FEHER):     15.6                              
+  32 C-----------------------+------------+------------+------------+-------------+
+  33 C   2X16/1 PAMUT+1BRILL:     15.2           -          32/16           40
+  34 C-----------------------+------------+------------+------------+-------------+
+  35 C          1991 ....AIA
+  36 C RS19=0:H-U REX PIKO PASSZEVAL
+  37 C RS19=1:CSAK PANT
+  38 C RS19=2:H-U 1/1-ES PASSZEVAL
+  40 START 
+  42 YG:6/256;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  47 IF RS19=2 GOTO 600 C************** H-U 1/1-ES PASSZEVAL*****************
+  48 JA1=1991;
+  50 PA:<JA1>; 
+  52 FA=2-8; 
+  54 PM:<.>6:77FA;
+  56 >> S:D.I-DI./DI.-D.I/UVN.I;	           	ML     NP4-4   V#  	      S1 S2 T2
+  58 << S:U^NA/.I-A;                 Y:2;    ML     NP1-1           T1 S1
+  60 >> S:UVSA;                              ML     NP0-0   VL1              T2
+  62 << S:.I-0;                      Y:5;    ML     NP4-04  V0         S1
+  64 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  66 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  70 << S:0-./.-.;                           ML                        S1 S2
+  72 >> S:.-.;                               ML                        S1 S2
+  74 <<                                      ML                        S1 S2
+  76 >> S:.-./.I-.I;                         ML                        S1 S2
+  77 IF RS19=1 GOTO 500
+  78 << S:R-R;                               ML                        S1 S2
+  80 >> S:R-R;                               ML                        S1 S2
+ 101 FA=8-183;          IF RS1<36  FA=29-160          C======4LAP======
+ 104 PM:<.>9:3(FA...);  IF RS1<36  PM:<.> 10:4(FA ..);
+ 152 JA2=1004(1004-1014)
+ 153 PA:<JA2>;
+ 154 << S:R-R;                        Y:2;   ML                        S1
+ 156 >> S:U^NDI.;                            ML       NP0-0       T1
+ 158 << S:U^ND.I;                            ML       NP01-01       T1
+ 160 >> S:0-.*;                              ML       NP0-             S1
+ 200                                                  NP2-2
+ 205                                Y:2/5;
+ 210 RBEG*RS1
+ 212 REP*2
+ 215 <<S:<2->0-.%*/0-.*;      NP02-2    S1 S2
+ 220 >>                       NP0-      S1 S2
+ 225 REPEND
+ 235 REND
+ 471 GOSUB 215
+ 472 >> S:0-R/0-R/UVNDI.;                        ML      S1 S2 T2
+ 473 << S:DI.-D.I/DI.-D.I;                NP4-4  ML      S1 S2
+ 474 >> S:DI.-D.I/DI.-D.I/UVSD.I;                ML      S1 S2 T2
+ 480 END
+ 500 << S:R-R;                                                         S1 S2
+ 510 >>                                                                S1 S2
+ 511 <<                                                                S1 S2
+ 512 >>                                                                S1 S2
+ 515 END
+ 600 C************** H-U 1/1-ES PASSZEVAL*****************
+ 602 >>	S:D.I-DI./DI.-D.I/UVNDI.;   	      	 ML   NP4-4            S1    S2 T2
+ 604 <<	S:U^ND.I/DI.-D.I;		          Y:5;			 ML   NP1-1         T1 S1
+ 606 >>	S:U^NDI./D.I-D.I;		          Y:6;	   ML   NP4-4  VL1	   T1	   S2
+ 608 <<	S:0-D.I/R-0;		               Y:6/0;  ML   NP4-4   V#	           S1 S2
+ 610 >>	S:DI.-D.I;		          	      Y:5;	   ML   NP3-3   V# V0 ML     S1
+ 612 << S:DI.-0/0-D.I;               Y:2/5;  ML        V#           S1 S2
+ 614 REP*1
+ 616 >> S:DI.-D.I;                                     V#           S1 S2
+ 618 <<                                                V#           S1 S2
+ 620 REPEND
+ 622 >>                                                V#           S1 S2 
+ 624 << S:DI.-D.I;                   Y:2;        NP4-4 V#           S1
+ 626 GOSUB 101-153 C PATRON
+ 628 >> S:U^NDI./0-.*;                           NP01-1         T1  S1
+ 630 GOTO 200
+1004 *.....
+1006 .*...*
+1008 ..*.*.
+1010 ...*..
+1012 ..*.*.
+1014 .*...*
+1991 ....AIA

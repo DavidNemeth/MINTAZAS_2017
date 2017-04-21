@@ -1,0 +1,53 @@
+
+C**********NYAK********************************
+  44 C IF #100=130 RS17=50          C CSIPKE NYAK  A LEVALASZTAS IS JAC.
+C************************************
+  71 IF RS17=50 GOTO 800
+C************************************
+
+ 800 C************* MADONNA NYAK 2007.12.01.**********EZ A LEGJOBB********
+ 802 C *** NEM RAGJA A SZELET, MERT A LEVALASZTAST IS JAC.-BOL KOTI.*********************
+ 804 C 1'31"
+ 805 C SZELES: 2PAMUT+TX: NPK=0 RS1=3 ---- 3PAMUT: NPK=0.4  KESKENY:RS1=3
+ 806 C*******************
+ 808 NP4=13.0   C:LEVALASZTAS
+ 810 NP12=12.0  C:BEKEZDES
+ 812 NP15=12.6  C:1/1  13.0
+ 814 NP14=11.0  C:2SZV. CSIPKE NYAK HATUL    MADONNA:11.0   TUNIKA:10.8
+ 816 NP13=11.2  C:2SZV. CSIPKE NYAK ELOL     MADONNA:11.2   TUNIKA:11.0
+818   START        
+820   YG:6/256;	
+ 822 WM=16;WMI=7
+824   << S:D.I-DI./DI.-D.I;        Y:5/2;         NP4-4   VU V0      S1 S2
+ 826 C** CSIPKE NYAK ************
+ 830 JA1=1001;PA:1:<JA1>;
+ 832 FA=1-2; PM:<.>7:*<FA>576:<.>;   C*581TU  VAGY: PM:<.>7:*<FA>575:*<.>;
+ 834 >>	S:D.I-DI./UVS.*Y;   	      Y:5;                              S1    T2
+ 836 <<	S:U^SI/.*Y-I;		              			                          T1 S1
+ 838 >> S:U^SY/.*I-I;              Y:6;                   VR1     T1    S2
+ 840 << S:.*-I/I-0;                Y:6/0;                    VU      S1 S2
+ 842 >>	S:.*Y-I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 844 << S:.-I;                     Y:6;           NP15-15    VU      S1
+ 846 >> S:.*Y-0/.-I;               Y:5/6;                    VU      S1 S2
+
+ 847 << S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+ 848C >> S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+ 849C << S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+
+ 850 >> S:.*Y-I/.*Y-I/UVS.*Y;                                S1 S2 T2
+ 852 VJA^0
+ 854 NP13-14
+ 855 RBEG*RS1
+ 856 REP*2
+ 858 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 860 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;                         V0      T1 S1 S2 T2 C  VKA<2
+ 862 REPEND
+ 863 REND
+ 864 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 866 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;                        V0      T1 S1 S2 T2 C VKA 
+ 868 END C**********************************************************
+
+
+ 999 <> W0 S0
+
+1001 IY

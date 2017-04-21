@@ -1,0 +1,96 @@
+   1 C CP TRIKOH3 RS19=3/4(LAPSZAM) RS1= RS2=(FINOM ALLITAS)
+   5 C  REX PIKOPANT: CP PANT                      
+   6 C       15.5    0            0     15.5
+   7 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   8 C       15.5    0            0     15.5
+   9 C       
+  10 C J2: <-------------       ------------->  
+  11 C                 
+  12 C       
+  13 C B2: <-------------       ------------->
+  14 C      
+  15 C        0     15.5         15.0    0
+  16 C J3: <-------------       ------------->  PASSZE
+  17 C        0     15.0         15.5    0
+  18 C       
+  19 C B3: <-------------       ------------->
+  20 C       
+  21 C       13.5   12.5         13.5   13.5
+  22 C J4: <-------------       ------------->  LEVALASZTAS
+  23 C       13.5   12.5         13.5   13.5
+  24 C B4:=J4=13.5                              BEKEZDES
+  25 C TUAGYKORREKCIOK: V0:->1.5
+  26 C                  R1:->2__________R2: - ________R3:-
+  27 C                  L1:<-1__________L2: - ________L3:-
+  28 C 
+  29 C                                        ELEJE:       HATA:        UJJA:
+  30 C                           NP1=      RS1=   RS2=
+  31 C-----------------------+------------+------------+------------+-------------+
+  32 C 3X16/1 PAMUT: 4 ATORSOZVA            11     5 (1-7)
+  33 C            4LAP:RS19=4    16.0            
+  34 C            3LAP:RS19=3    
+  35 C -JELOLES NELKUL:RS19=0 ------------------------------------------------------
+  36 C   8-9 SULY 
+  40 START
+  50 YG:6/256;      C:MELLENY:
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  83  JA1=1018(1002-1016);
+  98 PA:1:<JA1>;
+ 100           FA=7-140                   C*4LAP************
+ 101           PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 102 IF RS19=4 FA=7-140                   C*4LAP************
+ 103 IF RS19=4 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 104 IF RS19=3 FA=4-182;                  C*3LAP************
+ 105 IF RS19=3 PM:<.>7:3(FA..);           C*3LAP************
+ 106 Y:2/2/5/5;
+ 107 REP*1
+ 108 << S:R-0;		                             ML       NP3-03        S2
+ 110 >> S:0-R;		                             ML       NP0-          S2
+ 112 REPEND
+ 114 << S:R-0/UVN+*.;                        ML       NP-0          S2 T2
+ 116 >> S:U^NOA/.+*-OA;                      ML               T1    S2
+ 118 REP*5
+ 120 << S:U^N+;                                   VR1 NP0-0   T1
+ 122 >> S:U^N*;                                   VL1 NP0-0   T1
+ 124 << S:.-N./UVN+*;                         V0                S2 T2 
+ 126 >> S:.+*-OA;                                     V#            S2
+ 128 REPEND
+ 139           FA=9-142                   C*4LAP************
+ 140 << S:U^NN./.-N.;                          T1    S2
+ 141 >> S:.-N./UVNN.;              NP1-1          S1    T2
+ 142 << S:R-0;                     NP-0           S1
+ 145 >> S:R-0;                     NP-0           S1
+ 175 VJA^0
+ 182 Y:2/2/5/5;
+ 185 << S:U^N<1->N./.-N./UVNAY;         V0                T1 S1    T2
+ 190 RBEG*RS1
+ 192 REP*7
+ 195 >> S:.AY-I;                        V#                   S1
+ 200 << S:U^NY;                         VR1    NP0-0     T1
+ 205 >> S:U^NA;                         VL1    NP0-0     T1
+ 210 << S:<1->.-N./UVNAY.;              V0                   S1    T2
+ 212 REPEND
+ 214 >> S:.-N.;                                              S1
+ 216 << S:<1->.-N./UVNAY.;                                   S1    T2
+ 220 REND
+ 222 RBEG*RS2
+ 224 GOSUB 195-210
+ 226 REND
+ 275 >> S:.AY-I/UVNDI.;                                      S1    T2
+ 280 << S:U^ND.I/DI.-D.I;               V0         NP4-4  T1 S1
+ 285 >> S:DI.-D.I/UVND.I;                                    S1    T2
+ 290 END
+1002 IIIIIIIIII
+1004 IIYYYIAAAI
+1006 IIIYYIAAII
+1008 AIIIYIAIII
+1010 IAIIAIYIIY
+1012 YIIAAIYYII
+1014 IIAAIIIYYI
+1016 IAAIIIIIYY
+1018 O*****A+++++

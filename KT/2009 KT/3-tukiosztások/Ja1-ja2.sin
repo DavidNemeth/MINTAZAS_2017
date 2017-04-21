@@ -1,0 +1,28 @@
+ 180 C************581TU**************************************************************
+ 182 JA1=1026(1006-1008)   C CSIPKE PASSZE
+ 184 JA2=1080(1052-1080)   C KREPP
+ 186 PA:1:<JA2>:1:<JA1>:501:<JA1>;
+ 188 IF RS19=3  FA=3-189;            PM:<.>7:3(IIFA)II;           C*3LAP
+ 190 IF RS19=4  FA=26-165;           PM:<.>7:4(IIFA)I;            C*4LAP
+ 192 IF RS19=5  FA=40-151;           PM:<.>6:5(IFAI);             C*5U
+ 194 IF RS19=6  FA=21-170;FB=31-160; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 196 IF RS17>49 FA=1-4;              PM:<.>7:<FA> 576:<.>;        C*MELLENY PANT JELOLES NELKUL
+ 198 C********************************************************************************
+
+1050 WWWWWWWWWWWW
+1052 II.II...I...
+1054 I.I.I..III..
+1056 .I.I.II...II
+1058 .III..I.I.I.
+1060 I...II.I.I.I
+1062 ..I..III.III
+1064 II.II...I...
+1066 II.III..I..I
+1068 ..I...II.II.
+1070 II.II.I...I.
+1072 ..I..I.III.I
+1074 I...I.II.II.
+1076 .III.I..I..I
+1078 II.III..I..I
+1080 ..I...II.II.
+1082 WWWWWWWWWWWW

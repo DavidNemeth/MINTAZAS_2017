@@ -1,0 +1,32 @@
+
+ 116 FA=25-165; PM:<.>7:4(IFA)I;    C *MADONNA-4LAP*581TU       141    KT
+ 116 FA=21-169; PM:.4(IIFA)II.;     C *MADONNA-4LAP*608TU       149
+ 117 FA=25-165; PM:.5(IIFA)II.;     C *MADONNA-4LAP*719TU       141
+
+
+ 206 FA=25-165; PM:<.>7:4(IFA)I;    C *MADONNA-4LAP*581TU     4X141    KT
+ 206 FA=21-169; PM:.4(IIFA)II.;     C *MADONNA-4LAP*608TU     4X149
+ 207 FA=25-165; PM:.5(IIFA)II.;     C *MADONNA-4LAP*719TU     5X141
+
+
+ 306 FA=21-161; PM:<.>7:4(IFA)I;    C*4LAP**********581TU     4X141   KT
+ 306 FA=17-165; PM:.4(IIFA)II.;     C *MADONNA-4LAP*608TU     4X149
+ 307 FA=21-161; PM:.5(IIFA)II.;     C *MADONNA-4LAP*719TU     5X141
+
+
+ 406 FA=28-167; PM:<.>7:4(IIFA)I;   C*4LAP**********581TU     4X140   KT
+ 406 FA=24-172; PM:.4(IIFA)II.;     C *MADONNA-4LAP*608TU     4X149
+ 407 FA=28-168; PM:.5(IIFA)II.;     C *MADONNA-4LAP*719TU     5X141
+
+
+ 542 FA=1-2; PM:<.>7:I<FA>574:I<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 542 FA=1-2; PM:<.>3:I<FA>605:I<.>;   C******NYAK OSZTAS NELKUL********608TU
+ 543 FA=1-2; PM:<.>3:I<FA>716:I<.>;   C******NYAK OSZTAS NELKUL********719TU
+
+ 180 C************580TU**************************************************************
+ 182 JA1=1026(1006-1008)   C CSIPKE PASSZE
+ 184 JA2=1080(1052-1080)   C KREPP
+ 186 PA:1:<JA2>:1:<JA1>:501:<JA1>;
+ 188 IF RS19=3  FA=3-189;  PM:5.3(IIFA)II<.>;                     C*3LAP
+ 190 IF RS19=4  FA=26-165; PM:5.4(IIFA)II<.>;                      C*4LAP
+ 194 C********************************************************************************

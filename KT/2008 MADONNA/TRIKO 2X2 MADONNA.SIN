@@ -1,0 +1,103 @@
+C VKA!!!!!!!VISSZA!!!!!      EREDETI:VKA
+ C VAGY TRIKO2X2(14) VAGY PKT 2005 TRIKO2X2P
+   1 C TRIKO 2X2 FONASSAL (ROBI MINTAJA)
+   1 C  0.18KG(3SZAL)+0.02PANT(2SZAL)           E-H
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 2X16/1 PAMUT+1BRILL:    NPK=-0.2                  
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 3X16/1 LUSIFIL:WM%=10   NPK=0    :24-26  FIX-81     0.17KG+0.02PANT 16MIN.
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C PANT:SP600 2SZALLAL!!!!!!!!!!!!!!!!!!( A TRIKO 1-2-3-BAN VAN)
+   1 C 3LAP:RS19=3
+   1 C 4LAP:RS19=BARMI MAS
+   1 C PANT:SP600 2SZAL:0.02KG, 3SZAL:0.03KG
+  10 NP1=15.0   C:MINTA HATUL
+  12 NP7=14.8   C:MINTA ELOL
+  14 NP4=12.5  C:LEVALASZTAS
+  16 NP3=14.8  C:CSIPKE PASSZE
+  40 START        
+  50 YG:6/256;
+  53 WM=18
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                VU	   ML          S1
+  71 << S:R-0/0-R;                    Y:6/0;            	  VU    ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP3-03   VU    ML       S1
+  80  JA1=1000;
+  81 RS1=26
+  98 PA:1:<JA1>;
+C*****************************************************************************************
+ 100 FA=12-145; PM:<.>7:4(IFA)I;       C 4LAP************553TU
+ 102 FA=9-148; PM:<.>7:4(..FA).;       C*4LAP************581TU
+C*****************************************************************************************
+ 108 Y:2/2/5/5;
+ 110 REP*1
+ 112 << S:R-0;		                             ML         VU         S1
+ 114 >> S:0-R;		                             ML         VU          S1
+ 116 REPEND
+ 118 << S:R-0/UVNNI;                        ML                     S1 T2
+ 120 >> S:U^NI/NI-I;                      ML               T1    S1
+ 122 REP*5
+ 123 WM=0
+ 124 << S:U^NA;                                   VL1     T1                  C
+ 126 >> S:U^NY;                                   VR1     T1                  C
+ 127 WM=15
+ 128 << S:.-N./UVNAY;                             VU V0           S1 T2       C
+ 130 >> S:.AY-I;                                  VU                  S1
+ 132 REPEND
+ 134 << S:U^NN./.-N./.-N./UVNN.;    Y:2/5;                    T1 S1 S2 T2
+ 136 >> S:R-0/R-0;                                VU             S1 S2
+ 138 VJA^0
+ 139 WM=18
+
+
+ 142 JA1=1078(1068-1074);
+ 144 << S:U^NN./.-N./.-N./UVNNA.;      NP7-1                 T1 S1 S2 T2            C
+ 146 C-----MINTA-----
+ 148 WM=22
+ 150 VJA^0
+ 225 >> S:U^N<1->N./.-N./.-N./UVNNY.;            VL1    T1 S1 S2 T2                 C
+
+ 245 RBEG*RS1
+ 250 <> S:U^N<1->N./.-N./.-N./UVNI;                   V0       T1 S1 S2 T2          C
+ 255 WM=15
+ 260 <> S:U^N<1->IY/.-IY+HT/0-T(9.0)/UVNIY;   Y:2/0;  VL1      T1 S1 S2 T2          C
+ 265 WM=0
+ 270 <> S:UVNB+;                                      VL2                 T2
+ 275 WM=15
+ 280 <> S:U^NIY/.-IYB+H(1)/0-B(9.0)/UVNI;     Y:5/0;  VR1    T1 S1 S2 T2            C
+ 285 <> S:U^N<1->IAB+/.-N.(1)/UVNN.;          Y:2;    VR2   T1 S1    T2                  C R2!!!0-ROL <-3-RA
+ 290 <> S:U^NN./.-N./UVNNA;                           V0       T1 S1    T2          C
+ 295 WM=18
+ 300 <> S:U^N<1->N./.-N./.-N./UVNNY.;         Y:2/5;  VL1      T1 S1 S2 T2          C
+ 302 REND
+
+ 305C <> S:U^N<1->N./.-N./.-N./UVNNA.;                 V0        T1 S1 S2 T2        C
+ 310C <> S:U^N<1->N./.-N./.-N./UVNNY.;                 VL1       T1 S1 S2 T2        C
+ 325 IF # 124=0 GOTO 330
+ 328 << S:U^NN./.-N./.-N./UVNN.;             V0         T1 S1 S2 T2
+ 330 >> S:U^NN./.-N./.-N./UVNN.;             V0         T1 S1 S2 T2
+ 335 << S:U^SD.I/DI.-D.I/DI.-D.I;         NP4-4             T1 S1 S2
+ 340 >> S:DI.-D.I/DI.-D.I/UVSD.I;                              S1 S2 T2
+ 345 END
+ 999 <> W0 S0
+1000 YYYYYIAAAAAI
+1068 YII.IIII.
+1070 IIA.B+HT.
+1072 YII.B+HT.
+1074 IIA.B+HT.
+1076 YII.IIII.
+1078 IIA.IIII.
+1080 YII.IIII.
+1082 IIA.IIII.
+
+1302 15(5YI5AI)5YI6A
+1382 22(IIA.4I.)
+1383 8.XI.X13(7.I..)2(..X).I
+CYYYYYIAAAAAIYYYYYI IAAAAAIYYYYYIAAAA
+C........X..X...... .......X..X......
+CIIA.IIII.IIA.IIII. A.IIII.IIA.IIII.I
+C       A->                 Y<-
+C 104 FA=12-145; PM:<.>7:4(IFA)I;       C 4LAP************553TU
+C 106 FA=9-148;  PM:<.>7:4(..FA).;      C*4LAP************581TU

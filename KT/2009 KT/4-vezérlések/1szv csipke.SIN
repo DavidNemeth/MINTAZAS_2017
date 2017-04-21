@@ -1,0 +1,63 @@
+  16 NP1=13.3              C:CSIPKE
+ 300 C ******************1SZV. CSIPKE*************************
+ 302            JA1=1120(1102-1120) C 1.MINTA
+ 304 IF RS17>10 JA1=1226(1202-1224) C 2.MINTA
+ 305 
+ 306 C********************************************************
+ 308 VJA^0
+ 309 WM=15
+ 310 Y:5/5/2/2;
+ 312 NP1-1
+ 314 RBEG*RS1
+ 316 << S:U^S<1-2->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 318 >> S:U^S<1-2->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 320 REND
+ 322 << S:U^S<1->N./.-N./UVNN.;                   V0         T1 S1    T2
+ 324 >> S:U^ND.I/DI.-D.I/UVNR;           NP4-4               T1 S1    T2
+ 326 END C************************************************
+VAGY:
+1100 WWWWWWWWWW
+1102 ...AII...I
+1104 ...II.Y..I
+1106 ..A.I.I..I
+1108 ..I.I..Y.I
+1110 .A..I..I.I
+1112 .I..I...YI
+1114 A...I..III
+1116 II..*Y..YI
+1118 A..AII...I
+1120 ...I*Y...I
+1122 WWWWWWWWWW
+VAGY:(EZ A BIZTONSAGOSABB)
+1100 WWWWWWWWWW
+1102 ...A*I...I
+1104 ...IIY...I
+1106 ..A.II...I
+1108 ..I.I.Y..I
+1110 .A..I.I..I
+1112 .I..I..Y.I
+1114 A...I..I.I
+1116 II..I...YI
+1118 A..A*..III
+1120 ...IIY..YI
+1122 WWWWWWWWWW
+
+  A *-RA A-T ES AZ Y-T IS RARAKJA ES A 3 SZEMET EGYUTT KOTI LE.
+  A *-OT AZ ELSO TUAGYON KOTI LE.
+  A * ELOTT LEHET . IS.
+
+C******** BUKLEVAL:(FENNAKAQDT SZEMEK LEDOBASA SZUKSEGES)*************
+  13 NP1=13.4    C:CSIPKE, KREPP HATUL
+  14 NP5=13.3    C:CSIPKE, KREPP ELOL
+ 304 WM=15; VJA^0
+ 306 Y:5/0/5/0/2/0/2/0;
+ 308 NP5-1
+ 310 RBEG*RS2
+ 312 REP*2
+ 314 << S:U^S<1-2->N./.(5)-N.(1)/N.(4)-.(4)/UVSNY;    V0     T1 S1 S2 T2
+ 316 >> S:U^S<1-2->N./.(5)-N.(1)/N.(4)-.(4)/UVSNA;    VL1    T1 S1 S2 T2
+ 318 REPEND
+ 320 REND
+ 322 << S:U^S<1-2->N./.-N./N.-./UVSN.;                V0     T1 S1 S2 T2
+ 324 >> S:U^SD.I/DI.-D.I/D.I-DI./UVSR;     NP4-4             T1 S1 S2 T2
+ 326 END C**************************************************************

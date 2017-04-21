@@ -1,0 +1,120 @@
+   1C  CP PAVA RS1= RS2= SZIMMETRIKUS CSIPKE**** H-U:UA., DE LEHET 'CP FARKAS' IS ******
+   2 C REX PIKO PASSZE+SZIMMETRIKUS CSIPKE ******* FORDITVA PLATIROZVA********
+   3 C       14.5  14.5            14.5  14.5
+   4 C  1: <-------------       ------------->  MINTA
+   5 C       14.5  14.5            14.5  14.5
+   6 C       
+   7 C J2: <-------------       ------------->
+   8 C         -     -              -     - 
+   9 C       11.5  11.5           11.5  11.5
+  10 C B2: <-------------       ------------->  BEKEZDES,PASSZE
+  11 C       11.5  11.5           11.5  11.5     (PIKO PANT)
+  12 C         -     -              -     -    
+  13 C J3: <-------------       -------------> 
+  14 C         -     -              -     -
+  15 C       
+  16 C B3: <-------------       ------------->
+  17 C       
+  18 C       13.0   13.0         13.0   13.0
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.0   13.0         13.0   13.0
+  21 C B4:=J4   
+  22 C TUAGYKORREKCIOK: V0:->1.5-2.25
+  23 C                  R1:->2.0   _________R2: - ________R3:-
+  24 C                  L1:<-2.0     _______L2: - ________L3:-
+  25 C  7-8 SULY 
+  26 C  TUNIKA                                ELEJE:        R.UJJA: 
+  27 C                            NP1=                        
+  28 C                        ELOL FUTO: HATUL FUTO:     RS1= RS2=    RS1= RS2=                
+  29 C-----------------------+------------------------+------------+------------+
+  30 C   2X16/1 PAMUT+1BRILL:    14.5        14.7        13   20       6        
+  31 C                  MELLENY:                         19
+  32 C-----------------------+------------------------+------------+------------+
+  33 C 3X16/1 LUSIFIL+1SZINES TOROK PAMUT:               13   20       6   6    
+  34 C   ORSOZATLANUL            14.8        15.1      M:19
+  35 C-----------------------+------------------------+------------+------------+
+  36 C   3X16/1 PAMUT(F-F):      14.8        15.1        13           6    
+  37 C        ORSOZATLANUL:                                   
+  38 C                 MELLENY:                          19
+  39 C-----------------------+------------------------+------------+------------+
+  40 START
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  54 JA1=1991;
+  56 PA:<JA1>; 
+  58 FA=2-7; C FA=1-7 VAGY 2-7;
+  60 PM:<.>5:<FA>547:<.>;
+  62 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  64 << S:U^NA/.I-A;                         ML                     T1 S1
+  66 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  68 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  70 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  72 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  76 << S:0-./.-.;                           ML                        S1 S2
+  78 >> S:.-.;                               ML                        S1 S2
+  80 Y:2/2/5/5;
+  82 <<                                      ML                        S1
+  84 >>                                      ML                        S1
+  86 << S:.-.;                               ML                        S1
+  88 >> S:.I-.I;                             ML                        S1
+  90 << S:R-R;                               ML                        S1
+  92 >> S:R-R;                               ML                        S1
+  94 << S:R-R;                               ML                        S1
+  96 >> S:R-R;                               ML                        S1
+  98 << S:R-R;                               ML                        S1
+ 100 >> S:R-R;                               ML                        S1
+ 105 FA=5-183;
+ 110 PA:<JA1>5:I183:I;
+ 115 PM:<.>7:3(FA..);
+ 120 JA1=1034;
+ 125 IF RS1<8 FA=9-142                   C*4LAP************
+ 130 IF RS1<8 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 135 IF RS1<8 PA:<JA1>9:I142:I;          C*4LAP************
+ 140 << S:U^NAY/UVN.;     NP01-01     T1  T2
+ 145 >> S:U^NI/UVN.;     NP01-01     T1  T2
+ 150 JA1=1034(1030-1034);
+ 155 VJA^0
+ 160 Y:2/5;
+ 165 NP1-1
+ 170 RBEG*RS1 C***** ALSO MINTAELEM HOSSZA ***************
+ 175 REP*3
+ 180 <> S:<1->.-N./.-N./UVNAY;                    V0           S1 S2 T2
+ 185 <> S:U^NY;                           NP0-0   VR1       T1
+ 190 <> S:U^NA;                           NP0-0   VL1       T1
+ 195 REPEND
+ 200 REND C*******************************************
+ 205 JA1=1028(1004-1026);
+ 210 RBEG*RS2 C***** FELSO MINTAELEM HOSSZA ***************
+ 215 <> S:U^N<1->N./.-N./.-N./UVNN.; V0 T1 S1 S2 T2 C'I' FELETT LEHET POTTY(1004,1016) 
+ 220 REP*5
+ 225 <> S:U^N<1->N./.-N./.-N./UVNAY; V0 T1 S1 S2 T2 C'I' FELETT POTTY NEM LEHET(SZEBB)
+ 226C<> S:U^N<1->N./.-N./.-N./UVNN.; V0 T1 S1 S2 T2 C'I' FELETT LEHET POTTY
+ 230 <> S:U^NY;                           NP0-0   VR1       T1
+ 235 <> S:U^NA;                           NP0-0   VL1       T1
+ 240 REPEND
+ 245 REND     C*******************************************
+ 250 <> S:U^N<1->N./.-N./.-N./UVNN.;              V0        T1 S1 S2 T2
+ 255 IF #124=0 GOSUB 250
+ 260 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 265 >> S:U^NDI./D.I-DI./D.I-DI./UVNDI.;                            T1 S1 S2 T2
+ 270 END
+1002 IIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIII
+1004 WIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...I
+1006 YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AI
+1008 .YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAI
+1010 ..YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAAI
+1012 ...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.I
+1014 A...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA..I
+1016 I...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIIIIIIIIII...III...IIIIII
+1018 ...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYYIAAAAA...AAIYY...YYYYI
+1020 ..AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYYIAAAA...AAA.YYY...YYYI
+1022 .AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYYIAAA...AAA...YYY...YYI
+1024 AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YYIAA...AAA.....YYY...YI
+1026 WA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...YIA...AAA.......YYY...I
+1028 WIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1030 WIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYIIIIIAIYI
+1032 IIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYYIIIAAIYI
+1034 WIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYYYIAAAIYI
+1036 IIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIII
+1991 ....AIA

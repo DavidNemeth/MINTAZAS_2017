@@ -1,0 +1,103 @@
+   1    C--GABOR I KISKABAT:2VASTAG+2VEKONY PAMUT+1BRILL----A VASTAG PAMUTOT ES A BRILLT AT KELL PARAFINOZNI!
+   4    C---ELEJE,HATA:RS1=22,523TU
+   5    C---------UJJA:RS1=8, 523TU
+  10 	START 
+  11    NP5=15.0  C:MINTA ELOL---
+  12    NP1=15.0  C:MINTA HATUL--
+  15    NP4=12.5  C:LEVALASZTAS--
+  18    NP2=14.9  C:PASSZE-------
+ 50     YG:6/23456;
+ 51     WM=20
+ 52  << S:D.I-DI./DI.-D.I;		Y:4/3;	    NP4-4 VU V0	                   S1 S2
+ 54  >> S:R-0/0-R;                      Y:4/3;      NP1-1               S1 S2
+ 55  << S:D.I-DI./DI.-D.I/UVNR;	        Y:4/3;	    NP4-4	              S1 S2 T2
+ 56     WM=15 
+ 57  >> S:R-R;		        Y:6;	    NP2-0   	                              S1
+ 58  << S:0-R/R-0/0-R;		        Y:0/6/0;    NP2-2   	               T1 S1 S2
+ 59  >> S:R-R(6.5)/R-0;	        	Y:3/4;	             ML                 S1 S2
+ 60     WM=20
+ 61  << S:R-0/0-R;		Y:3/4;		   	   NP2-2     S1 S2    
+ 62  >> S:R-0/0-R;         Y:3/4;                                 S1 S2
+ 66     JA1=1236
+ 68     PA:1:JA1;
+ 69     FA=13-178               
+ 70     PM:<.> 10:3(FA ...);
+ 72     C------------------------------------------IF RS1>10 IF RS1<55 PM:<.> 9:4(FA ...);
+ 80  << S:U^NN./.-N.(15.0)/UVS.+;        Y:3;                           T1 S1    T2
+ 83   C  Y:4/3;
+ 85  REP*3
+ 90   >> S:UVS*;                                   VR2     NP2-2   T2
+ 92      PKV:2:JA1;
+ 94   << S:NI-I;                       Y:4;        VR1 VU    S1
+ 96   >> S:U^S*+Y/.-N./UVS*;           Y:3;                T1 S1   T2
+ 98   << S:UVS+;                                   VL1 VKA>6       T2
+100      PKV:1:JA1;
+102   >> S:NI-I;                       Y:4;        V0  VU    S1
+104   << S:U^S*+Y/.-N./UVS+;            Y:3;                T1 S1   T2
+110  REPEND
+111     WM=22
+113  >> S:U^SN./.-N./UVSN.;                                         T1 S1    T2
+115  C
+120     C--ELEJE---
+121     JA1=1019(1001-1020)
+122     PA:JA1;
+123     FA=25-53
+124     FB=54-75
+125     PM:<.>9:3(5FAFB...);
+127     VJA^0
+128     Y:4/4/3/3;
+130  RBEG*RS1
+135  REP*6
+140  << S:U^S<1->I+Y/.(5)-N.(1)/UVSN+; V0                           T1 S1    T2
+145  >> S:U^S<1->I+Y/.(5)-N.(1)/UVSNY; VL1 VKB>3                    T1 S1    T2 
+150  REPEND
+155  REND
+156  << S:U^S<1->I+Y/.(5)-N.(1)/UVSR;                     V0        T1 S1    T2
+157  >> S:DI.-D.I;			    NP4-4 VU V0	                                S1
+160  END
+ 500 	START C--PIKO PANT:2VASTAG+1VEKONY PAMUT+1BRILL 
+ 514    NP4=12.2  C:LEVALASZTAS--
+ 516    NP1=14.3  C:SLAG-------
+ 520     YG:6/23456;
+ 530     WM=20
+ 535  << S:D.I-DI./DI.-D.I;		Y:4/3;	    NP4-4 VU V0	          S1 S2
+ 540  >> S:R-0/0-R;                      Y:4/3;      NP1-1     S1 S2
+ 550  << S:D.I-DI./DI.-D.I/UVNR;	        Y:4/3;	    NP4-4	    S1 S2 T2
+ 560   C  WM=15 
+ 570  >> S:R-R;		        Y:6;	    NP2-0   	                      S1
+ 580  << S:0-R/R-0/0-R;		        Y:0/6/0;    NP1-1   	     T1 S1 S2
+ 590  >> S:R-R(9.0)/D.IIII.-0(1);	             	Y:3/4;	   ML     S1 S2
+ 600     WM=24
+ 610  << S:0-D.IIII./D.IIII.-0;                Y:3/4;	   	       S1 S2    
+ 615  >>                                       Y:4/3;            S1 S2
+ 618  <<                                       Y:3/4;            S1 S2
+ 620  >> S:0-D.IIII./R-0;                      Y:4/3;             S1 S2
+ 621  REP*5
+ 622  << S:0-R/R-0;                            Y:3/4;            S1 S2
+ 630  >>                                       Y:4/3;            S1 S2
+ 640  REPEND
+ 650  << S:R-R/R-R;                    NP4-4                     S1 S2
+ 660  >>                                                         S1 S2
+ 670  END
+
+1001 ..II++.II.......IIIII..I.......II++.II.......IIIII..I.......II++.II.......IIIII..I.....
+1002 .YY.IIYYII.....YYYYY...I......YY.IIYYII.....YYYYY...I......YY.IIYYII.....YYYYY...I.....
+1003 .II.IIII.++....IIIII..II+.....II.IIII.++....IIIII..II+.....II.IIII.++....IIIII..II+....
+1004 YY...III.II...YYYYY...III....YY...III.II...YYYYY...III....YY...III.II...YYYYY...III....
+1005 .++..II...++..IIIII..II+++....++..II...++..IIIII..II+++....++..II...++..IIIII..II+++...
+1006 .II...I..YY...I.I.I..IIIII....II...I..YY...I.I.I..IIIII....II...I..YY...I.I.I..IIIII...
+1007 ..++.....II...I.I.I...+++++....++.....II...I.I.I...+++++....++.....II...I.I.I...+++++..
+1008 ..II....YY....I.I.I...IIIII....II....YY....I.I.I...IIIII....II....YY....I.I.I...IIIII..
+1009 ...++...II....I.I.I...IIIII.....++...II....I.I.I...IIIII.....++...II....I.I.I...IIIII..
+1010 ...II..YY.....I.I.I..YYYYY......II..YY.....I.I.I..YYYYY......II..YY.....I.I.I..YYYYY...
+1011 ..II++.II.....I.I.I..IIIII.....II++.II.....I.I.I..IIIII.....II++.II.....I.I.I..IIIII...
+1012 .YY.IIYYII....I.I.I.YYYYY.....YY.IIYYII....I.I.I.YYYYY.....YY.IIYYII....I.I.I.YYYYY....
+1013 .II.IIII.++...I.I.I.IIIII.....II.IIII.++...I.I.I.IIIII.....II.IIII.++...I.I.I.IIIII....
+1014 YY...III.II...I.I.IYYYYY.....YY...III.II...I.I.IYYYYY.....YY...III.II...I.I.IYYYYY.....
+1015 .++..II...++..I.I.IIIIII......++..II...++..I.I.IIIIII......++..II...++..I.I.IIIIII.....
+1016 .II...I..YY...I.I.YYYYY.......II...I..YY...I.I.YYYYY.......II...I..YY...I.I.YYYYY......
+1017 ..++.....II...I...IIIII........++.....II...I...IIIII........++.....II...I...IIIII......
+1018 ..II....YY....I..YYYYY.........II....YY....I..YYYYY.........II....YY....I..YYYYY.......
+1019 ...++...II.......IIIII..........++...II.......IIIII..........++...II.......IIIII.......
+1020 ...II..YY.......YYYYY...........II..YY.......YYYYY...........II..YY.......YYYYY........
+1236 4+II5*..10(6+II6*Y)6+II6*.6+II**

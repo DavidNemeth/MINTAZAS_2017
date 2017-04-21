@@ -1,0 +1,57 @@
+   1 C SZELEKTORTESZT
+  10 C 
+  11  NP1=14.0;    C **KT**
+  12  NP4=12.5;    C **KT**
+  14  NP5=13.5     C
+  40 START
+  50 YG:/112233445566;
+  52  WM=20        C **KT**
+  54 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4     V0      S1 S2
+  68 >> S:DI.-D.I/D.I-DI.;                         ML           S1 S2
+  70 << S:U^ND.I/DI.-D.I;           Y:2;           ML        T1    S2
+  72 >> S:U^NDI./0-R;                       NP0-1  ML        T1 S1
+
+  98 WM=0;
+  99 NP1-1  
+ 100 Y:1/1/1/1/2/2/2/2/3/3/3/3/4/4/4/4/5/5/5/5/6/6/6/6;  C SZALVEZETOMAGNES TESZT S1- S2-RE. !!!!!CSAK FONAL NELKUL!!!!!!!
+ 100 Y:2/1/1/2/1/1 /1/2/2/1/2/2 /4/3/3/4/3/3 /3/4/4/3/4/4 /6/5/5/6/5/5 /5/6/6/5/6/6;C SZALVEZETOMAGNES TESZT T1- S1- S2-RE.
+ 100 Y:2/3/3/2/3/3 /3/2/2/3/2/2 /5/6/6/5/6/6 /6/5/5/6/5/5 ;C SZALVEZETOMAGNES TESZT T1- S1- S2-RE.
+ 100 Y:0/0/0;
+ 101 RS1=10;RS2=10;RS3=10;RS4=10;RS5=1
+ 102 JA1=1002; PA:<JA1>; FA=1-12; PM:<FA>;
+ 104 RBEG*RS1
+ 106 << S:I-0;                  T1 S1 S2
+ 108 >>                         T1 S1 S2
+ 110 REND
+
+ 114 JA1=1002; PA:<JA1>; FA=1-24; PM:<FA>;
+ 116 RBEG*RS2
+ 118 << S:0-I;                  T1 S1 S2
+ 120 >>                         T1 S1 S2
+ 122 REND
+
+ 126 JA1=1002; PA:<JA1>; FA=1-48; PM:<FA>;
+ 128 RBEG*RS3
+ 130 << S:I-0;                  T1 S1 S2
+ 132 >>                         T1 S1 S2
+ 134 REND
+
+ 138 JA1=1002; PA:<JA1>; FA=1-48; PM:<FA>;
+ 140 RBEG*RS4
+ 142 << S:0-I;                  T1 S1 S2
+ 144 >>                         T1 S1 S2
+ 146 REND
+
+ 150 JA1=1002; PA:<JA1>; FA=1-48; PM:<FA>;
+ 152 RBEG*RS5
+ 154 << S:0-0;                  T1 S1 S2
+ 156 >>                         T1 S1 S2
+ 158 REND
+ 159 GOTO 98    C VEGTELENITVE!!!!!!!!!!!!!!!!!!!!!
+ 160 END
+ 999 <> W0 S0
+1002 IIIII......I
+1004 IIIII............I
+1006 IIIII........................I
+1008 IIIIIIIIIII......I
+1010 IIIIIIIIIIIIIIIIIIIIIII......I

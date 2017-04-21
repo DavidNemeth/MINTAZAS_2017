@@ -1,0 +1,199 @@
+ NEMJO!!!!!!(1SZV.CSIPKE MIATT)
+   1 C CP KAGYLOS1  RS10=0 RS17=0/1/2 (TUNIKA VAGY PULOVER-PASSZE:SZIMMETRIKUS MINTA:1SZV.CSIPKE -30')PROBA!
+   2 C RAJZOK4/MADONNA****NP1-2:ELOL:14.75 KULONBEN SZORJA A SZEMET ELOL !!!***A TRIKONAL ELOL IS  16.*******
+   3 C       15.2    0            0     15.0   :TUNIKA:2LUSI+1TX                          3 PAMUT:  
+   4 C  1: <-------------       ------------->  BEKEZDES,                                        --------
+   5 C       14.7    0            0     14.2    MINTA                                              
+   6 C       15.0   15.0          -      -                                    
+   7 C J2: <-------------       ------------->  MINTA <-                     
+   8 C       14.0   14.0          -      -                                    
+   9 C      
+  10 C B2: <-------------       ------------->
+  11 C       
+  12 C        0     15.5         15.0    0
+  13 C J3: <-------------       ------------->  PASSZE
+  14 C        0     15.0         15.5    0
+  15 C        -      -            -      -
+  16 C B3: <-------------       -------------> 
+  17 C        -      -            -      -
+  18 C       13.5   12.5         13.5   13.5
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.5   12.5         13.5   13.5
+  21 C        -      -           15.0   15.0                                  
+  22 C B4: <-------------       ------------->  MINTA ->                     
+  23 C        -      -           14.0   14.0                                  
+  24 C TUAGYKORREKCIOK: V0:->1.75
+  25 C                  R1:->2 _________R2: - ________R3:-
+  26 C                  L1:<-1 _________L2: - ________L3:-
+  27 C                          NP1=           E-H:
+  35 C   6-7 SULY 
+  40 START
+  50 YG:6/256;
+  52 C--------------------------------------------------------------------
+  54 C IF RS10=5   RS17=0  C  TUNIKA TEST  CSIPKE (75CM, KESZEN:70-71)
+  56 C IF RS10=5   RS17=2  C  TUNIKA HATA  KREPP  (75CM, KESZEN:70-71)
+  58 C
+  60  IF RS10=28  RS17=1  C  PULOVER TEST CSIPKE (70CM, KESZEN:65-66)
+  62 C IF RS10=15  RS17=3  C  PULOVER HATA KREPP  (70CM, KESZEN:65-66)
+  64 C
+  66  IF RS10=12  RS17=8  C  ROVID UJJA   CSIPKE (28CM)
+  68 C IF RS10=5   RS17=9  C  HOSSZU UJJA  KREPP  (60CM)
+  70 C-----------------------------------------RS1:KREPP--RS2:CSIPKE-------------2PAMUT+1TX:-----3PAMUT:---
+  72  IF RS17=0 RS1=4   RS2=144    C  TUNIKA TEST  CSIPKE (75CM, KESZEN:70-71)  RS2=   144
+  74  IF RS17=2 RS1=148            C  TUNIKA HATA  KREPP  (75CM, KESZEN:70-71)  RS1=   148
+  78  IF RS17=1 RS1=4   RS2=132    C  PULOVER TEST CSIPKE (70CM, KESZEN:65-66)  RS2=   132
+  80  IF RS17=3 RS1=136            C  PULOVER HATA KREPP  (70CM, KESZEN:65-66)  RS1=   136
+  84  IF RS17=8 RS1=4   RS2=37     C  ROVID UJJA   CSIPKE (28CM)                RS2=    37
+  86  IF RS17=9 RS1=110            C  HOSSZU UJJA  KREPP  (60CM)                RS1=   110
+  88 C-----------------------------------------------------------------------------------------------------
+  90 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  92 >> S:D.I-DI./DI.-D.I/UVNDI.;     Y:5/2;                     ML       S1 S2 T2
+  94 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  96 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  98 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 100 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+ 102 JA2=1910(1902-1916); C*KREPP*
+ 105 JA1=1314(1314-1320);
+ 110 PA:<JA2>1:<JA1>;
+ 125           FA=6-183;                    C*3LAP******
+ 130           PM:<.>9:3(IFA)I7.;           C*3LAP******
+ 135 IF RS17>7 FA=9-142                     C*4LAP******
+ 140 IF RS17>7 PM:<.>7:4(IFA)I;             C*4LAP******
+ 145 Y:2/2/5/5;
+ 146 << S:R-0;                                ML       NP3-03        S2
+ 147 >> S:0-R;                                ML       NP0-          S2
+ 150 << S:R-0/UVN+*.I;                        ML       NP3-03        S2 T2
+ 155 >> S:U^NAO/.I+*-OA;                      ML               T1    S2
+ 160 REP*4 C****************PASSZE*************************
+ 165 << S:U^N+;                                   VR1 NP0-0   T1
+ 170 >> S:U^N*;                                   VL1 NP0-0   T1
+ 175 << S:U^NO/.I-N.I/UVN<1+>O+*;                 V0          T1    S2 T2 
+ 180 >> S:.IO+*-A;                                V#                S2
+ 185 REPEND C**********************************************
+ 190 << S:U^NN.I/.I-N.I/UVNN.I;                    T1    S2 T2
+ 195 >> S:R-0;                         NP1-1          S1
+ 205 JA1=1154(1066-1068);
+ 208 VJA^0
+ 210 Y:2/2/5/5;
+ 235 REP*18
+ 240 << S:U^NI/.-N./UVN<1-2->AY.;                        T1 S1    T2
+ 245 >> S:U^NY;                         VR1    NP0-0     T1
+ 250 << S:U^NA;                         VL1    NP0-0     T1
+ 255 >> S:U^NI/.-N./UVN<1-2->.;         V0               T1 S1    T2
+ 260 REPEND
+ 265 RBEG*RS1
+ 266 << S:U^NI/.-I/UVN<1-2->.;                           T1 S1    T2
+ 268 >> S:U^NI/.-I/UVN<1-2->.;                           T1 S1    T2
+ 270 REND
+ 272 IF RS17=2 GOTO 400
+ 274 IF RS17=3 GOTO 400
+ 276 IF RS17=9 GOTO 400
+ 278 JA1=1068(1004-1042);
+ 280 GOSUB 266-268*4
+ 282 JA1=1052(1004-1042);
+ 284 RBEG*RS2
+ 286 << S:U^N<1-2->N./.-N./UVNNY.;                      V0     T1 S1    T2
+ 288 >> S:U^N<1-2->N./.-N./UVNNA.;                      VL1    T1 S1    T2
+ 290 REND
+ 300 << S:U^N<1-2->N./.-N./UVNDI.;       NP4-4 V0  T1 S1    T2
+ 310 >> S:U^ND.I/DI.-D.I/UVND.I;                   T1 S1    T2
+ 330 RS10=RS10-1
+ 340 IF RS10>0 GOTO 52
+ 350 END
+ 400 << S:U^NN./.-N./UVNDI.;             NP4-4     T1 S1    T2
+ 402 >> S:U^ND.I/DI.-D.I/UVND.I;                   T1 S1    T2
+ 404 RS10=RS10-1
+ 406 IF RS10>0 GOTO 52
+ 408 END
+1002 WWWWWWWWWWWWWWWWWWWW
+1004 .YIIIII...IIIIIYYY..
+1006 ..IIIA...AAAAAIIIII.
+1008 ...III.....IIIIYYYYY
+1010 ..IAIII...AAAAIIII..
+1012 .II..YII..IIIIIYYYY.
+1014 IA....III...........
+1016 I...I..YIIIIIIIIIIII
+1018 ...AI...III.......IA
+1020 ..IIIY...YIIIIIIIII.
+1022 .AAAIII...II....IA..
+1024 IIIIIYYY...YIIIII...
+1026 AAAAIIIII...IIIA...A
+1028 .IIIIYYYYY...III....
+1030 AAAAIIII....IAIII...
+1032 IIIIIYYYY..II..YII..
+1034 ..........IA....III.
+1036 IIIIIIIIIII...I..YII
+1038 I.......IA...AI...II
+1040 IIIIIIIII...IIIY...Y
+1042 II....IA...AAAIII...
+1044 .YIIIII...IIIIIYYY..
+1046 ..IIIA...AAAAAIIIII.
+1048 ...III.....IIIIYYYYY
+1050 ..II.II...AAAAIIII..
+1052 .II.X.II..IIIIIYYYY.
+1054 II.XXX.II...........
+1056 I.XXXXX.IIIIIIIIIIII
+1058 .XXXXXXX.II.......II
+1060 XXXXXXXXX.IIIIIIIII.
+1062 XXXXXXXXXX.I.....I.X
+1064 XXXXXXXXXXX.IIIII.XX
+1066 XXXXXXXXXXXXXXXXXXXX
+1068 XXXXXXXXXXXXXXXXXXXX
+1070 XXXXXXXXXXXXX...XXXX
+1072 XXXXXXXXXXXX.III.XXX
+1074 XXXXXXXXXXX.IIIII.XX
+1076 XXXXXXXXXX.III.III.X
+1078 XXXXXXXXX.III...III.
+1080 .XXXXXXX.III.....III
+1082 I.XXXXX.III...I...II
+1084 II.XXX.III...AIY...I
+1086 III.X.III...IIIII...
+1088 .III.III...AAAIYYY..
+1090 ..IIIII...IIIIIIIII.
+1092 ...III...AAAAAIYYYYY
+1094 ...III.....IIIIIII..
+1096 ..IIYII...AAAAIYYYY.
+1098 .IIIIIII..IIIIIIIII.
+1100 IIAIAIAII...........
+1102 IIIIIIIIIIIIIIIIIIII
+1104 YIYIYIYIYII.......II
+1106 IIIIIIIIIIIIIIIIIIII
+1108 AIAIAIAIAIAI.....IAI
+1110 IIIIIIIIIIIIIIIIIIII
+1112 YIYIYIYIYIYIYIIIYIYI
+1114 IIIIIIIIIIIIIIIIIIII
+1116 AIAIAIAIAIAIIIIIIIAI
+1118 IIIIIIIIIIIII...IIII
+1120 YIYIYIYIYIII.....III
+1122 IIIIIIIIIII...I...II
+1124 IIAIAIAIII...AIY...I
+1126 IIIIIIIII...IIIII...
+1128 .IIIYIII...AAAIYYY..
+1130 ..IIIII...IIIIIIIII.
+1132 ...III...AAAAAIYYYYY
+1134 ...III.....IIIIIII..
+1136 ..IIYII...AAAAIYYYY.
+1138 .IIIIIII..IIIIIIIII.
+1140 IIAIAIAII...........
+1142 IIIIIIIIIIIIIIIIIIII
+1144 YIYIYIYIYII.......II
+1146 IIIIIIIIIIIIIIIIIIII
+1148 AIAIAIAIAIAI.....IAI
+1150 IIIIIIIIIIIIIIIIIIII
+1152 YIYIYIYIYIYIYIIIYIYI
+1154 IIIIIIIIIIIIIIIIIIII
+1156 WWWWWWWWWWWWWWWWWWWW
+1314 ++++O****A
+1316 +++OOO***A
+1318 ++OOOOO**A
+1320 +OOOOOOO*A
+1900 WWWWWWWWWWWW
+1902 I...II.II...
+1904 .II.I...I.II
+1906 I..I.III.I..
+1908 II..I.I.I..I
+1910 ..II.I.I.II.
+1912 I..III.III..
+1914 .II...I...II
+1916 .III..I..III
+1918 WWWWWWWWWWWW

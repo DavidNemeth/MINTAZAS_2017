@@ -1,0 +1,27 @@
+
+  TUKIOSZTAS 472 TURE:
+
+ CNCA:472:
+ 107 C IF RS17>12 FA=16-165; PM:<.>8:3(..FA);                       C*3TEST***472 TU********* 3*150TU
+ 108 C IF RS17>14 FA=35-147;PM:<.>8:4(FA..);                        C*4LAP****472 TU********  4*113TU
+      505:
+ 107 C IF RS17>12 FA=15-175; PM:<.>8:3(..FA);                       C*3TEST***505 TU********* 3*161TU
+ 108 C IF RS17>14 FA=35-155;PM:<.>8:4(FA..);                        C*4LAP****505 TU********  4*120TU
+
+
+
+
+
+ KT:     472TU
+ 140            FA=20-169;  PM:<.>8:3(IIFA)II;                      C*3LAP  472 TU  3*150TU
+ 141 IF RS18=1  FA=39-150;  PM:<.>8:4(IIFA)II;                      C*4LAP  472 TU  4*112TU
+
+ 182 IF RS17=13 FA=32-181; PM:<.>7:3(IIFA)II;                       C*3LAP  472 TU  3*150TU
+ 183 IF RS17=16 FA=34-145; PM:<.>7:4(IIFA)II;                        C*4LAP  472 TU  4*112TU
+
+NYUSZIFUL SZELESSEG- EZ A JO: 505TU
+ 140            FA=15-175;  PM:<.>8:3(IIFA)II;                      C*3LAP  505 TU  3*161TU
+ 141 IF RS18=1  FA=35-155;  PM:<.>7:4(IIFA)I;                       C*4LAP  505 TU  4*120TU
+
+ 182 IF RS17=13 FA=27-187; PM:<.>8:3(IIFA)II;                       C*3LAP  505 TU  3*161TU
+ 183 IF RS17=16 FA=30-150; PM:<.>7:4(IIFA)I;                        C*4LAP  505 TU  4*120TU

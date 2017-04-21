@@ -1,0 +1,492 @@
+C NOSZTALGIA *****  581 TURE (TELI TUAGY) ****
+   1 C                        NP1=   NP6=          E               H         U 
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C  ROSALIE1/2:NYOLCAS/LEVELES:            RS17=0/5      RS17=1/5      RS17=2/8
+   1 C   2NYERS LUSIFIL+1TX:  NPK=0                 
+   1 C-----------------------+---------------+------------+------------+-------------+
+C------------KT-PKT (LUSI+TX:)--------------NPK=0
+C------------3TOROK PAMUT:------------------NPK=0.4
+C------------LUREXXEL:----------------------NPK=0.6   RS1=-8
+  12 NP1=13.8              C:CSIPKE
+  14 NP6=13.7              C:1SZV KREPP
+  16 NP3=14.5;             C:CSIPKE PASSZE
+  18 NP7=13.5;             C:CSIPKE PASSZE
+  20 NP5=14.0              C:KORSLAG
+
+  22 NP4=12.5;             C:LEVALASZTAS
+  24 NP2=10.0              C BEKEZDES
+
+  26 NP7=11.0;             C:1/1-ES PASSZE ***** NYAK ***
+  28 NP8=13.0              C:2SZV.CSIPKE ***** NYAK ***
+
+  40 START        
+  41 YG:6/256;
+  42 WM=20;WMI=7
+  43 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C**********NYAK********************************
+  44 C IF #100=1   RS17=50          C MASNIS GOMBLYUKAS PANT
+  45 C IF #100=10  RS17=52          C MASNIS MELLENY PANT
+  46  IF #100=8   RS17=51          C CSIPKE NYAK
+C***** NO. 1.***********************
+  47 C IF #100=14  RS17=0           C E  CS
+  48 C IF #100=10  RS17=1           C H  KREPP
+  49 C IF #100=6   RS17=2           C HU KREPP
+  50 C IF #100=14  RS17=3           C RU CS
+  51 C IF #100=8   RS17=4           C MEH CS
+  52 C IF #100=2   RS17=5           C 57CM-ES PULOVER U-E-H-U
+C***** NO. 2.***********************
+  53 C IF #100=42  RS17=10          C E  CS
+  54 C IF #100=30  RS17=11          C H  KREPP
+  55 C IF #100=18  RS17=12          C HU KREPP
+  56 C IF #100=20  RS17=13          C RU   CS
+  57 C IF #100=16  RS17=14          C ME-H CS
+  58 C IF #100=1   RS17=15          C 57CM-ES PULOVER U-E-H-U
+C***** NO. 3.************************
+  59 C IF #100=22  RS17=20          C E-H. CS
+  60 C IF #100=20  RS17=21          C H    KREPP
+  61 C IF #100=18  RS17=22          C HU   KREPP
+  62 C IF #100=20  RS17=23          C RU   CS
+  63 C IF #100=15  RS17=24          C ME-H CS
+  64 C IF #100=2   RS17=25          C 57CM-ES PULOVER U-E-H-U
+C***** NO. 4.************************
+  65 C IF #100=11  RS17=30          C E-H. CS
+  66 C IF #100=9   RS17=31          C H    KREPP
+  67 C IF #100=7   RS17=32          C HU   KREPP
+  68 C IF #100=20  RS17=33          C RU   CS
+  69 C IF #100=4   RS17=34          C ME-H CS
+  70 C IF #100=2   RS17=35          C 57CM-ES PULOVER U-E-H-U
+C************************************************
+  71 IF RS17=51 GOTO 500
+  72 IF RS17=50 GOTO 600
+  73 IF RS17=52 GOTO 900
+
+C*************2LUSI+1TX:0--0.1*******************************************************************
+C---------------1.-------
+  80 IF RS17=0  RS2=38 RS1=135            C E  28' CS
+  81 IF RS17=1         RS1=173            C H  28' KREPP
+  82 IF RS17=2         RS1=148            C HU 26' KREPP
+  83 IF RS17=3  RS2=38 RS1=20             C RU     CS
+  84 IF RS17=4  RS2=38 RS1=149            C ME 29' CS
+  86 IF RS17=5  RS2=38 RS1=110            C 57CM-ES PULOVER-E-H-U 110
+C---------------2.---
+  87 IF RS17=10 RS2=38 RS1=135            C E-H    CS
+  88 IF RS17=11        RS1=162            C H  28' KREPP
+  89 IF RS17=12        RS1=138            C HU 26' KREPP
+  90 IF RS17=13 RS2=15 RS1=41             C RU     CS
+  91 IF RS17=14 RS2=38 RS1=145            C ME-H   CS
+  92 IF RS17=15 RS2=38 RS1=110            C 57CM-ES PULOVER-E-H-U  110
+C---------------3.----
+  93 IF RS17=20 RS2=38 RS1=138            C E-H.CS
+  94 IF RS17=21        RS1=175            C H   KREPP
+  95 IF RS17=22        RS1=142            C HU. KREPP
+  96 IF RS17=23 RS2=38 RS1=20             C RU. CS
+  97 IF RS17=24 RS2=38 RS1=152            C ME-HCS 
+  98 IF RS17=25 RS2=38 RS1=110            C 57CM-ES PULOVER-E-H-U
+C---------------4.----
+  99 IF RS17=30 RS2=38 RS1=138            C E-H.CS
+ 100 IF RS17=31        RS1=175            C H   KREPP
+ 101 IF RS17=32        RS1=142            C HU. KREPP
+ 102 IF RS17=33 RS2=38 RS1=20             C RU. CS
+ 103 IF RS17=34 RS2=38 RS1=152            C ME-HCS 
+ 104 IF RS17=35 RS2=38 RS1=110            C 57CM-ES PULOVER-E-H-U
+C********************************************************************************
+ 110 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 111 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 112 >> S:R-R;		                      Y:6;	       NP4-2     VU 	   ML          S1
+ 113 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU    ML       S1 S2
+ 114 >> S:R-R;                        Y:5;        NP2-2      VU  ML       S1
+ 115 JA1=1024(1004-1006)   C CSIPKE PASSZE
+ 116 JA2=1362(1334-1362)   C KREPP
+ 117 PA:1:<JA2>:1:<JA1>;
+C************581TU**************************************************************
+ 120            FA=3-189;  PM:<.>7:3(IIFA)II;                     C*3LAP
+ 121 IF RS17=2  FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 122 IF RS17=3  FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 123 IF RS17=12 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 124 IF RS17=13 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 125 IF RS17=22 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 126 IF RS17=23 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 127 IF RS17=32 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 128 IF RS17=33 FA=27-166; PM:<.>7:4(IIFA)I;                      C*4LAP
+ 129 IF RS17=5  FA=22-171;FB=31-160; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 130 IF RS17=15 FA=22-171;FB=31-160; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 131 IF RS17=25 FA=22-171;FB=31-160; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 132 IF RS17=35 FA=22-171;FB=31-160; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+C********************************************************************************
+ 153 Y:2/2/5/5;
+ 154 REP*2
+ 156 << S:R-0;		                             ML   NP5-5  VU         S1
+ 158 >> S:0-R;		                             ML          VU          S1
+ 160 REPEND
+ 162 << S:R-0/UVNNI;                         ML                    S1 T2
+ 164 >> S:U^NI/NI-I;                         ML                 T1 S1
+ 166 REP*5
+ 168 WM=0
+ 170 << S:U^NA;                                   VL1       T1
+ 172 >> S:U^NY;                                   VR1       T1
+ 174 WM=17 C20
+ 176 << S:U^NI/.-N./UVN<1->.;          NP7-7      V0        T1 S1 T2 
+ 177 >> S:U^NI/.-I/UVN<1->NI;          NP3-3                T1 S1 T2
+ 178 REPEND
+ 179 << S:U^NI/.-I;                    NP1-1                T1 S1
+ 180 >> S:.-I;                                                 S1
+C*****************************************************
+C 181 IF RS17=  FA= ;FB= ; PM:<.>7:IIFBIIFAIIFAIIFBI;   C HA VALAMELYIK MINTANAL A PASSZE UTAN VALTOZIK A
+C*****************************************************    TUKIOSZTAS, IDE KELL IRNI!
+ 182 IF RS17=1  GOTO 400 C 1   H.  KREPP
+ 183 IF RS17=2  GOTO 400 C 1   HU. KREPP
+ 184 IF RS17=11 GOTO 400 C 2   H.  KREPP
+ 185 IF RS17=12 GOTO 400 C 2   HU. KREPP
+ 186 IF RS17=21 GOTO 400 C 3   H.  KREPP
+ 187 IF RS17=22 GOTO 400 C 3   HU. KREPP 
+ 188 IF RS17=31 GOTO 400 C 3   H.  KREPP
+ 189 IF RS17=32 GOTO 400 C 3   HU. KREPP
+C ******************1SZV CSIPKE**************************
+ 190            JA1=1054(1030-1056) C NO. 1.
+ 191 IF RS17>9  JA1=1130(1102-1160) C NO. 2.
+ 192 IF RS17>19 JA1=1244(1202-1244) C NO. 3.
+ 193 IF RS17>29 JA1=1284(1252-1282) C NO. 4.
+C********************************************************
+ 204 VJA^0
+ 205 WM=17
+ 206 Y:5/5/2/2;
+ 212 RBEG*RS2
+ 214 << S:U^S<1-2->N.*/.*-N.*/UVSNY.;                V0           T1 S1    T2
+ 216 >> S:U^S<1-2->N.*/.*-N.*/UVSNA.;                VL1        T1 S1    T2
+ 218 REND
+C********************************************************
+ 219C IF RS17=   GOTO 400  ALUL CSIPKE FELUL KREPP **********
+C********************************************************
+ 226 RBEG*RS1
+ 228 GOSUB 214-216
+ 230 REND
+ 232 << S:U^S<1->N.*/.*-N.*/UVSN.;                   V0           T1 S1    T2
+ 234 >> S:U^ND.I/DI.-D.I/UVNR;              NP4-4                 T1 S1 T2
+ 236 END C************************************************
+
+ 400 C**HATA-UJJA (KREPP)**
+ 402 JA2=1362;            C KREPP
+ 404 PA:<JA2>;
+ 406 << S:U^NN./UVN.;             V0             T1 T2
+ 408 >>                                           T1 T2
+ 410 JA2=1362(1334-1362); C KREPP
+ 412 WM=16 C18
+ 414 Y:2/2/5/5;
+ 416 NP6-6
+ 418 RBEG*RS1
+ 420 << S:U^N<2->N./.-N./UVNI;                           T1 S1     T2
+ 422 >>                                                  T1 S1     T2
+ 424 REND C******
+ 426 << S:U^SD.I/DI.-D.I;                           NP4-4       T1 S1
+ 428 >> S:DI.-D.I/UVSD.I;                                           S1     T2
+ 430 END
+
+ 500 C* MADONNA NYAK 2006.04.19.***************************************************************
+ 501 NP4=12.6   C:LEVALASZTAS
+ 502 NP15=11.8  C:BEKEZDES,1/1
+ 503 NP14=13.2  C:2SZV. CSIPKE NYAK
+ 504C START        
+ 505C YG:6/256;	
+ 506 WM=18;WMI=7
+ 507C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 508 C** CSIPKE NYAK ************
+ 509 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+ 510 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 511 >> S:DI.-D.I;                   Y:5;                   VR1 VU    S1
+ 512 << S:DI.-0/UVND.I;                             NP-0           S1    T2
+ 513 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+ 514 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+ 515 >>	S:DI.-D.I;		                 Y:2;	          NP15-15 V0 VU      S1
+ 516 << S:DI.-0;                     Y:6;                      VU      S1
+ 517 >> S:DI.-0/0-D.I;               Y:6/5;                    VU      S1 S2
+ 518 << S:DI.-D.I;                   Y:2/5;                 VU      S1 S2
+ 522 PA:1:<JA1>;
+ 526 FA=1-2; PM:<.>7:I<FA>574:I<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 528 JA1=1992(1990-1992);
+ 530 >> S:DI.-D.I/DI.-D.I/UVN.Y;                                        S1 S2   T2
+ 532 VJA^0
+ 534 NP14-14
+ 536 WM=20
+ 538 << S:U^S<1->N./.-N./.-N./UVSNA.;                      VR1       T1 S1 S2 T2
+ 540 >> S:U^S<1->N./.-N./.-N./UVSNY.;                      V0  VKA>4 T1 S1 S2 T2
+ 542 << S:U^S<1->N./.-N./.-N./UVSNA.;                      VL1      T1 S1 S2 T2
+ 544 REP*1
+ 546 >> S:U^S<1->N./.-N./.-N./UVSNY.;                      V0  VKA<1 T1 S1 S2 T2
+ 548 << S:U^S<1->N./.-N./.-N./UVSNA.;                      VL1       T1 S1 S2 T2
+ 550 REPEND
+ 552 >> S:U^S<1->N./.-N./.-N./UVSN.;                       V0  VKA   T1 S1 S2 T2
+ 554 END
+C************************************************************************************
+ 600 C EZA LEGJOBB GOMBLYUK (ELEG NAGY ES KONNYEN KOTI, MERT VAN BENNEEGY VAKSZEM)
+ 600 C 3 TOROK:   NPK=0
+ 600 C 2LUSI:1TX: NPK=0--0.2
+ 600 C***REX PIKO PANT 8 GOMBLYUKKAL*****NPK=0-0.2
+ 600 C*** A KESZ KISKABAT KB. 70CM. 
+ 600 C*** AZ ALSO GOMBLYUK LEGALUL LEGYEN, A FELSO EGYVONALBAN A HONALJJAL!
+ 600 C*** AZ 1. ES A 7. GOMBLYUK KOZTI TAVOLSAG:42-45CM.
+ 600 C*** A KESZ KISKABAT KB. 70CM. 
+ 608 NP4=12.6    C:LEVALASZTAS,1/1
+ 610 NP10=11.4   C:BEKEZDES,REX
+ 612 NP12=14.8   C:SLAG GOMBLYUK ELOTT
+ 614 NP13=14.4   C:SLAG PASSZE
+ 616 NP11=6.0    C:GOMBLYUK
+ 618C START 
+ 620C YG:6/256;
+ 622 WM=24
+ 624C << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 626 JA1=1980; 
+ 628 PA:<JA1>; 
+ 630 FA=2-7; C FA=1-7 VAGY 2-7;
+ 632 PM:<.>5:<FA>575:<.>; C*581TU
+ 634 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	    S1    T2
+ 636 << S:U^NA/.I-A;                         ML                   T1 S1
+ 638 >> S:.I-A;                      Y:5;    ML            VR1       S1
+ 640 << S:.I-0/UVNA;                         ML    NP-0              S1    T2
+ 642 >> S:.I-.I;                     Y:6;    ML            V0        S1
+ 644 << S:.I-0/0-.I;                 Y:6/0;  ML            VU        S1 S2
+ 646 >> S:.I-.I/.-0;                 Y:5/2;  ML    NP10-10 VU       S1 S2
+ 648 << S:0-./.-.;                   Y:2/5;              ML VU         S1 S2
+ 650 >> S:.-./.-.;                   Y:5/2;              ML VU         S1 S2
+ 652 << S:.-./.-.;                                       ML VU         S1 S2
+ 654 >> S:.-./.I-.I;                                     ML VU         S1 S2
+ 656 << S:R-R;                                              VU         S1 S2
+ 658 VJA^1
+ 659    PM:15.7(YTI17*)<*>575:<.>; C   65CM-ES KK-HOZ
+ 659    PM:15.8(YTI16*)<*>575:<.>; C   71CM-ES KK-HOZ (8 GOMBLYUKKAL.)
+ 659    PM:15.9(YTI16*)<*>575:<.>; C   71CM-ES KK-HOZ (9 GOMBLYUKKAL.)
+ 659    PM:15.6(YTI18*)<*>575:<.>; C   60CM-ES KK-HOZ (LAZA. MADONNA MERETU KISKABATHOZ)
+ 659    PM:15.7(YTI19*)<*>575:<.>; C   71CM-ES KK-HOZ (V NYAKUHOZ:7 GOMBLYUKKAL, O NYAKUHOZ 8-CAL)19* VAGY 20*
+ 664 >> S:0-R/R-0;                             NP12-12   VU             S1 S2
+ 666 WM=20
+ 668 << S:0-R/UVSYTI;                 Y:5;    NP12-12                S1    T2
+ 670 >> S:R-T(11)/0-T(8.0);            Y:5/0;            VU         S1 S2
+ 672 C GOMBLYUKAK:
+ 674 WM=0
+ 676 << S:U^SI;                        VL1                T1
+ 678 >> S:U^SYT;                        VR2                T1
+ 680 WM=22
+ 682 << S:T(11)-.*YI(13);         Y:2;    V0  VU               S1
+ 684 WM=24
+ 686 >> S:.*YI(13)-T(11);                     VL1 VU               S1
+ 688 NP13-13
+ 689 << S:0-R/R-0;                    Y:5/2;  VR1   VU               S1 S2
+ 690 >>                                             VU               S1 S2
+ 691 <<                                       V0     VU               S1 S2
+ 692 >>                                              VU               S1 S2
+ 693 <<                                              VU               S1 S2
+ 694 >> S:0-R/R(10)-R(10);                            VU              S1 S2
+ 695 END
+
+ 900 C REX POIKO PANT (MASNIS)******************************************************
+ 902 NP4=12.8 C12.6
+ 904 NP12=12.0   C:BEKEZDES
+ 906 NP13=11.2   C:REX
+ 940C START 
+ 950C YG:6/256;
+ 952 WM=15 WMI=7
+ 954C << S:D.I-DI./DI.-D.I;	          Y:2/5; 	     NP4-4   VU   V0	   S1 S2
+ 956 JA1=1980;
+ 958 PA:<JA1>; 
+ 960 FA=2-7; C FA=1-7 VAGY 2-7;
+ 962 PM:<.>5:<FA>575:<.>;
+ 964 >> S:D.I-DI./UVN.I;	           	Y:2;                     	        S1    T2
+ 966 << S:U^NA/.I-A;                                                T1 S1
+ 968 >> S:.I-A;                      Y:5;                 VR1          S1
+ 970 << S:.I-0/UVNA;                                                   S1    T2
+ 972 >> S:.I-.I;                     Y:6;                 V0              S2
+ 974 << S:.I-0/0-.I;                 Y:6/0;                            S1 S2
+ 976 >> S:.I-.I/.-0;                 Y:5/2;  ML   NP12-12              S1 S2
+ 977 WM=19
+ 978 << S:0-./.-.;                   Y:2/5;  ML   NP13-13              S1 S2
+ 980 >> S:.-./.-.;                           ML                        S1 S2
+ 982 << S:.-./.-.;                           ML                        S1 S2
+ 984 >> S:.-./.I-.I;                         ML                        S1 S2
+ 986 << S:R-R/R-R;                                                     S1 S2
+ 988 >> S:R-R/R-R;                                                     S1 S2
+ 990 << S:R-R/R-R;                                                     S1 S2
+ 991 >> S:R-R/R-R(4);                                                  S1 S2
+ 992 END C*********************************************************************
+ 999 <> W0 S0
+
+1980 ....AIA
+1990 IA
+1992 IY
+1000 IA
+1002 WWWWWWWWWWWWCPASSZE:
+1004 ............
+1006 IIIIIIIIIIII
+1008 YIYIYIAIAIAI
+1010 .IIIIIIIII.I
+1012 YYIYIIIAIAAI
+1014 ..IIIIIII..I
+1016 YYYIYIAIAAAI
+1018 ...IIIII...I
+1020 YYYYIIIAAAAI
+1022 ....III....I
+1024 YYYYYIAAAAAI
+1026 WWWWWWWWWWWW
+1028 WWWWWWWWWWWWC.:
+1030 IIIIIIIIIIII
+1032 IIIIIIAIAIAI
+1034 YIYIYIIIIIII
+1036 IIIIIIIAIAAI
+1038 YYIYIIIIIIII
+1040 IIIIIIAIAAAI
+1042 YYYIYIIIIIII
+1044 IIIIIIIAAAAI
+1046 YYYYIIIIIIII
+1048 IIIIIIAAAAAI
+1050 YYYYYIIIIIII
+1052 ............
+1054 IIIIIIIIIIII
+1056 ............
+1058 WWWWWWWWWWWW
+1100 WWWWWWWWWWWWWWWWC..:
+1102 IIIIIIIIIII*YIII
+1104 *IIIA*IIIIA.IIIA
+1106 .YIII.YIIII..YII
+1108 .IIA..IIIA...IAI
+1110 .IYI...YII....II
+1112 .II....II....AAI
+1114 .IYY....*Y...III
+1116 .III...A.I..AAAI
+1118 .IYYY..I..Y.IIII
+1120 .IIII.A...IAAAAI
+1122 .IYYYYI....IIIII
+1124 .IIIII....AAAAAI
+1126 .IYYYYY...IIIIII
+1128 .IIIIII..AAAAAAI
+1130 .IYYYYYY.IIIIIII
+1132 IIIIIIIIIIIIA*II
+1134 III*YIII*YIII.YI
+1136 IIA.IIIA.IIA..II
+1138 III..YII.IYI...Y
+1140 IA...IAI.II....I
+1142 II....II.IYY....
+1144 *....AAI.III...A
+1146 .Y...III.IYYY..I
+1148 .I..AAAI.IIIIIA.
+1150 ..Y.IIII.IYYYYI.
+1152 ..IAAAAI.IIIII..
+1154 ...IIIII.IYYYYY.
+1156 ..AAAAAI.IIIIII.
+1158 ..IIIIII.IYYYYYY
+1160 IAAAAAAI.IIIIIII
+1162 WWWWWWWWWWWWWWWW
+1200 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWC...:
+1202 II.11I3A4I.7IAII.A11I3A2(4I.9I)II3A4I.7IAII.A7I.8I3A5I2(7I.)8I3A7IAII.A7I.8I3A5I2(7I.)W
+1204 .IY7I3YI2(7I.)I.I.7I3Y8I.8IY3.IY7I3YI2(7I.)I.I.7I.5IYY7I3YIY3.IY7I.5IYY7I3Y3(I.)7I.5IYY7I3YIY3.IY7I.W
+1206 II.I3A7IAA5I.7IAII.AI3A7IAA5I.13I.I3A7IAA5I.7IAII.2(AII)II5.4IAAIAI10I.IIA4I5.4IAAIAI5IAII.2(AII)II5.4IAAIAI10I.IIA4I.W
+1208 .IY6IYIYY4I5.4IYI3(I.)5IIYIYY4I5.I2(3IY)3.IY6IYIYY4I5.4IYI3(I.)7I5.IIY6I2(YIY)3.IY7I5.IIY6IYIYY3(I.)7I5.IIY6I2(YIY)3.IY7I.W
+1210 II.IAAIAI5IAII5.7IAII.2(AIA)6IAII5.13I.IAAIAI5IAII5.7IAII.A7I5.4IAIAA4I2(7I.)4.4IAIAA6IAII.A7I5.4IAIAA4I2(7I.)W
+1212 .IY6IYYIYI3I5.6I3(I.)6IYYIYI3I5.8IY3.IY6IYYIYI3I5.6I3(I.)21IYYIYIY3.IY21IYYIYI.I.I.21IYYIYIY3.IY8IW
+1214 II.IAIAA21IAII.AIAIAA27I.IAIAA21I2(AII.)14.3A9I2(II.)14.3A6I2(AII.)14.3A9I2(II.)5.W
+1216 .IY6I3Y15.I3(I.)6I3Y15.3IY3.IY6I3Y15.I3(I.)II6.13I3YIIY3.IYII6.13I3YI3(I.)II6.13I3YIIY3.IYII6.W
+1218 II.II3A13I6.IIAII.AII3A13I6.8I.II3A13I6.II2(AII.)5.IA6I4A9I2(II.)5.IA6I4A6I2(AII.)5.IA6I4A9I2(II.)5.W
+1220 .IY6I4Y6IYI6.I3(I.)6I4Y6IYI6.3IY3.IY6I4Y6IYI6.I3(I.)II6.13I4YIY3.IYII6.13I4Y3(I.)II6.13I4YIY3.IYII6.W
+1222 II.I4A13I6.IIAII.AI4A13I6.8I.I4A13I6.IIAII.A7I.16I2(7I.)18IAII.A7I.16I2(7I.)W
+1224 .IY18I.6I3(I.)18I.8IY3.IY18I.6II.I.2(I.6I)3I3Y6IY3.IY7I.9I3Y6I.I.2(I.6I)3I3Y6IY3.IY7I.W
+1226 II.6I3A9I.7IAII.A6I3A2(9I.4I)II3A9I.7IAII.A7I.2(6IA)AA2(7I.)2(6IA)A2(AII).A7I.2(6IA)AA2(7I.)W
+1228 .IYII3Y6IY2(6I.I).I.IIYY2(Y6I).8IY3.IYII3Y6IY2(6I.I).I.I6I6.IIIYIYY6IY3.IY7I6.IIIYIYY6I3(.I)6I6.IIIYIYY6IY3.IY7I.W
+1230 II.6IAAIAIII6.7IAII.A6IAAIAIII6.13I.6IAAIAIII6.7IAII.2(AII)II6.AA6IAAIAI5I.IIA4I6.AA6IA3(AI)I.2(AII)II6.AA6IAAIAI5I.IIA4I.W
+1232 .3(IY)Y6IYY6.4IYI3(I.)IYIYY6IYY6.I2(3IY)3.3(IY)Y6IYY6.4IYI3(I.)7I6.3IYYIYI5IY3.IY7I6.3IYYIYI5I3(.I)6I6.3IYYIYI5IY3.IY7I.W
+1234 II.6IAIAA3I6.7IAII.A6IAIAA3I6.13I.6IAIAA3I6.7IAII.A7I5.3A6IAIAA6I.7I5.3A6I2(AIA)II.A7I5.3A6IAIAA6I.7I.W
+1236 .I2(YIY)6I3Y5.6I3(I.)IYYIYI5I3Y5.8IY3.I2(YIY)6I3Y5.6I3(I.)16I3Y7IY3.IY16I3Y6I3(I.)16I3Y7IY3.IY8IW
+1238 II.7I3A16IAII.A7I3A22I.7I3A16IAII.A3I8.4A7I3A3I2(3I.)7.4A7IAAAIAII.A3I8.4A7I3A3I2(3I.)4.W
+1240 .IYIYYY7I4Y8.II3(I.)I3Y7I4Y8.4IY3.IYIYYY7I4Y8.II3(I.)3I5.8I4Y6IY3.IY3I5.8I4Y6I3(.I)II5.8I4Y6IY3.IY3I5.W
+1242 II.6I4A8I5.3IAII.A6I4A8I5.9I.6I4A8I5.3IAII.A3I5.IA11I4A3I2(3I.)4.IA11I4AIAII.A3I5.IA11I4A3I2(3I.)4.W
+1244 .IYIY3Y11IYI5.II3(I.)I4Y11IYI5.4IY3.IYIY3Y11IYI5.II3(I.)7I.4I3Y11IY3.IY7I.4I3Y10I3(I.)7I.4I3Y11IY3.IY7I.W
+1246 202W
+1250 WWWWWWWWWWWWWWWWWWWWWWWWWWC....VAR.:
+1252 IYYYYYIIIII.YIIIIIIIIIIIII
+1254 IIIIIIIIA.IIIIIIIIIIIIAIII
+1256 IIIIIIIIIII..YIIYYYYIIIIYI
+1258 IAAAAIIA..IIIIIIIIIIIAAIII
+1260 IIIIIIIIIII...YIIYYIIIIIYY
+1262 IIAAIIA...IIIIIIIIIIAAAIII
+1264 YIIIIIIIIII....YIIIIIIIIYY
+1266 IIIIIA....IIIIIIIIIAAAAIII
+1268 YYIIIIIIIII.....YIIIIIIIYY
+1270 IIIIA.....IIIIIIIIAAAAAIII
+1272 YYYIIIIIIII....YIIIIIIIIYY
+1274 IIIIIA....IIIIIIIAAAAAIIII
+1276 YYYYIIIIIII...YIIIIIIIIIIY
+1278 IIIIIIA...IIIIIIAAAAAIIIII
+1280 YYYYYIIIIII..YIIIIIIIIIIII
+1282 IIIIIIIA..IIIIIAAAAAIIIIII
+1284 IIIIIIIIIIIIIIIIIIIIIIIIII
+1286 WWWWWWWWWWWWWWWWWWWWWWWWWW
+1250 WWWWWWWWWWWWWWWWWWWWWWWWWWC....VAR..:
+1252 .YYYYYIIIII.YIIIIIII...I..
+1254 IIIIIIIIA.IIIIIIIIIIIIAIII
+1256 .IIIIIIIIII..YIIYYYY..IIY.
+1258 IAAAAIIA..IIIIIIIIIIIAAIII
+1260 IIIIIIIIIII...YIIYYIIIIIYY
+1262 IIAAIIA...IIIIIIIIIIAAAIII
+1264 YIIIIIIIIII....YIIIIIIIIYY
+1266 IIIIIA....IIIIIIIIIAAAAIII
+1268 YYIIIIIIIII.....YIIIIIIIYY
+1270 IIIIA.....IIIIIIIIAAAAAIII
+1272 YYYIIIIIIII....YIIIIIII.YY
+1274 IIIIIA....IIIIIIIAAAAAIIII
+1276 YYYYIIIIIII...YIIIIIII...Y
+1278 IIIIIIA...IIIIIIAAAAAIIIII
+1280 YYYYYIIIIII..YIIIIIII.....
+1282 IIIIIIIA..IIIIIAAAAAIIIIII
+1284 IIIIIIIIIIIIIIIIIIIIIIIIII
+1286 WWWWWWWWWWWWWWWWWWWWWWWWWW
+1250 WWWWWWWWWWWWWWWWWWC....VAR///.:
+1252 YIIIII.YIIIYYIIIYY
+1254 IIIA.IIIIIIIIAIIAA
+1256 IIIIII..YIIYIIIYII
+1258 IIA..IIIIIIIAAIIIA
+1260 IIIIII...YIIIIIYYI
+1262 IA...IIIIIIAAAIIII
+1264 IIIIII..YIIIIIIYYY
+1266 IIA..IIIIIAAAIIIII
+1268 YIIIII.YIIIYYIIIYY
+1270 IIIA.IIIIIIIIAIIAA
+1272 IIIIII..YIIYIIIYII
+1274 IIA..IIIIIIIAAIIIA
+1276 IIIIII...YIIIIIYYI
+1278 IA...IIIIIIAAAIIII
+1280 IIIIII..YIIIIIIYYY
+1282 IIA..IIIIIAAAIIIII
+1284 IIIIIIIIIIIIIIIIII
+1286 WWWWWWWWWWWWWWWWWW
+1250 WWWWWWWWWWWWWWWWWWC....VAR///..:
+1252 YIIIII.YIIIYY.I.YY
+1254 IIIA.IIIIIIIIAI.AA
+1256 IIIIII..YIIYIIIYII
+1258 IIA..IIIIIIIAAIIIA
+1260 IIIIII...YIIIIIYYI
+1262 IA...IIIIIIAAAIIII
+1264 IIIIII..YIIIII.YYY
+1266 IIA..IIIIIAAA..III
+1268 YIIIII.YIIIYY.I.YY
+1270 IIIA.IIIIIIIIAI.AA
+1272 IIIIII..YIIYIIIYII
+1274 IIA..IIIIIIIAAIIIA
+1276 IIIIII...YIIIIIYYI
+1278 IA...IIIIIIAAAIIII
+1280 IIIIII..YIIIII.YYY
+1282 IIA..IIIIIAAA..III
+1284 IIIIIIIIIIIIIIIIII
+1286 WWWWWWWWWWWWWWWWWW
+1332 WWWWWWWWWWWW
+1334 II.II...I...
+1336 I.I.I..III..
+1338 .I.I.II...II
+1340 .III..I.I.I.
+1342 I...II.I.I.I
+1344 ..I..III.III
+1346 II.II...I...
+1348 II.III..I..I
+1350 ..I...II.II.
+1352 II.II.I...I.
+1354 ..I..I.III.I
+1356 I...I.II.II.
+1358 .III.I..I..I
+1360 II.III..I..I
+1362 ..I...II.II.
+1364 WWWWWWWWWWWW

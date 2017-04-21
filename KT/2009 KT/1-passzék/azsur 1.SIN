@@ -1,0 +1,86 @@
+   1 C AZSUR 1 - HAROMSZOG ALAKU PASSZE-----TOBB JAC.SOR
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  12 NP3=13.6              C KORSLAG      MADONNA:14.4
+  13 NP5=13.6              C PASSZE       MADONNA:14.0
+  14 NP6=14.4;             C PASSZE       MADONNA:14.4
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+--- ide kell a#100 és a tûkiosztás!--------
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/2/5/5;
+ 212 REP*2 CMADONNA:1
+ 214 << S:R-0;		                             ML   NP3-3     VU          S1
+ 216 >> S:0-R;		                             ML             VU          S1
+ 218 REPEND
+
+C--VAGY: FONAKKAL KEZD
+ 220 << S:R-0/UVNNI;                         ML                         S1    T2
+ 221 >> S:U^NI/NI-I;                         ML  NP6-6              T1 S1
+ 222 C
+ 223 C
+C--VAGY: SZINNEL KEZD
+ 220 << S:0-R;                               ML             VU          S1
+ 221 >> S:R-0/UVS.;                          ML                         S1    T2
+ 222 << S:U^SN./.-N./UVSAY;                  ML  NP6-6               T1 S1    T2
+ 223 >> S:NI-I;                              ML             VU          S1
+
+ 224 REP*4
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+ 234 << S:U^NI/.-N./UVN<1->.;               NP5-5 V0        T1 S1 T2 
+ 236 >> S:U^NI/.-I/UVN<1->NI;               NP6-6           T1 S1 T2
+ 238 REPEND
+--VAGY:--
+ 240 GOSUB 226-234
+ 242 >> S:U^NI/.-I/UVNI;                    NP6-6           T1 S1 T2
+--VAGY:--
+ 240 GOSUB 226-232 C 2SZV NECCHEZ
+  A 2SZV NECC IGY KEZDODIK, DE IGY AZ 1. SORBAN ASZELSZEMEKEN KIVUL NEM LEHET POTTY:
+ 242 << S:U^N./.-N./.-N./ STB.
+ 249 C********************************************************
+
+VAGY:224 REP*4  JA1=1026(1006-1008)   C CSIPKE PASSZE
+1004 WWWWWWWWWWWW
+1006 IIIIIIIIIIII
+1008 IIIIIIIIIIII
+1010 AIAIAIYIYIYI
+1012 IIII.I.IIIII
+1014 IAIAAIYYIYII
+1016 III..I..IIII
+1018 AIAAAIYYYIYI
+1020 II...I...III
+1022 IAAAAIYYYYII
+1024 I....I....II
+1026 AAAAAIYYYYYI
+1028 WWWWWWWWWWWW
+VAGY:224 REP*5  JA1=1030(1006-1008)   C CSIPKE PASSZE
+1004 WWWWWWWWWWWWWW
+1006 IIIIIIIIIIIIII
+1008 IIIIIIIIIIIIII
+1010 IAIAIAIYIYIYII
+1012 IIIII.I.IIIIII
+1014 AIAIAAIYYIYIYI
+1016 IIII..I..IIIII
+1018 IAIAAAIYYYIYII
+1020 III...I...IIII
+1022 AIAAAAIYYYYIYI
+1024 II....I....III
+1026 IAAAAAIYYYYYII
+1028 I.....I.....II
+1030 AAAAAAIYYYYYYI
+1032 WWWWWWWWWWWWWW
+
+
+

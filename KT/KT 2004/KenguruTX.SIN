@@ -1,0 +1,145 @@
+1C 
+1C H-U:CP RIA                            E           H             U
+1C-----------------------+------------+------------+------------+-------------+
+1C                             TUN:      69          65            54
+1C-----------------------+------------+------------+------------+-------------+
+1C 
+1C-----------------------+------------+------------+------------+-------------+
+  10 NP1=14.6              C:MINTA ELOL
+ 160 NPJ1:I=14.4 .=15.0;   C:MINTA HATUL I: KREPP .:ARAN
+  12 NP4=12.5; NP12=10.5   C:LEVALASZTAS
+  18 NP6=14.2; NP14=12.6   C:U-H 2SZV.BAL-BAL KREPP (RIZS)
+  22 NP5=13.6              C:KORSLAG
+  40 START        
+  50 YG:6/256;
+  53 WM=18;WMI=7
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C*******************************************************************
+  60 IF #100=21 RS17=0            C E
+  62 IF #100=10 RS17=1            C H
+  64 IF #100=6  RS17=2            C U
+C*******************************************************************
+  66 IF RS17=0  RS1=69            C E
+  68 IF RS17=1  RS1=65            C H
+  70 IF RS17=2  RS1=54            C U
+ C********KORSLAG PIKO PASSZE***************************
+  90 JA1=1990;  C 1990 IIIIAI
+  92 PA:<JA1>; 
+  94 FA=1-6; 
+  96 PM:9.<FA>548:<.>;
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP1-01         ML       S1
+ 110 << S:0-NA/NA-0;                  Y:5/2;      NP5-5             S1 S2
+ 112 REP*2 C2 C***PIKO***
+ 114 >> S:NA-0/0-NA;                                                S1 S2
+ 116 << S:0-NA/NA-0;                                                S1 S2
+ 118 REPEND
+ 120 REP*3 C3 C**KORSLAG*****
+ 122 >> S:R-0/0-R;                                                  S1 S2
+ 124 << S:0-R/R-0;                                                  S1 S2
+ 126 REPEND
+
+ 150 JA3=1000
+ 152 PANP:1:JA3;
+ 154 F1=5-183
+ 156 PMNP:<I>7:FAIFAIFA;
+
+ 200 JA1=1018(1004-1018)  C KEZD:Y(SARGA)SIVI
+ 202 JA2=1300(1300-1302) C******RIZS**********************
+ 203 IF RS17>0 GOTO 400 C****U-H********
+ 204 PA:<JA2>:JA1;
+ 206 FA=5-183;                           C EGESZ LAP              179 TU
+ 208 PM:<*>7:FAIFAIFA;                   C 3 EGESZ LAP            551 TU
+ 210 IF RS17=2 FA=14-147                 C*4LAP************
+ 212 IF RS17=2 PM:<.>7:4(IFA)I;          C*4LAP************
+ 214 >> S:R-0/0-R/UVSN.;                                     S1 S2 T2
+ 218 WM=20
+ 220 << S:U^S./N.(J1)-.(1)/UVS.;      Y:2;       V0  VKC>2  T1  S1 T2
+ 222 >> S:U^S<1-2->./N.-.;                           VKC    T1  S1
+ 224 Y:5/2;
+
+ 226 RBEG*RS1 C********** ARAN AZ ELSO TUAGYON YYYYY:SARGA H:V.KEK**********
+ 228 REP*2
+ 230 <> S:N.-./UVN.;                            V0  VKC>2   S1  T2
+ 232 WM=0;WMI=0 
+ 233 PK^:3:<JA2>3:JA1;
+ 234 <> S:U^NYH;                                VL2             T1
+ 236 <> S:UVNY;                                 VL3 VKB>6              T2
+ 238 <> S:UVNH;                                 VR2 VKD>0              T2
+ 240 WM=18;WMI=7
+ 241 PK^:0
+ 242 <> S:U^N<1-2->./N.-.;                   V0  VKC         T1 S1
+ 244 REPEND
+ 245 REND
+ 246 << S:N.H-.H/UVN.H;             Y:5;             V0  VKC             S1 T2
+ 248 >> S:U^SDI./D.I-DI./UVSDI.;           NP4-4        VKC         T1  S1 T2
+ 250 END
+
+
+Cßßßßßßßßßßßßßß GYORSABB VARIACIO ,DE LEHET, HOGY CSAK 3 TUVEL FOG MUKODNI:ßßßßßßßßßß
+C 214 >> S:R-0/0-R/UVS.;                                     S1 S2 T2
+C 218 WM=20
+C 220 << S:U^SN./.(1)-N.(J1);   Y:2;      V0  VKC>2  T1 S1
+C 222 >> S:.-N./UVSN.;                        VKC       S1    T2
+C 224 Y:5/2;
+C 226 RBEG*RS1 C********** ARAN A HATSO TUAGYON YYYYY:SARGA H:V.KEK**********
+C 228 REP*2
+C 230 << S:U^S<1-2->./.-N./.-N./UVSI;            VL1 VKC>2   S1  T2
+C 232 WM=0;WMI=0 
+C 233 PK^:2:<JA2>2:JA1;
+C 234 <> S:U^NYH;                                VL2             T1
+C 236 <> S:UVNY;                                 VL3 VKB>6              T2
+C 238 <> S:UVNH;                                 VR2 VKD>0              T2
+C 240 WM=18;WMI=7
+C 241 PK^:0
+C 242 <> S:U^N<1-2->./N.-.;                   V0  VKC         T1 S1
+C 244 REPEND  C********** ARAN AZ ELSO TUAGYON YYYYY:SARGA H:V.KEK**********
+C 245 REND
+C 246 << S:N.H-.H/UVN.H;             Y:5;             V0  VKC             S1 T2
+C 248 >> S:U^SDI./D.I-DI./UVSDI.;           NP4-4        VKC         T1  S1 T2
+C 250 END
+Cßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
+
+ 400 C******** H-U RIZS***********
+ 404 PA:<JA2>;
+ 406 FA=6-183;         IF RS17=2 FA=28-160         C**H-U**
+ 408 PM:<.>8:3(IFAI);  IF RS17=2 PM:<.>7:4(IFAI);  C**H-U**
+ 409 >> S:R-0/0-R/UVS.;                                     S1 S2 T2
+ 416 WM=20
+ 418 << S:U^NN./.-N./.-N./UVNN.;       Y:2/5;  NP6-6  VKC>2 V0  T1  S1 S2 T2
+ 420 RBEG*RS1
+ 422 >> S:U^N<2->N./.-N./.(14)-N./UVNN.;                VKC V0   T1 S1 S2 T2
+ 424 << S:U^N<2->N./.(6)-N./.-N./UVNN.;                 VKC      T1 S1 S2 T2 
+ 426 REND
+ 428 >> S:U^SD.I/DI.(4)-D.I(4)/DI.(12)-D.I/UVNR;             T1 S1 S2 T2
+ 430 END
+ 999 <> W0 S0
+
+1990 4IAI
+1000 21I2(18I19.)12.17I19.47I
+1002 191I
+1004 W42X.6IH4YII.21X.3I2(3IH4Y)7I.21X.6IH4YII.47XI
+1006 43X.7IH4YI.21X.4I2(3IH4Y)6I.21X.7IH4YI.47XI
+1008 43X.H4Y3IH4Y.21X.3(H4Y3I)II.21X.H4Y3IH4Y.47XI
+1010 43X.IH4Y7I.21X.3(IH4YII)II.21X.IH4Y7I.47XI
+1012 43X.IIH4Y6I.21X.3(IIH4YI)II.21X.IIH4Y6I.47XI
+1014 43X.3IH4Y5I.21X.3(3IH4Y)II.21X.3IH4Y5I.47XI
+1016 43X.4IH4Y4I.21X.I3(3IH4Y)I.21X.4IH4Y4I.47XI
+1018 W42X.5IH4Y3I.21X.II3(3IH4Y).21X.5IH4Y3I.47XI
+1020 4IX2(88I.)8I
+ C PAMUTHOZ:
+1204 I..2(.II)3.
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II.3(.I)..I
+1212 ..I3(I.)II.
+1214 I.2(.3I)..
+1216 .I2(I3.)II
+1218 .II2(I..)3I
+ C TX-HEZ:
+1300 .I
+1302 I.

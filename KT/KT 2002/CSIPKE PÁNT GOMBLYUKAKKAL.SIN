@@ -1,0 +1,76 @@
+ 600 C PANT GOMBLYUKAKKAL ***************************************
+ 601 NP1=14.2   C:MINTA-14.5
+ 602 NP6=15.0   C:U-H
+ 604 NP4=12.5  C:LEVALASZTAS-------------
+ 606 NP2=14.2  C:PASSZE,CSIPKE ALJ-------
+ 608 NP5=15.0  C:
+ 610 START        
+ 612 YG:6/256;
+ 614 WM=20
+ 616 << S:D.I-DI./DI.-D.I;          Y:2/5;       NP4-4  VU  V0        S1 S2
+ 618 >> S:D.I-DI./UVND.I;           Y:5;                VKC>2         S1    T2
+ 620 << S:R-0/UVNR;	                                    VKC>2         S1    T2
+ 622 WM=15 
+ 624 >> S:R-R;		                    Y:6;	        NP2-0   	               S2
+ 626 << S:0-R/R-0/0-R;		            Y:0/6/0;     NP2-2    	        T1 S1 S2
+ 628 >> S:R-R(6.5)/R-0;             Y:2/5;	                           S1 S2
+ 630 WM=20 WMI=7
+ 632 << S:0-R;		                    Y:2;		       NP5-5                S1
+ 634 JA1=1030(1024-1030);
+ 636 PA:1:<JA1>;
+ 638 FA=6-544;
+ 642 PM:<.>6:WW FA WW;    C X+*W .IAYTOBGHZ
+ 644 >> S:R-0/UVS.WA;                Y:2;                      S1   T2
+ 646 << S:U^NN.WA/.WA-N.WA/UVSN.WA;     Y:2;  ML               T1 S1   T2 C###ML###
+ 650 C *******  PASSZE  ***********************************
+ 655 WM=0
+ 660 >> S:U^S+;                            NP2-2    VR1 VKA>6 T1
+ 665 << S:U^S*;                                     VL1 VKB>6 T1
+ 670 WM=18
+ 675 >> S:U^SWA/.-N./UVNN.A;       Y:2;             V0  VKC>2 T1   S2 T2 
+ 680 << S:<1->NA-A;                Y:5;             VU             S1
+ 685 WM=0
+ 690 >> S:U^S+Y;                           NP2-2    VR1 VKA>6 T1
+ 695 << S:U^S*I;                                    VL1 VKB>6 T1
+ 700 >> S:U^ST;                                     VL2       T1
+ 710 WM=18
+ 712 Y:2/5/5/2;
+ 715 << S:U^SW/.T(8.0)-N.T/UVNN.YTIA;               V0  VKC>2 T1    S2 T2 
+ 720 >> S:<1->NTA(2)-TA(8.0);                       VU           S1
+ 725 WM=0
+ 730 << S:U^S+;                                     VR1 VKA>6 T1
+ 735 >> S:U^S*;                                     VL1 VKB>6 T1
+ 740 WM=18
+ 745 << S:U^SW/.(8.0)-N.(2)/UVNN.YTIA;              V0  VKC>2 T1    S2 T2 
+ 750 >> S:<1->NA-A;                         NP2-2   VU            S1
+ 755 WM=0
+ 760 << S:U^S+;                                     VR1 VKA>6 T1
+ 765 >> S:U^S*;                                     VL1 VKB>6 T1
+ 770 WM=18
+ 775 << S:U^SW/.YTI-N.YTI/UVNN.A;                   V0  VKC>2 T1    S2 T2 
+ 780 >> S:<1->NA-A;                                 VU           S1
+ 785 C  ***************************************************
+ 790 << S:U^NN./.-N.;                         T1 S1
+ 795 >> S:.-N./.-N./UVNDI.;        Y:2/5;        S1 S2 T2
+ 800 << S:U^ND.I/0-R/R-0;          NP4-4      T1 S1 S2
+ 805 NP1-1
+ 810 Y:2/5/5/2;
+ 820 >> S:0-R/R-0;       S1 S2
+ 822 <<                  S1 S2
+ 825 >>                  S1 S2 
+ 835 END
+1024 +WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWYTIWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W++WWWWWWW**W+
+1026 ++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WYTIW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+++WWWWW***W+
+1028 +++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++YTI****W++++WWW****W++++YTI****W++++WWW****W++++YTI****W++++WWW****W++++YTI****W++++WWW****W++++YTI****W++++WWW****W++++YTI****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W+
+1030 ++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+
+1000 .....IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1024 +WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWYTIWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A++WWWWWWW**A+
+1026 ++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WYTIW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+++WWWWW***A+
+1028 +++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++YTI****A++++WWW****A++++YTI****A++++WWW****A++++YTI****A++++WWW****A++++YTI****A++++WWW****A++++YTI****A++++WWW****A++++YTI****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A++++WWW****A+
+1030 ++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+++++W*****A+
+1624 +WWWWWWW**A+
+1626 ++WWWWW***A+
+1628 +++WWW****A+
+1630 ++++W*****A+
+
+

@@ -1,0 +1,40 @@
+ 900 START C:SLAG PIKO PANT III SZIVECSKEKKEL*************
+ 902 NP4=12.5  C:LEVALASZTAS-------------------
+ 904 NP2=12.0  C:BEKEZDES----------------------
+ 906 NP1=14.9  C:KORSLAG-----------------------
+ 908 YG:6/256;
+ 910 WM=20 WMI=7
+ 912 << S:D.I-DI./DI.-D.I;		       Y:5/2;	    NP4-4  VU  V0	     S1 S2
+ 914 >> S:R-R/R-R;                  Y:5/2;                        S1 S2
+ 916 JA1=1998
+ 918 PA:<JA1>;
+ 920 FA=1-7;
+ 922 PM:8I<FA> 540:10I;
+ 924 << S:D.I-DI./DI.-D.I/UVSIOA;	   Y:5/2;	         	            S1 S2 T2
+ 925 >> S:U^SNIOA/0-IOA/IOA-NIOA;             Y:0/2;   NP1-1       T1 S1 S2
+ 926 << S:IO-.T/UVS.T;                 Y:2;               VR2      S1    T2
+ 927 >> S:A-Y/UVSY;                   Y:5;               VL1 VKA>3  S1    T2
+ 928 << S:IOA-0;                                          V0       S1
+ 930 WM=15
+ 932 >> S:IOA.-IOA.;		                    Y:6;	       NP2-0   V0           S2
+ 934 << S:IOA.-0/.-R;		              Y:6/0;       NP2-2   	         S1 S2
+ 936 WM=25
+ 938 >> S:IOA.-IOA.(6.5);	                 	Y:5;	                 ML     S2
+ 940 Y:5/2/2/5;
+ 942   NP1-1
+ 944 REP*1
+ 946 << S:IA%.-0;                             		                     S2
+ 948 >> S:0-IA%.;                              	                       S2
+ 950 REPEND
+ 951 << S:IA%.-0;                                                      S2
+ 952 >> S:IA%.-0;                                                      S2
+ 953 << S:0-R;                                                      S1
+ 954 REP*3
+ 956 >> S:R-0/0-R;                    Y:5/2;                        S1 S2
+ 958 <<                               Y:2/5;                        S1 S2
+ 960 REPEND
+ 962 >> S:R-0/R(11.0)-R(11.0);                  Y:5/2;	                          S1 S2
+ 964 C<< S:R-R/R-R;                              NP4-4                S1 S2
+ 970 END
+1998 IOY.TOA
+

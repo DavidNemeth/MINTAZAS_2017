@@ -1,0 +1,24 @@
+C TU- ES OROMZATTISZTITAS ES VK MOTOR JARATAS, TUAGYVALTOTESZT
+   1 C
+  10 C
+  11  NP1=14.5;    C **KT**
+  12  NP4=14.5;    C **KT**
+  40 START
+  50 YG:/25;
+  52 WM=18        C **KT**
+  54 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4  ML V0            S1 S2
+  56 >> S:DI.-D.I/UVND.I;           Y:2;           ML               S1    T2
+  58 << S:D.I-DI./UVNDI.;                          ML                  S2 T2
+  60 >> S:R-0;                      Y:5/2;  NP1-1  ML               S1 S2
+  62 RBEG*RS1
+  64 << S:R-0;                      Y:5/2;  NP1-1  VR3              S1 S2
+  66 >>                                            VL3 VKA>10 VU    S1 S2
+  68 << S:U^SD.I/DI.-D.I;           Y:5;    NP4-4  V0            T1 S1
+  70 >> S:U^SDI./0-R;                       NP1-1                T1 S1
+  72 << S:0-R;                      Y:2/5;                          S1 S2
+  74 >>                                               VKA>10 VU     S1 S2
+  76 << S:0-R/UVSD.I;               Y:2;           V0               S1    T2
+  78 >> S:D.I-DI./UVSDI.;                   NP4-4                   S1    T2 
+  80 REND
+  82 END
+ 999 <> W0 S0

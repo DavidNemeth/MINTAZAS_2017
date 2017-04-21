@@ -1,0 +1,29 @@
+   1 C FEKETE BETET A TIGRIS ES A PARDUC MELLEHEZ
+   2 C KORSLAG+REX
+  10 NP5=13.6              C:KORSLAG
+  12 NP4=12.5;             C:LEVALASZTAS
+  14 NP2=9.0               C BEKEZDES
+  16 NP1=13.8              C SLAG
+  40 START        
+  50 YG:6/256;
+  52 WM=16;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                 VU   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	   VU   ML       S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2     VU  ML       S1
+ 110 REP*2
+ 112 << S:R-0/0-R;		                  Y:2/5;        NP5-5           S1 S2
+ 114 >> S:0-R/R-0;		                                                S1 S2
+ 116 REPEND
+ 118 << S:R-0/0-R;		                  Y:2/5;        NP5-5           S1 S2
+ 120 >> S:0-R/R-0/UVNR;		                                           S1 S2 T2
+ 122 << S:R-0/R-0/UVNR;                             NP1-1           S1 S2 T2
+ 124 >>                                                             S1 S2 T2
+ 126 RS1=22
+ 128 RBEG*RS1
+ 130 << S:R-0;                S1 S2
+ 132 >>                       S1 S2
+ 134 REND
+ 136 END

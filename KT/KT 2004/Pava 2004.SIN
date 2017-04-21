@@ -1,0 +1,131 @@
+1C  RX PIKO+1SZV CSIPKE(PL KT2003\ PAVA)
+1C  VAGY CNCA 2003/PAVA C (SZIMMETRIKUS CSIPKE. NAGYON JOL KOTI)                                                   
+1C                                        E-H:         UJJA:
+1C  KISKABAT  65CM                        40-          -39        
+1C   GOMBLZUKAS PANT:SP600                                               
+1C                                        RS1=       
+1C-----------------------+------------+------------+------------+-------------+
+1C   3X16/1 LUSI     KESZEN 65CM KISKABAT               16
+1C   2LUSI+1TOROK:NPK=0                     42
+1C   3LUSI FEHER :NPK=-0.1                  40
+1C-----------------------+------------+------------+------------+-------------+
+  10 C---------------------
+  14 NP1=14.8  C:MINTA            
+  18 NP2=11.2  C:REX PASSZE
+  19 NP13=9.5  C:REX PASSZE (14)
+  20 NP4=12.5  C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52  IF #100=35  RS1=42 C  E-H
+  53  IF #100=15  RS1=16 C  U
+  54 WM=18 WMI=7
+  55 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  56 JA1=1994; 
+  58 PA:<JA1>; 
+  60 FA=1-7; C FA=1-7 VAGY 2-7;
+  62 PM:<.>5:<FA>547:<.>;
+  64 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  66 << S:U^NA/.I-A;                         ML                     T1 S1
+  68 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  70 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  72 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  73 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML     NP2-2              S1 S2
+  80 >> S:.-./.(13)-.;                       ML                        S1 S2
+  82 << S:.-./.-.;                           ML     NP2-2              S1 S2
+  84 >> S:.-./.I(13)-.I;                     ML                        S1 S2
+  86 << S:R-R/R-R;                           ML     NP2-2              S1 S2
+  88 >> S:R-R/R(13)-R;                       ML                        S1 S2
+  90 << S:R-R;                      Y:5;     ML     NP2-2   S1
+  92 >>                                                                S1
+
+ 100 JA1=1106;
+ 102 FA=5-183;
+ 104 PA:<JA1>5:I183:I;
+ 106 PM:<.>7:3(FA..);
+ 110 IF RS1<40 FA=9-142                   C*4LAP************
+ 112 IF RS1<40 PA:<JA1>9:I142:I;          C*4LAP************
+ 114 IF RS1<40 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+
+ 122 WM=0
+ 125 << S:U^NN./UVN.;  VKA>3    T1  T2
+ 130 >>                VKA      T1  T2
+ 140 VJA^0
+ 145 WM=20
+ 150 Y:2/2/5/5;
+ 155 NP1-1
+ 156 JA1=1106(1096-1106);
+ 160 RBEG*RS1 C*******************
+ 165 REP*3
+ 180 << S:U^N<1->N./.-N./UVNNY.;                          V0        T1    S1 T2
+ 182 >> S:U^N<1->N./.-N./UVNNA.;                          VL1 VKB>5 T1    S1 T2
+ 183 REPEND
+ 184 REND C***********************
+ 215 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 220 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;                            T1 S1 S2 T2
+ 225 END
+
+ 600 C***REX PIKO PANT 8 GOMBLYUKKAL*****
+ 601 NP1=14.5  C:LEVALASZTAS
+ 602 NP4=12.5  C:LEVALASZTAS,1/1
+ 603 NP2=11.0  C:BEKEZDES,REX
+ 604 NP5=13.0
+ 605 NP3=14.8   C:SLAG GOMBLYUK ELOTT
+ 606 NP8=13.8   C:SLAG PASSZE 13.8-14
+ 607 NP6=8.0    C:GOMBLYUK
+ 610  START 
+ 612 YG:6/256;
+ 614 WM=24
+ 616 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1991(1991-1993); 
+ 620 PA:<JA1>; 
+ 622 FA=2-7; C FA=1-7 VAGY 2-7;
+ 624 PM:<.>5:<FA>547:<.>;
+ 625 CY:2/2/5/5;
+ 626 VJA^0
+ 628 >> S:U^SA /.-A/UVS.;            Y:5;           NP1-1           T1 S1    T2
+ 630 << S:<1+>.-A/UVSA;                                      VL1       S1    T2
+ 636 >> S:<1+>.I-.I/0-.I;            Y:6/0;         NP4-4    V0        S1 S2
+ 638 << S:.I-0;                      Y:6;                              S1
+ 640 >> S:.I-.I/.-0;                 Y:2/5;         NP2-2    ML          S1 S2
+ 642 << S:0-./.-.;                   Y:5/2;                  ML          S1 S2
+ 644 >> S:.-.;                                               ML          S1 S2
+ 646 <<                                                      ML          S1 S2
+ 648 >> S:.-./.I-.I;                                         ML          S1 S2
+ 650 << S:R-R;                                                         S1 S2
+ 652 >> S:R-0/0-R;                             NP8-8                S1 S2
+ 654 << S:R-0/0-R;                             NP3-3                S1 S2
+ 655 VJA^1
+ 656 PM:9.8(YTI17*)<*>544:<.>; C GOMBLYUKAK YTI17* VAGY YTI18*
+ 658 C GOMBLYUKAK:
+ 660 WM=0
+ 662 >> S:U^STI/UVSYT;                        VL2      VKA>2      T1       T2
+ 664 << S:U^SY/UVSI;                          VR1                T1       T2
+ 666 WM=25
+ 668 >> S:T(6)-.*IY(8)/.*IY(8)-T(6);          V0                    S1 S2
+ 670 NP8-8
+ 672 << S:R-0/0-R;                            VR1 V#                S1 S2
+ 676 >>                                           V#                S1 S2
+ 678 <<                                       V0                    S1 S2
+ 680 >>                                                             S1 S2
+ 682 <<                                                             S1 S2
+ 684 >> S:R-R;                                  NP2-2               S1 S2
+ 686 END
+ 999 <> W0 S0
+
+1991 4.A.A
+1992 3.A*A*
+1993 4.*I*
+
+1994 4.AIA
+
+1092 192I
+1094 192I
+1096 W23(3IA4I)3IA3I
+1098 24(6IYI)
+1100 24(3IAA3I)
+1102 23(6IYY)6IYI
+1104 24(II3A3I)
+1106 I23(5I3Y)5IYI
+1108 W2(3I.85I)3I.9I

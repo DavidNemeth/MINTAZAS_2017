@@ -1,0 +1,136 @@
+C VKA!!! VISSZAALLITVA!!!
+1C *******PONCSO******* 2 SZALVEZETOS CSIPKE *****JAC.:RAJZOK 1
+1C 1 LEVETEL=2 LAP=1 PONCSO    14 MIN.
+1C LAP:0.45+NYAK:0.02+ROJT:0.1=0.55KGX500-560=300-310FT
+1C                  ROJT:4.0M (0.1KG-KB.25')            30 FUST ROJT:2005.05.04. 8:00-21:00 25MIN/DB(0.1KG)
+1C      VARRAS:120-130FT
+1C       ELADAS:     AGI:730  JUDITKA:900
+1C       HASZON:         300          450          ((((FEKETE START:18:45-1:54 2KG)))))))))))))
+1C                                 -REZSI                   (((15MIN/DB./0.1KG)))))))))
+1C                           RS1=(FIX 54.SOR)           
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C  SZ.:     DUPLAN KELL VASALNI 100 CENTIRE NYUJTVA,  15 MIN. 
+1C   H.:     82CM; LE KELL ERNIE A TREPNIIG ES OTT 2-3CM.-NEK EL KELL FEKUDNIE!
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C 3X16/1LUSIFIL:    NPK=0      11       SUM:83CIKLUS. RS1-GYEL CSAK EGY EGESZ MINTAELEM-
+1C 3X16/1GILETTI :   NPK=0--0.2 10-11     MEL(7CIKLUS) LEHET NOVELNI VAGY CSOKKENTENI.
+1C 2TOROK PAMUT+1HB: NPK=+0.2   10        ALULROL LEHET CIKLUSONKENT HOZZATENNI, VAGY ELVENNI:
+1C          EZEN A KET SORON KELL VALTOZTATNI:   145 REP*4  ,  105 JA1=1024(1004-1030)
+1C                    PL.1 CIKLUSSAL ROVIDEBB:   145 REP*3  ,  105 JA1=1020(1004-1030)
+1C                    PL.1 CIKLUSSAL HOSSZABB:   145 REP*5  ,  105 JA1=1028(1004-1030)
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C 1/1-ES 'V'VAGY'O' NYAK GUMIVAL:SP500 ***** VAGY 55. SORBAN BEALLITHATO ***** VAGY:CP 1X1G*********
+  10 C
+  12 NP1=14.4   C:MINTA
+  14 NP4=13.4   C:LEVALASZTAS
+  16 NP2=11.4   C:1/1-ES PASSZE
+  40 START 
+  50 YG:6/256;
+  51 WM=20
+  52 <<	S:D.I-DI./DI.-D.I;		            Y:5/2;	  NP4-4  VU V0	    S1 S2
+
+C****************************************************************************
+  54C IF	#100=10  RS17=0   C TEST
+  56C IF	#100=15  RS17=1   C 1/1 GUMIS SPICCNYAK
+C****************************************************************************
+  58 IF RS17=0 RS1=11
+  60 IF RS17=1	GOTO 516
+C****************************************************************************
+
+  80 >>	S:D.I-DI./DI.-D.I/UVNDI.;      	Y:5/2;	  	                S1 S2 T2
+  82 <<	S:U^ND.I/DI.-D.I;		             Y:5;		  	              T1 S1
+  84 >>	S:U^NDI./D.I-D.I;		             Y:6;	           VR1    T1	   S2
+  86 <<	S:R-0/0-D.I/R-0;		              Y:0/6/0; NP2-2  VU	    T1 S1 S2
+  88 >>	S:DI.-D.I;		                    Y:5;	           VU V0     S1
+
+  90 << S:DI.-0/DI.-D.I;                Y:2/5;          VU     S1 S2
+  92 >> S:DI.-D.I/DI.-D.I;                              VU     S1 S2
+
+ 100 C ---2LAP 553 TU  ---------------------
+ 105 JA1=1020(1004-1030) C REP*3-1020   REP*4-1024   REP*5-1028  REP*6-1004 REP*7-1008
+ 107 PA:JA1;
+
+C****************************************************************************
+ 115 FA=9-275; PM:<.>7:IIFAIIIFAII; C*553TU*
+C****************************************************************************
+ 115 FA=2-282; PM:<.>7:IIFAIIIFAII; C*581TU* +7-7 SZEM KELL A JAC. MINDKET SZELEHEZ
+C****************************************************************************
+
+ 125 << S:DI.(2)-D.I/DI.(1)-D.I(1)/UVS.;                              S1 S2 T2
+ 130 WM=24 WMI=7
+ 135 >> S:U^NN./.(1)-N.(1)/.-N./UVNNA.;         Y:2/5;             T1 S1 S2 T2
+ 140 VJA^0
+ 145 REP*3
+ 150 << S:U^N<1->N./.-N./.-N./UVNNY.;               VL1  VKB>6  T1 S1 S2 T2                C VKB>6 !!!!!!!!!
+ 155 >> S:U^N<1->N./.-N./.-N./UVNI;                 V0   VKA<2  T1 S1 S2 T2                C VKA<2 !!!!!!!!!
+ 160 REPEND
+ 165 RBEG*RS1
+ 170 GOSUB 150-155*7
+ 175 REND
+ 180 << S:U^N<1->N./.-N./.-N./UVNNY.;                         VL1  VKB    T1 S1 S2 T2     C   VKB!!!!!!!!!
+ 185 >> S:U^N<1->N./.-N./.-N./UVNN.;                   ML     V0   VKA    T1 S1 S2 T2     C   VKA !!!!!!!!!
+ 190 << S:U^SD.I/DI.-D.I/DI.-D.I;               NP2-2  ML              T1 S1 S2
+ 195 >> S:DI.-D.I/DI.-D.I/UVSD.I;                      ML                 S1 S2 T2
+ 200 END
+
+ 500 C 1/1-ES NYAK GUMIVAL *****'V'-HEZ IS EZ A JOBB **************************
+ 504 NP2=11.4   C:1/1-ES PASSZE
+ 506 NP4=13.4   C:LEVALASZTAS
+ 508 START
+ 510 YG:6/256;
+ 512 WM=20
+ 514 <<	S:D.I-DI./DI.-D.I;		        Y:5/2;	     NP4-4 VU V0	       S1 S2
+ 516 >>	S:D.I-DI./UVNDI.;          	Y:5;	          	               S1    T2
+ 518 <<	S:U^ND.I/DI.-D.I;		             			                     T1 S1
+ 520 >>	S:U^NDI./0-D.I/D.I-D.I;		   Y:2/6;	           VR1	      T1	S1 S2
+ 522 <<	S:R-0/0-D.I/R-0;		          Y:0/6/0;          VU	       T1 S1 S2
+ 524 >>	S:DI.-D.I;		               	Y:5;	       NP2-2 VU V0 ML     S1
+ 526 << S:DI.-0/0-D.I;              Y:6/2;            VU           S1 S2
+ 528 >> S:DI.-0/DI.-D.I;                              VU           S1 S2
+ 530 REP*3 C******************* 3:'V' 12:'O'  15:MANDZSETTA******************
+ 532 << S:DI.-D.I/DI.-D.I;          Y:5/2;            VU           S1 S2
+ 534 >> S:DI.-D.I/DI.-D.I;                            VU           S1 S2
+ 536 REPEND
+ 538 << S:DI.-D.I/DI.-D.I;                            VU           S1 S2
+ 540 >> S:DI.-D.I/DI.(4)-D.I(4)/UVSD.I;                            S1 S2 T2
+ 542 END C ********************************************************************
+
+ 990 C FEHER     . FONAK 
+ 991 C FEKETE    I SZIN
+ 992 C SARGA     Y SZIN ->
+ 993 C OKKERS.   A SZIN <-
+ 999 <> W0 S0
+
+1002 268I
+1004 9(.3A.I.I3A3I).3A5I9(A4I.IAIII.I.)A4I.I
+1006 9(4IY.I.IIIYI.)4IYI9(3I3YI.I.3Y.)3I3YI.II
+1008 9(.I3A3I.3A.I).I3AII9(IAIII.I.A4I.)IAIII.I.I
+1010 9(I.3IYI.4IY.)I.3IYII9(3Y.3I3YI.I.)3Y.4I
+1012 9(II.3A.I.I3AI)II.3AI9(A4I.IAIII.I.)A4I.IAI
+1014 9(I.4IY.I.IIIY)I.4IY9(3YI.I.3Y.3I)3YI.I.YI
+1016 9(.I.I3A3I.3A).I.IAA9(AIII.I.A4I.I)AIII.I.AII
+1018 9(Y.I.IIIYI.4I)Y.I.I5I9(3I3YI.I.3Y.)3IYYI
+1020 9(A3I.3A.I.IAA)A5I9(4I.IAIII.I.A)4I.IA3I
+1022 9(IYI.4IY.I.II)IYI.6I9(I.3Y.3I3YI.)I.3YI
+1024 9(AA.I.I3A3I.A)AA.6I9(I.A4I.IA3I.)I.A4I
+1026 9(IIY.I.IIIYI.II)IIY.4I9(3I3YI.I.3Y.)3I3YII
+1028 9(3A3I.3A.I.I)3A6I9(IAIII.I.A4I.)IA3I.I
+1030 9(3IYI.4IY.I.)3IY6I9(3Y.3I3YI.I.)3Y.II
+1032 268I
+
+1002 2(I.5I)126I..126I2(6I.)II
+1004 .3A.I.9(I.3A.I.I3AII)I.3A.4I9(A4I.IAIII.I.)A4I.I.A4I.I
+1006 4IY.9(I.4IY.I.IIIY)I.4IYI9(3I3YI.I.3Y.)2(3I3YI.)II
+1008 .I3AII9(I.I3A3I.3A.)I.I3AII9(IAIII.I.A4I.)2(IAIII.I.)I
+1010 I.3IYI9(.I.IIIYI.4IY).I.IIIYII9(3Y.3I3YI.I.)3Y.3I.3Y.4I
+1012 II.3A.9(3I.3A.I.I3A)3I.3AI9(A4I.IAIII.I.)2(A4I.IA)I
+1014 I.4IY.9(I.4IY.I.IIIY)I.4IY9(3YI.I.3Y.3I)2(3YI.I.Y)I
+1016 .I.I3AI9(.I.I3A3I.3A).I.IAA10(AIII.I.A4I.I).AII
+1018 Y.I.IIIY9(Y.I.IIIYI.4I)Y.I.I5I9(3I3YI.I.3Y.)3I4Y.3IYYI
+1020 A3I.A9(3A3I.3A.I.I)3A5I9(4I.IAIII.I.A)2(4I.IAI)II
+1022 IYI.II9(3IYI.4IY.I.)3IYI.4I9(I.I.3Y.3I3Y)I.I.4YI.I.3YI
+1024 AA.I.IA9(3A.I.I3A3I.)3A.I.I3I9(I.A4I.IA3I.)I.A4I.I.A4I
+1026 IIY.9(I.4IY.I.IIIY)I.4IY.4I9(3I3YI.I.3Y.)3I3YI.3I3YII
+1028 3A3I.A9(3A3I.3A.I.I)3A6I9(IAIII.I.A4I.)IAIII.I.IA3I.I
+1030 3IYI.II9(3IYI.4IY.I.)3IY4I9(I.3Y.3I3YI.)I.3Y.I.I.3Y.II
+1032 2(I.5I)260I.6I.II

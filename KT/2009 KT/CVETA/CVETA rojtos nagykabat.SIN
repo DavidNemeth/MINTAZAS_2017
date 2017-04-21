@@ -1,0 +1,189 @@
+   1 C CVETA - ROJTOS, NAGYLYUKU, KAPUCNIS NAGYKABAT  - 6 M.ROJT KELL HOZZA+10CM.KUKAC
+   1 C MAJDNEM PONT OLYAN MINT AZ EREDETI.  1DB.:6 M. ROJT:0.2 KG. PAMUT:0.14KG.
+   1 C                                                                TX:0.06KG.
+   1 C HA A 206.SORBAN SZAKITJA, AT KELL 1-2 SZALAT PARAFINOZNI!!!!!
+   1 C PELERIN:170*55CM: 2.8M. ROJT KELL HOZZA
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I EGYEB I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C  L     I        I0.37+0.05 (2.8M.PODROS PANT)
+C 58*77  I 2*15/1 I=0.42*750=I         I 2 BOGYO  I       I       I         I     I  22'-I  654- I     I 
+C MELLENYI 1*TX   I  315     I 140     I   4      I       I  460  I  700    I 240 I  24' I  600  I 36% I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3XL    I        I0.51+0.05 (3.1M.PODROS PANT)
+C 70*90  I 2*15/1 I=0.56*750=I         I 2 BOGYO  I       I       I         I     I 28'- I 574-  I     I 
+C MELLENYI 1*TX   I   420    I  180    I   4      I       I  608  I  870    I 268 I  32' I 502   I   % I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3XL    I        I 0.70+0.2 (2M.REGI PANT)
+C 70*90  I 2*15/1 I=0.90*750=I         I 2 FREDI  I       I       I         I     I 41'- I       I     I 
+C NK     I 1*TX   I   675    I  180    I   8      I       I  863  I  1200   I 337 I  46' I       I   % I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3XL    I        I0.70+0.03 (2M.PODROS PANT)
+C 70*90  I 2*15/1 I=0.73*750=I         I 2 FREDI  I       I       I         I     I 41'- I  679- I     I 
+C NK     I 1*TX   I    548   I  180    I   8      I       I  736  I  1200   I 464 I  46' I  605  I   % I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 2010.09.09.:FEKETE NK. BAJA TX + BAJA PAMUT:0.68KG 
+
+C                  3XL NK FEKETE:0.75KG
+C                  3XL ME FEKETE:0.56KG
+
+C            1M. PODROS PANT=0.017KG (1TX+1PAMUT)
+C  L   MELLENYHEZ: 280CM  PODROS PANT KELL(0.05KG).  SZELES, CSAPOTT VALLU FAZON
+C 3XL  MELLENYHEZ: 350CM  PODROS PANT KELL(0.06KG).  SZELES, CSAPOTT VALLU FAZON
+C 3XL  KABATHOZ:   220CM  PODROS PANT KELL(0.04KG).   
+
+   1 C PELERIN:                                ROJTOS-KAPUCNIS NAGYKABAT
+   1 C 0.3+0.1KG=0.4KG*650FT=260FT                  1.2*650=780
+   1 C               VARRAS: 100                   VARRAS:  280
+   1 C              3M.ROJT:  15                   6M.ROJT:  30
+   1 C                REZSI:  25                     REZSI:  50
+   1 C                -------------                 ------------
+   1 C                  SUM: 400                       SUM:1140
+   1 C                    E: 750                         E:1550
+   1 C                    H: 350                         H: 400  60'
+   1 C
+1C   KT: NPK=-0.1
+1C  PKT: NPK=+0.1
+
+  10 NP4=12.4              C:LEVALASZTAS
+  12 NP5=13.0              C:KORSLAG 
+  14 NP2=10.0              C:BEKEZDES
+
+  16 NP1=14.6              C:MINTA
+  18 NP7=15.0              C:MINTA
+  20 NP3=14.0              C:MINTA
+  22 NP8=8.0               C:MINTA     10.2  8.0
+  24 NP9=9.6               C:MINTA     10.2  9.6
+  25 NP6=10.0              C:MINTA
+
+  40 START
+  50 YG:6/256;
+  52 WM=18;WMI=7
+  54 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4      V0  VU ML    S1 S2
+
+C****************************************** 1DB.SUM.: 62'***1DB.: 1.0KG.+ROJT0.2KG.=1.2KG. *********
+  56 C  IF #100=19  RS17=7          C  70*90   F-T-T   2.5TEST NK.33'-40'ANT
+  57 C  IF #100=40  RS17=7          C  70*90   F-T-T   2.5TEST NK.33'-40'ANT    14DB. 08.19.
+  58 C  IF #100=27  RS17=9          C  60*77   T-T-T   MELLENY 
+  59 C  IF #100=1   RS17=0          C  60*130  T-T-T   NAGYKABAT 60'                0.96KG.
+  60 C  IF #100=1   RS17=6          C  52*125  T-T-T-T NAGYKABAT
+  61 C  IF #100=50  RS17=5          C  50*90   T-T-T-T NAGYKABAT
+
+  62 C  IF #100=63  RS17=1          C  45*60   2PAR.H.UJJA      27'  0.40 KG.
+  63   IF #100=2   RS17=1          C  45*60   2PAR.H.UJJA      27'  0.40 KG.
+
+  64 C  IF #100=5   RS17=8          C  45*30   2PAR.R.UJJA      14'       KG.
+  65 C  IF #100=28  RS17=2          C  50*40   2DB.KAPUCNI      20'  0.34 KG.
+  66 C  IF #100=13  RS17=3          C 170*55   1DB.PELERIN      26'
+  67 C  IF #100=2   RS17=4          C          PUL U-E-H-U      31'
+
+C*****RS2=0-4 FINOMBEALLITAS: AZ RS1 NEGYEDE****************** FUST-MOGYI:NPK=0 ****************
+  68 IF RS17=7  RS1=13  RS2=0  RS19=7     C 2.5 NK.TEST 70* 90CM   35'-40'   RS1=13  RS2=0-2   (120CM.:17-1)
+  69 IF RS17=9  RS1=11  RS2=3  RS19=0     C 3   MELLENY 60* 77CM   33'-36'   RS1=11  RS2=1-3
+  70 IF RS17=0  RS1=19  RS2=1  RS19=0     C 3   NK.TEST 60*130CM   57'       RS1=19  RS2=1
+  71 IF RS17=6  RS1=18  RS2=2  RS19=2     C 4   NK.TEST 50*125CM                 18     0-2           
+  72 IF RS17=5  RS1=12  RS2=2  RS19=2     C 4   NK.TEST 50* 90CM                 12      2           
+
+  74 IF RS17=1  RS1=8   RS2=2  RS19=1     C H.UJJA      60CM   27'            8     1-3
+  75 IF RS17=8  RS1=4   RS2=1  RS19=1     C R.UJJA      30CM   14'            4     0-1
+  76 IF RS17=2  RS1=6   RS2=0  RS19=2     C KAPUCNI     40CM   19'            6     0-1
+  77 IF RS17=3  RS1=8   RS2=1  RS19=3     C PELERIN     55CM   25'            8     0-1
+  78 IF RS17=4  RS1=10  RS2=1  RS19=4     C PUL U-E-H-U 65CM   30'            
+C******************************************************************************************************
+
+  80 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  84 >> S:R-R;		                      Y:6;	       NP4-2     VU   ML          S2
+  86 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU   ML       S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2     VU   ML       S1
+  90 REP*3
+  92 << S:0-R/R-0;		                  Y:2/5;      NP5-5     VU   ML       S1 S2
+  94 >> S:R-0/0-R;		                                        VU   ML       S1 S2
+  96 REPEND
+
+ 116 JA1=1004;
+ 118 PA:<JA1>;
+C***********************581TU****************************************************************
+ 120            FA=2-188;            PM:<.>7:3(IIFA)II;          C*3LAP     
+ 121 IF RS19=7  FF=2-113; FA=2-225;  PM:<.>7:IIFFIIIFAIIFAII;    C*2.5 TEST
+
+ 122 IF RS19=1  FA=1-111;            PM:<.>8:5(IIFA)II;          C*5LAP      45*60
+ 122 IF RS19=1  FA=1-140;            PM:<.>7:4(IIFA)I;           C*4LAP      45*60
+
+ 123 IF RS19=2  FA=1-282;            PM:<.>7:2(IIFA)I;           C*2LAP      
+ 124 IF RS19=3  FA=1-565;            PM:<.>7:IIFAII;             C*1LAP      
+ 125 IF RS19=4  FA=1-161;FB=1-119;   PM:<.>7:IIFBIIFAIIFAIIFBI;  C*U-E-H-U  E:161TU SZELESEBB
+ 126 C*OSZTAS NELKUL  FA=2-16;       PM:<.>7:II<FA>574:II<.>;    C*OSZTAS NELKUL
+ 127 C***************************************************************************************
+C  16 NP1=14.6              C:MINTA
+C  18 NP7=15.0              C:MINTA
+C  20 NP3=14.0              C:MINTA
+C  22 NP8=8.0               C:MINTA     10.2  8.0
+C  24 NP9=9.6               C:MINTA     10.2  9.6
+ 200 RBEG*RS1
+ 202 REP*2    C             *******10/8********
+ 204 JA1=1004; C1004 +AIY*
+
+C****************************************VAGY********************************************************
+ 206 <> S:0-N./R-0/UVS.+*;      NP1-1                   S1 S2 T2    C KORSLAG  S1S2
+ 208 C
+ 210 <> S:U^SAITY/.+*-AIYT/.+*-AIYT;  NP7-7 Y:5;     T1 S1 S2       C          S1S2    *OSSZEVONVA
+ C  !!!!FIGYELEM!!! A 300.SORBAN A MENETIRANY BORUL!!!
+C****************************************VAGY********************************************************
+ 206 << S:0-N./R-0/UVS.AITY;    NP1-1                   S1 S2 T2    C KORSLAG  S1S2
+ 208 >> S:U^S+*/.AITY-+*/UVS+*; NP7-7  Y:5;          T1    S2 T2    C            S2    *OSSZEVONHATO?
+ 210 << S:U^SAITY/.+*-AIYT;            Y:5;          T1    S2       C            S2    *OSSZEVONHATO?
+C****************************************************************************************************
+
+ 212 WM=0
+ 214 <> S:U^N+;                                  VL1 T1             C       U
+ 215 PKV:2:<JA1>;
+ 216 <> S:UVSAYT;                                VR1          T2    C       U
+ 218 WM=22                                                          C 
+ 220 <> S:.AY-+I*;              NP7-3  Y:2;   VU           S2       C            S2
+ 222 WM=0
+ 224 <> S:U^NA;                                  V0  T1             C       U
+ 226 <> S:U^NY;                                  VR2 T1             C       U
+ 228 WM=20
+ 229 PKV:0;
+ 230 <> S:U^ST/R-N.;            NP8-9  Y:2;   VU V0  T1    S2       C BEKEZDES
+ 232 <> S:R-0/0-N.;             NP1-1  Y:5/2; VU        S1 S2       C KORSLAG   S1S2
+ 234 WM=18
+ 236 REPEND C--------------------------------------------------------------
+ 238 REP*2    C             *******6/8********
+ 240 JA1=1002; C1002 AIY
+ 242 << S:0-N./R-0/UVS.AY;             Y:2/5;           S1 S2 T2    C KORSLAG   S1S2
+ 244 WM=20
+ 246 >> S:U^SIT/.AY-IT/.AY-IT(3);      Y:5/2;        T1 S1 S2       C           S1S2
+ 248 WM=0
+ 250 << S:U^NA;                                  VL1 T1             C       U
+ 252 >> S:U^NY;                                  VR1 T1             C       U
+ 254 WM=20
+ 256 << S:.(3)-N.(3)/R(2)-N.(2);              VU V0     S1 S2       C BEKEZDES  S1S2
+ 258 >> S:R-0/0-N.;             NP1-1         VU        S1 S2       C KORSLAG   S1S2
+ 260 WM=18
+ 262 REPEND
+ 264 REND
+ 266 C*********************************************************************
+
+C---------- A FINOMBEALLITAS (RS2) HOSSZA: -------------------------
+ 268 #1=0; #2=0  C NEM MUSZALY LENULLAZNI, MERT AZ END-NEL AUTOMATIKUSAN LENULLAZODIK.
+ 270 IF #102=1 #1=1 #2=0
+ 272 IF #102=2 #1=2 #2=0
+ 274 IF #102=3 #1=2 #2=1
+ 276 IF #102=4 #1=2 #2=2
+ 278 IF #1=0 GOTO 300
+ 280 GOSUB 204-234*#1
+ 282 IF #2=0 GOTO 300
+ 284 GOSUB 240-260*#2
+C-------------------------------------------------------------------
+
+ 300 << S:.-N./N.-0;                     Y:2/5;  VU          S1 S2
+ 302 >> S:N.-0/.-N./UVSDI.;                                  S1 S2 T2
+ 304 << S:U^ND.I/DI.-D.I;         NP4-4    Y:2;           T1 S1
+ 306 >> S:DI.-D.I/UVND.I;                                    S1    T2
+ 308 END
+ 999 <> S0W0
+
+1002 AIY
+1004 +AIY*

@@ -1,0 +1,134 @@
+  10 C***** HURKA ******** 1PULOVER:0.35KG ....50%BUKLE(NYERS),50%TX,HB....
+  10 C                                         KB:1390FT/KG...490FT/DB
+  10 C  6:ELVALASZTO SZAL...............I.................................
+  10 C  5:..............................I..BUKLE +1TX (2.SZIN).............
+  10 C  4:..............................I..2HB VAGY 3TX (1.SZIN)..........
+  10 C  3:..............................I..2HB VAGY 3TX (2.SZIN)..........
+  10 C  2:..............................I..BUKLE+1TX (1.SZIN)..............
+  10 C  1:..............................I.................................
+  10 C  E-H-U:   SP10  RS1=19         ST=22 VAGY 11  (28 VAGY 14DB KOMPLETT PULI)       
+  10 C                                          (1 LAPBOL 4 TEST VAGY 7 UJJA JON KI)
+  10 C  NYAK:  SP500                  ST= 6 VAGY 3   (30 VAGY 15DB)
+  10 C  1PULOVER:0.35KG ....50%BUKLE(NYERS),50%TX,HB....KB:1390FT/KG...490FT/DB
+  13 NP1=14.0 C:MINTA S1-EN
+  14 NP2=12.0 C:BEKEZDS
+  16 NP3=13.0 C:SLAG PASSZE
+  17 NP4=13.0 C:LEVALASZTAS
+  19 NP5=15.0 C:MINTA S2-N
+  20 START 
+  22 YG:6/2345;
+  24 WM=20 WMI=7
+  26 << S:D.I-DI./DI.-D.I;		       Y:3/4;	     NP4-4  VU  V0	       S1 S2
+  28 >> S:D.I-DI./UVSDI.;           Y:3;                            S1    T2
+  30 << S:DI.-D.I/UVSD.I;	         Y:2;	                            S1    T2
+  34 >> S:R-R;		                    Y:6;	       NP2-2        	            S1
+  36 << S:0-R/R-0/0-R;		           Y:0/6/0;            	         T1 S1 S2
+  38 >> S:R-R(7.5)/0(0)-R(3);      	Y:2/4;	              ML     S1 S2
+  40 << S:R-0/0-R;	                             NP3-3       S1 S2    
+  42 >>                                                     S1 S2
+  73 << S:U^SD..II.;                                     T1
+  74 >> S:0-0;         Y:0;          NP1-1                  S1
+  75 WM=25
+  77 C---CSIKOK---
+  78 RS2=10;    Y:2/4;     NP1=13.6; GOSUB 200-210
+  80 RS2=6;     Y:3/4/4/3; NP1=13.6; GOSUB 200-210
+  82 RS2=6;     Y:2/4;     NP1=13.6; GOSUB 200-210
+  84 RS2=6;     Y:5/3;     NP1=13.6; GOSUB 200-210
+  86 RS2=6;     Y:2/4;     NP1=13.6; GOSUB 200-210
+  88 RS2=6;     Y:3/4/4/3; NP1=13.6; GOSUB 200-210
+  90 RS2=4;     Y:2/4;     NP1=13.6; GOSUB 200-210
+  92 RS2=6;     Y:5/3;     NP1=13.6; GOSUB 200-210
+  94 RS2=#101;  Y:2/4;     NP1=13.6; GOSUB 200-210
+  100 END
+  200 RBEG*RS2
+  202 << S:DII..I(1)-R(1)/0-R(5);                       S1 S2
+  204 >>                                       S1 S2
+  210 REND
+
+ 500 C----GARBO NYAK-----
+ 513 NP1=14.0 C:MINTA
+ 514 NP2=13.0 C:BEKEZDS
+ 516 NP3=13.0 C:SLAG PASSZE
+ 517 NP4=13.0 C:LEVALASZTAS
+ 519 NP5=15.0 C:MINTA
+ 512 START
+ 513 GOSUB 22-75
+ 514 RS2=23;    Y:2/4;     NP1=13.4; GOSUB 200-210
+ 520 END
+
+ 400 C*****KEREK NYAK 2/1  Y:2/3/4/5********
+ 400 C  2/5:1-1 BUKLE MELIROZVA :AZ 5-OSON AT KEL FUZNI A TX-ET,UGY AHOGY A 2-ESEN VAN
+ 400 C  3/4:3-3 TX:MARAD AHOGY VOLT AMINTABAN
+ 402 NP4=13.0 C:LEVALASZTAS
+ 404 NP2=14.0 C:BEKEZDS
+ 406 NP1=12.5 C:2/1-ES PASSZE BUKLE
+ 408 NP3=12.5 C:2/1-ES PASSZE 2TX
+ 410 START
+ 412 YG:6/2345;
+ 414 WM=20 WMI=7
+ 416 << S:D.I-DI./DI.-D.I;          Y:3/4;  ML    NP4-4  VU  V0	   S1 S2
+ 418 >> S:D.I-DI./UVSDII.;           Y:3;                        S1    T2
+ 420 << S:U^SD..I/DII.-D..I;                   	              T1 S1
+ 422 >> S:DI..-D..I/UVSD..I;        Y:4;         VL1             S1    T2
+ 424 << S:DII.-0;                                V0              S1
+ 426 >> S:DII.-DII./0-DII.;         Y:6/0;                       S1 S2
+ 428 << S:DII.-0;                   Y:6;                         S1
+ 430 >> S:DII.-D.II/DII.-0;          Y:3/4;  ML   NP2-2   VL1    S1 S2
+ 434 << S:0-D.II/DII.-D.II;          Y:2/5;       NP1-1   V0     S1 S2
+ 435 >> S:DII.-D.II/DII.-D.II;                                   S1 S2
+ 436 REP*5 C:BUKLE
+ 438 << S:DII.-D.II/DII.-D.II;                                   S1 S2
+ 440 >>                                                          S1 S2
+ 442 REPEND
+ 444 << S:U^SDII./0-R;              Y:2;         NP3-3        T1 S1
+ 446 >> S:0-R/UVSDII.;                                           S1     T2
+ 450 REP*5 C:TX
+ 452 << S:DII.-D.II/DII.-D.II;      Y:3/4;                       S1 S2
+ 454 >>                                                          S1 S2
+ 456 REPEND
+ 458 END 
+
+ 800 C---FONOTT NYAK----1 SZAL BUKLE+2TX--Y:2/5----------------------------------------------------
+ 802 START
+ 804 NP1=15.0   C:LEVALASZTAS
+ 806 NP2=12.5   C:BEKEZDES
+ 808 NP4=12.5   C:LEVALASZTAS
+ 810 YG:6/256;
+ 812 WM=20
+ 814 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	 NP4-4 VU V0	     S1 S2
+ 816 >> S:0-R/R-0;                           Y:5/2;            VU     S1 S2
+ 818 << S:R-0/0-R;                           Y:5/2;   NP1-1           S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;            	Y:5/2;	  NP1-1	           S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                  Y:5;			             T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                  Y:6;	    NP0-  VL1	  T1	  S2
+ 826 <<	S:R-0/0-D.I/R-0;		                    Y:0/6/0; NP2-2  V#	  T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   	Y:5;	           V# V0 ML S1
+ 830 << S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 832 >> S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 834 << S:0-D.I(11.0)/DI.(11.0)-D.I(11.0);    Y:5/2;           V#     S1 S2
+ 836 WM=26
+ 838 JA1=1999
+ 840 FA=1-6
+ 842 PA:JA1;
+ 844 PM:<.> 9:<FA> 543:<.>;
+ 846 >>S:DI.(11.0)-D.I(11.0)/DI.-D.I/UVN.;   Y:2/5;                   S1 S2 T2
+ 848 REP*2    C**************REP*1,REP*2 VAGY REP*3************************************
+ 850 VJA^1
+ 852 WM=20
+ 854 << S:U^NY*/.(15.0)-Y*(15.0)/.-Y*;        Y:2/5;          V0   T1 S1 S2
+ 856 WM=12
+ 858 >> S:.-*/UVS*;                           Y:2;            VL2     S1    T2
+ 860 << S:.-Y;                                Y:2;            VR2     S1
+ 862 VJA^0
+ 864 WM=20
+ 866 >> S:U^SY/.-Y*/.-Y*/UVNY*;               Y:2/5;         VKE>4 T1 S1 S2 T2
+ 868 REPEND
+ 870 << S:U^NY*/.(15.0)-Y*(15.0);             Y:2;            V0   T1 S1
+ 872 PM:<W> 9:<FA> 543:<W>;
+ 874 >> S:U^S./W-NW/UVSNW;                                         T1 S1    T2
+ 876 << S:R-0;                                Y:5/2;                  S1 S2
+ 878 >> S:U^SNW/W-NW/W-NW;                                         T1 S1 S2
+ 880 << S:W-NW/W-NW/UVSDI.;                   Y:5/2;  NP2-2 V0        S1 S2 T2
+ 882 >>	S:DI.-D.I/0-R;		                       Y:5/2;	      VU V0	   S1 S2
+ 884 END
+1999 .YY**.

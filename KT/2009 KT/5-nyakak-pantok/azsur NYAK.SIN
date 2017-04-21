@@ -1,0 +1,89 @@
+   1 C AZSUR 1 - HAROMSZOG ALAKU NYAK
+   2 C  1LEVETEL=3DB=3'1
+  10 NP4=12.2;             C LEVALASZTAS
+  11 NP2=9.2               C BEKEZDES
+  12 NP3=12.8              C KORSLAG     
+  13 NP5=12.8              C PASSZE       
+  14 NP6=13.2;             C 1 SOR SLAG   
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+ 180 C************581TU**************************************************************
+ 182 JA1=1030(1006-1008)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 188 FA=1-16;  PM:<.>7:I<FA>573:I<.>; C OSZTAS NELKUL
+ 194 C********************************************************************************
+
+ 200 >> S:D.I-DI./DI.-D.I;                                     ML       S1 S2
+ 202 << S:U^ND.I/DI.-D.I;             Y:5;	             	      ML    T1 S1
+ 204 >> S:U^NDI./R-R;		               Y:6;	       NP2-4     VU ML    T1    S2
+ 206 << S:0-R/R-0;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/5;
+ 212 REP*1
+ 214 << S:0-R/R-0;		                         ML   NP3-3     VU          S1 S2
+ 216 >> S:0-R/R-0;		                         ML             VU          S1 S2
+ 218 REPEND
+
+ 219 Y:2/2/5/5;
+C--VAGY: SZINNEL KEZD
+ 220 << S:0-R;                               ML             VU          S1
+ 221 >> S:R-0/UVS.;                          ML                         S1    T2
+ 222 << S:U^SN./.-N./UVSAY;                  ML  NP6-6               T1 S1    T2
+ 223 >> S:NI-I;                              ML             VU          S1
+C--VAGY: FONAKKAL KEZD
+ 220 << S:0-R/UVNNI;                         ML                         S1    T2
+ 221 >> S:U^NI/NI-I;                         ML  NP6-6              T1 S1
+ 222 C
+ 223 C
+
+ 224 REP*4
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+ 234 << S:U^NI/.-N./UVN<1->.;               NP5-5 V0        T1 S1 T2 
+ 236 >> S:U^NI/.-I/UVN<1->NI;               NP6-6           T1 S1 T2
+ 238 REPEND
+ 240 GOSUB 226-234
+ 242 >> S:U^NI/.-I/UVND.I;                    NP6-6           T1 S1 T2
+ 248 << S:U^NDI./D.I-DI.;                     NP4-4           T1 S1
+ 250 >> S:D.I-DI./UVNDI.;                                      S1 T2
+ 252 END
+
+1004 WWWWWWWWWWWWWW
+1006 IIIIIIIIIIIIII
+1008 IIIIIIIIIIIIII
+1010 IAIAIAIYIYIYII
+1012 IIIII.I.IIIIII
+1014 AIAIAAIYYIYIYI
+1016 IIII..I..IIIII
+1018 IAIAAAIYYYIYII
+1020 III...I...IIII
+1022 AIAAAAIYYYYIYI
+1024 II....I....III
+1026 IAAAAAIYYYYYII
+1028 I.....I.....II
+1030 AAAAAAIYYYYYYI
+1032 WWWWWWWWWWWWWW
+1004 WWWWWWWWWWWWWWWW
+1006 IIIIIIIIIIIIIIII
+1008 IIIIIIIIIIIIIIII
+1010 AIAIAIAIYIYIYIYI
+1012 IIIIII.I.IIIIIII
+1014 IAIAIAAIYYIYIYII
+1016 IIIII..I..IIIIII
+1018 AIAIAAAIYYYIYIYI
+1020 IIII...I...IIIII
+1022 IAIAAAAIYYYYIYII
+1024 III....I....IIII
+1026 AIAAAAAIYYYYYIYI
+1028 II.....I.....III
+1030 IAAAAAAIYYYYYYII
+1032 WWWWWWWWWWWWWWWW
+
+
+

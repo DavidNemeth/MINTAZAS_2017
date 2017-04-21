@@ -1,0 +1,48 @@
+ 900 C LEGJOBB SEJTES CSIPKE NYAK...CP CSNYAK
+ 901 C TUAGYKORREKCIOK: V0:->1.5
+ 902 C                  R1:->1 _________R2: - ________R3:-
+ 903 C                  L1: -  _________L2: - ________L3:-
+ 904 CNPB2=10.5   C1/1,BEKEZDES
+ 905 CNPJ2=14.0   C:MINTA
+ 906 CNP4=13.6   C:LEVALASZTAS,1/1-ES VARROSZEGELY
+ 907 CNP1=15.0   C:SLAG
+ 914 START
+ 916 YG:6/256;
+ 918 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+ 920 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+ 922 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+ 924 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+ 926 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+ 928 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+ 930 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+ 932 >>	S:DI.-D.I/0-D.I;		           Y:5/2;	   NP2-2    V# V0          S1 S2
+ 934 << S:DI.-0;                     Y:6;      NP-0         V#         S1
+ 936 >>                                        NP-0          V#        S2
+ 938 << S:DI.-D.I;                   Y:5;                        V#      S1
+ 940 PA:JA1;
+ 942 PM:<FA>1:9.544:<.>;
+ 944 JA1=1000
+ 946 FA=1-2
+ 948 VJA^1
+ 952 >> S:DI.-D.I/UVN.;                                         S1    T2
+ 955 C*****************************CSIPKE****SORMINTA: 2.MINTAELEM********************************************
+ 958 << S:U^NN./.-N./UVNN.;               Y:2;        NP2-2  T1 S1    T2
+ 960 >> S:R-0;                           NP-0                          S1
+ 962 << S:U^NN./.-N./.-N./UVNI;                Y:5/2;        T1 S1 S2 T2
+ 964 >> S:.I-*/.-N.;                                      V#    S1 S2
+ 968 << S:UVN*;                      VR1 NP0-0                        T2
+ 970 >> S:0-0;                           NP0-0      Y:0;         S1
+ 974 VJA^0
+ 976 << S:.I-*/.-N.;                               Y:5/2; V#    S1 S2
+ 980 >> S:UVNI.;                     V0  NP0-0                        T2
+ 982 << S:0-0;                           NP0-0     Y:0;         S1
+ 986 >> S:.I-*/.-N.;                               Y:5/2; V#    S1 S2
+ 988 << S:U^NI/.-N./.-N./UVNN.;                              T1 S1 S2 T2
+ 990 >> S:R-0;                           NP-0      Y:5;         S1
+ 992C**********************************************************************************************************
+ 993 << S:U^NN./.-N.;                                        T1 S1
+ 994 >> S:.-N./.-N./UVNDI.;                        Y:2/5;       S1 S2 T2
+ 995 << S:U^ND.I/DI.-D.I;           NP4-4  Y:5;       T1 S1   
+ 996 >> S:DI.-D.I/UVND.I;                                S1    T2
+ 997 END
+1000 97(I*)I

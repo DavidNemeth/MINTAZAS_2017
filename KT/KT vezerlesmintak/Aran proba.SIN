@@ -1,0 +1,190 @@
+C     (14) JAVITVA!!!
+   1 C******* ARAN II.1-2***************
+C$$$$$$$$$$$$$!!!!!!!!!!! NEM SZABAD KITOMORITENI!!!!!!!!!!!!!!!$$$$$$$$$$$$$$$$$$$$$
+   1 C SLAG PIKO PASSZEVAL
+   1 C H-U:CP RIA  
+
+ 142 NPJ1:.=14.8 I=15.0;  C:MINTA ELOL-HATUL .: KREPP I:ARAN.FONAS
+ 144 NPJ2:.=14.8 I=14.6;  C:MINTA ELOL       .: KREPP I:ARAN,FONAS
+  10 NP4=12.6             C:LEVALASZTAS
+  12 NP6=14.4             C:U-H 2SZV.BAL-BAL KREPP (RIZS)
+  14 NP5=13.6             C:KORSLAG
+
+  16 NP1=14.0             C:NYAK
+  18 NP2=11.6             C:NYAK
+  20 NP8=13.6             C:NYAK
+  22 NP4=12.6             C:NYAK
+
+  40 START        
+  50 YG:6/256;
+  53 WM=20;WMI=7
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C********************************************
+  60  IF #100=5   RS17=0            C ARAN II.1
+  62C  IF #100=12   RS17=1            C ARAN II.2
+C********************************************
+  66 IF RS17=0  RS1=13            C ARAN II.1
+  68C IF RS17=1  RS1=8             C ARAN II.2
+ C********KORSLAG PIKO PASSZE***************************
+  88C IF RS17=4 GOTO 916 C 2X2 NYAK**********
+  90 JA1=1990;  C 1990 IIIIAI
+  92 PA:<JA1>; 
+  94 FA=1-6; 
+  96 PM:9.<FA>548:<.>;
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML       S1
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:2;        NP1-01         ML       S1
+ 110 << S:0-NA/NA-0;                  Y:5/2;      NP5-5             S1 S2
+ 112 REP*2 C2 C***PIKO*** IIIIAI
+ 114 >> S:NA-0/0-NA;                                                S1 S2
+ 116 << S:0-NA/NA-0;                                                S1 S2
+ 118 REPEND
+ 120 REP*3 C3 C**KORSLAG*****
+ 122 >> S:R-0/0-R;                                                  S1 S2
+ 124 << S:0-R/R-0;                                                  S1 S2
+ 126 REPEND
+ 128 >> S:R-0;                        Y:5;                          S1
+ 130 JA1=1046(1006-1044); JA3=1002   C****** MINTA ****************
+ 132 JA2=1904(1904-1906)             C****** I. ***** HB-HOZ *********
+ 134 JA2=1818(1804-1818)             C****** RIZS ********************
+ 136 PANP:1:JA3;
+ 138 FB=5-182
+ 140 PMNP:<.>9:FB.FB.FB;
+ 146 PA:<JA2>:JA1;
+ 147 FA=5-182;                           C EGESZ LAP
+ 148 PM:<.>9:FA.FA.FA;                   C 3 EGESZ LAP
+ 149 VJA^0
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 150 IF RS17=0 GOTO 500              C****** ARAN II.1 ***********
+ 152 IF RS17=1 GOTO 600              C****** ARAN II.2 ***********
+ 154 IF RS17>3 GOTO 800              C****** U-H *********************
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+C----------------------- ARAN --------------------------------------------------------
+ 160 C*** ARAN 1.3 (BALRA KEZD) *** *BBHYAA+ *** VAK SZEMMEL Y:5/0/5/2/0/2;***********
+ 162 WM=15 WMI=7
+ 164 VJA^0
+ 166 <> S:U^S<1-2->N.*/.*+(J1)-N.*(J1)/UVSIBH;      	VKB>4	 VL1  	T1 S1	 T2
+ 168 WM=0
+ 170 <> S:+(8.0)-0/UVSA;				                         VKA>5	 VL3		    S1  T2 C VKA>6-10
+ 172 <> S:U^SA;                                      VKF>6  VR1   T1
+ 174 WM=15 WMI=7
+ 176 <> S:U^S<1->*BHI/.(J1)-N.(J1)/UVSIYA+;                 V0 	  T1 S1	 T2
+ 178 WM=0
+ 180 <> S:UVSH;					                                 VKE<3 	VR3	         T2
+ 182 <> S:0-0;                                              VR1      S1
+ 190 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!! ************************
+C-------------------------------------------------------------------------------------
+ 160 C*** ARAN 1.3 (BALRA KEZD) ***** *BBHYAA+ **** VAK SZEM NELKUL Y:5/5/2/2;********
+ 162 WM=15 WMI=7
+ 164 VJA^0
+ 166 <> S:U^S<1-2->N.*/.*(J1)-N.*(J1)/UVSIBH;       	VKB>4	 VL1  	T1 S1	 T2
+ 168 WM=0
+ 170 <> S:UVSA;				                                  VKA>5	 VL3		        T2 C VKA>6-10
+ 172 <> S:U^SA;                                      VKF>6  VR1   T1
+ 174 WM=15 WMI=7
+ 176 <> S:U^S<1->*BHI/.(J1)-N.(J1)/UVSIYA+;                 V0 	  T1 S1	 T2
+ 178 WM=0
+ 180 <> S:UVSH;					                                 VKE<3 	VR3	         T2
+ 182 <> S:0-0;                                              VR1      S1
+ 190 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!! ************************
+C-------------------------------------------------------------------------------------
+
+ 350 C*********** EGY CSAVARAS JOBBRA **** OTBW+G ************************************
+ 352 Y:2/5/0/2/0/2;
+ 354 WM=18
+ 356 VJA^0
+ 358 <> S:U^S<1-2->N./.(J1)-N.(J1)/UVSN.;			         VL1	VKC>3   T1 S1	  T2
+ 360 WM=0
+ 362 <> S:U^SNI.;				                                V0	         T1
+ 364 WM=18
+ 366 <> S:U^S<1->I/.(J2)-IBW+G/0-B(8.0)/UVSIW+G;		   VR3	VKG>2   T1 S1 S2 T2
+ 368 <> S:U^S<1-2->I/.-IBW+G(J1)/0-G(8.0)/UVSI;      VL1	VKC     T1 S1 S2 T2
+ 370 <> S:U^S<1->IW+G/.(J1)-N.(J1)/UVSN.;	           VL3	VKB>6   T1 S1	   T2
+ 390 C********************************************************************************
+
+ 450 C******** KETTO CSAVARAS JOBBRA ****** OTBW+G ************************************
+ 452 WM=18
+ 454 VJA^0
+ 456 <> S:U^S<1-2->N./.(J1)-N.(J1)/UVSN.;			         Y:5;   VL1	VKF>6   T1 S1	   T2
+ 458 WM=0
+ 460 <> S:U^SNI.;				                                       V0	         T1
+ 462 WM=18
+ 464 <> S:U^S<1->I/.(J2)-IBW+G/0-B(8.0)/UVSIW+G;		   Y:2/0; VR3	        T1 S1 S2 T2
+ 466 <> S:U^S<1-2->I/.-IBW+G(J1)/0-G(8.0)/UVSI;	     Y:5/0; VL1	VKC>3   T1 S1 S2 T2
+ 468 <> S:U^S<1->IW+G/.(J1)-N.(J1)/UVSN.;	           Y:5;   VL3	VKD>5   T1 S1	   T2
+ 470 C***
+ 472 WM=22
+ 474 VJA^0
+ 476 <> S:U^S<1-2->N./.-N./.-N./UVSN.;		             Y:2/5;  V0         T1 S1	S2 T2
+ 478 <> S:U^S<1-2->N./.-N./UVSI.;		                  Y:2;               T1 S1	   T2
+ 480 WM=18
+ 482 <> S:U^S<1->I/.(J2)-IBW+G/0-B(8.0)/UVSIW+G;		   Y:2/0;  VR3	       T1 S1 S2 T2
+ 484 <> S:U^S<1-2>I/.-IBW+G(J1)/0-G(8.0)/UVSI;	      Y:5/0;  VL1	VKC>3  T1 S1 S2 T2
+ 486 <> S:U^SIW+G/.(J1)-N.(J1)/UVSN.;	               Y:5;    VL3	VKD>5  T1 S1	   T2
+ 490 C********************************************************************************
+C$$$$$$$$$$$$$$$$$$$$$$$$$ ARAN 1  ELLENKEZOLEG CSAVAR $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 500 JA1=1046(1006-1044); JA3=1002
+ 502 << S:0-R/UVS.;                                     S1    T2
+ 504 WM=24
+ 506 >> S:U^SN./.(J1)-N.(J1)/.-N./UVSN.;  Y:5/2;	       T1 S1 S2	T2
+ 508 RBEG*RS1                C***********************
+ 510 Y:5/0/5/2/0/2;  
+ 510 Y:5/5/2/2;  
+ 512 GOSUB 160-190*2  C ARAN 1.*2 (BALRA KEZD)!!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!!
+ 514 GOSUB 350-390    C CSAVARAS JOBBRA EGYSZER
+ 516 Y:5/0/5/2/0/2;  
+ 516 Y:5/5/2/2;  
+ 518 GOSUB 160-190*2  C ARAN 1.*2
+ 520 GOSUB 450-490    C CSAVARAS JOBBRA KETSZER
+ 522 REND             C***********************
+ 524C << S:U^SDI./D.I-DI.;                 Y:5;     NP4-4   V0  T1 S1
+ 526C >> S:D.I-DI./UVSDI.;                                         S1    T2
+ 527 >> S:U^SDI./D.I-DI./D.I-DI./UVSDI.;   Y:5/2;;  NP4-4   V0  T1 S1 S2 T2
+ 528 END
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ 999 <> W0 S0
+1999 +YY**+
+
+1990 4IAI
+1804 I..2(.II)3.
+1806 .II.I...I.II
+1808 I..I.III.I..
+1810 II.3(.I)..I
+1812 ..I3(I.)II.
+1814 I.2(.3I)..
+1816 .I2(I3.)II
+1818 .II2(I..)3I
+1904 .W
+1906 W.
+C$$$$$$$$$$$$$!!!!!!!!!!! NEM SZABAD KITOMORITENI!!!!!!!!!!!!!!!$$$$$$$$$$$$$$$$$$$$$
+1002 15.II2(42I13.)44I19.
+1004 4I2(.87I.)8I
+1006 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1008 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1010 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1012 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1014 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1016 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1018 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1020 15X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.12X...OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G...12X3.OTBW+G3.3I4.OTBW+G4.3I3.OTBW+G3.18XI
+1022 15X3.6I3.2(*BBH..YAA+)3.6I3.12X...6I3.2(*BBH..YAA+)3.6I...12X3.6I3.2(*BBH..YAA+)3.6I3.18XI
+1024 15X3.6I3.2(*BBH..YAA+)3.6I3.12X...6I3.2(*BBH..YAA+)3.6I...12X3.6I3.2(*BBH..YAA+)3.6I3.18XI
+1026 15X3.6I..2(..*BBHYAA+)4.6I3.12X...6I..2(..*BBHYAA+)4.6I...12X3.6I..2(..*BBHYAA+)4.6I3.18XI
+1028 15X3.6I..2(..*BBHYAA+)4.6I3.12X...6I..2(..*BBHYAA+)4.6I...12X3.6I..2(..*BBHYAA+)4.6I3.18XI
+1030 15X3.6I.2(4.OTBW+G)5.6I3.12X...6I.2(4.OTBW+G)5.6I...12X3.6I.2(4.OTBW+G)5.6I3.18XI
+1032 15X3.6I.2(4.OTBW+G)5.6I3.12X...6I.2(4.OTBW+G)5.6I...12X3.6I.2(4.OTBW+G)5.6I3.18XI
+1034 15X3.6I.2(4.OTBW+G)5.6I3.12X...6I.2(4.OTBW+G)5.6I...12X3.6I.2(4.OTBW+G)5.6I3.18XI
+1036 15X3.6I.2(4.OTBW+G)5.6I3.12X...6I.2(4.OTBW+G)5.6I...12X3.6I.2(4.OTBW+G)5.6I3.18XI
+1038 15X3.6I..2(..YAA+*BBH)4.6I3.12X...6I..2(..YAA+*BBH)4.6I...12X3.6I..2(..YAA+*BBH)4.6I3.18XI
+1040 15X3.6I..2(..YAA+*BBH)4.6I3.12X...6I..2(..YAA+*BBH)4.6I...12X3.6I..2(..YAA+*BBH)4.6I3.18XI
+1042 15X3.6I3.2(YAA+..*BBH)3.6I3.12X...6I3.2(YAA+..*BBH)3.6I...12X3.6I3.2(YAA+..*BBH)3.6I3.18XI
+1044 15X3.6I3.2(YAA+..*BBH)3.6I3.12X...6I3.2(YAA+..*BBH)3.6I...12X3.6I3.2(YAA+..*BBH)3.6I3.18XI
+1046 15X3.3I2(3I3.).II2(4I3.)6I3.12X...3I2(3I3.).II2(4I3.)6I...12X3.3I2(3I3.).II2(4I3.)6I3.18XI
+1048 190I
+C$$$$$$$$$$$$$!!!!!!!!!!! NEM SZABAD KITOMORITENI!!!!!!!!!!!!!!!$$$$$$$$$$$$$$$$$$$$$
+

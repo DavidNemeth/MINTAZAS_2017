@@ -1,0 +1,496 @@
+1C:ERDOSNEK KESZULT - KOPPINTOTT MINTA AZ AGITOL.
+1C:-------------+-------+---------+------------------+------------+-----------------+
+1C:TUNIKA(RU:0.45KG):
+1C:1DB KB 17'       NP6=   NP1=        ELEJE:           HATA:            UJJA:
+1C:                                    21'-22'           13'       R:6'-7'  H:9'-10'
+1C:-------------+-------+---------+------------------+------------+-----------------+
+1C:(RS17:NEM KELL BEUTNI,              RS17=0            RS17=1         RS17=1
+1C:FELTETELEK:99-103,160,404,406)      RS1: 1-8            35-           9-34
+1C:-------------+-------+---------+------------------+------------+-----------------+
+1C:2X15/1+1TX:     13.0    13.2     RS1=5  RS2=38-44   RS1=42-44    RS1=17   RS1=33
+1C:-------------+-----------------+------------------+------------+-----------------+
+1C:3X15/1(FEHER):  13.6    13.8      RS1=4  RS2=35       RS1=37     RS1=14   RS1=29
+1C:-------------+-----------------+------------------+------------+-----------------+
+1C:PIKO PANT:        SP600
+1C:CSIPKE V NYAK:    SP700
+1C:CSIPKE O NYAK:    SP900
+
+ 10  NP1=13.2 C:13.2-13.8*********MINTA*********
+ 15  NP6=13.0 C:13.0-13.6 ********HATA,UJJA*****
+ 16  NP4=12.5 C:LEVALASZTAS-------------
+ 18  NP2=14.7 C:PASSZE,CSIPKE ALJ-------
+ 20  NP5=15.0 C:SLAG
+  40 START
+  50 YG:6/256;
+  53 WM=20 WMI=7
+  56 << S:D.I-DI./DI.-D.I;		        Y:5/2;	     NP4-4  VU  V0	       S1 S2
+  59 >> S:D.I-DI./UVNDI.;           Y:5;                             S1    T2
+  62 << S:DI.-D.I/UVND.I;	         Y:5;	             	              S1    T2
+  65 WM=15 
+  68 >> S:R-R;		                    Y:6;	       NP2-0   	            S2
+  71 << S:0-R/R-0/0-R;		           Y:0/6/0;    NP2-2   	         T1 S1 S2
+  74 >> S:R-R(6.5);	            	Y:2;	                   ML     S1
+  80 << S:R-0;		                    Y:2;		     NP5-5                S1
+  95 JA1=1570(1564-1570);
+  98 PA:JA1;
+  99 IF RS1>8 RS17=1 C:H-U
+ 100 IF RS1<9 RS17=0 C:ELEJE
+ 101 FA=7-182;            IF RS17=1 IF RS1<35 F1=29-160;        C 4LAP
+ 103 PM:<.>8:3(W FA W.);  IF RS17=1 IF RS1<35 PM:<.>7:4(WF1W.); C 4LAP
+ 105 WM=20
+ 106 >> S:0-R/R-0/UVN.W;                Y:5/2;                              S1 S2 T2
+ 107 << S:U^NN.W/.W-N.W/UVNN.W;     Y:2;  ML                       T1 S1    T2
+ 108 Y:2/5/5/2;
+ 110 REP*4          C *******  PASSZE  ***********************************
+ 113 WM=0
+ 116 >> S:U^N+;                       NP2-2    VR1        VKD>3    T1
+ 125 << S:U^S*;                                VL1        VKB>4    T1
+ 126 WM=20
+ 128 >> S:U^SW/.-N./UVSN.;                     V0         VKA>0    T1    S2 T2 
+ 134 << S:R<1->-0;                                                    S1
+ 140 REPEND         C  ***************************************************
+ 141 JA1=1476(1396-1450)  C  ********* CSIPKE+3X3-AS FONAS  *****
+ 142 JA2=1502(1502-1532)  C KREPP
+ 148 PA:<JA2>1:JA1;
+ 151 FA=7-182
+ 152 PM:<.>8:3(. FA ..); 
+ 155 >> S:U^SN./.-N./UVNN.;            NP6-6                     T1 S1    T2
+ 160 IF RS17=1 GOTO 400 C**** HATA-UJJA *****
+ 200 
+ 205 REP*3    C*************** Y:2/5 BAL-BAL *****************************************
+ 210 << S:U^S<1-2->N./.-N./<1->.-N./UVSN.OTBW+G;      Y:2/5;             T1 S1 S2 T2
+ 215 >>                                                                  T1 S1 S2 T2
+ 220 REPEND   C***********************************************************************
+ 230 VJA^0
+ 233                                  NP1-1
+ 235 RBEG*RS1 C 6 **** OTBW+G **** Y:2/5 3X3-AS FONAS+BAL-BAL ************************
+ 238 REP*2
+ 240 WM=20
+ 245 << S:U^S<1-2->I/.-OTB+I/0-+(8.0)/UVNOTBI;        Y:2/0; VL3         T1 S1 S2 T2
+ 250 >> S:<1->U^NIA/.-OBW+IA(1)/0-O(8.0)/UVNI;        Y:2/0; VR2 VKB     T1 S1 S2 T2
+ 255 WM=22
+ 260 << S:U^N<1-2->OTBI/.-N.(1)/<1->.-N./UVNN.;       Y:2/5; VR3 VKD>5   T1 S1 S2 T2
+ 265 >> S:U^S<1-2->N./.-N./<1->.-N./UVSN.Y;           Y:2/5; V0          T1 S1 S2 T2
+ 270 Y:2/2/5/5;
+ 275 REP*4    C********  CSIPKE  **********
+ 280 VJA^0
+ 285 WM=20
+ 290 << S:U^S<1-2->N.Y/.-N.(1)/UVSNA.;                       VL1 VKC>5   T1 S1    T2
+ 295 >> S:U^S<1->N.A/.-N./UVSNY.OTBW+G;                      V0          T1 S1    T2
+ 300 REPEND   C****************************
+ 302 REPEND
+ 305 REND     C***********************************************************************
+
+ 310 JA1=1394(1002-1394)
+ 315 GOSUB 240-300
+
+ 320 REP*6    C******** OTBW+G *** 3X3-AS FONAS+CSIPKE *******************************
+ 325 WM=20
+ 330 << S:U^S<1-2->N.Y/.-N.OT/0-G(8.0)/UVSIAY;         Y:2/0;  VL1 VKC     T1 S1 S2 T2
+ 335 WM=0
+ 340 >> S:UVSOTB;                                              VL3                  T2
+ 345 << S:U^SA;                                                VR1 VKC     T1
+ 350 WM=20
+ 355 >>S:U^S<1-2->IY/.-IYAOBW+(1)/0-O(8.0)/UVSIYA;     Y:2/0;  VR2 VKE>3   T1 S1 S2 T2
+ 360 WM=0
+ 365 << S:UVSW+G;                                              VR3 VKG>2            T2
+ 370 >> S:U^SY;                                                V0          T1
+ 375 Y:5/5/2/2;
+ 380 GOSUB 280-295*6
+ 385 REPEND         C   ***************************************************
+ 390 RBEG*RS2
+ 392 GOSUB 280-295
+ 394 REND
+ 396 END
+
+ 400 C****** HATA-UJJA ***
+ 402 PA:<JA2>;
+ 404 FA=7-182;           IF RS1<35 FA=29-160;          C 4LAP
+ 406 PM:<.>8:3(I FA I.); IF RS1<35 PM:<.>8:4(I FA I.); C 4LAP
+ 407 RBEG*RS1
+ 408 REP*2    C*************** Y:2/5 BAL-BAL *****************************************
+ 410 << S:U^S<2->N./.-N./.-N./UVSN.OTBW+G;      Y:2/5;             T1 S1 S2 T2
+ 412 >>                                                                  T1 S1 S2 T2
+ 414 REPEND   C***********************************************************************
+ 416 REND
+ 418 END
+
+ 600 C***REX PIKO PANT SZIECSKEKKEL II (KISSEBB SZIVEK)*****
+ 602 NP1=14.5  C:LEVALASZTAS
+ 604 NP4=12.5  C:LEVALASZTAS,1/1
+ 606 NP2=12.0  C:BEKEZDES
+ 608 NP3=11.0  C:REX
+ 609 NP5=13.0
+ 610 START 
+ 612 YG:6/256;
+ 614 WM=20
+ 616 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1991(1991-1993); 
+ 620 PA:<JA1>; 
+ 622 FA=1-7; 
+ 624 PM:<.>5:77FA;
+ 625 Y:2/2/5/5;
+ 626 VJA^0
+ 628 >> S:U^SA /.-A/UVS.;                           NP1-1           T1 S1    T2
+ 630 << S:<1+>.-A/UVSA;                                      VL1       S1    T2
+ 636 >> S:<1+>.I-.I/0-.I;            Y:6/0;                  V0        S1 S2
+ 638 << S:.I-0;                      Y:6;                              S1
+ 640 >> S:.I-.I/.-0;                 Y:2/5;         NP2-2    ML          S1 S2
+ 642 << S:0-./.-.;                                  NP3-3    ML          S1 S2
+ 644 >> S:.-.;                                               ML          S1 S2
+ 646 <<                                                      ML          S1 S2
+ 648 >> S:.-./.I-.I;                                         ML          S1 S2
+ 650 << S:R-R;                                                         S1 S2
+ 652 >> S:R-R;                                                         S1 S2
+ 656 << S:R-R;                                                         S1 S2
+ 658 >> S:R-R;                                      NP4-4              S1 S2
+ 660 END
+
+ 700 C---HALOS NYAK -- V ---***KISSEBB,KEREKEBB LYUKAK:766 >>S:.*-N.*
+ 702 START
+ 704 NP1=14.5   C:LEVALASZTAS
+ 706 NP2=12.0   C:1/1-ES PASSZE
+ 708 NP4=11.5   C:LEVALASZTAS
+ 710 NP3=13.0   C:SLAG,CSIPKE
+ 712 YG:6/256;
+ 714 WM=20
+ 716 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	 NP4-4 VU V0	      S1 S2
+ 718 >>	S:D.I-DI./DI.-D.I/UVNDI.;             	Y:5/2;	  	               S1 S2 T2
+ 720 <<	S:U^ND.I/DI.-D.I;		                   Y:5;			  NP1-1         T1 S1
+ 722 >>	S:U^NDI./D.I-D.I;		                   Y:6;	  NP0- VL1	VKA>4   T1	  S2
+ 724 <<	S:R-0/0-D.I/R-0;		                    Y:0/6/0; NP2-2  V#	    T1 S1 S2
+ 726 >>	S:DI.(8.0)-D.I;		                    	Y:5;	           V# V0     S1
+ 728 << S:DI.(8.0)-0/0-D.I(8.4);              Y:5/2;           V#        S1 S2
+ 730 C WM=26
+ 732 JA1=1995
+ 734 FA=1-2
+ 738 FC=7-8 C LYUK *
+ 740 PA:1:<JA1>;
+ 744 PM:<.> 9:FA <FC> 543:<.>;
+ 746 >>S:DI.-D.I/UVSD.I;                             Y:2;   NP2-2             S1    T2
+ 748 <<S:R-0;                                               NP3-3             S1
+ 750 >>S:U^SN./.-N./UVSN.;                           Y:5;                  T1 S1    T2
+ 751 GOSUB 748-750
+ 752 <<S:R-0;
+ 753 VJA^0                                                                   S1
+ 754 >>S:U^SN./.-N./UVS*;                            Y:2;         VL1      T1 S1    T2
+ 764 <<S:U^S*/.-N./UVS.;                             Y:2;         V0 VKB>0 T1 S1    T2
+ 766 >>S:.I-N.I/.-N./UVSN.;                          Y:5/2;                   S1 S2 T2
+ 768 <<S:R-0;                                        Y:5;                     S1
+ 770 >>S:U^SN./.-N./UVSN.;                                                 T1 S1    T2
+ 771 GOSUB 768-770
+ 772 <<S:R-0;                                        Y:2;                     S1
+ 774 >>S:U^SN./.-N.;                                              V0       T1 S1
+ 776 <<S:.-N./.-N./UVSDI.;                           Y:5/2;                   S1 S2 T2
+ 778 >>S:DI.-D.I;                                           NP4-4             S1 S2
+ 780 END
+
+ 900 START C--- CSIPKE NYAK ,O, -----
+ 902 NP1=14.5   C:MINTA                               
+ 904 NP2=12.0   C:1/1-ES PASSZE
+ 906 NP4=11.5   C:LEVALASZTAS
+ 908 NP3=13.5   C:SLAG,CSIPKE PASSZE
+ 910 YG:6/256;
+ 912 WM=20
+ 914 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	 NP4-4 VU V0	      S1 S2
+ 916 >>	S:D.I-DI./DI.-D.I/UVNDI.;            	Y:5/2;	  	               S1 S2 T2
+ 918 <<	S:U^ND.I/DI.-D.I;		                  Y:5;			NP1-1         T1 S1
+ 920 >>	S:U^NDI./D.I-D.I;		                  Y:6;	    NP0-   VL1	    T1	  S2
+ 922 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP4-4  V#	    T1 S1 S2
+ 924 >>	S:DI.-D.I;		                   	Y:5;	           V# V0     S1
+ 926 << S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 928 >> S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 930 << S:0-D.I;                        Y:5;             V#     S1
+ 932 WM=26
+ 934 JA1=1990
+ 936 FA=1-2
+ 938 PA:JA1;
+ 940 PM:<.> 9:<FA> 543:<.>;
+ 942 VJA^0
+ 944 >>S:DI.-D.I/UVSD.I;                               NP2-2             S1    T2
+ 946 Y:2/2/5/5;
+ 948 <<S:R-0;                                               NP3-3        S1
+ 950 >>S:U^SN./.-N./UVSN.;                                            T1 S1    T2
+ 952 <<S:R-0;                                                            S1
+ 954 >>S:U^SN./.-N./UVS*;                                     VL2     T1 S1    T2
+ 956 <<S:U^S*/.-N./.-N./UVSI;                        Y:2/5;   VL1     T1 S1 S2 T2
+ 958 >>S:U^SI/.-N./.-N./UVSR;                                 V0      T1 S1 S2 T2
+ 960 Y:2/2/5/5;
+ 962 <<S:R-0;                                                 V0         S1
+ 964 >>S:U^SN./.-N./UVSN.;                                            T1 S1    T2
+ 966 <<S:R-0;                                                            S1
+ 968 >>S:U^SN./.-N.;                                                  T1 S1
+ 970 <<S:.-N./.-N./UVSI;                              Y:2/5;             S1 S2 T2
+ 972 >>S:.I-*/.I-*/UVS*;                                  NP2-2          S1 S2 T2
+ 974 END
+1990 I*
+
+1991 4.A.A
+1992 3.A*A*
+1993 4.*I*
+
+1995 4I*+I*
+
+1999 .YY**.
+
+1002 190I66.
+1004 3I2(II..)I.II18(I.IY)I..8I..18(I.IY)I2(.I.)II..4II.I.3.Y..I58.
+1006 .4I2(I..II.)36(I.).8I.18(.IAI).3I.2(I..I)4I.I4.A.I59.
+1008 .3I2(II..)2(I.I)35(.I)..8I.36(.I)2(.II..I)3I2(I..)..Y..I58.
+1010 ..A4I..II.I.18(.IAI).I..8I.37(.I)I.2(I..I)3I2(I..)..A.I59.
+1012 ..3I2(II..)I.18(I.IY)I..6IYI..18(I.IY)I..I.II..4IY..XI4.Y..I58.
+1014 X..4I2(I..II.)35(I.).IA6I.18(.IAI).I.2(I..I)4I..XI4.A.I59.
+1016 X..4IY..II..2(I.I)34(.I)..8I.36(.I)I..I.II..5I..XXI4.Y..I58.
+1018 XX..5I..II.I..17(I.IA)I.I..8I.34(.I).2(I.I)..II..A4I..XXI4.A.I59.
+1020 XX..3I2(II..)I.II17(I.IY)I..8I..17(I.IY)I2(.I.)II..5I..3XI4.Y..I58.
+1022 3X..4I2(I..II.)34(I.).8I.17(.IAI).3I.2(I..I)4I..3XI4.A.I59.
+1024 3X..3I2(II..)2(I.I)33(.I)..8I.33(.I)2(.I.II.).5I..4XI4.Y..I58.
+1026 4X..A4I..II.I.17(.IAI).I..8I.35(.I)I.2(I..I)4I..4XI4.A.I59.
+1028 4X..3I2(II..)I.17(I.IY)I..6IYI..17(I.IY)I..I.II..4IY..5XI4.Y..I58.
+1030 5X..4I2(I..II.)33(I.).IA6I.17(.IAI).I.2(I..I)4I..5XI4.A.I59.
+1032 5X..4IY..II..2(I.I)32(.I)..8I.33(.I)2(.II..I)4I..6XI4.Y..I58.
+1034 6X..5I..II.I..16(I.IA)I.I..8I.32(.I).2(I.I)..II..A4I..6XI4.A.I59.
+1036 6X..3I2(II..)I.II16(I.IY)I..8I..16(I.IY)I2(.I.)II..5I..7XI4.Y..I58.
+1038 7X..4I2(I..II.)32(I.).8I.16(.IAI).3I.2(I..I)4I..7XI4.A.I59.
+1040 7X..3I2(II..)2(I.I)31(.I)..8I.33(.I)I..I.II..5I..8XI4.Y..I58.
+1042 8X..A4I..II.I.16(.IAI).I..8I.33(.I)I.2(I..I)4I..8XI4.A.I59.
+1044 8X..3I2(II..)I.16(I.IY)I..6IYI..16(I.IY)I..I.II..4IY..9XI4.Y..I58.
+1046 9X..4I2(I..II.)31(I.).IA6I.16(.IAI).I.2(I..I)4I..9XI4.A.I59.
+1048 9X..4IY..II..2(I.I)30(.I)..8I.30(.I)2(.I.II.).5I..10XI4.Y..I58.
+1050 10X..5I..II.I..15(I.IA)I.I..8I.30(.I).2(I.I)..II..A4I..10XI4.A.I59.
+1052 10X..3I2(II..)I.II15(I.IY)I..8I..15(I.IY)I2(.I.)II..5I..11XI4.Y..I58.
+1054 11X..4I2(I..II.)30(I.).8I.15(.IAI).3I.2(I..I)4I..11XI4.A.I59.
+1056 11X..3I2(II..)2(I.I)29(.I)..8I.30(.I)2(.II..I)4I..12XI4.Y..I58.
+1058 12X..A4I..II.I.15(.IAI).I..8I.31(.I)I.2(I..I)4I..12XI4.A.I59.
+1060 12X..3I2(II..)I.15(I.IY)I..6IYI..15(I.IY)I..I.II..4IY..13XI4.Y..I58.
+1062 13X..4I2(I..II.)29(I.).IA6I.15(.IAI).I.2(I..I)4I..13XI4.A.I59.
+1064 13X..4IY..II..2(I.I)28(.I)..8I.30(.I)I..I.II..5I..14XI4.Y..I58.
+1066 14X..5I..II.I..14(I.IA)I.I..8I.28(.I).2(I.I)..II..A4I..14XI4.A.I59.
+1068 14X..3I2(II..)I.II14(I.IY)I..8I..14(I.IY)I2(.I.)II..5I..15XI4.Y..I58.
+1070 15X..4I2(I..II.)28(I.).8I.14(.IAI).3I.2(I..I)4I..15XI4.A.I59.
+1072 15X..3I2(II..)2(I.I)27(.I)..8I.27(.I)2(.I.II.).5I..16XI4.Y..I58.
+1074 16X..A4I..II.I.14(.IAI).I..8I.29(.I)I.2(I..I)4I..16XI4.A.I59.
+1076 16X..3I2(II..)I.14(I.IY)I..6IYI..14(I.IY)I..I.II..4IY..17XI4.Y..I58.
+1078 17X..4I2(I..II.)27(I.).IA6I.14(.IAI).I.2(I..I)4I..17XI4.A.I59.
+1080 17X..4IY..II..2(I.I)26(.I)..8I.27(.I)2(.II..I)4I..18XI4.Y..I58.
+1082 18X..5I..II.I..13(I.IA)I.I..8I.26(.I).2(I.I)..II..A4I..18XI4.A.I59.
+1084 18X..3I2(II..)I.II13(I.IY)I..8I..13(I.IY)I2(.I.)II..5I..19XI4.Y..I58.
+1086 19X..4I2(I..II.)26(I.).8I.13(.IAI).3I.2(I..I)4I..19XI4.A.I59.
+1088 19X..3I2(II..)2(I.I)25(.I)..8I.27(.I)I..I.II..5I..20XI4.Y..I58.
+1090 20X..A4I..II.I.13(.IAI).I..8I.27(.I)I.2(I..I)4I..20XI4.A.I59.
+1092 20X..3I2(II..)I.13(I.IY)I..6IYI..13(I.IY)I..I.II..4IY..21XI4.Y..I58.
+1094 21X..4I2(I..II.)25(I.).IA6I.13(.IAI).I.2(I..I)4I..21XI4.A.I59.
+1096 21X..4IY..II..2(I.I)24(.I)..8I.24(.I)2(.I.II.).5I..22XI4.Y..I58.
+1098 22X..5I..II.I..12(I.IA)I.I..8I.24(.I).2(I.I)..II..A4I..22XI4.A.I59.
+1100 22X..3I2(II..)I.II12(I.IY)I..8I..12(I.IY)I2(.I.)II..5I..23XI4.Y..I58.
+1102 23X..4I2(I..II.)24(I.).8I.12(.IAI).3I.2(I..I)4I..23XI4.A.I59.
+1104 23X..3I2(II..)2(I.I)23(.I)..8I.24(.I)2(.II..I)4I..24XI4.Y..I58.
+1106 24X..A4I..II.I.12(.IAI).I..8I.25(.I)I.2(I..I)4I..24XI4.A.I59.
+1108 24X..3I2(II..)I.12(I.IY)I..6IYI..12(I.IY)I..I.II..4IY..25XI4.Y..I58.
+1110 25X..4I2(I..II.)23(I.).IA6I.12(.IAI).I.2(I..I)4I..25XI4.A.I59.
+1112 25X..4IY..II..2(I.I)22(.I)..8I.24(.I)I..I.II..5I..26XI4.Y..I58.
+1114 26X..5I..II.I..11(I.IA)I.I..8I.24(.I)I.2(I..I)4I..26XI4.A.I59.
+1116 26X..3I2(II..)I.II11(I.IY)I..8I..11(I.IY)I2(.I.)II..5I..27XI4.Y..I58.
+1118 27X..4I2(I..II.)22(I.).8I.11(.IAI).III.I..II..A4I..27XI4.A.I59.
+1120 27X..3I2(II..)2(I.I)21(.I)..8I.21(.I)2(.I.II.).5I..28XI4.Y..I58.
+1122 28X..A4I..II.I.11(.IAI).I..8I.23(.I)I.2(I..I)4I..28XI4.A.I59.
+1124 28X..3I2(II..)I.11(I.IY)I..6IYI..11(I.IY)I..I.II..4IY..29XI4.Y..I58.
+1126 29X..4I2(I..II.)21(I.).IA6I.11(.IAI).I.2(I..I)4I..29XI4.A.I59.
+1128 29X..4IY..II..2(I.I)20(.I)..8I.21(.I)2(.II..I)4I..30XI4.Y..I58.
+1130 30X..5I..II.I..10(I.IA)I.I..8I.20(.I).2(I.I)..II..A4I..30XI4.A.I59.
+1132 30X..3I2(II..)I.II10(I.IY)I..8I..10(I.IY)I2(.I.)II..5I..31XI4.Y..I58.
+1134 31X..4I2(I..II.)20(I.).8I.10(.IAI).3I.2(I..I)4I..31XI4.A.I59.
+1136 31X..3I2(II..)2(I.I)19(.I)..8I.21(.I)I..I.II..5I..32XI4.Y..I58.
+1138 32X..A4I..II.I.10(.IAI).I..8I.21(.I)I.2(I..I)4I..32XI4.A.I59.
+1140 32X..3I2(II..)I.10(I.IY)I..6IYI..10(I.IY)I..I.II..4IY..33XI4.Y..I58.
+1142 33X..4I2(I..II.)19(I.).IA6I.10(.IAI).I.2(I..I)4I..33XI4.A.I59.
+1144 33X..4IY..II..2(I.I)18(.I)..8I.18(.I)2(.I.II.).5I..34XI4.Y..I58.
+1146 34X..5I..II.I..9(I.IA)I.I..8I.18(.I).2(I.I)..II..A4I..34XI4.A.I59.
+1148 34X..3I2(II..)I.II9(I.IY)I..8I..9(I.IY)I2(.I.)II..5I..35XI4.Y..I58.
+1150 35X..4I2(I..II.)18(I.).8I.9(.IAI).3I.2(I..I)4I..35XI4.A.I59.
+1152 35X..3I2(II..)2(I.I)17(.I)..8I.18(.I)2(.II..I)4I..36XI4.Y..I58.
+1154 36X..A4I..II.I.9(.IAI).I..8I.19(.I)I.2(I..I)4I..36XI4.A.I59.
+1156 36X..3I2(II..)I.9(I.IY)I..6IYI..9(I.IY)I..I.II..4IY..37XI4.Y..I58.
+1158 37X..4I2(I..II.)17(I.).IA6I.9(.IAI).I.2(I..I)4I..37XI4.A.I59.
+1160 37X..4IY..II..2(I.I)16(.I)..8I.18(.I)I..I.II..5I..38XI4.Y..I58.
+1162 38X..5I..II.I..8(I.IA)I.I..8I.16(.I).2(I.I)..II..A4I..38XI4.A.I59.
+1164 38X..3I2(II..)I.II8(I.IY)I..8I..8(I.IY)I2(.I.)II..5I..39XI4.Y..I58.
+1166 39X..4I2(I..II.)16(I.).8I.8(.IAI).3I.2(I..I)4I..39XI4.A.I59.
+1168 39X..3I2(II..)2(I.I)15(.I)..8I.15(.I)2(.I.II.).5I..40XI4.Y..I58.
+1170 40X..A4I..II.I.8(.IAI).I..8I.17(.I)I.2(I..I)4I..40XI4.A.I59.
+1172 40X..3I2(II..)I.8(I.IY)I..6IYI..8(I.IY)I..I.II..4IY..41XI4.Y..I58.
+1174 41X..4I2(I..II.)15(I.).IA6I.8(.IAI).I.2(I..I)4I..41XI4.A.I59.
+1176 41X..4IY..II..2(I.I)14(.I)..8I.15(.I)2(.II..I)4I..42XI4.Y..I58.
+1178 42X..5I..II.I..7(I.IA)I.I..8I.14(.I).2(I.I)..II..A4I..42XI4.A.I59.
+1180 42X..3I2(II..)I.II7(I.IY)I..8I..7(I.IY)I2(.I.)II..5I..43XI4.Y..I58.
+1182 43X..4I2(I..II.)14(I.).8I.7(.IAI).3I.2(I..I)4I..43XI4.A.I59.
+1184 43X..3I2(II..)2(I.I)13(.I)..8I.15(.I)I..I.II..5I..44XI4.Y..I58.
+1186 44X..A4I..II.I.7(.IAI).I..8I.15(.I)I.2(I..I)4I..44XI4.A.I59.
+1188 44X..3I2(II..)I.7(I.IY)I..6IYI..7(I.IY)I..I.II..4IY..45XI4.Y..I58.
+1190 45X..4I2(I..II.)13(I.).IA6I.7(.IAI).I.2(I..I)4I..45XI4.A.I59.
+1192 45X..4IY..II..2(I.I)12(.I)..8I.12(.I)2(.I.II.).5I..46XI4.Y..I58.
+1194 21X4.21X..5I..II.I..6(I.IA)I.I..8I.12(.I).2(I.I)..II..A4I..20X4.22XI4.A.I59.
+1196 21X4.21X..3I2(II..)I.II6(I.IY)I..8I..6(I.IY)I2(.I.)II..5I..21X4.22XI4.Y..I58.
+1198 21X..I..21X..4I2(I..II.)12(I.).8I.6(.IAI).3I.2(I..I)4I..20X..I..22XI4.A.I59.
+1200 21X..I..21X..3I2(II..)2(I.I)11(.I)..8I.12(.I)2(.II..I)4I..21X..I..22XI4.Y..I58.
+1202 21X..II..21X..A4I..II.I.6(.IAI).I..8I.13(.I)I.2(I..I)4I..20X..II..22XI4.A.I59.
+1204 21X..II..21X..3I2(II..)I.6(I.IY)I..6IYI..6(I.IY)I..I.II..4IY..21X..II..22XI4.Y..I58.
+1206 21X..3I..21X..4I2(I..II.)11(I.).IA6I.6(.IAI).I.2(I..I)4I..20X..3I..22XI4.A.I59.
+1208 21X..3I..21X..4IY..II..2(I.I)10(.I)..8I.12(.I)I..I.II..5I..21X..3I..22XI4.Y..I58.
+1210 21X..4I..21X..5I..II.I..5(I.IA)I.I..8I.10(.I).2(I.I)..II..A4I..20X..4I..22XI4.A.I59.
+1212 21X..4I..21X..3I2(II..)I.II5(I.IY)I..8I..5(I.IY)I2(.I.)II..5I..21X..4I..22XI4.Y..I58.
+1214 2(21X..5I..)II.I..I11(I.).8I.5(.IAI).III.I..II2(..5I..20X)XXI4.A.I59.
+1216 2(21X..5I..)II..2(I.I)9(.I)..8I.11(.I)I..I.II2(..5I..21X)XI4.Y..I58.
+1218 21X..6I..21X..A4I..II.I.5(.IAI).I..8I.11(.I)I.2(I..I)4I..20X..6I..22XI4.A.I59.
+1220 21X..6I..21X..3I2(II..)I.5(I.IY)I..6IYI..5(I.IY)I..I.II..4IY..21X..6I..22XI4.Y..I58.
+1222 21X..OTBW+G..22X..4I2(I..II.)9(I.).IA6I.5(.IAI).I.2(I..I)4I..21X..OTBW+G..22XI3.GA.I59.
+1224 21X..OTBW+G..22X..4IY..II..2(I.I)8(.I)..8I.9(.I)2(.II..I)4I..22X..OTBW+G..22XI3.GY..I58.
+1226 20X3.OTBW+G..23X..5I..II.I..4(I.IA)I.I..8I.8(.I).2(I.I)..II..A4I..21X3.OTBW+G..22XI..IGA.I59.
+1228 21X..OTBW+G..23X..3I2(II..)I.II4(I.IY)I..8I..4(I.IY)I2(.I.)II..5I..23X..OTBW+G..22XI3.GY..I58.
+1230 21X..6I..24X..4I2(I..II.)8(I.).8I.4(.IAI).3I.2(I..I)4I..23X..6I..22XI4.A.I59.
+1232 21X2(.3I.)24X..3I2(II..)2(I.I)7(.I)..8I.9(.I)I..I.II..5I..24X2(.3I.)22XI4.Y..I58.
+1234 21X2(.3I.)25X..A4I..II.I.4(.IAI).I..8I.9(.I)I.2(I..I)4I..24X2(.3I.)22XI4.A.I59.
+1236 20X2(.4I.)24X..3I2(II..)I.4(I.IY)I..6IYI..4(I.IY)I..I.II..4IY..24X2(.4I.)21XI4.Y..I58.
+1238 20X2(.4I.)25X..4I2(I..II.)7(I.).IA6I.4(.IAI).I.2(I..I)4I..24X2(.4I.)21XI4.A.I59.
+1240 20X2(.4I.)25X..4IY..II..2(I.I)6(.I)..8I.6(.I)2(.I.II.).5I..25X2(.4I.)21XI4.Y..I58.
+1242 20X2(.4I.)26X..5I..II.I..3(I.IA)I.I..8I.6(.I).2(I.I)..II..A4I..25X2(.4I.)21XI4.A.I59.
+1244 21X2(.3I.)27X..3I2(II..)I.II3(I.IY)I..8I..3(I.IY)I2(.I.)II..5I..27X2(.3I.)22XI4.Y..I58.
+1246 21X2(.3I.)28X..4I2(I..II.)6(I.).8I.3(.IAI).3I.2(I..I)4I..27X2(.3I.)22XI4.A.I59.
+1248 21X..6I..28X..3I2(II..)2(I.I)5(.I)..8I.6(.I)2(.II..I)4I..28X..6I..22XI4.Y..I58.
+1250 21X..OTBW+G..9X4.16X..A4I..II.I.3(.IAI).I..8I.7(.I)I.2(I..I)4I..15X4.9X..OTBW+G..22XI3.GA.I59.
+1252 21X..OTBW+G..9X4.16X..3I2(II..)I.3(I.IY)I..6IYI..3(I.IY)I..I.II..4IY..16X4.9X..OTBW+G..22XI3.GY..I58.
+1254 20X3.OTBW+G..9X..I..16X..4I2(I..II.)5(I.).IA6I.3(.IAI).I.2(I..I)4I..15X..I..8X3.OTBW+G..22XI..IGA.I59.
+1256 21X..OTBW+G..9X..I..16X..4IY..II..2(I.I)4(.I)..8I.6(.I)I..I.II..5I..16X..I..9X..OTBW+G..22XI3.GY..I58.
+1258 21X..6I..9X..II..16X..5I..II.I..2(I.IA)I.I..8I.4(.I).2(I.I)..II..A4I..15X..II..9X..6I..22XI4.A.I59.
+1260 21X2(.3I.)9X..II..16X..3I2(II..)I.II2(I.IY)I..8I..2(I.IY)I2(.I.)II..5I..16X..II..9X2(.3I.)22XI4.Y..I58.
+1262 21X2(.3I.)9X..3I..16X..4I2(I..II.)4(I.).8I.2(.IAI).3I.2(I..I)4I..15X..3I..9X2(.3I.)22XI4.A.I59.
+1264 20X2(.4I.)8X..3I..16X..3I2(II..)2(I.I)3(.I)..8I.3(.I)2(.I.II.).5I..16X..3I..8X2(.4I.)21XI4.Y..I58.
+1266 20X2(.4I.)8X..4I..16X..A4I..II.I.2(.IAI).I..8I.5(.I)I.2(I..I)4I..15X..4I..8X2(.4I.)21XI4.A.I59.
+1268 20X2(.4I.)8X..4I..16X..3I2(II..)I.2(I.IY)I..6IYI..2(I.IY)I..I.II..4IY..16X..4I..8X2(.4I.)21XI4.Y..I58.
+1270 20X2(.4I.)8X..5I..16X..4I2(I..II.)3(I.).IA6I.2(.IAI).I.2(I..I)4I..15X..5I..8X2(.4I.)21XI4.A.I59.
+1272 21X2(.3I.)9X..5I..16X..4IY..II..2(I.I).I.I..8I..I.I2(.I.II.).5I..16X..5I..9X2(.3I.)22XI4.Y..I58.
+1274 21X2(.3I.)9X..6I..16X..5I..II2(.I.)IAI.I..8I..I.I.2(I.I)..II..A4I..15X..6I..9X2(.3I.)22XI4.A.I59.
+1276 12X2(9X..6I..)16X..3I2(II..)I.3I.IYI..8I..I.IYI2(.I.)II..5I..7X2(9X..6I..)22XI4.Y..I58.
+1278 12X2(9X..OTBW+G..)17X..4I2(I..II.)I.I..8I..IAI.3I.2(I..I)4I..7X2(9X..OTBW+G..)22XI3.GA.I59.
+1280 12X2(9X..OTBW+G..)17X..3I2(II..)2(I.I).I..8I..I2(.I.II.).5I..8X2(9X..OTBW+G..)22XI3.GY..I58.
+1282 12X2(8X3.OTBW+G..)18X..A4I..II.I..IAI.I..8I.3(.I)I.2(I..I)4I..17X..OTBW+G..8X3.OTBW+G..22XI..IGA.I59.
+1284 12X2(9X..OTBW+G..)18X..3I2(II..)I.I.IYI..5I2(IYI..I.)II..4IY..17X.2(..OTBW+G..9X)13XI3.GY..I58.
+1286 12X2(9X..6I..)19X..4I2(I..II.)I..IA6I..IAI.I.2(I..I)4I..9X2(9X..6I..)22XI4.A.I59.
+1288 21X2(.3I.)9X.8I.19X..4IY..II..2(I.I)..6I2(II..I.)II..5I..19X.8I.9X2(.3I.)22XI4.Y..I..21X..3YI..I3A..3X18.
+1290 21X2(.3I.)9X.4IA3I.20X..5I..I2(I.I..)8I..2(I.I)..II..A4I..19X.4IA3I.9X2(.3I.)22XI4.A.I3.21X..3YI..3A..4X18.
+1292 20X2(.4I.)7X.2(3IY)II.19X..3I2(II..)I.3I..7I2(I..I.)II..5I..19X.2(3IY)II.7X2(.4I.)21XI4.Y..I..22X..3YII3A..4X18.
+1294 20X2(.4I.)7X.10I.20X..4I2(I..II.).8I..3I.2(I..I)4I..19X.10I.7X2(.4I.)21XI4.A.I3.3X10.9X..3YI3A..5X18.
+1296 20X2(.4I.)7X.2(3IY)II.20X..2(5I.2(.II..I)II)II..20X.2(3IY)II.7X2(.4I.)21XI4.Y..I..3X..6I..10X..3Y3I..5X18.
+1298 20X2(.4I.)7X.5IA4I.21X..A4I..II2(.I.).7I2(I..II.).5I..20X.5IA4I.7X2(.4I.)21XI4.A.I3.3X..6I..10X..6I..5X18.
+1300 21X2(.3I.)10X8I23X..3I2(II..)I.I..6IY2(I..)I.II..4IY..23X8I10X2(.3I.)22XI4.Y..I..3X..OTBW+G..10X..OTBW+G..5X18.
+1302 21X2(.3I.)10X8I24X..5I..I3(I.).IA6I..I.2(I..I)4I..23X8I10X2(.3I.)22XI4.A.I3.3X..OTBW+G..10X..OTBW+G..5X18.
+1304 21X..6I..13XII27X..4IY3(..II)6I.3(.I)I..5I..27XII13X..6I..22XI4.Y..I..3X..OTBW+G..10X..OTBW+G..5X18.
+1306 21X..OTBW+G..13XII14X4.10X..5I.2(.II)..8I2(..II)..A4I..9X4.14XII13X..OTBW+G..22XI3.GA.I3.3X..OTBW+G..10X..OTBW+G..5X18.
+1308 21X..OTBW+G..29X4.10X..3I2(II..)I..8I.2(.II)..5I..10X4.29X..OTBW+G..22XI3.GY..I..3X..3AI3Y..9X..6I..5X18.
+1310 20X3.OTBW+G..29X..I..10X..3I2(II..)..8I..2(I..I)4I..9X..I..28X3.OTBW+G..22XI..IGA.I3.XX..3AII3Y..9X..6I..5X18.
+1312 21X..OTBW+G..13XII14X..I..10X..3I2(II..)..8I..2(..II)3I..10X..I..14XII13X..OTBW+G..22XI3.GY..I..XX..3A..I3Y..8X..6I..5X18.
+1314 21X..6I..13XII14X..II..10X..AII2(II..).8I..2(..II)3I..9X..II..14XII13X..6I..22XI4.A.I3.X..3AI..I3Y..8X..6I..5X18.
+1316 21X2(.3I.)10X8I11X..II..10X..3I2(II..).6IYI.2(..II)IIY..10X..II..11X8I10X2(.3I.)22XI4.Y..I58.
+1318 21X2(.3I.)10X8I11X..3I..10X..3I2(II..)IA6I.2(..II)3I..9X..3I..11X8I10X2(.3I.)22XI4.A.I59.
+1320 20X2(.4I.)7X.5IY4I10X..3I..10X..4IY2(..II)4I2(II..)5I..10X..3I..9X.5IY4I.7X2(.4I.)21XI4.Y..I58.
+1322 20X2(.4I.)7X.2(3IA)II10X..4I..10X..5I.2(.II)6I..II..A4I..9X..4I..9X.2(3IA)II.7X2(.4I.)21XI4.A.I59.
+1324 20X2(.4I.)7X.10I10X..4I..10X..3I2(II..)7I.II..5I..10X..4I..9X.10I.7X2(.4I.)21XI4.Y..I58.
+1326 20X2(.4I.)7X.2(3IA)II2(10X..5I..)II.6I..II2(..5I..9X).2(3IA)II.7X2(.4I.)21XI4.A.I59.
+1328 21X2(.3I.)9X.4IY3IX2(10X..5I..)II..5I.II2(..5I..10X).4IY3I.9X2(.3I.)22XI4.Y..I58.
+1330 21X2(.3I.)9X.8I11X..6I..10X..A2(4I..II.).5I..9X..6I..10X.8I.9X2(.3I.)22XI4.A.I59.
+1332 21X..6I..9X..6I12X..6I..10X..5I.2(.II..3I)IY2(..10X..6I)..9X..6I..22XI4.Y..I58.
+1334 21X..OTBW+G..9X..OTBW+G12X..OTBW+G..11X..3I2(II..II.).5I2(..10X..OTBW+G)..9X..OTBW+G..22XI3.GA.I59.
+1336 21X..OTBW+G..9X..OTBW+G12X..OTBW+G..11X..4IY.2(.II..I)4I..X2(10X..OTBW+G..)9X..OTBW+G..22XI3.GY..I58.
+1338 20X3.OTBW+G..8X3.OTBW+G11X3.OTBW+G..12X..5I2(..II.).A4I..11X..OTBW+G..X2(8X3.OTBW+G..)22XI..IGA.I59.
+1340 21X..OTBW+G..9X..OTBW+GXX3I4X3I..OTBW+G..12X..3I3(II..)5I..11X3.OTBW+G..3I4X3I2(..OTBW+G..9X)13XI3.GY..I58.
+1342 21X..6I..9X..6IXXI.I4XI.I..6I..13X..5I.2(.II)..5I..12X..6I..I.I4XI.I2(..6I..9X)13XI4.A.I59.
+1344 21X2(.3I.)9X.8IXII.IXX2(I.I)7I.13X..I2(4I..)5I..13X.6I2(II.)IXX2(I.I)7I.9X2(.3I.)22XI4.Y..I58.
+1346 21X2(.3I.)9X.4IA3IXX3(II.).4IA3I.14X..AI2(3I..)5I..13X.4IA3I.3(.II)..4IA3I.9X2(.3I.)22XI4.A.I59.
+1348 20X2(.4I.)7X.2(3IY)3I2(.II.)I2(3IY)II.13X..3I2(II..)4IY..13X.2(3IY)3I2(.II.)I2(3IY)II.7X2(.4I.)21XI4.Y..I3.Y54.
+1350 20X2(.4I.)7X.10I2(II.II)10I.14X..4I2(I..)5I..13X.10I2(II.II)10I.7X2(.4I.)21XI4.A.I59.
+1352 20X2(.4I.)7X.2(3IY)4(II.)2(3IY)II.14X..4IY4.5I..14X.2(3IY)4(II.)2(3IY)II.7X2(.4I.)21XI4.Y..I58.
+1354 20X2(.4I.)7X.5IAII3(II..)5IA4I.15X..5I3.A4I..14X.5IAII3(II..)5IA4I.7X2(.4I.)21XI4.A.I5.A53.
+1356 21X2(.3I.)10X8IX..6I..X8I17X2(..5I)..17X8IX..6I..X8I10X2(.3I.)22XI4.Y..I3.Y54.
+1358 21X2(.3I.)10X8IX..6I..X8I18X.2(.5I)..17X8IX..6I..X8I10X2(.3I.)22XI4.A.I59.
+1360 21X..6I..13XII4X..6I..4XII21X..10I..21XII4X..6I..4XII13X..6I..22XI4.Y..I58.
+1362 21X..OTBW+G..13XII4X..OTBW+G..4XII22X..A8I..21XII4X..OTBW+G..4XII13X..OTBW+G..22XI3.GA.I59.
+1364 XX2(19X..OTBW+G..)19X4.5X..7IY..5X..2(..19X..OTBW+G)..22XI3.GY..I3.Y54.
+1366 XX2(18X3.OTBW+G..)19X4.6X..7I..5X..2(..18X3.OTBW+G)..21XII..IGA.I59.
+1368 21X..OTBW+G..13XII4X..OTBW+G..4XII13X..I..5X..6I..5X..I..13XII4X..OTBW+G..4XII13X..OTBW+G..21XII3.GW..I58.
+1370 21X..6I..13XII4X..6I..4XII13X..I..6X..5I..5X..I..13XII4X..6I..4XII13X..6I..22XI4.A.I5.A53.
+1372 21X2(.3I.)10X8IX2(..II)..X8I10X..2(II..5X..II)..10X8IX2(..II)..X8I10X2(.3I.)22XI4.Y..I3.Y54.
+1374 21X2(.3I.)10X8IX3(.II).X8I10X..II..6X..3I..5X..II..10X8IX3(.II).X8I10X2(.3I.)22XI4.A.I59.
+1376 20X2(.4I.)7X.5IYII2(4I.)7IY4I.8X..I2(II..5X..)3I..8X.5IYII2(4I.)7IY4I.7X2(.4I.)21XI4.Y..I58.
+1378 20X2(.4I.)7X.2(3IA)3I2(.II.)I2(3IA)II.8X..3I..6X..I..5X..3I..8X.2(3IA)3I2(.II.)I2(3IA)II.7X2(.4I.)21XI4.A.I59.
+1380 20X2(.4I.)7X.9I4(I.I)9I.8X..4I2(..5X..)4I..8X.9I4(I.I)9I.7X2(.4I.)21XI4.Y..I58.
+1382 20X2(.4I.)7X.2(3IA)4I.IXXI.II2(3IA)II.8X..4I..6X3.5X..4I..8X.2(3IA)4I.IXXI.II2(3IA)II.7X2(.4I.)21XI4.A.I59.
+1384 21X2(.3I.)9X.4IYIII.I.I4XI.I.4IY3I.9X..5I2(..5X)..5I..9X.4IYIII.I.I4XI.I.4IY3I.9X2(.3I.)22XI4.Y..I58.
+1386 21X2(.3I.)9X.8I.I.I4XI.I.8I.9X..5I2(..5X)..5I..9X.8I.I.I4XI.I.8I.9X2(.3I.)22XI4.W..I58.
+1388 11X4(X2(9X..6I..))22XI4.W.I59.
+1390 11X4(X2(9X..OTBW+G..))22XI3.GW.I59.
+1392 11X4(X2(9X..OTBW+G..))22XI3.GA..I58.
+1394 I10X4(X2(8X3.OTBW+G..))21X5IGW.I59.
+1396 I10X2(X2(9X..OTBW+G..)3I4X3I..OTBW+G..9X..OTBW+G..)21XII3.GW..I58.
+1398 11X2(X2(9X..6I..)I.I4XI.I..6I..9X..6I..)22XI4.A.I59.
+1400 11X2(10X2(.3I.)9X.6I2(II.)IXX2(I.I)7I.9X2(.3I.))22XI4.Y..I58.
+1402 11X2(10X2(.3I.)9X.4IA3I.3(.II)..4IA3I.9X2(.3I.))22XI4.A.I59.
+1404 12X2(8X2(.4I.)7X.2(3IY)3I2(.II.)I2(3IY)II.7X2(.4I.))21XI4.Y..I58.
+1406 12X2(8X2(.4I.)7X.10I2(II.II)10I.7X2(.4I.))21XI4.A.I59.
+1408 12X2(8X2(.4I.)7X.2(3IY)4(II.)2(3IY)II.7X2(.4I.))21XI4.Y..I58.
+1410 12X2(8X2(.4I.)7X.5IAII3(II..)5IA4I.7X2(.4I.))21XI4.A.I59.
+1412 11X2(10X2(.3I.)10X8IX..6I..X8I10X2(.3I.))22XI4.Y..I58.
+1414 11X2(10X2(.3I.)10X8IX..6I..X8I10X2(.3I.))22XI4.W..I58.
+1416 11X2(10X..6I..13XII4X..6I..4XII13X..6I..)22XI4.W.I59.
+1418 11X2(10X..OTBW+G..13XII4X..OTBW+G..4XII13X..OTBW+G..)22XI3.GW.I59.
+1420 11X2(2(10X..OTBW+G..9X)10X..OTBW+G..)22XI3.GA..I58.
+1422 11X2(2(9X3.OTBW+G..9X)9X3.OTBW+G..)22XI..IGW.I59.
+1424 11X2(10X..OTBW+G..13XII4X..OTBW+G..4XII13X..OTBW+G..)22XI3.GW..I58.
+1426 11X2(10X..6I..13XII4X..6I..4XII13X..6I..)22XI4.A.I59.
+1428 11X2(10X2(.3I.)10X8IX2(..II)..X8I10X2(.3I.))22XI4.Y..I58.
+1430 11X2(10X2(.3I.)10X8IX3(.II).X8I10X2(.3I.))22XI4.A.I59.
+1432 12X2(8X2(.4I.)7X.5IYII2(4I.)7IY4I.7X2(.4I.))21XI4.Y..I58.
+1434 12X2(8X2(.4I.)7X.2(3IA)3I2(.II.)I2(3IA)II.7X2(.4I.))21XI4.A.I59.
+1436 12X2(8X2(.4I.)7X.9I4(I.I)9I.7X2(.4I.))21XI4.Y..I58.
+1438 12X2(8X2(.4I.)7X.2(3IA)4I.IXXI.II2(3IA)II.7X2(.4I.))21XI4.A.I59.
+1440 11X2(10X2(.3I.)9X.4IYIII.I.I4XI.I.4IY3I.9X2(.3I.))22XI4.Y..I58.
+1442 11X2(10X2(.3I.)9X.8I.I.I4XI.I.8I.9X2(.3I.))22XI4.W..I58.
+1444 11X4(X2(9X..6I..))22XI4.W.I59.
+1446 11X4(X2(9X..OTBW+G..))22XI3.GW.I59.
+1448 11X4(X2(9X..OTBW+G..))22XI3.GA..I58.
+1450 I10X4(X2(8X3.OTBW+G..))21X5IGW.I59.
+1452 11X4(X2(9X..OTBW+G..))22XI3.GW..I58.
+1454 11X4(X2(9X..6I..))22XI4.W..I58.
+1456 11X4(X2(9X2(.3I.)))22XI4.W.I59.
+1458 11X4(X2(9X2(.3I.)))22XI4.W.I59.
+1460 12X4(X2(7X2(.4I.)))21XI4.W..I58.
+1462 12X4(X2(7X2(.4I.)))21XI4.W..I58.
+1464 12X4(X2(7X2(.4I.)))21XI4.W.I59.
+1466 12X4(X2(7X2(.4I.)))21XI4.W.I59.
+1468 11X4(X2(9X2(.3I.)))22XI4.W..I58.
+1470 11X4(X2(9X2(.3I.)))22XI4.W..I58.
+1472 10X4(X2(11X2(.II.)))23XI
+1474 10X4(X2(11X2(.II.)))23XI
+1476 10X4(X2(11X2(.II.)))23XI
+1478 6I2(.86I.)5I.II
+1500 16I
+1502 .I3(I.)2(.II)I.
+1504 .I3(I.)2(.II)I.
+1506 I.3(.I)I3(I.)I
+1508 I.3(.I)I3(I.)I
+1510 2(II..I.)I.I.
+1512 2(II..I.)I.I.
+1514 I.3(.I)I3(I.)I
+1516 I.3(.I)I3(I.)I
+1518 2(II..I.)I.I.
+1520 2(II..I.)I.I.
+1522 I.3(.I)I..3I.I
+1524 I.3(.I)I..3I.I
+1526 III.I.2(I..I)I.
+1528 III.I.2(I..I)I.
+1530 I..I.2(I.II)..I
+1532 I..I.2(I.II)..I
+1534 16I
+1564 15(3+3W4*W+)3+3W3*I
+1566 15(4+W5*W+)4+W4*I
+1568 15(3+3W4*W+)3+3W3*I
+1570 15(4+W5*W+)4+W4*I

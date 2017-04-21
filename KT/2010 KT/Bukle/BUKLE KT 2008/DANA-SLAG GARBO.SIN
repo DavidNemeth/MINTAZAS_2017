@@ -1,0 +1,73 @@
+
+1C EGY SZINU SLAG GARBO. MAS-MAS SZV.-VEL KOTI A PASSZET ES A SLAGOT A PLATIROZAS MIATT.
+
+1C   SLAG GARBO: KIS MERET:   0.45KG*1400FT=630FT   E:1300
+1C               NAGY MERET:  0.52KG*1400FT=730FT   E:1450
+1C   SZALVEZETOK:
+1C-----------------------+------------+------------+------------+-------------+
+1C   Y:2/5:SLAG  BUKLE A HOLDBA (SLAGOT EZZEL KOTI ES A BAL OLDAL A SZINE)
+1C   Y:3/4:2/1   BUKLE A LYUKBA (2/1-ES PASSZET EZZEL KOTI)
+1C-----------------------+------------+------------+------------+-------------+
+  10 C 2/1 LEVALASZTAS ELSO TUAGYON:
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP2=10.6  C:BEKEZDES
+  22 NP3=12.4  C:2/1  11.8
+  23 NP1=13.7  C SLAG  13.6-13.8
+  40 START
+  50 YG:6/23456;
+  51 WM=18;WMI=4
+C******KIS MERET:TEST:4-BE  UJJA:5-BE************************VASALAS (SZ*H):***********KESZ MERET:*******
+  52 C IF #100=52   RS17=0                    C 4 E-H             55*65CM.              50*62CM.
+  54 C IF #100=42   RS17=1                    C 5 U               40*60
+  56 C IF #100=34   RS17=2                    C 3 GARBO NYAK
+C******NAGY MERET:U-E-H-U*******************************************************************
+  58 C IF #100=9  RS17=3                    C 3 U-E-H-U          105*70CM.              55*67CM.
+  62 C IF #100=16 RS17=2                    C 3 GARBO NYAK
+C*************2BUKLE+1HB**********************************************************************************
+  64 IF RS17=0   RS19=1 RS1=7  RS2=68        C 4 E-H
+  66 IF RS17=1   RS19=2 RS1=7  RS2=62        C 5 U
+
+  68 IF RS17=3   RS19=0 RS1=7  RS2=73        C 3 U-E-H-U
+
+  72 IF RS17=2   RS19=0 RS1=25 RS2=0         C 2/1
+C******************************************************************
+
+  80 <<	S:D.I-DI./DI.-D.I;		         Y:2/5;	 ML     NP4-4   V0	VU      S1 S2
+  82 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+  84 <<	S:DI..-D..I/0-DII./UVND..I;		Y:3/0; 	ML             VL1        S1 S2 T2
+  86 >> S:DII.-0/DII.-D.II;          Y:5/6;  ML                        S1 S2
+  88 << S:DII.-0/D..I-R;             Y:6/0;  ML                        S1 S2            
+  90 >>	S:DII.-D.II;                 Y:3;	   ML     NP2-2                 S2
+  92 << S:0-D.II/DII.-0;             Y:4/3;  ML     NP3-3              S1 S2
+  94 RBEG*RS1
+  96 >> S:DII.-D.II;                                        V0         S1 S2
+  98 <<                                                                S1 S2
+ 100 REND
+ 102 >> S:DII.-D.II/DII.-D.II/UVSD.II;                                 S1 S2 T2
+ 104 IF RS2=0 END
+
+C************581TU***********************************************************************************
+ 150 JA1=1002;
+ 152 PA:1:<JA1>;FA=1-2;
+ 154 PM:1:<FA>;                           C*NINCS JELOLES - IGY BARMI KOTHETO
+ 156 IF RS19=1   PM:1:<FA> 291:*;         C* 4LAP CSAK KOZEPEN VAN MEGJELOLVE A VSALAS MIATT
+ 158 IF RS19=2   PM:1:<FA> 349:*;         C* 5LAP 3:2 ARANYBAN VAN MEGJELOLVE A VSALAS MIATT (EL KELL VAGNI)
+C***************************************************************************************************
+
+ 202 << S:R-0/R-0/UVSR;        Y:2/5;     NP1-2           S1 S2 T2
+ 204 >> S:R-0/R-0/UVSR;        Y:5/2;                     S1 S2 T2
+ 206 WM=12
+ 208 RBEG*RS2
+ 212 << S:R-*;                 Y:2/5;                     S1 S2
+ 214 >>                                                   S1 S2
+ 216 REND
+ 218 WM=18
+ 220 << S:U^ND.I/DI.-D.I/DI.-D.I.;       NP3-3 Y:4/3; T1 S1 S2
+ 222 C >>                                                T1 S1 S2 T2
+ 226 C <<                                                T1 S1 S2 T2
+ 228 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVND.I;                 T1 S1 S2 T2
+ 230 END
+
+
+
+1002 I

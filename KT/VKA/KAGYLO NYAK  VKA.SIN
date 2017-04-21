@@ -1,0 +1,52 @@
+ 800 C---KAGYLO NYAK---1/1-ES GUMIS SZEGELLYEL---
+ 801 C EZ A JO!! KAGYLO:1 SZALVEZETOVEL (IGY NEM HAGYJA EL)---
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:BEKEZDES
+ 808 NP5=12.5   C:LEVALASZTAS
+ 810 NP3=10.5   C:1/1
+ 811 NP6=12.5   C:1/1 A VARROSZEGELYNEL
+ 812 NP4=14.0   C:SLAG
+ 814 YG:6/256;
+ 816 WM=16
+ 818 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP5-5  VU V0	      S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	                  S1 S2 T2      CVKC>3
+ 822 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP1-1           T1 S1            CVKC 
+ 824 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+ 826 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+ 830 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 832 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 834 << S:0-D.I/DI.-D.I;                    Y:2/5;   NP3-3  VU          S1 S2
+ 836 JA1=1998    C 1999 *****YAY 
+ 838 FA=1-8
+ 840 PA:JA1;
+ 842 PM:<.> 9:<FA> 575:<.>;
+ 844 >> S:DI.-D.I/DI.-D.I;                             VU     S1 S2     C 1/1
+ 846 << S:DI.-D.I/DI.-D.I/UVS.;                               S1 S2 T2  C 1/1
+ 848 >> S:U^SN./.(4)-N.(4)/.-N.(15.0)/UVSN.;               T1 S1 S2 T2  C SLAG H
+ 850 << S:*.(4)-A(15.0)/*.-0;                          VU     S1 S2     C KAGYLO
+ 852 WM=28
+
+ 854 >> S:.*-0;                 Y:5;    VU   S2     C KAGYLO
+ 855 <<                                 VU   S2     C KAGYLO
+ 856 >>                                 VU   S2
+ 857 <<                                 VU   S2
+
+ 858 FA=5-6      C          *Y
+ 860 >> S:U^S*;                                            T1
+ 862 << S:U^SY;                                            T1
+ 864 WM=20
+ 866 >> S:.-N.(4)/.-N./UVSY;             Y:2/5;               S1 S2 T2  C SLAG H
+ 868 << S:.Y-*;                                 NP3-3  VU     S1 S2     C 1/1
+ 870 >>                                                VU     S1 S2     C 1/1
+ 872 << S:U^SY/.-N./.-N./UVSN.;                 NP4-4      T1 S1 S2 T2  C SLAG H
+ 874 >> S:R-0;                                         VU     S1 S2     C SLAG E
+ 876 << S:U^SN./.-N./.-N./UVSD.I;                          T1 S1 S2 T2  C VARRO SZEGELY
+ 878 >> S:U^SDI./D.I-DI./D.I-DI.;              NP6-6       T1 S1 S2     C 
+ 880 << S:D.I-DI. ;                   Y:2;              VU    S1        C
+ 882 >> S:D.I-DI. /UVSDI.;                              VU    S1     T2  C
+ 884 END
+ 999 <> W0 S0
+1998 5*YAY
+

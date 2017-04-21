@@ -1,0 +1,155 @@
+ C VKA KIVEVE
+ C 4SZINU CSIKOS CSIPKE:Y:2,3,4,5
+   1 C 70CM-ES KK 8DB GOMBLYUKKAL, VAGY 72CM-ES TUNIKA    1DB.:20'
+   1 C                                              E               H        U 
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C                                            E:RS17=0   H:RS17=1    U:RS17=2
+   1 C-----------------------+---------------+------------+------------+-------------+
+C------------PKT:---------------------------NPK=-0.2--0.3
+C------------LUSI+TX:-----------------------NPK=0--0.1
+C------------3TOROK PAMUT:------------------NPK=0.2-0.4
+C------------LUREXXEL:----------------------NPK=0.6   RS1=-5--10
+
+
+C-------------------------------
+  10 NP1=14.0  C:MINTA (CSIPKE)
+  12 NP4=12.5  C:LEVALASZTAS
+  14 NP3=14.6  C:CSIPKE PASSZE
+  16 NP6=13.8  C:KREPP
+  18 NP2=9.8   C BEKEZDES
+  20 NP5=13.8  C:KORSLAG
+C-------------------------------------------
+  40 START        
+  41 YG:6/23456;
+  42 WM=18; WMI=7
+  43 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  44 VJA^1
+
+C********************************************************************************
+  47 C IF #100=28   RS17=0          C  E-H CSIPKE 28'
+  48 C IF #100=2    RS17=1          C  H   KREPP
+  49 C IF #100=12   RS17=2          C  HU  CSIPKE
+  50 C IF #100=1    RS17=5          C  HU  KREPP
+  50 C IF #100=12   RS17=3          C  RU  CSIPKE
+  51 C IF #100=6    RS17=4          C    U-E-H-U
+
+C*************2LUSI 1TX:*******************************************************************
+  54 IF RS17=0 RS1=182           C  E         T.:182   PUL.:      LUREX PUL:
+  55 IF RS17=1 RS1=182           C  H  KREPP    
+  56 IF RS17=2 RS1=144           C  HU CSIPKE   
+  57 IF RS17=5 RS1=144           C  HU KREPP  
+  58 IF RS17=3 RS1=              C  RU     
+  59 IF RS17=4 RS1=174           C   U-E-H-U
+
+C********************************************************************************
+
+  75 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  76 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  77 >> S:R-R;		                      Y:6;	       NP4-2   VU	    ML          S1
+  78 << S:R-0/0-R;                    Y:6/0;      NP4-4 	 VU     ML       S1 S2
+  79 >> S:R-R;                        Y:5;        NP2-2   VU     ML       S1
+  80 CY:2/2/5/5;
+  81 REP*1
+  82 << S:R-0;		                             ML   NP5-5   VU      S1
+  83 >> S:0-R;		                             ML           VU       S1
+  84 REPEND
+  85 << S:R-0;		                      Y:2;   ML   NP3-3   VU      S1
+  86 JA1=1006
+  88 PA:<JA1>;
+C********************************************************************************
+ 102           FA=4-190; PM:<.>9:3(IFA)I;                       C  E-H
+ 106 IF RS17>1 FA=3-142; PM:<.>9:4(IFA)I;                       C  U
+ 107 IF RS17=4 FA=6-155;FB=8-137; PM:<.>7:IIFBIIFAIIFAIIFBI;    C  U-E-H-U
+C********************************************************************************
+ 110 >> S:0-R/UVN.;		                             ML              S1 T2
+ 112 REP*4 
+ 114 << S:U^NN./.-N./UVNI;             NP3-3                  T1 S2    T2
+ 116 WM=0
+ 118 >> S:UVNY;                                   VL1    T2
+ 120 << S:UVNA;                                   VR1    T2
+ 122 WM=18
+ 124 >> S:R-0;                                VU V0          S1                       C(LEPTETES KIVEVE)
+ 126 REPEND
+ 127 JA1=1004(1002-1004);
+ 128 IF RS17=1 JA1=1218(1204-1218);
+ 129 IF RS17=5 JA1=1218(1204-1218);
+ 130 VJA^0
+ 132 IF RS17=2 GOTO 160
+ 133 IF RS17=5 GOTO 160
+C 2:FUST
+C 3:FEKETE
+C 4:FUZFA
+C 5:NYERS
+
+ 150 Y:3;GOSUB 200-208*4;
+ 152 Y:4;GOSUB 200-208*2;
+ 154 Y:5;GOSUB 200-208*8;
+ 156 Y:2;GOSUB 200-208*1;
+ 158 Y:3;GOSUB 200-208*2;
+
+ 160 Y:5;GOSUB 200-208*2;
+ 162 Y:2;GOSUB 200-208*6;
+ 164 Y:5;GOSUB 200-208*2;
+ 166 Y:4;GOSUB 200-208*9;
+ 168 Y:2;GOSUB 200-208*1;
+ 170 Y:3;GOSUB 200-208*4;
+
+ 172 Y:5;GOSUB 200-208*2;
+ 174 Y:4;GOSUB 200-208*3;
+ 176 Y:2;GOSUB 200-208*5;
+ 178 Y:5;GOSUB 200-208*6;
+ 180 Y:2;GOSUB 200-208*3;
+ 182 Y:3;GOSUB 200-208*5;
+
+ 184 Y:5;GOSUB 200-208*2;
+ 186 Y:4;GOSUB 200-208*6;
+ 188 Y:5;GOSUB 200-208*3;
+ 190 Y:3;GOSUB 200-208*2;
+ 192 Y:2;GOSUB 200-208*9;
+ 194 GOTO 150
+
+ 196 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 198 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;                              T1 S1 S2 T2
+ 199 END
+
+ 200 IF RS17=0 GOSUB 300-308
+ 202 IF RS17=4 GOSUB 300-308
+ 204 IF RS17=3 GOSUB 300-308
+ 206 IF RS17=1 GOSUB 350-358
+ 207 IF RS17=5 GOSUB 350-358
+ 208 IF RS17=2 GOSUB 300-308
+ 
+C********CSIPKE**********************
+ 300 WM=18
+ 302 NP1-1
+ 304 << S:U^S<1->N./.-N./UVSNY.;                      V0      T1    S1 T2
+ 306 >> S:U^S<1->N./.-N./UVSNA.;                      VL1     T1    S2 T2
+ 308 IF #126=RS1 GOTO 196
+C**********************************
+C*******KREPP***********************
+ 350 C
+ 352 WM=18
+ 354 NP6-6
+ 356 << S:U^N<1->N./.-N./UVNN.;                    V0    T1 S1  T2
+ 357 >> S:U^N<1->N./.-N./UVNN.;                          T1 S2  T2
+ 358 IF #126=RS1 GOTO 196
+C**********************************
+
+
+
+
+1002 AAAAAAAAIIIIIIII
+1004 IIIIIIIIIYYYYYYY
+1006 IAAAAAAAIYYYYYYY
+
+
+1202 WWWWWWWWWWWW
+1204 I...II.II...
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II..I.I.I..I
+1212 ..II.I.I.II.
+1214 I..III.III..
+1216 .II...I...II
+1218 .III..I..III
+1220 WWWWWWWWWWWW

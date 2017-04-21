@@ -1,0 +1,207 @@
+
+  1 C  UA MINT A BABOS-GALINA KARDIGAN TX-XEL, CSAK PIKO PASSZEVAL
+
+   1C BABOS-GALINA KARDIGAN TX-XEL SZOROSABB- MINT A BOLERO
+1C 2PAMUT+1TX
+   1 C JAC: R2014/BABOS-GALINA
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C60*90 NK       0.64*900=580    200        40        60      880     1500     620                  41%
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C60*75 KK       0.52*900=470    200        30        60      760     1200     440                  36%
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C60*80 M        0.45*900=405    200        -         60      665     900      235   ML:36'          26%
+C             2014.JUNI 14.:TELEFONON MEGBESZELTUK,HOGY LEGKOZELEBB 1000FT    325
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----
+  10 NP4=12.6;              C LEVALASZTAS
+   
+  11 NP12=14.6   C:1SOR SLAG  
+  12 NP13=14.0   C:SLAG PASSZE           
+  14 NP14=9.8    C BEKEZDES               
+  15 NP15=10.4   C BEKEZDES A ZSAKHOZ
+
+  19 NP1=13.8     C MINTA   <-  13.7-13.9  SZOROSABB, HOGY NE TEPJE KI AZ ELOZO SORT,Y5:ATORSOZNI!
+  20 NP6=14.0     C MINTA   ->  14.2-14.3 
+  21 NP3=11.0     C FELVESZ ->  10.5-11.0  10.6-NAL NAGYOBB MAR ELHAGYJA A SZALAT, 10.5-NEL KISEBB VISZONT KISZAKITJA
+  22 NP7=10.8     C FELVESZ <-  10.2-10.8   
+  23 NP5=10.8     C VAKSZEM LEDOBAS
+  
+  24 NP2=10.6               C:1/1
+C     KT:NPK=-0.2   WM%=0    
+C    PKT:NPK=-0.1   WM%=0  
+C     UJ:NPK=0      WM%=0  
+C FEKETE:NPK=-0.2 
+C T NYERS-FEHER PAMUT:NPK=-0.2
+  40  START
+  42  YG:6/256;
+  44 WM=16 WMI=7
+  50  <<	S:0-R/D.I-DI.;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+  50  <<	S:D.I-DI./0-R;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+  50  <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  C***** 60*90CM NAGYKABAT: ******************************12:************************************
+  56 C IF #100=18  RS17=50        C SLAG ZSAKOS PIKO PANT  18 (1.5 KELL!)  
+  58 C IF #100=21 RS17=0         C TTT  90CM               8                 GY:43'
+  60 C IF #100=27 RS17=4         C 3/4 UUUU                6                   
+
+  C***** 60*75CM KISKABAT: ******************************************************************
+  62 C IF #100=26  RS17=50        C SLAG ZSAKOS PIKO PANT  12
+  64 C IF #100=9   RS17=1         C TTT 75CM                8                 GY:35'  ML:40'
+  66 C IF #100=4  RS17=4         C 3/4 UUUU                6
+  67 C IF #100=2  RS17=1         C TTT 75CM                8
+  C***** 60*80CM MELLENY: ******************************************************************
+  68  IF #100=11  RS17=50        C SLAG ZSAKOS PIKO PANT  20 1M-RE KELL NYUJTANI
+  69  IF #100=1   RS17=2         C TTT 80CM                8                 GY:35'  ML:40'
+
+   70 C
+  C*************************************************************************KESZEN:****MIN:**********KG:***SUM:KB.0.65KG*
+  92 IF RS17=4  RS19=4    RS2=27  C 3/4UUUU   L:26 NPK=0 T:27 NPK=-0.2  45CM     ML:28'        0.33       
+  93 IF RS17=5  RS19=4    RS2=    C H UUUU    L:   T:                   60CM   
+  96 IF RS17=0  RS19=3    RS2=56  C NK TTT       L:57 NPK=0 T:59 NPK=-0.2  90CM     ML:57'        0.54
+  97 IF RS17=1  RS19=3    RS2=46  C KK TTT       L:45 NPK=0 T:47 NPK=-0.2  73CM     ML:             
+  98 IF RS17=2  RS19=3    RS2=50  C ME TTT       L:49 NPK=0 T:50 NPK=-0.2  73CM     ML:             
+1C----------------------------------------------------------------------------------------------------
+1C                            T. FEHER      T. FEHER        LAJT.30KG.FEKETE           30KG.L.NYERS      
+1C                              +FUST TX     +T.FEHER         +T.TX FEK                +T.TX NYERS 
+1C  PARAFINOZVA:               Y:5 XO        Y:5 XO             Y:5 2XO                    2XO   
+1C-----------------------------------------------------------------------------------------------------
+1C KT :WM%=0      NPK=                        -0.4-0.5          -0.4-0.5                   -0.6 (PANT -0.2)
+1C                 T-U:                                       NP3-7:LAZITANI KELL!!      55-41-45-25
+1C-----------------------------------------------------------------------------------------------------
+1C PKT :WM%=-10   NPK=                        -0.3               -0.4
+1C             NK-KK-ME-3/4U:               54-44-48-26       56-46-50-26
+1C-----------------------------------------------------------------------------------------------------
+1C UJ:WM%=0       NPK=          -0.3          -0.2                                          -0.2
+1C          NK-KK-ME-3/4U:   56-46-50-27    54-44-48-26                                  
+1C-----------------------------------------------------------------------------------------------------
+
+ 100 WM=16;WMI=7
+ 102 C********KORSLAG PIKO PASSZE***************************
+ 104 JA1=1990;  C 1990 *+*+*AA
+ 106 PA:<JA1>; 
+ 108 FA=1-7; C FA=1-7; VAGY FA=1-6;
+ 110 PM:12.<FA>571:<.>; C TELI TUAGYRA (581TU)
+ 112 >> S:D.I-DI./DI.-D.I;                                  VU        S1 S2
+ 114 << S:U^ND.I/DI.-D.I;             Y:5;	               	        T1 S1
+ 116 >> S:U^NDI./R-R;		               Y:6;	                        T1     S2
+ 118 << S:0-R/R-0;                    Y:6/0;                VU	        S1 S2
+ 120 >> S:R-R;                        Y:5;    NP14-14       VU         S1
+ 122 << S:0-NA/NA-0;                  Y:2/5;  NP13-13       VU         S1 S2
+ 124 WM=18 C22
+ 126 REP*2 C***PIKO***
+ 128 >> S:0-NA/NA-0;                  Y:5/2;                VU         S1 S2
+ 130 << S:0-NA/NA-0;                  Y:2/5;                VU         S1 S2
+ 132 REPEND
+ 134 >> S:0-R/R-0/UVN+*;              Y:5/2;                           S1 S2 T2
+ 136 << S:0-N+/R-0;                   Y:2/5;  NP-15         VU         S1 S2
+ 138 >> S:R-0/0-N*;                                         VU         S1 S2
+ 140 << S:R-0/0-R;                            NP13-13       VU         S1 S2
+ 142 VJA^1
+ 144 WM=18 C20
+ 146 >> S:0-R/R-0;                                          VU         S1 S2
+ 148 REP*3
+ 150 << S:R-0/0-R;                                          VU         S1 S2
+ 152 >> S:0-R/R-0;                                          VU         S1 S2
+ 154 REPEND
+ 156 IF RS17=50 GOTO 600 C PANT VEGE
+
+C--------------1SOR FONAKOT VAGY SZINT KOT A PASSZE VEGEN:--------------
+ 157 IF #100<15 GOTO 170
+ 158 << S:R-0/0-R;                                          VU         S1 S2
+ 160 >> S:0-R/R-0/UVSR;               NP12-12                          S1 S2 T2
+ 162 << S:R-0;               Y:2;                           VU         S1
+ 164 >> S:U^SR/0-R;                   NP1-1                      T1    S2
+ 166 GOTO 180
+C-------------------------------------------------------------------------
+ 170 << S:R-0/0-R;                                          VU         S1 S2
+ 172 >> S:0-R/R-0;                                          VU         S1 S2
+ 174 << S:U^SR/0-R;               Y:2; NP12-12                      T1 S1
+ 176 >> S:0-R;                         NP1-1                VU            S2
+C---------------------------------------------------------------------------
+
+
+ 180 C************581TU****************************************************************
+ 182 JA1=1264(1234-1264); C PROBA 1.
+ 184 PA:2:<JA1>:;
+ 186 IF RS19=1  FA=1-11;             PM:O7.<FA> 573:8.;         C  JELOLES NELKUL
+
+ 188 IF RS19=3  FA=1-180;            PM:O<.> 8:2(FA 13.)FA;     C  3X
+ 188 IF RS19=3  FA=5-176;            PM:O<.>12:2(FA 22.)FA;     C  3X
+ 188 IF RS19=3  FA=5-176;            PM:O<.>12:2(FA 10.TA10.)FA;     C  3X
+
+ 190 IF RS19=4  FA=1-136;            PM:O<.>7:3(FA  8.)FA;      C  4X
+ 190 IF RS19=4  FA=5-132;            PM:O<.>10:3(FA 17.)FA;      C  4X
+ 190 IF RS19=4  FA=5-132;            PM:O<.>10:3(FA 7.TA8.)FA;      C  4X 
+
+ 192 IF RS19=5  FA=1-103;            PM:O<.>8:4(FA 13.)FA;      C  5X
+ 194 IF RS19=8  FA=1-59;             PM:O<.>6:7(FA 14.)FA;      C  8X
+
+   C********************************************************************************
+
+ 210 VJA^1
+ 212 WM=13
+ 213 Y:0/5/0/5/0/2/0/2; C  Y:5:PARAFINOZNI!
+
+C  22 NP3=10.5     C FELVESZ ->  10.5-11.0  10.6-NAL NAGYOBB MAR ELHAGYJA A SZALAT, 10.5-NEL KISEBB VISZONT KISZAKITJA
+C  23 NP7=10.2     C FELVESZ <-  10.2-10.8   
+C  20 NP1=13.5     C MINTA   <-  13.5       SZOROSABB, HOGY NE TEPJE KI AZ ELOZO SORT,Y2:ATORSOZNI!
+C  21 NP6=14.0     C MINTA   ->  14.0 
+ 214 RBEG*RS2 C***************************************************************************************
+ 216 REP*4
+ 218 PKV:1:<JA1>;      
+ 220 WM=15
+ 222 << S:U^SAIHGT/+*IG(5)-0/<1->B+(7)-O.YT%Z(1)/UVSY;              V0         T1 S1 S2 T2
+ 224 PKV:2:<JA1>;     
+ 226 WM=15
+ 228 >> S:U^SYIT/+*I(5)-0/<1->B+H(3)-.AGHT%Z(6)/UVSAH;             VL1        T1 S1 S2 T2
+ 230 REPEND
+ 232 REND C********************************************************************************************
+
+ 236 PKV:1:<JA1>;
+ 237 WM=15
+ 238 << S:U^SAIHGT/+*IG(5)-0/<1->B+(3)-O.YTZ(1)/UVSY;              V0         T1 S1 S2 T2
+ 240 PKV:2:<JA1>;
+ 241 WM=15
+ 242 >> S:U^SYIT/+*I(5)-0/<1->B+H(3)-.AGHT(1);                   VL1        T1 S1 S2
+ 244 WM=15
+ 246 C
+ 247 C
+ 248 << S:0-R/0-R/UVSD.I;                             Y:5/2;        V0         S1 S2 T2
+ 249 REP*1
+ 250 >> S:D.I-DI.;		              			       VU  NP4-4     S1 S2
+ 252 <<                                     VU            S1 S2
+ 254 REPEND
+ 256 >> S:D.I-DI./D.I-DI./UVSDI.;	              NP4-4     S1 S2 T2
+ 258 END
+
+C PANT VEGE:
+ 600 REP*2
+ 602 << S:R-0/0-R;                                          VU         S1 S2
+ 604 >> S:0-R/R-0;                                          VU         S1 S2
+ 606 REPEND
+ 608 END
+
+ 999 <> W0 VU S0
+
+1990 *+*+*AA
+
+1232 WWWWWWWWWWW
+1234 Y.Y.IBIBI..
+1236 A.A.HIBIBG.
+1238 Y.Y..*+*Y..
+1240 A.A..A**...
+1242 Y.Y...*Y...
+1244 A.A...A....
+1246 Y.Y........
+1248 A.A........
+1250 Y.Y.IBIBI..
+1252 A.A.HIBIBG.
+1254 Y.Y..*+*Y..
+1256 A.A..A**...
+1258 Y.Y...*Y...
+1260 A.A...A....
+1262 Y.Y........
+1264 A.A........
+1266 WWWWWWWWWWW
+

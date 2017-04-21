@@ -1,0 +1,163 @@
+   1 C ****NYUSZIFUL KREPP H-U************472-554 TU******KET FELE PASSZEVAL(KESKENY-SZELES):RS15=0/1
+   2 C CNCA2007: CP NY RS10= RS17=
+   3 C NYERS LUSI+TX:      
+   4 C         14.25  14.5                                      15.0                  15.0
+   5 C J2:<---+-----  ---->  CS.PASSZE                   1LUREX:-----          2LUREX:-----
+   6 C         14.5   14.75                                     15.5                  15.5
+   7 C J3:13.5 2SZV. PASSZE             13.5-14.0             
+   8 C B3:13.5-14.0 BAL-BAL          LUSI+TX:----------          14.0/14.0            14.5/14.75
+  19 C B2:11.7 BEKEZDES                   13.75
+  20 C J4:12.5 LEVALASZTAS,1/1               
+  21 C  6 SULY LUREX:+2 SULY                                    
+  25 C TUAGYKORREKCIOK: V0:->2.4 (2008.03.28.)
+  26 C                  R1:->2.2_________R2: - ________R3:-
+  27 C                  L1:<-1.0_________L2: - ________L3:-
+  28 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  60 C***********NYUSZIFUL KREPP H-U***554 TU (TELI TUAGY)*******************************
+  61  IF RS10=2  RS17=0    C*** TUN H   3LAP
+  62  IF RS10=1  RS17=1    C*** HU      4LAP  554TU/505TU/472TU BEALLITAS:77,91,92 SOROK
+  63 C IF RS10=6  RS17=2    C*** RU      4LAP
+  64 C IF RS10=6  RS17=3    C*** RU      4LAP 2 SZV.PASSZEVAL 472-505 TU
+  65 C IF RS10=6  RS17=6    C*** U-H-H-U **554TU CSIPKE PASSZEJU TOP
+  66 C*******************
+  67 C IF RS10=10 RS17=7    C*** TUN H   3LAP KISEBB PASSZEVAL
+  68 C IF RS10=8  RS17=8    C*** HU      4LAP
+  70 C***************************************************************************2LUSI+1TX:*****LUREXXEL:+0.4:
+  71 IF RS17=0  RS1=152         RS19=0 RS15=0 C TUN.H     72CM.                        149-166             160
+  72 IF RS17=1  RS1=130         RS19=1 RS15=0 C HU TELI   59CM. RS19=1/2 554/505/472TU 124-137             132
+  73 IF RS17=2  RS1=60          RS19=1 RS15=0 C RU TELI                                 60
+  74 IF RS17=3  RS1=55   RS2=5  RS19=2 RS15=0 C RU TELI 2 SZV.PASSZEVAL  472 TU         55
+  75 IF RS17=6  RS1=156         RS19=3 RS15=0 C*** U-H-H-U **554TU CSIPKE PASSZEJU TOP 158
+  76 IF RS17=7  RS1=167         RS19=0 RS15=1 C TUN.H     72CM.                        168            162
+  77 IF RS17=8  RS1=138         RS19=2 RS15=1 C HU TELI   59CM. RS19=1/2 554/505/472TU 137            133
+  80 C********************************************************************************
+  82 JA1=1024(1004-1006);IF RS15=1 JA1=1120(1104-1106);  C CSIPKE PASSZE
+  84 JA2=1062(1034-1062)   C KREPP
+  86 PA:<JA1>;
+  88 IF RS19=0 FA=7-185;PM:<.>7:3(FA..);                       C*3LAP************TELI TUAGY 554TU
+  90 IF RS19=1 FA=30-162;PM:<.>9:4(FA..);                      C*4LAP************TELI TUAGY 554TU
+  91 IF RS19=2 FA=34-146;PM:<.>8:4(FA..);                      C*4LAP****472 TU*VAGY*******
+  92 IF RS19=2 FA=30-150;PM:<.>8:4(FA..);                      C*4LAP****505 TU*VAGY*******
+  93 IF RS19=3 FC=15-165;FB=33-147; PM:<.>7:..FBIIFCIIFCIIFB.; C*U-H-H-U*********TELI TUAGY 554TU
+  94 C********************************************************************************
+  96 C IF   GOTO 450 C  2SZV. PASSZES PULOVER MEG NEM JO!!!!!
+  98 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2          ML       S1
+ 109 Y:2/2/5/5;
+ 110 REP*1
+ 111 << S:R-0;		                                NP2-02           S2
+ 112 >> S:0-R;		                                NP0-             S1
+ 113 REPEND
+ 114 C-----FONAKKAL KEZD:-----
+ 115 << S:R-0/UVNNI;                            NP-0             S2 T2
+ 116 >> S:U^NI/NI-I;                                          T1 S1
+ 117 C-----SZINNEL KEZD:------
+ 118 C<< S:R-0;                                  NP-0             S2
+ 119 C>> S:0-R/UVN.;                             NP0-             S1 T2
+ 120 C<< S:U^NN./.-N./UVNAY;                                   T1 S2    T2
+ 121 C>> S:NI-I;                          V#                     S1
+ 122 C------------------------
+ 125 #1=5; IF RS15=1 #1=4;
+ 126 REP*#1
+ 128 << S:U^NY;                                   VR1 NP0-0     T1
+ 130 >> S:U^NAW;                                  VL1 NP0-0     T1
+ 132 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S2 T2 
+ 134 >> S:U^NI/.-I/UVN<1->NI;                                   T1 S1 T2
+ 136 REPEND
+ 138 << S:.-I;                                    V#           S2
+ 140 >> S:U^N<1+>I/.-I/UVNI;           NP3-3                T1 S1 T2
+ 142 C---------------------------------------------------------------------------------
+ 400 C**********HATA-UJJA (KREPP)********
+ 402 PA:<JA2>;
+ 404 Y:2/2/5/5;
+ 406 RBEG*RS1
+ 408 << S:U^N<2->N./.-N./UVNR;                   V0     T1 S2     T2
+ 410 >>                                                 T1 S1     T2
+ 412 REND C******
+ 414 << S:U^ND.I/DI.-D.I;                           NP4-4       T1 S2
+ 416 >> S:DI.-D.I/UVND.I;                                           S1     T2
+ 418 RS10=RS10-1
+ 420 IF RS10>0 GOTO 52
+ 422 END
+ 424 C---------------------------------------------------------------------------------
+ 450 C************2SZV.CS. PASSZE 1SZV.-VEL KOTVE ***********MEG NEM JO!!!!!!!*******
+ 451 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 452 <<	S:U^ND.I/DI.-D.I;		              			                        T1   S2
+ 453 >> S:DI.-D.I;                   Y:2;                   VR1        S1
+ 454 << S:DI.-0/UVND.I;                             NP-0                  S2    T2
+ 455 >> S:DI.-D.I;                   Y:6;                   V0 V#         S2
+ 456 << S:DI.-0/0-R;                 Y:6/0;                    V#      S1 S2
+ 457 >>	S:DI.-D.I;		                 Y:5;	                  V0 V#      S1
+ 458 << S:DI.-0;                     Y:6;                      V#      S1
+ 459 >> S:0-D.I/DI.-0;               Y:2/6;                    V#      S1 S2
+ 460 Y:5/5/2/2;
+ 462 << S:DI.-D.I;                                             V#         S2
+ 464 JA1=1000
+ 466 >> S:DI.-D.I;                                                     S1
+ 468 << S:DI.-D.I/UVN.;                                                   S2  T2
+ 470 >> S:U^NN./.-N.;                                NP2-2          T1 S1
+ 472 VJA^0
+ 473                               NP3-3
+ 474 C$$$$$$$$$$$$$$$$ 2SZV. PASSZE 1SZV.-VEL KOTVE $$$$$$$$$$$$$$$$$$$$
+ 476 RBEG*RS2
+ 478 << S:U^NN./.-N.;                     V0         T1 S2
+ 480 >> S:.-N./UVNNA.;                                    S1    T2
+ 482 << S:U^NN./.-N.;                     VL1        T1 S2
+ 484 >> S:.-N./UVNNA.;                                    S1    T2
+ 486 REND
+ 488 << S:U^NN./.-N.;                     V0         T1 S2
+ 490 >> S:.-N./UVNN.;                                     S1    T2
+ 492 C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 494 << S:0-0;         NP0-0       Y:0;   S1
+ 496 >> S:0-0;         NP03-03     Y:0;   S1
+ 498 GOTO 400 C H-U
+1000 .IAI...IAI..
+1002 WWWWWWWWWWWW
+1004 ............
+1006 IIIIIIIIIIII
+1008 YIYIYIAIAIAI
+1010 .IIIIIIIII.I
+1012 YYIYIIIAIAAI
+1014 ..IIIIIII..I
+1016 YYYIYIAIAAAI
+1018 ...IIIII...I
+1020 YYYYIIIAAAAI
+1022 ....III....I
+1024 YYYYYIAAAAAI
+1026 WWWWWWWWWWWW
+1032 WWWWWWWWWWWW
+1034 II.II...I...
+1036 I.I.I..III..
+1038 .I.I.II...II
+1040 .III..I.I.I.
+1042 I...II.I.I.I
+1044 ..I..III.III
+1046 II.II...I...
+1048 II.III..I..I
+1050 ..I...II.II.
+1052 II.II.I...I.
+1054 ..I..I.III.I
+1056 I...I.II.II.
+1058 .III.I..I..I
+1060 II.III..I..I
+1062 ..I...II.II.
+1064 WWWWWWWWWWWW
+1102 WWWWWWWWWWWW
+1104 ..........
+1106 IIIIIIIIII
+1108 IYIYIIIAIA
+1110 I.IIIIIII.
+1112 IYYIYIAIAA
+1114 I..IIIII..
+1116 IYYYIIIAAA
+1118 I...III...
+1120 IYYYYIAAAA
+1122 WWWWWWWWWW

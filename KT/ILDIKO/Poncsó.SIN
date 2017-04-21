@@ -1,0 +1,97 @@
+
+1C *******PONCSO******* 2 SZALVEZETOS CSIPKE *****
+1C                            NP1=       RS1=            RS2=(PASSZE)
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C   2X15/1 PAMUT+1BRILL:    12.5        102 (80CM)            1
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C   3X15/1 PAMUT(FEHER):    13.0         
+1C    1 SZAL ATORSOZVA  
+1C-----------------------+------------+----------------+-----------------+-----------+
+1C        PONCSO:      RS2=1
+1C       SZOKNYA:      RS2=3
+1C 1/1-ES V NYAK:SP600 RS2=4
+  10 C
+  12 NP1=12.5   C:MINTA 
+  14 NP4=13.0   C:LEVALASZTAS
+  16 NP2=10.2   C:1/1-ES PASSZE
+  40 START 
+  45 RS2=1
+  50 YG:6/256;
+  52 WM=20
+  54 <<	S:D.I-DI./DI.-D.I;		            Y:5/2;	  NP4-4  VU V0	    S1 S2
+  56 >>	S:D.I-DI./DI.-D.I/UVNDI.;      	Y:5/2;	  	                S1 S2 T2
+  58 <<	S:U^ND.I/DI.-D.I;		             Y:5;		  	              T1 S1
+  60 >>	S:U^NDI./D.I-D.I;		             Y:6;	           VR1    T1	   S2
+  62 <<	S:R-0/0-D.I/R-0;		              Y:0/6/0; NP2-2  VU	    T1 S1 S2
+  64 >>	S:DI.-D.I;		                    Y:5;	           VU V0     S1
+  76 << S:DI.-0/0-D.I;                  Y:2/5;          VU     S1 S2
+  80 RBEG*RS2
+  82 >> S:DI.-D.I;                                      VU     S1 S2
+  84 <<                                                 VU     S1 S2
+  86 REND
+  88 GOSUB 82
+ 100 C ---2LAP 553 TU---------------------
+ 105 JA1=1004(1004-1030)
+ 107 PA:JA1;
+ 112 FA=1-267
+ 115 PM:<.>7:IIFAIIIFAII;
+ 125 <<S:DI.-D.I/DI.(1)-D.I(1)/UVS.;                                 S1 S2 T2
+ 130 WM=24
+ 135 >> S:U^NN./.-N./.-N./UVNNA.;      Y:2/5;                     T1 S1 S2 T2
+ 140 VJA^0
+ 145 RBEG*RS1
+ 150 << S:U^N<1->N./.-N./.-N./UVNNY.;                 VL1  VKB>7  T1 S1 S2 T2
+ 155 >> S:U^N<1->N./.-N./.-N./UVNI;                   V0          T1 S1 S2 T2
+ 160 REND
+ 165 << S:U^N<1->N./.-N./.-N./UVNNY.;                 VL1  VKB    T1 S1 S2 T2
+ 170 >> S:U^N<1->N./.-N./.-N./UVNN.;                  V0          T1 S1 S2 T2
+ 175 << S:U^SD.I/DI.-D.I/DI.-D.I;                       NP4-4     T1 S1 S2
+ 180 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                    S1 S2 T2
+ 185 END
+
+ 600 C 1/1-ES V NYAK *************************
+ 610 NP4=13.0   C:LEVALASZTAS
+ 615 NP2=10.2   C:1/1-ES PASSZE
+ 620 START
+ 622 RS2=4
+ 625 YG:6/256;
+ 630 WM=20
+ 635 <<	S:D.I-DI./DI.-D.I;		            Y:5/2;	  NP4-4  VU V0	    S1 S2
+ 640 >>	S:D.I-DI./DI.-D.I/UVNDI.;      	Y:5/2;	  	                S1 S2 T2
+ 645 <<	S:U^ND.I/DI.-D.I;		             Y:5;		  	              T1 S1
+ 650 >>	S:U^NDI./D.I-D.I;		             Y:6;	           VR1	   T1	   S2
+ 655 <<	S:R-0/0-D.I/R-0;		              Y:0/6/0; NP2-2  VU	    T1 S1 S2
+ 660 >>	S:DI.-D.I;		                    Y:5;	           VU V0     S1
+ 665 << S:DI.-0/0-D.I;                  Y:2/5;          VU        S1 S2
+ 670 >> S:DI.-D.I/DI.-D.I;                              VU        S1 S2
+ 675 RBEG*RS2
+ 680 <<                                                 VU        S1 S2
+ 685 >>                                                 VU        S1 S2
+ 690 REND
+ 692 <<                                                 VU        S1 S2
+ 695 >>S:DI.-D.I/DI.-D.I/UVSD.I;                                  S1 S2 T2
+ 699 END
+
+
+ 990 C FEHER     . FONAK 
+ 991 C FEKETE    I SZIN
+ 992 C SARGA     Y SZIN ->
+ 993 C OKKERS.   A SZIN <-
+ 994 C           B+HTGO FONAS
+
+1002 268I
+1004 9(.3A.I.I3A3I).3A.4I9(A4I.IAIII.I.)A4I.I
+1006 9(4IY.I.IIIYI.)4IYI9(3I3YI.I.3Y.)3I3YI.II
+1008 9(.I3A3I.3A.I).I3AII9(IAIII.I.A4I.)IAIII.I.I
+1010 9(I.3IYI.4IY.)I.3IYII9(3Y.3I3YI.I.)3Y.4I
+1012 9(II.3A.I.I3AI)II.3AI9(A4I.IAIII.I.)A4I.IAI
+1014 9(I.4IY.I.IIIY)I.4IY9(3YI.I.3Y.3I)3YI.I.YI
+1016 9(.I.I3A3I.3A).I.IAA9(AIII.I.A4I.I)AIII.I.AII
+1018 9(Y.I.IIIYI.4I)Y.I.I5I9(3I3YI.I.3Y.)3IYYI
+1020 9(A3I.3A.I.IAA)A5I9(4I.IAIII.I.A)4I.IA3I
+1022 9(IYI.4IY.I.II)IYI.4I9(I.I.3Y.3I3Y)I.I.3YI
+1024 9(AA.I.I3A3I.A)AA.I.I3I9(I.A4I.IA3I.)I.A4I
+1026 9(IIY.I.IIIYI.II)IIY.4I9(3I3YI.I.3Y.)3I3YII
+1028 9(3A3I.3A.I.I)3A6I9(IAIII.I.A4I.)IA3I.I
+1030 9(3IYI.4IY.I.)3IY4I9(I.3Y.3I3YI.)I.3Y.II
+1032 268I

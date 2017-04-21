@@ -1,0 +1,78 @@
+1C KT2004/BUKLE 3X3-BOL
+1C--------------------------+-----------------+------------------+----------------+
+  10 NP1=13.8;         C SLAG       TX+BUKLE:13.8 RS1=60 DONNA+TUN. UJJA  RS1=80 TUNIKA TEST
+  11 NP3=11.0;         C REX
+  12 NP4=12.8;         C LEVALASZTAS
+  14 NP2=11.2;         C 1/1                 11.2
+  15 NP3=11.8;                  C 1/1 A PODROS NYAKHOZ
+  16 NP5=13.4                   C SLAG A PODROS NYAKHOZ
+  40 START
+  45 WM=20; WMI=7
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  61 RS1=75
+C***************************************************************************
+  66C IF #100=14  RS17=0            C TUN E-H
+  68 IF #100=1   RS17=1            C TUN U VAGY DONNA
+  70 IF #100=2   RS17=2            C 1/1 A DONNAHOZ
+  72C IF #100=6   RS17=3            C PODROS NYAK A TUNIKAHOZ
+
+  74 IF RS17=0 RS1=80            C TUN E-H
+  76 IF RS17=1 RS1=60            C TUN U VAGY DONNA
+  78 IF RS17=3 GOTO 816          C PODROS NYAK
+C***************************************************************************
+ 
+  80 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  82 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  84 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  86 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  88 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  90 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  92 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  94 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  96 REP*7 C4
+  98 >> S:DI.-D.I/DI.-D.I;                             VU           S1 S2
+ 100 << S:DI.-D.I/DI.-D.I;                             VU           S1 S2
+ 102 REPEND
+ 103 IF RS17=2 GOTO 900 C 1/1 A DONNAHOZ
+ 404 WM=20
+ 416 PA:<I>;
+ 418 FA=1-178
+ 420 PM:<.>10:3FA;
+C***************************************************************************
+ 424 C ***********SLAG********
+ 426 >> S:DI.-D.I/DI.-D.I/UVND.I;                         S1 S2 T2
+ 428    NP1-1
+ 445 RBEG*RS1
+ 450 << S:R-0;                         VU         S1 S2
+ 455 >>                                VU         S1 S2
+ 460 REND
+ 470 << S:U^SD.I/DI.-D.I/DI.-D.I;                   NP4-4         T1 S1 S2
+ 475 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                    S1 S2 T2
+ 480 END
+C***************************************************************************
+C*********PODROS NYAK******************************************************************
+ 816 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                    S1    T2
+ 818 <<	S:U^ND.I/DI.-D.I;		              			 ML                 T1 S1
+ 820 >> S:DI.-D.I;                   Y:5;    ML         VR1        S1
+ 822 << S:U^NDI.;                            ML                 T1
+ 824 >> S:DI.-D.I;                   Y:6;    ML         V0 VU      S1
+ 826 << S:0-D.I/R-0;                 Y:6/0;  ML            VU      S1 S2            
+ 828 >>	S:DI.-D.I;		                 Y:2;	        NP3-3    VU         S2
+ 830 << S:0-D.I;                     Y:6;    ML                    S1       C GUMIVAL
+ 832 >> S:0-D.I;                             ML                       S2    C GUMIVAL
+ 834 << S:U^NDI./0-R/0-R;            Y:5/2;       NP5-5         T1 S1 S2
+ 836 REP*3
+ 838 >> S:0-R;                                                     S1 S2
+ 840 <<                                                            S1 S2
+ 842 REPEND
+ 844 >> S:0-R/0-R/UVND.I;                                          S1 S2 T2
+ 848 << S:D.I-DI.;                   Y:5;         NP3-3            S1
+ 852 >> S:D.I-DI./UVNDI.;                                          S1    T2
+ 854 END
+
+ 900 C****1/1 VEGE-DONNAHOZ*****************************
+ 902 >> S:DI.-D.I/DI.-D.I;                         S1 S2
+ 904 << S:R-0/0-R;                 NP4-4           S1 S2
+ 906 >> S:0-R/R-0;                                 S1 S2
+ 908 END C**********************************************

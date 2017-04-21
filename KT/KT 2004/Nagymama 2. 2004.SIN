@@ -1,0 +1,281 @@
+   1 C NAGYMAMA 2. 2004 **
+   1 C JAC.:RAJZOK 4.:FARKASFOG
+   1 C H-U:CNCA2004/NAGYMAMA 2004 H-U: CP NAGYIHU RS19=0/1(ZSEB) RS10=(OSSZ.DB.) RS1=
+   1 C PANT+'O'NYAK:SP600 GOMBLYUKAK:  AZ 1. ES A 7. KOZT KB 57-60CM VAN
+   1 C                              A TELJES KK HOSSZ MEGVARVA:70-72 CM.   
+1C                           E             H             U
+1C  3X16/1 LUSI:NPK=0.2     RS1=          RS1=          RS1=
+1C-----------------------+------------+------------+------------+-------------+
+1C      RS18=0  KISKABAT:     137        62            50   PANT:SP600
+1C-----------------------+------------+------------+------------+-------------+
+1C      RS18=0   MELLENY:     155        72                 PANT:SP700
+1C-----------------------+------------+------------+------------+-------------+
+1C      RS18=1    TUNIKA:     137        62            50   NYAK:SP800 VAGY SP700
+1C-----------------------+------------+------------+------------+-------------+
+1C 
+1C-----------------------+------------+------------+------------+-------------+
+  10 C
+  11 NP1=14.0   C:MINTA
+  12 NP14=12.0  C:MINTA(14)
+  13 NP6=13.0   C:ZSEB FELSZOVET
+  14 NP2=9.5    C:BEKEZDES
+  15 NP3=11.2   C:2/1
+  18 NP4=12.5   C:LEVALASZTAS
+  20 NP5=14.5   C:LEVALASZTAS
+  24 NP8=14.2   C:SLAG PASSZE
+
+
+  40 START
+  50 YG:6/256;
+  60 WM=20 WMI=7
+  61 << S:D.I-DI./DI.-D.I;	          Y:2/5;	   NP4-4   VU   V0	     S1 S2
+  70 JA1=1990;  
+  75 PA:<JA1>; 
+  80 FA=1-4; 
+  85 PM:9.<FA>548:<.>;
+  90 >> S:U^SA /NA-A/UVSNA;          Y:5;      NP5-5             T1 S1    T2
+  95 << S:NAI-A/UVSA;                                  VR1          S1    T2
+ 100 >> S:NA-NA;                     Y:6;      NP4-4   V0              S1
+ 105 << S:NA-0/0-R;                  Y:6/0;                         S1 S2
+ 110 >> S:R-R/0-NA;                  Y:2/5;    NP2-2                S1 S2
+ 115 WM=26
+ 120                                           NP8-8
+ 125 C PIKO:
+ 130 REP*2
+ 135 << S:NA-0/0-NA;                                                S1 S2
+ 140 >>                                                             S1 S2
+ 145 REPEND
+ 150 REP*4
+ 155 << S:R-0/0-R;                                                  S1 S2
+ 160 >>                                                             S1 S2
+ 165 REPEND
+ 166 <<								    S1 S2
+ 172 IF#100=6	RS1=137; IF#100=6	RS18=1; C E 
+ 173 IF#100=5	RS1=137; IF#100=5	RS18=0; C E 
+ 174 IF#100=4	RS1=62                 	C H
+ 175 IF#100=3	RS1=72                 	C H
+ 176 IF#100=2	RS1=50	                 C U
+ 178 IF	RS1<100 GOTO 400	     C$$$ H-U $$$$$$$$$$$$$$$$$$$$$$$$$
+ 200 JA1=1036;           C*************KISKABAT************
+ 201 IF RS18=1 JA1=1136; C*************TUNIKA************
+ 205 JA2=1206;
+ 210 PA:<JA2>:<JA1>;
+ 215 FA=5-184;
+ 220 PM:<.>6:3(FA.)6:.. 547:.;
+ 225 >> S:R-0/0-R/UVN.;                                             S1 S2 T2
+ 226 JA2=1206(1200-1206);
+ 238 VJA^0
+ 240 WM=20
+ 242 Y:2/2/5/5;
+ 244 JA1=1036(1004-1034);           C*************KISKABAT************
+ 245 IF RS18=1 JA1=1136(1104-1134); C*************TUNIKA************
+
+ 246 NP1-1
+ 248 RBEG*RS1 C********************
+ 260 << S:U^N<1-2->N./.-N./UVNNY.;                          V0  VKA>1 T1 S1    T2
+ 265 >> S:U^N<1-2->N./.-N./UVNNA.;                          VL1 VKB>5 T1 S1    T2
+ 270 REND C**********
+
+ 335 << S:U^S<2->N./.-N./UVSN.;       V0                         T1 S1    T2
+ 336 >> S:U^S<2->N./.-N./UVSN.;                                  T1 S1    T2
+ 340 END
+
+ 400 C**** H-U *********
+ 415 JA2=1206;
+ 420 PA:<JA2>;
+ 425 FA=5-184
+ 430 PM:<.>7:3(FA.);
+ 432 IF RS1<55 FA=1-135
+ 433 IF RS1<55 PM:<.>6:4(FA.);
+ 435 >> S:R-0/0-R/UVN.;              Y:2/5;                         S1 S2 T2
+ 440 JA2=1206(1200-1206);
+ 445 WM=22
+ 450 RBEG*RS1
+ 455 << S:U^N<2->N./.-N./<2->.-N./UVNN.;         NP1-1     V0    T1 S1 S2 T2
+ 460 >> S:U^N<2->N./.-N./<2->.(14)-N./UVNN.;                     T1 S1 S2 T2
+ 465 REND C**********
+ 470 END
+
+
+ 600 C SLAG-PIKO NAGYMAMA KARDIGANHOZ
+ 600 C****SLAG PIKO-MINI+6DB.GOMBLYUK  28-32-ES GOMBHOZ
+ 600 C 3 LUSI
+ 602 NP1=11.0   C:REX
+ 604 NP2=9.5    C:BEKEZDES
+ 605 NP3=14.8   C:SLAG GOMBLYUK ELOTT
+ 606 NP4=12.5   C:LEVALASZTAS
+ 608 NP5=14.5   C:LEVALASZTAS
+ 609 NP6=8.0    C:GOMBLYUK (CSAK 2 SZEM)
+ 610 NP8=14.2   C:SLAG PASSZE 13.8
+ 612 START
+ 614 YG:6/256;
+ 616 WM=20 WMI=7
+ 618 << S:D.I-DI./DI.-D.I;	          Y:2/5;	   NP4-4   VU   V0	     S1 S2
+ 620 JA1=1990; 
+ 622 PA:<JA1>; 
+ 624 FA=1-4; 
+ 626 PM:9.<FA>544:<.>;
+ 628 >> S:U^SA /NA-A/UVSNA;          Y:5;      NP5-5             T1 S1    T2
+ 630 << S:NAI-A/UVSA;                                  VR1          S1    T2
+ 632 >> S:NA-NA;                     Y:6;      NP4-4   V0              S2
+ 634 << S:NA-0/0-R;                  Y:6/0;                         S1 S2
+ 635 >> S:R-R/NA(7.5)-0;             Y:2/5;    NP2-2                S1 S2
+ 636 WM=25
+ 637                                           NP8-8
+ 638 C PIKO:
+ 639 << S:NA-0/0-NA;                                                S1 S2
+ 640 >>                                                             S1 S2
+ 641 <<                                                             S1 S2
+ 642 >>                                                             S1 S2
+ 643 << S:R-0/0-R;                                                  S1 S2
+ 645 >>                                                             S1 S2
+ 647 <<                                                             S1 S2
+ 648 >>                                        NP3-3                S1 S2
+ 649 PM:9.7(YTI25*)<*>544:<.>; C GOMBLYUKAK  AZ 1. ES A 7. KOZT KB 57-60CM VAN
+ 651 C GOMBLYUKAK:
+ 651 WM=0
+ 652 << S:U^STI/UVSYT;                        VL2                T1       T2
+ 656 >> S:U^SY/UVSI;                          VR1                T1       T2
+ 657 WM=25
+ 658 << S:T(6)-.*IY(8)/.*IY(8)-T(6);          V0                    S1 S2
+ 659 NP8-8
+ 660 >> S:R-0/0-R;                               VR1 V#             S1 S2
+ 661 <<                                              V#             S1 S2
+ 662 REP*3
+ 663 >>                                          V0                 S1 S2
+ 664 <<                                                             S1 S2
+ 665 REPEND
+ 666 >> S:R(1)-R(1)/R(8.5)-R(1);                                    S1 S2
+ 667 END
+
+ 700 C****SLAG PIKO-MINI**********
+ 702 NP1=11.0   C:REX
+ 704 NP2=9.5    C:BEKEZDES
+ 706 NP4=12.5   C:LEVALASZTAS
+ 708 NP5=14.5   C:LEVALASZTAS
+ 710 NP8=14.2   C:SLAG PASSZE 13.8
+ 712 START
+ 714 YG:6/256;
+ 716 WM=20 WMI=7
+ 718 << S:D.I-DI./DI.-D.I;	          Y:2/5;	   NP4-4   VU   V0	     S1 S2
+ 720 JA1=1990; 
+ 722 PA:<JA1>; 
+ 724 FA=1-4; 
+ 726 PM:9.<FA>544:<.>;    C 1990 Y+AIY+AIY+AIY+AI 
+ 728 >> S:U^SA /NA-A/UVSNA;          Y:5;      NP5-5             T1 S1    T2
+ 730 << S:NA+-A/UVSA;                                  VL1 VKA>3    S1    T2
+ 732 >> S:NA-NA;                     Y:6;      NP4-4   V0              S2
+ 734 << S:NA-0/0-R;                  Y:6/0;                         S1 S2
+ 736 >> S:R-R/NA(7.5)-0;             Y:2/5;    NP2-2                S1 S2
+ 738 WM=25
+ 740 Y:2/5/5/2;
+ 742 NP8-8
+ 744 REP*2                 C 1990 Y+AIY+AIY+AIY+AI 
+ 746 << S:NA-0/0-NA;                                                S1 S2
+ 748 >>                                                             S1 S2
+ 750 REPEND
+ 752 << S:0-NA/.AY(1)-.AY(1);                                       S1 S2
+ 754 >> S:.+I-+I/0-R(8);                                            S1 S2
+ 756 WM=20
+ 758 REP*2
+ 760 << S:R-0/0-R;      NP8-8                                       S1 S2
+ 762 >>                                                             S1 S2
+ 764 REPEND
+ 766 <<                                                             S1 S2
+ 768 >> S:R(1)-R(1)/R(8.5)-R(1);                                    S1 S2
+ 770 END
+
+ 800 C---KAGYLO NYAK---1/1-ES GUMIS SZEGELLYEL---
+ 801 C EZ A JO!! KAGYLO:1 SZALVEZETOVEL (IGY NEM HAGYJA EL)---
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:BEKEZDES
+ 808 NP5=12.5   C:LEVALASZTAS
+ 810 NP3=10.5   C:1/1
+ 811 NP6=12.5   C:1/1 A VARROSZEGELYNEL
+ 812 NP4=14.0   C:SLAG
+ 813 NP10=12.0  C:SLAG(14)
+ 814 YG:6/256;
+ 816 WM=16
+ 818 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP5-5  VU V0	      S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	      VKC>3       S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP1-1  VKC      T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+ 826 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+ 830 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 832 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 834 << S:0-D.I/DI.-D.I;                    Y:2/5;   NP3-3  VU          S1 S2
+ 836 JA1=1998    C 1998 *****YAY 
+ 838 FA=1-8
+ 840 PA:JA1;
+ 842 PM:<.> 9:<FA> 543:<.>;
+ 844 >> S:DI.-D.I/DI.-D.I;                             VU     S1 S2     C 1/1
+ 846 << S:DI.-D.I/DI.-D.I/UVS.;                               S1 S2 T2  C 1/1
+ 848 >> S:U^SN./.(4)-N.(4)/.(12.0)-N.(14.8)/UVSN.;         T1 S1 S2 T2  C SLAG H
+ 850 << S:*.(4)-A(15.0)/*.-0;                          VU     S1 S2     C KAGYLO
+ 852 WM=28
+ 854 >> S:.*-0;                 Y:5;    VU   S1     C KAGYLO
+ 855 <<                                 VU   S2     C KAGYLO
+ 856 >>                                 VU   S1
+ 857 <<                                 VU   S2
+ 858 FA=5-6      C          *Y
+ 860 >> S:U^S*;                                            T1
+ 862 << S:U^SY;                                            T1
+ 864 WM=20
+ 866 >> S:.-N.(4)/.(10)-N./UVSY;             Y:2/5;               S1 S2 T2  C SLAG H
+ 868 << S:.Y-*;                                 NP3-3  VU     S1 S2     C 1/1
+ 870 >>                                                VU     S1 S2     C 1/1
+ 872 << S:U^SY/.-N./.-N./UVSN.;                 NP4-4      T1 S1 S2 T2  C SLAG H
+ 874 >> S:R-0/R(10)-0;                                                S1 S2     C SLAG E
+ 876 << S:U^SN./.-N./.-N./UVSD.I;              NP4-4       T1 S1 S2 T2  C VARRO SZEGELY
+ 878 >> S:U^SDI./D.I-DI./D.I-DI.;              NP6-6       T1 S1 S2     C 
+ 880 << S:D.I-DI. ;                   Y:2;              VU    S1        C
+ 882 >> S:D.I-DI. /UVSDI.;                              VU    S1     T2  C
+ 884 END
+ 999 <> W0 S0
+1998 *****YAY
+1990 Y+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AIY+AI
+1991 *******************YTI*****************YTI*****************YTI******************
+1200 .I
+1202 .I
+1204 I.
+1206 I.
+1002 2(4I.84I)4I.8I
+1004 23X2(4I5Y5I.Y10I)I17X*17X2(4I5Y5I.Y10I)I26XI
+1006 23X2(11IA.12IA)I17X*17X2(11IA.12IA)I26XI
+1008 23X2(IY12I..YII4Y3I)I17X*17X2(IY12I..YII4Y3I)I26XI
+1010 23X2(4I4AIIA..11IAA)I17X*17X2(4I4AIIA..11IAA)I26XI
+1012 23X2(IYY11I3.YIIYY4I)I17X*17X2(IYY11I3.YIIYY4I)I26XI
+1014 23X2(5IAAIIA3.10I3A)I17X*17X2(5IAAIIA3.10I3A)I26XI
+1016 23X2(I3Y10I4.Y7I)I17X*17X2(I3Y10I4.Y7I)I26XI
+1018 23X2(8IA4.9I4A)I17X*17X2(8IA4.9I4A)I26XI
+1020 23X2(I4Y9I5.Y6I)I17X*17X2(I4Y9I5.Y6I)I26XI
+1022 23X2(7IA5.8I5A)I17X*17X2(7IA5.8I5A)I26XI
+1024 23X2(I5Y8I3.IY7I)I17X*17X2(I5Y8I3.IY7I)I26XI
+1026 23X2(8IA4.7I5AI)I17X*17X2(8IA4.7I5AI)I26XI
+1028 23X2(II5Y7I..IY8I)I17X*17X2(II5Y7I..IY8I)I26XI
+1030 23X2(9IAI..6I5AII)I17X*17X2(9IAI..6I5AII)I26XI
+1032 23X2(3I5Y6I.IY9I)I17X*17X2(3I5Y6I.IY9I)I26XI
+1034 23X2(10IAI.5I5A3I)I17X*17X2(10IAI.5I5A3I)I26XI
+1036 23X53I17X*17X53I26XI
+1038 2(4I.84I)4I.8I
+1102 2(4I.84I)4I.8I
+1104 23X2(4I5Y5I.Y10I)I17XX17X2(4I5Y5I.Y10I)I26XI
+1106 23X2(11IA.12IA)I17XX17X2(11IA.12IA)I26XI
+1108 23X2(IY12I..YII4Y3I)I17XX17X2(IY12I..YII4Y3I)I26XI
+1110 23X2(4I4AIIA..11IAA)I17XX17X2(4I4AIIA..11IAA)I26XI
+1112 23X2(IYY11I3.YIIYY4I)I17XX17X2(IYY11I3.YIIYY4I)I26XI
+1114 23X2(5IAAIIA3.10I3A)I17XX17X2(5IAAIIA3.10I3A)I26XI
+1116 23X2(I3Y10I4.Y7I)I17XX17X2(I3Y10I4.Y7I)I26XI
+1118 23X2(8IA4.9I4A)I17XX17X2(8IA4.9I4A)I26XI
+1120 23X2(I4Y9I5.Y6I)I17XX17X2(I4Y9I5.Y6I)I26XI
+1122 23X2(7IA5.8I5A)I17XX17X2(7IA5.8I5A)I26XI
+1124 23X2(I5Y8I3.IY7I)I17XX17X2(I5Y8I3.IY7I)I26XI
+1126 23X2(8IA4.7I5AI)I17XX17X2(8IA4.7I5AI)I26XI
+1128 23X2(II5Y7I..IY8I)I17XX17X2(II5Y7I..IY8I)I26XI
+1130 23X2(9IAI..6I5AII)I17XX17X2(9IAI..6I5AII)I26XI
+1132 23X2(3I5Y6I.IY9I)I17XX17X2(3I5Y6I.IY9I)I26XI
+1134 23X2(10IAI.5I5A3I)I17XX17X2(10IAI.5I5A3I)I26XI
+1136 23X53I17XX17X53I26XI
+1138 2(4I.84I)4I.8I

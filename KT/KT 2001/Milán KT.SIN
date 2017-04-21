@@ -1,0 +1,185 @@
+1C      MILAN KT ----  CNCA:(E-H-U)CP MILAN  (CNCA2001)
+1C                                                     RS1=
+1C                                        ELEJE:       HATA:        UJJA:
+1C  TUNIKA                                RS17=0       RS17=1       RS17=1
+1C                         NP1=  NP6=                    28-         -27
+1C                                                     (FELTETELEK:101-104.SOR)
+1C-----------------------+------------+------------+------------+-------------+
+1C   2X16/1 PAMUT+1BRILL:  13.4  14.0      22            35           13
+1C-----------------------+------------+------------+------------+-------------+
+1C   3X16/1 PAMUT(F-F):    13.5  14.2      20            31           12
+1C    1-2 SZAL ATORSOZVA
+1C-----------------------+------------+------------+------------+-------------+
+  10 C---------------------
+  14 NP1=13.4  C:MINTA            
+  15 NP6=14.4  C:HATA-UJJA         
+  16 NP2=11.0  C:1/1,BEKEZDES
+  18 NP3=11.0  C:REX PASSZE
+  20 NP4=12.5  C:LEVALASZTAS
+  22 NP5=14.5  C:LEVALASZTAS
+  40 START
+  42 YG:6/256;
+  44 WM=20 WMI=7
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5;	 ML     NP4-4  VU   V0	     S1 S2
+  48 JA1=1991(1991-1993); 
+  50 PA:<JA1>; 
+  52 FA=2-7;        C FA=1-7 
+  54 PM:<.>5:90FA;  C PM:<.>5:77FA;
+  56 CY:2/2/5/5;
+  58 VJA^0
+  60 >> S:U^SA /.-A/UVS.;            Y:5;    ML     NP5-5           T1 S1    T2
+  62 << S:<1+>.-A/UVSA;                      ML              VL1       S1    T2
+  64 >> S:<1+>.I-.I/0-.I;            Y:6/0;  ML              V0        S1 S2
+  66 << S:.I-0;                      Y:6;    ML                        S1
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  69 WM=24
+  70 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  72 >> S:.-.;                               ML                        S1 S2
+  74 <<                                      ML                        S1 S2
+  76 >> S:.-./.I-.I;                         ML                        S1 S2
+  78 << S:R-R;                                                         S1 S2
+  80 >> S:R-R;                                                         S1 S2
+ 101 FA=5-183;          IF RS1<28 IF RS17=1 FA=27-160          C======4LAP======
+ 104 PM:<.>7:3(FA..);   IF RS1<28 IF RS17=1 PM:<.> 7:4(FA ..)548:<.>;
+ 150 JA1=1026(1002-1028);
+ 152 JA2=1410(1400-1410);
+ 153 PA:<JA1>5:IIII181:III; IF RS17=1 PA:<JA2>;
+ 155 << S:R-R/R(4)-R(4)/UVS.;                                           S1  S2 T2
+ 158 >> S:U^SN./.-N./.-N./UVSNY;                   NP1-1             T1 S1  S2 T2
+ 159 IF RS17=1 GOTO 400
+ 160 VJA^0
+ 162 WM=20
+ 170 Y:2/2/5/5;
+ 172 RBEG*RS1        C ******* CSIPKE ****************************
+ 175 REP*7
+ 180 << S:U^S<1->N.Y/.-N./UVSNA.;                          VL1 VKC>5 T1    S2 T2
+ 182 >> S:U^S<1->N.A/.-N./UVSNY.;                          V0        T1    S2 T2
+ 183 REPEND
+ 184 REND           C*****************************************************
+ 186 GOSUB180
+ 263 >> S:U^S<1->N./.-N./UVSN.;                             V0       T1    S2 T2
+ 268 << S:U^SDI./D.I-DI./D.I-DI.;            Y:2/5; NP2-2   V0       T1 S1 S2
+ 269 >> S:D.I-DI./D.I-DI./UVSDI.;                                       S1 S2 T2
+ 270 END
+
+ 400 C****** HATA-UJJA ***
+ 405 WM=24 WMI=7
+ 406                                                NP6-6
+ 407 RBEG*RS1
+ 408 REP*2    C*************** Y:2/5 BAL-BAL *****************************************
+ 410 << S:U^S<2->N./.-N./.-N./UVSN.;                  Y:2/5;             T1 S1 S2 T2
+ 412 >>                                                                  T1 S1 S2 T2
+ 414 REPEND   C***********************************************************************
+ 416 REND
+ 418 END
+
+ 600 C--REX PIKO PANT SZIVECSKEKKEL-SURUBB!-----------
+ 606 NP2=11.0  C:1/1,BEKEZDES
+ 608 NP3=11.0  C:REX PASSZE
+ 610 NP4=12.5  C:LEVALASZTAS
+ 612 NP5=14.5  C:LEVALASZTAS
+ 614 START
+ 616 YG:6/256;
+ 618 WM=20 WMI=7
+ 620 << S:D.I-DI./DI.-D.I;	          Y:2/5;	 ML     NP4-4  VU   V0	     S1 S2
+ 622 JA1=1991(1991-1993); 
+ 624 PA:<JA1>; 
+ 626 FA=2-7;        C FA=1-7 
+ 628 PM:<.>5:90FA;  C PM:<.>5:77FA;
+ 630 CY:2/2/5/5;
+ 632 VJA^0
+ 634 >> S:U^SA /.-A/UVS.;            Y:5;    ML     NP5-5           T1 S1    T2
+ 636 << S:<1+>.-A/UVSA;                      ML              VL1       S1    T2
+ 638 >> S:<1+>.I-.I/0-.I;            Y:6/0;  ML              V0        S1 S2
+ 640 << S:.I-0;                      Y:6;    ML                        S1
+ 642 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+ 643 WM=24
+ 644 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+ 646 >> S:.-.;                               ML                        S1 S2
+ 648 <<                                      ML                        S1 S2
+ 650 >> S:.-./.I-.I;                         ML                        S1 S2
+ 652 << S:R-R;                                                         S1 S2
+ 654 >>        S1 S2
+ 656 <<        S1 S2
+ 658 >>        S1 S2
+ 660 END
+
+ 900 C O&V CSIPKE NYAK  GUMIVAL(ONDOHOZ) !!!EZ A LEGJOBB LYUKACSOS NYAK!!! 2002.02.13.
+ 901 NP2=10.5   C(12.0):1/1,BEKEZDES
+ 902 NP3=11.2   C:REX 
+ 903 NP4=12.5   C:LEVALASZTAS,1/1-ES VARROSZEGELY
+ 904 NP1=14.0   C:SLAG,LEVALASZTAS
+ 905 NP6=13.2   C:SORMINTA
+ 906 START
+ 907 YG:6/256;
+ 908 WM=20 WMI=7
+ 909 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 910 >> S:D.I-DI./UVSDI.;            Y:2;           NP3-3                S1    T2
+ 911 << S:U^SD.I/DI.-D.I;                           NP1-1             T1 S1
+ 912 >> S:U^SDI./D.I-D.I;            Y:6;           NP4-4   VR1       T1 S1
+ 913 << S:0-D.I/D.I-0;               Y:6/0;                              S1 S2
+ 914 >> S:DI.-D.I/0-D.I;             Y:5/2;         NP2-2   V0   VU      S1 S2
+ 915 << S:DI.(7.5)-0;                         Y:6;            VU        S1
+ 916 >> S:DI.(7.5)-0;                         Y:6;            VU        S1
+ 917 << S:DI.-D.I;          Y:5/2; NP2-2    VU      S1 S2 C VAGY
+ 917 << S:DI.-D.I;          Y:5; NP2-2    VU        S1    C VAGY 2 SORRAL ROVIDEBB 1/1
+ 918 PA:JA1;
+ 919 PM:<FA>1:9.544:<.>;
+ 920 JA1=1000
+ 921 FA=1-2
+ 922 VJA^1
+ 923 >> S:DI.-D.I/DI.-D.I/UVS.;                 S1 S2 T2 C VAGY
+ 923 >> S:DI.-D.I/UVS.;                         S1    T2 C VAGY 2 SORRAL ROVIDEBB 1/1
+ 924 C<< S:U^SN./.-N./UVSN.;             Y:5; VKC>2   NP6-6  T1 S1    T2C KIIKTATHATO
+ 925 C>> S:R-0;                                                 S1      C KIIKTATHATO
+ 926 << S:U^SN./.-N./UVSN.;                    Y:2; VKC>2   NP6-6  T1 S1    T2
+ 927 >> S:R-0;                                                        S1
+ 928 << S:U^SN./.-N./.-N./UVSI;                Y:5/2; VKC>2 T1 S1 S2 T2
+ 929 >> S:.I-*/.-N.;                                       VU   S1 S2
+ 930 WM=0
+ 931 << S:UVS*;                                        VR1            T2
+ 932 >> S:0-0;                                 Y:0;             S1
+ 933 WM=18
+ 934 VJA^0
+ 935 << S:.I-*/.-N.;                           Y:5/2;  VU       S1 S2
+ 936 WM=0
+ 937 >> S:UVSI.;                                      V0 VKD>4        T2
+ 938 << S:0-0;                                 Y:0;             S1
+ 939 WM=18
+ 940 >> S:.I-*/.-N.;                           Y:5/2;  VU       S1 S2
+ 941 << S:U^SI/.-N./.-N./UVNN.;                              T1 S1 S2 T2
+ 942 C>> S:R-0;                            Y:2;               S1       C KIIKTATHATO
+ 943 C<< S:U^NN./.-N./UVNN.;                               T1 S1    T2 C KIIKTATHATO
+ 944 >> S:R-0;                                 Y:5;             S1
+ 945 << S:U^NN./.-N.;                     NP1-1             T1 S1
+ 946 >> S:.-N./.-N./UVNDI.;                    Y:2/5;          S1 S2 T2
+ 947 << S:U^SD.I/DI.-D.I/DI.-D.I;            NP2-2              T1 S1 S2
+ 948 >> S:DI.-D.I/DI.-D.I/UVSD.I;              Y:5/2;           S1 S2 T2
+ 949 END
+ 999 <> W0 S0
+1000 97(I*)I
+1991 ....A.A
+1992 ...A*A*
+1993 ....*I*
+
+1400 Z..Z..
+1402 ..Z.Z.
+1404 .Z...Z
+1406 Z..Z..
+1408 .Z...Z
+1410 ..Z.Z.
+
+1002 ..IIIIYYI.
+1004 ..IAA.III.
+1006 ..III..YY.
+1008 ..AA...II.
+1010 ..II...I.Y
+1012 .A.I...I.I
+1014 II.I...III
+1016 IIII...IAA
+1018 .YYI...III
+1020 .III...AA.
+1022 ..YY...II.
+1024 ..II..A.I.
+1026 ..I.Y.I.I.
+1028 ..I.IIIII.

@@ -1,0 +1,28 @@
+ KORSLAG BEKEZDES
+
+  10 NP4=12.5;             C:LEVALASZTAS
+  12 NP2=10.0              C BEKEZDES
+  14 NP5=13.8              C:KORSLAG
+
+  40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+
+  60 IF #100=30  RS17=0            C E
+  62 IF #100=24  RS17=1            C H
+  64 IF #100=9   RS17=2            C U
+  72 IF RS17=0  RS1=             C E
+  74 IF RS17=1  RS1=             C H
+  76 IF RS17=2  RS1=             C U H:  R: 
+
+  80 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  84 >> S:R-R;		                      Y:6;	                  	   ML          S1
+  86 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2         ML       S1
+  90 Y:2/2/5/5;
+  92 REP*1
+  94 << S:R-0;		                             ML   NP5-5           S1
+  96 >> S:0-R;		                             ML                    S1
+  98 REPEND

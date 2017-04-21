@@ -1,0 +1,160 @@
+   1 C*ZEBRA*BUKLE-LAMBADA*V FORMAJU LAPOK *** CP BUKLE RS19=0/1 RS18=0/1/2/3 RS1= ***
+   2 C 23MIN+NYAK                    NP1=                   2 TEST+2 UJJA: RS1=
+   3 C-----------------------+------------+------------+------------+-------------+
+   4 C BUKLE+15/1:               15                           22  (65CM)
+   5 C-----------------------+------------+------------+------------+-------------+
+   6 C BUKLE:KB 0.26+0.09=0.35 ->700F (600...CSABA)
+   7 C  15/1:KB 0.11+0.04=0.16 ->100F      SUM:800+200(KOLTSEGEK)=1000
+   8 C 1/1 NYAK:SP700 RS19=1:  KEREK NYAK             RS18=0:CSIKOS
+   9 C                RS19=2:  ALLO NYAK              RS18=1:CSIK NELKUL
+  10 C                RS19=3:  GARBO                  RS18=2:3 CSIKKAL
+  11 C                RS19=10: 3 TEST                 RS18=3:3 KESKENYEBB CSIKKAL
+  12 C                RS19=11: 5 UJJA
+  13 C         BAL:                 JOBB: 
+  14 C  6:ELV. SZAL          2,5:ALAP - 1 BUKLE+1 15/1 PAMUT (FARMER,MOGYI,BORDO,STB)
+  15 C                       3,4:SZIN - 1 BUKLE+1 15/1 PAMUT (FEHER)
+  16 C       14.9   14.9         14.9   14.9
+  17 C  1: <------+------       ------+------> MINTA
+  18 C       14.9   14.9         14.9   14.9
+  19 C       11.5   11.5          12.0   12.0
+  20 C B2: <------+------       ------+------> 1/1 PASSZE,NYAK
+  21 C       12.0   11.5          11.5   11.5
+  22 C       13.0   13.0        X13.0  X13.0
+  23 C J4: <-------------       ------------->  LEVALASZTAS, SLAG A NYAKBAN
+  24 C       13.0   13.0        X13.0  X13.0
+  25 C        X      X     
+  26 C B4: <-------------       ------------->
+  27 C        X      X          
+  28 C TUAGYKORREKCIOK:
+  29 C   V0:->1.5
+  30 C   R1:->1.5__________R2:-     ________R3:-
+  31 C   L1:->0.5__________L2:-     ________L3:-
+  32 C 8 SULY
+  33 C A DIOKAT A LEHETO LEGKOZELEBB KELL TENNI A KOTES SZELEHEZ, MERT A SPANNUNG
+  34 C  NEM HUZZA VISSZA A FOLOSLEGES FONALAT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  40 START
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:2/5;	    NP4-4 V# V0	ML      S1 S2
+  65 >>	S:D.I-DI./UVND.I;   	        Y:2;	    	 NP1-1       ML     S1     T2
+  70 <<	S:U^NDI./D.I-DI.;		              			                ML  T1 S1
+  71 >> S:D.I-DI.;                   Y:5;             VR1   ML     S1
+  72 << S:U^ND.I/0-DI.;                                     ML  T1 S1
+  75 >>	S:DI.-DI.;		                 Y:6;	      NP4-4 VR1	  ML    	   S2
+  80 <<	S:0-DI./R-0;		               Y:6/0;     NP1-1 V#	   ML     S1 S2
+  85 >>	S:D.I-DI.;		                	Y:2;	      NP2-2 V# V0 ML     S1
+  90 << S:D.I-0;                                      V#           S1
+  95 IF RS19=1 GOTO 700 C******* 1/1-ES KEREK NYAK
+  96 IF RS19=2 GOTO 700 C******* 1/1-ES ALLO NYAK
+  97 IF RS19=3 GOTO 700 C******* 1/1-ES GARBO NYAK
+ 100 >> S:0-DI./D.I-DI./UVNDI.;      Y:5/2;                        S1 S2 T2
+ 115 JA1=1002
+ 120 PA:JA1;
+ 125 FC=14-176; FD=43-148
+ 130 PM:<.>7:FC.FC.FD.FD; C***** 2 TEST + 2 UJJA ******
+ 131 IF RS19=10 PM:<.>7:3FC; C***** 3 TEST, HA SOK A HIBAS
+ 132 IF RS19=11 PM:<.>7:5FD; C***** 5 UJJA, HA SOK A HIBAS
+ 135 IF RS18=2 GOTO 400  C****** 3 CSIKKAL *******************
+ 136 IF RS18=3 GOTO 450  C****** 3 KESKENYEBB CSIKKAL ********
+ 140      NP1-1
+ 142 Y:2/5;
+ 144 GOSUB 300-355*6
+ 146 IF RS18=0 Y:3/4;
+ 148 GOSUB 300-355*4
+ 150 Y:2/5;
+ 152 GOSUB 300-355*6
+ 154 IF RS18=0 Y:3/4;
+ 156 GOSUB 300-355*2
+ 158 Y:2/5;
+ 160 GOSUB 300-355*10
+ 162 IF RS18=0 Y:3/4;
+ 164 GOSUB 300-355*4
+ 166 Y:2/5;
+ 168 GOSUB 300-355*2
+ 170 IF RS18=0 Y:3/4;
+ 172 GOSUB 300-355*2
+ 174 Y:2/5;
+ 176 GOSUB 300-355*4
+ 178 IF RS18=0 Y:3/4;
+ 180 GOSUB 300-355*4
+ 182 Y:2/5;
+ 184 GOSUB 300-355*4
+ 186 IF RS18=0 Y:3/4;
+ 188 GOSUB 300-355*4
+ 190 Y:2/5;
+ 192 RBEG*RS1
+ 194 GOSUB 300-355
+ 196 REND
+ 198 GOSUB 310
+ 200 >> S:U^NN./.-N./.-N./UVNN.;                                        T1 S1 S2 T2
+ 202 << S:U^ND.I/DI.-D.I/DI.-D.I;                    NP4-4              T1 S1 S2
+ 204 >> S:DI.-D.I/DI.-D.I/UVND.I;                                          S1 S2 T2
+ 206 END
+ 250 C******** MINTA-VAR 1.**************
+ 254 << S:R-0/R-0;                             V0     NP1-01         S1 S2
+ 256 >> S:U^NN./.-N./.-N./UVNI;                                   T1 S1 S2 T2
+ 260 << S:UVNA;                                VL1    NP0-0                T2
+ 262 >> S:UVN*;                                VR1    NP0-0                T2
+ 264 C*****************************
+ 300 C******** MINTA-VAR 2.**************
+ 310 << S:R-0/R-0;                             V0     NP1-01         S1 S2
+ 320 >> S:U^N*;                                VL1    NP0-0       T1
+ 325 << S:U^NA;                                VR1    NP0-0       T1
+ 335 >> S:U^NI/.-N./.-N./UVNN.;                V0                 T1 S1 S2 T2
+ 355 C*****************************
+ 400 NP1-1
+ 402 Y:2/5;
+ 404 GOSUB 300-355*6
+ 406 Y:3/4;
+ 408 GOSUB 300-355*4
+ 410 Y:2/5;
+ 412 GOSUB 300-355*4
+ 414 Y:3/4;
+ 416 GOSUB 300-355*4
+ 418 Y:2/5;
+ 420 GOSUB 300-355*4
+ 422 Y:3/4;
+ 424 GOSUB 300-355*4
+ 426 Y:2/5;
+ 428 GOSUB 300-355*26
+ 430 GOTO 190
+ 450 NP1-1 C****************
+ 452 Y:2/5;
+ 454 GOSUB 300-355*6
+ 456 Y:3/4;
+ 458 GOSUB 300-355*3
+ 460 Y:2/5;
+ 462 GOSUB 300-355*4
+ 464 Y:3/4;
+ 466 GOSUB 300-355*3
+ 468 Y:2/5;
+ 470 GOSUB 300-355*4
+ 472 Y:3/4;
+ 474 GOSUB 300-355*3
+ 476 Y:2/5;
+ 478 GOSUB 300-355*29
+ 480 GOTO 190
+ 700 C************************ 1/1 NYAK *********************
+ 702 >> S:0-DI./D.I-DI.;       V#    Y:5/2;                        S1 S2
+ 704 #1=3              C KEREK NYAK
+ 706 #2=3 C4
+ 708 IF RS19=2 #1=8    C ALLO NYAK
+ 710 IF RS19=2 #2=8
+ 712 IF RS19=3 #1=28   C GARBO
+ 714 REP*#1
+ 716 << S:D.I-DI.;             V#          S1 S2
+ 718 >>                        V#          S1 S2
+ 720 REPEND
+ 722 IF RS19=3 GOTO 740
+ 724 << S:U^ND.I/0-R/0-R/UVND.I;    NP0-4              T1 S1 S2 T2
+ 726 NP2-2
+ 728 REP*#2
+ 730 >> S:D.I-DI.;             V#          S1 S2
+ 732 <<                        V#          S1 S2
+ 734 REPEND
+ 736 >> S:D.I-DI./D.I-DI./UVNDI.;          S1 S2 T2
+ 738 END
+ 740 <<                        V#          S1 S2
+ 742 >> S:D.I-DI./D.I-DI./UVNDI.;          S1 S2 T2
+ 744 END
+1002 94*I95A
+1004 4I.2(22I.44I)2(22I.)5I

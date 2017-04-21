@@ -1,0 +1,67 @@
+C KORSLAG PIKO        RS17=51:GOMBLYUKKAL
+C                     RS17=52:GOMBLYUK NELKUL GY:1'40
+
+ 600 C---KORSLAG PIKO -2LUSI+1TX:---------------------------------------
+ 601 NP4=12.5               C LEVALASZTAS
+ 602 NP10=11.2   C:REX
+ 603 NP12=14.6   C:SLAG GOMBLYUK ELOTT
+ 604 NP13=14.0   C:SLAG PASSZE
+ 605 NP11=6.0    C:GOMBLYUK
+ 606 NP14=10.0   C BEKEZDES
+
+ 608 START        
+ 610 YG:6/256;
+ 612 WM=16;WMI=7
+ 614 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+ 616 C********KORSLAG PIKO PASSZE***************************
+ 618 JA1=1990;  C 1990 *****AA
+ 620 PA:<JA1>; 
+ 622 FA=1-7; C FA=1-7; VAGY FA=1-6;
+ 624 PM:8.<FA>574:<.>; C TELI TUAGYRA (581TU)
+ 626 >> S:D.I-DI./DI.-D.I/UVNDI.;                                     S1 S2 T2
+ 628 << S:DI.-D.I/UVND.I;             Y:5;	               	           S1    T2
+ 630 >> S:R-R;		                      Y:6;	                 VU            S2
+ 632 << S:R-0/0-R;                    Y:6/0;                VU	        S1 S2
+ 634 >> S:R-R;                        Y:5;    NP14-14       VU         S1
+ 636 << S:0-NA/NA-0;                  Y:2/5;  NP13-13       VU         S1 S2
+ 638 WM=22 C24
+ 640 REP*2 C***PIKO***
+ 642 >> S:0-NA/NA-0;                  Y:5/2;                VU         S1 S2
+ 644 << S:0-NA/NA-0;                  Y:2/5;                VU         S1 S2
+ 646 REPEND
+ 648 >> S:0-R/R-0;                    Y:5/2;                           S1 S2
+ 654 << S:R-0/0-R;                            NP13-13       VU         S1 S2
+ 660 VJA^1
+
+ 661 PM:<.>14:6(YTI21.)<.>; C CVETA 71CM-ES MELLENY
+
+ 662 WM=20 C20
+ 663 IF RS17=52 GOTO 690 C ********* GOMBLYUK NELKUL ********
+ 664 >> S:0-R/R-0;                         VU    NP12-12    S1 S2
+ 665 << S:R-0;                      Y:5;   VU    NP12-12    S1
+ 666 >> S:U^SYTI/T(11)-R/T(8.0)-0;  Y:5/0;               T1 S1 S2
+ 667 C GOMBLYUKAK:
+ 668 WM=0
+ 669 << S:UVSY;                          VL1                T2
+ 670 >> S:UVSTI;                         VR2                T2
+ 671 WM=20 C22
+ 672 << S:.YI(13)-T(11);         Y:2;   V0  VU               S1
+ 673 WM=20 C24
+ 674 >> S:T(11)-.YI(13);                VL1 VU               S1
+ 675 NP13-13
+ 676 << S:0-R/R-0;                Y:5/2; VR1 VU               S1 S2
+ 677 >>                                      VU               S1 S2
+ 678 <<                                  V0  VU               S1 S2
+ 679 >>                                      VU               S1 S2
+ 680 <<                                      VU               S1 S2
+ 681 >>                        VU               S1 S2 C VAGY: S:0-R/R(10)-R(10);
+ 682 END
+
+ 690 >> S:0-R/R-0;                                          VU         S1 S2
+ 691 REP*3
+ 692 << S:R-0/0-R;                                          VU         S1 S2
+ 693 >> S:0-R/R-0;                                          VU         S1 S2
+ 694 REPEND
+ 695 END
+
+1990 *****AA

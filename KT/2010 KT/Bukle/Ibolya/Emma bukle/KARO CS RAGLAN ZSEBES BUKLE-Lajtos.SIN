@@ -1,0 +1,188 @@
+C  JUCI LYCRA PULOVERE FONAS HELYETT CS. MINTA
+C JAC.:EMMA BUIKLE
+   1 C   2/5:1BUKLE+1HB
+   1 C 
+
+  10 C-----------------------ICA 6-OS BUKLE:------LAJTOS 6-OS BUKLE:----
+  10 NP4=12.6    C:LEVALASZTAS     NPK=-0.3            NPK=0
+  11 NP2=10.2    C:BEKEZDES 10.2
+  12 NP3=12.6    C:2/1
+  13 NP1=13.4    C:CSIPKE, KREPP HATUL
+  14 NP5=13.3    C:CSIPKE, KREPP ELOL
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+
+  62 C*************TM:5.3*****************************MIN:****TUR:****1DB.:*******
+  68 C IF #100=2   RS17=0         C UEHU              
+  69 C IF #100=1   RS17=10        C NYAK
+  70 C IF #100=1   RS17=11        C ZSEB
+ 100 C************PM:****RS15: G ************************************************NYERSEN:*****KESZEN:**
+ 106  IF RS17=0  RS19=4  RS15=0  RS1=19   RS2=115  C UEHU             19/110-120
+ 107  IF RS17=10 RS19=1  RS15=1  RS1=24   RS2=0    C SIMA GARBO:24 ZSIRAF:44
+ 108  IF RS17=11 RS19=1  RS15=0  RS1=3    RS2=30   C ZSEB
+ 132 C************************************************
+
+ 150 
+ 152 C************581TU**************************************************************
+ 154 JA1=1268            C CS ELEJE (MASIK JAC.:1608)
+ 155 JA3=1768            C CS UJJA
+ 156 JA2=1120(1102-1130) C KREPP
+ 158 PA:1:<JA2>:1:<JA1>:201:<JA2>:401:<JA2>:401:<JA3>;
+ 160            FA=5-191;                        PM:<.>9:3(FA..);         C*3E-H
+ 162 IF RS19=5  FA=442-554                       PM:<.>7:5(FA.);          C*5U CS
+ 192 IF RS19=4  F1=20-176;F2=220-376;F3=436-559; PM:<.>8:F3IIF1IF2IIF3;   C*U-E-H-U CS-CS-KR-CS
+ 194 IF RS19=1  FA=201-212;                      PM:<.>9:<FA>574:<.>;     C OSZTAS NELKUL
+ 166 C*******************************************************************************
+ 200 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+ 202 <<	S:DI..-D..I/UVND..I;		            		 ML             VL1        S1    T2
+ 204 >> S:D..I-R/DII.-D.II;          Y:0/6;  ML                        S1 S2
+ 206 << S:DII.-0/D..I-R;             Y:6/0;  ML                        S1 S2            
+ 208 >>	S:DII.(2)-D.II(2)/0-D.II(3); Y:5/2;	 ML                        S1 S2
+C---------------------------------------------------
+ 210 IF RS15=1 GOTO 220  C---GUMI NELKUL-----
+ 212 << S:DII.-0;                    Y:6;    ML                        S1
+ 214 >>                                      ML                        S2
+ 216 << S:DII.-D.II;                 Y:5/2;  ML     NP3-3   V0         S1 S2
+ 218 GOTO 222            C---GUMIVAL---------
+ 220 << S:0-D.II/DII.-D.II;                  ML     NP3-3   V0         S1 S2
+C---------------------------------------------------
+ 222 RBEG*RS1
+ 224 >> S:DII.-D.II;                                                   S1 S2
+ 226 <<                                                                S1 S2
+ 228 REND
+
+ 235 IF RS18=1 GOTO 380 C***U-H**
+ 236 IF RS18=2 GOTO 400 C***NYAK**
+
+ 300 >> S:DII.-D.II/DII.-D.II/UVS.;                                 S1 S2 T2
+ 301 JA1=1268(1202-1268) C CS  (MASIK JAC.:JA1=1608(1202-1608))
+ 302 JA3=1768(1702-1768) C CS
+ 303 JA2=1120(1102-1130) C KREPP
+ 304 WM=15; VJA^0
+ 306 Y:5/0/5/0/2/0/2/0;
+ 308 NP5-1
+ 310 RBEG*RS2
+ 314 << S:U^S<1-2-3->N./.(5)-N.(1)/N.(4)-.(4)/UVNNY;  V0         T1 S1 S2 T2
+ 316 >> S:U^S<1-2-3->N./.(5)-N.(1)/N.(4)-.(4)/UVSNA;  VL1        T1 S1 S2 T2
+ 320 REND
+ 322 << S:U^S<1-2-3->N./.-N./N.-./UVNN.;              V0         T1 S1 S2 T2
+ 324 >> S:U^ND.I/DI.-D.I/D.I-DI./UVNR;       NP4-4               T1 S1 S2 T2
+ 326 END C************************************************
+
+
+
+ 380 JA1=1200 C**U-H-KREPP***
+ 382 >> S:DII.-D.II/DII.-D.II/UVS.;                                 S1 S2 T2
+ 384 Y:2/0/2/0/5/0/5/0;
+ 386 WM=16; NP5-1;
+ 388 RBEG*RS2
+ 390 REP*2
+ 392 << S:U^SN./.-N./N.-./UVS<2->.;        T1S1S2T2
+ 394 >>                                    T1S1S2T2
+ 396 REPEND
+ 398 REND
+ 399 END
+
+ 400 >> S:DII.-D.II/DII.-D.II/UVSD.II;               S1 S2 T2
+ 401 END
+
+ 999 <> S0 W0 VU
+
+
+1001 4.*4.I9.+..A2(2(6.I3.)6.Y2(9.I)3.)2(6.I3.)..A3.Y2(9.I)5.+2(3.I6.)3.I
+
+1100 IIIIIIIIIIII
+1102 II.II...I...
+1104 I.I.I..III..
+1106 .I.I.II...II
+1108 .III..I.I.I.
+1110 I...II.I.I.I
+1112 ..I..III.III
+1114 II.II...I...
+1116 II.III..I..I
+1118 ..I...II.II.
+1120 II.II.I...I.
+1122 ..I..I.III.I
+1124 I...I.II.II.
+1126 .III.I..I..I
+1128 II.III..I..I
+1130 ..I...II.II.
+1132 WWWWWWWWWWWW
+
+1200 195X
+1202 65X4(.I.).2(A..)A.8X.A.IA.8X3(.A.).4(.I.)64XW
+1204 66X3(.Y.)I3(..I)..7X.I.I.Y.8X3(.Y.).I.3(..Y).63XW
+1206 66X3(.I.)I3(.A.)8X.A..I.I.8X4(.I.).2(A..)A.64XW
+1208 67X2(.Y.).YI3(.I.)8X2(.I.).Y.8X3(.Y.)I3(..I).64XW
+1210 67X2(.I.)..I2(A..)A.8X.A..AI..I.8X3(.I.)I3(.A.)65XW
+1212 68X.Y..Y2(..I.).I.8X.I..IIY..Y.8X2(.Y.).YI3(.I.)65XW
+1214 68X3(.I.).A..A.8X2(.A.)II..I.8X2(.I.)..I2(A..)A.66XW
+1216 69X2(.Y.)I2(..I).8X2(.I.)I2(.Y.)8X.Y..Y2(..I.).I.66XW
+1218 69X2(.I.)I2(.A.)8X2(.A.).I2(.I.)8X3(.I.).A..A.67XW
+1220 70X.Y..YI2(.I.)8X3(.I.).Y..Y.8X2(.Y.)I2(..I).67XW
+1222 70X.I3.IA..A.8X2(.A.).A2(I..)I.8X2(.I.)I2(.A.)68XW
+1224 71X.Y2(..I.)8X2(.I.).II2(Y..)Y.8X.Y..YI2(.I.)68XW
+1226 71X2(.I.).A.8X3(.A.)I2(I..)I.8X.I3.IA..A.69XW
+1228 72X.Y2(.I.)8X3(.I.)I3(.Y.)8X.Y2(..I.)69XW
+1230 72X.I.I.A.8X3(.A.).I3(.I.)8X2(.I.).A.70XW
+1232 73X.YI.I.8X4(.I.).2(Y..)Y.8X.Y2(.I.)70XW
+1234 72X.A.IA.8X3(.A.).4(.I.)8X.I.I.A.71XW
+1236 72X.I.I.Y.8X3(.Y.).I.3(..Y).8X.YI.I.71XW
+1238 71X.A..I.I.8X4(.I.).2(A..)A.8X.A.IA.72XW
+1240 71X2(.I.).Y.8X3(.Y.)I3(..I).8X.I.I.Y.71XW
+1242 70X.A..AI..I.8X3(.I.)I3(.A.)8X.A..I.I.71XW
+1244 70X.I..IIY..Y.8X2(.Y.).YI3(.I.)8X2(.I.).Y.70XW
+1246 69X2(.A.)II..I.8X2(.I.)..I2(A..)A.8X.A..AI..I.70XW
+1248 69X2(.I.)I2(.Y.)8X.Y..Y2(..I.).I.8X.I..IIY..Y.69XW
+1250 68X2(.A.).I2(.I.)8X3(.I.).A..A.8X2(.A.)II..I.69XW
+1252 68X3(.I.).Y..Y.8X2(.Y.)I2(..I).8X2(.I.)I2(.Y.)68XW
+1254 67X2(.A.).A2(I..)I.8X2(.I.)I2(.A.)8X2(.A.).I2(.I.)68XW
+1256 67X2(.I.).II2(Y..)Y.8X.Y..YI2(.I.)8X3(.I.).Y..Y.67XW
+1258 66X3(.A.)I2(I..)I.8X.I3.IA..A.8X2(.A.).A2(I..)I.67XW
+1260 66X3(.I.)I3(.Y.)8X.Y2(..I.)8X2(.I.).II2(Y..)Y.66XW
+1262 65X3(.A.).I3(.I.)8X2(.I.).A.8X3(.A.)I2(I..)I.66XW
+1264 65X4(.I.).2(Y..)Y.8X.Y2(.I.)8X3(.I.)I3(.Y.)65XW
+1266 64X3(.A.).4(.I.)8X.I.I.A.8X3(.A.).I3(.I.)65XW
+1268 65X3(.Y.).I.3(..Y)9X.YI.I.8X4(.I.).2(Y..)Y.64XW
+1270 195W
+
+
+1700 195W
+1702 95XA.IA95XW
+1704 95XI.I.Y94XW
+1706 94XA..I.I94XW
+1708 94X2(I..)Y93XW
+1710 93XA..AI..I93XW
+1712 93XI..IIY..Y92XW
+1714 92XA..A.II..I92XW
+1716 92XI..I.I.Y..Y91XW
+1718 91X2(A..)I.I..I91XW
+1720 91X3(I..)Y..Y90XW
+1722 90X2(A..)A2(I..)I90XW
+1724 90X2(I..)II2(Y..)Y89XW
+1726 89X2(A..)A.I2(I..)I89XW
+1728 89X2(I..)I.I2(.Y.).Y88XW
+1730 88X3(A..)I2(.I.).I88XW
+1732 88X4(I..)Y2(..Y)87XW
+1734 87X3(A..).3(I..)I87XW
+1736 88X3(Y..)I.3(..Y)86XW
+1738 88X4(I..)A2(..A)87XW
+1740 89X2(Y..)Y3(.I.).I87XW
+1742 89X2(I..)I.I2(.A.).A88XW
+1744 90X2(Y..)YI2(.I.).I88XW
+1746 90X2(I..).I2(A..)A89XW
+1748 91XY..Y2(..I.).I89XW
+1750 91X3(I..)A..A90XW
+1752 92XY..Y2(.I.).I90XW
+1754 92XI..I.I.A..A91XW
+1756 93XY..YI.I..I91XW
+1758 93XI3.IA..A92XW
+1760 94XY..I3.I92XW
+1762 94X2(I..)A93XW
+1764 95XY.I..I93XW
+1766 95XI.I.A94XW
+1768 96XYI.I94XW
+1770 4W.2(14W.63W)2(14W.)4W

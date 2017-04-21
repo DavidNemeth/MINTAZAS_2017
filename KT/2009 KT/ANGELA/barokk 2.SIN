@@ -1,0 +1,316 @@
+
+ A BAROKK 2.2 A JOBB!
+
+    1 C BAROKK 2.... ALUL:1 KESKENY SORMINTA
+   1 C            KOZEPE:NECC
+   1 C              FENT:3 SAV BAROKK
+   1 C JAC.:2009/BAROKK
+
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.8               C BEKEZDES
+  12 NP3=13.8              C KORSLAG
+  13 NP5=13.8              C PASSZE
+
+  16 NP1=13.5              C:CSIPKE
+  20 NP7=13.3              C:2SZVCS:E
+  22 NP8=13.6              C:2SZVCS:H    2 LUSI 1TX:NPK=0 (NYARON)
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+  54 C**********NYAK**********************************
+  56 C IF #100=    RS17=50        C CSIPKE NYAK
+  58 C IF #100=40  RS17=51        C CS MELLENY PANT
+  60 IF #100=25   RS17=52        C CS GOMBLYUKAS PANT
+  62 C*****1.MINTA************************************
+  63 IF #100=13   RS17=0         C E       CS 
+  64 IF #100=9    RS17=1         C H       CS 
+  65 IF #100=5    RS17=2         C HU      CS     (5 VAGY 4 LAPOS - BEALLITAS:106,190.
+
+  66C IF #100=13   RS17=0         C E       CS 25'
+  67C IF #100=9    RS17=1         C H       CS 18'
+  68C IF #100=5    RS17=2         C HU      CS 17' (5 VAGY 4 LAPOS - BEALLITAS:106,190.
+  70C IF #100=5    RS17=3         C RU      CS 11' (5 VAGY 4 LAPOS - BEALLITAS:108,190.
+
+  76 C IF #100=15  RS17=9         C U-E-H-U
+  92 C************************************************
+  94 IF RS17=50 GOTO 500          C CSIPKE NYAK
+  96 IF RS17=52 GOTO 700          C  GOMBLYUKAS PANT
+  98 IF RS17=51 GOTO 700          C  MELLENY PANT
+ 100 C*****1.MINTA*********************************** 2LUSI+1TX:NPK=0 (******** HA NPK=-0.3:+4-+5RS)******
+ 102 IF RS17=0  RS19=2 RS1=35 RS2=40   C E    CS  TUN-KK:35,40  MELL.:49,39  HOSSZU KABAT:58,48            
+ 104 IF RS17=1  RS19=3 RS1=77 RS2=0    C H   NECC        77           88                  109
+
+ 106 IF RS17=2  RS19=4 RS1=75 RS2=0    C HU  NECC 5/4LAPOS: 75/65 BEALLITAS:190
+ 108 IF RS17=3  RS19=4 RS1=38 RS2=0    C RU  NECC 5/4LAPOS: 38/35 BEALLITAS:190
+ 114 IF RS17=9  RS19=5 RS1=            C UEHU CS-NECC
+ 130 C************************************************
+
+ 180 C************581TU**************************************************************
+ 182 JA1=1006              C CSIPKE PASSZE
+ 183 JA3=1006              C CSIPKE PASSZE
+ 184 JA2=1040(1040-1042)   C 2SZV.HALO
+ 186 PA:1:<JA2>:1:<JA1>:301:<JA3>;
+
+ 187 IF RS19=2 FA=3-189;FB=303-489;           PM:<.>7:IIFAIIFAIIFAII;    C*FA:E FB:H
+ 189 IF RS19=3          FB=303-489;           PM:<.>7:IIFBIIFBIIFBII;    C*
+
+ 190 IF RS19=4 FC=326-465;                    PM:<.>7:4(IIFC)I;          C*4LAP UJJA
+ 190 IF RS19=4 FC=305-416;                    PM:<.>7:I5(IFC)II;         C*5LAP UJJA
+
+ 192C IF RS19=5 F1=21-170;F2=21-170;F3=31-160; PM:<.>7:IIF3IIF1IIF2IIF3I; C*U-E-H-U
+ 194 C********************************************************************************
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/5;
+ 212 REP*1
+ 214 << S:R-0/0-R;		                         ML   NP3-3     VU          S1 S2
+ 216 >> S:0-R/R-0;		                         ML             VU          S1 S2
+ 218 REPEND
+ 220 << S:0-R/UVS.;		                 Y:2;   ML                         S1    T2
+ 222 >> S:U^SN./.-N./UVSN.I;                 ML                      T1 S1    T2
+ 224 Y:5/5/2/2;
+ 225 REP*2
+ 226 << S:NI-I;                        NP5-5 VU          S1
+ 228 WM=0
+ 230 >> S:U^SA;                                   VL1 T1
+ 232 << S:U^SY;                                   VR1 T1
+ 234 WM=16
+ 236 >> S:U^S*/.-N./UVSAY*;                  V0       T1 S1 T2 
+ 238 REPEND
+ 240 GOSUB 226-234
+ 242 >> S:U^S*/.-N./UVSN.;                   V0       T1 S1 T2 
+ 249 C********************************************************
+ 298 IF RS17=3 GOTO 316
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 300 JA1=1040(1040-1042)     C 2SZV.HALO
+ 301 JA3=1040(1040-1042)     C 2SZV.HALO
+ 304 Y:5/2;
+ 306 GOSUB400-420*3          C 2SZV.CS.
+C--------------------------------------------------------------
+ 308 JA1=1444(1418-1440)   C 1SZV.CS.(SORMINTA)
+ 310 JA3=1444(1418-1440)   C 1SZV.CS.(SORMINTA)
+ 312 Y:5/5/2/2;
+ 314 GOSUB430-450*7        C 1SZV.CS.
+C--------------------------------------------------------------
+ 316 JA1=1040(1040-1042)     C 2SZV.HALO
+ 318 JA2=1040(1040-1042)     C 2SZV.HALO
+ 320 JA3=1040(1040-1042)     C 2SZV.HALO
+ 322 Y:5/2;
+ 324 RBEG*RS1
+ 326 GOSUB400-420            C 2SZV.CS.
+ 328 REND
+C--------------------------------------------------------------
+ 329 IF RS2=0 GOTO 390
+ 330 JA1=1408(1320-1414)     C BAROKK MINTA
+ 336 Y:5/5/2/2;
+ 338 RBEG*RS2
+ 340 GOSUB460-480            C 2SZV.CS.1SZV-VEL
+ 342 REND
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 390 << S:U^SN./.-N./.-N./UVNN.;        Y:5/2;       V0     T1 S1 S2 T2
+ 392 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVND.I;          NP4-4          T1 S1 S2 T2
+ 394 END C************************************************
+
+
+
+ 400 C ******************2SZV. CSIPKE **************************
+ 405 VJA^0
+ 406 WM=18
+ 409 NP7-8
+ 410 << S:U^S N. / .-N. / .-N. /UVS<3-1-2-> NY;   V0        T1 S1 S2 T2
+ 411 >> S:U^S N. / .-N. / .-N. /UVS<3-1-2-> NA;   VL1       T1 S1 S2 T2
+ 420 C********************************************************
+
+
+ 430 C ******************1SZV. CSIPKE*************************
+ 435 VJA^0
+ 436 WM=16
+ 438 NP1-1
+ 440 << S:U^S<1-3->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 441 >> S:U^S<1-3->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 450 C************************************************
+
+ 460 C ******************2SZV. CSIPKE 1SZV.-VEL*************************
+ 463 VJA^0
+ 464 WM=18
+ 467 NP7-8
+C--VAGY:--------
+ 468 << S:U^S<1->     N./ .-N. /UVSN. ;      V0     T1    S2 T2
+ 469 >> S:U^S<2-1-3-> N./ .-N. /UVSNYA;             T1    S2 T2
+ 470 << S:U^S<1->     N./ .-N. /UVSN. ;      VL1    T1    S2 T2
+ 471 >> S:U^S<2-1-3-> N./ .-N. /UVSNAY;             T1    S2 T2
+C--VAGY:--------
+ 468 << S:U^S<1-3->N./.-N./UVS<1-3->NIYA*;   V0     T1    S2 T2
+ 469 >> S:U^S<2->  N./.-N./UVS        NYA;            T1    S2 T2
+ 470 << S:U^S<1-3->N./.-N./UVS<1-3->NIYA*;   VL1    T1    S2 T2
+ 471 >> S:U^S<2->  N./.-N./UVS        NAY;            T1    S2 T2
+ 480 C************************************************
+
+ 700 C 3' SZOROSABB ES A GOMBLYUKAK KOZT +1 SZEM. A GOMBLYUK IS SZUKEBB
+ 700 C KK.  PANT: RS17=52 (GOMBLYUKAK KOZTI TAVOLSAG:758. SOR)
+ 700 C MEL. PANT: RS17=51 
+ 700 C AZ 1/1 HOSSZA ALLITHATO:768,782.SOROK
+
+ 701 C------------------------------2LUSI+TX:--2LUSI+HB:----3LUSI:------
+ 702 NP4=12.4   C:LEVALASZTAS       12.6              
+ 703 NP10=10.8  C:1/1               11.0
+ 704 NP11=9.0   C BEKEZDES                      WM%=15
+ 705 NP12=13.3  C:CSIPKE            13.2
+ 706 NP13=13.1  C:CCIPKE            13.2
+ 707 NP14=12.8  C:SLAG              13.2
+ 708 NP15=14.0  C:1SOR SLAG         14.0
+710C  START        
+712C  YG:6/256;
+ 714 WM=16; WMI=7
+716C  <<	S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4  V0	VU ML       S1 S2
+ 718 >> S:D.I-DI./UVNDI.;             Y:5;                     ML       S1    T2
+ 720 << S:DI.-D.I/UVND.I;         	   Y:5;          	          ML       S1    T2
+ 722 >> S:R-R;		                      Y:6;	       NP4-11    VU ML          S2
+ 724 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 726 >> S:R(11)-R(11)/R(14)-0;        Y:2/5;                VU ML       S1 S2
+ 728 JA1=1987(1984-1987);
+ 730 PA:<JA1>;FA=1-8;FB=17-24;
+
+ 731 C*****GOMBLYUKAK SZAMA:*************
+ 732 PM:9. I 7FA <FB> 573:I<.>;
+ 733 C************************************
+
+ 734 << S:R-0/0-R;		                  Y:2/5;      NP14-14   VU          S1 S2
+ 736 >> S:0-R(12)/R-0/UVSR;		                               VU          S1 S2 T2
+ 738 Y:5/5/2/2;
+ 740                         NP 15-15
+ 742 REP*3 C--------------------
+ 744 << S:R-0;                                  VU      S1
+ 746 WM=0
+ 748 >> S:U^SA;                                 VL1  T1
+ 750 << S:U^SY;                                 VR1  T1
+ 752 WM=15 C16
+ 753 >> S:U^SI/.-N./UVS<1->N.;  VKA>4   NP12-12 V0   T1 S1 T2
+ 754 NP13-13
+ 755 REPEND C--------------------
+ 756 IF RS17=51 GOTO 777
+
+ 757 C*****GOMBLYUKAK KOZTI TAVOLSAG:*****
+ 758 FA=1-22;
+ 759 C***********************************
+
+ 760 << S:R-0;                   Y:2;     VU      S1 
+
+ 761 >> S:U^SN./.*(10.0)-N./*(12.0)-0/UVSI;  Y:2/0; NP12-12   T1 S1 S2 T2 C VAGY NAGYOBB LYUK
+ 761 >> S:U^SN./.*(9.0)-N. /*(12.0)-0/UVSI;  Y:2/0; NP12-12   T1 S1 S2 T2 C VAGY KSSEBB  LYUK
+
+ 762 WM=0
+ 763 << S:UVSY;                                 VL1  T2
+ 764 >> S:UVSA*;                                VR2  T2
+ 765 WM=14
+ 766 << S:N*-0;             NP12-12 Y:5;        V0      S1
+ 767 >> S:U^SD.I/DI.-D.I;   NP10-10          T1 S1
+ 768 REP*1   
+ 769 << S:DI.-D.I/DI.-D.I;          Y:2/5;      VU      S1 S2
+ 770 >>                                         VU      S1 S2
+ 771 REPEND
+ 772 <<                                         VU      S1 S2
+ 773 >> S:DI.-D.I/DI.-D.I/UVSD.I;                       S1 S2 T2
+ 774 << S:R(9.0)-R(7.0)/R(4)-0;       Y:2/5;              S1 S2
+ 775 >> S:0-R/R-0;                  NP12-12     VU      S1 S2
+ 776 END
+
+C----MELLENY PANTHOZ:--------------------------------------
+ 777 C REP*1
+ 778 C << S:R-0;                                  VU      S1
+ 779 C >> S:U^SN./.-N./UVSN.;     VKA>2           V0   T1 S1 T2
+ 780 C REPEND
+ 781 << S:U^SD.I/DI.-D.I/DI.-D.I;    Y:2/5; NP10-10   T1 S1 S2
+ 782 REP*1   
+ 783 >> S:DI.-D.I/DI.-D.I;                      VU      S1 S2
+ 784 <<                                         VU      S1 S2
+ 785 REPEND
+ 786 >> S:DI.-D.I/DI.-D.I(4)/UVSD.I;                        S1 S2 T2
+ 787 << S:R(9.0)-R(7.0)/R(4)-0;       Y:2/5;              S1 S2
+ 788 >> S:0-R/R-0;                  NP12-12     VU      S1 S2
+ 789 END
+
+1984 IIIIIIY*A200I
+1985 IIAIYIII
+1986 IAAIYYII
+1987 AAAIYYYI
+
+
+
+1006 3A*3YI
+
+1040 A*
+1042 Y*
+
+1318 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1320 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1322 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1324 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1326 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1328 XXXXXXXXXXXXXXXXXXXXXXXXIIIXXXXXXXXXXXXXXXXXXXXX
+1330 XXXXXXXXXXXXXXXXXXXXXXIII.IIIXXXXXXXXXXXXXXXXXXX
+1332 XXXXXXXXX.XXXXXXXXIIIII.....IIIIIXXXXXXXX.XXXXXX
+1334 XXXXXXXI...IXXXXXIIIIIII...IIIIIIIXXXXXI...IXXXX
+1336 XXXXXXXII.IIXXXXIII....II.II....IIIXXXXII.IIXXXX
+1338 XIXXXXXXI.IXXXXXII......III......IIXXXXXI.IXXXXX
+1340 .I.XXXXII.IIXXXII..III...I...III..IIXXXII.IIXXXX
+1342 .I.IXXXI...IXXXI..IIYII..I..IIYII..IXXXI...IXXXI
+1344 .I..IIIII.IIIIII..II.IIIIIIIII.II..IIIIII.IIIII.
+1346 .....IAIIIIIA.II..IIA.AIIIIIA.AII..II.AIIIIIAI..
+1348 ....IIIIIIIIIIII...III.IIIII.III...IIIIIIIIIIII.
+1350 ...IIYIIY.YIIY.II....II.YIY.II....II.YIIY.YIIYII
+1352 I.IIIIIIIIIIIIIII......I.I.I......IIIIIIIIIIIIII
+1354 III.AIIIIAIIIIA.III.....III.....III.AIIIIAIIIIA.
+1356 IIIII...III...IIIIIII....I....IIIIIII...III...II
+1358 .I.Y..IIIYIII..Y.IIIII...I...IIIII.Y..IIIYIII..Y
+1360 IIII.IIIIIIIII.IIIII.II.....II.IIIII.IIIIIIIII.I
+1362 A.A..IIIAIAIII..AIII.II.....II.IIIA..IIIAIAIII..
+1364 III..IIII.IIII..III..III...III..III..IIII.IIII..
+1366 IYI...IY...YI...III..IYI...IYI..III...IY...YI...
+1368 IIII.....I.....III..II.II.II.I...III.....I.....I
+1370 .A.II...III...IIAI..IIAII.IIAII..IAII...III...II
+1372 IIIIIIIII.IIIIIIII..IIIIIIIIIII..IIIIIIII.IIIIII
+1374 YIY.YIIII.IIII.YI...I.IY.Y.YI.I...IY.YIII.IIIIY.
+1376 I.IIIIII...IIIIII..II.IIIIIII.II..IIIIII...IIIII
+1378 I.IA.III...II.AII.III..IA.AI..III.IIA.II...III.A
+1380 ...IIII..I..IIII..III..IIIII..III..IIII..I..IIII
+1382 ...III...I...III..IYI..IIIII..IYI..III...I...III
+1384 ....I...III...I...IIII..III..IIII...I...III...I.
+1386 ....I....A....I...IIAI.......IAII...I....A....I.
+1388 .....I.I.I.I.I...I.IIII.I.I.IIII.I...I.I.I.I.I..
+1390 .I...IY.Y.Y.YI...I.IIY.Y.Y.Y.YII.I...IY.Y.Y.YI..
+1392 III...III.III...II..IIIIIIIIIII..II...III.III...
+1394 III....IIAII....II..IIA.A.A.AII..II....IIAII....
+1396 IXII...II.II...IIII..I.IIIII.I..IIII...II.II...I
+1398 XXXII...III...IIXXI...IIIYIII...IXXII...III...II
+1400 XXXXII...I...IIXXXII....III....IIXXXII...I...IIX
+1402 XXXXXII.....IIXXXXXII.........IIXXXXXII.....IIXX
+1404 XXXXXXII...IIXXXXXXXIII.....IIIXXXXXXXII...IIXXX
+1406 XXXXXXXIIIIIXXXXXXXXXXIIIIIIIXXXXXXXXXXIIIIIXXXX
+1408 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1410 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1412 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1414 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1416 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1418 ................................................
+1420 ................................................
+1422 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1424 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1426 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1428 IIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIY
+1430 III.III.III.III.III.III.III.III.III.III.III.III.
+1432 IYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYII
+1434 I.III.III.III.III.III.III.III.III.III.III.III.II
+1436 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1438 ................................................
+1440 ................................................
+1442 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1444 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1446 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

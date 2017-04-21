@@ -1,0 +1,263 @@
+  1 C--UJJ:RS1=17,HATA:RS1=26,ELEJE:RS1=7,1/1-ES NYAK:RS2=16;(505.SOR) ZIPPES NYAK:RS3=20,RS4=13;(615.SOR)---
+  2 C-----
+ 10    START
+ 11    IF RS16=1 GOTO600   C---ZIPPES NYAK------
+ 12    IF RS17=1 GOTO500   C---1/1-ES NYAK------
+ 13  C  NP1=15.5   C:MINTA
+ 14  C  NP2=12.0   C:1/1-ES PASSZE
+ 15  C  NP4=11.5   C:LEVALASZTAS
+ 50    YG:6/1346;
+ 51  C  WM=20
+ 59 << S:R-R/0-R;                      Y:3/4;      NP4-4  V0          S1 S2
+ 60 C >> S:R-R/R-R;                                                     S1 S2
+ 61 C << S:R-R/R-0;                                                     S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:4/3;                    S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:4;                        T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;     V#       T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/4;     NP2-2     V# V0 ML T1 S1   
+ 71 << S:DI.-0/0-D.I;            Y:6/3;     NP2-2        V#          S1 S2
+ 74 >> S:DI.-0/DI.-D.I;          Y:6/3;             V#          S1 S2
+ 75       RBEG*RS2                                                       
+ 76 << S:DI.-D.I;             Y:4/3;                     V#          S1 S2
+ 78 >>                                                   V#          S1 S2
+ 79                 REND                                     
+ 80 << S:DI.-D.I/DI.-D.I/UVND.I;       Y:4/3;                         S1 S2 T2
+ 81    JA1=1152(1135-1152)
+ 82    PA:JA1;
+ 84 C ---TEST,628 TU,3LAP--------------------- 
+ 86    FA=5-181  FB=5-16    FC=170-182
+ 88    PM:<.> 13:3(FB  FA FC ...);
+ 90    IF RS1<11 GOTO 160
+ 92    IF RS1<22 GOTO 105
+ 94    GOTO 112
+105 C --UJJA,TELI TUAGYRA(581 TU),4 LAP-------------------
+106    JA1=1152(1129-1152)
+107    FB=1-6
+109    FC=82-102
+110    PM:<.> 13:3(11FB FC 4FB FC 11FB.......);
+112    RBEG*RS1
+114    GOSUB 210-280
+116    REND
+118    GOTO 318
+124 C-------------------------------------------------------
+160    REP*6
+210 >> S:U^N<1->N./.-N./.-N./UVNI;    Y:3/4; V0  NP1-1  T1 S1 S2 T2
+215    VJA^0
+220 << S:U^N<1->I/.-N.*/0-O/UVN+IA;   Y:4/0; VL3 NP3-3  T1 S1 S2 T2
+230 >> S:U^NI/.-N.*/0-A/UVNI;         Y:4/0; VR1 NP3-3  T1 S1 S2 T2
+240 << S:U^N<1->+AI/.-N./.-N./UVNN.;  Y:3/4; VR3 NP1-1  T1 S1 S2 T2
+245 C
+250 >> S:U^N<1->N./.-N./.-N./UVNI;    Y:3/4; V0         T1 S1 S2 T2
+260 << S:U^N<1->I/.-N.*/0-O/UVN+IA;   Y:4/0; VR3 NP3-3  T1 S1 S2 T2
+270 >> S:U^NI/.-N.*/0-A/UVNI;         Y:4/0; VL1 NP3-3  T1 S1 S2 T2
+280 << S:U^N<1->+AI/.-N./.-N./UVNN.;  Y:3/4; VL3 NP1-1  T1 S1 S2 T2
+300    REPEND
+301    JA1=1134(1002-1134)
+302    REP*10
+303    GOSUB 210-280
+304    REPEND
+305    REP*23
+306    GOSUB 312-314
+307    REPEND
+310    RBEG*RS1
+312 >> S:U^N<1->I/.-I/.-I/UVNI;        Y:3/4; V0        T1 S1 S2 T2
+314 << S:U^N<1->I/.-I/.-I/UVNI;        Y:3/4;           T1 S1 S2 T2
+316    REND
+318 >> S:R-0/R-0;                      Y:3/4; V0           S1 S2
+320    END
+500 C---1/1-ES PASSE,TELI TUAGYRA,4LAP---------------
+501 C  START
+505    RS2=9
+510    GOSUB 13-71
+512    GOSUB 622-655
+514    GOSUB 705-720
+520    RBEG*RS2
+525 <> S:.-I/.-I;                                     V#            S1 S2
+530    GOSUB 525
+540    REND
+545 >> S:.-I/.-I/UVSI;                                              S1 S2 T2
+550    END
+600 C-----ZIPPZARAS NYAK,TELI TUAGYRA,4LAP--------
+610 C  START
+615    RS3=20;RS4=13
+620    GOSUB 12-71
+622 >> S:DI.-D.I/DI.-D.I/UVND.I;                Y:4/3; NP2-2             S1 S2 T2
+625   C NP2=12.8
+626   C NP1=14.7
+640    JA1=1226(1226-1236)
+645    JA2=1226
+650    FA=1-21
+655    FB=2-3
+660    PA:JA1;
+670    PM:11.<FA>164:..316:..468:..620:<.>;
+680    RBEG*RS3
+690 <> S:U^N<1+>I/.-I/.-I/UVNI;           Y:4/3;   NP1-1        T1 S1 S2 T2
+695    GOSUB 690
+700    REND
+705    PA:JA2;
+710    PM:11.<FB>164:..316:..468:..620:<.>;
+712    NP2-2
+720 << S:U^NI/.-I/.-I;                    Y:4/3;    V#     T1 S1 S2
+722    NP2-2
+730    RBEG*RS4
+735 <> S:.-I/.-I;                                         V#        S1 S2
+740    GOSUB 735
+750    REND
+755 >> S:.-I/.-I/UVNI;                            NP2-2                  S1 S2 T2
+760    GOSUB 660-700
+770    END
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1003 I.I.I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.I.I
+1004 .I.I..III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..I.I.I.
+1005 I.I.I.II...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..I.I.I.I
+1006 .I.I.I..III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III....I.I.I.I.
+1007 I.I.I.I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.I.I.I.I
+1008 .I.I.I.I.II...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..I.I.I.I.I.
+1009 I.I.I.I.I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...I.I.I.I.I.I
+1010 .I.I.I.I.I.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...I.I.I.I.I.I.
+1011 I.I.IIIIIIIIIIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIIIIIIIIIIIIII.I.I.I
+1012 .IIII..........IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.IIII..........IIII.I.
+1013 II................IIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.III................II.I
+1014 .IIIIII.............IIIIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.III.............IIIIII.I.
+1015 I.I.I.IIIII...........IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIIIII...........IIIII.I.I.I.I
+1016 .I.I.I.I.IIIII..........IIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..II..........IIIII.I.I.I.I.I.
+1017 I.I.I.I.I.I.IIII.........II.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIII.........IIII.I.I.I.I.I.I.I
+1018 .I.I.I.I.I.I.I.II.........III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.........II.I.I.I.I.I.I.I.I.
+1019 I.I.I.IIIII.I.I.II........I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...I........II.I.I.IIIII.I.I.I.I
+1020 .I.I.III..II.I.I.II.......II.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...II.......II.I.I.II..III.I.I.I.
+1021 I.I.I.I....II.I.I.II.......II...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIII.......II.I.I.II....I.I.I.I.I
+1022 .I.I.II....III.I.I.II......IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...II......II.I.I.III....II.I.I.I.
+1023 I.I.II......I.I.I.I.II.....II...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIII.....II.I.I.I.I......II.I.I.I
+1024 .I.I.I......II.I.I.I.I.....II.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.II.....I.I.I.I.II......I.I.I.I.
+1025 IIIIII......IIIII.I.II......IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..I......II.I.IIIII......IIIIII.I
+1026 III.....II.....III.I.II.....I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.....II.I.III.....II.....IIII.
+1027 I......IIII......II.I.I.....III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...I.....I.I.II......IIII......III
+1028 ......IIIIII......II.II.....I...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.....II.II......IIIIII......I.
+1029 I......IIII......II.I.I.....I.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.....I.I.II......IIII......III
+1030 III.....II.....III.I.III...IIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..II...III.I.III.....II.....IIII.
+1031 I.IIII......IIIII.I.I.II...II...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...IIII...II.I.I.IIIII......IIII.I.I
+1032 .I.I.I......II.I.I.I.I.I...IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...II...I.I.I.I.I.II......I.I.I.I.
+1033 I.I.II......I.I.I.I.I.II..IIIIIIIIIIIIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..IIIIIIIIIIII..II.I.I.I.I.I......II.I.I.I
+1034 .I.I.II....III.I.I.I.I.I.II..........IIII.III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.IIII..........II.I.I.I.I.I.III....II.I.I.II
+1035 I.I.I.I....II.I.I.I.I.II................IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...II.III................II.I.I.I.I.II....I.I.I.II.
+1036 II.I.III..II.I.I.I.I.I.IIIIII.............IIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III.III.............IIIIII.I.I.I.I.I.II..III.I.II..
+1037 .II.I.IIIII.I.I.I.I.I.I.I.I.IIIII...........IIIII...III...III...III...III...III...III...III...III...III...III...III...III...III...III...III...........IIIII.I.I.I.I.I.I.I.I.IIIII.I.II..I
+1038 ..II.I.I.I.I.I.I.I.I.I.I.I.I.I.IIIII..........II..III...III...III...III...III...III...III...III...III...III...III...III...III...III...III..........IIIII.I.I.I.I.I.I.I.I.I.I.I.I.I.II..II
+1039 I..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.IIII.........IIII...III...III...III...III...III...III...III...III...III...III...III...III...III...IIII.........IIII.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..I..
+1040 II..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II.........II...III...III...III...III...III...III...III...III...III...III...III...III...III...II.I.........II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..I...
+1041 ..I..II.I.I.I.I.I.I.I.I.I.I.IIIII.I.I.II........I.III...III...III...III...III...III...III...III...III...III...III...III...III...III...I........II.I.I.IIIII.I.I.I.I.I.I.I.I.I.I.II....III
+1042 I.....II.I.I.I.I.I.I.I.I.I.III..II.I.I.II.......II..III...III...III...III...III...III...III...III...III...III...III...III...III...IIIII.......II.I.I.II..III.I.I.I.I.I.I.I.I.I.II..II...I
+1043 ..III..II.I.I.I.I.I.I.I.I.I.I....II.I.I.II.......IIII...III...III...III...III...III...III...III...III...III...III...III...III...III..I.......II.I.I.II....I.I.I.I.I.I.I.I.I.I.II..I...III
+1044 III.....II.I.I.I.I.I.I.I.I.II....III.I.I.II......II...III...III...III...III...III...III...III...III...III...III...III...III...III...II......II.I.I.III....II.I.I.I.I.I.I.I.I.II.....III..
+1045 II...II..II.I.I.I.I.I.I.I.II......I.I.I.I.II.....I...III...III...III...III...III...III...III...III...III...III...III...III...III...III.....II.I.I.I.I......II.I.I.I.I.I.I.I.II.....III...
+1046 ..III.....II.I.I.I.I.I.I.I.I......II.I.I.I.I.....IIII...III...III...III...III...III...III...III...III...III...III...III...III...III.II.....I.I.I.I.II......I.I.I.I.I.I.I.I.II...III...III
+1047 I...III....II.I.I.I.I.IIIIII......IIIII.I.II......I.III...III...III...III...III...III...III...III...III...III...III...III...III...III......II.I.IIIII......IIIIII.I.I.I.I.II..I...III...I
+1048 ..III...II..II.I.I.I.IIII.....II.....III.I.II.....III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.....II.I.III.....II.....IIII.I.I.I.II.....III...III
+1049 III...III....II.I.I.III......IIII......II.I.I.....I...III...III...III...III...III...III...III...III...III...III...III...III...III...I.....I.I.II......IIII......III.I.I.II....III...III..
+1050 II...III...I..II.I.I.I......IIIIII......II.II.....I..III...III...III...III...III...III...III...III...III...III...III...III...III...II.....II.II......IIIIII......I.I.I.II....III...III...
+1051 ..III...III....II.I.III......IIII......II.I.I.....III...III...III...III...III...III...III...III...III...III...III...III...III...III.I.....I.I.II......IIII......III.I.II..III...III...III
+1052 I...III...III...II.I.IIII.....II.....III.I.III...II.III...III...III...III...III...III...III...III...III...III...III...III...III...IIII...III.I.III.....II.....IIII.I.II.....III...III...I
+1053 ..III...III...I..II.I.I.IIII......IIIII.I.I.II...IIII...III...III...III...III...III...III...III...III...III...III...III...III...III..I...II.I.I.IIIII......IIII.I.I.II....III...III...III
+1054 III...III...III...II.I.I.I.I......II.I.I.I.I.I...II...III...III...III...III...III...III...III...III...III...III...III...I.I...III...II...I.I.I.I.I.II......I.I.I.I.II...III...III...III..
+1055 II...III...III.....II.I.I.II......I.I.I.I.I.II..IIIIIIIIIIIIII...III...III...III...III...III...III...III...III...III...III.IIIIIIIIIIII..II.I.I.I.I.I......II.I.I.II...III...III...III...
+1056 ..III...III...III...II.I.I.II....III.I.I.I.I.I.II..........IIIIII...III...III...III...III...III...III...III...III...III.IIII..........II.I.I.I.I.I.III....II.I.I.II..II...III...III...III
+1057 I...III...III...III..II.I.I.I....II.I.I.I.I.II................IIIII...III...III...III...III...III...III...III...III...III................II.I.I.I.I.II....I.I.I.II....III...III...III...I
+1058 ..III...III...III.....II.I.III..II.I.I.I.I.I.IIIIII.............III.III...III...III...III...III...III...III...III...III.............IIIIII.I.I.I.I.I.II..III.I.II...III...III...III...III
+1059 III...III...III...III..II.I.IIIII.I.I.I.I.I.I.I.I.IIIII...........III...III...III...III...III...III...III...III...III...........IIIII.I.I.I.I.I.I.I.I.IIIII.I.II..III...III...III...III..
+1060 II...III...III...III....II.I.I.I.I.I.I.I.I.I.I.I.I.I.IIIII..........II.III...III...III...III...III...III...III...II..........IIIII.I.I.I.I.I.I.I.I.I.I.I.I.I.II..III...III...III...III...
+1061 ..III...III...III...III..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.IIII.........II...III...III...III...III...III...III...IIII.........IIII.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..I...III...III...III...III
+1062 I...III...III...III...II..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II.........III...III...III...III...III...III...III...I.........II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II...III...III...III...III...I
+1063 ..III...III...III...III....II.I.I.I.I.I.I.I.I.I.I.IIIII.I.I.II........I...III...III...III...III...III...III...I.I........II.I.I.IIIII.I.I.I.I.I.I.I.I.I.I.II..III...III...III...III...III
+1064 III...III...III...III...I...II.I.I.I.I.I.I.I.I.I.III..II.I.I.II.......IIIII...III...III...III...III...III...IIIII.......II.I.I.II..III.I.I.I.I.I.I.I.I.I.II..II...III...III...III...III..
+1065 II...III...III...III...III...II.I.I.I.I.I.I.I.I.I.I....II.I.I.II.......III...III...III...III...III...III...III.I.......II.I.I.II....I.I.I.I.I.I.I.I.I.I.II..II...III...III...III...III...
+1066 ..III...III...III...III..I....II.I.I.I.I.I.I.I.I.II....III.I.I.II......I..III...III...III...III...III...III...II......II.I.I.III....II.I.I.I.I.I.I.I.I.II.....III...III...III...III...III
+1067 I...III...III...III...III...I..II.I.I.I.I.I.I.I.II......I.I.I.I.II.....II...III...III...III...III...III...III..I.....II.I.I.I.I......II.I.I.I.I.I.I.I.II..I..I..III...III...III...III...I
+1068 ..III...III...III...III.....II..II.I.I.I.I.I.I.I.I......II.I.I.I.I.....II.III...III...III...III...III...III...II.....I.I.I.I.II......I.I.I.I.I.I.I.I.II..II...III...III...III...III...III
+1069 III...III...III...III...II..III..II.I.I.I.I.I.IIII......IIIII.I.II......III...III...III...III...III...III...III......II.I.IIIII......IIII.I.I.I.I.I.II..III..II...III...III...III...III..
+1070 II...III...III...III...II...IIII..II.I.I.I.IIII.....II.....III.I.II.....II...III...III...III...III...III...IIII.....II.I.III.....II.....IIII.I.I.I.II..IIII......III...III...III...III...
+1071 ..III...III...III...III..I..IIIII..II.I.I.III......IIII......II.I.I.....I.III...III...III...III...III...III...I.....I.I.II......IIII......III.I.I.II..IIIII..IIII...III...III...III...III
+1072 I...III...III...III...IIII..IIIIII..II.I.I.I......IIIIII......II.II.....I...III...III...III...III...III...III.I.....II.II......IIIIII......I.I.I.II..III.....I..III...III...III...III...I
+1073 ..III...III...III...III.....IIIIIII..II.I.III......IIII......II.I.I.....I.III...III...III...III...III...III...I.....I.I.II......IIII......III.I.II..IIII......III...III...III...III...III
+1074 III...III...III...III...II..IIIIIIII..II.I.IIII.....II.....III.I.III...IIII...III...III...III...III...III...IIII...III.I.III.....II.....IIII.I.II..IIIII.....II...III...III...III...III..
+1075 II...III...III...III...III..**O++A.II..II.I.I.IIII......IIIII.I.I.II...III...III...III...III...III...III...III.I...II.I.I.IIIII......IIII*I*I*II..III...III..I...III...III...III...III...
+1076 ..III...III...III...III.....**O++A...I..II.I.I.I.I......II.I.I.I.I.I...I..III...III...III...III...III...III...II...I.I.I.I.I.II......I.I.I.I.II..IIII...III...III...III...III...III...III
+1077 I...III...III...III...III...**O++A..III..II.I.I.II......I.I.I.I.I.II..IIIIIIIIIIIIIII...III...III...IIIIIIIIIIIII..II.I.I.I.I.I......II.I.I.II..IIIII...III..I..III...III...III...III...I
+1078 ..III...III...III...III..I.....A++O**.II..II.I.I.II....III.I.I.I.I.I.II..........IIII.III...III...IIII..........II.I.I.I.I.I.III....II.I.I.II..III...A++O**...III...III...III...III...III
+1079 III...III...III...III...II.....A++O**.III..II.I.I.I....II.I.I.I.I.II................III...III...III................II.I.I.I.I.II....I.I.I.II..IIII...A++O**..II...III...III...III...III..
+1080 II...III...III...III...II......A++O**.IIII..II.I.III..II.I.I.I.I.I.IIIIII.............IIIIII..III.............IIIIII.I.I.I.I.I.II..III.I.II..IIIII...A++O**..I...III...III...III...III...
+1081 ..III...III...III...III..I..III...**O++A.II..II.I.IIIII.I.I.I.I.I.I.I.I.IIIII...........III.III...........IIIII.I.I.I.I.I.I.I.I.IIIII.I.II..III...**O++A......III...III...III...III...III
+1082 I...III...III...III...IIII..III...**O++A...I..II.I.I.I.I.I.I.I.I.I.I.I.I.I.IIIII..........I.I..........IIIII.I.I.I.I.I.I.I.I.I.I.I.I.I.II..IIII...**O++A.....I..III...III...III...III...I
+1083 ..III...III...III...III.....III...**O++A..III..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.IIII........I.I........IIII.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..IIIII...**O++A......III...III...III...III...III
+1084 III...III...III...III...II..A++O**...A++O**.II..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II.......III.......II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..III...A++O**...III..II...III...III...III...III..
+1085 II...III...III...III...II...A++O**...A++O**.III..II.I.I.I.I.I.I.I.I.I.I.IIIII.I.I.II.......I.......II.I.I.IIIII.I.I.I.I.I.I.I.I.I.I.II..IIII...A++O**...III..I...III...III...III...III...
+1086 ..III...III...III...III..I..A++O**...A++O**.IIII..II.I.I.I.I.I.I.I.I.I.III..II.I.I.II......I......II.I.I.II..III.I.I.I.I.I.I.I.I.I.II..IIIII...A++O**...III...III...III...III...III...III
+1087 I...III...III...III...IIII.....**O++A...**O++A.II..II.I.I.I.I.I.I.I.I.I.I....II.I.I.II...........II.I.I.II....I.I.I.I.I.I.I.I.I.I.II..III...**O++A...**O++A..I..III...III...III...III...I
+1088 ..III...III...III...III........**O++A...**O++A...I..II.I.I.I.I.I.I.I.I.II....III.I.I.II.........II.I.I.III....II.I.I.I.I.I.I.I.I.II..IIII...**O++A...**O++A...III...III...III...III...III
+1089 III...III...III...III...II.....**O++A...**O++A..III..II.I.I.I.I.I.I.I.II......I.I.I.I.II.......II.I.I.I.I......II.I.I.I.I.I.I.I.II..IIIII...**O++A...**O++A..II...III...III...III...III..
+1090 II...III...III...III...III..III...A++O**...A++O**.II..II.I.I.I.I.I.I.I.I......II.I.I.I.I.......I.I.I.I.II......I.I.I.I.I.I.I.I.II..III....A++O**...A++O**....I...III...III...III...III...
+1091 ..III...III...III...III.....III...A++O**...A++O**.III..II.I.I.I.I.I.IIII......IIIII.I.II.......II.I.IIIII......IIII.I.I.I.I.I.II..IIII....A++O**...A++O**.....III...III...III...III...III
+1092 I...III...III...III...IIII..III...A++O**...A++O**.IIII..II.I.I.I.IIII.....II.....III.I.II.....II.I.III.....II.....IIII.I.I.I.II..IIIII....A++O**...A++O**....I..III...III...III...III...I
+1093 ..III...III...III...III..I..**O++A...**O++A...**O++A.II..II.I.I.III......IIII......II.I.I.....I.I.II......IIII......III.I.I.II..III...**O++A...**O++A...III...III...III...III...III...III
+1094 III...III...III...III...I...**O++A...**O++A...**O++A...I..II.I.I.I......IIIIII......II.II.....II.II......IIIIII......I.I.I.II..IIII...**O++A...**O++A...III..II...III...III...III...III..
+1095 II...III...III...III...III..**O++A...**O++A...**O++A..III..II.I.III......IIII......II.I.I.....I.I.II......IIII......III.I.II..IIIII...**O++A...**O++A...III..I...III...III...III...III...
+1096 ..III...III...III...III..I.....A++O**...A++O**...A++O**.II..II.I.IIII.....II.....III.I.III...III.I.III.....II.....IIII.I.II..III...A++O**...A++O**...A++O**...III...III...III...III...III
+1097 I...III...III...III...III......A++O**...A++O**...A++O**.III..II.I.I.IIII......IIIII.I.I.II...II.I.I.IIIII......IIII.I.I.II..IIII...A++O**...A++O**...A++O**..I..III...III...III...III...I
+1098 ..III...III...III...III........A++O**...A++O**...A++O**.IIII..II.I.I.I.I......II.I.I.I.I.I...I.I.I.I.I.II......I.I.I.I.II..IIIII...A++O**...A++O**...A++O**...III...III...III...III...III
+1099 III...III...III...III...II..III...**O++A...**O++A...**O++A.II..II.I.I.II......I.I.I.I.I.II...II.I.I.I.I.I......II.I.I.II..III...**O++A...**O++A...**O++A.....II...III...III...III...III..
+1100 II...III...III***III...II***III...**O++A...**O++A...**O++A...I..II.I.I.II....III.I.I.I.I.I...I.I.I.I.I.III....II.I.I.II...III...**O++A...**O++A...**O++A.....I...III...III...III...III...
+1101 ..III...III...III...III..I..III...**O++A...**O++A...**O++A..I.I..II.I.I.I....II.I.I.I.I.III.III.I.I.I.I.II....I.I.I.II....III...**O++A...**O++A...**O++A......III...III...III...III...III
+1102 I...III...III...III...IIII..A++O**...A++O**...A++O**...A++O**..I..II.I.III..II.I.I.I.I.I.II.II.I.I.I.I.I.II..III.I.II..I.....A++O**...A++O**...A++O**...III..I..III...III...III...III...I
+1103 ..III...III...III...III.....A++O**...A++O**...A++O**...A++O**..II..II.I.IIIII.I.I.I.I.I.I.I.I.I.I.I.I.I.I.IIIII.I.II..I......A++O**...A++O**...A++O**...III...III...III...III...III...III
+1104 III...III...III...III...II..A++O**...A++O**...A++O**...A++O**.......II.I.I.I.I.I.I.I.I.I.II.II.I.I.I.I.I.I.I.I.I.II....I.....A++O**...A++O**...A++O**...III..II...III...III...III...III..
+1105 II...III...III...III...III.....**O++A...**O++A...**O++A...III..I.II..II.I.I.I.I.I.I.I.I.I.III.I.I.I.I.I.I.I.I.I.II.....I..**O++A...**O++A...**O++A...**O++A..I...III...III...III...III...
+1106 ..III...III...III...III..I.....**O++A...**O++A...**O++A...III..II.....II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II...III...**O++A...**O++A...**O++A...**O++A...III...III...III...III...III
+1107 I...III...III...III...III......**O++A...**O++A...**O++A...III...III....II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..I...II..**O++A...**O++A...**O++A...**O++A..I..III...III...III...III...I
+1108 ..III...III...III...III..I..III...A++O**...A++O**...A++O**.....II...II..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II.....III...III...A++O**....A++O**...A++O**.....III...III...III...III...III
+1109 III...III...III...III...I...III...A++O**...A++O**...A++O**........III....II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II....III..I..III...A++O**....A++O**...A++O**....II...III...III...III...III..
+1110 II...III...III...III...III..III...A++O**...A++O**...A++O**.....I.III...I..II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II....III...I..III...A++O**....A++O**...A++O**....I...III...III...III...III...
+1111 ..III...III...III...III..I..**O+A...**O+A...**O+A...**O+A..II...III....II.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II..III...III......**O++A...**O++A...**O++A...III...III...III...III...III...III
+1112 I...III...III...III...III...**O++A...**O++A...**O++A...**O++A...III...III...II.I.I.I.I.I.I.I.I.I.I.I.I.I.II.....III...II.....**O++A...**O++A...**O++A...III..I..III...III...III...III...I
+1113 ..III...III...III...III..I..**O++A...**O++A...**O++A...**O++A..II...III...I..II.I.I.I.I.I.I.I.I.I.I.I.I.II....III...III......**O++A...**O++A...**O++A...III...III...III...III...III...III
+1114 III...III...III...III...II.....A++O**...A++O**...A++O**...III.....III...III...II.I.I.I.I.I.I.I.I.I.I.I.II...III...III..I..A++O**...A++O**...A++O**...A++O**..II...III...III...III...III..
+1115 II...III...III...III...II......A++O**...A++O**...A++O**...III..I.III...III.....II.I.I.I.I.I.I.I.I.I.I.II...III...III......A++O**...A++O**...A++O**...A++O**..I...III...III...III...III...
+1116 ..III...III...III...III..I.....A++O**...A++O**...A++O**...III..II...III...III...II.I.I.I.I.I.I.I.I.I.II..II...III...IIII..A++O**...A++O**...A++O**...A++O**...III...III...III...III...III
+1117 I...III...III...III...III...III...**O++A...**O++A...**O++A......III...III...III..II.I.I.I.I.I.I.I.I.II....III...III...II..III...**O++A...**O++A...**O++A.....I..III...III...III...III...I
+1118 ..III...III...III...III.....III...**O++A...**O++A...**O++A.....II...III...III.....II.I.I.I.I.I.I.I.II...III...III...III...III...**O++A...**O++A...**O++A......III...III...III...III...III
+1119 III...III...III...III...II..III...**O++A...**O++A...**O++A........III...III...III..II.I.I.I.I.I.I.II...II...III...III..I..III...**O++A...**O++A...**O++A.....II...III...III...III...III..
+1120 II...III...III...III...III..A++O**...A++O**...A++O**...A++O**..I.III...III...III.I..II.I.I.I.I.I.II..III...III...III...I.....A++O**...A++O**...A++O**...III..I...III...III...III...III...
+1121 ..III...III...III...III.....A++O**...A++O**...A++O**...A++O**..II...III...III...I....II.I.I.I.I.II......III...III...III......A++O**...A++O**...A++O**...III...III...III...III...III...III
+1122 I...III...III...III...IIII..A++O**...A++O**...A++O**...A++O**...III...III...III..I....II.I.I.I.II....II...III...III...II.....A++O**...A++O**...A++O**...III..I..III...III...III...III...I
+1123 ..III...III...III...III..I.....**O++A...**O++A...**O++A...III..II...III...III...II..I..II.I.I.II..I..I..III...III...III...**O++A...**O++A...**O++A...**O++A..IIII...III...III...III...III
+1124 III...III...III...III...I......**O++A...**O++A...**O++A...III.....III...III...III...II..II.I.II..II...III...III...III..I..**O++A...**O++A...**O++A...**O++A...I...III...III...III...III..
+1125 II...III...III...III...III.....**O++A...**O++A...**O++A...III..I.III...III...III.I..III..II.II..III..III...III...III...I..**O++A...**O++A...**O++A...**O++A..I...III...III...III...III...
+1126 ..III...III...III...III..I..III...A++O**...A++O**...A++O**.....II...III...III...II..IIII..III..IIII..I..III...III...III...III...A++O**....A++O**...A++O**.....III...III...III...III...III
+1127 I...III...III...III...III...III...A++O**...A++O**...A++O**......III...III...III.....IIIII..I..IIIII...I...III...III...II..III...A++O**....A++O**...A++O**....I..III...III...III...III...I
+1128 ..III...III...III...III.....III...A++O**...A++O**...A++O**.....II...III...III...II..IIIIII...IIIIII..I..III...III...III...III...A++O**....A++O**...A++O**.....III...III...III...III...III
+1129 III...III...III...III...II..**O++A...**O++A...**O++A...**O++A..I..III...III...IIII..**O++A...**O++A...III...III...III..I.....**O++A...**O++A...**O++A...III..II...III...III...III...III..
+1130 II...III...III...III...II...**O++A...**O++A...**O++A...**O++A....III...III...III....**O++A...**O++A...II...III...III...I.....**O++A...**O++A...**O++A...III..I...III...III...III...III...
+1131 ..III...III...III...III..I..**O++A...**O++A...**O++A...**O++A..II...III...III...II..**O++A...**O++A.....III...III...III......**O++A...**O++A...**O++A...III...III...III...III...III...III
+1132 I...III...III...III...IIII.....A++O**...A++O**...A++O**...III...III...III...III..I..A++O**...A++O**..II...III...III...II..A++O**...A++O**...A++O**...A++O**..I..III...III...III...III...I
+1133 ..III...III...III...III........A++O**...A++O**...A++O**...III..II...III...III...I...A++O**...A++O**.....III...III...III...A++O**...A++O**...A++O**...A++O**...III...III...III...III...III
+1134 III...III...III...III...II.....A++O**...A++O**...A++O**...III.....III...III...IIII..A++O**...A++O**..I.II...III...III..I..A++O**...A++O**...A++O**...A++O**..II...III...III...III...III..
+1135 II...III...III...III...III..III...**O++A...**O++A...**O++A.....I.III...III...III.I..**O++A...**O++A..III...III...III...I..III...**O++A...**O++A...**O++A.....I...III...III...III...III...
+1136 ..III...III...III...III.....III...**O++A...**O++A...**O++A.....II...III...III...I...**O++A...**O++A.....III...III...III...III...**O++A...**O++A...**O++A......III...III...III...III...III
+1137 I...III...III...III...IIII..III...**O++A...**O++A...**O++A......III...III...III..I..**O++A...**O++A..II...III...III...II..III...**O++A...**O++A...**O++A.....I..III...III...III...III...I
+1138 ..III...III...III...III..I..A++O**...A++O**...A++O**...A++O**..II...III...III...II..A++O**...A++O**..I..III...III...III......A++O**...A++O**...A++O**...III...III...III...III...III...III
+1139 III...III...III...III...I...A++O**...A++O**...A++O**...A++O**.....III...III...III...A++O**...A++O**...III...III...III..I.....A++O**...A++O**...A++O**...III..II...III...III...III...III..
+1140 II...III...III...III...III..A++O**...A++O**...A++O**...A++O**..I.III...III...III.I..A++O**...A++O**..III...III...III...I.....A++O**...A++O**...A++O**...III..I...III...III...III...III...
+1141 ..III...III...III...III........**O++A...**O++A...**O++A...III..II...III...III...II..**O++A...**O++A.....III...III...III...**O++A...**O++A...**O++A...**O++A...III...III...III...III...III
+1142 I...III...III...III...IIII.....**O++A...**O++A...**O++A...III...III...III...III.....**O++A...**O++A...I...III...III...II..**O++A...**O++A...**O++A...**O++A.....III...III...III...III...I
+1143 ..III...III...III...III..I.....**O++A...**O++A...**O++A...III..II...III...III...II..**O++A...**O++A..I..III...III...III...**O++A...**O++A...**O++A...**O++A..IIII...III...III...III...III
+1144 III...III...III...III...I...III...A++O**...A++O**...A++O**.....I..III...III...IIII..A++O**...A++O**...III...III...III..I..III...A++O**....A++O**...A++O**.....I...III...III...III...III..
+1145 II...III...III...III...III..III...A++O**...A++O**...A++O**.......III...III...III....A++O**...A++O**...II...III...III...I..III...A++O**....A++O**...A++O**....I...III...III...III...III...
+1146 ..III...III...III...III..I..III...A++O**...A++O**...A++O**.....II...III...III...II..A++O**...A++O**..I..III...III...III...III...A++O**....A++O**...A++O**.....III...III...III...III...III
+1147 I...III...III...III...III...**O++A...**O++A...**O++A...**O++A..IIII...III...III..I..**O++A...**O++A..II...III...III...II.....**O++A...**O++A...**O++A...III..I..III...III...III...III...I
+1148 ..III...III...III...III..I..**O++A...**O++A...**O++A...**O++A...I...III...III...I...**O++A...**O++A.....III...III...III......**O++A...**O++A...**O++A...III...III...III...III...III...III
+1149 III...III...III...III...II..**O++A...**O++A...**O++A...**O++A..I..III...III...IIII..**O++A...**O++A..IIII...III...III..I.....**O++A...**O++A...**O++A...III..II...III...III...III...III..
+1150 II...III...III...III...II......A++O**...A++O**...A++O**...III..I.III...III...III.I..A++O**...A++O**..III...III...III...I..A++O**...A++O**...A++O**...A++O**..I...III...III...III...III...
+1151 ..III...III...III...III..I.....A++O**...A++O**...A++O**...III...I...III...III...I...A++O**...A++O**.....III...III...III...A++O**...A++O**...A++O**...A++O**...III...III...III...III...III
+1152 I...III...III...III...IIII.....A++O**...A++O**...A++O**...III...III...III...III..I..A++O**...A++O**..II...III...III...II..A++O**...A++O**...A++O**...A++O**..I..III...III...III...III...I
+1153 ..III...III...III...III.....III...**O++A...**O++A...**O++A.....II...III...III...I...**O++A...**O++A.....III...III...III...III...**O++A...**O++A...**O++A......III...III...III...III...III
+1154 III...III...III...III...I...III...**O++A...**O++A...**O++A........III...III...IIII..**O++A...**O++A....II...III...III..I..III...**O++A...**O++A...**O++A.....II...III...III...III...III..
+1155 II...III...III...III...III..III...**O++A...**O++A...**O++A.....I.III...III...III.I..**O++A...**O++A..III...III...III...I..III...**O++A...**O++A...**O++A.....I...III...III...III...III..I

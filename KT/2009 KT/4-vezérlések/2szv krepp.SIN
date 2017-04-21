@@ -1,0 +1,23 @@
+  18 NP7=13.2              C:2SZV.KREPP
+
+ 415 JA3=1100(1100-1114)   C KREPP 2 2SZVKREP  VAGY
+ 416 PA:1:<JA3>;
+ 418 WM=18
+ 420 Y:2/5;
+ 422 NP7-7
+ 424 RBEG*RS2
+ 426 << S:U^N<3->N./.-N./.-N./UVNN.;                T1 S1 S2 T2
+ 428 >>                                            T1 S1 S2 T2
+ 430 REND
+ 432 << S:U^SD.I/DI.-D.I/DI.-D.I;      NP4-4       T1 S1 S2
+ 434 >> S:DI.-D.I/DI.-D.I/UVSD.I;                     S1 S2 T2
+ 436 END
+
+1100 I...II.II...
+1102 .II.I...I.II
+1104 I..I.III.I..
+1106 II..I.I.I..I
+1108 ..II.I.I.II.
+1110 I..III.III..
+1112 .II...I...II
+1114 .III..I..III

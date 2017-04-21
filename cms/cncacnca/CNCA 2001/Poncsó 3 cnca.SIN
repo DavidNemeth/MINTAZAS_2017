@@ -1,0 +1,68 @@
+   1 C PONCSO 3 (KOCKAS HALO)-- HAROMSZOGLETU PONCSO:120CMX120CM-ES NEGYZETBOL SZABVA
+   2 C 6-318,TU.A TOBBI NEM DOLGOZIK: 1-5-IG,ES 319-TOL VEGIG. A SZELFESZITO NEM KELL!
+   3 C A TUKET NEM KELL LETOLNI, CSAK EGY PARAT MINDKET SZELEN, HOGY AZ 'UVN'-NEL NE AKADJON BE A FONAL!
+   4 C A SZEMEKET LE KELL DOBATNI!!!!!!!!
+   5 C RS1=155  !!!!! AZ SPF-HEZ LE KELL FORDITANI A CLEARII-T!:CPF CLEARII.SIN !!!!!!
+   6 CLAP:0.6+NYAK:0.015+ROJT:0.085=0.7KG->500FT ELADAS 1000FT MARAD KB.:270FT..540/H
+   7 C PONCSO
+   8 C       14.5  9.0             0    14.5
+   9 C  1: <-------------       ------------->  LEVALASZTAS
+  10 C       14.5   0              0    14.5
+  11 C       12.0  12.0          12.0  12.0
+  12 C J2: <-------------       ------------->   1/1
+  13 C       12.0  12.0          12.0  12.0     
+  14 C       12.0  12.0          14.75  14.75
+  15 C B2: <-------------       -------------> MINTA
+  16 C       12.0  12.0          14.75  14.75
+  17 C       
+  18 C J3: <-------------       -------------> 
+  19 C      
+  20 C  
+  21 C B3: <-------------       ------------->
+  22 C  
+  23 C       13.5   13.5         13.5   13.5   
+  24 C J4: <-------------       ------------->  LEVALASZTAS
+  25 C       13.5   13.5         13.5   13.5
+  26 C B4:=J4
+  27 CPONCSO MINDEN 15/1 ATORSOZVA! NP2=         NP2=          RS1=  
+  28 C       318 TU  27MIN        <--          -->
+  29 C-----------------------+------------+------------+------------+-------------+
+  30 C 3X16/1 PAMUT(F-F):  ML!!   12.0       15.0         146  LYUKASZTJA! 9-10 SULY
+  31 C-----------------------+------------+------------+------------+-------------+
+  32 C 2X16/1 PAMUT+1BRILL:       11.5       14.75        155  EZ A JOBB!  8-9 SULY
+  33 C     MINDKET SZAL PAMUT ATORSOZVA!
+  34 C-----------------------+------------+------------+------------+-------------+
+  35 C TUAGYKORREKCIOK:
+  36 C   V0:->2.2
+  37 C   R1:->3   __________R2:-     ________R3:-
+  38 C   L1:-     __________L2:-     ________L3:-
+  39 C 7-10 SULY, LASSAN!!!
+  40 START 
+  50 YG:6/256;
+  60 JA1=1001(1000-1001)
+  62 PA:<JA1>;
+  64 FA=1-308  C 1001  .I.I.I.I.I.I.I.I
+  66               PM:+++++.IFA.I. 319:<+>;
+  70 <<	S:I-./.-I;     		            Y:5/2;	  NP4-4  V# V0	    S1 S2
+  72 >>	S:I-./UVN.;            	        Y:5;	    NP4-4            S1    T2
+  74 <<	S:U^NI/.-I;      		                  	  	NP1-1         T1 S1
+  76 >>	S:U^N./I-I;      		             Y:6;	    NP4-4  VR1	   T1	   S2
+  78 <<	S:0-I/N+-0;	    	    Y:6/0;  NP2-2  V#	 S1 S2 C S1 KISZAKITJA AZ ELV. SZALAT.
+  79 C                                               TALAN JOBB LENNE REXBEN KEZDENI!
+  80 >>	S:.-I;		                    Y:2;	           V# V0     S1
+  84 << S:.-0;                                      V#        S1  
+ 100 C ---1LAP 6-318 TU---------------------
+ 115 PM:+++++..FA... 319:<+>;
+ 125 >> S:0-I/.-I/UVN<1->.Y;          Y:5/2;               S1 S2 T2
+ 135 << S:U^N*/.IY-*/.Y-*I;                               T1 S1 S2
+ 138                               NP2-2
+ 140 RBEG*RS1
+ 145 >> S:.IY-*I;                                V0          S1 S2
+ 155 << S:.Y%I-*%I;                              VR1         S1 S2
+ 165 REND
+ 170 GOSUB 145
+ 172 << S:N+-0;                          Y:2;    NP1-01       S1
+ 174 >> S:0-N+;                                  NP0-         S1
+ 180 END
+ 1000 *IY
+ 1001 .I.I.I.I.I.I.I.I

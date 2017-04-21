@@ -1,0 +1,152 @@
+   1 C ***FARKAS H-U **** 2 VAGY 1 SZV.-VEL IS KOTHETO:BEALLITAS:400-466.SOROKBAN
+   2 C CNCA2007: CP F RS10= RS17=
+   3 C NYERS LUSI+TX:      
+   4 C         14.25  14.5              
+   5 C J2:<---+-----  ---->  CS.PASSZE,KORSLAG
+   6 C         14.5   14.25            
+   7 C 
+   8 C B3:14.2 BAL-BAL
+  19 C B2:11.7 BEKEZDES
+  20 C J4:12.5 LEVALASZTAS,1/1               
+  21 C  7 SULY (1SZV-VEL CSAK 6 SULY)
+  25 C TUAGYKORREKCIOK: V0:->2.4 (2008.03.28.)
+  26 C                  R1:->2.2_________R2: - ________R3:-
+  27 C                  L1:<-1.0_________L2: - ________L3:-
+  28 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  60 C***********NYUSZIFUL KREPP H-U***554 TU (TELI TUAGY)*******************************
+  61 C IF RS10=5  RS17=0    C*** H       3LAP    70CM.-RE KELL VASALNI - 2:3 ARANYBAN FELVAGVA
+  62 C IF RS10=3  RS17=1    C*** HU      4LAP   110CM.-RE KELL VASALNI
+  63 C IF RS10=6  RS17=2    C*** RU      4LAP
+  70 C***************************************************************************2LUSI+1TX:*****LUREXXEL:+0.4:
+  71 IF RS17=0  RS1=79   RS19=0  C TUN.H     75CM.                         
+  72 IF RS17=1  RS1=63   RS19=1  C HU TELI   62CM
+  73 IF RS17=2  RS1=28   RS19=1  C RU TELI                                  
+  80 C********************************************************************************
+  82 JA1=1826(1806-1808)     C CSIPKE PASSZE
+  86 PA:<JA1>;
+  88 IF RS19=0  FA=11-188;PM:<.>8:3(FA...);    C*3LAP H*****TELI TUAGY 554TU  70CM.-RE KELL VASALNI
+  89 IF RS19=1  FA=28-160;PM:<.>9:4(FA..);     C*4LAP U*****TELI TUAGY 554TU
+  90 C--2 LAP KT SZELESSEGU TEST ES 3 LAP UJJA:----
+  91C IF RS19=0 FA=1-187; PM:<.>8:2(FA...);    C*2LAP H****392 TU***(KT SZELESSEG)
+  92C IF RS19=1 FA=11-133;PM:<.>8:3(FA...);    C*3LAP U****392 TU*******
+  93 C
+  94 IF RS19=3 FC=15-165;FB=33-147; PM:<.>7:..FBIIFCIIFCIIFB.; C*U-H-H-U***TELI TUAGY 554TU
+  98 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2          ML       S1
+ 110 Y:2/2/5/5;
+ 114 REP*1
+ 116 << S:R-0;		                                NP2-02           S2
+ 118 >> S:0-R;		                                NP0-             S1
+ 120 REPEND
+ 121 << S:R-0;                                  NP-0             S2
+ 122 >> S:0-R/UVN.;                             NP0-             S1 T2
+ 123 << S:U^NN./.-N./UVNAY;                                   T1 S2    T2
+ 124 >> S:NI-I;                          V#                     S1
+ 126 REP*4
+ 128 << S:U^NY;                                   VR1 NP0-0     T1
+ 130 >> S:U^NA;                                  VL1 NP0-0     T1
+ 132 << S:U^NI/.-N./UVN<1->.;                    V0            T1 S2 T2 
+ 134 >> S:U^NI/.-I/UVN<1->NI;                                   T1 S1 T2
+ 136 REPEND
+ 138 GOSUB 128-132
+ 140 >> S:U^NI/.-I/UVNI;                       NP3-3       T1 S1 T2
+ 163C GOTO 450 C CSAK AKKOR KELL, HA 1SZV-VEL KOTOM
+ 399C--------------------------------------------------------------------------------
+ 400C C**VAGY**H-U 2SZV.KREPP********
+ 402 JA1=1100(1100-1114)
+ 404 Y:2/5;
+ 406 RBEG*RS1
+ 407 C
+ 408 << S:U^N<1->N./.-N./.-N./UVNR;              V0     T1 S1 S2 T2
+ 409 >>                                                 T1 S1 S2 T2
+ 410 C
+ 411 REND C************************
+ 412 GOTO 470
+ 413 C----------------------------------------------------
+ 450 C**VAGY**H-U 2SZV.KREPP 1SZV-VEL KOTVE********
+ 452 JA1=1100(1100-1114)
+ 454 Y:2/2/5/5;
+ 456 RBEG*RS1
+ 458 REP*2
+ 460 << S:U^N<1->N./.-N.;                T1    S2
+ 462 >> S:.-N./UVNR;                        S1     T2
+ 464 REPEND
+ 466 REND C************************
+ 468 C--------------------------------------------------------------------------------
+ 470 << S:U^ND.I/DI.-D.I/DI.-D.I;   Y:2/5;        NP4-4       T1 S1 S2
+ 472 >> S:DI.-D.I/DI.-D.I/UVND.I;                          S1 S2  T2
+ 474 RS10=RS10-1
+ 476 IF RS10>0 GOTO 52
+ 478 END
+1032 WWWWWWWWWWWW
+1034 II.II...I...
+1036 I.I.I..III..
+1038 .I.I.II...II
+1040 .III..I.I.I.
+1042 I...II.I.I.I
+1044 ..I..III.III
+1046 II.II...I...
+1048 II.III..I..I
+1050 ..I...II.II.
+1052 II.II.I...I.
+1054 ..I..I.III.I
+1056 I...I.II.II.
+1058 .III.I..I..I
+1060 II.III..I..I
+1062 ..I...II.II.
+1064 WWWWWWWWWWWW
+1100 I...II.II...
+1102 .II.I...I.II
+1104 I..I.III.I..
+1106 II..I.I.I..I
+1108 ..II.I.I.II.
+1110 I..III.III..
+1112 .II...I...II
+1114 .III..I..III
+1200 WWWWWWWWWWW
+1202 I.II.II.I.I
+1204 IY.II.II.AI
+1206 II...I...II
+1208 IYY.I.I.AAI
+1210 III..I..III
+1212 IYYY.I.AAAI
+1214 IIII...IIII
+1216 IYYYY.AAAAI
+1218 IIIII.IIIII
+1220 IY..Y.A..AI
+1222 II..I.I..II
+1224 IYY.....AAI
+1226 III.....III
+1228 IYYY...AAAI
+1230 IIII...IIII
+1232 IYYYY.AAAAI
+1234 I....I....I
+1236 IYIYIIIAIAI
+1238 I....I....I
+1240 IYYIYIAIAAI
+1242 I....I....I
+1244 IYYYIIIAAAI
+1246 I....I....I
+1248 IYYYYIAAAAI
+1250 WWWWWWWWWWW
+1804 WWWWWWWWWWWW
+1806 IIIIIIIIIIII
+1808 IIIIIIIIIIII
+1810 YIYIAIAIAIYI
+1812 IIIIIIII.I.I
+1814 IYIIIAIAAIYY
+1816 IIIIIII..I..
+1818 YIYIAIAAAIYY
+1820 .IIIII...I..
+1822 YYIIIAAAAIYY
+1824 ..III....I..
+1826 YYYIAAAAAIYY
+1828 WWWWWWWWWWWW

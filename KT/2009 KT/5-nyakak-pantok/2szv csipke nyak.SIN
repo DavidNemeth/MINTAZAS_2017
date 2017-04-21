@@ -1,0 +1,36 @@
+ 500 C***EZ A LJOBB********** MADONNA NYAK 2007.04.23.******************
+     C  MINTA AZ 1. TUAGYON
+ 501 C 2LUSI+1TX:NPK=0  MADONNAHOZ:NPK=0.2-0.4  2LUSI+1LUREX:NPK=-0.4
+ 502 C 1'31"
+ 503 C*******************
+ 504 NP4=12.4   C:LEVALASZTAS
+ 503 NP12=11.0  C:BEKEZDES
+ 505 NP15=12.0  C:1/1
+ 507 NP13=10.4  C:2SZVCS
+508 START        
+509 YG:6/256;	
+ 510 WM=16;WMI=7
+511 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0        S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                  VR1      T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 518 << S:0-D.I;                     Y:6;           NP15-15    VU      S1
+ 519 >> S:DI.-0/0-D.I;               Y:5/6;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+ 521 JA1=1992;
+ 522 PA:1:<JA1>;
+ 523 FA=1-2; PM:<.>7:*<FA>574:*<.>;   C******NYAK OSZTAS NELKUL********581TU
+ 524 >> S:DI.-D.I/DI.(13)-D.I(13)/UVS.Y*;                   S1 S2 T2
+ 525 VJA^0
+ 526 NP13-13
+ 527 REP*3 C 2VAGY3
+ 528 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 529 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;              V0        T1 S1 S2 T2
+ 530 REPEND
+ 531 << S:U^SY*/.I-Y*/.I-Y*/UVS*;              VL1       T1 S1 S2 T2
+ 532 >> S:U^SI*/.Y-I*/.Y-I*(11.0)/UVSI*;       V0        T1 S1 S2 T2
+ 533 END C**********************************************************
+1992 IY

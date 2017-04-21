@@ -1,0 +1,8 @@
+ 54 >> S:D.I-DI./DI.-D.I;           Y:5/2;  NP2-2        S1 S2
+ 90  >> S:U^S*;                             NP0-0 VL1 T1
+ 95  << S:U^S+;                             NP0-0 VR1 T1
+105  << S:UVS+;                             NP0-0 VL1          T2
+110  >> S:UVS*;                             NP0-0 VR1          T2
+210 << S:<1->.%*-0/<1->.-*/UVN*;                  V0     S1 S2 T2
+220 >>                                                   S1 S2 T2
+280 >>                                      NP2-2        S1 S2

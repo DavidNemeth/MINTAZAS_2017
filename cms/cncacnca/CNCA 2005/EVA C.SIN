@@ -1,0 +1,108 @@
+   1 C CP EVA RS10= RS17=0/1 (H/U) C UA.MINT A CNCA VEZERLESMINTAK/BAL-BAL KREPP (A JO ADATOK ITT VANNAK. ES EZ A JO RIZS!)
+   2 C RIZS CSIPKE PASSZEVAL...CP EVA RS1= RS10=0
+   3 C RIZS REX PIKO PASSZEVAL:CP FARKAS
+   4 C       15.0    0            0     15.0
+   5 C  1: <-------------       ------------->  BEKEZDES
+   6 C       15.0    0            0     15.0
+   7 C       
+   8 C J2: <-------------       ------------->  
+   9 C                 
+  10 C       
+  11 C B2: <-------------       ------------->
+  12 C      
+  13 C        0     15.5         14.0    0
+  14 C J3: <-------------       ------------->  PASSZE
+  15 C        0     15.0         16.0    0
+  16 C       15.0   15.0         15.0   15.0
+  17 C B3: <-------------       -------------> BAL-BAL KREPP
+  18 C       15.2   15.2         15.2   15.2
+  19 C       13.5   12.5         13.5   13.5
+  20 C J4: <-------------       ------------->  LEVALASZTAS
+  21 C       13.5   12.5         13.5   13.5
+  22 C B4:=J4=13.5                              BEKEZDES
+  23 C TUAGYKORREKCIOK: V0:->1.5
+  24 C                  R1:->2__________R2: - ________R3:-
+  25 C                  L1:<-2-3 _______L2: - ________L3:-
+  26 C                                                         HATA:        UJJA:
+  27 C                           B3:                 RS17=      0           1
+  29 C-----------------------+----------------+------------+-----------+------------+
+  30 C   2X16/1 PAMUT+1BRILL:   14.7  14.7             RS1=FIX   71          28/56
+  31 C                        ------------->
+  32 C                          14.7  15.0
+  33 C-----------------------+----------------+------------+-----------+------------+
+  34 C 
+  35 C-----------------------+----------------+------------+-----------+------------+
+  36 C 3XLUSI                   15.2/15.0                      65          25/52
+  37 C-----------------------+----------------+------------+-----------+------------+
+  38 C   10 SULY
+  39 C H-U KULON KOTVE:RS10=0 ...  EGYBE KOTVE:RS10=OSSZ.DARABSZAM, ST=1
+  40 START
+  41 YG:6/256;
+  42 IF RS10=15 RS17=0 C   HATA
+  43 IF RS10=9  RS17=1 C   UJJA 
+  44 IF RS17=0  RS1=65
+  45 IF RS17=1  RS1=52
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  54 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  56 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  58 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  60 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  62 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  64 JA1=1314;     C 1314 YYIAAAAAIYYY 
+  66 PA:1:<JA1>;
+ 100 FA=4-182;                  C*3LAP************
+ 101 PM:<.>7:3(FA..);           C*3LAP************
+ 102 IF RS17=1 FA=8-141                   C*4LAP************
+ 103 IF RS17=1 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 104 Y:2/2/5/5;
+ 105 REP*1
+ 106 << S:R-0;		                             ML       NP3-03        S2
+ 110 >> S:0-R;		                             ML       NP0-          S2
+ 112 REPEND
+ 114 << S:R-0/UVNYA.;                        ML       NP-0          S2 T2
+ 116 >> S:U^NI/.YA-I;                      ML               T1    S2
+ 117 #2=10
+ 118 IF RS17=1 #2=5
+ 119 REP*#2
+ 120 << S:U^NY;                                   VR1 NP0-0   T1
+ 122 >> S:U^NA;                                   VL1 NP0-0   T1
+ 124 << S:.-N./UVNYA;                         V0                S2 T2 
+ 126 >> S:.YA-I;                                     V#            S2
+ 128 REPEND
+ 140 << S:U^NN./.-N.;                          T1    S2
+ 141 >> S:.-N./UVNN.;              NP1-1          S1    T2
+ 142 << S:R-0;                     NP-0           S1
+ 145 >> S:R-0;                     NP-0           S1
+ 400 C...................H-U...............................
+ 405 JA1=1212(1204-1218)
+ 410           FA=6-183;
+ 412           PM:<.>8:3(IFAI);
+ 414           FD=28-160
+ 416 IF RS17=1 PM:<.>7:4(IFDI);  C********* UJJA **********
+ 418 PA:<JA1>;
+ 422 << S:U^NN./UVN.;    NP0-0                  T1  T2
+ 424 >> S:U^NN./UVN.;    NP03-03                T1  T2
+ 426 << S:.-N./.-N./UVNN.;             Y:2/5;            V0      S1 S2 T2
+ 428 RBEG*RS1
+ 430 >> S:U^N<1->N./.-N./.-N./UVNN.;                     V0   T1 S1 S2 T2
+ 432 << S:U^N<1->N./.-N./.-N./UVNN.;                          T1 S1 S2 T2 
+ 434 REND
+ 436 GOSUB 430
+ 438 << S:U^ND.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP4-4  T1 S1 S2
+ 440 >> S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2  T2
+ 450 RS10=RS10-1
+ 460 IF RS10>0 GOTO 42
+ 470 END
+1202 WWWWWWWWWWWW
+1204 I...II.II...
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II..I.I.I..I
+1212 ..II.I.I.II.
+1214 I..III.III..
+1216 .II...I...II
+1218 .III..I..III
+1220 WWWWWWWWWWWW
+1314 YYIAAAAAIYYY
+1636 YYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYYYYIAAAAAIYYY
+1637 ......X..I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........I.........X

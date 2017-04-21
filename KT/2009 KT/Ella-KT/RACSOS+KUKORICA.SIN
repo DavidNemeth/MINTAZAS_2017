@@ -1,0 +1,169 @@
+   1 C ALUL RACSOS FELUL KUKORICA
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I EGYEB I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3XL    I        I 0.6+0.06 (3.5M.PODROS PANT)
+C 70*90  I        I=0.66-700=I         I 2 BOGYO  I       I       I   ???   I 330-I 18'- I 1100- I     I 
+C MELLENYI        I    462   I  200    I   4      I       I  670  I1000-1100I 430 I      I 1430  I30-43%I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3XL    I        I0.85+0.05 (2.2M.PODROS PANT)
+C 70*90  I        I=0.9*700= I         I 2 FREDI  I       I       I         I     I 25'- I     - I     I 
+C NK     I        I    630   I  200    I   8      I       I  840  I  1400   I 560 I  31' I 1100  I 40% I
+C2011.01.26.-TOL:   761FT/KG
+C                      690                                   900   1460-1500 
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 
+
+C  L   MELLENYHEZ: 280CM  PODROS PANT KELL(0.05KG).  SZELES, CSAPOTT VALLU FAZON
+C 3XL  MELLENYHEZ: 350CM  PODROS PANT KELL(0.06KG).  SZELES, CSAPOTT VALLU FAZON
+C 3XL  KABATHOZ:   220CM  PODROS PANT KELL(0.04KG).   
+
+  1 C----------------------------+----------------------FONALFELHASZNALAS:----------------------2011.01.26.:---
+  1 C Y5:1LUSI(NYERS)+1LUSI(FUST)+1HB(NYERS V.FEHER) I NYERS PAMUT: 42% 0.357KG                I PAMUT:550-630   
+  1 C Y2:1LUSI(NYERS)+1LUSI(FUST)+1HB(NYERS V.FEHER) I  FUST PAMUT: 42% 0.357KG Y2/5: 833FT/KG I    HB:1450 
+  1 C Y3:3LUSI(NYERS)            +1HB(NYERS V.FEHER) I    NYERS HB: 16% 0.136KG Y3/4: 664FT/KG I
+  1 C Y4:3LUSI(FUST)                          I                                Y2534: 700FT/KG I SUM:761 FT/KG
+  1 C-----------------------+----+-------+------------+------------+-------------+-----------------------------
+
+  10 NP4=12.4           C:LEVALASZTAS
+  12 NP5=13.0           C:KOR
+  14 NP2=10.0           C:BEKEZDES  10.0  2011.01.: HA KISZAKITJA A 258. SORBAN, EZEN IS KENE LAZITANI!
+
+  16 NP1=14.6           C:MINTA
+  18 NP7=15.0           C:MINTA
+  20 NP3=14.0           C:MINTA
+  22 NP8=10.0           C:MINTA REGI:8.0  2011.01.: 10.0  230.SOR:NP8-9 BEHULLAMOSITAS - LAZABBRA KELL KOTN,
+  24 NP9=11.6           C:MINTA REGI:9.6  2011.01.: 11.6  MERT A KOVETKEZO SORBAN A SLAG ELOL KISZAKITJA!
+  25 NP6=10.0           C:MINTA
+  26 NP10=12.8;         C: KUKORICAS  12.4-12.8
+
+  40 START
+  50 YG:6/23456;
+  52 WM=18;WMI=7
+  54 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4      V0  VU     S1 S2
+
+C***************************************************
+  56   IF #100=24  RS17=0          C  70*90   F-T-T NK VAGY M  26'43''
+  57   IF #100=17  RS17=1          C  45*60   2PAR  H.UJJA     17'31''
+
+  58   IF #100=13  RS17=0          C  70*90   F-T-T NK VAGY M  26'43
+  59   IF #100=5   RS17=1          C  45*60   2PAR  H.UJJA     17'131
+
+  62 C  IF #100=27 RS17=3          C  60*77   T-T-T MELLENY 
+  63   IF #100=32  RS17=50         C  GALLER                      6'
+C***************RACS:**KUKORICA:*****************************MERET:******IDO:********SULY:**********
+  70 IF RS17=0  RS1=2   RS2=109 RS19=8   C F-T-T NK VAGY M  70*90CM    25'-26'43''  0.75  RS19=0 V. 8 (2.5LAP VAGY OSZTAS NELKUL)
+  72 IF RS17=1  RS1=1   RS2=72  RS19=4   C UUUU             50*60CM         17'31''  0.5
+  76 IF RS17=3  RS1=2   RS2=    RS19=3   C T-T-T  MELLENY   60*77CM    
+  78 IF RS17=50 RS1=1  RS2=15  RS19=8   C GALLER                       6'            0.15
+  78 IF RS17=50 RS1=1  RS2=28  RS19=8   C GALLER 27 CM GALLER
+C------------------------------------------------------------------------------------------------------------
+C                                TAMAS     LAJT.30KG               LAJT30   FEH:TAMAS,FEK:LAJT.
+C                                FEHER:    FUST/MOGYI:    NYERS:   FEKETE:    GRAFIT:
+C------------------------------------------------------------------------------------------------------------
+C KT :WM%=+5     NPK=             -0.4       -0.3   
+C     NP10=12.8  RS2=(T/U)        95/71     112/73                                               
+C------------------------------------------------------------------------------------------------------------
+CPKT :WM%=-10    NPK=                                                 0         0
+C    NP10=12.8   RS2=(T/U)                                          112/73    109/72 
+C------------------------------------------------------------------------------------------------------------
+C******************************************************************************************************
+  80 >> S:D.I-DI./DI.-D.I/UVNDI.;                                       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	               S1    T2
+  84 >> S:R-R;		                      Y:6;	       NP4-2     VU             S2
+  86 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU          S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2     VU          S1
+  90 REP*3
+  92 << S:0-R/R-0;		                  Y:5/2;      NP5-5     VU           S1 S2
+  94 >> S:R-0/0-R;		                                        VU           S1 S2
+  96 REPEND
+ 116 JA1=1004;
+ 118 PA:<JA1>;
+C***********************581TU****************************************************************
+ 120 IF RS19=0  FF=2-113; FA=2-225;  PM:<.>7:IIFFIIIFAIIFAII;    C*F-T-T
+ 121 IF RS19=1  FA=1-565;            PM:<.>7:IIFAII;             C*1LAP OSZTAS NELKUL
+ 122 IF RS19=2  FA=1-282;            PM:<.>7:2(IIFA)I;           C*2LAP      
+ 123 IF RS19=3  FA=2-188;            PM:<.>7:3(IIFA)II;          C*3LAP     
+ 124 IF RS19=4  FA=1-140;            PM:<.>7:4(IIFA)I;           C*4LAP
+ 125 IF RS19=5  FA=1-111;            PM:<.>8:5(IIFA)II;          C*5LAP
+ 126 IF RS19=6  FA=1-161;FB=1-119;   PM:<.>7:IIFBIIFAIIFAIIFBI;  C*U-E-H-U
+ 127 IF RS19=8  FA=2-31;             PM:<.>7:II<FA>574:II<.>;    C*OSZTAS NELKUL
+ 128 C***************************************************************************************
+C  16 NP1=14.6              C:MINTA
+C  18 NP7=15.0              C:MINTA
+C  20 NP3=14.0              C:MINTA
+C  22 NP8=8.0               C:MINTA
+C  24 NP9=9.6               C:MINTA
+ 200 RBEG*RS1
+ 202 REP*2    C             *******10/8********
+ 204 JA1=1004; C1004 +AIY*
+
+C****************************************VAGY********************************************************
+ 206 <> S:0-N./R-0/UVS.+*;      NP1-1                   S1 S2 T2    C KORSLAG  S1S2
+ 208 C
+ 210 <> S:U^SAITY/.+*-AIYT/.+*-AIYT;  NP7-7 Y:5;     T1 S1 S2       C          S1S2    *OSSZEVONVA
+ C  !!!!FIGYELEM!!! A 300.SORBAN A MENETIRANY BORUL!!!
+C****************************************VAGY********************************************************
+ 206 << S:0-N./R-0/UVS.AITY;    NP1-1                   S1 S2 T2    C KORSLAG  S1S2
+ 208 >> S:U^S+*/.AITY-+*/UVS+*; NP7-7  Y:5;          T1    S2 T2    C            S2    *OSSZEVONHATO?
+ 210 << S:U^SAITY/.+*-AIYT;            Y:5;          T1    S2       C            S2    *OSSZEVONHATO?
+C****************************************************************************************************
+
+ 212 WM=0
+ 214 <> S:U^N+;                                  VL1 T1             C       U
+ 215 PKV:2:<JA1>;
+ 216 <> S:UVSAYT;                                VR1          T2    C       U
+ 218 WM=22                                                          C 
+ 220 <> S:.AY-+I*;              NP7-3  Y:2;   VU           S2       C            S2
+ 222 WM=0
+ 224 <> S:U^NA;                                  V0  T1             C       U
+ 226 <> S:U^NY;                                  VR2 T1             C       U
+ 228 WM=20
+ 229 PKV:0;
+ 230 <> S:U^ST/R-N.;            NP8-9  Y:2;   VU V0  T1    S2       C BEKEZDES
+ 231 WM=16  C 2011.01.
+ 232 <> S:R-0/0-N.;             NP1-1  Y:5/2; VU        S1 S2       C KORSLAG   S1S2
+ 234 WM=18
+ 236 REPEND C--------------------------------------------------------------
+ 237 IF RS1=0 GOTO 300
+ 238 REP*2    C             *******6/8********
+ 240 JA1=1002; C1002 AIY
+ 242 << S:0-N./R-0/UVS.AY;             Y:2/5;           S1 S2 T2    C KORSLAG   S1S2
+ 244 WM=20
+ 246 >> S:U^SIT/.AY-IT/.AY-IT(3);      Y:5/2;        T1 S1 S2       C           S1S2
+ 248 WM=0
+ 250 << S:U^NA;                                  VL1 T1             C       U
+ 252 >> S:U^NY;                                  VR1 T1             C       U
+ 254 WM=20
+ 256 << S:.(3)-N.(3)/R(2)-N.(2);              VU V0     S1 S2       C BEKEZDES  S1S2
+ 258 >> S:R-0/0-N.;             NP1-1         VU        S1 S2       C KORSLAG   S1S2
+ 260 WM=18
+ 262 REPEND
+ 264 REND
+ 266 C*****************************************************
+
+ 300 C*****KUKORICAS***************************************
+ 302 JA1=1006;
+ 304 << S:0-N.;             Y:2;           S1
+ 306 >> S:R-0/UVS*;                        S1 T2
+ 308 << S:U^S.;                         T1
+ 310 >> S:U^SI;                         T1
+ 312 Y:4/3/3/4;
+ 314 WM=28
+ 316 NP10-10
+ 318 RBEG*RS2
+ 320 << S:*-I./%*-I.;           VU          S1 S2  C
+ 322 >> S:%*-I./*-I.;           VU          S1 S2  C
+ 324 REND
+ 326 C*****************************************************
+
+ 400 WM=18
+ 402 NP4-4
+ 404 << S:*-I.;              Y:5; VU    S1
+ 406 >> S:*-I./UVSI.;                    S1 T2
+ 408 END
+ 999 <> S0W0
+
+1002 AIY
+1004 +AIY*
+1006 *I*I

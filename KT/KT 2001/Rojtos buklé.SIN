@@ -1,0 +1,65 @@
+   1 C BUKLE TEST:20-21 BORDA, UJJA:17BORDA:0.40-0.45KG 800-1000FT 
+   1 C 1DB:RS1=24.66666 1DB CSIGAN (TM=5.4):13MIN...NAPI 100DB (90%)
+   1 C                      GYORSAN(TM=7.0):10MIN...NAPI 130DB (90%)
+   1 C 3DB:RS1=74
+   1 C SZAPORITAS TELJES TUAGYRA:SP900  UTKOZOKET KITOLNI!!!
+  10 C
+  26 NP1=15.0             C:MINTA
+  28 NP4=14.0             C:LEVALASZTAS
+  40 START C XBGHW
+  50 YG:6/34;
+ 100 JA1=1001; C1001 150(+*)
+ 105 PA:<JA1>;
+ 110 FA=1-150 C FA=1-138-150 C 53CM
+ 115 FB=1-136 C
+
+ 116  #1=4;#2=1;#3=26;#4=1; C*******
+ 120  PM:<O>  6:IAFA        28. YTYT       28. FBIA       28. FAIA;
+ 120  PM:#1O#2Z IAFA  #4Z#3.#4Z YTYT #4Z#3.#4Z FBIA #4Z#3.#4Z FAIA #4Z<B>;
+
+ 140 WM=15 WMI=7
+ 145 << S:A*T-I+Y/I+Y-A*T;	        ML   Y:3/4;	  NP4-4 VU V0	   S1 S2
+ 146 >> S:A*T-I+Y/UVSI+Y;          ML   Y:3;                    S1    T2
+ 148 << S:I+Y-A*T/UVSA*T;          ML                           S1    T2
+ 154 CWM=0
+ 155 >> S:.ZB(8.0)-NO/NO.ZB(4)-0/NO.ZB;    ML   Y:0/3/4;     T1 S1 S2 C NEM DOBJA LE A JOBB SZELET
+ 158 << S:O(8.0)-O/NO.ZB(4)-0/NO.ZB;       ML                T1 S1 S2
+ 170 JA1=1000  C 1000 300*
+ 172 WM=18 C 15-20
+ 175                   NP1-1
+ 185 RBEG*RS1
+ 190 >> S:0-*/NO.ZB-0/NO.ZB-0;          Y:0/3/4;       VU   T1 S1 S2
+ 195 << S:NO.ZB-0/NO.ZB-0;              Y:3/4;         VU      S1 S2
+ 200 >>                                                VU      S1 S2
+ 205 << S:U^S*/NO.ZB*-*/NO.ZB*-*;       Y:3/4;      VKA>5   T1 S1 S2
+ 210 >> S:*-0/NO.ZB*-*/NO.ZB*-*;        Y:0/3/4;       VU   T1 S1 S2
+ 215 << S:NO.ZB*-*/NO.ZB*-*/UVS*;       Y:3/4;      VKA>5      S1 S2 T2
+ 220 REND
+ 225 GOSUB190
+ 230 END
+
+ 900 C SZAPORITAS --- UTKOZOKET KITOLNI!!!
+ 902 NP1=15.0             C:MINTA
+ 904 NP4=14.0             C:LEVALASZTAS
+ 906 START
+ 908 GOSUB 50-175
+ 926 WM=20
+ 927 REP*15
+ 928 >> S:NO.B-0/NO.B-0;           ML   Y:3/4;   NP1-1 VU       S1 S2
+ 930 IF #1=1 GOTO 934
+ 932 #1=#1-1;#2=#2+1
+ 934 #3=#3-2;#4=#4+1
+ 936 <<                            ML                  VU       S1 S2
+ 938 GOSUB 930-934
+ 940 REPEND
+ 944 RBEG*RS2
+ 945 >> S:R-0/R-0;                  Y:3/4;             VU       S1 S2
+ 946 <<                                                         S1 S2
+ 947 REND
+ 950 >>                                                         S1 S2
+ 960 END
+
+ 998 <> S:D.I-DI./DI.-D.I;	         Y:3/4; 	  NP4-4 ML VU V0    S1 S2
+ 999 <> W0 S0
+1000 300*
+1001 150(+*)

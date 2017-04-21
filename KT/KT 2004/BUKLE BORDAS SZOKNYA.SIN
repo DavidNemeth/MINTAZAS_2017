@@ -1,0 +1,66 @@
+1C 3X3 BORDAS SZOKNYA
+1C 0.35KGX1470/1670=515/585
+1C 
+1C--------------------------+-----------------+------------------+----------------+
+1C 1 TOROK BUKLE+HB:                         90CM SZOKNYA: 92
+1C         FEKETE      NPK=+0.2
+1C         BORDO       NPK=+0.0
+1C         FUZFA       NPK=+0.0
+1C         FARMERKEK   NPK=+0.0            
+1C         PADLIZSAN
+1C         OLAJZOLD    NPK=+0.0
+1C         MOGYORO
+1C         S.KEK
+1C         PIROS
+1C         NYERS
+1C         VIZKEK
+1C         FEHER
+1C         BARACK
+1C         ORGONA
+1C         KORALL
+1C       2 TOROK HB:NPK=-0.4
+1C--------------------------+-----------------+------------------+----------------+
+  10 NP1=13.8; NP9=11.8         C 3X3 BORBA
+  12 NP4=12.5;                  C LEVALASZTAS
+  14 NP2=11.0; NP8=9.0          C 3X3 PASSZE
+  40 START
+  45 WM=20; WMI=7
+  50 YG:6/256;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  80 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  82 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  84 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  86 << S:U^NDI.;                            ML                     T1
+  88 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  90 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  92 >>	S:DI.-D.I;		                 Y:2;	   ML     NP2-2      VU      S1
+
+C***************************************************************************
+C  94 << S:DI.-0/0-D.I/UVSDIII...;    Y:5/2;                    VU      S1 S2 T2
+C  98 >> S:U^SD...III/DIII...-D...III/DIII...(8)-D...III;       VU   T1 S1 S2
+C  96 REP*1
+C 100 << S:DIII...(2)-D...III/DIII...-D...III;                  VU      S1 S2
+C 102 >> S:DIII...-D...III/DIII...(8)-D...III;                  VU      S1 S2
+C 104 REPEND
+C 106 RBEG*RS1
+C 108 << S:DIII...-D...III/DIII...-D...III;       NP1-1         VU      S1 S2
+C 110 >> S:DIII...-D...III/DIII...(9)-D...III;                  VU      S1 S2
+C 112 REND
+C 114 END
+C***************************************************************************
+
+ 200 PA:<.III..>;
+ 202 FA=1-6
+ 204 PM:<.>7:60FAI.30FA;
+ 206 << S:DI.-0/0-D.I/UVS.;          Y:5/2;                            S1 S2 T2
+ 208 >> S:U^SI/.-I/.(8)-I;                                          T1 S1 S2
+ 210 REP*1
+ 212 << S:.(2)-I/.-I;                                          VU      S1 S2
+ 214 >> S:.-I/.(8)-I;                                          VU      S1 S2
+ 216 REPEND
+ 218 RBEG*RS1
+ 220 << S:.-I/.-I;                               NP1-1         VU      S1 S2
+ 222 >> S:.-I/.(9)-I;                                          VU      S1 S2
+ 224 REND
+ 226 END
+

@@ -1,0 +1,23 @@
+ SLAG PASSZE
+  16   NP2=12.0            C:BEKEZDES
+  18   NP3=14.0            C:SLAG PASSZE
+  20   NP4=13.5            C:LEVALASZTAS
+  22   NP5=14.5            C:LEVALASZTAS
+
+  40  START
+  50 YG:6/256;
+  52 WM=22 WMI=7
+  56 << S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4   VU V0	ML      S1 S2
+  59 >> S:D.I-DI.;                    Y:5;                      ML      S1
+  62 << S:U^ND.I/DI.-D.I;        	                              ML   T1 S1
+  64 >> S:U^NDI.;                                               ML   T1
+  66 << S:0-0;                        Y:0;                      ML      S1
+  68 >> S:R-R;		                      Y:6;	                     ML         S2
+  71 << S:0-R/R-0;		                  Y:6/0;            	       ML      S1 S2
+  74 >> S:R(11.0)-R(12.5)/0-R(14.0);		Y:2/5;                            S1 S2
+  80 << S:0-R/R-0;		                  Y:5/2;  	   NP3-3                 S1 S2
+  83 >> S:0-R/R-0;                    Y:2/5;                            S1 S2
+  85 << S:0-R/R-0;		                  Y:5/2;  		                        S1 S2
+  87 >> S:0-R/R-0;                    Y:2/5;                            S1 S2
+  88 << S:0-R/R-0;		                  Y:5/2;  		                        S1 S2
+

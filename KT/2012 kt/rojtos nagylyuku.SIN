@@ -1,0 +1,110 @@
+
+   1 C*********NAGYLYUKU ROJTOS KARDIGAN*******************
+
+  10 NP4=13.0   C:LEVALASZTAS
+  11 NP2=11.2   C:BEKEZDES,1/1-ES PASSZE
+  12 NP1=13.6   C MINTA
+
+  40 START
+  50 YG:6/25;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  54 C**********NYAK**********************************
+  56 C IF #100=1   RS17=50        C PIKO PANT
+  62 C*****MINTA****************************************KT,ML:***GYORS:***
+  64 C IF #100=1   RS17=0         C T-T-T-1/2E            28'
+  66 C IF #100=2   RS17=1          C 3/4 U-U-U-U-U                  14'
+  68 C IF #100=1   RS17=2         C GALLER     KESZ
+  68  IF #100=1   RS17=3         C KAPUCNI    KESZ
+  92 C************************************************
+  94 IF RS17=50 GOTO 600          C PIKO PANT 0.04
+ 100 C*****MINTA*****************************************KG:**************
+ 102 IF RS17=0  RS19=1 RS1=28            C TTT1/2E       0.35
+ 104 IF RS17=1  RS19=1 RS1=18            C 3/4 UUUU      0.25
+ 106 IF RS17=2  RS19=1 RS1=6             C 3 GALLER      0.1
+ 108 IF RS17=3  RS19=1 RS1=10            C 2 KAPUCNI     0.15
+ 132 C***************************************************1DB.KB.:0.4-0.44KG+ROJT
+ 180 C************581TU****************************************************************
+ 182 JA1=1004(1004-1010)
+ 186 PA:2:<JA1>;
+ 196 FA=2-9;              PM:7.<FA> 574:8.;        C*MELLENY PANT JELOLES NELKUL
+ 198 C********************************************************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0        S1
+ 214 << S:0-DI./D.I-0;               Y:2/5;     NP2-2 VU           S1 S2
+ 216C RBEG*RS1
+ 218 >> S:D.I-DI.;                                    VU           S1 S2
+ 220 <<                                               VU           S1 S2
+ 222C REND
+ 230 >> S:U^SD.I/0-R/0-R;                      NP1-1           T1 S1 S2
+
+ 500 RBEG*RS1
+ 504 <> S:0-R/0-R/UVS<1+>Y;                               VL1      S1 S2 T2
+ 506 PKV:1:<JA1>;
+ 508 <> S:U^SY/0-R/0-R/UVSY;                              V0    T1 S1 S2 T2
+ 509 PKV:0;
+ 510 <> S:U^SY/0-R/0-R/UVS<1+>YA;                         VR1   T1 S1 S2 T2
+ 512 PKV:3:<JA1>;
+ 514 <> S:U^SA;                                           V0    T1
+ 516 <> S:U^SY;                                           VR2   T1
+ 518 <> S:0-NYA/0-NYA/UVS<1+>YA;                          VR1      S1 S2 T2
+ 520 <> S:U^SA;                                           V0    T1
+ 522 <> S:U^SY;                                           VR2   T1
+ 524 PKV:0;
+ 526 <> S:<1+>0-.*/0-.+;                              VU  V0      S1 S2
+ 530 REND
+ 532 GOSUB 504-509
+ 534 <> S:U^SY/0-R/0-R;                               VR1   T1 S1 S2
+ 536 <> S:0-R/0-R/UVND.I;                             V0       S1 S2 T2
+
+ 538 IF #124=1 GOTO 542
+ 540 >> S:D.I-DI.;		              			      NP2-2       VU          S1 S2
+ 542 << S:D.I-DI.;	                        NP2-2       VU          S1 S2
+ 544 >> S:D.I-DI./D.I-DI./UVSDI.;	                     VU          S1 S2 T2
+ 546 END
+
+ 600 C*********** REX PIKO PANT *******************************-
+ 608 NP4=12.6    C:LEVALASZTAS,
+ 610 NP10=10.0   C:BEKEZDES,REX  11.0 10.5 10.0
+618C  START 
+620C  YG:6/256;
+ 622 WM=18 C 24
+624C  << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+
+ 626 JA1=1980; C1980 ....AIA
+ 628 PA:<JA1>; 
+ 630 FA=2-7; C FA=1-7 VAGY 2-7;
+ 632 PM:6+.<FA>573:2.<+>; C*581TU
+
+ 634 >> S:D.I-DI./UVN+.I;	           	Y:2;                     	    S1    T2
+ 636 << S:U^NA/+.I-A;                                            T1 S1
+ 638 >> S:+.I-A;                      Y:5;                VU VR1    S1
+ 640 << S:+.I-0/UVNA;                                               S1    T2
+ 642 >> S:+.I-.I;                     Y:6;                   V0        S2
+ 644 << S:+.I-0/0-+.I;                Y:6/0;              VU        S1 S2
+ 646 >> S:+.I-.I/+.-0;                Y:5/2;      NP10-10 VU        S1 S2
+ 648 << S:+-./+.-.;                   Y:2/5;              VU        S1 S2
+ 650 >> S:.+-./+.-.;                  Y:5/2;              VU        S1 S2
+ 652 << S:.+-./+.-.;                                      VU        S1 S2
+ 654 >> S:.+-./+.I-.I;                                    VU        S1 S2
+ 660 REP*3
+ 689 << S:R-.AI/R-.AI;                   S1 S2
+ 690 >>                                  S1 S2
+ 692 REPEND
+ 695 END
+
+ 999 <> W0 S0
+
+1980 4.AIA
+
+1004 .......Y.......Y
+1006 ..YA......YA....
+1008 .Y..A....Y..A...
+1010 .*+*+....*+*+...

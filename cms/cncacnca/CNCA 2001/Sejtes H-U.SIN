@@ -1,0 +1,186 @@
+   1 C *******SEJTES GARNITURA*H-U*** 2 SZALVEZETOS CSIPKE ***CP ONDO RS1= RS2= RS19= 
+   2 C------------------+------------+----------------+-----------------+-----------+
+   3 C                                 (CSAK A KT-N)
+   4 C                                  ELEJE 20-21'     HATA 13-14'       UJJA 6'
+   5 C TUNIKA/MELLENY     NP3-3(BAL)    RS1=    RS2=    RS1=46-   RS2=     RS1=-45 
+   6 C RS19=0             ELOL/HATUL            T/M               T/M
+   7 C------------------+------------+----------------+-----------------+-----------+
+   8 C 2X15/1 PAMUT+1TX:  14.75/14.25    28     4/8       55      8/16       9
+   9 C------------------+------------+----------------+-----------------+-----------+
+  10 C 3X15/1 PAMUT(FEHER)14.75/14.25    26     4/8       48      8/16       7
+  11 C------------------+------------+----------------+-----------------+-----------+
+  12 C SLAG PIKO PANT (TICHOV):RS19=1 2'
+  13 C       14.5    0             0    14.5
+  14 C  1: <------+------       ------+------> SORMINTA,LEVALASZTAS
+  15 C       14.0    0             0    14.0
+  16 C       14.0   14.0         14.0   14.0
+  17 C J2: <------+------       ------+------> SORMINTA+
+  18 C       14.0   14.0         14.0   14.0 
+  19 C        -      -           14.0   14.0
+  20 C B2: <------+------       ------+------> SORMINTA+1 SOR PASSZE
+  21 C        -      -           14.0   14.0
+  22 C       14.2    0            0     14.2
+  23 C J3: <------+------       ------+------> SLAG,PIKO
+  24 C        0     14.2         14.2    0
+  25 C       14.25  14.25        14.25  14.25
+  26 C B3: <------+------       ------+------> 2 SZALVEZ.CSIPKE
+  27 C       14.75  14.75        14.75  14.75
+  28 C       13.0   13.0         13.0   13.0
+  29 C J4: <------+------       ------+------> ELVALASZTAS
+  30 C       13.0   13.0         13.0   13.0
+  31 C B4:=J4  OSSZES SULY
+  32 C OSSZES SULY (TARCSAK NEM KELLENEK)
+  33 C TUAGYKORREKCIOK:  V0:->2.5
+  34 C                   R1:<-1.5 __________R2:->1  _________R3:
+  35 C                   L1:->1.0 __________L2:     _________L3:
+  36 C                   L1:<-1-EL MENT VELETLENUL, ES TELJESEN JOL
+  40 START
+  41 IF RS19=1 GOTO 600 C************ PANT *****************
+  42 YG:6/256;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   V#   V0    S1 S2
+  48 JA1=1990; 
+  50 PA:<JA1>; 
+  52 FA=1-6; 
+  54 PM:<.>10:89FA;     C AY*TI+
+  60 >> S:U^NA /NA-A/UVNNA;          Y:5;   ML      NP1-1    T1 S1    T2
+  62 << S:NA+-A/UVNA;                       ML      NP4-4 VL1   S1    T2
+  64 >> S:NA-NA;                     Y:6;   ML            V0       S2
+  66 << S:NA-0/0-R;                  Y:6/0; ML                  S1 S2
+  67 VJA^0
+  68 >> S:R-R/NA-0;                  Y:2/5; ML      NP2-02  VL1   S1 S2
+  70                                                NP3-3
+  71 Y:2/5/5/2;
+  72 REP*2
+  74 << S:0-NA/NA-0;                         S1 S2
+  76 >>                                      S1 S2
+  78 REPEND
+  80 << S:0-R/R-0;                     V0    S1 S2
+  82 >> S:0-R/R-0/UVNI;                      S1 S2 T2
+  84 << S:U^NT/0-R/R-0/UVNT+;             T1 S1 S2 T2
+  86 >> S:U^N*I/0-R/R-0/UVNI;             T1 S1 S2 T2
+  88 << S:U^NT/0-R/R-0;                   T1 S1 S2
+  90 REP*3
+  92 >> S:0-R/R-0;                           S1 S2
+  94 <<                                      S1 S2
+  96 REPEND
+ 110 JA1=1031(1004-1026)
+ 202 PA:JA1;
+ 204 FA=11-22
+ 206 PM:<FA>1:9.186:3I365:3I544:10.;        C**** 3LAP ****
+ 208 IF RS1<46 PM:<FA>1:9.141:3I275:3I409:3I544:10.; C**** 4LAP ****
+ 210 IF RS1<46 RS2=20
+ 212 >> S:UVN.;                                   NP01-01              T2
+ 214 << S:U^NIA/UVN*;                             NP0-0       T1       T2
+ 218 >> S:U^N<1->N./.-N./.-N./UVNNA.;      Y:2/5; NP3-3       T1 S1 S2 T2
+ 220 VJA^0
+ 222 RBEG*RS2
+ 224 << S:U^N<1->N./.-N./.-N./UVNNY.;                 VL1         T1 S1 S2 T2
+ 226 >> S:U^N<1->N./.-N./.-N./UVNI;                   V0          T1 S1 S2 T2
+ 227 REND
+ 228 IF RS1<46 GOTO 548
+ 230 GOSUB 224
+ 232 JA1=1002
+ 234 >> S:U^N<1->N./.-N./.-N./UVNN.;                  V0          T1 S1 S2 T2
+ 236 FA=8-181;
+ 238 PM:<.>11:3( FA 5.);
+ 310 JA1=1000  C SORMINTA: 1.MINTAELEM **********************************************
+ 311 FA=8-181
+ 312 VJA^0
+ 315 << S:R-0;                     ML           NP2-02            S1 S2
+ 320 >> S:U^NN./.-N./.-N.;         ML           NP2-2    VR1   T1 S1 S2
+ 322 << S:.-N./UVNI;               ML      Y:2; NP1-1             S1    T2
+ 325 >> S:U^NI/.-*I/UVN*;          ML                    VR2   T1 S1    T2
+ 330 << S:U^N*/.-N./.-N./UVNN.;    ML    Y:5/2; NP2-2    VR1   T1 S1 S2 T2
+ 332 >> S:R-0;                     ML           NP-0     V0       S1 S2
+ 334 << S:U^NN./.-N./.-N./UVNN.;   ML                           T1 S1 S2   T2
+ 340 JA1=1000  C SORMINTA: 2.MINTAELEM **********************************************
+ 342 FA=7-180
+ 344 VJA^0
+ 346 <> S:R-0;                     ML           NP-0     VR1      S1 S2
+ 350 <> S:U^NN./.-N./.-N./UVNI;    ML                          T1 S1 S2 T2
+ 355 <> S:.I-*/.-N.;               ML                    V#       S1 S2
+ 360 <> S:UVNI;                    ML           NP0-0    VR2            T2
+ 361 <> S:0-0;                     ML      Y:0; NP0-0             S1
+ 364 VJA^0
+ 365 <> S:.I-*/.-N.;               ML            Y:5/2;  V#       S1 S2
+ 370 <> S:UVNI.;                   ML           NP0-0    VR1            T2
+ 375 <> S:0-0;                     ML      Y:0; NP0-0             S1
+ 380 <> S:.I-*/.-N.;               ML            Y:5/2;  V#       S1 S2
+ 382 <> S:U^NI/.-N./.-N./UVNN.;    ML                          T1 S1 S2 T2
+ 383 JA1=1001  C SORMINTA: 3.MINTAELEM **********************************************
+ 384 FA=8-181
+ 386 >> S:R-0;                     ML                    V0       S1 S2
+ 390 << S:U^NN./.-N./.-N./UVNN.;   ML                          T1 S1 S2 T2
+ 392 >> S:.*-+/.+-*;               ML                             S1 S2
+ 394 << S:R-0;                     ML           NP-0              S1 S2
+ 395 >>                            ML           NP-0              S1 S2
+ 396 <<                            ML           NP-0              S1 S2
+ 397 JA1=1000
+ 398 >> S:U^NI;                    ML           NP0-0          T1
+ 399 << S:U^N*;                    ML           NP0-0          T1
+ 400 >> S:.-N./.-N./UVNN.;         ML                             S1 S2 T2
+ 402 GOSUB 340-382  C SORMINTA: 2.MINTAELEM *****************************************
+ 404 << S:R-0;                     ML           NP-0     V0       S1 S2
+ 406 >> S:U^NN./.-N./.-N./UVNN.;   ML                          T1 S1 S2 T2
+ 408 GOSUB 310-334  C SORMINTA: 1.MINTAELEM *****************************************
+ 542 JA1=1030(1004-1026)
+ 544 GOSUB 202-208
+ 546 GOSUB 218-220
+ 548 RBEG*RS1
+ 550 GOSUB 224-226
+ 552 REND
+ 554 << S:U^N<1->N./.-N./.-N./UVNNY.;                 VL1         T1 S1 S2 T2
+ 556 >> S:U^N<1->N./.-N./.-N./UVNN.;                  V0          T1 S1 S2 T2
+ 558 << S:U^ND.I/DI.-D.I/DI.-D.I;                 NP4-4     T1 S1 S2
+ 560 >> S:DI.-D.I/DI.-D.I/UVND.I;                              S1 S2 T2
+ 570 END
+ 600 C *********************** PIKO PANT ******************
+ 602 YG:6/256;
+ 604 << S:D.I-DI./DI.-D.I;	          Y:2/5;	      NP4-4   V#   V0    S1 S2
+ 606 JA1=1990; 
+ 608 PA:<JA1>; 
+ 610 FA=1-6; 
+ 612 PM:<.>10:89FA;     C AY*TI+
+ 614 >> S:U^NA /NA-A/UVNNA;          Y:5;         NP1-1    T1 S1    T2
+ 616 << S:NA+-A/UVNA;                             NP4-4 VL1   S1    T2
+ 618 >> S:NA-NA;                     Y:6;               V0       S2
+ 620 << S:NA-0/0-R;                  Y:6/0;                   S1 S2
+ 622 VJA^0
+ 624 >> S:R-R/NA-0;                  Y:2/5;       NP2-02  VL1   S1 S2
+ 626 NP3-3
+ 628 Y:2/5/5/2;
+ 630 REP*3
+ 632 << S:0-NA/NA-0;                         S1 S2
+ 634 >>                                      S1 S2
+ 636 REPEND
+ 638 << S:0-R/R-0;                     V0    S1 S2
+ 640 >> S:0-R/R-0/UVNI;                      S1 S2 T2
+ 642 << S:U^NT/0-R/R-0/UVNT+;             T1 S1 S2 T2
+ 644 >> S:U^N*I/0-R/R-0/UVNI;             T1 S1 S2 T2
+ 646 << S:U^NT/0-R/R-0;                   T1 S1 S2
+ 648 REP*2
+ 650 >> S:0-R/R-0;                           S1 S2
+ 652 <<                                      S1 S2
+ 654 REPEND
+ 656 >> S:R-R;                                    NP4-4        S1 S2
+ 658 END
+1000 97(I*)I
+1001 32(II*II+)3I
+1002 195I
+1004 9I6(2(4.IY)5.6I.IY)2(4.IY)..16I
+1006 9I6(2(5.A)5.B+HTGO..A)2(5.A)..16I
+1008 9I6(2(.I.I..).I.I.B+HTGO3.)2(.I.I..)..16I
+1010 9I6(2(..AI..)..AI.B+HTGO3.)2(..AI..)..16I
+1012 9I6(2(..Y3.)..Y..6I3.)2(..Y3.)..16I
+1014 9I.6(2(...I.I)4.B+HTGO.I.I)2(...I.I).16I
+1016 9I6(2(4.IY)5.B+HTGO.IY)2(4.IY)..16I
+1018 9I6(2(5.A)5.B+HTGO..A)2(5.A)..16I
+1020 9I6(2(.I.I..)3(.I)5I3.)2(.I.I..)..16I
+1022 9I6(2(..AI..)..AI.B+HTGO3.)2(..AI..)..16I
+1024 9I6(2(..Y3.)..Y..B+HTGO3.)2(..Y3.)..16I
+1026 9I.6(2(...I.I)4.B+HTGO.I.I)2(...I.I).16I
+1028 9I6(2(4.IY)5.6I.IY)2(4.IY)..16I
+1030 9I6(2(5.A)5.6I..A)2(5.A)..16I
+1031 10I2(*.*.A.)
+1032 195I
+1990 I+AY*T

@@ -1,0 +1,55 @@
+   1 C RUHA PANT --------- OVES 2 PASSZEJABOL ---------
+
+  10 NP4=12.3;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  13 NP5=14.0              C PASSZE
+  14 NP6=14.4              C PASSZE 
+  16 NP10=11.8             C:SLAG
+C  KT:NPK=0
+C    PKT:NPK=0.2 WM%=-10
+C     UJ:NPK=0.2
+C FEKETE:NPK=0.3
+  40 START
+  50 YG:6/23456;
+  51 WM=17 WMI=7
+  52 <<	S:R-0/0-R;		                 Y:5/2;	    NP4-4 VU V0	       S1 S2
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+ 180 C************581TU**************************************************************
+ 182 JA1=1012(1010-1012)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 194 FA=1-12; PM:6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 196 C********************************************************************************
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0         S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 212 >>	S:D.I-DI.;		                	Y:5;	      NP2-2  VU V0      S1
+
+ 214 Y:2/2/5/5;
+ 216 << S:D.I-0;                                NP6-6 VU           S1
+ 218 >> S:0-DI./UVS.;                                              S1    T2
+ 220 << S:U^SN./.-N./UVSR;                                      T1 S1    T2
+ 222 >> S:R-0;                          NP6-6         VU           S1
+ 224 REP*3 C ******  AZSUR PASSZE *********
+ 226 WM=0
+ 228 << S:U^SA;                                   VL1      T1
+ 230 >> S:U^SY;                                   VR1      T1
+ 232 WM=17
+ 234 << S:U^SI*/.-N./UVS<1->N.;         NP5-5    V0       T1 S1 T2 
+ 236 >> S:R-0;                          NP6-6         VU      S1
+ 238 REPEND C*********************************
+ 240 << S:U^SN./.-N./.-N.;      Y:2/5;  NP10-10           T1 S1 S2
+ 242 REP*5 C** SLAG**
+ 244 >> S:.-N.;                     VU     S1 S2
+ 246 <<                             VU     S1 S2
+ 248 REPEND
+ 250 >> S:.-N./.(4)-N.(4);          VU     S1 S2
+ 252 END
+
+1008 WWWWWWWWWWWWWWWWWW
+1010 IAAAAIYYYYII
+1012 AAAAAIYYYYYI
+1014 WWWWWWWWWWWWWWWWWW

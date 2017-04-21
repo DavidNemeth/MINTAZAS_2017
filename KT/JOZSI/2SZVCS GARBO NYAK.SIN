@@ -1,0 +1,38 @@
+   1 C 
+   2 C JOZSI 2SZV. GARBO NYAK -5'-6' - 1CSIK:60FT
+   3 C-----------------------------------------------------------------------------  
+   4 C   Y=2/5: 15/1LUSI+12/1TOROK + 1HB  NPK= 0  -+0.1  (PLATIROZVA - HB A LYUKBA)
+   5 C    VAGY:         2*15/1LUSI + 1HB  NPK=-0.3--0.4   RS1:+2
+   6 C-----------------------------------------------------------------------------  
+   7 C  
+  10 NP4=12.8  C:LEVALASZTAS
+  12 NP8=11.8  C:BEKEZDES,1/1
+  14 NP9=13.2  C:2SZVCS.PASSZE
+  40 START        
+  50 YG:6/25;
+  52 WM=16;WMI=4
+  54 << S:D.I-DI./DI.-D.I;           Y:5/2;         NP4-4  V0  VU ML   S1 S2
+  56 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                                 S2 T2
+  58 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+  60 >> S:DI.-D.I;                   Y:5;                  VR1 VU         S2
+  62 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+  64 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+  66 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+  68 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	        NP8-8   V0 VU      S1 S2
+  70 JA1=1000
+  72 PA:1:<JA1>;
+  74 FA=1-6; PM:<.>7:<FA>576:<.>; C VIGYAZZ, HOGY AZ 575. TU "." LEGYEN!!!
+  76 << S:DI.-0/DI.-D.I/UVN.;                                          S1 S2 T2
+  78 >> S:U^SN./.-N./.-N.;                          NP9-9           T1 S1 S2
+  80 VJA^0
+  82 WM=16
+  83 RS1=22  C21CM. (HA 2*15/1LUSI+1HB:NPK=-0.3--0.4 RS1=24)
+  84 RBEG*RS1
+  86 << S:U^SN./.-N./.-N./UVSNA.;                      V0        T1 S1 S2 T2  C VKA<1
+  88 >> S:U^SN./.-N./.-N./UVSNA.;                      VL1       T1 S1 S2 T2
+  90 REND
+  92 << S:U^SN./.-N./.-N.;                             V0        T1 S1 S2     C VKA<1
+  94 >> S:.-N./.-N./UVSN.;                                          S1 S2 T2
+  96 END
+ 999 <> W0 S0
+1000 .IAI...IAI..

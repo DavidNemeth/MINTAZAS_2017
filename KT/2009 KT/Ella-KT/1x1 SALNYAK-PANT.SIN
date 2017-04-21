@@ -1,0 +1,42 @@
+
+   1 C 1/1 AZ ELSO TUAGYON                  2LUSI+TX:  2LUSI+TX+HB:
+  10 NP4=13.0    C:LEVALASZTAS                 13.0       14.0
+  11 NP12=10.5   C:BEKEZDES,1/1-ES PASSZE      10.8       13.5
+  12 NP13=9.0    C:                             9.0        9.5
+C                                       RS1:   9, 24       5,  14
+  40 START
+  50 YG:6/23456;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  64  IF #100=5  RS1=12;  RS17=51  C 24 SAL NYAK GUMI NELKUL
+  66  IF #100=4  RS1=12;   RS17=50  C  9   PANT GUMIVAL
+
+ 200 >>	S:UVND.I;   	        	    	                           T2
+ 202 <<	S:U^NDI.;		              			                            T1 
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	    NP12-12 VU V0 ML        S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	  NP4-4   VU    ML     S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0 ML     S1
+
+ 214 IF RS17=51 GOTO 224 C--GUMI NELKUL----
+C---------GUMIVAL-------------------------------------------------------
+ 216 << S:0-DI.;                     Y:6;     NP12-12 VU    ML     S1
+ 218 >>                                               VU    ML        S2
+ 220 << S:D.I-0/D.I-DI.;             Y:2/5;           VU           S1 S2
+ 222 GOTO 226
+C-----------------------------------------------------------------------
+
+ 224 << S:0-DI./D.I-0;               Y:2/5;   NP12-12 VU           S1 S2
+ 226 RBEG*RS1
+ 228 >> S:D.I-DI.;                                    VU           S1 S2
+ 230 <<                                               VU           S1 S2
+ 232 REND
+ 234 REP*1
+ 236 >>                                       NP13-13 VU           S1 S2
+ 238 <<                                               VU           S1 S2
+ 240 REPEND
+ 242 >> S:D.I-DI./D.I(2)-DI.(2)/UVSDI.;               VU           S1 S2 T2
+
+ 244 END

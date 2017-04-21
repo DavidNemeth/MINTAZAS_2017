@@ -1,0 +1,68 @@
+  5 C---------HALO FONASSAL--------------------------------------------
+ 10    START
+ 50    YG:6/25;
+ 59 << S:R-R/R-0;                      Y:2/5;      NP4-4        ML    S1 S2
+ 60 >> S:R-R/R-R;                                               ML    S1 S2
+ 61 << S:R-R/R-0;                                               ML    S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP4-4        ML    S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:2;        NP3-3        ML T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1   ML T1 S1   
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#    ML T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/2;             V#V0  ML    S1 S2
+ 71 << S:DI.-0/0-D.I;                  Y:2/5;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;            Y:2/5;           V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+100    JA1=1100
+101    IF RS19=5 GOTO 340
+102    IF RS19=3 GOTO 115
+103    GOTO340
+114 C:-------3 FONAS LAPONKENT---------------------------------------------
+115    FA=6-21
+120    FB=24-71
+121    FC=74-89
+125    PA:1:;
+126    PK^:<JA1>;
+127    PKV:<JA1>;
+130    PM:<A> 12:FA 3FB FC 191:FA 3FB FC 369:FA 3FB FC;       
+131 C:----------------------------------------------------------------------
+140 << S:DI.-D.I/DI.-D.I/UVNYA;              Y:2/5;                  S1 S2 T2
+150 >> S:U^NNYA/YA-NYA/YA-NYA/UVN+*TI.;      Y:2/5;  NP1-1        T1 S1 S2 T2
+160    RBEG*RS1
+170    PK^:2:<JA1>;
+180 << S:U^N+*TI./YA-NYA/YA-NYA/UVNO*TI.;    Y:2/5;         VL1   T1 S1 S2 T2
+190    PK^:<JA1>;
+200 >> S:U^NO*TI./YA-NYA/YA-NYA/UVNO*TI.;                   V0    T1 S1 S2 T2
+210    PK^:2:<JA1>;
+220 << S:U^NO*TI./YA-NYAI./UVNNAY;           Y:2;     NP3-3 VL1   T1 S1    T2
+230 >> S:U^NI.;                                       NP0-0 VR3   T1
+240    PK^:<JA1>;
+250 << S:U^SO+*/YA.-O+*T/.-0/UVNO+*;         Y:5/0;         V0    T1 S1 S2 T2
+260 >> S:U^NT;                                       NP1-10  VL3   T1
+270 << S:U^SO;                                       NP -0  VL1   T1
+280 >> S:U^N+*/YA-NYA/YA-NYA/UVN+*TI.;       Y:2/5;         V0    T1 S1 S2 T2
+290    GOSUB 170-200   
+295    PK^:2:<JA1>;
+300 << S:U^NO*TI./YA-NYA/YA-NYA/UVN+*TI.;                  VL1    T1 S1 S2 T2
+305    PK^:<JA1>;
+310 >> S:U^N+*TI./YA-NYA/YA-NYA/UVN+*TI.;                  V0     T1 S1 S2 T2
+320    REND
+330    END
+335 C:-------5 FONAS LAPONKENT----------------------------------------------
+340    FA=6-21
+345    FB=34-61
+350    FC=74-90
+360    GOSUB 125-127
+365    PM:<A> 12:FA 5FB FC 191:FA 5FB FC 369:FA 5FB FC;
+370    GOTO 140
+371 C:---------1/1-ES PIKOS PANT--------------------------------------------
+400    GOSUB 10-79*RS14
+401    END
+402 C:----TUAGY KOR.:-------------------------------------------------------
+403 C:           V0       L1
+404 C:UJ GEP:       |     |
+405 C:         |||||||  |||||||
+406 C:REGI:      |          |
+1100   AAAAAA*+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+*Y**YYTTTI.IYY**Y*O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O*AAAA

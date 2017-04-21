@@ -1,0 +1,111 @@
+  
+            REX PIKO PÁNT 2SZV.: CP PANT
+   1 C 
+   2 C   
+   3 C      
+   4 C  1: <-------------       ------------->
+   5 C      
+   6 C     
+   7 C J2: <-------------       -------------> 
+   8 C         -     -              -     - 
+   9 C       11.5  11.5           11.5  11.5
+  10 C B2: <-------------       ------------->  BEKEZDES,PASSZE
+  11 C       11.5  11.5           11.5  11.5     (PIKO PANT)
+  12 C         -     -              -     - 
+  13 C J3: <-------------       ------------->
+  14 C         -     -              -     -
+  15 C      
+  16 C B3: <-------------       ------------->
+  17 C      
+  18 C       13.0   13.0         13.0   13.0
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.0   13.0         13.0   13.0
+  21 C B4:=J4
+  22 C TUAGYKORREKCIOK:  V0:->1-2.5
+  23 C                   R1:->1-3 _________R2:- ________R3:-
+  24 C                   L1:-     _________L2:- ________L3:-
+  25 C  10 SULY+3 TARCSA 
+  36 C          1991 ....AIA
+  40 START 
+  42 YG:6/256;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  48 JA1=1991;
+  50 PA:<JA1>; 
+  52 FA=2-8; 
+  54 PM:<.>6:77FA;
+  56 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  58 << S:U^NA/.I-A;                         ML                     T1 S1
+  60 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  62 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  64 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  66 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  70 << S:0-./.-.;                           ML                        S1 S2
+  72 >> S:.-.;                               ML                        S1 S2
+  74 <<                                      ML                        S1 S2
+  76 >> S:.-./.I-.I;                         ML                        S1 S2
+  78 << S:R-R;                               ML                        S1 S2
+  80 >> S:R-R;                               ML                        S1 S2
+  85 << S:R-R;                               ML                        S1 S2
+  90 >> S:R-R;                               ML                        S1 S2
+  95 END
+1991 ....AIA
+
+ REX PIKO PÁNT 1SZV.:     6-7 SÚLY IS ELÉG, UTÁNA JÖHET CSIPKE.
+
+  40 START 
+  42 YG:6/256;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  48 JA1=1991;
+  50 PA:<JA1>; 
+  52 FA=2-8; 
+  54 PM:<.>6:77FA;
+  56 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  58 << S:U^NA/.I-A;                         ML                     T1 S1
+  60 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  62 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  64 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  66 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  70 << S:0-./.-.;                           ML                        S1 S2
+  71 >> S:.-.;                               ML                        S1 S2
+  72 Y:2/2/5/5;
+  73 <<                                      ML                        S1
+  74 >>                                      ML                        S1
+  75 << S:.-.;                               ML                        S1
+  76 >> S:.I-.I;                             ML                        S1
+  77 << S:R-R;                               ML                        S1
+  78 >> S:R-R;                               ML                        S1
+  79 << S:R-R;                               ML                        S1
+  80 >> S:R-R;                               ML                        S1
+1991 ....AIA
+
+ REX PIKO PÁNT 1SZV. A VEGEN SLAG:(MELLENY PANTNAK)
+
+  40 START 
+  42 YG:6/256;
+  44 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  46 JA1=1991;
+  48 PA:<JA1>; 
+  50 FA=2-7; C FA=1-7 VAGY 2-7;
+  52 PM:<.>5:<FA>547:<.>;
+  54 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  56 << S:U^NA/.I-A;                         ML                     T1 S1
+  58 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  60 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  62 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  64 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  66 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  68 << S:0-./.-.;                           ML                        S1 S2
+  70 >> S:.-.;                               ML                        S1 S2
+  72 <<                                      ML                        S1 S2
+  74 >> S:.-./.I-.I;                         ML                        S1 S2
+  75 << S:R-R;                                                         S1 S2
+  76 >> S:R-R;                                                         S1 S2
+  77 Y:5/5/2/2;
+  80 REP*4
+  82 << S:R-0;                                       NP1-01            S1
+  84 >> S:0-R;                                       NP0-              S1
+  86 REPEND
+  88 END
+1991 ....AIA

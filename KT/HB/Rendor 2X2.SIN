@@ -1,0 +1,207 @@
+1C 
+1C FELSZOVET,1/1-ES PASSZEVAL - AZ ELEJE KOZEPEN FONAS (2X2)    2000FT+HIMZES
+
+1C 
+1C RENDOR PULOVER - UJ MERETEZESSEL
+
+1C  FELSZOVET:2 SZAL TOROK HB-VEL,   Y:2/5;  2:BALROL KELL BEFUZNI MINDKET SZALAT    5:JOBBROL
+1C        1/1:3 SZAL HB-VEL,         Y:3/4;  3/4:MINDKETTOT JOBBROL
+1 C A FELSZOVET HATRA NEZ.
+C***********************************************************************************
+1 C T:              RS19=0 RS17=0
+1 C U:              RS19=0 RS17=1
+1 C 1/1 NYAK:       RS19=1 OSZTAS NELKUL. BARMELY TUKIOSZTASSAL KOTHETO, DE AZ UJJA SZELESSEGBOL JON KI 3DB.
+1 C 1/1 KETLIS NYAK RS19=2 OSZTAS NELKUL. BARMELY TUKIOSZTASSAL KOTHETO, DE AZ UJJA SZELESSEGBOL JON KI 3DB.
+
+C------------------32/2 MAGYAR HB --- TEST:1CM.:3.3TU  1.66CIKLUS
+C------------------30/2  TOROK HB -------- 1CM.:3.17TU  1.6CIKLUS
+  10   NP1=10.8            C:FELSZOVET 11.4 11.0 10.8 10.6
+  11   NP7=8.0            C: 
+  12   NP5=14.4            C:2X2 FONAS
+  14   NP2=11.2            C:BEKEZDES,1/1             C 3 SZALLAL:11.2  2 SZALLAL:10.0-10.2
+  15   NP6=11.2            C:BEKEZDES,1/1 NYAKHOZ
+  16   NP3=15.0            C:KETLI SOR
+  20   NP4=12.6            C:LEVALASZTAS
+C------------------------------------------------
+  40 START
+  50    YG:6/23456;
+  55    WM=18 WMI=7
+  56 JA1=1010(1010-1012);
+  60 PA:<JA1>;
+C***************************************************************************************************
+  90C IF #100=16   RS19=0               C TEST VAGY UJJA
+  92C IF #100=28   RS19=1               C 1/1 3DB KEREK NYAK
+  93C IF #100=28   RS19=2               C KETLIS NYAK     0.061KG 2DB.
+C***************************************************************************************************
+
+C***********2 LAPOS TEST:***************************************** WM%=-20 *************************
+  96 IF	RS17=0 PM:I.I.I2(FA*).I.I<+>;  C 2 LAP
+C-----------2 LAPOS TEST SZELESSEGE-FA PARATLAN LEGYEN!!! -- 3.3TU/CM ------------
+ 100 IF	RS17=0  FA=1-185;              C   56CM 381TU      M
+ 100 IF	RS17=0  FA=1-195;              C   59CM 401TU      L
+ 100 IF	RS17=0  FA=1-199;              C   60CM 409TU
+  100 IF	RS17=0  FA=1-205;              C   62CM 421TU      XL
+ 100 IF	RS17=0  FA=1-211;              C   64CM 433TU      XXL,XXXL
+C-----------2 LAPOS ELEJE-HATA HOSSZA:----------- 1.8RS1/CM ----PASSZE:7CM->RS3 BEALLITASA:219.SORBAN--------
+ 101 C IF #100=9  RS1=121  RS2=0        CE   74-7CM            M                             1KOMPLETT PUL:0.62KG
+ 102 C IF #100=9  RS1=121  RS2=0        CH   74-7CM            M                             1KOMPLETT PUL:0.62KG
+
+ 103 C IF #100=   RS1=124  RS2=0        CE   76-7CM            L
+ 104 C IF #100=   RS1=124  RS2=0        CH   76-7CM            L
+
+ 105 C IF #100=9  RS1=128  RS2=0        CE   78-7CM            XL
+ 106 C IF #100=9  RS1=128  RS2=0        CH   78-7CM            XL
+
+  107 C IF #100=10 RS1=64   RS2=55       CE   80-7CM            XXL
+  108 C IF #100=10 RS1=131  RS2=0        CH   80-7CM            XXL 
+
+ 109 C IF #100=3  RS1=135  RS2=0        CE   82-7CM            XXXL   0.4KG                                0.71KG
+ 110 C IF #100=3  RS1=135   RS2=0       CH   82-7CM            XXXL   0.4KG                                0.71KG
+C***************************************************************************************************
+
+C************3 LAPOS UJJA: ************************************** WM%=0 ****************************
+ 120 IF	RS17=1 PM:I.I.I3(FA*).I.I<+>;  C 3 LAP
+ 125 IF	RS17=1  FA=1-190;      	       C   54CM.       TELI TUAGY NYAKHOZ
+C------------3 LAPOS UJJA SZELESSEGE-FA PARATLAN LEGYEN!!! --- 3.3TU/CM ----------
+ 125 IF	RS17=1  FA=1-165;      	       C   50CM. 507TU     M,L,XL
+ 125 IF	RS17=1  FA=1-171;      	       C   52CM. 525TU     XXL,XXXL
+ 125 IF	RS17=1  FA=1-177;      	       C   54CM. 543TU     XXL,XXXL
+C----------- 3 LAPOS UJJA HOSSZA:----------------------------- 1.8RS1/CM ----PASSZE:7CM----------
+ 131C IF #100=44   RS1=95  RS2=0       C   60-7CM            M
+ 132C IF #100=42   RS1=99  RS2=0       C   62-7CM            L
+ 133C IF #100=14   RS1=102  RS2=0      C   64-7CM            XL
+ 134C IF #100=2    RS1=109  RS2=0      C   68-7CM            XXL,XXXL  0.42KG 1.5PAR
+C****************************************************************************************************
+
+ 142 IF RS19=1 GOTO 500 C NYAK 2'30
+ 144 IF RS19=2 GOTO 600 C KETLIS NYAK 3'00
+
+ 200 << S:*IY-./.-*IY;	               Y:5/2; 	ML   NP4-4   VU   V0	     S1 S2
+ 202 >>	S:*IY-./UVN*IY;   	        	  Y:2;    ML                        S1    T2
+ 204 <<	S:U^N./*IY-.;		               Y:3;	 	 ML                     T1 S1                        C3
+ 206 >> S:*IY-.;                      Y:5;    ML            VR1 VU      S1
+ 208 << S:U^NIY*;                             ML                     T1              C VKA>2 
+ 210 >> S:IY*-.;                      Y:6;    ML             V0 VU      S2
+ 212 << S:0-./N+-0;                   Y:6/0;  ML                VU      S1 S2            
+ 214 >>	S:IY*-.;		                    Y:3;	   ML     NP2-2      VU      S1                        C3
+
+ 215 << S:IY*-0;                      Y:6;    ML                VU      S1                        C4
+ 216 >> S:IY*-0;                              ML                VU         S2
+ 217 << S:0-.;                        Y:4;    ML                VU      S1                        C4
+ 218 >> S:IY*-.;                              ML                VU      S1
+
+C******PASSZE 7CM.*******
+ 219 RS3=9 
+ 220 RBEG*RS3 C PASSZE
+ 222 << S:IY*-.;                      Y:3/4;             VU           S1 S2                    C3/4
+ 224 >>                                                  VU           S1 S2
+ 226 REND
+ 228 << S:IY*-./<1+>UVNNY+;           Y:3;    ML     S1    T2                                    C3
+ 230 >> S:U^NY/N+-Y;                          ML  T1 S1
+
+C****** FELSZOVET*******
+ 232 NP1-1
+ 234 RBEG*RS1
+ 236 << S:N+-0/N+-Y;        Y:5/2;                  S1 S2
+ 238 >>                     Y:2/5;                  S1 S2   C VAGY:Y:2/5;  (IGY 2/5 EGYFORMAN FOGY)
+ 240 REND                                                   C VAGY:Y:5/2;  (IGY  CSAK A 2-ES TOROKOT KELL ATORSOZNI PARAFIN NELKUL)
+ 242 IF RS2=0 END
+
+C******FONAS***************************
+ 250 JA1=1100(1100-1102); FA=1-12
+ 252 PM:<.>8:4I.33(FA).4I422:<+>; C 421TU
+ 254 VJA^0
+ 256 << S:0-N+;                                     S1 S2
+ 258 >>                                             S1 S2
+ 260 << S:N+-0/N+-N+;                               S1 S2
+ 262 >> S:N+-0/N+-N+/UVS.;          Y:5/2;          S1 S2 T2
+ 264 << S:U^SN.+/.-N.+/.-N.+; NP5-5 Y:3/4;    V0       T1 S1 S2
+ 266 REP*2
+ 268 <> S:U^SN.+/.-N.+/.-N.+;                 V0       T1 S1 S2
+ 270 <> S:.-N.+/.-N.+/UVSI;                               S1 S2 T2
+ 272 <> S:U^SI/.-IB*/UVSIB*;        Y:3;      VL2      T1 S1    T2
+ 274 <> S:U^SI/.-*H/UVSI;                     VR1 VU   T1 S1    T2
+ 276 <> S:U^SIB*/.-N.+/.-N.+/UVSN.+; Y:4/3;   VR2      T1 S1 S2 T2
+ 278 REPEND
+ 280 >> S:U^SN.+/.-N.+/.-N.+;                 V0       T1 S1 S2
+ 282 << S:.-N.+;                     Y:4;     VU          S1
+ 286 >> S:<1+>.I-I;           NP7-7                       S1
+
+C********FELSZOVET FELUL***************
+ 288 NP1-1
+ 290 RBEG*RS2
+ 292 << S:.I-0/.I-I;                Y:2/5;                S1 S2
+ 294 >>                             Y:5/2;                S1 S2
+ 296 REND
+ 298 END
+ 999 <> W0 S0
+
+
+ 500 C****************************** 1/1 NYAK **********************************
+ 502 << S:*IY-./.-*IY;	               Y:5/2; 	ML   NP4-4   VU   V0	     S1 S2
+ 504 >>	S:*IY-./UVN*IY;   	        	  Y:2;    ML                        S1    T2
+ 506 <<	S:U^N./*IY-.;		               Y:3;	 	 ML                     T1 S1
+ 508 >> S:*IY-.;                      Y:5;    ML            VR1 VU      S1
+ 510 << S:U^NIY*;                             ML                     T1           CVKA>2
+ 512 >> S:IY*-.;                      Y:6;    ML             V0 VU      S1
+ 514 << S:0-./N+-0;                   Y:6/0;  ML                VU      S1 S2            
+ 516 >>	S:IY*-.;		                    Y:3;	   ML     NP6-6      VU      S1
+ 518 << S:IY*-0/0-.;                  Y:6/4;  ML                VU      S1 S2
+ 520 >> S:IY*-0/IY*-.;                        ML                VU      S1 S2
+ 522 REP*5 C PASSZE 5-6
+ 524 << S:IY*-.;                      Y:3/4;               VU           S1 S2
+ 526 >>                                                    VU           S1 S2
+ 528 REPEND
+ 530C << S:IY*-./I*-.;                                      VU           S1 S2  C TOROSOR
+ 532C >> S:I*-./IY*-.;                                      VU           S1 S2  C TOROSOR
+ 534 GOSUB 524-526*5  C 4-5
+ 536 <<                                                    VU           S1 S2
+ 538 >> S:IY*-./IY*-./UVN.;                                             S1 S2 T2
+ 540 END C***********************************************************************
+
+ 600 C********************* 1/1 KETLIS NYAK**************************************
+ 602 << S:*IY-./.-*IY;	               Y:5/2; 	ML   NP4-4   VU   V0	     S1 S2
+ 604 >>	S:*IY-./UVN*IY;   	        	  Y:2;    ML                        S1    T2
+ 606 <<	S:U^N./*IY-.;		               Y:3;	 	 ML                     T1 S1
+ 608 >> S:*IY-.;                      Y:5;    ML            VR1 VU      S1
+ 610 << S:U^NIY*;                             ML                     T1            CVKA>2
+ 612 >> S:IY*-.;                      Y:6;    ML             V0 VU      S1
+ 614 << S:0-./N+-0;                   Y:6/0;  ML                VU      S1 S2            
+ 616 >>	S:IY*-.;		                    Y:3;	   ML     NP6-6      VU      S1
+ 618 << S:IY*-0/0-.;                  Y:3/4;                    VU      S1 S2
+ 620 >> S:IY*-./IY*-.;                                          VU      S1 S2
+ 622 REP*5 C PASSZE
+ 624 << S:IY*-.;                      Y:3/4;               VU           S1 S2
+ 626 >>                                                    VU           S1 S2
+ 628 REPEND
+C------VAGY GUMI NELKUL TORO SORRAL:-----------------------------------------------------
+ 630 << S:IY*-./I-.(14.0);                                 VU           S1 S2
+ 631 >> S:I-./IY*-.(6);                                    VU           S1 S2
+ 632 C
+ 633 C
+ C------VAGY GUMIVAL TOROSORRAL:----------------------------------------------------------
+ 630 << S:IY*-./I-.(14.0);                                      VU           S1 S2
+ 631 >> S:I-.;                        Y:3;                 VU           S1
+ 632 << S:IY*-0;                      Y:6;                 VU           S1
+ 633 >> S:IY*-0/IY*-.(6);             Y:6/4;               VU           S1 S2
+ C------VAGY GUMIVAL TOROSOR NELKUL:-----------------------------------------
+ 630 << S:IY*-./IY*-0;                  Y:3/6;               VU           S1 S2
+ 631 >> S:IY*-0/IY*-.;                  Y:6/3;               VU           S1 S2
+ 632 C
+ 633 C
+C----------------------------------------------------------------------------
+ 634 GOSUB 624-626*5
+ 640 <<                              Y:3;    NP3-3         VU              S2     C KETLI
+ 642 >>                              Y:6;    NP4-4         VU              S2     C MEGFOGO
+ 644 <<                                                    VU           S1
+ 646 C>>                             Y:6;                  VU              S2
+ 648 C<<                                                   VU           S1
+ 650 >>                              Y:3/6;                VU           S1 S2
+ 652 <<                              Y:6/2;                VU           S1 S2
+ 654 >> S:IY*-./UVN.;                Y:2;                  VU           S1    T2
+ 656 END C*************************************************************************
+
+1010 .Y
+1012 Y
+1100 .B*HT..B*HT.
+1102 IIIII..IIIII

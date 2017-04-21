@@ -1,0 +1,20 @@
+  13 NP4=12.5  C:LEVALASZTAS
+  19 NP2=11.2;    C:1/1-ES PASSZE
+  40 START        
+  50 YG:6/256;
+  53 WM=18;WMI=7
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  77 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  78 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  80 REP*3 C4
+  82 >> S:DI.-D.I/DI.-D.I;                             VU           S1 S2
+  84 << S:DI.-D.I/DI.-D.I;                             VU           S1 S2
+  90 REPEND
+  92 >> S:DI.-D.I/DI.-D.I/UVND.I;                                   S1 S2 T2

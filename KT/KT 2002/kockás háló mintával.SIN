@@ -1,0 +1,75 @@
+   1 C
+  10 C
+  20 NP1=14.4   C MINTA
+  22 NP3=12.5   C MINTA 11.5
+  23 NP6=15.0   C:MINTA
+
+  24 NP4=13.0  C:LEVALASZTAS-------------
+  26 NP2=14.4  C:PASSZE,CSIPKE ALJ-------
+  28 NP5=15.0  C:
+  40 START        
+  50 YG:6/256;
+  53 WM=20
+  56 << S:D.I-DI./DI.-D.I;          Y:5/2;       NP4-4  VU  V0        S1 S2
+  59 >> S:D.I-DI./UVND.I;           Y:5;                              S1    T2
+  62 << S:R-0/UVNR;	                                                  S1    T2
+  65 WM=15 
+  68 >> S:R-R;		                    Y:6;	        NP2-0   	               S2
+  71 << S:0-R/R-0/0-R;		            Y:0/6/0;     NP2-2    	        T1 S1 S2
+  74 >> S:R-R(6.5)/R-0;             Y:2/5;	                   ML      S1 S2
+  77 WM=20 WMI=7
+  80 << S:0-R;		                    Y:2;		       NP5-5                S1
+  95 JA1=1630(1626-1630);
+  98 PA:1:<JA1>;
+ 101 FA=6-181;                   IF RS1<25 FA=29-160         C======4LAP======
+ 104 PM:<.>7:3(WWFAWW);          IF RS1<25 PM:<.>7:4(WFAWW); C======4LAP======EZ A JOO!
+ 106 >> S:R-0/UVS.WA;                Y:2;                      S1   T2
+ 107 << S:U^NN.WA/.WA-N.WA/UVSN.WA;  Y:2;  ML               T1 S1   T2 C###ML###
+ 108 Y:2/5/5/2;
+ 110 REP*1  C 2          C *******  PASSZE  ***********************************
+ 113 WM=0
+ 116 >> S:U^S+;                            NP2-2    VR1 VKA>6 T1
+ 125 << S:U^S*;                                     VL1 VKB>6 T1
+ 126 WM=18
+ 128 >> S:U^SWA/.-N./UVNN.A;                        V0  VKC>2 T1 S2   T2 
+ 134 << S:<1->NA-A;                                 VU           S1
+ 140 REPEND         C  ***************************************************
+ 142 GOSUB 113-128
+ 144 << S:<1->NA-A/UVSA;                                         S1   T2
+ 160 >> S:U^ND.I/DI.-D.I/UVND.I;           NP1-1   T1 S1    T2
+ 165 C                       2/5:JOBB OLDALT VANNAK
+ 170 JA1=1020(1004-1018)
+ 175 PA:<JA1>;
+ 180 FA=7-182;
+ 185 PM:<.>8:3(.FA...);
+ 200 C 1 SZV. VARIACIO****************************************************
+ 205 VJA^0
+ 210 WM=20 C15
+ 215 << S:U^S*/.+Y-*/.+Y-*;   Y:5/2;       NP1-1       VL1      T1 S1 S2
+ 220 >> S:.Y%+-%Y;                         NP3-3       VR1         S1 S2
+ 225 Y:2/2/5/5;
+ 230 RBEG*RS1
+ 235 << S:U^S<1->I/.+Y-*I/UVS<1->.OA;  NP1-1     VL1       T1    S2 T2 C *+Y *+Y *+Y
+ 240 >> S:U^SIO/.+YA-*OI/UVSI;         NP1-1     VL1       T1    S2 T2 C *+Y *+Y *+Y
+ 245 << S:U^S<1->I/.Y%+-I%Y/UVS<1->.;  NP3-3     VR1       T1    S2 T2 C *+Y *+Y *+Y
+ 250 >> S:U^SI/.Y%+-I%Y/UVSI;                    VR1       T1    S2 T2 C *+Y *+Y *+Y
+ 255 REND
+ 260 << S:U^S<1->I/.+Y-*I/.+Y-*I/UVS*I; Y:5/2;  NP1-1  VL1 T1 S1 S2 T2
+ 265 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVND.I;   NP4-4       V0  T1 S1 S2 T2
+ 270 END C************* XATBGHWZ *****************************************
+1004 *+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1006 *+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1008 *+Y*+Y*+Y*+YO+YO+YO+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1010 *+Y*+Y*+Y*+Y.........*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+
+1012 *+Y*+Y*+Y*+Y.........*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1014 *+Y*+Y*+Y*+Y.........*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1016 *+Y*+Y*+Y*+Y.........*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1018 *+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+
+1020 *+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y*+Y
+1626 +WWWWW*A
+1628 ++WWW**A
+1630 +++W***A
+
+

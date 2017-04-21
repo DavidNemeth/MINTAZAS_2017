@@ -1,0 +1,26 @@
+ 600 C   REX PIKO PANT BAL 2-ES SZOROSSÁGGAL.TUNIKAHOZ
+ 601 C   TUNIKA H-U.-RA RATOLTHETO!
+ 602 START 
+ 604 YG:6/256;
+ 606 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+ 608 JA1=1991;
+ 610 PA:<JA1>; 
+ 612 FA=2-8; 
+ 614 PM:<.>6:77FA;
+ 616 >> S:D.I-DI./DI.-D.I/UVN.I;	           	ML     NP4-4   V#  	      S1 S2 T2
+ 618 << S:U^NA/.I-A;                 Y:2;    ML     NP1-1           T1 S1
+ 620 >> S:UVSA;                              ML     NP0-0   VR1              T2
+ 622 << S:.I-0;                      Y:5;    ML             V0         S1
+ 624 >> S:.I-.I/0-.I;                Y:6/0;  ML             V0         S1 S2
+ 626 << S:.I-0;                      Y:6;    ML     NP-0               S1
+ 628 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+ 630 << S:0-./.-.;                           ML                        S1 S2
+ 632 >> S:.-.;                               ML                        S1 S2
+ 634 <<                                      ML                        S1 S2
+ 636 >> S:.-./.I-.I;                         ML                        S1 S2
+ 638 << S:R-R;                                                         S1 S2
+ 640 >>                                                                S1 S2
+ 642 <<                                                                S1 S2
+ 644 >>                                                                S1 S2
+ 646 END
+1991 ....AIA

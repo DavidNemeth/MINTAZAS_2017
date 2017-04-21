@@ -1,0 +1,123 @@
+   1 C**SLAG BUKLE TUNIKA 1/1-ES PASSZEVAL, PODROS NYAKKAL 
+   2 C CP SLAG RS19=0/1/2/3/4 (TEST/UJJA/PODROS NYAK/ZSEB/1X1NYAK) RS10=
+   3 C******* 2 FELE PM, HA CSIKOZNA!!!******(A BEALLITAS A LAMBADAHOZ IS JO)
+   4 C RS19=1:PODROS NYAK (ELVALASTAS ELOL VAGY HATUL:67.VAGY 74.SOR-EGYIKET KI KELL CEZNI)
+   5 C         A PODROS NYAKAT LEHET GUMIVAL (702-704), VAGY GUMI NELKUL (701) KOTNI
+   6 C RS19=2:1/1-ES ZSEB A KARDIGANHOZ (1/1-ES GOMBLYUKAS PANT CSAK A KT-N)
+   7 C RS19=3:1/1-ES GUMIS NYAK
+   8 C                           J3      TEST(15')RS1=57-        UJJA(12') RS1=-56
+   9 C-----------------------+------------+------------+------------+-------------+
+  10 C BUKLE+HB:                14.75             66 (76CM)                52 (57CM)
+  11 C 1TUN:17'(CSIGABAN) !!!!! MIND A 2 SZAJ BUKLET AT KELL ORSOZNI!!!!!!!!!!!!!!!                                              
+  12 C-----------------------+------------+------------+------------+-------------+
+  13 C BUKLE/HB=72%/28%    1500-1650 FT/KG (HB:1000/1200, BUKLE:1650/1850FT)
+  14 C 0.48KG=0.33KG+0.14KG
+  15 C 0.48*1470/1670=700-800FT 
+  16 C  BAL:                 JOBB:
+  17 C  6:ELV. SZAL          2,5: - 1 BUKLE+1 HB
+  18 C  RS19=1:NYAK                      
+  19 C       14.75  14.75        14.75  14.75      HATUL:SLAG A MINTAHOZ
+  20 C J3: <------+------       ------+------> 
+  21 C       13.75  13.75        13.75  13.75    ELOL:SLAG A PODROS NYAKHOZ (RS19=1)
+  22 C       12.0   12.0         12.0   12.0
+  23 C B2: <------+------       ------+------> 1/1 PASSZE,NYAK,ZSEB
+  24 C       12.0   12.0         12.0   12.0
+  25 C J4: 13.0 
+  26 C TUAGYKORREKCIOK:
+  27 C   V0:->1-2
+  28 C   R1:->0-1   ______R2:-     ________R3:-
+  29 C   L1:-    __________L2:-     ________L3:-
+  30 C 10 SULY. 
+  40 START
+  50 YG:6/23456;
+  51    IF RS10=10  RS19=0 C  TEST
+  52    IF RS10=6   RS19=1 C  UJJA
+  53    IF RS10=14  RS19=2 C  PODROS NYAK
+  54 C  IF RS10=15  RS19=3 C  1/1-ES ZSEB
+  55 C  IF RS10=15  RS19=4 C  1/1-ES GUMIS NYAK
+  56 IF RS19=0 RS1=66
+  57 IF RS19=1 RS1=52
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  67 IF RS19=2 GOTO 690 C PODROS NYAK (ELVALASTAS ELOL)
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+  74 IF RS19=2 GOTO 700 C PODROS NYAK (ELVALASTAS HATUL)
+  75 IF RS19=3 GOTO 800 C ZSEB
+  76 IF RS19=4 GOTO 900 C 1/1-ES GUMIS NYAK
+  77 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+  78 << S:0-D.I/DI.-D.I;                                       V#      S1 S2
+  80 REP*4
+  82 >> S:DI.-D.I;                                     V#           S1 S2
+  84 <<                                                V#           S1 S2
+ 100 REPEND
+ 105 JA1=1002;
+ 115 PA:<JA1>;
+ 120 FA=1-4
+ 125 C 2 FELE PM (HA ELTER A PAMUT SZINE A BUKLETOL ES EZERT CSIKOZ, AKKOR AZ I. KELL)
+ 130 PM:<FA>1:6I2.3I 189:2I 368:2I 547:7I;          C 3 LAP             I. TUKIOSZTAS
+ 135 PM:<FA>1:6I     186:2I 367:2I 548:6I;          C 3 LAP            II. TUKIOSZTAS
+ 140 IF RS19=1 PM:<FA>1:6I2.3I 144:2I 278:2I 412:2I 547:7I;   C 4 LAP   I. TUKIOSZTAS
+ 150 IF RS19=1 PM:<FA>1:6I     140:2I 276:2I 412:2I 548:6I;   C 4 LAP  II. TUKIOSZTAS
+ 160 >> S:DI.-D.I/DI.-D.I/UVNI;      Y:5/2;                        S1 S2 T2
+ 165 NP3-3
+ 175 << S:U^N./I-./I-.;            Y:2/5;                    T1 S1 S2
+ 180 >> S:I-./I-.;                                  V#          S1 S2
+ 185 RBEG*RS1
+ 190 <<                                               V#          S1 S2
+ 195 >>                                               V#          S1 S2
+ 200 REND
+ 205 <<                                               V#          S1 S2
+ 210 >> S:I-./I-./UVNDI.;                                       S1 S2 T2
+ 215 << S:U^ND.I/DI.-D.I;          Y:2;    NP4-4           T1 S1
+ 220 >> S:DI.-D.I/UVND.I;                                 S1    T2
+ 222 RS10=RS10-1
+ 224 IF RS10>0 GOTO 51
+ 225 END
+ 680 C************************  PODROS NYAK (ELVALASTAS ELOL)*********************
+ 690 << S:UVND.I;                            ML     NP-0                    T2
+ 692 >> S:DI.-D.I;                   Y:6;    ML             V0 V#      S2
+ 694 << S:DI.-0/0-R;                 Y:6/0;  ML                V#      S1 S2            
+ 700 C************************  PODROS NYAK (ELVALASTAS HATUL)*********************
+ 701C>>	S:DI.-D.I/UVND.I;  Y:2;  	NP2-2 V0 ML    S2 T2 C GUMI NELKUL(702-704 NEM KELL)
+ 702 >>	S:DI.-D.I;			      Y:2;   NP2-2 V0 ML    S2    C GUMIVAL(701-ET KI KELL CEZNI)
+ 703 << S:DI.-0;           Y:6;   NP-0     ML S1       C GUMIVAL(701-ET KI KELL CEZNI)
+ 704 >> S:DI.-0/UVND.I;           NP-0     ML    S2 T2 C GUMIVAL(701-ET KI KELL CEZNI)
+ 705 REP*4
+ 706 << S:R-0;    Y:2/5; NP3-0     S1 S2
+ 708 >>                  NP-0      S1 S2
+ 710 REPEND
+ 714 << S:U^NDI./D.I-DI./D.I-DI.;              NP4-4           T1 S1 S2
+ 724 >> S:D.I-DI./D.I-DI./UVNDI.;                                 S1 S2 T2
+ 726 RS10=RS10-1
+ 728 IF RS10>0 GOTO 51
+ 730 END
+ 800 C************************  1/1-ES ZSEB *********************
+ 802 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+ 804 << S:0-D.I/DI.-D.I;                                       V#      S1 S2
+ 806 REP*15
+ 808 >> S:DI.-D.I;                                     V#           S1 S2
+ 810 <<                                                V#           S1 S2
+ 812 REPEND
+ 814 >> S:DI.-D.I/DI.-D.I/UVND.I;                                   S1 S2 T2
+ 816 RS10=RS10-1
+ 818 IF RS10>0 GOTO 51
+ 820 END
+ 900 C *****1/1 NYAK***********
+ 902 >>	S:DI.-D.I;		           Y:2;	 ML     NP2-2      V#      S1
+ 904 << S:DI.-0;               Y:6;  ML     NP-0       V#      S1
+ 906 >> S:DI.-0/0-D.I;         Y:6/5;  ML              V#      S1 S2
+ 908 << S:DI.-D.I;             Y:2/5;                  V#      S1 S2
+ 910 REP*4
+ 912 >> S:DI.-D.I;                                     V#           S1 S2
+ 914 <<                                                V#           S1 S2
+ 916 REPEND
+ 924 >> S:DI.-D.I/DI.-D.I/UVND.I;                                 S1 S2 T2
+ 926 RS10=RS10-1
+ 928 IF RS10>0 GOTO 51
+ 930 END
+1000 ..II
+1002 ....

@@ -1,0 +1,37 @@
+ 800 C2/2 FELTARTOTT PANT-NYAK
+ 802 NP1=14.5   C:MINTA 
+ 804 NP4=12.5   C:LEVALASZTAS-------------
+ 806 NP7=13.0   C:BEKEZDES;2/2
+ 808 NP8=12.0   C:% ELOL
+ 810 NP9=13.0   C:% HATUL
+
+ 812 START 
+ 814 YG:6/346;
+ 816 WM=20 WMI=7
+ 818 << S:D.I-DI./DI.-D.I;	                Y:3/4; 	ML     NP4-4   VU V0	     S1 S2
+ 820 PA:<JA1>;
+ 822 PM:<.>9:<FA>545:<.>;
+ 824 JA1=1000(1000-1001)
+ 826 FA=3-6
+ 828 >> S:D.I-DI./UVS.*;                   Y:3;    ML                        S1    T2
+ 830 << S:U^SI/.*-I;                               ML     NP1-1           T1 S1
+ 832 >> S:.*-I;                            Y:4;    ML     NP4-4   VR2        S1
+ 834 << S:.*-0/UVSI;                               ML                 VKA>3  S1    T2
+ 836 VJA^0
+ 838 >> S:<1->.*+-Y+/0-Y+;                 Y:6/0;  ML             V0         S1 S2
+ 840 << S:.*+-0/0-Y+;                              ML                        S1 S2
+ 842 >> S:.*+-*+/0-*+;                     Y:4/3;  ML     NP7-7              S1 S2
+ 844 << S:.*+-0/.*+-IY/UVN.;                                      VR2 VKA    S1 S2 T2
+ 846 WM=24
+ 848 >> S:.*+(15.0)-IY;                                           VU         S1 S2
+ 850 << S:.%*+-IY;                                        NP8-9   VU         S1 S2
+ 852 >>                                    Y:4;                   VU         S1
+ 854 << S:.*+-IY;                                         NP7-7   VL2        S1
+ 856 >> S:.*+(15.0)-IY/.%*+(8)-IY(9)/UVN.; Y:4/3;                            S1 S2 T2
+ 858 << S:.%*+-IY;                                                VU         S1 S2
+ 860 >> S:.*+-IY;                          Y:4;           NP7-7   VU         S1
+ 862 << S:.*+-IY/UVNIY;                                                      S1    T2
+ 864 >> S:U^NIY/.*+-IY/.*+-IY/UVSIY;       Y:3/4;                 V0      T1 S1 S2 T2
+ 866 END
+ 1000 *II*
+ 1001 *IY+

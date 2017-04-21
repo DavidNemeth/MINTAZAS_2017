@@ -1,0 +1,103 @@
+   1 C ESZTERGOM*****(ESZTERGOMI MINTA)TUNIKA+ZSEBES MELLENY) 
+   2 C CP ESZTERG RS10=(DB.) RS1=
+   3 C  VAGY: CNCA 4004; PETI KT 2005
+   4 C                             
+   5 C                               TUN. ELEJE-HATA:   UJJA:      MELLENY:  ZSEB: 
+   7 C                                    RS17=0        RS17=2     RS17=1    RS17=3
+   9 C-----------------------+-----------+-------------+----------+---------+--------+
+   9 C 3X16/1 LUSIFIL:          RS1=FIX:       57          44        62         1-2
+   9 C-----------------------+-----------+-------------+----------+---------+--------+
+   9 C          1991 ....AIA
+ 
+  10 NP4=12.5              C:LEVALASZTAS
+  12 NP1=14.6              C:KARIKAS ALJA HATUL
+  14 NP5=13.6              C:KARIKAS ALJA ELOL
+  16 NP6=14.6              C: 2SZV.BAL-BAL KREPP
+  18 NP2=12.2              C:BEKEZDES
+  20 NP3=11.2              C:REX PASSZE
+  40 START 
+  50 YG:6/256;
+  52 WM=18 WMI=7
+  54 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   VU   V0	   S1 S2
+  56 JA1=1991;
+  58 PA:<JA1>;      C***** 1991 ....AIA ********
+  60 FA=2-8; C FA=2-8 VAGY 3-8;
+  62 PM:<.>5:<FA>547:<.>;
+  64 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  66 << S:U^NA/.I-A;                         ML                     T1 S1
+  68 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  70 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  72 >> S:.I-.I/0-.I;                Y:6/0;  ML              V0        S1 S2
+  74 << S:.I-0;                      Y:6;    ML                        S1
+  76 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  80 >> S:.-./.-.;                           ML                        S1 S2
+  82 << S:.-./.-.;                           ML                        S1 S2
+  84 >> S:.-./.I-.I;                         ML                        S1 S2
+
+
+  86 IF #100=25   RS17=0            C TUNIKA E-H
+  88 IF #100=4    RS17=1            C MELLENY E-H
+  90 IF #100=13   RS17=2            C TUNIKA UJJA
+  91C IF #100=1    RS17=3            C ZSEB
+
+  92 IF RS17=0 RS1=57             C TUNIKA ELEJE
+  94 IF RS17=1 RS1=62             C MELLENY ELEJE
+  95 IF RS17=2 RS1=44             C TUNIKA UJJA
+  96 IF RS17=3 RS1=1              C ZSEB
+
+  97 << S:R-R/R-R;                          	ML                        S1 S2
+  98 >> S:R-R/R-R;                           ML                        S1 S2
+  99 << S:R-R;                               ML                        S1 S2
+
+ 100 C *********CSIPKE ALJA********
+ 101 JA1=1002(1002-1004)
+ 110 PA:<JA1>;
+ 112 FA=6-182;           CFA=6-183;
+ 114 PM:<.>8:3(IFAI.);   CPM:<.>8:3(IFAI);
+ 116 FD=28-160
+ 118 IF RS17=2 PM:<.>7:4(IFDI);  C********* 4 LAP **********
+ 119 WM=0
+ 120 >> S:UVN.;                                     T2
+ 122 << S:U^NN.;                           T1
+ 160 >> S:.-N./.-N./UVNYA;     NP5-1         S1 S2 T2
+ 170 REP*9
+ 172 WM=0
+ 174 << S:U^SA;                                 VL1 VKA>3   T1
+ 176 >> S:U^NY;                                 VR1         T1
+ 178 WM=22
+ 180 << S:.Y-IA;                             VU V0             S1 S2
+ 182 >> S:U^NY/.-N./.-N./UVN<1->AY;                         T1 S1 S2 T2
+ 184 REPEND
+ 186 GOSUB 172-180
+ 188 >> S:U^NY/.-N./.-N./UVNN.;                   T1 S1 S2 T2
+ 400 C********  KREPP ******
+ 402 JA2=1704(1704-1718)
+ 418 PA:<JA2>;
+ 420 WM=0
+ 422 << S:U^NN./UVN.;                           T1  T2
+ 424 >> S:U^NN./UVN.;                           T1  T2
+ 425 WM=24
+ 426 << S:.-N./.-N./UVNN.;     NP6-6        Y:2/5;            V0      S1 S2 T2
+ 428 RBEG*RS1
+ 430 >> S:U^N<2->N./.-N./.-N./UVNN.;                     V0   T1 S1 S2 T2
+ 432 << S:U^N<2->N./.-N./.-N./UVNN.;                          T1 S1 S2 T2 
+ 434 REND
+ 436 >>                                                       T1 S1 S2 T2
+ 437 WM=18
+ 438 << S:U^ND.I/DI.-D.I;               Y:5;        NP4-4     T1 S1
+ 440 >> S:DI.-D.I/UVND.I;                                        S1    T2
+ 470 END
+1002 IIYA
+1004 YAII
+1702 WWWWWWWWWWWW
+1704 I...II.II...
+1706 .II.I...I.II
+1708 I..I.III.I..
+1710 II..I.I.I..I
+1712 ..II.I.I.II.
+1714 I..III.III..
+1716 .II...I...II
+1718 .III..I..III
+1720 WWWWWWWWWWWW
+1991 ....AIA

@@ -1,0 +1,52 @@
+ 600 C***REX PIKO PANT 9 GOMBLYUKKAL****
+
+ 600 C*** AZ ALSO GOMBLYUK LEGALUL LEGYEN, A FELSO EGY GOMLYUKTAVOLSAGGAL FELJEBB, MINT A HONALJA!
+ 600 C*** AZ 1. ES A 9. GOMBLYUK KOZTI TAVOLSAG:50CM.
+
+ 600 C*** A KESZ KISKABAT KB. 70CM. 
+ 602 NP4=12.5  C:LEVALASZTAS,1/1
+ 603 NP2=11.4  C:BEKEZDES,REX
+ 606 NP3=15.0   C:SLAG GOMBLYUK ELOTT (REGEBBI: 14.8
+ 607 NP8=14.4   C:SLAG PASSZE         (REGEBBI: PKT14.0 KT:14.2)
+ 609 NP6=6.0    C:GOMBLYUK
+ 610 START 
+ 612 YG:6/256;
+ 614 WM=24
+ 616 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1990; 
+ 620 PA:<JA1>; 
+ 622 FA=2-7; C FA=1-7 VAGY 2-7;
+ 624 PM:<.>5:<FA>547:<.>;
+ 626 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+ 628 << S:U^NA/.I-A;                         ML                     T1 S1
+ 630 >> S:.I-A;                      Y:5;    ML             VR1        S1
+ 632 << S:.I-0/UVNA;                         ML     NP-0    VKA>3       S1    T2
+ 634 >> S:.I-.I;                     Y:6;    ML             V0            S1
+ 636 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+ 638 >> S:.I-.I/.-0;                 Y:5/2;  ML     NP2-2              S1 S2
+ 642 << S:0-./.-.;                   Y:2/5;                  ML          S1 S2
+ 644 >> S:.-./.-.;                   Y:5/2;              ML          S1 S2
+ 646 << S:.-./.-.;                                        ML          S1 S2
+ 648 >> S:.-./.I-.I;                                     ML          S1 S2
+ 650 << S:R-R;                                                         S1 S2
+ 652 >> S:R-0/0-R;                             NP8-8                S1 S2
+ 654 << S:R-0/0-R;                             NP3-3                S1 S2
+ 655 VJA^1
+ 656    PM:15.8(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL.)  NYARI VARIACIO
+ 656    PM:14.9(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (9 GOMBLYUKKAL.)                         VAGY
+ 656    PM:14.8(YTI18*)<*>544:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL, DE KET TUVEL TAVOLABB)   VAGY
+ 658 C GOMBLYUKAK:
+ 660 WM=0
+ 662 >> S:U^STI/UVSYT;                        VL2                T1       T2
+ 664 << S:U^SY/UVSI;                          VR1                T1       T2
+ 666 WM=25
+ 668 >> S:T(6)-.*IY(8)/.*IY(8)-T(6);         V0                    S1 S2
+ 670 NP8-8
+ 672 << S:R-0/0-R;                            VR1 V#                S1 S2
+ 676 >>                               Y:2/5;      V#                S1 S2
+ 678 <<                               Y:5/2;  V0                    S1 S2
+ 680 >>                                                             S1 S2
+ 682 <<                                                             S1 S2
+ 684 >> S:R-R/R-R;                        NP2-2               S1 S2
+ 686 END
+1990 4.AIA

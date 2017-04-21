@@ -1,0 +1,187 @@
+C ROSALIE3 VAGY CNCA:CP R      JAC.:RAJZOK5/PRAGA
+   1 C                        NP1=   NP6=          E               H        U 
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C                                         RS17=0        RS17=1        RS17=2
+   1 C
+   1 C-----------------------+---------------+------------+------------+-------------+
+C------------PKT:---------------------------NPK=0--0.1
+C------------LUSI+TX:-----------------------NPK=0--0.3 (FONALTOL FUGG)
+C------------3TOROK PAMUT:------------------NPK=0.2
+C------------LUREXXEL:----------------------NPK=0.4-0.5      RS1=-5--9
+  12 NP6=13.5              C:1SZV KREPP
+  14 NP3=13.6;             C:SZIMMETRIKUS CSIPKE
+  15 NP5=14.0;             C:KORSLAG
+  16 NP4=12.5;             C:LEVALASZTAS
+  18 NP2=10.0              C BEKEZDES
+
+
+  40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+C********************************************************************************
+  57 C IF #100=19   RS17=10           C NYAK (1 LEVETEL:3DB.-1')
+C***********SAPKA*********************************************************************
+  58C   IF #100=28  RS17=0  RS19=0          C TUN.E   41'
+  59C   IF #100=24  RS17=1                  C TUN.H   20'
+  60C   IF #100=20  RS17=6  RS19=0          C HU ZART    25'
+  61 C IF #100=3   RS17=9  RS19=0          C RU CS       
+  62 C IF #100=4   RS17=4  RS19=0          C MELLENY E
+  63 C IF #100=2   RS17=5  RS19=0          C MELLENY H
+  64 C IF #100=8   RS17=11 RS19=0          C 4 LAPOS LUREX PULOVER U-E-H-U NPK=0.6
+C*********** *********************************************************************
+  65C   IF #100=6   RS17=0  RS19=1          C TUN.E   41'
+  66C   IF #100=14  RS17=1                  C TUN.H   20'
+  67C   IF #100=10  RS17=6  RS19=1          C HU ZART    25'
+  68 C IF #100=3   RS17=9  RS19=1          C RU CS       
+  69 C IF #100=4   RS17=4  RS19=1          C MELLENY E
+  70 C IF #100=2   RS17=5  RS19=1          C MELLENY H
+  71 C IF #100=8   RS17=11 RS19=1          C 4 LAPOS LUREX PULOVER U-E-H-U NPK=0.6
+C********************************************************************************
+  72 IF RS17=0  RS1=174 RS2=1         C TUN.E	73CM   3LUSI:160    2LUS+ITX: 174         LUREX: 164
+  73 IF RS17=1          RS2=166       C TUN.H              158              166       NPK=+0.6 166
+  74 IF RS17=4  RS1=175 RS2=1         C MEL.E              175
+  75 IF RS17=5  RS1=21  RS2=152       C MEL.H              152
+  76 IF RS17=6  RS1=21  RS2=120       C HU                 113              120                124  
+  77 IF RS17=9  RS1=62  RS2=1         C RU                 62                          
+  78 IF RS17=11 RS1=160 RS2=1         C PULOVER U-E-H-U    138              145                148
+C********************************************************************************
+  80 IF RS17=10 GOTO 500 C NYAK
+  83C
+  84C
+
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	       NP4-2      	   ML  VU      S2
+ 106 << S:R-0/0-R;                    Y:6/0;      NP4-4 	        ML  VU   S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2          ML  VU   S2
+ 109           JA1=1132(1032-1070)             C CSIPKE PRAGA
+ 110 IF RS19=1 JA1=1570(1448-1526)             C CSIPKE APRO LEVEL
+ 111 JA2=1362(1334-1362); C KREPP
+ 112 PA:1:<JA2>:1:<JA1>;
+C*******************************************************************************************
+ 116           FA=6-192; PM:<.>7:3(IIFA)II;                       C*3LAP************581TU
+ 117 IF RS17>5 FA=21-161; PM:<.>8:4(FA.);                         C*4LAP************581TU
+ 118 IF RS17=11 FA=11-171;FB=32-150; PM:<.>7:IIFBIIFAIIFAIIFBI;   C LUREX PULOVER U-E-H-U***4LAP**581TU  
+C*****************************************************************************************
+
+ 119 Y:2/2/5/5;
+ 120 REP*2
+ 121 << S:R-0;		                             ML   NP5-5 VU         S2
+ 122 >> S:0-R;		                             ML         VU         S2
+ 123 REPEND
+ 124 << S:R-0/UVNNI;                         ML                    S1 T2
+ 125 >> S:U^NI/NI-I;                         ML                 T1 S2
+ 128 IF RS17=1 GOTO 400 C H TUNIKA
+ 131 IF RS17=5 GOTO 400 C H MELLENY
+
+ 136 RBEG*RS1 C*********SZIMMETRIKUS CSIPKE***********
+ 137 WM=0
+ 138 << S:U^NAW;                                   VL1           T1          CVKB>6
+ 140 >> S:U^NY;                                    VR1           T1          CVKA>6
+ 141 WM=17
+ 142 << S:U^NI/.-N.W/UVN<1->.;          NP3-3      V0            T1 S1 T2    CVKC>1
+ 144 >> S:U^NI/.-I/UVN<1-2->NI;                                  T1 S2 T2    CVKC 
+ 146 REND
+ 400 C********************KREPP**************
+ 416 NP6-6
+ 418 RBEG*RS2
+ 420 << S:U^N<1-2->N./.-N./UVNI;                             T1 S1     T2
+ 422 >>                                                    T1 S1     T2
+ 424 REND
+ 426 << S:U^SD.I/DI.-D.I;                      NP4-4       T1 S1
+ 428 >> S:DI.-D.I/UVSD.I;                                     S2     T2
+ 430 END
+
+ 999 <> W0 S0
+
+1980 4.AIA
+1990 IA
+1992 IY
+1002 WWWWWWWWWWWWWWWWWW
+1004 XXXXXXXXXXXXXXXXXX
+1006 XXXXXXXXXXXXXXXXXX
+
+1008 XXXXX.........XXXX
+1010 XXXXX.IIIIIII.XXXX
+1012 XXXX.AAAIIIYYY.XXX
+1014 XXXX.IIIIIIIII.XXX
+1016 XXX.AAAIAIYIYYY.XX
+1018 XXX.IIIIIIIIIII.XX
+1020 XX.AAAIAIIIYIYYY.X
+1022 XX.IIIIIIIIIIIII.X
+1024 X.AAAIAIIIIIYIYYY.
+1026 X.IIIIIIIIIIIIIII.
+1028 .AAAIAIIIIIIIYIYYY
+
+1030 IIIIIIIIIIIIIIIIII
+1032 IIYYY.........AAAI
+1034 IIIIIIIIIIIIIIIIII
+1036 IYIYYY.......AAAIA
+1038 IIIIIIIIIIIIIIIIII
+1040 IIYIYYY.....AAAIAI
+1042 IIIIIIIIIIIIIIIIII
+1044 IIIYIYYY...AAAIAII
+1046 IIIIIIIIIIIIIIIIII
+1048 IIIIYIYYY.AAAIAIII
+1050 IIIIIIIIIIIIIIIIII
+1052 .....AAAIIIYYY....
+1054 IIIIIIIIIIIIIIIIII
+1056 ....AAAIAIYIYYY...
+1058 IIIIIIIIIIIIIIIIII
+1060 ...AAAIAIIIYIYYY..
+1062 IIIIIIIIIIIIIIIIII
+1064 ..AAAIAIIIIIYIYYY.
+1066 IIIIIIIIIIIIIIIIII
+1068 .AAAIAIIIIIIIYIYYY
+1070 IIIIIIIIIIIIIIIIII
+1072 IIYYY.........AAAI
+1074 IIIIIIIIIIIIIIIIII
+1076 IYIYYY.......AAAIA
+1078 IIIIIIIIIIIIIIIIII
+1080 IIYIYYY.....AAAIAI
+1082 IIIIIIIIIIIIIIIIII
+1084 IIIYIYYY...AAAIAII
+
+1086 IIIIIIIIIIIIIIIIII
+1088 IIIIYIYYY.AAAIAIII
+1090 IIIIIIIIIIIIIIIIII
+1092 .....AAAIIIYYY....
+1094 IIIIIIIIIIIIIIIIII
+1096 ....AAAIAIYIYYY...
+1098 IIIIIIIIIIIIIIIIII
+1100 ...AAAIAIIIYIYYY..
+1102 IIIIIIIIIIIIIIIIII
+1104 ..AAAIAIAIYIYIYYY.
+1106 IIIIIIII.I.IIIIIII
+1108 .AAAIAIAAIYYIYIYYY
+1110 IIIIIII..I..IIIIII
+1112 IIIIAIAAAIYYYIYIII
+1114 IIIIII...I...IIIII
+1116 IIIAIAAAAIYYYYIYII
+1118 IIIII....I....IIII
+1120 IIAIAAAAAIYYYYYIYI
+1122 IIII.....I.....III
+1124 IAIAAAAAAIYYYYYYIY
+1126 III......I......II
+1128 IIAAAAAAAIYYYYYYYI
+1130 II.......I.......I
+1132 IAAAAAAAAIYYYYYYYY
+1134 WWWWWWWWWWWWWWWWWW
+
+
+1334 II.II...I...
+1336 I.I.I..III..
+1338 .I.I.II...II
+1340 .III..I.I.I.
+1342 I...II.I.I.I
+1344 ..I..III.III
+1346 II.II...I...
+1348 II.III..I..I
+1350 ..I...II.II.
+1352 II.II.I...I.
+1354 ..I..I.III.I
+1356 I...I.II.II.
+1358 .III.I..I..I
+1360 II.III..I..I
+1362 ..I...II.II.

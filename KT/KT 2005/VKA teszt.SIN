@@ -1,0 +1,17 @@
+  10 NP1=14.6  C:2SZV. CSIPKE
+  12 NP4=12.5  C:LEVALASZTAS
+  14 NP3=14.6  C:SZIMMETRIKUS CSIPKE PASSZE
+  16 NP2=10.0              C BEKEZDES
+  18 NP5=13.8              C:KORSLAG
+
+  40 START        
+  50 YG:6/256;	
+  52 WM=18;WMI=7
+  60 << S:D.I-DI./DI.-D.I;  Y:5/2; NP4-4 VU V0 ML  S1 S2
+  70 RBEG*RS1
+  80 >>                                            S1 S2     C  0
+  90 <<                                  VU VKB>10 S1 S2     C MAX
+  92 REND
+  93 >>                                            S1 S2
+  94 END
+ 

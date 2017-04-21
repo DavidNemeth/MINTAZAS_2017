@@ -1,0 +1,50 @@
+ 800 C BABOS BOLERO PANTJA
+ 801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
+ 802 NP14=10.6               C:1/1
+ 803 NP11=9.8               C BEKEZDES       9.6-10.0
+ 804 NP12=13.8             C PASSZE        13.8-14.0
+ 805 NP13=14.0              C PASSZE        14.0-14.2
+
+  806 C START
+  807 C YG:6/256;
+ 808 WM=14 WMI=7
+  811 C <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+ 812 JA1=1060(1050-1060)   C CSIPKE PASSZE
+ 813 PA:1:<JA1>;
+ 814 FA=1-8; PM:6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 818 <<	S:UVSDI.;		                      	                               T2
+ 819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 822 Y:2/2/5/5;
+ 823 << S:D.I-0;                                NP13-13 VU           S1
+ 824 >> S:0-DI./UVS.;                                              S1    T2
+ 825 << S:U^SN./.-N./UVSR;                                      T1 S1    T2
+ 826 >> S:R-0;                          NP13-13         VU           S1
+ 827 VJA^1
+ 828 RS1=4                 C PANT                                  6'              6'47
+ 829 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 830 REP*3
+ 831 WM=0
+ 832 << S:U^SA;                                   VL1      T1
+ 833 >> S:U^SY;                                   VR1      T1
+ 834 WM=12
+ 835 << S:U^SI*/.-N./UVS<1->N.;         NP12-12    V0       T1 S1 T2 
+ 836 >> S:R-0;                          NP13-13         VU     S1
+ 837 REPEND
+ 838 << S:U^SN./.-N./UVSN.;             NP12-12             T1 S1 T2 
+ 839 >> S:R-0;                          NP13-13         VU     S1
+ 840 REND C*********************************
+ 841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
+ 842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+ 843 END
+1050 IYYYIAAA
+1052 IYYIIIAA
+1054 IYYYIAAA
+1056 IAAAIYYY
+1058 IIAAIYYI
+1060 IAAAIYYY

@@ -1,0 +1,59 @@
+  10 C 2 SZALVEZETOS KREPP(MINDEN SORBAN LEP A JAC.)+BAL-BAL---- PROBA
+  15   NP6=14.5            C:HATA-UJJA
+  16   NP7=10.5            C:<< T1 ELOL
+  17   NP8=12.0            C:>> T1 HATUL
+  18   NP2=12.0            C:1/1,BEKEZDES
+  19   NP3=11.2            C:REX PASSZE
+  20   NP4=12.5            C:LEVALASZTAS
+  22   NP5=14.5            C:LEVALASZTAS
+  40 START
+  42 YG:6/2356;
+  44 WM=20 WMI=7
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  80 >> S:R-R;                                                         S1 S2
+  90 C ---3LAP 523 TU---------------------
+ 402 FA=7-182
+ 420 PM:<.>10:3(FA...);
+ 426 JA1=1100(1100-1104)
+ 430 PA:<JA1>;
+ 432 << S:R-R;                            Y:5;        NP4-4           S1
+ 434 WM=0
+ 436 >> S:UVSDI.;                                                           T2
+ 438 << S:UVSD.I;                                                           T2
+ 439 WM=26
+ 440 >> S:.I%Z-0;                                                    S2
+ 441                                                NP6-6
+ 442 Y:2/5;
+ 443 << S:U^S<1->I/.Z-I/<1->.Z-I;                   T1 S1 S2
+ 444 >> S:U^S<1->I/.Z-I/<1->.Z-I;                   T1 S1 S2
+
+ 445 RBEG*RS1
+ 450 REP*2
+ 455 << S:.%Z-I/<1->.%Z-I/UVS<1->NI;                    S1 S2 T2 
+ 460 >> S:.%Z-I/<1->.%Z-I/UVS<1->NI;                    S1 S2 T2 
+
+ 465 REPEND
+ 470 REND
+ 472 << S:.Z-I/.Z-I/UVSI;                  Y:2/5;                    S1 S2 T2
+ 473 >> S:U^SD.I/DI.-D.I/DI.-D.I;                    NP4-4         T1 S1 S2
+ 474 << S:DI.-D.I/DI.-D.I;                                            S1 S2
+ 475 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                     S1 S2 T2
+ 476 END
+
+
+
+1999 .YY**.
+1991 4.A.A
+1992 3.A*A*
+1993 4.*I*
+1000 188I
+1002 31(.Z3.Z).
+1004 31(..Z.Z.).
+1006 31(3.Z..).
+1008 31(..Z.Z.).
+1010 31(.Z3.Z).
+1012 31(Z5.)Z
+
+1100 32(2(4.Z.)8.10I)20.
+1102 32(2(5.Z)8.10I)20.
+1104 32(2(3.Z..)8.10I)20.

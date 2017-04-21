@@ -1,0 +1,82 @@
+   1 C ANTI - KT2001-DUPLAGYONGY FONASSAL 3X16/1 PAMUT (2 NYERS,1 SZINES)
+   2 C U: 1/1-ES PASSZE,UJJA GUMIVAL!!
+   3 C  CP ANTI RS1= RS19=
+   4 C 
+   5 C NY:RS19=1 DUPLAN HAJTOTT,1/1-ES, GARBO
+   6 C                                                        HATA:    UJJA:
+   7 C                            J2=                       RS1>90   50<RS1<91
+   8 C-----------------------+-------------------------+------------+---------+
+   9 C 3X16/1 PAMUT:             13.5                         101       74
+  10 C-----------------------+-------------------------+------------+---------+
+  11 C 12/1+16/1 LUSIFIL+TX:     13.25                        105       77
+  12 C (CSAK 1 12-ES A NEGYBOL)0.6KG KEREK NYAKKAL                    GUMIVAL!
+  13 C-----------------------+-------------------------+------------+---------+
+  14 C  ÖSSZES SULY+3TARCSA
+  15 C        16.0   0             -     -
+  16 C  1: <-------------       ------------->  LEVALASZTAS
+  17 C        16.0   0            -     -
+  18 C       13.5   13.5         13.5   13.5
+  19 C J2: <-------------       ------------->  HATA-UJJA (DUPLA GYONGY)
+  20 C       13.5   13.5         13.5   13.5     
+  21 C       12.3   12.3         12.3   12.3    
+  22 C B2: <-------------       ------------->  BEKEZDES ,1/1,GUMI
+  23 C       12.3   12.3         12.3   12.3  
+  24 C         -      -            -      - 
+  25 C J3: <-------------       ------------->  
+  26 C         -      -            -      - 
+  27 C      
+  28 C B3: <-------------       ------------->
+  29 C HA AZ ELV. SZÁLNÁL LYUKASZT, A BAL ELSÕ KEFE KOPOTT!!!       
+  30 C       13.25  13.25        13.25  13.25
+  31 C J4: <-------------       ------------->  LEVALASZTAS
+  32 C       13.25  13.25        13.25  13.25
+  33 C       13.25  13.25        13.25  13.25
+  34 C B4: <-------------       ------------->  LEVALASZTAS
+  35 C       13.25  13.25        13.25  13.25
+  36 C CIKLUSOK: ANTI (KT2001)
+  37 C------- V0:->1.0 
+  38 C-------VL1:<-1.0-2.0
+  40 START
+  50 YG:6/256;
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML   NP4-4 V# V0	        S1 S2
+  53 >>	S:D.I-DI./DI.-D.I/UVNDI.;   	      	 ML   NP4-4               S1 S2 T2
+  54 <<	S:U^ND.I/DI.-D.I;		          Y:5;			 ML   NP1-1            T1 S1
+  55 >>	S:U^NDI./D.I-D.I;		          Y:6;	   ML   NP4-4 VL1	       T1	   S2
+  56 <<	S:R-0/0-D.I;		               Y:0/6;  ML   NP4-4   V#	      T1 S1
+  57 >>	S:DI.-D.I;		          	      Y:5;	   ML   NP3-3   V# V0 ML    S1
+  58           RS17=0
+  59 IF RS1>50 RS17=2  C UJJA **************************
+  60 IF RS1>90 RS17=1  C HATA **************************
+  62 IF RS19=1 GOTO 68 C NYAK **************************
+  66 IF RS17=2 GOTO 72 C GUMI *CSAK AZ UJJANAL**********
+  68 << S:DI.-0/0-D.I;               Y:2/5;  ML        V#           S1 S2
+  70 GOTO 78           C GUMI NELKUL *******************
+  72 << S:DI.-0;                Y:6;         ML  NP-0 V#           S1
+  74 >> S:DI.-0;                             ML  NP-0 V#           S2
+  76 << S:0-D.I/DI.-D.I;             Y:2/5;  ML      V#           S1 S2
+  78 #1=3 C1              C TEST **************************
+  80 IF RS17=2 #1=6    C UJJA **************************
+  81 IF RS19=1 #1=16   C NYAK **************************
+  82 REP*#1
+  84 >> S:DI.-D.I;                                     V#           S1 S2
+  86 <<                                                V#           S1 S2
+  88 REPEND
+  89 IF RS19=1 GOTO 500 C NYAK
+ 400 C***************** HATA-UJJA **********************
+ 405 FA=7-182
+ 410 PM:<.>9:3(FA....);
+ 415 FD=29-160
+ 420 IF RS17=2 PM:<.>11:4(FD..);  C UJJA ************************
+ 425 JA2=1002 C HIHIHIHIHIHIHI
+ 430 PA:JA2;
+ 435 >> S:DI.-D.I/DI.-D.I;                     V# S1 S2 
+ 446 << S:U^N.I/H-.I/%H-.I;         Y:2/5;   NP3-3 ML  T1 S1 S2
+ 455 RBEG*RS1
+ 460 >> S:%H-.I/H-.I;                          V#     S1 S2
+ 465 << S:H-.I/%H-.I;                          V#     S1 S2
+ 470 REND
+ 475 >> S:H-.I/H-.I/UVS.I;                                   S1 S2 T2
+ 480 END
+ 500 >> S:DI.-D.I/DI.-D.I/UVND.I;          NP4-4   ML       S1 S2 T2
+ 502 END
+1002 HIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHIHI

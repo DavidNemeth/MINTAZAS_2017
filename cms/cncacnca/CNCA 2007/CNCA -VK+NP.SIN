@@ -1,0 +1,37 @@
+   3 C NYERS LUSI+TX:      
+   1C              14.5                14.5                                      15.3                15.5
+   1C  1: <-------------       -------------> 1SZV.CS TUN.      MADONNA: <-------------     -------------> 
+   1C              14.5                14.75                                     15.3                16.0
+   1C              14.5                14.5                                          15.0            15.0
+   1C J2: <-------------       ------------->  KORSLAG,CSIPKE PASSZE KREPPHEZ 1LUREX:-----    2LUREX:-----
+   1C              14.75               14.75                                         15.5            15.5
+   1C        -      -            0     11.75
+   1C B2: <-------------       ------------->  BEKEZDES
+   1C        -      -            0     12.0
+   1C         
+   1C J3: 13.5 2SZV. PASSZE
+   1C        
+   1C              13.75               13.75                 13.5-14.0
+   1C B3: <-------------       -------------> KREPP  LUSI+TX:----------  1LUREX:14.0/14.0 2LUREX:14.5/14.75
+   1C              13.75               13.75                 13.5-14.0
+   1C        12.0  12.5         X12.25 X12.25
+  31 C J4: <-------------       ------------->  LEVÁLASZTÁS,1/1 
+  32 C       12.0  12.5         X12.5  X12.5
+  33 C        X      X     
+  34 C B4: <-------------       ------------->
+  35 C        X      X          
+   1C TUAGYKORREKCIOK:
+   1C                V0:->2.4
+   1C                R1:->2.2___________R2:   ________R3:
+   1C                L1:<-1.0__________L2:   _________L3:
+
+  21 C  6 NAGY SULY (LUREX:+2 SULY(                                    
+
+
+
+    MADONNÁK:                        NYUSZIFÜL KREPP:
+    J4:12.5      LEVALASZTAS         J4:12.5      LEVALASZTAS
+    B2:11.75     BEKEZDES            B2:11.75      BEKEZDES
+     1:15.5-16.0 SZIM.CSIPKE
+                                     J2 14.5-14.7  SZIM.CS.PASSZE
+                                     B3:13.75      KREPP

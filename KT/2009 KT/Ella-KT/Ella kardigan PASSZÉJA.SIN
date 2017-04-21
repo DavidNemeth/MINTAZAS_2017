@@ -1,0 +1,47 @@
+   1 C ELLA KARDIGAN PASSZE
+
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.0               C BEKEZDES
+  13 NP5=12.8              C PASSZE
+  14 NP6=13.4;             C PASSZE
+
+  40 START
+  50 YG:6/23456;
+  51 WM=17 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+ 182 JA1=1010(1004-1010)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 187 FA=2-11;    PM:<.>7:II<<FA> 574:II6.;
+ 196 C***********************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0 ML        S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU    ML     S1 S2
+ 212 >>	S:D.I-DI.;		                	Y:5;	      NP2-2  VU V0 ML     S1
+
+ 214 Y:2/2/5/5;
+ 216 << S:D.I-0;                                NP6-6 VU           S1
+ 218 >> S:0-DI.;                                      VU           S1
+ 220 << S:U^SD.I/0-R/UVSR;                                      T1 S1    T2
+ 222 >> S:R-0;                          NP6-6         VU           S1
+ 224 REP*4 C ****** ROMBUSZ AZSUR PASSZE *********
+ 226 WM=0
+ 228 << S:U^SA;                                   VL1      T1
+ 230 >> S:U^SY;                                   VR1      T1
+ 232 WM=17
+ 234 << S:U^SI*/.-N./UVS<1->N.;         NP5-5    V0       T1 S1 T2 
+ 236 >> S:R-0;                          NP6-6         VU      S1
+ 238 REPEND
+ 240 END
+1002 WWWWWWWWWWWW
+1004 IIIIIAIYIIII
+1006 IIIIAAIYYIII
+1008 IIIAAAIYYYII
+1010 IIAAAAIYYYYI
+1012 IAAAAAIYYYYY
+1014 WWWWWWWWWWWW
+

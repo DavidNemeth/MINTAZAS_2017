@@ -1,0 +1,140 @@
+  1 C--UJJ:RS1=17,TEST:RS1=24 1/1-ES NYAK:RS2=16;(505.SOR) ZIPPES NYAK:RS3=20,RS4=13;(615.SOR)---
+  2-------2*3-AS FONAS+BALOS FONAS----------
+ 10    START
+ 12    NP1=15.0   C:MINTA
+ 13    NP2=12.0   C:1/1-ES PASSZE
+ 15    NP4=11.5   C:LEVALASZTAS
+ 50    YG:6/25;
+ 51    WM=20
+ 59 << S:R-R/R-0;                      Y:5/2;      NP4-4  V0          S1 S2
+ 60 >> S:R-R/R-R;                                                     S1 S2
+ 61 << S:R-R/R-0;                                                     S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:5/2;      NP1-1              S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:5;                        T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#       T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/5;             V# V0 ML T1 S1   
+ 71 << S:DI.-0/0-D.I;                  Y:5/2;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;          Y:5/2;             V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+100    JA1=1200(1200-1205)
+101    JA2=1300(1300-1305)
+103    PA:JA1:JA2;
+105 C ---TEST,553 TU,3LAP--------------------- 
+106    FA=1-4   C B      4
+108    FB=5-13  C B      9
+110    FC=14-17 C B      4
+112    FD=41-48 C K      8
+114    FE=49-52 C J      4
+115    FG=53-61 C J      9
+116    FH=62-65 C J      4
+117    FI=18-38 C KREPP 21
+118    PM:<.> 9:3(FI.FA3FBFC.FI.FD.FD.FI.FE3FGFH.FI...);
+119    IF RS1>18 GOTO 150 
+120 C --UJJA,TELI TUAGYRA(581 TU),4 LAP-------------------
+121    FF=20-38
+122    FJ=18-36
+123    PM:<.> 9:4(FF FI.FD.FD.FI.FD.FD.FI FJ...);
+124 C-------------------------------------------------------
+150 << S:DI.-D.I/DI.-D.I/UVSD.I;                   Y:5/2;              S1 S2 T2
+160    RBEG*RS1
+210 >> S:U^S<1+ 2+>N./.(1)-N.(1)/.-N./UVSI;        Y:5/2; V0        T1 S1 S2 T2
+215    VJA^0
+220 << S:U^S<2+>I/.-N.*/0-O(8.5)/UVS+IA;           Y:5/0; VL3 VKA>7 T1 S1 S2 T2
+230 >> S:U^SI/.(1)-N.*(1)/0-A(8.5)/UVSI;           Y:5/0; VR1       T1 S1 S2 T2
+240 << S:U^S<2+>+AI/.(1)-N.(1)/.-N./UVSN.;         Y:5/2; VR3       T1 S1 S2 T2
+245 C
+250 >> S:U^S<1+ 2+>N./.(1)-N.(1)/.-N./UVSI;        Y:5/2; V0        T1 S1 S2 T2
+260 << S:U^S<2+>I/.-N.*/0-O(8.5)/UVS+IA;           Y:5/0; VR3 VKB<3 T1 S1 S2 T2
+270 >> S:U^SI/.(1)-N.*(1)/0-A(8.5)/UVSI;           Y:5/0; VL1       T1 S1 S2 T2
+280 << S:U^S<2+>+AI/.(1)-N.(1)/.-N./UVSN.;         Y:5/2; VL3       T1 S1 S2 T2
+300    REND
+310 >> S:R-0/R-0;                                  Y:5/2; V0           S1 S2
+320    END
+500 C---1/1-ES PASSE,TELI TUAGYRA,4LAP---------------
+501    START
+505    RS2=16
+510    GOSUB 12-71
+512    GOSUB 622-660
+514    GOSUB 705-720
+520    RBEG*RS2
+525 <> S:.-I/.-I;                                     V#            S1 S2
+530    GOSUB 525
+540    REND
+545 >> S:.-I/.-I/UVSI;                                              S1 S2 T2
+550    END
+600 C-----ZIPPZARAS NYAK,TELI TUAGYRA,4LAP--------
+610    START
+615    RS3=20;RS4=13
+620    GOSUB 12-71
+622 >> S:DI.-D.I/DI.-D.I/UVSD.I;                Y:5/2;              S1 S2 T2
+625    NP2=12.8
+626    NP1=14.7
+640    JA1=1300(1300-1305)
+645    JA2=1300
+650    FA=18-38
+655    FB=20-21
+660    PA:JA1;
+670    PM:8.<FA>149:..291:..433:..575:7.;
+680    RBEG*RS3
+690 <> S:U^S<1+>I/.(1)-I(1)/.-I/UVSI;           Y:5/2;           T1 S1 S2 T2
+695    GOSUB 690
+700    REND
+705    PA:JA2;
+710    PM:8.<FB>149:..291:..433:..575:7.;
+720 << S:U^SI/.(2)-I(2)/.-I;                    Y:5/2;    V#     T1 S1 S2
+730    RBEG*RS4
+735 <> S:.-I/.-I;                                         V#        S1 S2
+740    GOSUB 735
+750    REND
+755 >> S:.-I/.-I/UVSI;                                              S1 S2 T2
+760    GOSUB 660-700
+770    END
+ 800 C:---------KAMZSA NYAK,4LAP,581 TURE-------------------------------------
+ 802 START
+ 804 RS2=16
+ 806 NP3=13.2   C:NYAK
+ 808 NP1=14.5   C:MINTA
+ 810 NP2=12     C:1/1-ES PASSZE
+ 812 NP4=11.5   C:LEVALASZTAS
+ 814 YG:6/25;
+ 816 WM=20
+ 818 YG:6/25;
+ 820 << S:R-R/R-0;                      Y:5/2;      NP4-4  V0          S1 S2
+ 822 >> S:R-R/R-R;                                                     S1 S2
+ 824 << S:R-R/R-0;                                                     S1 S2
+ 826 >> S:D.I-DI./DI.-D.I/UVSDI.;       Y:5/2;      NP1-1              S1 S2 T2
+ 828 << S:U^SD.I/DI.-D.I;               Y:5;                        T1 S1
+ 830 >> S:U^SDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+ 832 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#       T1 S1 S2
+ 834 >> S:R-0/DI.-D.I;                  Y:0/5;             V# V0 ML T1 S1   
+ 836 << S:DI.-0/0-D.I;                  Y:5/2;             V#          S1 S2
+ 838 >> S:DI.I.I.I.-D.I.I.I.I;            Y:5/2;           V#          S1 S2
+ 840 JA1=1100
+ 842 FA=7-8
+ 844 PA:JA1;
+ 846 PM:<A> 11:<FA> 151:AA<FA> 293:AA<FA> 435:AA<FA> 573:<A>;
+ 848 C:----------------------------------------------------------------------
+ 850 << S:DI.-D.I/DI.-D.I/UVSA;             Y:5/2;  NP3-3           S1 S2 T2
+ 852 >> S:A+-O/A+-O/UVSO;                   Y:5/2;                  S1 S2 T2
+ 854 RBEG*RS2
+ 856 << S:U^S+/AO-+/AO-+/UVS+;              Y:5/2;               T1 S1 S2 T2
+ 858 >> S:U^SO/A+-O/A+-O/UVSO;              Y:5/2;               T1 S1 S2 T2
+ 860 REND
+ 862 END
+1100 AAAAAA+O
+1200 .A++O**...A++O**.........................A++O**.....A++O**...III.
+1201 ....**O++A...III.........................**O++A..**O++A...**O++A.
+1202 .III...A++O**............................A++O**..III...A++O**....
+1203 .**O++A...**O++A.........................**O++A.....**O++A...III.
+1204 ....A++O**...III.........................A++O**..A++O**...A++O**.
+1205 .III...**O++A............................**O++A..III...**O++A....
+1300 XXXXXXXXXXXXXXXXXIII..IIII...II...IIIIXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1301 XXXXXXXXXXXXXXXXXII..I.II...IIII...II.XXXXXXXXXXXXXXXXXXXXXXXXXXX
+1302 XXXXXXXXXXXXXXXXXIIII....II...IIII..IIXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1303 XXXXXXXXXXXXXXXXX..IIII...III...IIII..XXXXXXXXXXXXXXXXXXXXXXXXXXX
+1304 XXXXXXXXXXXXXXXXX.II...IIII...III..IIIXXXXXXXXXXXXXXXXXXXXXXXXXXX
+1305 XXXXXXXXXXXXXXXXX..III...IIII...III..IXXXXXXXXXXXXXXXXXXXXXXXXXXX

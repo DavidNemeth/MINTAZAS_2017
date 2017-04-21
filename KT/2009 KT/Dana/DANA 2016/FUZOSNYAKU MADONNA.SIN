@@ -1,0 +1,447 @@
+
+   1 C FUZOSNYAKU MADONNA
+
+   C PLATIR:
+   C TX FLUL
+
+C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL:  I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 50*63  I2*15/1+TXI 0.25*940=I   120   I    5     I  70   I 430   I   650   I 220 I  20' I  660  I 33% I 
+C MADONNAI         I    235   I         I          I       I       I         I     I      I       I     I
+C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+  10 NP4=12.4;             C LEVALASZTAS
+  12 NP1=14.0              C:CSIPKE   14.2-14.0
+  14 NP2=10.0              C BEKEZDES 10.0
+  16 NP3=14.4              C KORSLAG  14.4    
+  18 NP5=14.0              C PASSZE   14.0    
+  20 NP6=14.4;             C PASSZE   14.4    
+
+  40 START        
+  50 YG:6/256;
+  51 WM=17;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
+
+C-----------------------+------------+------------+------------+-------------+
+C                         2T PAMUT+   2T PAMUT+     2T PAMUT+
+C                         1T FEHER TX 1T ALMAZOLD   1T NYERS TX
+C-----------------------+------------+------------+------------+-------------+
+C    KT   NPK=0                                         0
+C         RS1=                                          34
+C-----------------------+------------+------------+------------+-------------+
+C   PKT   NPK=                          0.2
+C         RS1=                          34
+C-----------------------+------------+------------+------------+-------------+
+C    UJ   NPK=                0                
+C  WM%=10 RS1=               33
+C-----------------------+------------+------------+------------+-------------+
+  60 C**********NYAK******************************* MIN: ****** KG: **** 1DB: ******VASALVA:
+  62  IF #100=33   RS17=50        C MADONNA NYAK     2'3        0.03     0.015
+  64  IF #100=11   RS17=0         C TTTT             30'        0.40     0.20        56*67
+  66  IF #100=21   RS17=5         C UUUUU            7'24       0.085    0.034       40*13
+  68 C***************************************** SUN: 19'  ************** 0.25 **********
+
+
+  70 IF RS17=50 GOTO 500          C 2SZV FUZOS NYAK - KUKAC KELL HOZZA
+  72 IF RS17=0  RS19=4 RS1=34            C TTTT
+  74 IF RS17=5  RS19=5 RS1=4             C UUUUU MADONNA
+  76 C************************************************
+       C 2 JAC. VAN:
+ 100 JA1=1030(1006-1008)   C CSIPKE PASSZE VAGY
+ 100 JA1=1026(1006-1008)   C CSIPKE PASSZE VAGY
+ 101 JA2=1080(1052-1080)   C KREPP
+ 102 PA:1:<JA2>:1:<JA1>;
+ 104 IF RS19=3  FA=3-189;            PM:*<.>7:3(IIFA)II;           C*3LAP VAGY
+ 104 IF RS19=3  FA=4-190;            PM:*<.>7:3(IIFA)II;           C*3LAP VAGY
+
+ 106 IF RS19=4  FA=11-150;           PM:*<.>7:4(IIFA)I;            C*4LAP VAGY
+ 106 IF RS19=4  FA=4-143;            PM:*<.>7:4(IIFA)I;            C*4LAP VAGY
+
+ 108 IF RS19=5  FA=24-135;           PM:*<.>6:5(IFAI);             C*5U VAGY
+ 108 IF RS19=5  FA=3-114;            PM:*<.>6:5(IFAI);             C*5U VAGY
+
+ 110 IF RS19=6  FA=21-170;FB=31-160; PM:*<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 112 IF RS17>49 FA=1-4;              PM:*<.>7:<FA> 576:<.>;        C*MELLENY PANT JELOLES NELKUL
+ 114 C********************************************************************************
+
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                                     S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	             S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU           S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU        S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU        S1
+ 210 << S:R-0/0-R;                    Y:2/5;      NP3-3     VU        S1 S2
+ 212 >> S:R-0/0-R/UVS.;                                               S1 S2 T2
+
+ 214 Y:5/5/2/2;
+ 216 << S:U^SN.*/.*-N.*/UVSAY;                     NP6-6              T1 S1    T2
+ 218 >> S:.AY-I;                                             VU        S1
+
+ 220 REP*5 C VAGY
+ 220 REP*4 C VAGY
+ 222 WM=0
+ 224 << S:U^SA;                                             VL1    T1
+ 226 >> S:U^SY;                                             VR1    T1
+ 228 WM=14
+ 230 << S:U^SI/.*-IAY/UVS<1->.;               NP5-5 V0        T1 S1 T2 
+ 232 >> S:U^SI/.-I/UVS<1->AY;               NP6-6           T1 S1 T2
+ 234 REPEND
+ 240 GOSUB 222-230
+ 242 >> S:U^SI/.-I/UVSI;                    NP6-6           T1 S1 T2
+
+ 300 C ******************1SZV. CSIPKE*************************
+ 302 JA1=1320(1314-1320) C 1.MINTA
+ 304 VJA^0
+ 306 WM=18
+ 308 REP*1
+ 310 << S:U^S<1->N.*/.*-N.*/.*-N.*/UVNNY.*;  Y:5/2;     V0         T1 S1 S2 T2
+ 312 >> S:U^S<1->N.*/. -N.*/. -N.*/UVSNA.*;             VL1        T1 S1 S2 T2
+ 314 REPEND
+ 316 JA1=1312(1102-1144) C 1.MINTA
+ 318 WM=15
+ 320 Y:5/5/2/2;
+ 322 NP1-1
+ 324 RBEG*RS1
+ 326 REP*4
+ 328 << S:U^S<1-2->N.*/.*-N.*/UVNNY.*;             V0         T1 S1    T2
+ 330 >> S:U^S<1-2->N.*/. -N.*/UVSNA.*;             VL1        T1 S1    T2
+ 332 REPEND
+ 334 REND
+ 336 << S:U^S<1->N.*/.*-N.*/UVNN.*;                V0         T1 S1    T2
+ 338 >> S:U^ND.I/DI.-D.I;                 NP4-4               T1 S1
+ 340 C
+ 342 << S:DI.-D.I;                            VU            S1
+ 344 >> S:DI.-D.I/UVNR;                                  S1  T2
+ 346 END C************************************************
+
+ 500 C 2SZV FUZOS  NYAK - DANA MADONNAHOZ - KUKAC KELL HOZZA
+ 501 C 2LUSI+1TX:NPK=0  MADONNAHOZ:NPK=0.2-0.4  2LUSI+1LUREX:NPK=-0.4
+ 502 C 1'31"
+ 503 C*******************
+ 504 NP4=12.4   C:LEVALASZTAS
+ 505 NP12=11.0  C:BEKEZDES
+ 506 NP13=12.0  C:1/1         12.5
+ 507 NP15=13.0  C SLAG        13.5
+
+508C START        
+509C YG:6/256;	
+ 510 WM=16;WMI=7
+511C << S:D.I-DI./DI.-D.I;            Y:5/2;        NP4-4    VU V0      S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                   VR1     T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	        NP12-12   V0 VU      S1
+ 518 << S:DI.-0;                     Y:6;         NP13-13      VU      S1
+ 519 >> S:0-D.I/DI.-0;               Y:5/6;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+-----------------------------------------
+ 521 JA1=1000;
+ 522 PA:1:<JA1>;
+ 524 FA=1-6; PM:*<.>7:I<FA>574:I<.>;
+ 525 VJA^0
+C--------VAGY-------------------------------------------------------------------
+ 526 >> S:DI.-D.I/UVS.*;             Y:2;                              S1     T2
+ 528 << S:U^SN.*/.*-N.*/UVSN.*;                    NP15-15          T1 S1     T2
+ 530 >> S:R-0;                      Y:5/2;                    VU       S1 S2
+ 532 << S:U^SIY/.+*-IY/.+*-IY/UVSI;                           VL1   T1 S1 S2 T2
+ 534 >> S:U^SIY/.+*-IY/.+*-IY;                                V0    T1 S1 S2
+ 536 << S:U^S+/.*-N.*/UVSN.*;          Y:5;                         T1 S1    T2
+ 538 >> S:N*-0;                                               VU       S1
+ 540 << S:R-0;                      Y:2;                      VU       S1
+ 542 >> S:U^SN.*/.-N.*/UVSDI.;                                      T1 S1    T2
+ 544 << S:U^SD.I/DI.-D.I;           Y:5;            NP13-13         T1 S1
+ 546 >> S:DI.-D.I/UVSD.I;                                              S1    T2
+C-------VAGY-------(4 SORRAL SZELESEBB DE 2 LOKETTEL GYORSABB)------------------
+ 526 >> S:DI.-D.I/DI.-D.I/UVS.*;                                       S1 S2  T2
+ 528 << S:U^SN.*/.*-N.*/.*-N.*/UVSN.*;             NP15-15          T1 S1 S2  T2
+ 530 >> S:R-0;                                                VU       S1 S2
+ 532 << S:U^SIY/.+*-IY/.+*-IY/UVSI;                           VL1   T1 S1 S2 T2
+ 534 >> S:U^SIY/.+*-IY/.+*-IY;                                V0    T1 S1 S2
+ 536 << S:U^S+/.*-N.*/.*-N.*/UVSN.*;                                T1 S1 S2 T2
+ 538 >> S:R-0;                                                VU       S1 S2
+ 540 << S:U^SN.*/.-N.*/.-N.*/UVSDI.;                                T1 S1 S2 T2
+ 542 >> S:U^SD.I/DI.-D.I/DI.-D.I/UVSD.I;            NP13-13         T1 S1 S2 T2
+ 544 C
+ 546 C
+C--------------------------------------------------------------
+ 550 END C**********************************************************
+
+1000 ++IYI
+1050 WWWWWWWWWWWW
+1052 II.II...I...
+1054 I.I.I..III..
+1056 .I.I.II...II
+1058 .III..I.I.I.
+1060 I...II.I.I.I
+1062 ..I..III.III
+1064 II.II...I...
+1066 II.III..I..I
+1068 ..I...II.II.
+1070 II.II.I...I.
+1072 ..I..I.III.I
+1074 I...I.II.II.
+1076 .III.I..I..I
+1078 II.III..I..I
+1080 ..I...II.II.
+1082 WWWWWWWWWWWW
+
+C VAGY:
+1004 WWWWWWWWWWWWWW
+1006 IIIIIIIIIIIIIIII
+1008 IIIIIIIIIIIIIIII
+1010 AIAIAIAIYIYIYIYI
+1012 IIIIII.I.IIIIIII
+1014 IAIAIAAIYYIYIYII
+1016 IIIII..I..IIIIII
+1018 AIAIAAAIYYYIYIYI
+1020 IIII...I...IIIII
+1022 IAIAAAAIYYYYIYII
+1024 III....I....IIII
+1026 AIAAAAAIYYYYYIYI
+1028 II.....I.....III
+1030 IAAAAAAIYYYYYYII
+1032 WWWWWWWWWWWWWW
+1100 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1102 ..IIA..I..IIA..I..IIA..I..IIA..I
+1104 Y..II..IY..II..IY..II..IY..II..I
+1106 I..I..AII..I..AII..I..AII..I..AI
+1108 YY....IIYY....IIYY....IIYY....II
+1110 II...AAIII...AAIII...AAIII...AAI
+1112 YYY..IIIYYY..IIIYYY..IIIYYY..III
+1114 III.AAAIIII.AAAIIII.AAAIIII.AAAI
+1116 III.IIIIIII.IIIIIII.IIIIIII.IIII
+1118 AA..IIIIAA..IIIIAA..IIIIAA..IIII
+1120 II...YYIII...YYIII...YYIII...YYI
+1122 A....IIIA....IIIA....IIIA....III
+1124 I..I..YII..I..YII..I..YII..I..YI
+1126 ..AI..II..AI..II..AI..II..AI..II
+1128 ..IIY..I..IIY..I..IIY..I..IIY..I
+1130 .AAII....AAII....AAII....AAII...
+1132 .IIIYY...IIIYY...IIIYY...IIIYY..
+1134 AAAIII..AAAIII..AAAIII..AAAIII..
+1136 IIIIYYY.IIIIYYY.IIIIYYY.IIIIYYY.
+1138 IIIIIII.IIIIIII.IIIIIII.IIIIIII.
+1140 .YYIIII..YYIIII..YYIIII..YYIIII.
+1142 .IIIAA...IIIAA...IIIAA...IIIAA..
+1144 ..YIII....YIII....YIII....YIII..
+
+1146 ..IIA..I..IIA..I..IIA..I..IIA...
+1148 ...II..IY..II..IY..II..IY..II...
+1150 ...I..AII..I..AII..I..AII..I....
+1152 ......IIYY....IIYY....IIYY......
+1154 .....AAIII...AAIII...AAIII......
+1156 .....IIIYYY..IIIYYY..IIIYYY.....
+1158 X...AAAIIII.AAAIIII.AAAIIII...XX
+1160 X...IIIIIII.IIIIIII.IIIIIII...XX
+1162 X...IIIIAA..IIIIAA..IIIIAA...XXX
+1164 XX...YYIII...YYIII...YYIII...XXX
+1166 XX...IIIA....IIIA....IIIA....XXX
+1168 XXX...YII..I..YII..I..YII...XXXX
+1170 XXX...II..AI..II..AI..II....XXXX
+1172 XXX....I..IIY..I..IIY..I...XXXXX
+1174 XXXX.....AAII....AAII......XXXXX
+1176 XXXX.....IIIYY...IIIYY.....XXXXX
+1178 XXXX....AAAIII..AAAIII....XXXXXX
+1180 XXXXX...IIIIYYY.IIIIYYY...XXXXXX
+1182 XXXXX...IIIIIII.IIIIIII...XXXXXX
+1184 XXXXXX...YYIIII..YYIIII..XXXXXXX
+1186 XXXXXX...IIIAA...IIIAA...XXXXXXX
+1188 XXXXXX....YIII....YIII..XXXXXXXX
+1190 XXXXXXX...IIA..I..IIA...XXXXXXXX
+1192 XXXXXXX....II..IY..II...XXXXXXXX
+1194 XXXXXXX....I..AII..I...XXXXXXXXX
+1196 XXXXXXXX......IIYY.....XXXXXXXXX
+1198 XXXXXXXX.....AAIII.....XXXXXXXXX
+1200 XXXXXXXXX....IIIYYY...XXXXXXXXXX
+1202 XXXXXXXXX...AAAIIII...XXXXXXXXXX
+1204 XXXXXXXXX...IIIIIII..XXXXXXXXXXX
+1206 XXXXXXXXXX..IIIIAA...XXXXXXXXXXX
+1208 XXXXXXXXXX...YYIII...XXXXXXXXXXX
+1210 XXXXXXXXXX...IIIA...XXXXXXXXXXXX
+1212 XXXXXXXXXXX...YII...XXXXXXXXXXXX
+1214 XXXXXXXXXXX...II...XXXXXXXXXXXXX
+1216 XXXXXXXXXXXX...I...XXXXXXXXXXXXX
+1218 XXXXXXXXXXXX...I...XXXXXXXXXXXXX
+1220 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1222 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1224 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1226 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1228 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1230 XXXXXXXXXXXXX..I..XXXXXXXXXXXXXX
+1232 XXXXXXXXXXXX...I...XXXXXXXXXXXXX
+1234 XXXXXXXXXXXX...I...XXXXXXXXXXXXX
+1236 XXXXXXXXXXXX...IY..XXXXXXXXXXXXX
+1238 XXXXXXXXXXX...AII...XXXXXXXXXXXX
+1240 XXXXXXXXXXX...IIYY..XXXXXXXXXXXX
+1242 XXXXXXXXXXX..AAIII...XXXXXXXXXXX
+1244 XXXXXXXXXX...IIIYYY..XXXXXXXXXXX
+1246 XXXXXXXXXX..AAAIIII..XXXXXXXXXXX
+1248 XXXXXXXXX...IIIIIII...XXXXXXXXXX
+1250 XXXXXXXXX...IIIIAA....XXXXXXXXXX
+1252 XXXXXXXXX....YYIII.....XXXXXXXXX
+1254 XXXXXXXX.....IIIA......XXXXXXXXX
+1256 XXXXXXXX...I..YII..I...XXXXXXXXX
+1258 XXXXXXXX..AI..II..AI....XXXXXXXX
+1260 XXXXXXX...IIY..I..IIY...XXXXXXXX
+1262 XXXXXXX..AAII....AAII...XXXXXXXX
+1264 XXXXXX...IIIYY...IIIYY...XXXXXXX
+1266 XXXXXX..AAAIII..AAAIII...XXXXXXX
+1268 XXXXXX..IIIIYYY.IIIIYYY...XXXXXX
+1270 XXXXX...IIIIIII.IIIIIII...XXXXXX
+1272 XXXXX....YYIIII..YYIIII...XXXXXX
+1274 XXXXX....IIIAA...IIIAA.....XXXXX
+1276 XXXX......YIII....YIII.....XXXXX
+1278 XXXX...I..IIA..I..IIA..I....XXXX
+1280 XXXX...IY..II..IY..II..IY...XXXX
+1282 XXX...AII..I..AII..I..AII...XXXX
+1284 XXX...IIYY....IIYY....IIYY...XXX
+1286 XX...AAIII...AAIII...AAIII...XXX
+1288 XX...IIIYYY..IIIYYY..IIIYYY...XX
+1290 XX..AAAIIII.AAAIIII.AAAIIII...XX
+1292 X...IIIIIII.IIIIIII.IIIIIII....X
+1294 X...IIIIAA..IIIIAA..IIIIAA.....X
+1296 X....YYIII...YYIII...YYIII.....X
+1298 .....IIIA....IIIA....IIIA.......
+1300 ...I..YII..I..YII..I..YII..I....
+1302 ..AI..II..AI..II..AI..II..AI....
+1304 ..IIY..I..IIY..I..IIY..I..IIY...
+1306 .AAII....AAII....AAII....AAII...
+1308 .IIIYY...IIIYY...IIIYY...IIIYY..
+1310 AAAIII..AAAIII..AAAIII..AAAIII..
+1312 IIIIYYY.IIIIYYY.IIIIYYY.IIIIYYY.
+1314 IIIIIII.IIIIIII.IIIIIII.IIIIIII.
+1316 ..III..I..III..I..III..I..III..I
+1318 ..AII..I..AII..I..AII..I..AII..I
+1320 ..IIY..I..IIY..I..IIY..I..IIY..I
+1322 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+C VAGY:
+1004 WWWWWWWWWWWWW
+1006 IIIIIIIIIIII
+1008 IIIIIIIIIIII
+1010 IAIAIAIYIYIY
+1012 IIIII.I.IIII
+1014 AIAIAAIYYIYI
+1016 IIII..I..III
+1018 IAIAAAIYYYIY
+1020 III...I...II
+1022 AIAAAAIYYYYI
+1024 II....I....I
+1026 IAAAAAIYYYYY
+1032 WWWWWWWWWWWWW
+1100 WWWWWWWWWWWWWWWWWWWWWWWW
+1102 I..IIA..I..IIA..I..IIA..
+1104 IY..II..IY..II..IY..II..
+1106 II..I..AII..I..AII..I..A
+1108 IYY....IIYY....IIYY....I
+1110 III...AAIII...AAIII...AA
+1112 IYYY..IIIYYY..IIIYYY..II
+1114 IIII.AAAIIII.AAAIIII.AAA
+1116 IIII.IIIIIII.IIIIIII.III
+1118 IAA..IIIIAA..IIIIAA..III
+1120 III...YYIII...YYIII...YY
+1122 IA....IIIA....IIIA....II
+1124 II..I..YII..I..YII..I..Y
+1126 I..AI..II..AI..II..AI..I
+1128 I..IIY..I..IIY..I..IIY..
+1130 ..AAII....AAII....AAII..
+1132 ..IIIYY...IIIYY...IIIYY.
+1134 .AAAIII..AAAIII..AAAIII.
+1136 .IIIIYYY.IIIIYYY.IIIIYYY
+1138 .IIIIIII.IIIIIII.IIIIIII
+1140 ..YYIIII..YYIIII..YYIIII
+1142 ..IIIAA...IIIAA...IIIAA.
+1144 ...YIII....YIII....YIII.
+
+1146 I..IIA..I..IIA..I..IIA..
+1148 IY..II..IY..II..IY..II..
+1150 II..I..AII..I..AII..I..A
+1152 IYY....IIYY....IIYY....I
+1154 III...AAIII...AAIII...AA
+1156 IYYY..IIIYYY..IIIYYY..II
+1158 IIII.AAAIIII.AAAIIII.AAA
+1160 IIII.IIIIIII.IIIIIII.III
+1162 IAA..IIIIAA..IIIIAA..III
+1164 III...YYIII...YYIII...YY
+1166 IA....IIIA....IIIA....II
+1168 II..I..YII.....YII..I..Y
+1170 I..AI..II......II..AI..I
+1172 I..IIY..I...X...I..IIY..
+1174 ..AAII......X.....AAII..
+1176 ..IIIYY....XXX....IIIYY.
+1178 .AAAIII....XXX...AAAIII.
+1180 .IIIIYYY...XXX...IIIIYYY
+1182 .IIIIIII..XXXXX..IIIIIII
+1184 ..YYIIII..XXXXX...YYIIII
+1186 ..IIIAA...XXXXX...IIIAA.
+1188 ...YIII..XXXXXXX...YIII.
+1190 I..IIA...XXXXXXX...IIA..
+1192 IY..II...XXXXXXX....II..
+1194 II......XXXXXXXXX...I..A
+1196 IYY.....XXXXXXXXX......I
+1198 III.....XXXXXXXXX.....AA
+1200 IYYY...XXXXXXXXXXX....II
+1202 IIII...XXXXXXXXXXX...AAA
+1204 IIII..XXXXXXXXXXXXX..III
+1206 IAA...XXXXXXXXXXXXX..III
+1208 III...XXXXXXXXXXXXX...YY
+1210 IA...XXXXXXXXXXXXXXX..II
+1212 II...XXXXXXXXXXXXXXX...Y
+1214 I...XXXXXXXXXXXXXXXXX..I
+1216 I...XXXXXXXXXXXXXXXXX...
+1218 I...XXXXXXXXXXXXXXXXX...
+1220 I..XXXXXXXXXXXXXXXXXXX..
+1222 I..XXXXXXXXXXXXXXXXXXX..
+1224 I..XXXXXXXXXXXXXXXXXXX..
+1226 I..XXXXXXXXXXXXXXXXXXX..
+1228 I..XXXXXXXXXXXXXXXXXXX..
+1230 I..XXXXXXXXXXXXXXXXXXX..
+1232 I...XXXXXXXXXXXXXXXXX...
+1234 I...XXXXXXXXXXXXXXXXX...
+1236 IY..XXXXXXXXXXXXXXXXX...
+1238 II...XXXXXXXXXXXXXXX...A
+1240 IYY..XXXXXXXXXXXXXXX...I
+1242 III...XXXXXXXXXXXXXX..AA
+1244 IYYY..XXXXXXXXXXXXX...II
+1246 IIII..XXXXXXXXXXXXX..AAA
+1248 IIII...XXXXXXXXXXX...III
+1250 IAA....XXXXXXXXXXX...III
+1252 III....XXXXXXXXXXX....YY
+1254 IA......XXXXXXXXX.....II
+1256 II..I...XXXXXXXXX...I..Y
+1258 I..AI...XXXXXXXXX..AI..I
+1260 I..IIY...XXXXXXX...IIY..
+1262 ..AAII...XXXXXXX..AAII..
+1264 ..IIIYY..XXXXXXX..IIIYY.
+1266 .AAAIII...XXXXX..AAAIII.
+1268 .IIIIYYY..XXXXX..IIIIYYY
+1270 .IIIIIII..XXXXX..IIIIIII
+1272 ..YYIIII..XXXXX...YYIIII
+1274 ..IIIAA....XXX....IIIAA.
+1276 ...YIII....XXX.....YIII.
+1278 I..IIA..I.......I..IIA..
+1280 IY..II..IY......IY..II..
+1282 II..I..AII.....AII..I..A
+1284 IYY....IIYY....IIYY....I
+1286 III...AAIII...AAIII...AA
+1288 IYYY..IIIYYY..IIIYYY..II
+1290 IIII.AAAIIII.AAAIIII.AAA
+1292 IIII.IIIIIII.IIIIIII.III
+1294 IAA..IIIIAA..IIIIAA..III
+1296 III...YYIII...YYIII...YY
+1298 IA....IIIA....IIIA....II
+1300 II..I..YII..I..YII..I..Y
+1302 I..AI..II..AI..II..AI..I
+1304 I..IIY..I..IIY..I..IIY..
+1306 ..AAII....AAII....AAII..
+1308 ..IIIYY...IIIYY...IIIYY.
+1310 .AAAIII..AAAIII..AAAIII.
+1312 .IIIIYYY.IIIIYYY.IIIIYYY
+1314 .IIIIIII.IIIIIII.IIIIIII
+1316 I..III..I..III..I..III..
+1318 I..AII..I..AII..I..AII..
+1320 I..IIY..I..IIY..I..IIY..
+1322 WWWWWWWWWWWWWWWWWWWWWWWW
+

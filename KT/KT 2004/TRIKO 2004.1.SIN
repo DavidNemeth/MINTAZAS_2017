@@ -1,0 +1,155 @@
+   1 C*TRIKO 2004.1 JOBB:2006/TRIKO1-2-3
+   1 C                        NP1=   NP6=       RS1=
+   1 C  0.18KG(3SZAL)+0.02PANT(2SZAL)           E-H
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 3XLUSIFIL:                               19 
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C PANT:SP600 2SZALLAL!!!!!!!!!!!!!!!!!!
+   1 C 3LAP:RS19=3
+   1 C 4LAP:RS19=BARMI MAS
+   1 C PANT:SP600 2SZAL:0.02KG, 3SZAL:0.03KG
+  10 NP1=14.8  C:MINTA 
+  13 NP4=12.5  C:LEVALASZTAS
+  14 NP3=14.8  C:CSIPKE PASSZE
+  40 START        
+  50 YG:6/256;
+  53 WM=18
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S1
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP3-03         ML       S1
+
+  78 IF RS17=1 NP1=15.0
+  79 IF RS17=2 NP1=15.0
+
+  80 JA1=1000;
+  98 PA:1:<JA1>;
+ 100 IF RS19=3 FA=5-182;                  C*3LAP************
+ 102 IF RS19=3 PM:<.>9:3(IFA)I7.;         C*3LAP************
+ 104           FA=9-142                   C*4LAP************
+ 106           PM:<.>7:4(IFA)I;           C*4LAP************
+ 107 Y:2/2/5/5;
+ 108 REP*1
+ 109 << S:R-0;		                             ML                     S1
+ 110 >> S:0-R;		                             ML                     S1
+ 112 REPEND
+ 114 << S:R-0/UVNNI;                        ML                     S1 T2
+ 116 >> S:U^NI/NI-I;                      ML               T1    S1
+ 118 REP*5
+ 120 << S:U^NA;                                   VL1 VKB>6   T1
+ 122 >> S:U^NY;                                   VR1 VKA>6   T1
+ 124 << S:.-N./UVNAY;                             VU V0  VKC>1        S1 T2 
+ 126 >> S:.AY-I;                                  VU                  S1
+ 128 REPEND
+ 140 << S:U^NN./.-N./.-N./UVNN.;    Y:2/5;                    T1 S1 S2 T2
+ 145 >> S:R-0/R(4)-0;                                               S1 S2
+ 401 JA1=1014(1002-1028);
+ 404 VJA^0
+ 406 WM=20
+ 408 NP1-1
+ 410 Y:2/2/5/5;
+ 412 RBEG*RS1
+ 414 REP*5
+ 416 << S:U^S<1->N./.-N./UVSNY.;                      V0        T1    S1 T2
+ 418 >> S:U^S<1->N./.-N./UVSNA.;                      VL1 VKB>5 T1    S1 T2
+ 420 REPEND
+ 422 REND
+ 424 << S:U^N<1->N./.-N./.-N./UVNN.;       Y:2/5;  NP4-4  V0        T1 S1 S2 T2
+ 426 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;                            T1 S1 S2 T2
+ 428 END
+
+ 600 C***UA MINT A REX PIKO PANT SZIECSKEKKEL II, CSAK 2 SZAL PAMUTTAL, SZOROSABBAN!!!!!!!!4
+ 602 NP1=14.0  C:LEVALASZTAS
+ 604 NP4=11.0  C:LEVALASZTAS,1/1
+ 606 NP2=10.0  C:BEKEZDES  3SZAL:11.0      2SZAL:    10.0
+ 608 NP3=9.5   C:REX       3SZAL:10.5      2SZAL:    9.5
+ 609 NP14=7.5  C:REX (14)   3SZAL:8.5      2SZAL:    7.5
+ 610 START 
+ 612 YG:6/256;
+ 614 WM=20
+ 616 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1991(1991-1993); 
+ 620 PA:<JA1>; 
+ 622 FA=2-7; C FA=1-7 VAGY 2-7;
+ 624 PM:<.>5:<FA>547:<.>;
+ 625 CY:2/2/5/5;
+ 626 VJA^0
+ 628 >> S:U^SA /.-A/UVS.;            Y:5;           NP1-1           T1 S1    T2
+ 630 << S:<1+>.-A/UVSA;                                      VL1       S1    T2
+ 636 >> S:<1+>.I-.I/0-.I;            Y:6/0;                  V0        S1 S2
+ 638 << S:.I-0;                      Y:6;                              S1
+ 640 >> S:.I-.I/.-0;                 Y:2/5;         NP2-2    ML          S1 S2
+ 642 << S:0-./.(3)-.(3);             Y:5/2;                  ML          S1 S2
+ 644 >> S:.-./.(14)-.;                                           ML          S1 S2
+ 646 <<                                             NP3-3    ML          S1 S2
+ 648 >> S:.-./.I(14)-.I;                                         ML          S1 S2
+ 650 << S:R-R/R-R;                                  NP3-3                 S1 S2
+ 652 >> S:R-R/R(14)-R;                                                         S1 S2
+ 656C << S:R-R;                                      NP3-3                  S1 S2
+ 657C >> S:R-R/R(14)-R;                                                         S1 S2
+ 658 << S:R-R;                                      NP3-3                  S1 S2
+ 659 >> S:R-R/R(4)-R(4);                                                  S1 S2
+ 660 END
+1991 ....A.A
+1992 ...A*A*
+1993 ....*I*
+
+1000 YYYIAAAAAIYY
+ C RS17=1:
+1002 ..IIIIYYI.
+1004 ..IAA.III.
+1006 ..III..YY.
+1008 ..AA...II.
+1010 ..II...I.Y
+1012 .A.I...I.I
+1014 II.I...III
+1016 IIII...IAA
+1018 .YYI...III
+1020 .III...AA.
+1022 ..YY...II.
+1024 ..II..A.I.
+1026 ..I.Y.I.I.
+1028 ..I.IIIII.
+
+ C RS17=0:
+1102 IIIIII
+1104 .I..Y.
+1106 A...I.
+1108 I....Y
+1110 I....I
+1112 .Y...I
+1114 .I..A.
+1116 ..Y.I.
+1118 ..IA..
+1120 ..II..
+1122 .A.I..
+1124 .I.I..
+
+ C RS17=2:
+1202 IIIIIIIIIIIIII
+1204 I..III..I..I..
+1206 I..II.Y.I..I..
+1208 IIA.I.IIIIIIII
+1210 III.I..YIIIIII
+1212 IA..I..IIIIIII
+1214 II..I...YIIIII
+1216 A...I...IIIIII
+1218 I...I....YIIII
+1220 ....I....IIIIA
+1222 .I..I..I..YIII
+1224 .I..I..I..IIA.
+1226 .I..I..I..III.
+1228 .I..I..I.A.II.
+1230 IIIIIIIIII.I.Y
+1232 IIIIIIIIA..I.I
+1234 YIIIIIIII..I..
+1236 IIIIIIIA...I..
+1238 .YIIIIII...I..
+1240 .IIIIIA....I..
+1242 ..YIIII....I..
+1244 I.IIIA..I..I..
+1246 I..YII..I..I..
+1248 YYYYIAAAAAAIYY

@@ -1,0 +1,100 @@
+ 700 C EZ A JOBB!
+ 700 C GY:2'03 ML:2'45 SZOROSABB ES A GOMBLYUKAK KOZT +1 SZEM. A GOMBLYUK IS SZUKEBB
+ 700 C KK.  PANT: RS17=50 (GOMBLYUKAK KOZTI TAVOLSAG:758. SOR)
+ 700 C MEL. PANT: RS17=51 
+ 700 C AZ 1/1 HOSSZA ALLITHATO:768,782.SOROK
+
+ 701 C------------------------------2LUSI+TX:--2LUSI+HB:----3LUSI:------
+ 702 NP4=12.2   C:LEVALASZTAS       12.4              
+ 703 NP10=10.9  C:1/1               11.0
+ 704 NP11=9.0   C BEKEZDES          NPK=0     WM%=15 NPK=0 MARIUSZ:RIFIL HB:0--0.1
+ 705 NP12=13.6  C:CSIPKE            13.3-13.6
+ 706 NP13=13.4  C:CSIPKE            13.2-13.4
+ 707 NP14=12.8  C:SLAG              12.8-13.2
+ 708 NP15=14.8  C:1SOR SLAG         14.8-15.0
+710  START        
+712  YG:6/256;
+ 714 WM=16; WMI=7
+716  <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	     NP4-4  V0	VU         S1 S2
+ 718 >> S:D.I-DI./UVNDI.;             Y:2;                             S1    T2
+ 720 << S:DI.-D.I/UVND.I;         	   Y:2;          	                  S1    T2
+ 722 >> S:R-R;		                      Y:6;	       NP4-11    VU            S2
+ 724 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU         S1 S2
+ 726 >> S:R(11)-R(11)/R(14)-0;        Y:5/2;                VU         S1 S2
+ 728 JA1=1987(1984-1987);
+ 730 PA:<JA1>;FA=1-8;FB=17-24;
+
+ 731 C*****GOMBLYUKAK SZAMA:*************
+ 732 PM:7.   FB 7FA <FB> 575: <.>;
+ 733 C************************************
+
+ 734 << S:R-0/0-R;		                  Y:2/5;      NP14-14   VU          S1 S2
+ 736 >> S:0-R/R-0/UVSR;		                         NP15-15   VU          S1 S2 T2
+ 738 Y:5/5/2/2;
+ 740                         NP 15-15
+ 742 REP*3 C--------------------
+ 744 << S:R-0;                             VU      S1
+ 746 WM=0
+ 748 >> S:U^SA;                            VL1  T1
+ 750 << S:U^SY;                            VR1  T1
+ 752 WM=16 C16
+ 753 >> S:U^SI/.-N./UVS<1->N.;     NP12-12 V0   T1 S1 T2
+ 754 NP13-13
+ 755 REPEND C--------------------
+ 756 IF RS17=50 GOTO 759  C KKPANT
+ 757 GOTO 777             C MEL. PANT
+
+  C*****GOMBLYUKAK KOZTI TAVOLSAG:*****
+ 759 FA=1-24; C S-M(65-66):1-21 L-XL(68-70):1-22 XXL-3XL(72-74):1-24  KB 1CM=3TU
+  C***********************************
+
+ 760 << S:R-0;                   Y:2;     VU      S1 
+
+C----3TU SZELES, NAGYOBB LYUK (28-AS GOMBHOZ):----------------------------------------------------------
+ 761 >> S:U^SN./.*(10.0)-N./*(12.0)-0/UVSI;  Y:2/0; NP12-12   T1 S1 S2 T2 C VAGY NAGYOBB LYUK
+ 761 >> S:U^SN./.*(9.0)-N. /*(12.0)-0/UVSI;  Y:2/0; NP12-12   T1 S1 S2 T2 C VAGY KSSEBB  LYUK
+
+ 762 WM=0
+ 763 << S:UVSY;                                 VL1  T2
+ 764 >> S:UVSA*;                                VR2  T2
+ 765 WM=16
+ 766 << S:N*(12)-0;               Y:5;   VU   V0      S1
+C----2TU SZELES, KISEBB LYUK (24-ES GOMBHOZ):----------------------------------------------------------
+ 761 >> S:U^SN./.*(9.0)-N. /*(10.0)-0/UVSIA;  Y:2/0; NP12-12   T1 S1 S2 T2 C
+ 762 WM=0
+ 763 << S:UVSY;                                 VL1  T2
+ 764 >> S:UVS*;                                VR1  T2
+ 765 WM=16
+ 766 << S:R(12)-0;                     Y:5;     VU V0      S1
+C-------------------------------------------------------------------------------------------------------
+ 767 >> S:U^SD.I/DI.-D.I;   NP10-10          T1 S1
+ 768 REP*2   C 1 VAGY 2
+ 769 << S:DI.-D.I/DI.-D.I;          Y:2/5;      VU      S1 S2
+ 770 >>                                         VU      S1 S2
+ 771 REPEND
+C ---------VAGY C SZELESEBB
+ 772 <<                                         VU      S1 S2
+ 773 >> S:DI.-D.I/DI.-D.I/UVSD.I;                       S1 S2 T2
+C ---------VAGY C KESKENYEBB
+ 772 << S:DI.-D.I;                 Y:2;         VU      S1   
+ 773 >> S:DI.-D.I/UVSD.I;                                S1    T2
+ 776 END
+
+ 777 C----MELLENY PANTHOZ:--------------------------------------
+ 778  << S:R-0;                                  VU      S1
+ 779  >> S:U^SN./.-N./UVSDI.;                    V0   T1 S1 T2
+ 781 << S:U^SD.I/DI.-D.I/DI.-D.I;  Y:2/5; NP10-10     T1 S1 S2
+ 782 REP*1   
+ 783 >> S:DI.-D.I/DI.-D.I;                      VU      S1 S2
+ 784 <<                                         VU      S1 S2
+ 785 REPEND
+ 786 >> S:DI.-D.I/DI.-D.I(4)/UVSD.I;                        S1 S2 T2
+ 789 END
+
+ 999 <> W0 VU S0
+
+1984 IIIIIIY*A200I
+1985 IIAIYIII
+1986 IAAIYYII
+1987 AAAIYYYI
+

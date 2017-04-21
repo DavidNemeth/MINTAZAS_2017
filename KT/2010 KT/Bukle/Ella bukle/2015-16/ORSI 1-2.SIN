@@ -1,0 +1,881 @@
+C ORSI 1-2
+C ZSAKKOTESU BUCLE
+C JAC:2015/ORSI1-ORSI2B
+C                   2/5: PASSZE 7.5 BUKLE+FEKETE HB
+C                     3: 2 FEKETE HB
+C                     4: 7.5 BUKLE
+
+ 1C 'V' NYAKU 1GOMBOS (FEKETE EZUST SZELU IDA) 
+1C JAC.:R2014/ BUCLE 14.2
+1C  
+   1C BUKLE     
+   1C       VAGY: LAJTOS   2250         
+   1C       VAGY: IZA      2250
+   1C FEKETE HB 
+   1C       VAGY: IZA     32/2-ES: 
+   1C       VAGY: TAMAS   30/2-ES:1650FT
+   1C       VAGY: BAJAI   32/2-ES:  
+   1C             LAJTOS: 30/2    1690
+   1C             LAJTOS: 16/1    1590
+   1C         PADAR ROBI: 30/2
+   1C------------------------------------------------------------------------------
+   1C                  SUM.: 1013.09:1990 FT/KG                               
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+ BUKLE:  HB:
+1C  M:52*62  0.58    *1800=       140        12        60              M:1950                              0.32   0.26
+1C  L:55*65  0.61    *1800=       140        12        60              L:1950                        
+1C XL:58*68  0.64    *1800=1190   140        12        60     1400    XL:1950  550    30'    1100   28%    0.36   0.28
+1C                   *1990=1273                               1485             465            930   24%
+1C                                                              2015.09.:2050  560           1120   27%
+1C2XL:61*71  0.67    *1800=       140        12        60            2XL:2000                  
+1C3XL:64*74  0.70    *1800=       140        12        60            3XL:2000                  
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C   SZALVEZETOK:
+1C---------------------------------------------------------------------------------FONALFELHASZNALAS 1DB-HOZ:
+1C  Y:6:ELV.                      Y:6:  GUMI
+1C                                Y:2:  PASZZE:  SZINES   7.5 BUKLE+1 FEKETE HB 
+1C                                Y:5:  PASSZE:  SZINES   7.5 BUKLE+1 FEKETE HB      
+1C                                Y:3:    ALAP:  FEKETE   2 FEKETE HB                        
+1C                                Y:4:   MINTA:  SZINES   7.5 BUKLE                   
+1C-----------------------+------------+-------------------------------------------------------------------------------
+C       UJKT:NPK=+0.2
+C        PKT:NPK=+0.1 
+C         KT:NPK=+0.0
+  10 C-----------------------------LAJTOS 7.5-OS BUKLE:----
+  10 NP4=12.6    C:LEVALASZTAS              
+  11 NP2=10.2    C:BEKEZDES 10.2
+  12 NP3=11.9    C:2/1 PASSZE         7.5:11.9
+  15 NP6=13.0    C:  BUKLE ELOL-HATUL    
+  16 NP1=10.0    C:  FELSZOVET A LEGVEGEN            
+
+  40 START        
+  50 YG:6/23456;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;      ML       Y:5/2;  NP4-4    VU V0       S1 S2
+
+C&&&&&&&&&&&&&&&&&&--EREDETI MERETEK:--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  60 C IF #100=38  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  61 C IF #100=3   RS17=51        C 4 DB GARBO (ZART)                                         
+C-----L-----------------
+  62 C IF #100=38  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  63 C IF #100=30  RS17=6         C UEHU  L                                                       
+  64 C IF #100=8   RS17=5         C 5U CS  (CSAK AZ L-ESHEZ A HIBASAK POTLASARA)
+C------XL:------------
+  65 C IF #100=4   RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  66 C IF #100=1   RS17=0         C EEE                                                            
+  67 C IF #100=2   RS17=1         C HHH                                                            
+  68 C IF #100=3   RS17=4         C 4U                                                            
+C------RUHA:--0.66-0.73KG----------
+  69 C IF #100=1   RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA)  
+  70 C IF #100=8   RS17=2         C H-EE                                                            
+  71 C IF #100=2   RS17=3         C HH-E                                                       
+  72 C IF #100=7   RS17=4         C 4U   
+
+C&&&&&&&&&&&&&&&&&&&&&--EXPORT MERETEK:--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+C--------------M:--------------27
+  80CC  IF #100=37  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  82CC  IF #100=27  RS17=10	       C UEHU     M:52*62 
+C--------------L:--------------27
+  84 C IF #100=5  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  86 C IF #100=19  RS17=11	       C UEHU     L:55*65
+C--------------XL:--ELLA--------18
+  88 C IF #100=4  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  90 C IF #100=5   RS17=12	       C UEHU    XL:58*68
+C------------ 2XL:------------18
+  92 C IF #100=41  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+  93 C IF #100=31  RS17=13        C EEE   2XL:61*71
+  94 C IF #100=27  RS17=14        C HHH                                                            
+  95 C IF #100=16  RS17=4         C 4U                                                            
+
+  96C IF #100=26  RS17=13        C EEE   2XL:61*71
+  97C IF #100=26  RS17=14        C HHH                                                            
+  98C IF #100=25  RS17=4         C 4U                                                            
+C------------ 3XL:------------
+ 100 C IF #100=48 RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA) 
+ 102 C IF #100=32 RS17=15        C EEE    3XL:64*74                                                         
+ 104 C IF #100=25 RS17=16        C HHH                                                            
+ 106 C IF #100=13 RS17=4         C 4U                                                            
+C&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+ C***************TUK.:****GUMI:******PAS:*****MINTA:******************************KESZEN:******VASALVA:**************
+C-----EREDETI MERETEK:---------------------------------------------------------------------------------------------------------------
+ 107 IF RS17=6  RS19=0    RS15=1     RS1=8     RS2=152      RS18=0      C UTTU  L 55*69       U:45 T:60 SUM.:105*72
+ 108 IF RS17=0  RS19=1    RS15=1     RS1=8     RS2=156      RS18=0      C EEE  XL 58*72                       63*75
+ 109 IF RS17=1  RS19=3    RS15=1     RS1=8     RS2=156      RS18=0      C HHH  XL 58*72                       63*75
+C---------------------------------------------------------------------------------------------------------------------
+ 110 IF RS17=2  RS19=6    RS15=1     RS1=8     RS2=166      RS18=0      C H-EE    56*83 RUHA  160-165         60*86
+ 111 IF RS17=3  RS19=7    RS15=1     RS1=8     RS2=166      RS18=0      C HH-E    56*83 RUHA  160-165         60*86
+ 112 IF RS17=4  RS19=4    RS15=1     RS1=8     RS2=105      RS18=0      C 4U   114:58CM  105:53CM
+ 114 IF RS17=5  RS19=5    RS15=1     RS1=8     RS2=126      RS18=0      C 5U      45*58                       48*60
+C---NYAKAK:---------------GUMI:------PASSZE:------CSAK PASSZE:---------------------------------------------------------
+ 121 IF RS17=50 RS19=3    RS15=0     RS1=17           RS18=1      C 2 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL
+ 124 IF RS17=51 RS19=4    RS15=0     RS1=23           RS18=1      C 4DB 20CM GARBO 
+C*******************************************************************************************************
+C-----EXPORT MERETEK:------------------------------------------------------------KESZEN:------------VASALVA----------------------------------------
+ 130 IF RS17=10  RS19=0    RS15=1     RS1=8     RS2=130      RS18=0  C 130-133 UTTU  M 52*62       U:45 T:60 SUM.:105*67
+ 132 IF RS17=11  RS19=0    RS15=1     RS1=8     RS2=139      RS18=0  C 139-142 UTTU  L 55*65       U:45 T:60 SUM.:105*70
+ 134 IF RS17=12  RS19=0    RS15=1     RS1=8     RS2=149      RS18=0  C 149-152 UTTU XL 58*68       U:45 T:60 SUM.:105*73
+
+ 136 IF RS17=13  RS19=1    RS15=1     RS1=8     RS2=130      RS18=0  C 149-155 EEE 2XL 61*71 149                  66*76
+ 138 IF RS17=14  RS19=3    RS15=1     RS1=8     RS2=130      RS18=0  C 149-155 HHH 2XL 61*71 149                   66*76
+
+ 140 IF RS17=15  RS19=1    RS15=1     RS1=8     RS2=159      RS18=0  C 159-165 EEE 3XL 64*74                       70*80
+ 142 IF RS17=16  RS19=3    RS15=1     RS1=8     RS2=159      RS18=0  C 159-165 HHH 3XL 64*74                       70*80
+C-------------------------------------------------------------------------------------------------------------------------
+ 150 C************581TU**************************************************************
+ 151 JA1=1390(1004-1390);      C ORSI 1
+ 151 JA1=1880(1402-1880);      C ORSI 2
+ 154 PA:1:<JA1>;
+ 
+ 158  IF RS19=1  FA=6-192;                         PM:<I*>9:FA I* FA I* FA;             C*3 EEE    2XL-3XL  (HATA IS KOTHETO)
+
+ 162  IF RS19=5  FA=542-653;                       PM:<I*>7:FA I* FA I* FA I* FA I* FA; C*5 UUUUU 
+ 163  IF RS19=4  FA=527-666;                       PM:<I*>8:FA I* FA I* FA I* FA;       C*4 UUUU     3XL
+
+ 166  IF RS19=0  F1=19-182;F2=540-658;  PM:<I*>6:F2 A F1 A. F1 A F2;         C*U-E-H-U    S,M,L,XL
+
+ 166  IF RS19=0  F1=17-179;F3=517-679;F2=539-658;  PM:<I*>6:F2 A F1 A. F3 A F2;         C*U-E-H-U    S,M,L,XL
+ 166  IF RS19=0  F1=18-179;F3=518-679;F2=539-659;  PM:<I*>6:F2 A F1 A. F3 A F2;         C*U-E-H-U    S,M,L,XL
+ 166  IF RS19=0  F1=18-178;F3=518-678;F2=538-659;  PM:<I*>6:F2 A F1 A. F3 A F2;         C*U-E-H-U    S,M,L,XL
+ 166  IF RS19=0  F1=17-180;F3=517-680;F2=540-658;  PM:<I*>6:F2 A F3 A. F3 A F2;         C*U-H-H-U    S,M,L,XL
+ 166  IF RS19=0  F1=17-180;F3=517-680;F2=540-658;  PM:<I*>6:F2 A F1 A. F3 A F2;         C*U-E-H-U    S,M,L,XL
+ 170 C MS C*******************************************************************************
+
+ 200 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;   NP6-6     ML               T1 S1    T2
+ 202 <<	S:DI..-D..I/UVND..I;		                  VL1   ML                 S1    T2
+ 204 >> S:D..I-R/DII.-D.II;          Y:0/6;           ML         VU       S1 S2      C VAGY: VU
+ 206 << S:DII.-0/D..I-R;             Y:6/0;           ML         VU      S1 S2      C VAGY: VU            
+ 208 >>	S:DII.(2)-D.II(2)/DII.(3)-0; Y:5/2;	          ML         VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 210 IF RS15=0 GOTO 220  C---GUMI NELKUL RS15=0-----
+ 212 << S:0-D.II;                    Y:6;             ML         VU       S1         C VAGY: VU
+ 214 >>                                               ML         VU       S2         C VAGY: VU
+ 216 << S:DII.-D.II;                 Y:5/2;   ML    NP3-3   V0   VU       S1 S2      C VAGY: VU
+ 218 GOTO 222            C---GUMIVAL RS15=1---------
+ 220 << S:0-D.II/DII.-D.II;                   ML    NP3-3   V0   VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 222 RBEG*RS1
+ 224 >> S:DII.-D.II;                          ML                 VU      S1 S2      C VAGY: VU
+ 226 <<                                       ML                 VU      S1 S2      C VAGY: VU
+ 228 REND
+ 230 IF RS18=1 GOTO 650 C*****  2/1 NYAK PASSZE VEGE *****
+ C************581TU*******************************************
+
+1C---------------------------------------------------------------------------------------------------------------------
+1C                                Y:2:  PASZZE:  FEKETE   7.5 BUKLE+1HB  I 
+1C                                Y:5:  PASSZE:  FEKETE   7.5 BUKLE+1HB  I    
+1C                                Y:3:    ALAP:  FEKETE   2 HB             I            
+1C                                Y:4:   MINTA:  SZINES   7.5 BUKLE      I             
+1C-----------------------+------------+-------------------------------------------------------------------------------
+ 300 >> S:0-R/R-0/UVSI*;   NP6-6 S1 S2 T2
+C***********************************************************************************************
+ 333 C
+ 335 WM=15 C 15-18
+ 340 NP6-6
+ 345 Y:3/4;
+ 346 CJA1=1390(1004-1390);      C
+ 375 RBEG*RS2
+ 380 GOSUB 502-504
+ 385 REND
+
+ 430 REP*2  C***FELSZOVET FELUL****
+ 435 << S:R(1)-R(1)/0-R(4);     VU     Y:2/4;   S1 S2
+ 440 >>                VU                       S1 S2
+ 442 REPEND
+ 445 END
+C************************************************************************************************
+
+ 500 C *********ZSAK ******** PM:<I*>6:F2 . F1 . F1 . F2; *****
+ 502 << S:<1->IA-./*. -A;     VU              S1 S2
+ 504 >> S:<1->*A-./I. -A;     VU              S1 S2
+ 506 C**************************************************************
+
+ 650 C ***2/1 PASSZE VEGE********581TU*********
+ 651 IF RS19=2 PM:<.>290:I;                    C* 2 LAP C 290/291
+ 652 IF RS19=3 PM:<.>194:I 388:I;              C* 3 LAP C PM:<.>194:I 388:I;
+ 654 IF RS19=4 PM:<.>145:I 290:I 435:I;        C* 4 LAP C PM:<.>145:I 290:I 435:I;VAGY:PM:<.>290:I
+ 656 >> S:I(2)-I(2)/DII.(3)-D.II(3)/DII.-D.II;     Y:0/2/5; VU  ML  T1 S1 S2
+ 658 END C************************
+
+ 999 CC<< S:0-0/0-0/0-0;            Y:6/6/6;  NP4-4    VU V0     T1 S1 S2
+ 999 <> S0 W0 VU
+
+1002 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1004 AAAA.....AAAAA...AA...AAA.....AAAA..AAAAAAA..AAAAAA...AAAAA.....AAAAAAA.......A.....AAA....AA.AAAAA.......AA..AAAA..AAA.....AAA...AAA..A
+1006 AAAAA.....AAAA....AA...AAA.....AAAA..AAAAA..AAAAAAA...AAAAA....AAAAAAAAA......A.....AAAA...AA...AAA....AAAA....AAA..AAAA....AA....AAA..A
+1008 A...AAAA...AAA....AA...AAAA.....AAA..AAAA...AAAAAAA...AAAAA..AAAA...AAAA......A.....AAAA...AAA..AAA..AAAAA......AA..AAAA...AAA....AAA..A
+1010 AAA..AAAAA........AA...AAAAA....AAAA..AAA...AAAAAAA...AAAAAAAAAA....AAAAA.....AA...AAAAA....AA...AAA..AAA.......AA..AAA....AA.....AAAA..
+1012 ..AA....AAAA......AAA...AAAAA.....AA...AA...AAAAAAA...AAAAAAAA......AAAAAA...AAAAAAAAAAAA....AA...AAA..........AAA..AAA...AA.....AAAAAA.
+1014 ..AA....AAAA......AAA...AAAAA.....AA...AA...AAAAAAA...AAAAAAAA......AAAAAA...AAAAAAAAAAAA....AA...AAA..........AAA..AAA...AA.....AAAAAA.
+1016 ...AA.....AA.......AA....AAAAAA....AA...A...AAAAAAA....AAAAAAA......AAAAAA...AAAAAAAAAAAAA...AAA...AAAA......AAAA..AAA..AAA......AAAAAAA
+1018 AA...AAAAAAA.......AA....AAAAAAA........AA...AAAAAAA...AAAAAA.......AAAAAA...AAAAAAAAAAAAAA...AAA....AAAAAAAAAAA..AAAA.AAAA......AAAAAAA
+1020 A.........................AAAAAAA........AA..AAAAAAAA...AAAAA......A..AAAA...AAAAAAAAAAAAAAA....AA....AAAAAAAA....AAAAAAA.......AAAAAAAA
+1022 ..................AAAAA.....AAAAAA........A..AAAAAAAA...AAAAAAA..AAA...AAAA..AAAAAAAAAAAAAAAA....AAAA...........AAAAAAAA......AAAAAAAAA.
+1024 ................AAAAAAA......AAAAAA...........AAA.AAAA...AAAAAAAAAAA...AAAA..AAAAAAAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAA.......AAAAAAAAA..
+1026 ...AAA.........AAAAAAAA.......AAAAAA...........AA.AAAAA...AAAAAAAAA.....AAA..AAAAAAAA..AAAAAAAAA.....AAAAAAAAAAAAAA.........AAAAAAAAA...
+1028 .AAAAAAA........AAAAAA.........AAAAAAAA............AAAAA...AAAAAAAAA.AAAAAA...AAAAAA...AAAAAAAAA...........................AAAAAAAAA....
+1030 AAAAAAAAAA.......AAAA...........AAAAAAAAA...........AAAAA....AAAAAAAAAAAAAA...AAAAA.....AAAAAAAAAAA......................AAAAAAAAAAA...A
+1032 AAAAAAAAAAA.......AAAAA...........AAAAAAAAA..........AAAAA.....AAAAAAAAAAAA...AAA.....A..AAAAAAAAAAAAAAAA...............AAAAAAAAAAAAAAAA
+1034 ...AAAAAAAAA.......AAAA...A..........AAAAAAAA..........AAAA.....AAAAAAAAAAA...........A..AAAAAAAAAAAAAAAAAAAAAAAAAAA.AAAAAAAAAAAAAAAA...
+1036 ...AAAAAAAAA.......AAAA...A..........AAAAAAAA..........AAAA.....AAAAAAAAAAA...........A..AAAAAAAAAAAAAAAAAAAAAAAAAAA.AAAAAAAAAAAAAAAA...
+1038 .....AAAAAAAA.......AA...AAAA..........AAAAAAAA..AA......AA.......AAAAAAAA............AA..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.......
+1040 .AAA.....AAAAA.........AAAAAAAA......AAAAAAAAAA.AAAA......AAA......AAAAAAA............AAA...AAAA.........AAAAAAAAAAAAAAAAAAAAAAA........
+1042 AAAAAA.......AAA.......AAAAAAAAA..AAAAAAAAAAA...AAA.......AAAA......AAAAAA.............AAA...............AAAAAAAAAAAAAAAAAAAAAA.....AAAA
+1044 AAAAAAAAA.......AAA....AAAAAAAAAAAAAA..AAAA..AAAAA.........AAA..AA..AAAAA...................................AAAAAAAAAA.AAAAAAAA....AAAAA
+1046 AAAAAAAAAAAAA......AAAAAAAAAAAAAAAA.....A...AAAAAAAA.......AAA..AAA.AAAA.....................................AAAAAAAA...AAAAAAA....AAAAA
+1048 AAAAAAAAAAAAAAAA.......AAAAAAAAAAA.....AA..AAAAAAAAA.......AA....AA.AAAA......................AAAAAAA.........AAAAAA.....AAAAAAA........
+1050 .....AAAAAAAAAAAAAA.....AAAAAAAA.........AAAA.....AAA..AA..AA........AA....................AAAAAAAAAAAA........AAAAA..A..AAAA..AAAAA....
+1052 ......AAAAAA..AAAAAAA....AAAAAAA.........AA.........A..AA..AA........AA..AAAA............AAAAAAAAA..AAAAAA.......AAA.AAA.AAAA...AAAAAAA.
+1054 AA.....AAAAA...AAAAAAAA...AAAAA.........AA...AA........AAA.AA....AA..A....AAAA.........AAAAAAAAAA....AAAAAAA......AA.AAA..AA....AAAAAAAA
+1056 AA......AAAAA..AAAAAAAAA...AAAA.........A....AAAAA.....AAA.A..AAAAAA.......AAA.......AAAAAAAAAAAA.....AAAAAAAAA.......AA..A...A.AAAAAAAA
+1058 AAAAA.....AAAA..AAAAAAAAA...AAAA........A...AAAAAAAAA......AA.AAAAAA.......AAA.....AAAAAAAAAAAAAAA...AAAAAAAAAAAAA....AAA.A..AA..AAAAAAA
+1060 AAAAA.....AAAA..AAAAAAAAA...AAAA........A...AAAAAAAAA......AA.AAAAAA.......AAA.....AAAAAAAAAAAAAAA...AAAAAAAAAAAAA....AAA.A..AA..AAAAAAA
+1062 AAAAAA.....AAAAAAAAAAAAAAA...AAAAAA.....A...AAAAAAAAA......AAAAAAA..........AA....AAAAAAAAAAAAAAAAAAAAAAA..AAAAAAAAA...AA....AAA.AAAA...
+1064 AAAAAAAA....AAAAAAAA..AAAAA...AAAAAA....A...AAAA..AAA.......AAA.............AA...AAAAAA.......AAAAAAAAAAA...AAAAAAAAAA.......AAA.AAA....
+1066 .AAAAAAA......AAAAA....AAAAA...AAAAA....A...AAAA..AAA...........AAA.........AA...AAAAA...........AAAAAAAA..AAAAA..AAAAA......AAA.AAA....
+1068 .AAAAAAAAA.....AAAA....AAAAA....AAAAA...A...A......AAA.........AAAAA.......AAA..AAAA......AAAAA.....AAAAAAAAAAA...AAAAAA.....AAA..AA..AA
+1070 ..AAAAAAAA.......AA....AAAAAA....AAAA...A......AA.AAAA........AAAAAAAA.....AAA..AAA.....AAAAAAA......AAAAAAAAA.....AAAAAA.....AAA.AA..AA
+1072 ..AAAAAAAAA......AAAA..AAAAAA....AAAA...AA.....AA.AAA.......AAAA....AAA....AAA..AA.....AAAAAAA........AAAAAAAAA...AAAAAAAA.....AA.AA..AA
+1074 A..AAAAAAAAAAA....AAAAAAAAAAAA...AAAA....AAA..AAA.AAA......AA.......AAA...AAAA..AA.....AAAAA............AAAAAAAA..AAAAAAAAA.......AA.AAA
+1076 A..AAAAAAAAAAA.....AAAAA...AAA....AAA....AAAAAAA.AAAA...AAAAA........AA...AAAA..A......AAAA..............AAAAAAAAAAAAAAAAAAAA........AAA
+1078 A..AAAAAAAAAAAA.....AAA.....AAA...AAA.AA........AAA..AAAAAA....AA....AA...AAAA..A.....AAAAA...............AAAAAAAAAAAAA..AAAAA.......AAA
+1080 A..AAAAAAAAAAAAAA....AA.....AAA..AAA..AAA....AAAAA...AAAA....AAAA....AA...AAAAA.......AAA...................AAAAAAAAAA....AAAAAA.....AAA
+1082 A..AAAAAAAAAAAAAA....AA.....AAA..AAA..AAA....AAAAA...AAAA....AAAA....AA...AAAAA.......AAA...................AAAAAAAAAA....AAAAAA.....AAA
+1084 A...AAAAAAAAAAAAAA....AA...AAAA..AA....AAA..AAAAAA..AAAAA...AAAAA...AAA...AAAAAA......AA.......................AAAAAAA....AAAAAAAA....AA
+1086 ......AAAAAAAAAAAA....AAAAAAAAA..AA..A...AAAAAAA..AAAAA....AAAAA....AAA...AA.AAAA.....A.......AAAAA..............AAAAAA..AAAAAAAAAA...AA
+1088 .......AAAAAAAAAAAA...AAAAAAAA...AA..AA...AAA..AAAAAA.....AAAAAAAAAAAA...AAA.AAAAA..........AAAAAAAAA......AAA....AAAAAAAAAAAAAAAAAA....
+1090 ........AAAAAAAAAAA...AAA..AAA...AA...AAA....AAAAAA.....AAAAAAAAAAAAA....AAA..AAAAAAA...AAAAAAAAAAAAA.....AAAAAA...AAAAAAAAA...AAAAA....
+1092 ........AAAAAA..AA.....A...AA....AA....AAA.AAAAAAAA..AAAAAAAAAAAAAA.....AAA...AAAAAAAAAAAAAAAAA.AAAAAA...AAAAAAAA...AAAAAAA.....AAAAA...
+1094 ........AAAAAA.........AA..A.....AA......AAAAAAAAAAAAAAAAAAAAAAAA.......AAA.....AAAAAAAAAAAAAA..AAAAAAA..AAAA...AA...AAAAAA.....AAAAAA..
+1096 .......AAAAAAAA.........AAAA....AAA.....AAAAAAAAAAAAAAAAAAAAAA.........AA...........AAAAAAA.....AAAAAAA...AA..........AAAAAA...AAAAAAA..
+1098 .......AAAAAAAA.................AA.....AAAAAAAAAAAAAAAAAAAAA..........AA....AA....................AAAAAA...............AAAAAAAAAAAAAAAA.
+1100 .......AAAAAAAAA...............AA.....AAAAAAAAAAAAAAAAAAA............AA.....AA....................AAAAAAA....AAAAA.......AAAAAAAAAAAAAA.
+1102 ......AAAAAA..AAA.......AA....AAA.....AAAAAAAAAAAAAAAAA.........AAAA.......AAA....................AAAAAAAAAAAAAAAA........AAAAAAAAAAAAA.
+1104 .....AA........AAAAAA..AAA....AAAAAA..AAAAAAAAAAAAA............AAAAA.......AAAAA...AAAA............AAAAAAAAAAAAAAA..........AAAAAAAAAAAA
+1106 .....AA........AAAAAA..AAA....AAAAAA..AAAAAAAAAAAAA............AAAAA.......AAAAA...AAAA............AAAAAAAAAAAAAAA..........AAAAAAAAAAAA
+1108 AAAAAAAA........AAAAAAAAAA.....AAAAAAAAAAAAAAAAAA.................AAA......AAAAAA.AAAAAAAAA........AAAAAAAAAAA..........AAAAAAAAAAAAAAAA
+1110 AAAAAAAAA........AAAAAAAA.........AAAAAAAAA..........AAAAA.........AA.......AAAAAAAAAAAAAAAAAAA......................AAAAAAAAAAAAAAAAAAA
+1112 AAAAAAAAAA........AAAAAAA.......AAAAAAAAAAAAA......AAAAAAAA.........A.......AAAAAAAAAAAAAAAAAAAA...................AAAAAAAAA.....AAAAAAA
+1114 AAAAAAAAAA.........AAAAAA.......AAAA.....AAAAA....AAAAAAAAAA.......AA........AAAAAAAAAAAAAAAAAAAA.........AAA.....AAAAAAAAAA...AAAAAAAAA
+1116 AAAAAAAAAA...........AAAA......AA...........AAA.AAAAA.....AAA......A..........AAAAAAAAAAAAAAAAAAAA......AAAA......AAAAA..AA..AAAAAAAAAAA
+1118 AAAAA........AAAAA...AAA......AA.............AAAAAA........AA.....AA..............AAAAAAAAAAAAAAAAAAAAAAAAA.......AAAA......AAAAAAAAAAAA
+1120 AAAAA.......AAAAAAA..AA.......AA....AAAA......AAA..........AAA...AAAA................AAAAAAAAAAAAAAAAAAAAA.......AAAA......AAAAAAAAAAAAA
+1122 AAAA......AAAAAAAAA..AAA.....AAA...AAAAAA...................AA.....AAAAA...............AAAAAAAAAAAAAAAAAA..AAAAAAAAAA....AAAAAAA..AAAAAA
+1124 AAAA.....AAAAAAAAAA...AA...AAAAA...AAAAAA...................AAA.....AAAAAA...............AAAAAAAAAAAA....AAAAAAAAAAAAA...AAAA....AAAAAAA
+1126 AAAA....AAAAAAAAAA.....A..AAAA....AAAAAAA....................AA.......AAAA................AAAAAA.........AAA...AAAAAAAAA.........AAAAAAA
+1128 AAAA....AAAAAAAAAA.....A..AAAA....AAAAAAA....................AA.......AAAA................AAAAAA.........AAA...AAAAAAAAA.........AAAAAAA
+1130 AAA.....AA..AAAA.........AAAA.....AAAAAAAA..........AAA......AA........AAAA................AAAAA........AA........AAAAAAA.......AAAAAAAA
+1132 AAA........AAAA.........AAA.......AAAAAAAAA........AAAAA.....AAA........AAAA................AAAA.......AA.........AAAAAAAA.....AAAAA.AAA
+1134 AA.........AAA.........AAA.........AAAAAAAA........AAAAA.....AAAAAAA.....AAAA...AAAA........AAAA.......AA..........AAAAAAAA....AAAAA.AAA
+1136 A..........AAA...AAAAAAAAA..........AAAAAAA.......AAAAAA......AAAAAAA......AA.AAAAAAA.......AAA........AA...AAA....AAAAAAAA....AAAAA..AA
+1138 ............AA..AAAAAAAAA.............AAAAA.......AAAAAA..........AAAA.....AAAAAAAAAAAA.....AAA.......AAA..AAAAA....AAAAAAA.....AAAA....
+1140 ...AA...........AA.....AA..............AAAA.......AAAAA.............AA......AAAA....AAA.....AAA.....AAAAA..AAAAAA...AAAAAAAA.....AAA....
+1142 .AAAAA.................AA..............AAAA.......AAAAA..............AAA....AAAA.....AAA....AA...AAAAAAA...AAAAAA....AAAAAAAA......AA..A
+1144 AAAAAAA.....................AAAA.........AA......AAAAA...............AAAA....AA......AAA....AA..AAAAAA.....AAAAAA....AAAAAAAA..........A
+1146 AAAAAAAA...........AAA.....AAAAA.........AA.....AAAAA..................AAA............AA....A...AAA.........AAAAA....AAAAAAAAA.........A
+1148 AAAAAAAAAA.......AAAAA....AAAAAAA........AA.....AAAAA...................AAA...........AA...AA..AA...........AAAAA....AAAAAAAAAAA.......A
+1150 AAAAAAAAAAA......AAAAAA...AAAAAAAA.......AA.....AAAA.....................AAA.........AA...AA...A.............AAAA....AAAAAAAAAAAA......A
+1152 AAAAAAAAAAA......AAAAAA...AAAAAAAA.......AA.....AAAA.....................AAA.........AA...AA...A.............AAAA....AAAAAAAAAAAA......A
+1154 AAAAAAAAAAAAAAAAAAAAAAA....AAAAAAAA......A......AA.........AAAAA.........AAA........AAA..AA....A.............AAAAA....AAAAAAAAAAAAA.....
+1156 AAAAAAAAAAAAAAAAAAAAAAAA.....AAAAAAA............AA........AAAAAAA.........AA.......AAAA........A..............AAAA....AAAAAAAAAAAAAAAAAA
+1158 AAAAAAAAAAAAAAAAAAAAAAAA........AAAAA...........A........AAAAAAAA.........AA.......AAAA........A.......AA......AAA.....AAAAAAAAAAAAAAAAA
+1160 AAAAAAAAAAAAAAAAAAAAAAAAA.......AAAAA...........A.......AAAAAAAAA........AAA......AAA..........AA.....AAAAA.....AA.....AAAAAAAAAAAAAAAAA
+1162 AAAAAAAAAAAAAAAAAAA...AAAA.......AAAAA................AAAAAAAAA........AAAAAA.....AAA...........A.....AAAAAA....AA......AAAAAAAAAAAAAAAA
+1164 AAAAAAAAAAAAAAAAAA.....AAAAAA.....AAAA...............AAAAAAAAA......AAAAA.AAAA...AAA........AAAAA.....AAAAAA.....A.......AAAAAAAAAAAAAAA
+1166 AAAAAAAAAAAA..AAA.......AAAAAAA.....AAA..............AAAAAA.........AAAA....AA...AAA......AAAAAA.......AAAAAA.............AAAAAAAAAAAAAA
+1168 AAAAAAAA...................AAAA......AA.............AAAAA...........AA.......A...AAA.....AAA............AAAAAA......AAA....AAAAAAAAAAAAA
+1170 AAAAAA...............AA.....AAAA.............................................A...AA.....AAA..............AAAAA....AAAAAA...AAAAAAAAAAAAA
+1172 AAAAA................AA.....................AA...........................A..AA...AA.....AAA..............AAAAAA...AAAAAA.......AAAAAAAAA
+1174 AAAAA................AA.....................AA...........................A..AA...AA.....AAA..............AAAAAA...AAAAAA.......AAAAAAAAA
+1176 AA..........AAAAAAAAAAAAA..................AAAA.........AAAAAAAA.........AAAAA...AAA...AAA......AAAA......AAAAA...AAAAAA...........AAAAA
+1178 ........AAAAAAAAAAAAAAAAAAA......AAAAA.....AAAA.......AAAAAAAAAAAA.......AAAAA...AAA...AA.......AAAAA.......AAAA..AAAAAA...A............
+1180 .....AAAAAAAAAAAAAAAAAAAAAA.....AAAAAAA....AAAA......AAAAAAAAAAAAAA......AAAAA...AAA...AA.....AAAAAAAAA......AAA..AAAAAA...AAAAAAAA.....
+1182 AAAAAAAAAA......AAAAA..AAAA.........AAAA....AA.......AAAA..AAAAAAAAA.....AAAAA...AAA...AA.....AAAAAAAAAAA..........AAAAA....AAAAAAAAAAAA
+1184 AAAAAAAA.......AAAAA....AAA...........AAA...................AAAAAAAA......AAAA...AAAA..AAA.....AAAAAAAAAA.............AA....AAAAAAAAAAAA
+1186 AAAAAA.....AAAAAAAAA......A....AAAA....AA.....................AAAAAA.........A...AAAAA..AA......AAAAAAAAAA.....A.......AAA.....AAAAAAAAA
+1188 AAAAA.....AAAAAAAAAA..........AAAAAAA...AA........AAAAA........AAAAA.........A....AAAAA.AAA.......AAAAAAAAA...AA.......AAAA.......AAAAAA
+1190 AAAAA.....AAAAAAAAAA.........AAAAAAAA...AA......AAAAAAAA.........AAA.........A....AAAAA..AA........AAAAAAAAA..AA.......AAAA..........AAA
+1192 .AAAA......AAAAAAAAA.........AAA..AAAA...A....AAAAAAAAAAA...................AA.....AAAA..AAA..................AA........AAA.............
+1194 ..AAA.......AAAAAAAAA........AA.....AA...AA.AAAAAA....AAAA...............AAAAA.......AA...AAA.................AA...............AAAAA....
+1196 ....A.........AAA.AAA................A...AAAAAAA......AAAA...AAAAAA....AAAAAAA........A...AAA.................AA............AAAAAAAAAAAA
+1198 ....A.........AAA.AAA................A...AAAAAAA......AAAA...AAAAAA....AAAAAAA........A...AAA.................AA............AAAAAAAAAAAA
+1200 AAA..A........A....AAA...............A...AAAAAA......AAAA...AAAAAAAA..AAAAAAAA...........AAA...........AAAA...AAA..........AAAAAAAAAAAAA
+1202 AAAA.AA.......A.....AAAAAAAA.........A...AAAAA...A...AAAA..AAAAAAAAAAAAAAAAAAA..........AAA.........AAAAAAA...AAA.........AAA.........AA
+1204 AAAAA.AA.....A.....AAAAAAAAAA.AA.........AAAA....AA...AA...AAAAAA.AAAAAAAAAAA.....AA...AAAA........AAAAAAAA....AAA........A...........AA
+1206 AAAAA..AAA..AA.....AAAAAAAAAAAAAAA........AAA....AAA.......AAAA....AAAAAAAAA.....AAAA..AAA....AAAAAAAAAAA.......AAA......AA...AAAAAAA...
+1208 ..AAA...AAAAAA....AAAAAAAAAAAAAAAAAA......AA.....AAAA.....AAAA.....AAAAAAA.......AAAA..AA....AAAAAAAAAAA..........AAAA...AA..AAAAAAAA...
+1210 ....A....AAAAA....AAAAA.AAAAAAAAAAAAAA....AAA.....AAA.AAAAAA.......AAAA..........AAAA..AA....AAAAAAAAA........A.........AAA....AAAAAAA..
+1212 .....A...AAAAA.....AA...AAAAAA..AAAAAAA....AA.....AAAAAAAAA.......AAAA............AA...AA....AAAAA...........AA.........AAA.....AAAAAAA.
+1214 .....AA...AAAAA..........AAAA...AAAAAAAAA..AAA....AAAAAAAA........AAA.......AA.........AA.....AAA...........AAA.........AAA.......AAAAA.
+1216 .....AAA...AAAAA.........AAA....AAAAAAAAA..AAA...AAAAAAAA........AAA.......AAA.........AA...................AAA.........AAAA......AAAAAA
+1218 ......AA.....AAAA........AAAA...AAAAAAAAA...AAA..AAAAAAA..............AAAAAAAA.........AA.................AAAA..........AAAAA......AAAAA
+1220 ......AA......AAAA.......AAAAA..AAAAAAAAA...AAAA..AAAAA.............AAAAAAAAAAA........AAA.........AA.....AAA.....AA.....AAAA......AAAAA
+1222 ......AA......AAAA.......AAAAA..AAAAAAAAA...AAAA..AAAAA.............AAAAAAAAAAA........AAA.........AA.....AAA.....AA.....AAAA......AAAAA
+1224 .......AA.....AAAAA.....AAAAAAAAAAAAAAAAAA...AAA..................AAAAAAAAAAAAAA........AAA.......AAA....AAA......AA......AAA......AAAAA
+1226 .......AA..AAA.AAAAAA...AAAAAAAAAAAAA..AAAA...AAA...............AAAAAAAAAAAAAAAAAAAAA....AAAAA...AAAA...AAAA......AA...............AAAAA
+1228 .......AA..AAA..AAAAA...AAAAAAAAAAAA...AAAAA...AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAAA.......AA..............AAAAAA
+1230 .......AA..AAAA..........AAAAAAAAAA.....AAAAA....AAAAA......AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAAA.......AAAA............AAAAAA
+1232 ..A....AA..AAAA.............AAAAAAA.....AAAAA.............AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AAAA......AAAAA.....AA...AAAAAAA.
+1234 ..A....AA..AAAAA.AAA.........AAAAAA....AAAAAAA............AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AAA.......AAAAA.....AAAAAAAAAAAA.
+1236 .AA....AA..AAAAAAAAAA..AA.....AAAAAA.AAAAAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AAAAAAA........AA...AAAAA.....AAAAAAAAAAA..
+1238 .AA....AA...AAAAAAAAAA.AAA....AAAAAAAAAAAAAAAAAAAAAAA.........AAAAAAAAAA...AAAAAAAAAAAAA........AAAAA......AAAA...AAA......AAAAAAAAAAA..
+1240 AA.....AA...AAAAAAAAAA.AAA....AAAA.AAAAA..AAAAAAAAAAA.............AAA........AAAAAAAAAAA.........AAAA......AAAA...AA.......AAAAAAAAAA...
+1242 AA.....AA...AAAAAAAAAA.AAAAA..AAAA..AAA...AAAAA...AAA..............AAAAA........AAAAAAAA...........AAAA...AAAAA............AAAAAAAAA....
+1244 AA.....AA...AAAAAAAAAA.AAAAA..AAAA..AAA...AAAAA...AAA..............AAAAA........AAAAAAAA...........AAAA...AAAAA............AAAAAAAAA....
+1246 AA.....AA..AAAAAAAA....AAAAA..AA.....A.....AA......AA...............AAAAAAA.......AAAAAA.....AAA....AAAAAAAAAAA............AAAAAAAAA....
+1248 A...A.AA..AAAAAAAA....AAAAAA..AA......................................AAAAAA.......AAAAA....AAAAAAA...AAAAAAAAAA..........AAAAAAAAA....A
+1250 A..AA.AA..AAAAAAAA....AAAAA.............................................AAAAAA.......AAA....AAAAAAAA......AAAAAAAA.....AAAAAAAAAAA.....A
+1252 ...A..AA..AAAAAAAA....AAAAA.......................AAAAAAAAA..............AAAAA.........AA...AAA..AAAAAA......AAAAAAAAAAAAAAAAAAAA.....AA
+1254 ..AA..AA..AAAAAAAA...AAAAA.....................AAAAAAAAAAAAAAAAAAAA.......AAAA.........AA...AAAA..AAAAAAA......AAAAAAAAAAAAAAAAA.....AA.
+1256 ..A...AA.....AAAA...AAAAA.............AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.....AAAA.........AA...AAAA....AAAAA........AAAAAAAAAAAAAA.....AA..
+1258 .AA...AA............AAAAA..........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....AAA.........AAA...AAA......AAAA........AAAAAAAAAAA......AA...
+1260 AA....AA............AAAAA.......AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AAAA.........AAA...AAA........AAA........AAAAAAA.......AA....
+1262 A....AA............AAAAA.....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAAAAAA.......AAA....AA.......AAAAAAA.................AAA...A
+1264 ..A..A..............AA......AAAAAAAAAAAAAAAAAAAAAAAA................AAAAAA.AAAAAAA........AAA...AAAAAAAA....AAAAA..............AAA....AA
+1266 .AA.A......................AAAAAAAAAAAAAAAAAAAAA......................AAAAAAAAAAAA........AAAA....AAAAAAAAAAAAAAAA............AAA....AA.
+1268 .AA.A......................AAAAAAAAAAAAAAAAAAAAA......................AAAAAAAAAAAA........AAAA....AAAAAAAAAAAAAAAA............AAA....AA.
+1270 .A..A.....AAAA............AAAAAAAAAAAAAAAAA..AAA.........AAAAAAAAAAAAAAAAAAAAAAAAAA........AAAA.......AAAAAAAAAAA...........AAA.....AAA.
+1272 AA..A....AAAAA...........AAAAAAAAAAAAAAAA....AAAAAA........AAAAAAAAAAAAAAAAAAAAAAAAA........AAAA...........................AAA......A...
+1274 A...A....AAAAA..........AAAAAAAAAAAAAAAA....AAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAAAAA..........AAAAA..........A...........AAA.......A...A
+1276 ...AA...AAAAAA.........AAAAAAAAAAAAAAAAA....AAAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAAAAAAA........AAAAA.......AA.........AAAA......AAA.AAA
+1278 ..AA..AAAAAAAA.......AAAAAAAAAAAAAAAAAAA...AAA........AAAAA...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA............AAAAAA......AAAAA.....AAAA..AAA.
+1280 .AAA.AAAAAAAAA.......AAAAAAA...AAAAAAAAA..AAA...........AAA....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.........AAAAA......AAAAA.....AAAAA..AAA..
+1282 AAA..AAAAAAAAA......AAAAAAA.....AAAAAAAA.................AAA....AAAAAAAAAAAAAAAAAAAAAAA...........AAAAAAAA......AAA......AAAA....AAAA...
+1284 AA...AAAAAAAAA.....AAAAAAAAA...AAAAAAAA.................AAAA.....AAAAAAAAAAAAAAAAAAA............AAAAAAAAA....AAAAA......AA.....AAAAA...A
+1286 A....AAAAAAAA......AAAAAAAAAAAAAAAAA..............AA.AAAAAAA.......AAAAAAAAAAAAA................AAAAAAAAAAAAAAAA.....AAAA....AAAAAAA..AA
+1288 ......AAAAAAA......AAAAAAAAAAAAAAAA..............AAAAAAAAAA............AAAAAAA......AAAAAAAAAAAAAAAAAAAAAAAA......AAAA......AAAAAAA...AA
+1290 ......AAAAAAA......AAAAAAAAAAAAAAAA..............AAAAAAAAAA............AAAAAAA......AAAAAAAAAAAAAAAAAAAAAAAA......AAAA......AAAAAAA...AA
+1292 .......AAAAAAA....AAAAA....AAAAAAAA.............AAAAA....................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.....AAAAA........AAAAAA....AA.
+1294 ...A...AAAAAAA....AAAAA.....AAAAAAAA............AA.........AAA............AAAAAAAAAAAAA....................AAAAAA.......AAAAAAAA....AA..
+1296 .AAAA...AAAAAA....AAAAA.....AAAAAAAA...........AAA.......AAAAA...............AAA...........AAAAAAAAAAAAAAAAAA.......AAAAAAAAAAA.....A...
+1298 AAAAA....AAAAA...AAAAAA.....AAAAAAAA.....AAA...AA......AAAAAA....................AAAAAAAAAAAAA..........AAA......AAAAAAAAAAAAA.....AA...
+1300 AAAAA.....AAAA...AAAAAA....AAAA.........AAAAAA.......AAAAAAAA....AA...........AAAAAAAAA.........AAAAAA.......AAAAAAA..AAAAAAA......A....
+1302 AAAAAA....AAAA..AAAAAAAAAAAAAA.......AAAAAAAAAAAA...AAAAAAA.....AAAAA....AAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAA....AAAA.......AA...A
+1304 AAAAAAA....AA..AAAAAAAAAAAAAAA.......AAAAAAAAAAAAA..AAAAAA......AAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAAAAAAAA....AA..AAAAA.....AAA....A
+1306 AAAAAAAA...A...AAAAAAAAAAAAAAA......AAAAAAAAAAAAAA..AAAAAA......AAAAAAAAAAAAAA....AAAAAAAAAAAA...AAAAAA...AAA.....AAAAAAAA......AA....AA
+1308 AAAAAAAAA.....AAAAAAAAAAAAAAAA....AAAAAAAAA..AAAAA..AAAA........AAAAAAAAAAAAAA..AAAAAAAAAAAAA.....AAAA.....AA.....AAAAAAA.......AA...AAA
+1310 AAAAAAAAA.....AAAAAAAAA.AAAAAAA..AAAAAAAA.......AAA.AAAA.........AAAAAA.AAAAAAAAAAAAAAAAAAAA.......AA......AAA....AAAAA.........AA..AAAA
+1312 AAAA.AAAA.....AAAAAAAA...AAAAAA.AAAAAAAA............AAAA..........AAAAA..AAAAAAAAAAAAAA..AAA.......AA......AAAAAAAAAA..........AAA..AAAA
+1314 AAAA.AAAA.....AAAAAAAA...AAAAAA.AAAAAAAA............AAAA..........AAAAA..AAAAAAAAAAAAAA..AAA.......AA......AAAAAAAAAA..........AAA..AAAA
+1316 AAA...AA......AAAAAAA....AAAAAA.AAAAAA..............AA.............AAAA....AAAAAAAAAAA....AAA......AAA....AAAAAAAAA............AA...AAAA
+1318 AAA...........AAAAAAA....AAAAA..AAAAAA...AAAAAA......A.............AAAA....AAAA..AAAAA.....AAA.....AAAA..AAAAAAAAA....AAA......AA...AAAA
+1320 AA............AAAAAAA....AAA....AAAAA....AAAAAAA....................AAAA....AA......AA......AAA...AAAAAAAAAAAAAA....AAAAAA.....AA...AAAA
+1322 AA............AAAAAAAA.AAAAA....AAAA......AAAAAAA...................AAAAAA..AA.......AA......AAA.AAAAAAAAAAAA.....AAAA..AA.....AA...AAAA
+1324 AA............AAAAAAAAAAAAAAA....AA.......AAAAAAAA..........AA.......AAAAAAAAA.......AA......AAAAAAAAAAAAAAA.....AA......AA.....AA..AAAA
+1326 AA...........AAAAAAAAAAAAAAAAAA.............AAAAAAA.........AAAA......AAAAAAAAAA....AAAA....AAAAAAAAAAAAA......AAA.......AAA....AA..AAAA
+1328 AAA..........AAAAAAAAAAAAAAAAAAA............AAAAAAAA.........AAAAA.....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA........AAA.....AAA...AA...AA..AAAA
+1330 AAA..........AAAAAAAAAAAAAAAAAAA............AAAAAAAAA.........AAAAA......AAAAAAAAAAAAAAAAAAAAAAAA..........AAA.....AAAAAA...AA.AAA..AAAA
+1332 AAAAA........AAAAAAAAAAAAAAAAAA....AAAAA.....AAAAAAAAA.........AAAAA........AAAAAAAAAAAAAAAAA.............AAA...........AAA..AAAA...AAAA
+1334 AAAAAA........AAAAAAAAAAAAAAA.....AAAAAA.....AAAAAAAAA.........AAAAA...........AAAAAAAAA.................AA.......AAA....AA...AAA...AAAA
+1336 AAAAAA........AAAAAAAAAAAAAAA.....AAAAAA.....AAAAAAAAA.........AAAAA...........AAAAAAAAA.................AA.......AAA....AA...AAA...AAAA
+1338 AAAAAA........AAAAAAAAAAAAAA....AAAAAA.......AAAAAAAAAA.........AAAAA............AAAAAA..................A......AAAA......A.......AAAAAA
+1340 ...AAA........AAAAAAAAAAAAAAA...AAAAAA......AAAAAAAAAAA.........AAAAAA.........................................AAA........AAA..AAAAA....
+1342 .....AA.......AAAAAAAAAAAAAAAA...AAA........AAAAAAAAAAAA.........AAAAA............................AA..........AA..AAAA.....AAAAAA.......
+1344 .....AAAA.....AAAAAAAAAAAAAAAA..AAA.........AAAAAAAAAAAAA.........AAAAA................AAAAAA...AAAA..........AA..AAAA.....AAAA.........
+1346 .....AAAAA.....AAAAAAAAAAAAA....AAA........AAAAAAAAAAAAAAA.........AAAA.............AAAAAAAAAAAAAAA....AAAAA.AA..AAA......AA.......AAAAA
+1348 AA.....AAAAA....AAAAAAAAAA.....AA.....AAAAAAAAAAAAAAAAAAAAA.........AAAA..........AAAAAAAAAAAAAAAA.....AAAAAAAA..AAA.....AA....AAAAAAAAA
+1350 AAAA...AAAAA.....AAAAAAAA.....AAA....AAAAAAAA...AAAAAAAAAAA.........AAAA.........AAAA.....AAAAAA.......AA..AAA...AA......AA..AAAAAAA....
+1352 .AAAAA..AAAAAA....AAAA.......AAA.....AAA........AA...AAAAAAA..........AA........AAAA..........AA.......AA...A....A......AA..AAA.........
+1354 AAAAAAA..AAAAA......................AAAA.........A....AAAAAAA..................AAAAA.........AA..AA....AA...............A..AAA..........
+1356 AAA..AAA..AAAAAA...................AAAA..AAA..........AAAAAAAAAA..............AAAAA.........AA..AA.....AA..................AA.........AA
+1358 A.....AA..AAAAAAA.................AAAA..AAAA..AAA.......AAAAAAAAAA...........AAAAAAA.......AA...A.......AA...AAA..........AA........AAAA
+1360 A.....AA..AAAAAAA.................AAAA..AAAA..AAA.......AAAAAAAAAA...........AAAAAAA.......AA...A.......AA...AAA..........AA........AAAA
+1362 ......AA...AAAAAAAAA..............AAA...AAAAAAAAA.........AAAAAAAAAA.........AAAAAAAAAA....AA..A.....AAAA....AAAAA........AA........AAAA
+1364 ...A.AAA...AAAAAAAAAA...................AAAAAAAA...........AAAAAAAAA........AAAAAAAAAAA....AA..A...AAAAA.....AAAAA........A........AAAAA
+1366 ...AAAA....AAAAAAAA.......AAA..........AAAAAAAA...A..........AAAAAAAAA......AAAAAAAAAAA....AA.AA..AAA.........AAAAA.......A.......AAAAAA
+1368 ....AA....AAAAAAAA.......AAAAA......AAAAAAAAAA...AA..............AAAAAA.....AAAA..AAAA....AA..AA.AAA...........AAAA.......A......AAAAAAA
+1370 A........AAAAA..AA......AAAAAAA...AAAAAAAAAAA....AA...............AAAAAAA..AAAA...........AA..AA.AA.....AA......AAA.......AA.....AAAAAAA
+1372 AA......AAAA...AA......AAAAAAAA..AAAAAAAAAA.....AAA................AAAAAAA.AAA............AA.AAA.AA...AAAAA................AA....AAAAAAA
+1374 AAA...AAAAA...AAA......AAAAAAAA..AAAAAAAAAA.....AAA.......AAAAA.....AAAAAAAAAA.......AA...AA.AAA.AA......AAA...............AA....AAAAAAA
+1376 AAAAAAAAAA....AAAAAA...AAAAAAA...AAAAAAAAA......AAA.....AAAAAAAAAA...AAAAAAAAA.....AAAA...AA.AA.AA.....AAAA................AA....AAAAAAA
+1378 AAAAAAAAAA....AA.AAA....AAAAAA...AAAAAAAAA......AAA....AAAAAAAAAAAA.....AAAA....AAAAAAA...AA.AA.A....AAAA..................AAA...AAAAAAA
+1380 AAAAAAAAAA....A...AAA....AAAAAA..AAAAAAAAA.AA...AAA...AAAAAAAAAAAAAA.....AAA..AAAAAAAAA...AA.AA....AAAAA.......AAA..........AA...AAAAAAA
+1382 AAAAAAAAAA....A...AAA....AAAAAA..AAAAAAAAA.AA...AAA...AAAAAAAAAAAAAA.....AAA..AAAAAAAAA...AA.AA....AAAAA.......AAA..........AA...AAAAAAA
+1384 AAAAAAA.......AAA..AAA....AAAAAA..AAAAAAAAAAA...AAA...AAAAAAAAAAAAAA.........AAAAAAAAAA...AA.AAA.AAAAAA........AAAAA........AAA...AAAAAA
+1386 AAAAAAA.........AA..AAA....AAAAA...AAAAAAAAAA...AAA...AAAAAAA.AAAAAAA........AAAAAAAAAA...AA.AAAAAAAAAAA....AAAA..AAA........AA...AAAAAA
+1388 .....AAA.AAAA....AA..AA.....AAAA...AAAAAAAAA...AAAA...AAAAAA....AAAAAA.......AAAAAAAAAA...AA.AAAAAAA.......AA.....AAAA.......AA...AAA...
+1390 ......AA.AAAAA...AA..AAAA....AAAA..AAAAAAAAA..AAAAA...AAAAA.....AAAAAA.......AAA...AAAA...AA..AAAAAA.......A.......AAAA......AA...AAA...
+1392 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+1401 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1402 AAA......AA.AAA.......AAAA.......AAAAAAAAAAAAAAAAAAA.......AAAA.......AAA.AA......AAAAAAAAAAAAAAAAAA.AAAAAAAAAAAAAAAAAA......AA.AAA.......AAAA.......AAAAAAAAAAAAAAAAAAA.......AAAA.......AAA.AA......AAA
+1403 A........AA..AA........AA.........AAAAAAAAAAAAAAAAA.........AA........AA..AA........AAAAAA.AAAAAAAA...AAAAAAAA.AAAAAA........AA..AA........AA.........AAAAAAAAAAAAAAAAA.........AA........AA..AA........A
+1404 A......AAAA..AAAA.....AAA.........AAAAAAAAAAAAAAAAA.........AAA.....AAAA..AAAA......AAAAAA..AAAAAA.....AAAAAA..AAAAAA......AAAA..AAAA.....AAA.........AAAAAAAAAAAAAAAAA.........AAA.....AAAA..AAAA......A
+1405 A.....AAAA....AAAA....AAA.....AA..AAAAAAAAAAAAAAAAA..AA.....AAA....AAAA....AAAA.....AAAAA.....AAA.......AAA.....AAAAA.....AAAA....AAAA....AAA.....AA..AAAAAAAAAAAAAAAAA..AA.....AAA....AAAA....AAAA.....A
+1406 A.....AAAA....AAAA...AA........AAAAAAAAAAAAAAAAAAAAAAA........AA...AAAA....AAAA.....AAAAA......AAA.....AAA......AAAAA.....AAAA....AAAA...AA........AAAAAAAAAAAAAAAAAAAAAAA........AA...AAAA....AAAA.....A
+1407 AA....AAA.....AAA...AA..........AAAAAAAA.....AAAAAAAA..........AA...AAA.....AAA....AAAAA.........AA...AA.........AAAAA....AAA.....AAA...AA..........AAAAAAAA.....AAAAAAAA..........AA...AAA.....AAA....AA
+1408 AAA..AAA......AAA..AA.............AAAAA.......AAAAA.............AA..AAA......AAA..AAAAAAAAA......AAA.AAA......AAAAAAAAA..AAA......AAA..AA.............AAAAA.......AAAAA.............AA..AAA......AAA..AAA
+1409 AAAAAAA......AAA..AA...............AA...........AA...............AA..AAA......AAAAAAAAA..AAAA....AAA.AAA....AAAA..AAAAAAAAA......AAA..AA...............AA...........AA...............AA..AAA......AAAAAAA
+1410 AAAAAA.......AAAAAA.....AA.................................AA.....AAAAAA.......AAAAAAA....AAAA...AAA.AAA...AAAA....AAAAAAA.......AAAAAA.....AA.................................AA.....AAAAAA.......AAAAAA
+1411 .AAAAA......AAAAAAA...AAAAAA.............AAA.............AAAAAA...AAAAAAA......AAAAA........AAA..AA...AA..AAA........AAAAA......AAAAAAA...AAAAAA.............AAA.............AAAAAA...AAAAAAA......AAAAA.
+1412 ..AAAA.....AAA..AA...AA...AAA...........AAAAA...........AAA...AA...AA..AAA.....AAAA......A....AAAAA...AAAAA....A......AAAA.....AAA..AA...AA...AAA...........AAAAA...........AAA...AA...AA..AAA.....AAAA..
+1413 ...AAAA...AAA...AA..AA......AA.........AAAAAAA.........AA......AA..AA...AAA...AAAA.......A.....AAAAAAAAAAA.....A.......AAAA...AAA...AA..AA......AA.........AAAAAAA.........AA......AA..AA...AAA...AAAA...
+1414 ...AAAAAAAA......A..A..A....AA.........AAAAAAA.........AA....A..A..A......AAAAAAAA........A...AAAA.....AAAA...A........AAAAAAAA......A..A..A....AA.........AAAAAAA.........AA....A..A..A......AAAAAAAA...
+1415 .AAAAAAAAA.......A..AA..A....AA..........AAA..........AA....A..AA..A.......AAAAAAAAA.......AAAAA.........AAAAA.......AAAAAAAAA.......A..AA..A....AA..........AAA..........AA....A..AA..A.......AAAAAAAAA.
+1416 AAAAAAAAAA......AA...AAA.....AA.......................AA.....AAA...AA......AAAAAAAAAA........AA...........AA........AAAAAAAAAA......AA...AAA.....AA.......................AA.....AAA...AA......AAAAAAAAAA
+1417 AAAAAA.AAAA....AAA...........AA.......A.......A.......AA...........AAA....AAAA.AAAAAAA......AA....AAAAA....AA......AAAAAAA.AAAA....AAA...........AA.......A.......A.......AA...........AAA....AAAA.AAAAAA
+1418 AAAAA...AAAAAAAAAAA.........AAAA......A.......A......AAAA.........AAAAAAAAAAA...AAAAAAAAA...AA...AAAAAAA...AA...AAAAAAAAA...AAAAAAAAAAA.........AAAA......A.......A......AAAA.........AAAAAAAAAAA...AAAAA
+1419 AAAAA...AAAAAAAAAAAAA.....AAAAAAA....AAA.....AAA....AAAAAAA.....AAAAAAAAAAAAA...AAAAA...AA.AAA..AAAAAAAAA..AAA.AA...AAAAA...AAAAAAAAAAAAA......AAAAAA....AAA.....AAA....AAAAAA......AAAAAAAAAAAAA...AAAAA
+1420 .AAA.....AA...AAAAAA.....AAAAAA.......AAAAAAAAA.......AAAAAA.....AAAAAA...AA.....AAA.......AA...AAAAAAAAA...AA.......AAA.....AA...AAAAAA.....AAAAAA.......AAAAAAAAA.......AAAAAA.....AAAAAA...AA.....AAA.
+1421 .AAA.....AAA....AA.....AAAAA...........AAAAAAA...........AAAAA.....AA....AAA.....AAA...A...AA...AAAAAAAAA...AA...A...AAA.....AAA....AA.....AAAAA...........AAAAAAA...........AAAAA.....AA....AAA.....AAA.
+1422 ..AA.....AAAA...A......AAA............AAAAAAAAA............AAA......A...AAAA.....AA....AA..AA...AAAAAAAAA...AA..AA....AA.....AAAA...A......AAA............AAAAAAAAA............AAA......A...AAAA.....AA..
+1423 ..AA.....AAAAA........AAA............AAAAAAAAAAA............AAA........AAAAA.....AA.....AA..A....AAAAAAA....A..AA.....AA.....AAAAA........AAA............AAAAAAAAAAA............AAA........AAAAA.....AA..
+1424 ..A......AAAAA........AA..........AAAAAAAAAAAAAAAAA..........AA........AAAAA......A......AAAA....AAAAAAA....AAAA......A......AAAAA........AA..........AAAAAAAAAAAAAAAAA..........AA........AAAAA......A..
+1425 ..A.....AAAAAAA......AA..........AAAAAAA.....AAAAAAA..........AA......AAAAAAA.....A.........AA....AAAAA....AA.........A.....AAAAAAA......AA..........AAAAAAA.....AAAAAAA..........AA......AAAAAAA.....A..
+1426 .A......AAAAAAA.....AA..........AAAAAAA.......AAAAAAA..........AA.....AAAAAAA......A........AAA....AAA....AAA........A......AAAAAAA.....AA..........AAAAAAA.......AAAAAAA..........AA.....AAAAAAA......A.
+1427 .A.....AAAAAAA......AA.........AAAAAAA.........AAAAAAA.........AA......AAAAAAA.....A.......AA.AA...A.A...AA.AA.......A.....AAAAAAA......AA.........AAAAAAA.........AAAAAAA.........AA......AAAAAAA.....A.
+1428 A......AAA..AA......AA........AAAAAAA...........AAAAAAA........AA......AA..AAA......A.....AA...A.........A...AA.....A......AAA..AA......AA........AAAAAAA...........AAAAAAA........AA......AA..AAA......A
+1429 A.....AAA...AA......AA........AAAAAA....AAAAA....AAAAAA........AA......AA...AAA.....A....AA...................AA....A.....AAA...AA......AA........AAAAAA....AAAAA....AAAAAA........AA......AA...AAA.....A
+1430 .....AAA...AAA......AA........AAAAAA...AAAAAAA...AAAAAA........AA......AAA...AAA.........................................AAA...AAA......AA........AAAAAA...AAAAAAA...AAAAAA........AA......AAA...AAA.....
+1431 ....AAA....AA..AA....AA.......AAAAAA...AAAAAAA...AAAAAA.......AA....AA..AA....AAA.......................................AAA....AA..AA....AA.......AAAAAA...AAAAAAA...AAAAAA.......AA....AA..AA....AAA....
+1432 ...AAA........AAAA...AAA.....AAAAAAA....AAAAA....AAAAAAA.....AAA...AAAA........AAA..................A..................AAA........AAAA...AAA.....AAAAAAA....AAAAA....AAAAAAA.....AAA...AAAA........AAA...
+1433 ..AAAAA........AAA....AAA..AAAAAAAAA.............AAAAAAAAA..AAA....AAA........AAAAA................AAA................AAAAA........AAA....AAA..AAAAAAAAA.............AAAAAAAAA..AAA....AAA........AAAAA..
+1434 AAA..AAA..A.....A.....AAAAAAAAAAAAAAA...........AAAAAAAAAAAAAAA.....A.....A..AAA..AAAA............AA.AA............AAAA..AAA..A.....A.....AAAAAAAAAAAAAAA...........AAAAAAAAAAAAAAA.....A.....A..AAA..AAA
+1435 AAA..AAAA.AA..........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..........AA.AAAA..AAAAAAA.......AAA...AAA.......AAAAAAA..AAAA.AA..........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..........AA.AAAA..AAA
+1436 AAA....AAAAAA........AAAAAAAA...........................AAAAAAAA........AAAAAA....AAAAA.AAAAAAAAAA..A..AAAAAAAAAA.AAAAA....AAAAAA........AAAAAAAA...........................AAAAAAAA........AAAAAA....AAA
+1437 AA......AAAAAA......AAAAAAAA.............................AAAAAAAA......AAAAAA......AAAA...AAAAAA...AAA...AAAAAA...AAAA......AAAAAA......AAAAAAAA.............................AAAAAAAA......AAAAAA......AA
+1438 A........AAAAAAAAAAAAAA.AAAAA...........................AAAAA.AAAAAAAAAAAAAA........AAAAA.........AA.AA.........AAAAA........AAAAAAAAAAAAAA.AAAAA...........................AAAAA.AAAAAAAAAAAAAA........A
+1439 ...........AAAAAAAAAA.....AAAAAAAAAAAAA.......AAAAAAAAAAAAA.....AAAAAAAAAA............AAAAA.....AAAA.AAAA.....AAAAA............AAAAAAAAAA.....AAAAAAAAAAAAA.......AAAAAAAAAAAAA.....AAAAAAAAAA...........
+1440 ..............AAAA.........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.........AAAA................AAAAAAAAAAAA...AAAAAAAAAAAA................AAAA.........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.........AAAA..............
+1441 ....AAA........AAAAAAAA.....AAAAA...................AAAAA.....AAAAAAAA........AAA........AAAAAAAA.......AAAAAAAA........AAA........AAAAAAAA.....AAAAA...................AAAAA.....AAAAAAAA........AAA....
+1442 ...AAAAA........AAAAAA.......AAA..A...............A..AAA.......AAAAAA........AAAAA.........AAAA.....A.....AAAA.........AAAAA........AAAAAA.......AAA..A...............A..AAA.......AAAAAA........AAAAA...
+1443 AAAAAAAAAA....AAAAAAA.........AA..AAAAAAAAAAAAAAAAA..AA.........AAAAAAA....AAAAAAAAAA..............AAA..............AAAAAAAAAA....AAAAAAA.........AA..AAAAAAAAAAAAAAAAA..AA.........AAAAAAA....AAAAAAAAAA
+1444 AAAAAAAAAAA...AAAAAAAA........AA..AAAAAAAAAAAAAAAAA..AA........AAAAAAAA...AAAAAAAAAAAAA...A.......AA.AA.......A...AAAAAAAAAAAAA...AAAAAAAA........AA..AAAAAAAAAAAAAAAAA..AA........AAAAAAAA...AAAAAAAAAAA
+1445 AAAAAAAAAA..........AAA........A.....................A........AAA..........AAAAAAAAAAAAA..AAA....AA...AA....AAA..AAAAAAAAAAAAA..........AAA........A.....................A........AAA..........AAAAAAAAAA
+1446 AAAAAAAAAA......AAAAAAAAAA.....AA...................AA.....AAAAAAAAAA......AAAAAAAAAAAAA...AAA..AA.....AA..AAA...AAAAAAAAAAAAA......AAAAAAAAAA.....AA...................AA.....AAAAAAAAAA......AAAAAAAAAA
+1447 AAAAAAAAA......AAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAA.....AAAAAAAAAAAA......AAAAAAAAAAA....AAAAAA..A.A..AAAAAA....AAAAAAAAAAA......AAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAA.....AAAAAAAAAAAA......AAAAAAAAA
+1448 AAAAAAAA.......AAA...AAAAAAA.....AAAA...........AAAA.....AAAAAAA...AAA.......AAAAAAAA.......AA....A...A....AA.......AAAAAAAA.......AAA...AAAAAAA.....AAAA...........AAAA.....AAAAAAA...AAA.......AAAAAAAA
+1449 ..AAAAAA............AAAA.AAA......AAAAA.......AAAAA......AAA.AAAA............AAAAAA.........AAA.AA.....AA.AAA.........AAAAAA............AAAA.AAA......AAAAA.......AAAAA......AAA.AAAA............AAAAAA..
+1450 AAAAAAA..........AAAAAAA...A.......AAAAA.....AAAAA.......A...AAAAAAA..........AAAAAAAA.......AAA.........AAA.......AAAAAAAA..........AAAAAAA...A.......AAAAA.....AAAAA.......A...AAAAAAA..........AAAAAAA
+1451 AAAAAAA........AAAAAAAAAA............AAAA...AAAA............AAAAAAAAAA........AAAAAAAAAAA....AA...........AA....AAAAAAAAAAA........AAAAAAAAAA............AAAA...AAAA............AAAAAAAAAA........AAAAAAA
+1452 AAAAAAAA........AAAAAAAAAAA.......AA..A.AA.AA.A..AA.......AAAAAAAAAAA........AAAAAAAAAAAAA...A.....A.A.....A...AAAAAAAAAAAAA........AAAAAAAAAAA.......AA..A.AA.AA.A..AA.......AAAAAAAAAAA........AAAAAAAA
+1453 AAAAAAAA............AAAAAAAA.....AA...A.AAAAA.A...AA.....AAAAAAAA............AAAAAAAAAAAAAA......A.....A......AAAAAAAAAAAAAA............AAAAAAAA.....AA...A.AAAAA.A...AA.....AAAAAAAA............AAAAAAAA
+1454 AAAAAAAA......AAAA...AAAAAAAA....A...AA.AAAAA.AA...A....AAAAAAAA...AAAA......AAAAAAAAAAAAAA.....A.......A.....AAAAAAAAAAAAAA......AAAA...AAAAAAAA....A...AA.AAAAA.AA...A....AAAAAAAA...AAAA......AAAAAAAA
+1455 AAAAAAAA.......AAAA.AAAAAAAAA....AAAAA...AAA...AAAAA....AAAAAAAAA.AAAA.......AAAAAAAAAAAAA.....A.........A.....AAAAAAAAAAAAA.......AAAA.AAAAAAAAA....AAAAA...AAA...AAAAA....AAAAAAAAA.AAAA.......AAAAAAAA
+1456 AAAAAAAA........AAAAAAAA...AA.....AAA.....A.....AAA.....AA...AAAAAAAA........AAAAAAAAAAA.........................AAAAAAAAAAA........AAAAAAAA...AA.....AAA.....A.....AAA.....AA...AAAAAAAA........AAAAAAAA
+1457 AAAAAAAA.........AAAAAAAA...A...........AAAAA...........A...AAAAAAAA.........AAAAAAAAAAAA.........AAAAA.........AAAAAAAAAAAA.........AAAAAAAA...A...........AAAAA...........A...AAAAAAAA.........AAAAAAAA
+1458 AAAAAAAAA.........AAAAAAA..............AAA.AAA..............AAAAAAA.........AAAAAAAAAAAAA........AAAAAAA........AAAAAAAAAAAAA.........AAAAAAA..............AAA.AAA..............AAAAAAA.........AAAAAAAAA
+1459 AAAAAAAAA..........AAAAAAA............AA.....AA............AAAAAAA..........AAAAAAAAAAAAAA......AAAAAAAAA......AAAAAAAAAAAAAA..........AAAAAAA............AA.....AA............AAAAAAA..........AAAAAAAAA
+1460 AAAAAAAAAA......A...AAAAAAA...............................AAAAAAA...A......AAAAAAAAAA.AAAA.....AAA.AAA.AAA.....AAAA.AAAAAAAAAA......A...AAAAAAA...............................AAAAAAA...A......AAAAAAAAAA
+1461 .AAAAAAAAA......AA..AAAAAAA...............................AAAAAAA..AA......AAAAAAAAA..AAAA.....AA...A...AA.....AAAA..AAAAAAAAA......AA..AAAAAAA...............................AAAAAAA..AA......AAAAAAAAA.
+1462 .AAAAAAAAA.....AAA.AA.AAAAA.............AAAA.............AAAAA.AA.AAA.....AAAAAAAAA..AAAAAAA.................AAAAAAA..AAAAAAAAA.....AAA.AA.AAAAA.............AAAA.............AAAAA.AA.AAA.....AAAAAAAAA.
+1463 .AAAAAAAAA......AAAAA....AA...........AAAAAAAA...........AA....AAAAA......AAAAAAAAA..AAAAAAAA...............AAAAAAAA..AAAAAAAAA......AAAAA....AA...........AAAAAAAA...........AA....AAAAA......AAAAAAAAA.
+1464 ..AAAAAAAA......AAAAAA....A.........AAAA....AAAA.........A....AAAAAA......AAAAAAAA..AAAAAAAAAA.............AAAAAAAAAA..AAAAAAAA......AAAAAA....A.........AAAA....AAAA.........A....AAAAAA......AAAAAAAA..
+1465 ..AAAAAAAAA......AAAAAA...........AAAA........AAAA...........AAAAAA......AAAAAAAAA..AAAAAAAAAAA...........AAAAAAAAAAA..AAAAAAAAA......AAAAAA...........AAAA........AAAA...........AAAAAA......AAAAAAAAA..
+1466 A..AAAAAAAA.......AAAAAA........AAAA....AAAA....AAAA........AAAAAA.......AAAAAAAA..AAAAAAAAAAAA...........AAAAAAAAAAAA..AAAAAAAA.......AAAAAA........AAAA....AAAA....AAAA........AAAAAA.......AAAAAAAA..A
+1467 A...AAAAAAAA.......AAAAA......AAAA.....A....A.....AAAA......AAAAA.......AAAAAAAA...AAAA.AAAAAAA..A.....A..AAAAAAA.AAAA...AAAAAAAA.......AAAAA......AAAA.....A....A.....AAAA......AAAAA.......AAAAAAAA...A
+1468 AA..AAAAAAAAA......AAAAAA.....AA.....AA......AA.....AA.....AAAAAA......AAAAAAAAA..AAAA..AAAAAAA..AAA.AAA..AAAAAAA..AAAA..AAAAAAAAA......AAAAAA.....AA.....AA......AA.....AA.....AAAAAA......AAAAAAAAA..AA
+1469 AAA..AAAAAAAA......AAA.AA...........AA........AA...........AA.AAA......AAAAAAAA..AAAAA....AAAAA...AA.AA...AAAAA....AAAAA..AAAAAAAA......AAA.AA...........AA........AA...........AA.AAA......AAAAAAAA..AAA
+1470 AAA...AAAAAAAA.....AA...A..............AA..AA..............A...AA.....AAAAAAAA...AAAA.....AAAAAA...AAA...AAAAAA.....AAAA...AAAAAAAA.....AA...A..............AA..AA..............A...AA.....AAAAAAAA...AAA
+1471 AAAA...AAAAAAAA.....AA.................AA..AA.................AA.....AAAAAAAA...AAAA......AAAAAA...AAA...AAAAAA......AAAA...AAAAAAAA.....AA.................AA..AA.................AA.....AAAAAAAA...AAAA
+1472 AAAAA...AAAAAAAA.....A...............AA......AA...............A.....AAAAAAAA...AAAAA.....AAAAAAA....A....AAAAAAA.....AAAAA...AAAAAAAA.....A...............AA......AA...............A.....AAAAAAAA...AAAAA
+1473 .AAAA....AAAAAAAA....................AA......AA....................AAAAAAAA....AAAA.....AAAAAAAA.........AAAAAAAA.....AAAA....AAAAAAAA....................AA......AA....................AAAAAAAA....AAAA.
+1474 ..AAAA....AAAAAAAA.........A.......AA..........AA.......A.........AAAAAAAA....AAAA.....AAAA...AAA.......AAA...AAAA.....AAAA....AAAAAAAA.........A.......AA..........AA.......A.........AAAAAAAA....AAAA..
+1475 ...AAAA......AAAAAA......AAA.......AA..........AA.......AAA......AAAAAA......AAAA......AA.......A.......A.......AA......AAAA......AAAAAA......AAA.......AA..........AA.......AAA......AAAAAA......AAAA...
+1476 ...AAAAAA...............AAA.....AA.....AA..AA.....AA.....AAA...............AAAAAA......A..........A...A..........A......AAAAAA...............AAA.....AA.....AA..AA.....AA.....AAA...............AAAAAA...
+1477 ....AAAAAAA..........AAAAA......AA.....AA..AA.....AA......AAAAA..........AAAAAAA.......A.......AAAA...AAAA.......A.......AAAAAAA..........AAAAA......AA.....AA..AA.....AA......AAAAA..........AAAAAAA....
+1478 ......AAAAAAAAAAAAAAAAAAA..................................AAAAAAAAAAAAAAAAAAA............AAAAAAAA.....AAAAAAAA............AAAAAAAAAAAAAAAAAAA..................................AAAAAAAAAAAAAAAAAAA......
+1479 ........AAAAAAAAAAAAAAA....AA........AA......AA........AA....AAAAAAAAAAAAAAA................AAAAA.......AAAAA................AAAAAAAAAAAAAAA....AA........AA......AA........AA....AAAAAAAAAAAAAAA........
+1480 ..........AAAAAAAAA.......AAA........AA......AA........AAA.......AAAAAAAAA....................AAAA.....AAAA....................AAAAAAAAA.......AAA........AA......AA........AAA.......AAAAAAAAA..........
+1481 .........................AAAAA....AA....AAAA....AA....AAAAA....................................AAAAA.AAAAA....................................AAAAA....AA....AAAA....AA....AAAAA.........................
+1482 ........................AAAAAA....AA....AAAA....AA....AAAAAA....................................AAA...AAA....................................AAAAAA....AA....AAAA....AA....AAAAAA........................
+1483 ....................A..AAAA.AA........................AA.AAAA..A.............................AA.AA.....AA.AA.............................A..AAAA.AA........................AA.AAAA..A....................
+1484 ....................AA.AAAA..............................AAAA.AA............................AAAAAA.....AAAAAA............................AA.AAAA..............................AAAA.AA....................
+1485 ...................AAAAAAAAA.............AA.............AAAAAAAAA..........................AAA.AAAA...AAAA.AAA..........................AAAAAAAAA.............AA.............AAAAAAAAA...................
+1486 ..................AAAAAAAAAA............AAAA............AAAAAAAAAA........................AA....AAAA.AAAA....AA........................AAAAAAAAAA............AAAA............AAAAAAAAAA..................
+1487 .............AA...AAAAAAAAAAA...A......AAAAAA......A...AAAAAAAAAAA...AA..........................AAA.AAA..........................AA...AAAAAAAAAAA...A......AAAAAA......A...AAAAAAAAAAA...AA.............
+1488 ............AAA...AAAAAAAA.AA..AA.....AAAAAAAA.....AA..AA.AAAAAAAA...AAA.....................AA..AAA.AAA..AA.....................AAA...AAAAAAAA.AA..AA.....AAAAAAAA.....AA..AA.AAAAAAAA...AAA............
+1489 ...........AAAAA..AAAAAAAA....AAAA....AAAAAAAA....AAAA....AAAAAAAA..AAAAA.....................AAAAAA.AAAAAA.....................AAAAA..AAAAAAAA....AAAA....AAAAAAAA....AAAA....AAAAAAAA..AAAAA...........
+1490 .AA......AAAAAAA...AAAAAAAA..AAAAA....AAAAAAAA....AAAAA..AAAAAAAA...AAAAAAA......AA............AAAA...AAAA............AA......AAAAAAA...AAAAAAAA..AAAAA....AAAAAAAA....AAAAA..AAAAAAAA...AAAAAAA......AA.
+1491 .AA.....AAAAA.AA....AAAAAAAAAAAAAAA....AAAAAA....AAAAAAAAAAAAAAA....AA.AAAAA.....AA.....A.......AAA...AAA.......A.....AA.....AAAAA.AA....AAAAAAAAAAAAAAA....AAAAAA....AAAAAAAAAAAAAAA....AA.AAAAA.....AA.
+1492 AAAA....AAAAA..AA....AA..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AA....AA..AAAAA....AAAAA..AA.......AAA...AAA.......AA..AAAAA....AAAAA..AA....AA..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AA....AA..AAAAA....AAAA
+1493 AAAAA....AAAAA.......AA...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AA.......AAAAA....AAAAAAAAAA........A.....A........AAAAAAAAAA....AAAAA.......AA...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AA.......AAAAA....AAAAA
+1494 A.AAA....AAAAAA...AA..A.....AAAAAAAAAAAAAAAAAAAAAAAAAAAA.....A..AA...AAAAAA....AAA.AAAAA.........A.....A.........AAAAA.AAA....AAAAAA...AA..A.....AAAAAAAAAAAAAAAAAAAAAAAAAAAA.....A..AA...AAAAAA....AAA.A
+1495 ...AA.....AAAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAAA.........AAAAAAAAAAA.....AA...AA......A...............A......AA...AA.....AAAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAAA.........AAAAAAAAAAA.....AA...
+1496 A..AA......AAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAA......AA..AAAAA..AAA...............AAA..AAAAA..AA......AAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAA......AA..A
+1497 AA..A........AAAAAAAAAAAAAAA.........AAAAAAAAAA.........AAAAAAAAAAAAAAA........A..AAAAAAAAAA.................AAAAAAAAAA..A........AAAAAAAAAAAAAAA.........AAAAAAAAAA.........AAAAAAAAAAAAAAA........A..AA
+1498 AA................AAAAAAAAAA............................AAAAAAAAAA................AAA.AAAAA...................AAAAA.AAA................AAAAAAAAAA............................AAAAAAAAAA................AA
+1499 AAA..............AAAAA.AAAA....AAA................AAA....AAAA.AAAAA..............AAA...AAA.....A.........A.....AAA...AAA..............AAAAA.AAAA....AAA................AAA....AAAA.AAAAA..............AAA
+1500 .AA....AA......AAAAAA.AAAAA....AAAAA............AAAAA....AAAAA.AAAAAA......AA....AA...AAAAA...AA.........AA...AAAAA...AA....AA......AAAAAA.AAAAA....AAAAA............AAAAA....AAAAA.AAAAAA......AA....AA.
+1501 .AA....AAAA...AAA.AAAAAAA.....AAAAAA............AAAAAA.....AAAAAAA.AAA...AAAA....AA...AA..AAAAAA.........AAAAAA..AA...AA....AAAA...AAA.AAAAAAA.....AAAAAA............AAAAAA.....AAAAAAA.AAA...AAAA....AA.
+1502 ..A.....AAAAAAAA...AAAAA......AAAAAA.....AA.....AAAAAA......AAAAA...AAAAAAAA.....A...AA...AAAAA...........AAAAA...AA...A.....AAAAAAAA...AAAAA......AAAAAA............AAAAAA......AAAAA...AAAAAAAA.....A..
+1503 .....AAAAAAAAAA.....AAAA.....AAAAAAA....AAAA....AAAAAAA.....AAAA.....AAAAAAAAAA......A...AAAAA...A.....A...AAAAA...A......AAAAAAAAAA.....AAAA.....AAAAAAA....AAAA....AAAAAAA.....AAAA.....AAAAAAAAAA.....
+1504 .....AAAAAAAAA.......AA.....AAAAAAA.....AAAA.....AAAAAAA.....AA.......AAAAAAAAA......A..AAA.AAA.AA.....AA.AAA.AAA..A......AAAAAAAAA.......AA.....AAAAAAA.....AAAA.....AAAAAAA.....AA.......AAAAAAAAA.....
+1505 .AA..AAAAAAAAA.......AA.....AAAAAA....AAAAAAAA....AAAAAA.....AA.......AAAAAAAAA..AA.....AA...AAAAA.....AAAAA...AA.....AA..AAAAAAAAA.......AA.....AAAAAA....AAAAAAAA....AAAAAA.....AA.......AAAAAAAAA..AA.
+1506 .AAAAAAAAAAAAA.............AAAAAA....AAAAAAAAAA....AAAAAA.............AAAAAAAAAAAAA.....A....AAAAA.....AAAAA....A.....AAAAAAAAAAAAA.............AAAAAA....AAAAAAAAAA....AAAAAA.............AAAAAAAAAAAAA.
+1507 ..AAAAAAAAAAAA............AAAAAA....AAAAAAAAAAAA....AAAAAA............AAAAAAAAAAAA..........AAAAA.......AAAAA..........AAAAAAAAAAAA............AAAAAA....AAAAAAAAAAAA....AAAAAA............AAAAAAAAAAAA..
+1508 ...AAAAAAAAAAA..........AAAAAAA....AAAAAAAAAAAAAA....AAAAAAA..........AAAAAAAAAAA...AA.....AAAAAA.......AAAAAA.....AA...AAAAAAAAAAA..........AAAAAAA....AAAAAAAAAAAAAA....AAAAAAA..........AAAAAAAAAAA...
+1509 A.AAAAAAAAAAAAA..AA....AAAAAA.....AAAAAAAAAAAAAAAA.....AAAAAA....AA..AAAAAAAAAAAAA.AAA.....AAAAAAA.....AAAAAAA.....AAA.AAAAAAAAAAAAA..AA....AAAAAA.....AAAAAAAAAAAAAAAA.....AAAAAA....AA..AAAAAAAAAAAAA.A
+1510 AAAAAAAAAAAAAAA..AAA...AAAA......AAAAA.AAAAAA.AAAAA......AAAA...AAA..AAAAAAAAAAAAAAAAA.....A..A.AAA...AAA.A..A.....AAAAAAAAAAAAAAAAA..AAA...AAAA......AAAAA.AAAAAA.AAAAA......AAAA...AAA..AAAAAAAAAAAAAAA
+1511 AAAAAAAAAAAA.AA..AAAAA.........AAAAAAA.AAAAAA.AAAAAAA.........AAAAA..AA.AAAAAAAAAAAAAA.....A.....AA...AA.....A.....AAAAAAAAAAAAAA.AA..AAAAA.........AAAAAAA.AAAAAA.AAAAAAA.........AAAAA..AA.AAAAAAAAAAAA
+1512 AAAAAAAAAAA.AAA...AAAAAAA....AAAAAAAA..AAAAAA..AAAAAAAA....AAAAAAA...AAA.AAAAAAAAAAAA.............A...A.............AAAAAAAAAAAA.AAA...AAAAAAA....AAAAAAAA..AAAAAA..AAAAAAAA....AAAAAAA...AAA.AAAAAAAAAAA
+1513 AAAAAAAAAA..AAA...AAAAAAAAAAAAAAAAAAA..AAAAAA..AAAAAAAAAAAAAAAAAAA...AAA..AAAAAAAAAA.................................AAAAAAAAAA..AAA...AAAAAAAAAAAAAAAAAAA..AAAAAA..AAAAAAAAAAAAAAAAAAA...AAA..AAAAAAAAAA
+1514 .AAAAAAA...AAA.....AAAAAAAAAAAAAAAAAA.AAAAAAAA.AAAAAAAAAAAAAAAAAA.....AAA...AAAAAAA.......A...................A.......AAAAAAA...AAA.....AAAAAAAAAAAAAAAAAA.AAAAAAAA.AAAAAAAAAAAAAAAAAA.....AAA...AAAAAAA.
+1515 ...AAA.....AA.......AAAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAAA.......AA.....AAA........AAA.................AAA........AAA.....AA.......AAAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAAA.......AA.....AAA...
+1516 ............AA.......AAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAA.......AA.................AAA.................AAA.................AA.......AAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAA.......AA............
+1517 .............AA.......AAAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAAA.......AA..................AAAA.....AA.AA.....AAAA..................AA.......AAAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAAA.......AA.............
+1518 .......AAAA...AA...AA..AAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAA..AA...AA...AAAA.............AAAAA....AAA....AAAAA.............AAAA...AA...AA..AAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAA..AA...AA...AAAA.......
+1519 ......AAAAAA..AA...AAAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAAA...AA..AAAAAA..............AAA...AA.AA...AAA..............AAAAAA..AA...AAAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAAA...AA..AAAAAA......
+1520 .AAA..AAAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAAA..AAA...............A...A...............AAA..AAAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAAA..AAA.
+1521 .AAAA..AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA..AAAA......AAAAA....AA.AA....AAAAA......AAAA..AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA..AAAA.
+1522 .AAAA....AAAAAAAA.......AAAA.AAA....AAAAAAAAAAAA....AAA.AAAA.......AAAAAAAA....AAAA....AAAAAA......AAA......AAAAAA....AAAA....AAAAAAAA.......AAAA.AAA....AAAAAAAAAAAA....AAA.AAAA.......AAAAAAAA....AAAA.
+1523 ..AAAAA..AAAAAAAA......AAAA.AAA.....AAAAAAAAAAAA.....AAA.AAAA......AAAAAAAA..AAAAA....AAAAA.......AA.AA.......AAAAA....AAAAA..AAAAAAAA......AAAA.AAA.....AAAAAAAAAAAA.....AAA.AAAA......AAAAAAAA..AAAAA..
+1524 ......AAAAAAAAA.AA....AAAA..AA.....AAAAAAAAAAAAAA.....AA..AAAA....AA.AAAAAAAAA........AAAAA...................AAAAA........AAAAAAAAA.AA....AAAA..AA.....AAAAAAAAAAAAAA.....AA..AAAA....AA.AAAAAAAAA......
+1525 .........AAAAAA..AAA..AAA..........AAAAAA..AAAAAA..........AAA..AAA..AAAAAA...........AAAA.....................AAAA...........AAAAAA..AAA..AAA..........AAAAAA..AAAAAA..........AAA..AAA..AAAAAA.........
+1526 .......AAAAAAA...AAAA.............AAAAA..AA..AAAAA.............AAAA...AAAAAAA..........AAA....AAA.......AAA....AAA..........AAAAAAA...AAAA.............AAAAA..AA..AAAAA.............AAAA...AAAAAAA.......
+1527 .......AAAAAA.....AAA............AAAA.....AA...AAAA............AAA.....AAAAAA................AAA.........AAA................AAAAAA.....AAA............AAAA...AA.....AAAA............AAA.....AAAAAA.......
+1528 .......AAAAA......AAAA...........AAA.......AA...AAA...........AAAA......AAAAA...............AAAA.........AAAA...............AAAAA......AAAA...........AAA...AA.......AAA...........AAAA......AAAAA.......
+1529 ........AAA......AAA.A......................A.................A.AAA......AAA...............AAAA....A.A....AAAA...............AAA......AAA.A.................A......................A.AAA......AAA........
+1530 ................AAA..AA....................AAA...............AA..AAA......................AAAA....AA.AA....AAAA......................AAA..AA...............AAA....................AA..AAA................
+1531 ................AA....AA...................AAA..............AA....AA................AAA...AAAA...AAA.AAA...AAAA...AAA................AA....AA..............AAA...................AA....AA................
+1532 A.....................AAA..................AAA.............AAA.....................AAA....AAAA..AAA...AAA..AAAA....AAA.....................AAA.............AAA..................AAA.....................A
+1533 AA....................AAAA..................A.............AAAA....................AAA.....AAA...AAA...AAA...AAA.....AAA....................AAAA.............A..................AAAA....................AA
+1534 AAA...................AAAAA..............................AAAAA...................AAA............AAAA.AAAA............AAA...................AAAAA..............................AAAAA...................AAA
+1535 AAA..................AAAAAAAA..........................AAAAAAAA..................AAAA........AA.AAAA.AAAA.AA........AAAA..................AAAAAAAA..........................AAAAAAAA..................AAA
+1536 AA..................AAAAAAAAAA.A.A.A............A.A.A.AAAAAAAAAA..................AAAA......AA...AA...AA...AA......AAAA..................AAAAAAAAAA.A.A.A............A.A.A.AAAAAAAAAA..................AA
+1537 A............AA....AAAAAAAAAAAAAAAA..............AAAAAAAAAAAAAAAA....AA............AAAAA....AA.............AA....AAAAA............AA....AAAAAAAAAAAAAAAA..............AAAAAAAAAAAAAAAA....AA............A
+1538 .............AAA..AAAAAAAAAA.AAA..AA....AA......AA..AAA.AAAAAAAAAA..AAA..............AAAA...AAA...........AAA...AAAA..............AAA..AAAAAAAAAA.AAA..AA......AA....AA..AAA.AAAAAAAAAA..AAA.............
+1539 .AAAA........AAAAAAAAAAAAAAA..A....AA....AA....AA....A..AAAAAAAAAAAAAAA........AAAA....AAA...AAA.........AAA...AAA....AAAA........AAAAAAAAAAAAAAA..A....AA....AA....AA....A..AAAAAAAAAAAAAAA........AAAA.
+1540 AAAAAAA......AAAAAAAAAAAAAAAA.AA..AA.....AAA....AA..AA.AAAAAAAAAAAAAAAA......AAAAAAAA...AAA...AA.........AA...AAA...AAAAAAAA......AAAAAAAAAAAAAAAA.AA..AA....AAA.....AA..AA.AAAAAAAAAAAAAAAA......AAAAAAA
+1541 A..AAAAA......AAAAAAAAAAAA.AA..AAAA.......AAA....AAAA..AA.AAAAAAAAAAAA......AAAAA..AAAA..AA........AAA........AA..AAAA..AAAAA......AAAAAAAAAAAA.AA..AAAA....AAA.......AAAA..AA.AAAAAAAAAAAA......AAAAA..A
+1542 .....AAA..........AAAAAAAA.AA..A.A.A......AAA...A.A.A..AA.AAAAAAAA..........AAA......AAAAAA.......AAAAA.......AAAAAA......AAA..........AAAAAAAA.AA..A.A.A...AAA......A.A.A..AA.AAAAAAAA..........AAA.....
+1543 ..AA..AA.....AAAAAAAAAAAA..AAA............AAA.........AAA..AAAAAAAAAAAA.....AA..AA.....AAA.......AAA.AAA.......AAA.....AA..AA.....AAAAAAAAAAAA..AAA.........AAA............AAA..AAAAAAAAAAAA.....AA..AA..
+1544 ..AA..AA.....AAAAAAAAAAAA...AAA............A.........AAA...AAAAAAAAAAAA.....AA..AA..............AAA...AAA..............AA..AA.....AAAAAAAAAAAA...AAA.........A............AAA...AAAAAAAAAAAA.....AA..AA..
+1545 A....AAA......AAAAAAAAAA....AAAA.........A..........AAAA....AAAAAAAAAA......AAA....A..AAA......AAA.....AAA......AAA..A....AAA......AAAAAAAAAA....AAAA..........A.........AAAA....AAAAAAAAAA......AAA....A
+1546 AA..AAAA.......AAAA.AAAA....AAAAA........AA........AAAAA....AAAA.AAAA.......AAAA..AA...AAA.....AAA.....AAA.....AAA...AA..AAAA.......AAAA.AAAA....AAAAA........AA........AAAAA....AAAA.AAAA.......AAAA..AA
+1547 AAAAAAA.............AAA.....AAAAA.........A........AAAAA.....AAA.............AAAAAAA....AAA.....AAA...AAA.....AAA....AAAAAAA.............AAA.....AAAAA........A.........AAAAA.....AAA.............AAAAAAA
+1548 .AAAAA..........AAAAAAA....AAAAAA.........AA.......AAAAAA....AAAAAAA..........AAAAA......AAA.....AAAAAAA.....AAA......AAAAA..........AAAAAAA....AAAAAA.......AA.........AAAAAA....AAAAAAA..........AAAAA.
+1549 ................AAAAAA.....AAAAAAA.........AA.....AAAAAAA.....AAAAAA......................AAAA....AAAAA....AAAA......................AAAAAA.....AAAAAAA.....AA.........AAAAAAA.....AAAAAA................
+1550 .................AAAA.....AAAAAAAA..........AAA...AAAAAAAA.....AAAA.........................AAAAAAAAAAAAAAAAA.........................AAAA.....AAAAAAAA...AAA..........AAAAAAAA.....AAAA.................
+1551 .........................AAAAAAAAAA..............AAAAAAAAAA...................................AAAAAA.AAAAAA...................................AAAAAAAAAA..............AAAAAAAAAA.........................
+1552 .........................AAA.AAAAAAA............AAAAAAA.AAA................................AAAAAAA.....AAAAAAA................................AAA.AAAAAAA............AAAAAAA.AAA.........................
+1553 .............................AAAAAAA............AAAAAAA..................................AAAAAAA.........AAAAAAA..................................AAAAAAA............AAAAAAA.............................
+1554 ............................AAAAAAAA.....A.A....AAAAAAAA................................AAAAAAA...........AAAAAAA................................AAAAAAAA....A.A.....AAAAAAAA............................
+1555 ............................AAAA.AAAA.A.AAAA.A.AAAA.AAAA...............................AAAAAAA.............AAAAAAA...............................AAAA.AAAA.A.AAAA.A.AAAA.AAAA............................
+1556 ...........................AAAAA.AAAA..AAAAAA..AAAA.AAAAA.............................AAAAAAAA.............AAAAAAAA.............................AAAAA.AAAA..AAAAAA..AAAA.AAAAA...........................
+1557 .........................AAAAAA.AAAAA.AAAAAAAA.AAAAA.AAAAAA..........................AAAAAAAA...............AAAAAAAA..........................AAAAAA.AAAAA.AAAAAAAA.AAAAA.AAAAAA.........................
+1558 ........................AAAAAA..AAAAA..AA..AA..AAAAA..AAAAAA........................AAAAAAAAA...............AAAAAAAAA........................AAAAAA..AAAAA..AA..AA..AAAAA..AAAAAA........................
+1559 ................................AAAAA.AAA..AAA.AAAAA................................AAAAAAAA.................AAAAAAAA................................AAAAA.AAA..AAA.AAAAA................................
+1560 A..............................AAAAAA..AAAAAA..AAAAAA..............................AAAAAAAAA.................AAAAAAAAA..............................AAAAAA..AAAAAA..AAAAAA..............................A
+1561 A......................A.....AAAAAAAA...AAAA...AAAAAAAA.....A......................AAAAAAAA...................AAAAAAAA......................A.....AAAAAAAA...AAAA...AAAAAAAA.....A......................A
+1562 A......................AAA.AAAAAAAAAA.......A..AAAAAAAAAA.AAA......................AAAAAAA.....................AAAAAAA......................AAA.AAAAAAAAAA..A.......AAAAAAAAAA.AAA......................A
+1563 A.......................AAAAAAAAAAAA....AAA..A..AAAAAAAAAAAA.......................AAAAA.........................AAAAA.......................AAAAAAAAAAAA..A..AAA....AAAAAAAAAAAA.......................A
+1564 A........................AAAAAAAAAAA...AAAAAA...AAAAAAAAAAA........................AAAAA.........................AAAAA........................AAAAAAAAAAA...AAAAAA...AAAAAAAAAAA........................A
+1565 A...........................AAAAAAAA...AAAAAA...AAAAAAAA...........................AAAA...........................AAAA...........................AAAAAAAA...AAAAAA...AAAAAAAA...........................A
+1566 ...........................AAAAAAAA....AAAAAAA...AAAAAAAA...........................AAA...........................AAA...........................AAAAAAAA...AAAAAAA....AAAAAAAA...........................
+1567 .........................AAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAA.........................AA.............................AA.........................AAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAA.........................
+1568 ......................AAAAAAAAAAAA..AAAAAA.AAAA...AAAAAAAAAAAA.......................A.............................A.......................AAAAAAAAAAAA...AAAA.AAAAAA..AAAAAAAAAAAA......................
+1569 .......................AAAAAAAAAAA..AAAAA..AAAA...AAAAAAAAAAA...............................................................................AAAAAAAAAAA...AAAA..AAAAA..AAAAAAAAAAA.......................
+1570 .......................AAAAAAAAAA...AAAA..AAAAA....AAAAAAAAAA..................AAAAAAAA...........................AAAAAAAA..................AAAAAAAAAA....AAAAA..AAAA...AAAAAAAAAA.......................
+1571 AA.......................AAAAAA....AAAA..AAAAAA......AAAAAA..................AAAAAAAAAAAAA.....................AAAAAAAAAAAAA..................AAAAAA......AAAAAA..AAAA....AAAAAA.......................AA
+1572 AAA................................AAAA..AAAAA............................AAAAAAAAAAAAAAAAAA.................AAAAAAAAAAAAAAAAAA............................AAAAA..AAAA................................AAA
+1573 AAAAAAA...........................AAAAA.AAAAA.....A......................AAAAAAAAAAAAAAAAAAAA...............AAAAAAAAAAAAAAAAAAAA......................A.....AAAAA.AAAAA...........................AAAAAAA
+1574 AAAAAAAAA.........................AAAAAAAAAAAAA..AA...............AAAAAAAAAAAAAAAAAAAAAA..AAAA.............AAAA..AAAAAAAAAAAAAAAAAAAAAA...............AA..AAAAAAAAAAAAA.........................AAAAAAAAA
+1575 AAAAAAAAAAAAA...................AAAAAAAAAAAAAAAAAAA.............AAAAAAAAAAAAAAAAAAAAAA......AAA...........AAA......AAAAAAAAAAAAAAAAAAAAAA.............AAAAAAAAAAAAAAAAAAA...................AAAAAAAAAAAAA
+1576 AAAAAAAAAAAAAAAAA.............AAAAAAAA.AA.AAAAAAAA............AAAAAAAAAAAAAAAAAAAA.AAAA.....AAAAA.......AAAAA.....AAAA.AAAAAAAAAAAAAAAAAAAA............AAAAAAAA.AA.AAAAAAAA.............AAAAAAAAAAAAAAAAA
+1577 AAAAAAAAAAAAAAAAAA.............AAAAAA..A...AAAAAA.............AAAAAAAAAAAAAAAAAAA....AAA.....AAAAA.....AAAAA.....AAA....AAAAAAAAAAAAAAAAAAA.............AAAAAA...A..AAAAAA.............AAAAAAAAAAAAAAAAAA
+1578 AAAAAAAAAAAAAAAAAAA.............AAA..........AAA.............AAAAAAAAAAAAAAAAAAA......A.......AAAAA...AAAAA.......A......AAAAAAAAAAAAAAAAAAA.............AAA..........AAA.............AAAAAAAAAAAAAAAAAAA
+1579 ..AAAAA..AAAAAAAAAA..........................................AAAAAAAAAA..AAAAA...............AAAA.......AAAA...............AAAAA..AAAAAAAAAA..........................................AAAAAAAAAA..AAAAA..
+1580 ....AAAA.......AAAAA................A......A................AAAAA.......AAAA................AAAA.........AAAA................AAAA.......AAAAA........................................AAAAA.......AAAA....
+1581 .....AAAAA.......AAA................A......A................AAA.......AAAAA..........A.....AAAA...........AAAA.....A..........AAAAA.......AAA........................................AAA.......AAAAA.....
+1582 ......AAAAA........AA...............AA....AA...............AA........AAAAA..........AA....AAAAA...........AAAAA....AA..........AAAAA........AA......................................AA........AAAAA......
+1583 .......AAAAA.......................AAA....AAA.......................AAAAA..........AAA...AAAAA.............AAAAA...AAA..........AAAAA........................................................AAAAA.......
+1584 .......AAAAAAA.....................AAA....AAA.....................AAAAAAA..........AAA...AAAAA.............AAAAA...AAA..........AAAAAAA....................................................AAAAAAA.......
+1585 .......AAAAAAAAA..................AAA......AAA..................AAAAAAAAA.........AAA...AAAAA...............AAAAA...AAA.........AAAAAAAAA................................................AAAAAAAAA.......
+1586 ........AAAAAAAAAA...............AAAA......AAAA...............AAAAAAAAAA..........AAA...AAAAA...............AAAAA...AAA..........AAAAAAAAAA............................................AAAAAAAAAA........
+1587 ........AAA.AAAAAAAAAAA.........AAAA........AAAA.........AAAAAAAAAAA.AAA..........AAAA.AAAAAA...............AAAAAA.AAAA..........AAA.AAAAAAAAAAA..................................AAAAAAAAAAA.AAA........
+1588 ........AAA..AAAAAAAAAAAA....AAAAAA..........AAAAAA....AAAAAAAAAAAA..AAA..........AAAA.AAAAAA...............AAAAAA.AAAA..........AAA..AAAAAAAAAAAA..............................AAAAAAAAAAAA..AAA........
+1589 ........AAA....AAAAAAAAAAAA.AAAAAA............AAAAAA.AAAAAAAAAAAA....AAA...........AAAAAAAAAA...............AAAAAAAAAA...........AAA....AAAAAAAAAAAA..........................AAAAAAAAAAAA....AAA........
+1590 .A.......AAA....AAAAAAAAAAAAAAAA................AAAAAAAAAAAAAAAA....AAA.......A....AAAAAAAAAA...............AAAAAAAAAA....A.......AAA....AAAAAAAAAAAAAAAA................AAAAAAAAAAAAAAAA....AAA.......A.
+1591 AAA......AAA.....AAAAAA...AAAA....................AAAA...AAAAAA.....AAA......AAA....AAAAAAAAA...............AAAAAAAAA....AAA......AAA.....AAAAAA...AAAA....................AAAA...AAAAAA.....AAA......AAA
+1592 AAA......AAA......AAAA......AAAA................AAAA......AAAA......AAA......AAA.....AAAAAAAA...............AAAAAAAA.....AAA......AAA......AAAA......AAAA................AAAA......AAAA......AAA......AAA
+1593 AAA......AAA.......AAA.......AAAA..............AAAA.......AAA.......AAA......AAAA......AAAAAAA.............AAAAAAA......AAAA......AAA.......AAA.......AAAA..............AAAA.......AAA.......AAA......AAA
+1594 AA.......AAA.......AAAA.......AAAA............AAAA.......AAAA.......AAA.......AAA......AAAAAAA.............AAAAAAA......AAA.......AAA.......AAAA.......AAAA............AAAA.......AAAA.......AAA.......AA
+1595 A........AAA......AAAAA........AAA............AAA........AAAAA......AAA........AAA.....AAAAAAA.............AAAAAAA.....AAA........AAA......AAAAA........AAA............AAA........AAAAA......AAA........A
+1596 ........AAA.......AAAAA.........AAA..........AAA.........AAAAA.......AAA........AA.....AAAAAAA.............AAAAAAA.....AA........AAA.......AAAAA.........AAA..........AAA.........AAAAA.......AAA........
+1597 .......AAAA......AAA.AAA.........AA..........AA.........AAA.AAA......AAAA..............AAAAAAA.............AAAAAAA..............AAAA......AAA.AAA.........AA..........AA.........AAA.AAA......AAAA.......
+1598 .....AAAAA.......AA..AAA..........A..........A..........AAA..AA.......AAAAA.............AAAAAA...A.....A...AAAAAA.............AAAAA.......AA..AAA..........A..........A..........AAA..AA.......AAAAA.....
+1599 ...AAAAAAA......AAA...AA................................AA...AAA......AAAAAAA.......A...AAAAAAA.AA.....AA.AAAAAAA...A.......AAAAAAA......AAA...AA................................AA...AAA......AAAAAAA...
+1600 ....AAA.........AAA...AAA..............................AAA...AAA.........AAA........AA...AAAAAA.AA.....AA.AAAAAA...AA........AAA.........AAA...AAA..............................AAA...AAA.........AAA....
+1601 ................AA....AAA..............................AAA....AA....................AA...AAAAAAAAA.....AAAAAAAAA...AA....................AA....AAA..............................AAA....AA................
+1602 ................AA.....AA..............................AA.....AA....................AAA.AAAAAAAAA.......AAAAAAAAA.AAA....................AA.....AA..............................AA.....AA................
+1603 ................AA.....AA..............................AA.....AA.....................AAAAAAAAAAA.........AAAAAAAAAAA.....................AA.....AA..............................AA.....AA................
+1604 A...............AAA.....A..............................A.....AAA...............AA.....AAAAAAAAAAA.......AAAAAAAAAAA.....AA...............AAA.....A..............................A.....AAA...............A
+1605 A..............AAAA.....A..............................A.....AAAA..............AAA......AAA.AAAAA.......AAAAA.AAA......AAA..............AAAA.....A..............................A.....AAAA..............A
+1606 A.............AAAAA..........................................AAAAA.............AAA...........AAAAA.....AAAAA...........AAA.............AAAAA..........................................AAAAA.............A
+1607 ..............AAAAAA........................................AAAAAA..............AAA...........AAAAA...AAAAA...........AAA..............AAAAAA........................................AAAAAA..............
+1608 ..............AAAAAA........................................AAAAAA...............AAA............AAAA.AAAA............AAA...............AAAAAA........................................AAAAAA..............
+1609 .....A........AAAAAA........................................AAAAAA........A.......AAA............AAA.AAA............AAA.......A........AAAAAA........................................AAAAAA........A.....
+1610 .....AA.......AAAAAA........................................AAAAAA.......AA.........AAA.........AAAA.AAAA.........AAA.........AA.......AAAAAA........................................AAAAAA.......AA.....
+1611 ......AA.......AAAAA.....................AA.................AAAAA.......AA...................A.AAAA...AAAA.A...................AA.......AAAAA.................AA.....................AAAAA.......AA......
+1612 .......AA......AAAAA....................AAA.................AAAAA......AA....................AAAAA.....AAAAA....................AA......AAAAA.................AAA....................AAAAA......AA.......
+1613 ......AAAA.....AAAAA...................AAAA.................AAAAA.....AAAA....................AAA.......AAA....................AAAA.....AAAAA.................AAAA...................AAAAA.....AAAA......
+1614 ......AAAA.....AAAA...................AAAAA..................AAAA.....AAAA........................A...A........................AAAA.....AAAA..................AAAAA...................AAAA.....AAAA......
+1615 ......AAAA.....AAAA...................AAAA...................AAAA.....AAAA........A..............AA...AA..............A........AAAA.....AAAA...................AAAA...................AAAA.....AAAA......
+1616 .......AA.....AAAAA..................AAAAA...................AAAAA.....AA.......AAA.............AAA...AAA.............AAA.......AA.....AAAAA...................AAAAA..................AAAAA.....AA.......
+1617 ..............AAAA...................AAAAA....................AAAA..............AAA.....AA.....AAA.....AAA.....AA.....AAA..............AAAA....................AAAAA...................AAAA..............
+1618 A............AAAAA...................AAAA.....................AAAAA............AAA.....AAA....AAA.......AAA....AAA.....AAA............AAAAA.....................AAAA...................AAAAA............A
+1619 AA...........AAAAA..................AAAAA.....AA..............AAAAA...........AAAA....AAA....AAA.........AAA....AAA....AAAA...........AAAAA..............AA.....AAAAA..................AAAAA...........AA
+1620 AA...........AAAA...................AAAA.....AAAA..............AAAA...........AAA....AAA....AAA...........AAA....AAA....AAA...........AAAA..............AAAA.....AAAA...................AAAA...........AA
+1621 AAA.........AAAAA...................AAAA.....AAAA..............AAAAA.........AAAA....AAAA...AA......A......AA...AAAA....AAAA.........AAAAA..............AAAA.....AAAA...................AAAAA.........AAA
+1622 AAA.........AAAA...................AAAAA.....AAAA...............AAAA.........AAAA....AAAA..AA......AAA......AA..AAAA....AAAA.........AAAA...............AAAA.....AAAAA...................AAAA.........AAA
+1623 AAA.........AAA....................AAAAA......AA.................AAA.........AAAA.....AA...AA.....AA.AA.....AA...AA.....AAAA.........AAA.................AA......AAAAA....................AAA.........AAA
+1624 AAA.........AA.....................AAAAA.......AA.................AA.........AAAA..........A.....AAA.AAA.....A..........AAAA.........AA.................AA.......AAAAA.....................AA.........AAA
+1625 AAA................................AAAAAA.......AA...........................AAA.................AA...AA.................AAA...........................AA.......AAAAAA................................AAA
+1626 AAA................................AAAAAA........A...........................AAA.................AA...AA.................AAA...........................A........AAAAAA................................AAA
+1627 AAA................................AAAAAA....................................AAA.................AA...AA.................AAA....................................AAAAAA................................AAA
+1628 AAA................................AAAAAA....................................AAA..................AA.AA..................AAA....................................AAAAAA................................AAA
+1629 AAA...A.............................AAAAA................................A...AAA..................AAAAA..................AAA...A................................AAAAA.............................A...AAA
+1630 AAAA.AA.......................A.....AAAA.................................AA.AAAA...................AAA...................AAAA.AA.................................AAAA.....A.......................AA.AAAA
+1631 AAAAAAA.......................A.....AAA..................................AAAAAAA.........................................AAAAAAA..................................AAA.....A.......................AAAAAAA
+1632 .AAAAAA.......................AA.....AA..................................AAAAAA...........................................AAAAAA..................................AA.....AA.......................AAAAAA.
+1633 ..AAAA........................AA.....AA...................................AAAA..................AA.....AA..................AAAA...................................AA.....AA........................AAAA..
+1634 ..............................AAA....AA........................................................AAA.....AAA........................................................AA....AAA..............................
+1635 ..............................AAA...AAA.........AAA............................................AAA.....AAA............................................AAA.........AAA...AAA..............................
+1636 ...............................AA...AAA......AAAAAAA..........................................AAA.......AAA..........................................AAAAAAA......AAA...AA...............................
+1637 ....................A..........AAA..AA.......AAAAA............................................AAA.......AAA............................................AAAAA.......AA..AAA..........A....................
+1638 ....................AA.........AAA.AAA......AAAA.............................................AAA.........AAA.............................................AAAA......AAA.AAA.........AA....................
+1639 ....................AAA.........AAAAA.......AAA........AA....................................AAA.........AAA....................................AA........AAA.......AAAAA.........AAA....................
+1640 .....................AAA........AAAAA......AAA........AAA....................................AA...........AA....................................AAA........AAA......AAAAA........AAA.....................
+1641 .....................AAAA.......AAAA.......AAA.......AAA.....................................AA...........AA.....................................AAA.......AAA.......AAAA.......AAAA.....................
+1642 ......................AAAA.......AAA.......AAA......AAAA.....................................AA...........AA.....................................AAAA......AAA.......AAA.......AAAA......................
+1643 .......................AAAA......AAAA......AAA......AAA......................................AAA.........AAA......................................AAA......AAA......AAAA......AAAA.......................
+1644 .........................AAAA...AAAAAA.....AAA......AAA......................................AAA.........AAA......................................AAA......AAA.....AAAAAA...AAAA.........................
+1645 .......................AAAAAAAAAAAAAAAA....AAA.......A........................................AAA.......AAA........................................A.......AAA....AAAAAAAAAAAAAAAA.......................
+1646 .....................AAAAAA.AAAAAAAAAAAA....AAA...............................................AAA.......AAA...............................................AAA....AAAAAAAAAAAA.AAAAAA.....................
+1647 ....................AAAAAA....AAAAAAAAAAAA..AAA................................................AAA.....AAA................................................AAA..AAAAAAAAAAAA....AAAAAA....................
+1648 ...................AAAA.........AAAAAAAAAAA.AAA................................................AAA.....AAA................................................AAA.AAAAAAAAAAA.........AAAA...................
+1649 ..AAAA............AAAA...............AAAAAAAAAA...........................AAAA..................AA.....AA..................AAAA...........................AAAAAAAAAA...............AAAA............AAAA..
+1650 .AAAAAA...........AAA..................AAAAAAAAA.........................AAAAAA...........................................AAAAAA.........................AAAAAAAAA..................AAA...........AAAAAA.
+1651 AAAAAAA..........AAA.....................AAAAAAA.........................AAAAAAA.........................................AAAAAAA.........................AAAAAAA.....................AAA..........AAAAAAA
+1652 AAAA.AA..........AAA.......................AAAAA.........................AA.AAAA...................AAA...................AAAA.AA.........................AAAAA.......................AAA..........AA.AAAA
+1653 AAA...A..........AA...............AA........AAAAA........................A...AAA..................AAAAA..................AAA...A........................AAAAA........AA...............AA..........A...AAA
+1654 AAA...............A................AAA.......AAAAA...........................AAA..................AA.AA..................AAA...........................AAAAA.......AAA................A...............AAA
+1655 AAA...............A................AAAAA.......AAAA..........................AAA.................AA...AA.................AAA..........................AAAA.......AAAAA................A...............AAA
+1656 AAA.................................AAAAAAAAAA..AAAAA........................AAA.................AA...AA.................AAA........................AAAAA..AAAAAAAAAA.................................AAA
+1657 AAA.................................AAAAAAAAAAAAAAAAAAA......................AAA.................AA...AA.................AAA......................AAAAAAAAAAAAAAAAAAA.................................AAA
+1658 AAA.........AA.......................AAAAAAAAAAAAAAAAAAA..........AA.........AAAA..........A.....AAA.AAA.....A..........AAAA.........AA..........AAAAAAAAAAAAAAAAAAA.......................AA.........AAA
+1659 AAA.........AAA......................AAAAAAAAAAAAAAAAAAAA........AAA.........AAAA.....AA...AA.....AA.AA.....AA...AA.....AAAA.........AAA........AAAAAAAAAAAAAAAAAAAA......................AAA.........AAA
+1660 AAA.........AAAA.......................AAAAAAAAAAAAAAAAAAA......AAAA.........AAAA....AAAA..AA......AAA......AA..AAAA....AAAA.........AAAA......AAAAAAAAAAAAAAAAAAA.......................AAAA.........AAA
+1661 AAA.........AAAAA........................AAAAA....AAAAAAAA.....AAAAA.........AAAA....AAAA...AA......A......AA...AAAA....AAAA.........AAAAA.....AAAAAAAA....AAAAA........................AAAAA.........AAA
+1662 AA...........AAAA...............................AAA....AAA.....AAAA...........AAA....AAA....AAA...........AAA....AAA....AAA...........AAAA.....AAA....AAA...............................AAAA...........AA
+1663 AA...........AAAAA.............................AAA............AAAAA...........AAAA....AAA....AAA.........AAA....AAA....AAAA...........AAAAA............AAA.............................AAAAA...........AA
+1664 A............AAAAA............................AAA.............AAAAA............AAA.....AAA....AAA.......AAA....AAA.....AAA............AAAAA.............AAA............................AAAAA............A
+1665 ..............AAAA...........................AAA..............AAAA..............AAA.....AA.....AAA.....AAA.....AA.....AAA..............AAAA..............AAA...........................AAAA..............
+1666 .......AA.....AAAAA..........................AAA.............AAAAA.....AA.......AAA.............AAA...AAA.............AAA.......AA.....AAAAA.............AAA..........................AAAAA.....AA.......
+1667 ......AAAA.....AAAA...............AAA........AA..............AAAA.....AAAA........A..............AA...AA..............A........AAAA.....AAAA..............AA........AAA...............AAAA.....AAAA......
+1668 ......AAAA.....AAAA.............AAA..........................AAAA.....AAAA........................A...A........................AAAA.....AAAA..........................AAA.............AAAA.....AAAA......
+1669 ......AAAA.....AAAAA...........AAA..........................AAAAA.....AAAA....................AAA.......AAA....................AAAA.....AAAAA..........................AAA...........AAAAA.....AAAA......
+1670 .......AA......AAAAA..........AAA...........................AAAAA......AA....................AAAAA.....AAAAA....................AA......AAAAA...........................AAA..........AAAAA......AA.......
+1671 ......AA.......AAAAA.........AAA............................AAAAA.......AA...................A.AAAA...AAAA.A...................AA.......AAAAA............................AAA.........AAAAA.......AA......
+1672 .....AA.......AAAAAA.........AAA............................AAAAAA.......AA.........AAA.........AAAA.AAAA.........AAA.........AA.......AAAAAA............................AAA.........AAAAAA.......AA.....
+1673 .....A........AAAAAA.........AA.............................AAAAAA........A.......AAA............AAA.AAA............AAA.......A........AAAAAA.............................AA.........AAAAAA........A.....
+1674 ..............AAAAAA....................AA..................AAAAAA...............AAA............AAAA.AAAA............AAA...............AAAAAA..................AA....................AAAAAA..............
+1675 ..............AAAAAA...................AAA..................AAAAAA..............AAA...........AAAAA...AAAAA...........AAA..............AAAAAA..................AAA...................AAAAAA..............
+1676 A.............AAAAA...................AAA....................AAAAA.............AAA...........AAAAA.....AAAAA...........AAA.............AAAAA....................AAA...................AAAAA.............A
+1677 A..............AAAA.....A............AAAA..............A.....AAAA..............AAA......AAA.AAAAA.......AAAAA.AAA......AAA..............AAAA.....A..............AAAA............A.....AAAA..............A
+1678 A...............AAA.....A............AAA...............A.....AAA...............AA.....AAAAAAAAAAA.......AAAAAAAAAAA.....AA...............AAA.....A...............AAA............A.....AAA...............A
+1679 ................AA.....AA............AAA...............AA.....AA.....................AAAAAAAAAAA.........AAAAAAAAAAA.....................AA.....AA...............AAA............AA.....AA................
+1680 ................AA.....AA.............A................AA.....AA....................AAA.AAAAAAAAA.......AAAAAAAAA.AAA....................AA.....AA................A.............AA.....AA................
+1681 ................AA....AAA..............................AAA....AA....................AA...AAAAAAAAA.....AAAAAAAAA...AA....................AA....AAA..............................AAA....AA................
+1682 ....AAA.........AAA...AAA..............................AAA...AAA.........AAA........AA...AAAAAA.AA.....AA.AAAAAA...AA........AAA.........AAA...AAA..............................AAA...AAA.........AAA....
+1683 ...AAAAAAA......AAA...AA................................AA...AAA......AAAAAAA.......A...AAAAAAA.AA.....AA.AAAAAAA...A.......AAAAAAA......AAA...AA................................AA...AAA......AAAAAAA...
+1684 .....AAAAA.......AA..AAA..........A..........A..........AAA..AA.......AAAAA.............AAAAAA...A.....A...AAAAAA.............AAAAA.......AA..AAA..........A..........A..........AAA..AA.......AAAAA.....
+1685 .......AAAA......AAA.AAA.........AA..........AA.........AAA.AAA......AAAA..............AAAAAAA.............AAAAAAA..............AAAA......AAA.AAA.........AA..........AA.........AAA.AAA......AAAA.......
+1686 ........AAA.......AAAAA.........AAA..........AAA.........AAAAA.......AAA........AA.....AAAAAAA.............AAAAAAA.....AA........AAA.......AAAAA.........AAA..........AAA.........AAAAA.......AAA........
+1687 A........AAA......AAAAA........AAA............AAA........AAAAA......AAA........AAA.....AAAAAAA.............AAAAAAA.....AAA........AAA......AAAAA........AAA............AAA........AAAAA......AAA........A
+1688 AA.......AAA.......AAAA.......AAAA............AAAA.......AAAA.......AAA.......AAA......AAAAAAA.............AAAAAAA......AAA.......AAA.......AAAA.......AAAA............AAAA.......AAAA.......AAA.......AA
+1689 AAA......AAA.......AAA.......AAAA..............AAAA.......AAA.......AAA......AAAA......AAAAAAA.............AAAAAAA......AAAA......AAA.......AAA.......AAAA..............AAAA.......AAA.......AAA......AAA
+1690 AAA......AAA......AAAA......AAAA................AAAA......AAAA......AAA......AAA.....AAAAAAAA...............AAAAAAAA.....AAA......AAA......AAAA......AAAA................AAAA......AAAA......AAA......AAA
+1691 AAA......AAA.....AAAAAA...AAAA....................AAAA...AAAAAA.....AAA......AAA....AAAAAAAAA...............AAAAAAAAA....AAA......AAA.....AAAAAA...AAAA....................AAAA...AAAAAA.....AAA......AAA
+1692 .A.......AAA....AAAAAAAAAAAAAAAA................AAAAAAAAAAAAAAAA....AAA.......A....AAAAAAAAAA...............AAAAAAAAAA....A.......AAA....AAAAAAAAAAAAAAAA................AAAAAAAAAAAAAAAA....AAA.......A.
+1693 ........AAA....AAAAAAAAAAAA.AAAAAA............AAAAAA.AAAAAAAAAAAA....AAA...........AAAAAAAAAA...............AAAAAAAAAA...........AAA....AAAAAAAAAAAA.AAAAAA............AAAAAA.AAAAAAAAAAAA....AAA........
+1694 ........AAA..AAAAAAAAAAAA....AAAAAA..........AAAAAA....AAAAAAAAAAAA..AAA..........AAAA.AAAAAA...............AAAAAA.AAAA..........AAA..AAAAAAAAAAAA....AAAAAA..........AAAAAA....AAAAAAAAAAAA..AAA........
+1695 ........AAA.AAAAAAAAAAA.........AAAA........AAAA.........AAAAAAAAAAA.AAA..........AAAA.AAAAAA...............AAAAAA.AAAA..........AAA.AAAAAAAAAAA.........AAAA........AAAA.........AAAAAAAAAAA.AAA........
+1696 ........AAAAAAAAAA...............AAAA......AAAA...............AAAAAAAAAA..........AAA...AAAAA...............AAAAA...AAA..........AAAAAAAAAA...............AAAA......AAAA...............AAAAAAAAAA........
+1697 .......AAAAAAAAA..................AAA......AAA..................AAAAAAAAA.........AAA...AAAAA...............AAAAA...AAA.........AAAAAAAAA..................AAA......AAA..................AAAAAAAAA.......
+1698 .......AAAAAAA.....................AAA....AAA.....................AAAAAAA..........AAA...AAAAA.............AAAAA...AAA..........AAAAAAA.....................AAA....AAA.....................AAAAAAA.......
+1699 .......AAAAA.......................AAA....AAA.......................AAAAA..........AAA...AAAAA.............AAAAA...AAA..........AAAAA.......................AAA....AAA.......................AAAAA.......
+1700 ......AAAAA........AA...............AA....AA...............AA........AAAAA..........AA....AAAAA...........AAAAA....AA..........AAAAA........AA...............AA....AA...............AA........AAAAA......
+1701 .....AAAAA.......AAA................A......A................AAA.......AAAAA..........A.....AAAA...........AAAA.....A..........AAAAA.......AAA................A......A................AAA.......AAAAA.....
+1702 ....AAAA.......AAAAA........................................AAAAA.......AAAA................AAAA.........AAAA................AAAA.......AAAAA........................................AAAAA.......AAAA....
+1703 ..AAAAA..AAAAAAAAAA..........................................AAAAAAAAAA..AAAAA...............AAAA.......AAAA...............AAAAA..AAAAAAAAAA..........................................AAAAAAAAAA..AAAAA..
+1704 AAAAAAAAAAAAAAAAAAA.............AAA..........AAA.............AAAAAAAAAAAAAAAAAAA......A.......AAAAA...AAAAA.......A......AAAAAAAAAAAAAAAAAAA.............AAA..........AAA.............AAAAAAAAAAAAAAAAAAA
+1705 AAAAAAAAAAAAAAAAAA.............AAAAAA..A...AAAAAA.............AAAAAAAAAAAAAAAAAAA....AAA.....AAAAA.....AAAAA.....AAA....AAAAAAAAAAAAAAAAAAA.............AAAAAA...A..AAAAAA.............AAAAAAAAAAAAAAAAAA
+1706 AAAAAAAAAAAAAAAAA.............AAAAAAAA.AA.AAAAAAAA............AAAAAAAAAAAAAAAAAAAA.AAAA.....AAAAA.......AAAAA.....AAAA.AAAAAAAAAAAAAAAAAAAA............AAAAAAAA.AA.AAAAAAAA.............AAAAAAAAAAAAAAAAA
+1707 AAAAAAAAAAAAA...................AAAAAAAAAAAAAAAAAAA.............AAAAAAAAAAAAAAAAAAAAAA......AAA...........AAA......AAAAAAAAAAAAAAAAAAAAAA.............AAAAAAAAAAAAAAAAAAA...................AAAAAAAAAAAAA
+1708 AAAAAAAAA.........................AAAAAAAAAAAAA..AA...............AAAAAAAAAAAAAAAAAAAAAA..AAAA.............AAAA..AAAAAAAAAAAAAAAAAAAAAA...............AA..AAAAAAAAAAAAA.........................AAAAAAAAA
+1709 AAAAAAA...........................AAAAA.AAAAA.....A......................AAAAAAAAAAAAAAAAAAAA...............AAAAAAAAAAAAAAAAAAAA......................A.....AAAAA.AAAAA...........................AAAAAAA
+1710 AAA................................AAAA..AAAAA............................AAAAAAAAAAAAAAAAAA.................AAAAAAAAAAAAAAAAAA............................AAAAA..AAAA................................AAA
+1711 AA.......................AAAAAA....AAAA..AAAAAA......AAAAAA..................AAAAAAAAAAAAA.....................AAAAAAAAAAAAA..................AAAAAA......AAAAAA..AAAA....AAAAAA.......................AA
+1712 .......................AAAAAAAAAA...AAAA..AAAAA....AAAAAAAAAA..................AAAAAAAA...........................AAAAAAAA..................AAAAAAAAAA....AAAAA..AAAA...AAAAAAAAAA.......................
+1713 .......................AAAAAAAAAAA..AAAAA..AAAA...AAAAAAAAAAA...............................................................................AAAAAAAAAAA...AAAA..AAAAA..AAAAAAAAAAA.......................
+1714 ......................AAAAAAAAAAAA..AAAAAA.AAAA...AAAAAAAAAAAA.......................A.............................A.......................AAAAAAAAAAAA...AAAA.AAAAAA..AAAAAAAAAAAA......................
+1715 .........................AAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAA.........................AA.............................AA.........................AAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAA.........................
+1716 ...........................AAAAAAAA....AAAAAAA...AAAAAAAA...........................AAA...........................AAA...........................AAAAAAAA...AAAAAAA....AAAAAAAA...........................
+1717 A...........................AAAAAAAA...AAAAAA...AAAAAAAA...........................AAAA...........................AAAA...........................AAAAAAAA...AAAAAA...AAAAAAAA...........................A
+1718 A........................AAAAAAAAAAA...AAAAAA...AAAAAAAAAAA........................AAAAA.........................AAAAA........................AAAAAAAAAAA...AAAAAA...AAAAAAAAAAA........................A
+1719 A.......................AAAAAAAAAAAA....AAA..A..AAAAAAAAAAAA.......................AAAAA.........................AAAAA.......................AAAAAAAAAAAA..A..AAA....AAAAAAAAAAAA.......................A
+1720 A......................AAA.AAAAAAAAAA.......A..AAAAAAAAAA.AAA......................AAAAAAA.....................AAAAAAA......................AAA.AAAAAAAAAA..A.......AAAAAAAAAA.AAA......................A
+1721 A......................A.....AAAAAAAA...AAAA...AAAAAAAA.....A......................AAAAAAAA...................AAAAAAAA......................A.....AAAAAAAA...AAAA...AAAAAAAA.....A......................A
+1722 A..............................AAAAAA..AAAAAA..AAAAAA..............................AAAAAAAAA.................AAAAAAAAA..............................AAAAAA..AAAAAA..AAAAAA..............................A
+1723 ................................AAAAA.AAA..AAA.AAAAA................................AAAAAAAA.................AAAAAAAA................................AAAAA.AAA..AAA.AAAAA................................
+1724 ........................AAAAAA..AAAAA..AA..AA..AAAAA..AAAAAA........................AAAAAAAAA...............AAAAAAAAA........................AAAAAA..AAAAA..AA..AA..AAAAA..AAAAAA........................
+1725 .........................AAAAAA.AAAAA.AAAAAAAA.AAAAA.AAAAAA..........................AAAAAAAA...............AAAAAAAA..........................AAAAAA.AAAAA.AAAAAAAA.AAAAA.AAAAAA.........................
+1726 ...........................AAAAA.AAAA..AAAAAA..AAAA.AAAAA.............................AAAAAAAA.............AAAAAAAA.............................AAAAA.AAAA..AAAAAA..AAAA.AAAAA...........................
+1727 ............................AAAA.AAAA.A.AAAA.A.AAAA.AAAA...............................AAAAAAA.............AAAAAAA...............................AAAA.AAAA.A.AAAA.A.AAAA.AAAA............................
+1728 ............................AAAAAAAA.....A.A....AAAAAAAA................................AAAAAAA...........AAAAAAA................................AAAAAAAA....A.A.....AAAAAAAA............................
+1729 .............................AAAAAAA............AAAAAAA..................................AAAAAAA.........AAAAAAA..................................AAAAAAA............AAAAAAA.............................
+1730 .........................AAA.AAAAAAA...........AAAAAAAA.AAA................................AAAAAAA.....AAAAAAA................................AAA.AAAAAAAA...........AAAAAAA.AAA.........................
+1731 .........................AAAAAAAAAA..........AAAAAAAAAAAAAA...................................AAAAAA.AAAAAA...................................AAAAAAAAAAAAAA..........AAAAAAAAAA.........................
+1732 .................AAAA.....AAAAAAAA..........AAAAAAAAAAAAAA.....AAAA.........................AAAAAAAAAAAAAAAAA.........................AAAA.....AAAAAAAAAAAAAA..........AAAAAAAA.....AAAA.................
+1733 ................AAAAAA.....AAAAAAA.........AAAAA..AAAAAAA.....AAAAAA......................AAAA....AAAAA....AAAA......................AAAAAA.....AAAAAAA..AAAAA.........AAAAAAA.....AAAAAA................
+1734 .AAAAA..........AAAAAAA....AAAAAA.........AAAA.....AAAAAA....AAAAAAA..........AAAAA......AAA.....AAAAAAA.....AAA......AAAAA..........AAAAAAA....AAAAAA.....AAAA.........AAAAAA....AAAAAAA..........AAAAA.
+1735 AAAAAAA.............AAA.....AAAAA.........AAA......AAAAA.....AAA.............AAAAAAA....AAA.....AAA...AAA.....AAA....AAAAAAA.............AAA.....AAAAA......AAA.........AAAAA.....AAA.............AAAAAAA
+1736 AA..AAAA.......AAAA.AAAA....AAAAA.........AAA......AAAAA....AAAA.AAAA.......AAAA..AA...AAA.....AAA.....AAA.....AAA...AA..AAAA.......AAAA.AAAA....AAAAA......AAA.........AAAAA....AAAA.AAAA.......AAAA..AA
+1737 A....AAA......AAAAAAAAAA....AAAA.........AAA........AAAA....AAAAAAAAAA......AAA....A..AAA......AAA.....AAA......AAA..A....AAA......AAAAAAAAAA....AAAA........AAA.........AAAA....AAAAAAAAAA......AAA....A
+1738 ..AA..AA.....AAAAAAAAAAAA...AAA..........AA..........AAA...AAAAAAAAAAAA.....AA..AA..............AAA...AAA..............AA..AA.....AAAAAAAAAAAA...AAA..........AA..........AAA...AAAAAAAAAAAA.....AA..AA..
+1739 ..AA..AA.....AAAAAAAAAAAA..AAA..........AA............AAA..AAAAAAAAAAAA.....AA..AA.....AAA.......AAA.AAA.......AAA.....AA..AA.....AAAAAAAAAAAA..AAA............AA..........AAA..AAAAAAAAAAAA.....AA..AA..
+1740 .....AAA..........AAAAAAAA.AA..A.A.A............A.A.A..AA.AAAAAAAA..........AAA......AAAAAA.......AAAAA.......AAAAAA......AAA..........AAAAAAAA.AA..A.A.A............A.A.A..AA.AAAAAAAA..........AAA.....
+1741 A..AAAAA......AAAAAAAAAAAA.AA..AAAA..............AAAA..AA.AAAAAAAAAAAA......AAAAA..AAAA..AA........AAA........AA..AAAA..AAAAA......AAAAAAAAAAAA.AA..AAAA..............AAAA..AA.AAAAAAAAAAAA......AAAAA..A
+1742 AAAAAAA......AAAAAAAAAAAAAAAA.AA..AA............AA..AA.AAAAAAAAAAAAAAAA......AAAAAAAA...AAA...AA.........AA...AAA...AAAAAAAA......AAAAAAAAAAAAAAAA.AA..AA............AA..AA.AAAAAAAAAAAAAAAA......AAAAAAA
+1743 .AAAA........AAAAAAAAAAAAAAA..A....AA..........AA....A..AAAAAAAAAAAAAAA........AAAA....AAA...AAA.........AAA...AAA....AAAA........AAAAAAAAAAAAAAA..A....AA..........AA....A..AAAAAAAAAAAAAAA........AAAA.
+1744 .............AAA..AAAAAAAAAA.AAA..AA............AA..AAA.AAAAAAAAAA..AAA..............AAAA...AAA...........AAA...AAAA..............AAA..AAAAAAAAAA.AAA..AA............AA..AAA.AAAAAAAAAA..AAA.............
+1745 A............AA....AAAAAAAAAAAAAAAA..............AAAAAAAAAAAAAAAA....AA............AAAAA....AA.............AA....AAAAA............AA....AAAAAAAAAAAAAAAA..............AAAAAAAAAAAAAAAA....AA............A
+1746 AA..................AAAAAAAAAA.A.A.A............A.A.A.AAAAAAAAAA..................AAAA......AA...AA...AA...AA......AAAA..................AAAAAAAAAA.A.A.A............A.A.A.AAAAAAAAAA..................AA
+1747 AAA..................AAAAAAAA..........................AAAAAAAA..................AAAA........AA.AAAA.AAAA.AA........AAAA..................AAAAAAAA..........................AAAAAAAA..................AAA
+1748 AAA...................AAAAA..............................AAAAA...................AAA............AAAA.AAAA............AAA...................AAAAA..............................AAAAA...................AAA
+1749 AA....................AAAA..................A.............AAAA....................AAA.....AAA...AAA...AAA...AAA.....AAA....................AAAA.............A..................AAAA....................AA
+1750 A.....................AAA..................AAA.............AAA.....................AAA....AAAA..AAA...AAA..AAAA....AAA.....................AAA.............AAA..................AAA.....................A
+1751 ................AA....AA...................AAA..............AA....AA................AAA...AAAA...AAA.AAA...AAAA...AAA................AA....AA..............AAA...................AA....AA................
+1752 ................AAA..AA....................AAA...............AA..AAA......................AAAA....AA.AA....AAAA......................AAA..AA...............AAA....................AA..AAA................
+1753 ........AAA......AAA.A......................A.................A.AAA......AAA...............AAAA....A.A....AAAA...............AAA......AAA.A.................A......................A.AAA......AAA........
+1754 .......AAAAA......AAAA...........AAA.......AA...AAA...........AAAA......AAAAA...............AAAA.........AAAA...............AAAAA......AAAA...........AAA...AA.......AAA...........AAAA......AAAAA.......
+1755 .......AAAAAA.....AAA............AAAA.....AA...AAAA............AAA.....AAAAAA................AAA.........AAA................AAAAAA.....AAA............AAAA...AA.....AAAA............AAA.....AAAAAA.......
+1756 .......AAAAAAA...AAAA.............AAAAA..AA..AAAAA.............AAAA...AAAAAAA..........AAA....AAA.......AAA....AAA..........AAAAAAA...AAAA.............AAAAA..AA..AAAAA.............AAAA...AAAAAAA.......
+1757 .........AAAAAA..AAA..AAA..........AAAAAA..AAAAAA..........AAA..AAA..AAAAAA...........AAAA.....................AAAA...........AAAAAA..AAA..AAA..........AAAAAA..AAAAAA..........AAA..AAA..AAAAAA.........
+1758 ......AAAAAAAAA.AA....AAAA..AA.....AAAAAAAAAAAAAA.....AA..AAAA....AA.AAAAAAAAA........AAAAA...................AAAAA........AAAAAAAAA.AA....AAAA..AA.....AAAAAAAAAAAAAA.....AA..AAAA....AA.AAAAAAAAA......
+1759 ..AAAAA..AAAAAAAA......AAAA.AAA.....AAAAAAAAAAAA.....AAA.AAAA......AAAAAAAA..AAAAA....AAAAA.......AA.AA.......AAAAA....AAAAA..AAAAAAAA......AAAA.AAA.....AAAAAAAAAAAA.....AAA.AAAA......AAAAAAAA..AAAAA..
+1760 .AAAA....AAAAAAAA.......AAAA.AAA....AAAAAAAAAAAA....AAA.AAAA.......AAAAAAAA....AAAA....AAAAAA......AAA......AAAAAA....AAAA....AAAAAAAA.......AAAA.AAA....AAAAAAAAAAAA....AAA.AAAA.......AAAAAAAA....AAAA.
+1761 .AAAA..AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA..AAAA......AAAAA....AA.AA....AAAAA......AAAA..AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA....AAAAAAAAAAAA....AAAAAAAAAA..AAAA.
+1762 .AAA..AAAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAAA..AAA...............A...A...............AAA..AAAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAA...AAAAAAAAAAA..AAA.
+1763 ......AAAAAA..AA...AAAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAAA...AA..AAAAAA..............AAA...AA.AA...AAA..............AAAAAA..AA...AAAAAAAAAAAAAAA...AAAAAAAAAA...AAAAAAAAAAAAAAA...AA..AAAAAA......
+1764 .......AAAA...AA...AA..AAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAA..AA...AA...AAAA.............AAAAA....AAA....AAAAA.............AAAA...AA...AA..AAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAA..AA...AA...AAAA.......
+1765 .............AA.......AAAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAAA.......AA..................AAAA.....AA.AA.....AAAA..................AA.......AAAAAAAAAAAAA..AAAAAAAAAA..AAAAAAAAAAAAA.......AA.............
+1766 ............AA.......AAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAA.......AA.................AAA.................AAA.................AA.......AAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAA.......AA............
+1767 ...AAA.....AA.......AAAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAAA.......AA.....AAA........AAA.................AAA........AAA.....AA.......AAAAAAAAAAAAAAAA..AAAAAAAA..AAAAAAAAAAAAAAAA.......AA.....AAA...
+1768 .AAAAAAA...AAA.....AAAAAAAAAAAAAAAAAA.AAAAAAAA.AAAAAAAAAAAAAAAAAA.....AAA...AAAAAAA.......A...................A.......AAAAAAA...AAA.....AAAAAAAAAAAAAAAAAA.AAAAAAAA.AAAAAAAAAAAAAAAAAA.....AAA...AAAAAAA.
+1769 AAAAAAAAAA..AAA...AAAAAAAAAAAAAAAAAAA..AAAAAA..AAAAAAAAAAAAAAAAAAA...AAA..AAAAAAAAAA.................................AAAAAAAAAA..AAA...AAAAAAAAAAAAAAAAAAA..AAAAAA..AAAAAAAAAAAAAAAAAAA...AAA..AAAAAAAAAA
+1770 AAAAAAAAAAA.AAA...AAAAAAA....AAAAAAAA..AAAAAA..AAAAAAAA....AAAAAAA...AAA.AAAAAAAAAAAA.............A...A.............AAAAAAAAAAAA.AAA...AAAAAAA....AAAAAAAA..AAAAAA..AAAAAAAA....AAAAAAA...AAA.AAAAAAAAAAA
+1771 AAAAAAAAAAAA.AA..AAAAA.........AAAAAAA.AAAAAA.AAAAAAA.........AAAAA..AA.AAAAAAAAAAAAAA.....A.....AA...AA.....A.....AAAAAAAAAAAAAA.AA..AAAAA.........AAAAAAA.AAAAAA.AAAAAAA.........AAAAA..AA.AAAAAAAAAAAA
+1772 AAAAAAAAAAAAAAA..AAA...AAAA......AAAAA.AAAAAA.AAAAA......AAAA...AAA..AAAAAAAAAAAAAAAAA.....A..A.AAA...AAA.A..A.....AAAAAAAAAAAAAAAAA..AAA...AAAA......AAAAA.AAAAAA.AAAAA......AAAA...AAA..AAAAAAAAAAAAAAA
+1773 A.AAAAAAAAAAAAA..AA....AAAAAA.....AAAAAAAAAAAAAAAA.....AAAAAA....AA..AAAAAAAAAAAAA.AAA.....AAAAAAA.....AAAAAAA.....AAA.AAAAAAAAAAAAA..AA....AAAAAA.....AAAAAAAAAAAAAAAA.....AAAAAA....AA..AAAAAAAAAAAAA.A
+1774 ...AAAAAAAAAAA..........AAAAAAA....AAAAAAAAAAAAAA....AAAAAAA..........AAAAAAAAAAA...AA.....AAAAAA.......AAAAAA.....AA...AAAAAAAAAAA..........AAAAAAA....AAAAAAAAAAAAAA....AAAAAAA..........AAAAAAAAAAA...
+1775 ..AAAAAAAAAAAA............AAAAAA....AAAAAAAAAAAA....AAAAAA............AAAAAAAAAAAA..........AAAAA.......AAAAA..........AAAAAAAAAAAA............AAAAAA....AAAAAAAAAAAA....AAAAAA............AAAAAAAAAAAA..
+1776 .AAAAAAAAAAAAA.............AAAAAA....AAAAAAAAAA....AAAAAA.............AAAAAAAAAAAAA.....A....AAAAA.....AAAAA....A.....AAAAAAAAAAAAA.............AAAAAA....AAAAAAAAAA....AAAAAA.............AAAAAAAAAAAAA.
+1777 .AA..AAAAAAAAA.......AA.....AAAAAA....AAAAAAAA....AAAAAA.....AA.......AAAAAAAAA..AA.....AA...AAAAA.....AAAAA...AA.....AA..AAAAAAAAA.......AA.....AAAAAA....AAAAAAAA....AAAAAA.....AA.......AAAAAAAAA..AA.
+1778 .....AAAAAAAAA.......AA.....AAAAAAA.....AAAA.....AAAAAAA.....AA.......AAAAAAAAA......A..AAA.AAA.AA.....AA.AAA.AAA..A......AAAAAAAAA.......AA.....AAAAAAA.....AAAA.....AAAAAAA.....AA.......AAAAAAAAA.....
+1779 .....AAAAAAAAAA.....AAAA.....AAAAAAA....AAAA....AAAAAAA.....AAAA.....AAAAAAAAAA......A...AAAAA...A.....A...AAAAA...A......AAAAAAAAAA.....AAAA.....AAAAAAA....AAAA....AAAAAAA.....AAAA.....AAAAAAAAAA.....
+1780 ..A.....AAAAAAAA...AAAAA......AAAAAA.....AA.....AAAAAA......AAAAA...AAAAAAAA.....A...AA...AAAAA...........AAAAA...AA...A.....AAAAAAAA...AAAAA......AAAAAA............AAAAAA......AAAAA...AAAAAAAA.....A..
+1781 .AA....AAAA...AAA.AAAAAAA.....AAAAAA............AAAAAA.....AAAAAAA.AAA...AAAA....AA...AA..AAAAAA.........AAAAAA..AA...AA....AAAA...AAA.AAAAAAA.....AAAAAA............AAAAAA.....AAAAAAA.AAA...AAAA....AA.
+1782 .AA....AA......AAAAAA.AAAAA....AAAAA............AAAAA....AAAAA.AAAAAA......AA....AA...AAAAA...AA.........AA...AAAAA...AA....AA......AAAAAA.AAAAA....AAAAA............AAAAA....AAAAA.AAAAAA......AA....AA.
+1783 AAA..............AAAAA.AAAA....AAA................AAA....AAAA.AAAAA..............AAA...AAA.....A.........A.....AAA...AAA..............AAAAA.AAAA....AAA................AAA....AAAA.AAAAA..............AAA
+1784 AA................AAAAAAAAAA............................AAAAAAAAAA................AAA.AAAAA...................AAAAA.AAA................AAAAAAAAAA............................AAAAAAAAAA................AA
+1785 AA..A........AAAAAAAAAAAAAAA.........AAAAAAAAAA.........AAAAAAAAAAAAAAA........A..AAAAAAAAAA.................AAAAAAAAAA..A........AAAAAAAAAAAAAAA.........AAAAAAAAAA.........AAAAAAAAAAAAAAA........A..AA
+1786 A..AA......AAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAA......AA..AAAAA..AAA...............AAA..AAAAA..AA......AAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAA......AA..A
+1787 ...AA.....AAAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAAA.........AAAAAAAAAAA.....AA...AA......A...............A......AA...AA.....AAAAAAAAAAA.........AAAAAAAAAAAAAAAAAAAAAAAA.........AAAAAAAAAAA.....AA...
+1788 A.AAA....AAAAAA...AA..A.....AAAAAAAAAAAAAAAAAAAAAAAAAAAA.....A..AA...AAAAAA....AAA.AAAAA.........A.....A.........AAAAA.AAA....AAAAAA...AA..A.....AAAAAAAAAAAAAAAAAAAAAAAAAAAA.....A..AA...AAAAAA....AAA.A
+1789 AAAAA....AAAAA.......AA...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AA.......AAAAA....AAAAAAAAAA........A.....A........AAAAAAAAAA....AAAAA.......AA...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AA.......AAAAA....AAAAA
+1790 AAAA....AAAAA..AA....AA..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AA....AA..AAAAA....AAAAA..AA.......AAA...AAA.......AA..AAAAA....AAAAA..AA....AA..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AA....AA..AAAAA....AAAA
+1791 .AA.....AAAAA.AA....AAAAAAAAAAAAAAA....AAAAAA....AAAAAAAAAAAAAAA....AA.AAAAA.....AA.....A.......AAA...AAA.......A.....AA.....AAAAA.AA....AAAAAAAAAAAAAAA....AAAAAA....AAAAAAAAAAAAAAA....AA.AAAAA.....AA.
+1792 .AA......AAAAAAA...AAAAAAAA..AAAAA....AAAAAAAA....AAAAA..AAAAAAAA...AAAAAAA......AA............AAAA...AAAA............AA......AAAAAAA...AAAAAAAA..AAAAA....AAAAAAAA....AAAAA..AAAAAAAA...AAAAAAA......AA.
+1793 ...........AAAAA..AAAAAAAA....AAAA....AAAAAAAA....AAAA....AAAAAAAA..AAAAA.....................AAAAAA.AAAAAA.....................AAAAA..AAAAAAAA....AAAA....AAAAAAAA....AAAA....AAAAAAAA..AAAAA...........
+1794 ............AAA...AAAAAAAA.AA..AA.....AAAAAAAA.....AA..AA.AAAAAAAA...AAA.....................AA..AAA.AAA..AA.....................AAA...AAAAAAAA.AA..AA.....AAAAAAAA.....AA..AA.AAAAAAAA...AAA............
+1795 .............AA...AAAAAAAAAAA...A......AAAAAA......A...AAAAAAAAAAA...AA..........................AAA.AAA..........................AA...AAAAAAAAAAA...A......AAAAAA......A...AAAAAAAAAAA...AA.............
+1796 ..................AAAAAAAAAA............AAAA............AAAAAAAAAA........................AA....AAAA.AAAA....AA........................AAAAAAAAAA............AAAA............AAAAAAAAAA..................
+1797 ...................AAAAAAAAA.............AA.............AAAAAAAAA..........................AAA.AAAA...AAAA.AAA..........................AAAAAAAAA.............AA.............AAAAAAAAA...................
+1798 ....................AA.AAAA..............................AAAA.AA............................AAAAAA.....AAAAAA............................AA.AAAA..............................AAAA.AA....................
+1799 ....................A..AAAA.AA........................AA.AAAA..A.............................AA.AA.....AA.AA.............................A..AAAA.AA........................AA.AAAA..A....................
+1800 ........................AAAAAA....AA....AAAA....AA....AAAAAA....................................AAA...AAA....................................AAAAAA....AA....AAAA....AA....AAAAAA........................
+1801 .........................AAAAA....AA....AAAA....AA....AAAAA....................................AAAAA.AAAAA....................................AAAAA....AA....AAAA....AA....AAAAA.........................
+1802 ..........AAAAAAAAA.......AAA........AA......AA........AAA.......AAAAAAAAA....................AAAA.....AAAA....................AAAAAAAAA.......AAA........AA......AA........AAA.......AAAAAAAAA..........
+1803 ........AAAAAAAAAAAAAAA....AA........AA......AA........AA....AAAAAAAAAAAAAAA................AAAAA.......AAAAA................AAAAAAAAAAAAAAA....AA........AA......AA........AA....AAAAAAAAAAAAAAA........
+1804 ......AAAAAAAAAAAAAAAAAAA..................................AAAAAAAAAAAAAAAAAAA............AAAAAAAA.....AAAAAAAA............AAAAAAAAAAAAAAAAAAA..................................AAAAAAAAAAAAAAAAAAA......
+1805 ....AAAAAAA..........AAAAA......AA.....AA..AA.....AA......AAAAA..........AAAAAAA.......A.......AAAA...AAAA.......A.......AAAAAAA..........AAAAA......AA.....AA..AA.....AA......AAAAA..........AAAAAAA....
+1806 ...AAAAAA...............AAA.....AA.....AA..AA.....AA.....AAA...............AAAAAA......A..........A...A..........A......AAAAAA...............AAA.....AA.....AA..AA.....AA.....AAA...............AAAAAA...
+1807 ...AAAA......AAAAAA......AAA.......AA..........AA.......AAA......AAAAAA......AAAA......AA.......A.......A.......AA......AAAA......AAAAAA......AAA.......AA..........AA.......AAA......AAAAAA......AAAA...
+1808 ..AAAA....AAAAAAAA.........A.......AA..........AA.......A.........AAAAAAAA....AAAA.....AAAA...AAA.......AAA...AAAA.....AAAA....AAAAAAAA.........A.......AA..........AA.......A.........AAAAAAAA....AAAA..
+1809 .AAAA....AAAAAAAA....................AA......AA....................AAAAAAAA....AAAA.....AAAAAAAA.........AAAAAAAA.....AAAA....AAAAAAAA....................AA......AA....................AAAAAAAA....AAAA.
+1810 AAAAA...AAAAAAAA.....A...............AA......AA...............A.....AAAAAAAA...AAAAA.....AAAAAAA....A....AAAAAAA.....AAAAA...AAAAAAAA.....A...............AA......AA...............A.....AAAAAAAA...AAAAA
+1811 AAAA...AAAAAAAA.....AA.................AA..AA.................AA.....AAAAAAAA...AAAA......AAAAAA...AAA...AAAAAA......AAAA...AAAAAAAA.....AA.................AA..AA.................AA.....AAAAAAAA...AAAA
+1812 AAA...AAAAAAAA.....AA...A..............AA..AA..............A...AA.....AAAAAAAA...AAAA.....AAAAAA...AAA...AAAAAA.....AAAA...AAAAAAAA.....AA...A..............AA..AA..............A...AA.....AAAAAAAA...AAA
+1813 AAA..AAAAAAAA......AAA.AA...........AA........AA...........AA.AAA......AAAAAAAA..AAAAA....AAAAA...AA.AA...AAAAA....AAAAA..AAAAAAAA......AAA.AA...........AA........AA...........AA.AAA......AAAAAAAA..AAA
+1814 AA..AAAAAAAAA......AAAAAA.....AA.....AA......AA.....AA.....AAAAAA......AAAAAAAAA..AAAA..AAAAAAA..AAA.AAA..AAAAAAA..AAAA..AAAAAAAAA......AAAAAA.....AA.....AA......AA.....AA.....AAAAAA......AAAAAAAAA..AA
+1815 A...AAAAAAAA.......AAAAA......AAAA.....A....A.....AAAA......AAAAA.......AAAAAAAA...AAAA.AAAAAAA..A.....A..AAAAAAA.AAAA...AAAAAAAA.......AAAAA......AAAA.....A....A.....AAAA......AAAAA.......AAAAAAAA...A
+1816 A..AAAAAAAA.......AAAAAA........AAAA....AAAA....AAAA........AAAAAA.......AAAAAAAA..AAAAAAAAAAAA...........AAAAAAAAAAAA..AAAAAAAA.......AAAAAA........AAAA....AAAA....AAAA........AAAAAA.......AAAAAAAA..A
+1817 ..AAAAAAAAA......AAAAAA...........AAAA........AAAA...........AAAAAA......AAAAAAAAA..AAAAAAAAAAA...........AAAAAAAAAAA..AAAAAAAAA......AAAAAA...........AAAA........AAAA...........AAAAAA......AAAAAAAAA..
+1818 ..AAAAAAAA......AAAAAA....A.........AAAA....AAAA.........A....AAAAAA......AAAAAAAA..AAAAAAAAAA.............AAAAAAAAAA..AAAAAAAA......AAAAAA....A.........AAAA....AAAA.........A....AAAAAA......AAAAAAAA..
+1819 .AAAAAAAAA......AAAAA....AA...........AAAAAAAA...........AA....AAAAA......AAAAAAAAA..AAAAAAAA...............AAAAAAAA..AAAAAAAAA......AAAAA....AA...........AAAAAAAA...........AA....AAAAA......AAAAAAAAA.
+1820 .AAAAAAAAA.....AAA.AA.AAAAA.............AAAA.............AAAAA.AA.AAA.....AAAAAAAAA..AAAAAAA.................AAAAAAA..AAAAAAAAA.....AAA.AA.AAAAA.............AAAA.............AAAAA.AA.AAA.....AAAAAAAAA.
+1821 .AAAAAAAAA......AA..AAAAAAA...............................AAAAAAA..AA......AAAAAAAAA..AAAA.....AA...A...AA.....AAAA..AAAAAAAAA......AA..AAAAAAA...............................AAAAAAA..AA......AAAAAAAAA.
+1822 AAAAAAAAAA......A...AAAAAAA...............................AAAAAAA...A......AAAAAAAAAA.AAAA.....AAA.AAA.AAA.....AAAA.AAAAAAAAAA......A...AAAAAAA...............................AAAAAAA...A......AAAAAAAAAA
+1823 AAAAAAAAA..........AAAAAAA............AA.....AA............AAAAAAA..........AAAAAAAAAAAAAA......AAAAAAAAA......AAAAAAAAAAAAAA..........AAAAAAA............AA.....AA............AAAAAAA..........AAAAAAAAA
+1824 AAAAAAAAA.........AAAAAAA..............AAA.AAA..............AAAAAAA.........AAAAAAAAAAAAA........AAAAAAA........AAAAAAAAAAAAA.........AAAAAAA..............AAA.AAA..............AAAAAAA.........AAAAAAAAA
+1825 AAAAAAAA.........AAAAAAAA...A...........AAAAA...........A...AAAAAAAA.........AAAAAAAAAAAA.........AAAAA.........AAAAAAAAAAAA.........AAAAAAAA...A...........AAAAA...........A...AAAAAAAA.........AAAAAAAA
+1826 AAAAAAAA........AAAAAAAA...AA.....AAA.....A.....AAA.....AA...AAAAAAAA........AAAAAAAAAAA.........................AAAAAAAAAAA........AAAAAAAA...AA.....AAA.....A.....AAA.....AA...AAAAAAAA........AAAAAAAA
+1827 AAAAAAAA.......AAAA.AAAAAAAAA....AAAAA...AAA...AAAAA....AAAAAAAAA.AAAA.......AAAAAAAAAAAAA.....A.........A.....AAAAAAAAAAAAA.......AAAA.AAAAAAAAA....AAAAA...AAA...AAAAA....AAAAAAAAA.AAAA.......AAAAAAAA
+1828 AAAAAAAA......AAAA...AAAAAAAA....A...AA.AAAAA.AA...A....AAAAAAAA...AAAA......AAAAAAAAAAAAAA.....A.......A.....AAAAAAAAAAAAAA......AAAA...AAAAAAAA....A...AA.AAAAA.AA...A....AAAAAAAA...AAAA......AAAAAAAA
+1829 AAAAAAAA............AAAAAAAA.....AA...A.AAAAA.A...AA.....AAAAAAAA............AAAAAAAAAAAAAA......A.....A......AAAAAAAAAAAAAA............AAAAAAAA.....AA...A.AAAAA.A...AA.....AAAAAAAA............AAAAAAAA
+1830 AAAAAAAA........AAAAAAAAAAA.......AA..A.AA.AA.A..AA.......AAAAAAAAAAA........AAAAAAAAAAAAA...A.....A.A.....A...AAAAAAAAAAAAA........AAAAAAAAAAA.......AA..A.AA.AA.A..AA.......AAAAAAAAAAA........AAAAAAAA
+1831 AAAAAAA........AAAAAAAAAA............AAAA...AAAA............AAAAAAAAAA........AAAAAAAAAAA....AA...........AA....AAAAAAAAAAA........AAAAAAAAAA............AAAA...AAAA............AAAAAAAAAA........AAAAAAA
+1832 AAAAAAA..........AAAAAAA...A.......AAAAA.....AAAAA.......A...AAAAAAA..........AAAAAAAA.......AAA.........AAA.......AAAAAAAA..........AAAAAAA...A.......AAAAA.....AAAAA.......A...AAAAAAA..........AAAAAAA
+1833 ..AAAAAA............AAAA.AAA......AAAAA.......AAAAA......AAA.AAAA............AAAAAA.........AAA.AA.....AA.AAA.........AAAAAA............AAAA.AAA......AAAAA.......AAAAA......AAA.AAAA............AAAAAA..
+1834 AAAAAAAA.......AAA...AAAAAAA.....AAAA...........AAAA.....AAAAAAA...AAA.......AAAAAAAA.......AA....A...A....AA.......AAAAAAAA.......AAA...AAAAAAA.....AAAA...........AAAA.....AAAAAAA...AAA.......AAAAAAAA
+1835 AAAAAAAAA......AAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAA.....AAAAAAAAAAAA......AAAAAAAAAAA....AAAAAA..A.A..AAAAAA....AAAAAAAAAAA......AAAAAAAAAAAA.....AAAAAAAAAAAAAAAAAAAAA.....AAAAAAAAAAAA......AAAAAAAAA
+1836 AAAAAAAAAA......AAAAAAAAAA.....AA...................AA.....AAAAAAAAAA......AAAAAAAAAAAAA...AAA..AA.....AA..AAA...AAAAAAAAAAAAA......AAAAAAAAAA.....AA...................AA.....AAAAAAAAAA......AAAAAAAAAA
+1837 AAAAAAAAAA..........AAA........A.....................A........AAA..........AAAAAAAAAAAAA..AAA....AA...AA....AAA..AAAAAAAAAAAAA..........AAA........A.....................A........AAA..........AAAAAAAAAA
+1838 AAAAAAAAAAA...AAAAAAAA........AA..AAAAAAAAAAAAAAAAA..AA........AAAAAAAA...AAAAAAAAAAAAA...A.......AA.AA.......A...AAAAAAAAAAAAA...AAAAAAAA........AA..AAAAAAAAAAAAAAAAA..AA........AAAAAAAA...AAAAAAAAAAA
+1839 AAAAAAAAAA....AAAAAAA.........AA..AAAAAAAAAAAAAAAAA..AA.........AAAAAAA....AAAAAAAAAA..............AAA..............AAAAAAAAAA....AAAAAAA.........AA..AAAAAAAAAAAAAAAAA..AA.........AAAAAAA....AAAAAAAAAA
+1840 ...AAAAA........AAAAAA.......AAA..A...............A..AAA.......AAAAAA........AAAAA.........AAAA.....A.....AAAA.........AAAAA........AAAAAA.......AAA..A...............A..AAA.......AAAAAA........AAAAA...
+1841 ....AAA........AAAAAAAA.....AAAAA...................AAAAA.....AAAAAAAA........AAA........AAAAAAAA.......AAAAAAAA........AAA........AAAAAAAA.....AAAAA...................AAAAA.....AAAAAAAA........AAA....
+1842 ..............AAAA.........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.........AAAA................AAAAAAAAAAAA...AAAAAAAAAAAA................AAAA.........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.........AAAA..............
+1843 ...........AAAAAAAAAA.....AAAAAAAAAAAAA.......AAAAAAAAAAAAA.....AAAAAAAAAA............AAAAA.....AAAA.AAAA.....AAAAA............AAAAAAAAAA.....AAAAAAAAAAAAA.......AAAAAAAAAAAAA.....AAAAAAAAAA...........
+1844 A........AAAAAAAAAAAAAA.AAAAA...........................AAAAA.AAAAAAAAAAAAAA........AAAAA.........AA.AA.........AAAAA........AAAAAAAAAAAAAA.AAAAA...........................AAAAA.AAAAAAAAAAAAAA........A
+1845 AA......AAAAAA......AAAAAAAA.............................AAAAAAAA......AAAAAA......AAAA...AAAAAA...AAA...AAAAAA...AAAA......AAAAAA......AAAAAAAA.............................AAAAAAAA......AAAAAA......AA
+1846 AAA....AAAAAA........AAAAAAAA...........................AAAAAAAA........AAAAAA....AAAAA.AAAAAAAAAA..A..AAAAAAAAAA.AAAAA....AAAAAA........AAAAAAAA...........................AAAAAAAA........AAAAAA....AAA
+1847 AAA..AAAA.AA..........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..........AA.AAAA..AAAAAAA.......AAA...AAA.......AAAAAAA..AAAA.AA..........AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..........AA.AAAA..AAA
+1848 AAA..AAA..A.....A.....AAAAAAAAAAAAAAA...........AAAAAAAAAAAAAAA.....A.....A..AAA..AAAA............AA.AA............AAAA..AAA..A.....A.....AAAAAAAAAAAAAAA...........AAAAAAAAAAAAAAA.....A.....A..AAA..AAA
+1849 ..AAAAA........AAA....AAA..AAAAAAAAA.............AAAAAAAAA..AAA....AAA........AAAAA................AAA................AAAAA........AAA....AAA..AAAAAAAAA.............AAAAAAAAA..AAA....AAA........AAAAA..
+1850 ...AAA........AAAA...AAA.....AAAAAAA....AAAAA....AAAAAAA.....AAA...AAAA........AAA..................A..................AAA........AAAA...AAA.....AAAAAAA....AAAAA....AAAAAAA.....AAA...AAAA........AAA...
+1851 ....AAA....AA..AA....AA.......AAAAAA...AAAAAAA...AAAAAA.......AA....AA..AA....AAA.......................................AAA....AA..AA....AA.......AAAAAA...AAAAAAA...AAAAAA.......AA....AA..AA....AAA....
+1852 .....AAA...AAA......AA........AAAAAA...AAAAAAA...AAAAAA........AA......AAA...AAA.........................................AAA...AAA......AA........AAAAAA...AAAAAAA...AAAAAA........AA......AAA...AAA.....
+1853 A.....AAA...AA......AA........AAAAAA....AAAAA....AAAAAA........AA......AA...AAA.....A....AA...................AA....A.....AAA...AA......AA........AAAAAA....AAAAA....AAAAAA........AA......AA...AAA.....A
+1854 A......AAA..AA......AA........AAAAAAA...........AAAAAAA........AA......AA..AAA......A.....AA...A.........A...AA.....A......AAA..AA......AA........AAAAAAA...........AAAAAAA........AA......AA..AAA......A
+1855 .A.....AAAAAAA......AA.........AAAAAAA.........AAAAAAA.........AA......AAAAAAA.....A.......AA.AA...A.A...AA.AA.......A.....AAAAAAA......AA.........AAAAAAA.........AAAAAAA.........AA......AAAAAAA.....A.
+1856 .A......AAAAAAA.....AA..........AAAAAAA.......AAAAAAA..........AA.....AAAAAAA......A........AAA....AAA....AAA........A......AAAAAAA.....AA..........AAAAAAA.......AAAAAAA..........AA.....AAAAAAA......A.
+1857 ..A.....AAAAAAA......AA..........AAAAAAA.....AAAAAAA..........AA......AAAAAAA.....A.........AA....AAAAA....AA.........A.....AAAAAAA......AA..........AAAAAAA.....AAAAAAA..........AA......AAAAAAA.....A..
+1858 ..A......AAAAA........AA..........AAAAAAAAAAAAAAAAA..........AA........AAAAA......A......AAAA....AAAAAAA....AAAA......A......AAAAA........AA..........AAAAAAAAAAAAAAAAA..........AA........AAAAA......A..
+1859 ..AA.....AAAAA........AAA............AAAAAAAAAAA............AAA........AAAAA.....AA.....AA..A....AAAAAAA....A..AA.....AA.....AAAAA........AAA............AAAAAAAAAAA............AAA........AAAAA.....AA..
+1860 ..AA.....AAAA...A......AAA............AAAAAAAAA............AAA......A...AAAA.....AA....AA..AA...AAAAAAAAA...AA..AA....AA.....AAAA...A......AAA............AAAAAAAAA............AAA......A...AAAA.....AA..
+1861 .AAA.....AAA....AA.....AAAAA...........AAAAAAA...........AAAAA.....AA....AAA.....AAA...A...AA...AAAAAAAAA...AA...A...AAA.....AAA....AA.....AAAAA...........AAAAAAA...........AAAAA.....AA....AAA.....AAA.
+1862 .AAA.....AA...AAAAAA.....AAAAAA.......AAAAAAAAA.......AAAAAA.....AAAAAA...AA.....AAA.......AA...AAAAAAAAA...AA.......AAA.....AA...AAAAAA.....AAAAAA.......AAAAAAAAA.......AAAAAA.....AAAAAA...AA.....AAA.
+1863 AAAAA...AAAAAAAAAAAAA.....AAAAAAA....AAA.....AAA....AAAAAAA.....AAAAAAAAAAAAA...AAAAA...AA.AAA..AAAAAAAAA..AAA.AA...AAAAA...AAAAAAAAAAAAA......AAAAAA....AAA.....AAA....AAAAAA......AAAAAAAAAAAAA...AAAAA
+1864 AAAAA...AAAAAAAAAAA.........AAAA......A.......A......AAAA.........AAAAAAAAAAA...AAAAAAAAA...AA...AAAAAAA...AA...AAAAAAAAA...AAAAAAAAAAA.........AAAA......A.......A......AAAA.........AAAAAAAAAAA...AAAAA
+1865 AAAAAA.AAAA....AAA...........AA.......A.......A.......AA...........AAA....AAAA.AAAAAAA......AA....AAAAA....AA......AAAAAAA.AAAA....AAA...........AA.......A.......A.......AA...........AAA....AAAA.AAAAAA
+1866 AAAAAAAAAA......AA...AAA.....AA.......................AA.....AAA...AA......AAAAAAAAAA........AA...........AA........AAAAAAAAAA......AA...AAA.....AA.......................AA.....AAA...AA......AAAAAAAAAA
+1867 .AAAAAAAAA.......A..AA..A....AA..........AAA..........AA....A..AA..A.......AAAAAAAAA.......AAAAA.........AAAAA.......AAAAAAAAA.......A..AA..A....AA..........AAA..........AA....A..AA..A.......AAAAAAAAA.
+1868 ...AAAAAAAA......A..A..A....AA.........AAAAAAA.........AA....A..A..A......AAAAAAAA........A...AAAA.....AAAA...A........AAAAAAAA......A..A..A....AA.........AAAAAAA.........AA....A..A..A......AAAAAAAA...
+1869 ...AAAA...AAA...AA..AA......AA.........AAAAAAA.........AA......AA..AA...AAA...AAAA.......A.....AAAAAAAAAAA.....A.......AAAA...AAA...AA..AA......AA.........AAAAAAA.........AA......AA..AA...AAA...AAAA...
+1870 ..AAAA.....AAA..AA...AA...AAA...........AAAAA...........AAA...AA...AA..AAA.....AAAA......A....AAAAA...AAAAA....A......AAAA.....AAA..AA...AA...AAA...........AAAAA...........AAA...AA...AA..AAA.....AAAA..
+1871 .AAAAA......AAAAAAA...AAAAAA.............AAA.............AAAAAA...AAAAAAA......AAAAA........AAA..AA...AA..AAA........AAAAA......AAAAAAA...AAAAAA.............AAA.............AAAAAA...AAAAAAA......AAAAA.
+1872 AAAAAA.......AAAAAA.....AA.................................AA.....AAAAAA.......AAAAAAA....AAAA...AAA.AAA...AAAA....AAAAAAA.......AAAAAA.....AA.................................AA.....AAAAAA.......AAAAAA
+1873 AAAAAAA......AAA..AA...............AA...........AA...............AA..AAA......AAAAAAAAA..AAAA....AAA.AAA....AAAA..AAAAAAAAA......AAA..AA...............AA...........AA...............AA..AAA......AAAAAAA
+1874 AAA..AAA......AAA..AA.............AAAAA.......AAAAA.............AA..AAA......AAA..AAAAAAAAA......AAA.AAA......AAAAAAAAA..AAA......AAA..AA.............AAAAA.......AAAAA.............AA..AAA......AAA..AAA
+1875 AA....AAA.....AAA...AA..........AAAAAAAA.....AAAAAAAA..........AA...AAA.....AAA....AAAAA.........AA...AA.........AAAAA....AAA.....AAA...AA..........AAAAAAAA.....AAAAAAAA..........AA...AAA.....AAA....AA
+1876 A.....AAAA....AAAA...AA........AAAAAAAAAAAAAAAAAAAAAAA........AA...AAAA....AAAA.....AAAAA......AAA.....AAA......AAAAA.....AAAA....AAAA...AA........AAAAAAAAAAAAAAAAAAAAAAA........AA...AAAA....AAAA.....A
+1877 A.....AAAA....AAAA....AAA.....AA..AAAAAAAAAAAAAAAAA..AA.....AAA....AAAA....AAAA.....AAAAA.....AAA.......AAA.....AAAAA.....AAAA....AAAA....AAA.....AA..AAAAAAAAAAAAAAAAA..AA.....AAA....AAAA....AAAA.....A
+1878 A......AAAA..AAAA.....AAA.........AAAAAAAAAAAAAAAAA.........AAA.....AAAA..AAAA......AAAAAA..AAAAAA.....AAAAAA..AAAAAA......AAAA..AAAA.....AAA.........AAAAAAAAAAAAAAAAA.........AAA.....AAAA..AAAA......A
+1879 A........AA..AA........AA.........AAAAAAAAAAAAAAAAA.........AA........AA..AA........AAAAAA.AAAAAAAA...AAAAAAAA.AAAAAA........AA..AA........AA.........AAAAAAAAAAAAAAAAA.........AA........AA..AA........A
+1880 AAA......AA.AAA.......AAAA.......AAAAAAAAAAAAAAAAAAA.......AAAA.......AAA.AA......AAAAAAAAAAAAAAAAAA.AAAAAAAAAAAAAAAAAA......AA.AAA.......AAAA.......AAAAAAAAAAAAAAAAAAA.......AAAA.......AAA.AA......AAA
+1881 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

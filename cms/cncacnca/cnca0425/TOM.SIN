@@ -1,0 +1,73 @@
+   1 C KOMPLETT  (UA. MINT AZ 'UJ',CSAK A HATSO TUAGYON ES CSAK H-U)
+   2 C PASSZE:SORMINTA A SEJTESBOL  MINTA:2SZV. FELTARTOTT KREPP
+   3 C ELEJE:'KOMPLETT' KT2002 VAGY 'UJ'CNCA2002 
+   4 C 
+   5 C B3:1/1              12.0
+   6 C J2:PASSZE(SORMINTA) 14.0
+   7 C B2:H-U              15.2/15.5
+   8 C 1: CSIPKE: 14.75/15.00  ELEJE CSAK AZ 'UJ'CNCA2002 KOTI 
+   9 C 10 SULY
+  10 C F-F:+2 TARCSA
+  33 C TUAGYKORREKCIOK:  V0:->2.25
+  34 C                   R1:<-1.0-1.5 __________R2:->1  _________R3:
+  35 C                   L1:->1.0 __________L2:     _________L3:
+  40 START
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;	  Y:2/5; ML NP4-4 V#V0	  S1S2
+  54 >> S:D.I-DI./UVND.I;    Y:2;   ML NP4-4        S1  T2
+  55 << S:U^NDI./D.I-DI.;           ML NP1-1      T1S1
+  56 >> S:D.I-0; Y:5;               ML NP-0  VL1    S1
+  57 << S:0-DI./UVNDI.;             ML NP0-         S1  T2
+  58 >> S:D.I-D.I;           Y:6;   ML NP4-4          S2
+  60 << S:D.I-0/0-R;         Y:6/0; ML NP4-4        S1S2
+  62 >> S:D.I-DI./D.I-0;     Y:5/2; ML NP3-3 V0V#   S1S2
+  64 << S:0-DI./D.I-DI.;            ML       V#     S1S2
+  66 PA:JA1;
+  68 PM:<FA>1:9.544:10.;
+  70 JA1=1000
+  72 FA=1-2
+  74 VJA^0                   C I*I*I*I*I*I*I*I*I*I*I*I*
+  76 >> S:D.I-DI./D.I-DI./UVNR;    ML                             S1 S2 T2
+  78 << S:R-0;                     ML            Y:5;   NP2-02    S1
+  80 >> S:U^NN./.-N./UVNN.;        ML                          T1 S1    T2
+  82 << S:R-0;                     ML            Y:2;   NP-0      S1
+  84 >> S:U^NN./.-N./UVNN.;        ML                          T1 S1    T2
+  86 << S:R-0;                     ML          Y:5/2; NP-0        S1 S2
+  88 >> S:U^NI/.*-I/R-0;           ML                    VR1   T1 S1 S2
+  90 << S:U^N*;                    ML           NP0-0    VR2   T1
+  92 >> S:0-0;                     ML      Y:0; NP0-0             S1
+  94 << S:.I-*/R-0;                ML            Y:5/2;  V#       S1 S2
+  96 >> S:U^NI;                    ML           NP0-0    VR1   T1
+  98 << S:0-0;                     ML      Y:0; NP0-0             S1
+ 100 >> S:.*-I/R-0/UVNR;           ML            Y:5/2;           S1 S2 T2
+ 102 << S:R-0;                     ML             NP-0   V0       S1 S2
+ 104 >> S:U^NN./.-N./UVNN.;        ML            Y:2;          T1 S1    T2
+ 106 << S:R-0;                     ML                 NP-0        S1
+ 108 >> S:U^NN./.-N./UVNN.;        ML         Y:5; NP1-1       T1 S1    T2
+ 110 << S:R-0;                     ML              NP1-01         S1
+ 502 FA=7-182
+ 504 PM:<.>10:3(FA...);
+ 506 FD=29-160
+ 508 IF RS1<34 PM:<.>9:4(FD...);
+ 510 JA1=1710(1700-1710)
+ 512 PA:<JA1>;
+ 514 >> S:U^NDI.;      ML  V0 NP02-02   T1
+ 516 << S:U^ND.I;      ML     NP0-0     T1
+ 528 Y:2/5;    
+ 530 RBEG*RS1
+ 532 REP*2
+ 534 >> S:<1->0-.%Z/0-.Z;      NP0-                             S1 S2
+ 536 << S:<1->0-.%Z/0-.Z;      NP0-                             S1 S2
+ 538 REPEND
+ 540 REND
+ 544 >> S:<1->0-.%Z/0-.Z/UVNDI.;       ML NP0-                     S1 S2 T2
+ 546 << S:DI.-D.I;                     ML         NP4-4         S1 S2
+ 548 >> S:DI.-D.I/DI.-D.I/UVND.I;      ML                       S1 S2 T2
+ 550 END
+1000 97(I*)I
+1700 32(5.Z)5.
+1702 32(Z3.Z.)Z3.Z
+1704 32(.Z.Z..).Z.Z.
+1706 32(..Z3.)..Z..
+1708 32(.Z.Z..).Z.Z.
+1710 32(Z3.Z.)Z3.Z

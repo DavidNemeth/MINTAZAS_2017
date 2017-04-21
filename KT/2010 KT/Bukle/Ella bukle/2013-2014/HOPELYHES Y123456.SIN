@@ -1,0 +1,428 @@
+C    EZ IS JO - HOPELYHES - 50 YG:6/123456; Y:1/3-FEKETE BUKLE (2 SZV-BE VAN FEKETE)
+ 1C HOPELYHES 2.2 - 1GOMBOS (FEKETE EZUST SZELU IDA) 'V' NYAKU
+1C HOPELYHES 2.2 - ALUL FELSZOVET , UTANA VEGIG ZSAKKOTES (VEGIG HOPELYHES MINTA)
+1C JAC.:R2012
+1C  
+   1C BUKLE     
+   1C       VAGY: LAJTOS   2050         
+   1C       VAGY: IZA      2000
+   1C FEKETE HB 
+   1C       VAGY: IZA     32/2-ES: 
+   1C       VAGY: TAMAS   30/2-ES:1550FT
+   1C       VAGY: BAJAI   32/2-ES:1610 
+   1C             LAJTOS: 32/2
+   1C             LAJTOS: 16/1
+   1C------------------------------------------------------------------------------
+   1C                  SUM.: 1013.09:1900-1940 FT/KG                               
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 60*72     0.65    1300       140        12        60      1500     1950     450    30'    900    23%
+1C                                                           2014.10.:2050
+1C        SZINES BUKLE:0.29
+1C        FEKETE BUKLE:0.35
+1C                  HB:0.02
+1C 2014.09.: *2000 (PADAR) =1300                             1512      2100     590          1180
+1C           *2250 (LAJTOS)=1462                             1674      2100     426           850
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C   SZALVEZETOK:
+1C------------------------------------------------------------------------------------------------------
+1C                                Y:2:  PASZZE: 1 FEKETE   7.5 BUKLE+1HB  I 
+1C                                Y:5:  PASSZE: 1 FEKETE   7.5 BUKLE+1HB  I    
+1C                                Y:1:    ALAP: 1 FEKETE   7.5 BUKLE      I            
+1C                                Y:3:    ALAP: 1 FEKETE   7.5 BUKLE      I            
+1C                                Y:4:   MINTA: 1 SZINES   7.5 BUKLE      I             
+1C-----------------------+------------+----------------------------------------------------------------
+C     UJKT:NPK=0.1-+0.2
+C      PKT:NPK=+0.0-0.1
+C       KT:NPK=-0.1-0
+  10 C-----------------------------LAJTOS 7.5-OS BUKLE:----
+  10 NP4=12.6    C:LEVALASZTAS              
+  11 NP2=10.0    C:BEKEZDES 10.2
+  12 NP3=12.2    C:2/1 PASSZE     
+  13 NP1=10.5    C:  FELSZOVET             
+  15 NP6=12.8    C: FEKETE BUKLE  
+  16 NP7=12.8    C: SZINES BUKLE  
+
+  40 START        
+  50 YG:6/123456;
+
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+
+  60 C**********************************************************************************************************
+C----------A NYAKHOZ Y2/5-T AT KELL FUZNI SZINESRE (HB IS)----------------------
+  62 C  IF #100=7  RS17=50	       C 3 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL (FEKETE EZUST SZELU IDA)
+  64 C  IF #100=3   RS17=51        C 4 DB GARBO (ZART)   
+C---------M:----------------------------------------------------KESZEN:--------------VASALVA:------------
+  66   IF #100=20  RS17=2         C  M UTTU           
+C---------L:----------------------------------------------------KESZEN:--------------VASALVA:------------
+  68 C  IF #100=20  RS17=1         C  L UTTU          
+C---------XL:---------------------------------------------------KESZEN:--------------VASALVA:------------
+  70   IF #100=10  RS17=0         C XL UTTU    UJML:30  GY:23'  T:60*70 U:22*58     2*110*72  UJ:11 KT:16        
+C---------XXL:---------------------------------------------------KESZEN:--------------VASALVA:------------
+  71 C  IF #100=30  RS17=6         CXXL UTTU    UJML:30  GY:23'  
+C-------3XL:----------------------------------------------------------------------------------------------------
+  72 C  IF #100=31  RS17=3         C3XL TTT    NAGY MERET KESZEN:60*72      
+  74 C  IF #100=23  RS17=4         C3XL 4U  
+C-----------------------------------------------------------------------------------------------------------
+  76 C  IF #100=1   RS17=5         C 5U CS  (CSAK A 4 LAPOSHOZ A HIBASAK POTLASARA)
+C****************************************************************************************************
+
+
+
+ 101 C**********TUK.:***GUMI:***PAS:***HOP.ALUL:***HOP.FELUL:*******PASS:************KESZEN:**VASALVA**************
+ 104 IF RS17=2  RS19=0  RS15=1  RS1=8    RS2=4   RS3=50  RS4=56   RS18=0 C   M UTTU  52*62    100*66
+ 106 IF RS17=1  RS19=0  RS15=1  RS1=8    RS2=4   RS3=50  RS4=64   RS18=0 C   L UTTU  55*65    105*69
+ 108 IF RS17=0  RS19=0  RS15=1  RS1=8    RS2=4   RS3=50  RS4=72   RS18=0 C  XL UTTU  58*68    110*72
+ 109 IF RS17=6  RS19=0  RS15=1  RS1=8    RS2=4   RS3=50  RS4=80   RS18=0 C XXL UTTU  61*71    115*75
+
+ 110 IF RS17=3  RS19=3  RS15=1  RS1=8    RS2=4   RS3=50  RS4=75   RS18=0 C XXXL TTT  64*74    68*78
+ 112 IF RS17=4  RS19=4  RS15=1  RS1=8    RS2=4   RS3=50  RS4=43   RS18=0 C XXXL UUUU      
+ 114 IF RS17=5  RS19=5  RS15=1  RS1=8    RS2=4   RS3=50  RS4=50   RS18=0 C      UUUUU
+C---NYAKAK:-------------GUMI:---PASSZE:-----------------------CSAK PASSZE:--------
+ 121 IF RS17=50 RS19=3  RS15=0  RS1=17                            RS18=1      C 2 VISSZAHAJTOTT 'V'NYAK 1 NAGY GOMBBAL
+ 124 IF RS17=51 RS19=4  RS15=0  RS1=23                            RS18=1      C 4DB 20CM GARBO 
+C*******************************************************************************************************
+
+ 150 C************581TU**************************************************************
+ 151 JA1=1458(1004-1006);      C POTTYOS MINTA
+ 151 JA1=1486(1004-1006);      C POTTYOS MINTA
+ 154 PA:1:<JA1>;
+ 
+ 160  IF RS19=3  FA=5-191;                        PM:<I*>9:FA I* FA I* FA;             C*3  
+ 162  IF RS19=5  FA=42-153;                       PM:<I*>7:FA I* FA I* FA I* FA I* FA; C*5  
+ 163  IF RS19=4  FA=27-166;                       PM:<I*>8:FA I* FA I* FA I* FA;       C*4 
+ 166  IF RS19=0  F1=15-180;F2=41-157;      PM:+<I*>6:F2 . F1 A. F1 . F2 581:+;         C*U-T-T-U    
+ 168 C IF RS19=10 F1=1-  ;                         PM:<I*>9:<F1>574:<I*>;               C OSZTAS NELKUL
+ 170 C MS C*******************************************************************************
+
+ 200 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;                           T1 S1    T2
+ 202 <<	S:DI..-D..I/UVND..I;		                  VL1                    S1    T2
+ 204 >> S:D..I-R/DII.-D.II;          Y:0/6;                    VU       S1 S2      C VAGY: VU
+ 206 << S:DII.-0/D..I-R;             Y:6/0;                    VU      S1 S2      C VAGY: VU            
+ 208 >>	S:DII.(2)-D.II(2)/DII.(3)-0; Y:5/2;	                   VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 210 IF RS15=0 GOTO 220  C---GUMI NELKUL RS15=0-----
+ 212 << S:0-D.II;                    Y:6;                      VU       S1         C VAGY: VU
+ 214 >>                                                        VU       S2         C VAGY: VU
+ 216 << S:DII.-D.II;                 Y:5/2;       NP3-3   V0   VU       S1 S2      C VAGY: VU
+ 218 GOTO 222            C---GUMIVAL RS15=1---------
+ 220 << S:0-D.II/DII.-D.II;                       NP3-3   V0   VU      S1 S2      C VAGY: VU
+C---------------------------------------------------
+ 222 RBEG*RS1
+ 224 >> S:DII.-D.II;                                           VU      S1 S2      C VAGY: VU
+ 226 <<                                                        VU      S1 S2      C VAGY: VU
+ 228 REND
+ 230 IF RS18=1 GOTO 650 C*****  2/1 NYAK PASSZE VEGE *****
+ C************581TU*******************************************
+
+1C-----------------------------------------------------------------------------FONAL FELHASZNALAS 1DB-HOZ:------
+1C                                Y:2:  PASZZE: 1 FEKETE   7.5 BUKLE+1HB  I          0.007  +    0.004
+1C                                Y:5:  PASSZE: 1 FEKETE   7.5 BUKLE+1HB  I          0.007  +    0.004
+1C                                Y:3:    ALAP: 1 FEKETE   7.5 BUKLE      I          0.34  
+1C                                Y:4:   MINTA: 1 SZINES   7.5 BUKLE      I          0.233   
+1C-----------------------+------------+----------------------------------TEST: BUKLE:0.587 ---HB:0.008----------
+1C                                                                       NYAK: BUKLE:0.03     HB:0.02
+C------------------------------------------------------------------------SUMM: BUKLE:0.617 +  HB:0.028  =0.65KG  1300FT
+C  12 NP3=12.2    C:2/1 PASSZE     LAJTOS:12.2 PADAR:12.5
+C  13 NP1=10.5    C:  FELSZOVET             
+C  15 NP6=12.8    C: FEKETE BUKLE  LAJTOS:12.8 PADAR:13.0
+C  16 NP7=12.8    C: SZINES BUKLE  
+ 300 >> S:0-R/R-0;       VU      S1 S2 
+ 308 REP*1 C 1-2 C****FELSZOVET ALUL********
+ 310 << S:R(1)-R(1)/0-R(6);  Y:3/5;   VU        S1 S2
+ 315 >>                               VU        S1 S2
+ 320 REPEND
+ 325 <<                               VU        S1 S2
+ 330 >> S:R(1)-R(1)/0-R(6)/UVSI*;               S1 S2 T2
+C***********************************************************************************************
+ 335 WM=15 C 15-18
+ 340 CNP6-6
+ 345 Y:3/4;
+ 350 JA1=1486(1464-1486);      C POTTYOS ALUL
+ 355 RBEG*RS2
+ 360 GOSUB 502-504*6
+ 365 REND
+ 366 CMS
+ 370 JA1=1462(1008-1030);      C POTTYOS  
+ 375 RBEG*RS3
+ 380 GOSUB 502-504
+ 385 REND
+ 388 CMS
+ 390 Y:1/4;
+ 395 RBEG*RS4
+ 400 GOSUB 502-504
+ 405 REND
+
+ 430 REP*1 C 1-2  C***FELSZOVET FELUL****
+ 435 << S:R-R/0-R;     VU     Y:4/1;  NP1-1     S1 S2
+ 440 >>                VU                       S1 S2
+ 442 REPEND
+ 445 END
+C************************************************************************************************
+
+ 500 C *********ZSAK ******** PM:+<I*>6:F2 . F1 . F1 . F2 581:+; *****
+ 502 << S:<1->+ * A(6)-.(6)/+ I .(7)-A(7);     VU              S1 S2
+ 504 >> S:<1->  I A(6)-.(6)/  * .(7)-A(7);     VU              S1 S2
+ 506 C**************************************************************
+
+ 650 C ***2/1 PASSZE VEGE********581TU*********
+ 651 IF RS19=2 PM:<.>290:I;                    C* 2 LAP C 290/291
+ 652 IF RS19=3 PM:<.>194:I 388:I;              C* 3 LAP C PM:<.>194:I 388:I;
+ 654 IF RS19=4 PM:<.>145:I 290:I 435:I;        C* 4 LAP C PM:<.>145:I 290:I 435:I;VAGY:PM:<.>290:I
+ 656 >> S:I(2)-I(2)/DII.(3)-D.II(3)/DII.-D.II;     Y:0/2/5; VU    T1 S1 S2
+ 658 END C************************
+
+ 999 <> S0 W0 VU
+
+
+1002 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1004 ................................
+1006 ................................
+
+1008 ........A.......................
+1010 ................................
+1012 ..A.............................
+1014 ................A...............
+1016 ................................
+1018 ..........................A.....
+1020 ....A...........................
+1022 ............A...................
+1024 ................................
+1026 ...................A............
+1028 .A..............................
+1030 ................................
+
+1032 .........A......................
+1034 ........................A.......
+1036 ..A...............A.............
+1038 ................................
+1040 ..............A...............A.
+1042 ........A................A......
+1044 ....A...........................
+1046 ....................A...........
+1048 ............A...................
+1050 ............................A...
+1052 .A...............A..............
+1054 ......A...............A.........
+1056 ................................
+1058 ..........A..............A......
+1060 ..............A..............A..
+
+1062 ...A..............A.............
+1064 .......A..............A.........
+1066 ...........A...A..........A...A.
+1068 .A..............................
+1070 .....A...A.........A............
+1072 .......................A........
+1074 A...........A..............A....
+1076 ....A...A.......A..............A
+1078 ....................A....A......
+1080 ..A.......A..................A..
+1082 ......A.......A...........A.....
+1084 ........A........A....A........A
+1086 .A..A........A..............A...
+1088 ......A...A........A.....A......
+1090 ...A....A......A.......A......A.
+1092 A...........A.......A......A....
+1094 .....A....A......A...........A..
+1096 ..A...........A...A.....A.......
+
+1098 ...A.....A............A.....A...
+1100 .......A.....A..A.........A...A.
+1102 .A.........A.......A............
+1104 ....A..........A.....A.....A....
+1106 A......A.A.......A.......A...A..
+1108 ..A..A.......A.....A...A.......A
+1110 ..........A.....A...A....A..A...
+1112 ......A.....A.........A.......A.
+1114 AA..A....A....A...A.....A..A....
+1116 .......A........A....A.......A..
+1118 ...A.A....A.A.....AA.....AA.....
+1120 A......A.......A.......A......A.
+1122 ..A..A.....A.....A..A......A....
+1124 ....A....A....A.......A..A...A..
+1126 .A....A....A....A..A......A...A.
+1128 ....A...A....A.A....A...A...A...
+1130 A.....A.....A.....A...A...A.....
+1132 ..A..A...AA...A....A.......A..A.
+1134 ...A....A....A..AA.....A.A.....A
+1136 A.A...A....A..A....A.AA...A..A..
+1138 ....A..A.A...A...A......A.A.A.A.
+1140 .A...A.....A...A..A.A..A.....A..
+1142 ...A....A.A..A...A....A..A.A...A
+1144 A....AA.....A.A....A....A....A..
+1146 ..A.....AA......A....A....A.A..A
+1148 .A..A......A.A....A.A..A......A.
+1150 ...A..AA......A..A......A.AA....
+1152 AA...A...A..A..A...A.A.......A..
+1154 ...A....A..A..A...A....A..A...AA
+1156 .A..AA...A..A...A...A.A....A....
+1158 A.....AA.....AA....A....AA...A..
+1160 ..AA....A.A.....AA...A....A....A
+1162 .A...AA.....A.A...A...A....A..A.
+1164 ..A.A....A...A..A....A...A..AA.A
+1166 A....A.A..A..A.A...A...A..AA....
+1168 A..A..A..A....A..A..A...A...A.A.
+1170 ..A.....A..AA...A..A..AA...A..A.
+1172 .A..AA..A....A.A.A...A....A..A..
+1174 ...A..A..A.A...A..A...A.A.A.A..A
+1176 AA...A....A...A...A..A...A...AA.
+1178 ..AA...AA...A...A..A..AA..AA....
+1180 ..A.A......A.A.A.A.A....A..A..AA
+1182 A....AA..AA...A..A..AA...A..A...
+1184 ..AA...A.A.AA..A..A....A...A..A.
+1186 A....A..A....AA....A.AA..A...A.A
+1188 .AA.A..A..AA...AA.A..A..A..A....
+1190 A..A..A..A..A.A.A..A..A...A..AA.
+1192 .A..AA..A..A.A...A..A..AA..AA...
+1194 ..A...A.A..A...A..AA..A..AA...AA
+1196 A..A..A..AA...A..A..AA...A..AA..
+1198 .AA.AA.A....AA..A.A....A...A....
+1200 A....A....A...AA...A.AA.A.A..AA.
+1202 A.AA...AA..A..A..AA...A...A.A..A
+1204 .A..AA...AA.A..A...A.A..AA.A.A.A
+1206 ..AA..AA..A..AA..AA...A...A..A..
+1208 .AA..A..A..AA...A..A..AA...A..AA
+1210 A..AA..A.A....AA.A.AA...AA..A...
+1212 A.A...A...A.AA.A..A..A.A...A.AA.
+1214 .AA.AA.AA..A..A..A..A.A..A...A..
+1216 ...A..A...A..A..A.AA...AA..AA.AA
+1218 AA..A...A..AA.AA....AA...AA..A..
+1220 ..AA.A.A.A...A.A.A.A...A..AA.A.A
+1222 A...A.A..AA.A..AA...A.A.AA..A.A.
+1224 .A.A...AA..A.AA...AA.A..A..A.A.A
+1226 AA..AA..A.AA...A.A..A..AA.AA.A..
+1228 ..AA..AA.A..AA..A.A.AA...A..A.A.
+1230 A..A.A..A.AA...AA..A..AA..AA.A.A
+1232 .AA.A..A.A...A.A..AAA..A.A.AA.A.
+1234 A.A...A.A..AA.A..AA..AA.A.A..A.A
+1236 .A.AA.A..AA..A..AA..A..A.AA.AA..
+1238 .A.A...A...AA.AA.AA..AA....AA.AA
+1240 A.A.AA...AA..A.AA..AA..AA.A..A..
+1242 ..AA..AAA.A.A..A..A..A.A.AAA.AA.
+1244 A..A.A..AA.A..A..A.AA.AAA..AA..A
+1246 .AA..A.A..AA.A.AAA...A.A.AA..A.A
+1248 A..AA.A.AA..A.A...AAA.A.A..AA.A.
+1250 .AA.A.AA..A.AA.AA.A..A...AA..AA.
+1252 AA..AA...A.A.AA.AA.AA.A.A...A..A
+1254 .A.A..AAA..AA.A..AA..AA..A.AA.AA
+1256 A.A.AAA.AAA..A..A..AA..AAAA..A..
+1258 A.A..A.AA..AA.AA..AA.AA.A..A..AA
+1260 .A.AAA.A.AA..A.AA..AA..A.A.AA.A.
+1262 A..A.AA.A.AAA.A.AA...AA.A.A..A.A
+1264 .AA.A.AA.A..AAA..AA.AA..AA..A.A.
+1266 AA..AA..A.AA..AA.A.A..AAA.AA.A.A
+1268 ..AA..AA.A..AAA.A.AA.AA..A..A.AA
+1270 A.A.AAA..AA.A..AAA..A.AA.AA.A.A.
+1272 .AAA.A.AA..A.AA..AAA.A.A..AA.A.A
+1274 AA..A.A.A.AAA.A.A.A.AAA.AA..A.A.
+1276 ..AA.AAA.AA..A..AAAA..AAA..AA.AA
+1278 AAA.AA.AAA.AA.AA.A..AAA..AA..A..
+1280 A..A..A..AA.AA.AA.AA.A.AA.AAA.AA
+1282 .A.AAA.AAA.A..A.AA.AA.A.AAA.A..A
+1284 .AA..AA.A.AAAA..A.A..AAA..AA.AAA
+1286 A..AA.AA.AA..AAA.AA.AA..AAA.AA..
+1288 AA..AA..AA.AA..AA..AAA.AAA.AA.AA
+1290 A.AA..AAA..A.AA.AAA.A.AA..A.A.A.
+1292 .A..AAA..AA.AA.AA..AAA.AAA.A.AA.
+1294 .AAAA.AAAA.AAA..AAA.A..A.A.AA..A
+1296 A..A..A.AAAA..AA.A.AAAA.AAA.AAAA
+1298 .AA.AA.AA..AAA.AA.AA..AAA.AA..AA
+1300 AA.AAA.A.AA.AAA.AA..AA.AA..AAA..
+1302 A.AA..AA.AA.A.AAA.AA.AA..AA..AAA
+1304 .AA.AA.AA.AA.A.A.AA.AA.AAA.AA..A
+1306 A..A.AA.AA..AAA..A.AA.AA.AA.AAAA
+1308 .AAAA.AA.AAAA..AAAA.A..AA.AAA.A.
+1310 AA..AAA.A.A..AA.AA.AAAA.AAA.AA.A
+1312 .AAAA..AA..AAA.AA.AA..AAA.AA.AAA
+1314 AA.A.AAAAAA.A.A.A.A.AAAA.AA.AA..
+1316 AA..AAA..AAA.AAA.AA.AA..AA..AAAA
+1318 ..AAA.AAAA.AAA.AAA.AA.AAA.AAA..A
+1320 AAA.AA.AA.A.AAA.AA.AAA.A.A.A.AA.
+1322 A.AA..AA.AAAA.A.A.AAA.AAAA.AA.AA
+1324 AA.AAAAA.AA..AAA.AA.AA..AAA.AA.A
+1326 .AA.AA.AA.AAAA.AA.AA.AAA.AAA.A.A
+1328 .AAAA.A.AA.AA.A.AAA.AAA.AA..AAAA
+1330 AA.A.AAAA.AAA.AA.AAAA.AAA.AA..A.
+1332 A.AAA..AAAAA.A.AAA.AAA.AAAA.AA.A
+1334 AA..AAAA.A.AAAAA..AAA.AAAA.AAAA.
+1336 .AAAAA..AAAAA..AAAA.AAAA..AAA.AA
+1338 A.AA..AAA.AA.AAA.AAA.A.AAAA.AAAA
+1340 AAA.AAAA.AA.AA.AAA.AAAA.AA.AAA..
+1342 ..AAA.AAA.AA.AA.AAA.A.AAAAAAA.AA
+1344 AAA.AA..AAAAAA.AA.AAAAAA.A..AAAA
+1346 A.AA.AAAAAA.A.AAAA.A.AA.AAAAAA.A
+1348 AA.AAAAA..AAAAAA.AAAA.AAAA.A.AA.
+1350 .AAAA..AAAAA.A.AAAA.AAAA.AAAA.AA
+1352 AAA.AAAA.A.AA.AAA.AAAA.AA.A.AAA.
+1354 A.AAA.AAAAA.AAA.AA.A.AA.AAAAA.AA
+1356 AAAA.AA.A.AAA.AAA.AAAAAA.A.A.A.A
+1358 .A.AAA.AAAA.AA.AAAA.A..AAA.AA.AA
+1360 AAA.AAAA.AAAA.AA..AAAAA.A.AAAAA.
+1362 AA.AA.AAA..AAA.AAAA.AAAAAAA.AA.A
+1364 .AAAAA.AAAAA.AAAAA.AAA.AAA.AAAAA
+1366 AAAA.AAA.AAAA.A.AAAA.AAA.AAA.AAA
+1368 A.AAAA.AAAA.AAAA.AA.AAAAAA.AAA.A
+1370 AAAA.AAAA.AAAA.AAAAAAA.AA.AAA.AA
+1372 AA.AA.AAAAA.AAAAA.AA.AAAAAA.AAAA
+1374 .AAAAAA.AAAAAAA.AAAAAAA.AAAAAA.A
+1376 AAA.A.AAAA.A.AAAAA..AAAAA..AAAAA
+1378 AAAAAAA.AAAAAAAA.AAAA.AAAAAAA.AA
+1380 ..AA.AAAA.AAAA.AAA.AAAAA.AA.AAAA
+1382 AAAAAA.AAAAA.AAAAAAAAA.AAAAAAA.A
+1384 AAAAAAAAAA.AAAAA.AAA.AAAA.AA.AAA
+1386 AA.AA.AAAAAAA.AAAAA.AAA.AAAAAAA.
+1388 .AAAAAA.A.AAAAAAA.AAAAAAA.AAA.AA
+1390 AAAA.AAAAAAAAAA.AAAAA.AAAAA.AAAA
+1392 A.AAAAAAAAA.AAAAAAA.AAAAAAAAAAAA
+1394 AAAAAAA.AAAAA.AA.AAAAAAAAA.AAA.A
+1396 AAA.AAAAA.AAAAAAAAAAAA.AAAAA.AAA
+1398 AA.AAAAAAAAAAA.AAA.AAAAA.AAAAAAA
+1400 AAAAA.AAAA.AAAAAA.AAAAAAAAAAA.AA
+1402 .AAAAAAA.AAA.AAAAAAA.AAAAAA.AAAA
+1404 AAA.AAAAAAAAAAA.AAAAAAA.AAAAAA.A
+1406 AAAAAAA.AA.AAAAAAAA.AAAAA.AAAAAA
+1408 A.AA.AAAAAAAA.AAAAAAAAAAAAAA.AAA
+1410 AAAAAAAAAAAAAAAAA.AAAA.AAAAAAAA.
+1412 AAAAAA.AAAAAAA.AAAAAAAAAAA.AAAAA
+1414 AA.AAAAAAA.AAAAAAAAAAAAAAAAAA.AA
+1416 AAAAAAAAAAAAAAAAAAAA.AAAA.AAAAAA
+1418 AAAA.AAA.AAAAAAA.AAAAAAAAAAAAAA.
+1420 .AAAAAAAAAAA.AAAAAAAAAAAAAA.AAAA
+1422 AAAAAAAAAAAAAAAAAAAAAAA.AAAAAAAA
+1424 AAAAA.AAA.AAAAAAAAA.AAAAAAAAAAAA
+1426 A.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1428 AAAAAAAAAAA.AAA.AAAAAAAAAA.AAA.A
+1430 AAAAAAA.AAAAAAAAAAAAAA.AAAAAAAAA
+1432 AAA.AAAAAAAAAAAAAA.AAAAAAAAAAAAA
+1434 AAAAAAAAAAAAAA.AAAAAAAAAAAAAA.AA
+1436 AAAAAAAAAA.AAAAAAAAAAAAAA.AAAAAA
+1438 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1440 AAAAAA.AAAAAAAAAAAAAAA.AAAAAAAAA
+1442 A.AAAAAAAAAAAAAAA.AAAAAAAAAAAAAA
+1444 AAAAAAAAAAAAAAAAAAAAAAAAAAAA.AAA
+1446 AAAAAAAAAAAA.AAAAAAAAAAAAAAAAAAA
+1448 AAAAAAAAAAAAAAAAAAAA.AAAAAAAAAAA
+1450 AAAA.AAAAAAAAAAAAAAAAAAAAAAAAAAA
+1452 AAAAAAAAA.AAAAAAAAAAAAAAA.AAAAAA
+1454 AAAAAAAAAAAAAA.AAAAAAAAAAAAAAA.A
+1456 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1458 AA.AAAAAAAAAAAAAAA.AAAAAAAAAAAAA
+1460 AAAAAAAAAAAAAAAAAAAAAAAA.AAAAAAA
+1462 AAAAAAAA.AAAAAAAAAAAAAAAAAAAAAAA
+
+1464 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1466 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.A
+1468 AAAAAAAAAAAAAAAAAAAAA.AAAAAAAAAA
+1470 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1472 AAAAAAAAAAAA.AAAAAAAAAAAAAAAAAAA
+1474 AAAA.AAAAAAAAAAAAAAAAAAAAAAAAAAA
+1476 AAAAAAAAAAAAAAAAAAAAAAAAAA.AAAAA
+1478 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1480 AAAAAAAAAAAAAAAA.AAAAAAAAAAAAAAA
+1482 AA.AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1484 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+1486 AAAAAAAA.AAAAAAAAAAAAAAAAAAAAAAA
+1488 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

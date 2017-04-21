@@ -1,0 +1,213 @@
+  C**************** BOLERO *************
+ 1 C ESZKIMO V.KOSARAS ****** KET FELE MEGOLDAS:236.SOR*****************
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3/4U   I 2*15/1 I 0.29KG*  I         I          I       I       I         I     I      I       I41-46I 
+C BOLERO I 1*TX   I*1000=290 I  140    I 2DB ZSV. I       I 430   I   750   I 310 I P:  'I       I  %  I
+C 47*52  I        I *930=270 I         I   5      I       I 410   I         I 330 I K:  'I       I     I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C3/4 BOLERO   0.29 * 980=285    140         5        50     480       750     270 PKTML25'  648    36%
+C HU BOLERO   0.35 * 980=343    140         5        60     550       800     250 PKTML28'  535    31%
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+
+
+  12 NP6=14.8  C MINTA 
+  18 NP3=14.6  C: PASSZE  14.8
+  20 NP7=14.2  C: PASSZE  14.4
+  22 NP4=12.2  C LEV.     12.4
+  24 NP2=9.8  C BEK.  10.4
+  26 NP5=14.6  C SLAG  14.8
+
+  37 START        
+  38 YG:6/256;
+  39 WM=16; WMI=7
+  40 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	       NP4-4   V0	VU      S1 S2
+  41 VJA^1
+
+C***************************************************
+  42 CIF #100=   RS17=51       C PANT - GALINA:NORMAL (KESKENYEBB)
+C                                               20DB-HOZ:  15DB-HOZ:  10DB-HOZ:
+  43 IF #100=76  RS17=50       C PANT - DANA:KIHAJTOS (SZELESEBB)
+  44 IF #100=93  RS17=0        C  EEEEE            4           3          2
+  45 IF #100=89  RS17=1        C  HHHH             5           4(1)       3(2)
+  46 IF #100=84  RS17=2        C  UUUUU 3/4        8           6          4
+
+  47 IF #100=39  RS17=50
+  48 IF #100=56  RS17=0        C  EEEEE            4           3          2
+  49 IF #100=52  RS17=1        C  HHHH             5           4(1)       3(2)
+  50 IF #100=47  RS17=2        C  UUUUU 3/4        8           6          4
+
+  51 IF #100=10  RS17=50
+  52 IF #100=19  RS17=0        C  EEEEE            4           3
+  53 IF #100=17  RS17=1        C  HHHH             5           4(1)      JULI 30 VAS:   BAJA FEHER  ST=7 NPK=0.1 UJ KT
+  54 IF #100=14  RS17=2        C  UUUUU 3/4        8           6      
+
+  56 C IF #100=1  RS17=3        C  UUUUU HU
+C*********************************************************VASALVA:*****KESZEN********TOUREN:*******MIN:18'***ML:***********
+  60 IF RS17=0  RS19=5 RS18=1 RS1=97        C  EEEEE         55          52            116            18'     PKTML:25'        
+  62 IF RS17=1  RS19=4 RS18=0 RS1=106       C  HHHH          62          60            131            20'     PKTML:28'
+  64 IF RS17=2  RS19=5 RS18=0 RS1=71        C  UUUUU 3/4     44          42             96            15'     PKTML:20'
+  66 IF RS17=3  RS19=5 RS18=0 RS1=102       C  UUUUU HU      60          58                                      ML:27'
+
+  68 IF RS17=50 RS19=1 RS18=0 RS1=13        C  SAJAT PANT  DANA                                               PKTML:6'
+  70 IF RS17=51 RS19=1 RS18=0 RS1=10        C  SAJAT PANT  GALINA                                    
+C*********************************************************************************************************HUSUM:28' RU:25'
+C-----------------------------------------------------------------------------------------------------------------------
+C                                  TAMAS       L.30      LAJT30        T.FEH +         T.FEH+20/1        T.NYERS+
+C                                  FEHER:      NYERS:    FEKETE:      FUST,MOGYI          +HB           36/2 L.TX
+C------------------------------------------------------------------------------------------------------------------------
+C KT :WM%=0      NPK=                0          -0.1     0.2
+C                RS1=(E/H/HU)                                                   
+C-------------------------------------------------------------------------------------------------------------------------
+CPKT :WM%=-10    NPK=                            0        0.2             0                 0               0.2                
+C                RS1=(E/H/HU/3/4U)                    97/106/102/71  100/110/106/74     94/102/98/68     97/106/102/71
+C--------------------------------------------------------------------------------------------------------------------------
+  92C 
+
+ 108 >> S:D.I-DI./DI.-D.I/UVNDI.;                                       S1 S2 T2
+ 110 << S:DI.-D.I/UVND.I;             Y:5;	             	               S1    T2
+ 112 >> S:R-R;		                      Y:6;	       NP4-2   VU	             S2
+ 114 << S:R-0/0-R;                    Y:6/0;      NP4-4 	 VU            S1 S2
+ 116 >> S:R-R;                        Y:5;        NP2-2   VU           S1
+ 117 IF RS18=1 GOTO 600 C BOLERO ELEJE - NEM KELL RA PASSZE, CSAK 1/1-ES BEKEZDES!
+ 118 Y:2/2/5/5;
+ 120 REP*1
+ 122 << S:R-0;		                                 NP3-3   VU      S1
+ 124 >> S:0-R;		                                         VU       S1
+ 126 REPEND
+ 128 << S:R-0;		                                NP3-3   VU      S2
+
+ 200 C******** KOSARAS*******581TU*************************
+ 201 JA1=1160(1154-1160);
+ 202 PA:<JA1>;
+ 204 IF RS19=1 FA=1-10;  PM:<.>9:II<FA>572:II<.>;            C OSZTAS NELKUL
+ 206 IF RS19=4 FA=6-144;  PM:<.>8:IFAIIIFAIIIFAIIIFAI;        C 4H
+ 208 IF RS19=5 FC=20-130; PM:<.>8:I5(IFCI)I;                 C*5UE
+
+ 210 >> S:0-R/UVN.;		                                              S1    T2
+ 212 REP*4 
+ 214 << S:U^NN./.-N./UVNI;             NP3-3                      T1    S2 T2
+ 216 WM=0
+ 218 >> S:UVNY;                                          VL1               T2  C VKB>6 !!!
+ 220 << S:UVNA;                                          VR1               T2  C VKA>1 !!!
+ 222 WM=17
+ 224 >> S:R<1->-0;                     NP7-7             VU V0       S1
+ 226 REPEND
+
+
+
+C**2 FELE KOSARAS***VAGY-VAGY:***********
+ 230 JA1=1242(1200-1242);           C ESZKIMO ALJA
+ 230 JA1=1094(1004-1090);           C KOSARAS - SAKKTABLA
+ 236 IF RS19=1 JA1=1046(1044-1046); C PANT
+C***************************************
+ 238 VJA^0
+ 240 WM=16
+ 242 Y:2/2/5/5;
+ 244 NP6-6
+ 246 RBEG*RS1 C******1SZV.CSIPKE******
+ 248 << S:U^S<1->N./.-N./UVSNY.;                      V0     T1    S1 T2     C VKA<2
+ 250 >> S:U^S<1->N./.-N./UVSNA.;                      VL1    T1    S1 T2     C VKB>4-VKB>3
+ 252 REND
+ 254 << S:U^N<1->N./.-N./UVNN.;                   V0     T1 S1    T2     C VKA
+ 256 >> S:U^NDI./D.I-DI.;                    NP4-4       T1 S1
+ 258 << S:D.I-DI.;                          Y:2/5; VU       S1 S2
+ 260 >> S:D.I-DI./D.I-DI./UVSDI.;                           S1 S2 T2
+ 262 END
+
+ 600 C**** RS18=1:BOLERO ELEJE PASSZE NELKUL ***************
+ 602 << S:R-0/0-R/UVSDI.;		      Y:2/5;  NP3-3     S1 S2 T2
+ 604 >> S:U^SD.I/DI.-D.I/DI.-D.I;        NP4-4  T1 S1 S2
+ 606 << S:DI.-D.I;                       VU        S1 S2
+ 608 >> S:DI.-D.I/DI.-D.I/UVSD.I;                  S1 S2 T2
+ 609 GOSUB 200-208
+ 610 GOTO 230 C**********************************************
+
+ 999 <> W0 S0
+
+
+C VAGY:
+1154 YIIIIIIIAI
+1156 YYIIIIIAAI
+1158 YYYIIIAAAI
+1160 YYYYIAAAAI
+C VAGY:
+1154 YIYIAIAIAI
+1156 YYIYIAIAAI
+1158 YYYIIIAAAI
+1160 YYYYIAAAAI
+
+
+1002 WWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1004 AIAIAIAIAI.IAIAIAIAIAIAIIIAI
+1006 YIYIYIYIYI.IYIYIYIYIYIIIIIYI
+1008 AIAIAIAIAIIIAIAIAIAIAIIIIIII
+1010 YIYIYIYIYIYIYIYIYIYIIII..III
+1012 IIAIAIAIAIAIAIAIAIAIII....II
+1014 IIYIYIYIYIYIYIYIYIIII...I..I
+1016 IIIIAIAIAIAIAIAIAIII...AI...
+1018 .IIIYIYIYIYIYIYIIII...IIIY..
+1020 ..IIIIAIAIAIAIAIII...AAAIII.
+1022 ...IIIYIYIYIYIYII...IIIIIYYY
+1024 I...IIAIAIAIAIAI...AAAAAIIII
+1026 YY...IYIYIYIYIYI.....IIIIYYY
+1028 ....IIAIAIAIAIAII...AAAAIIII
+1030 Y..IIIYIYIYIYIYIII..IIIIIYYY
+1032 ..IIAIAIAIAIAIAIAII.........
+1034 IIIIYIYIYIYIYIYIYIIIIIIIIIII
+1036 IIAIAIAIAIAIAIAIAIAII.......
+1038 IIYIYIYIYIYIYIYIYIYIIIIIIIII
+1040 AIAIAIAIAIAIAIAIAIAIAI.....I
+1042 YIYIYIYIYIYIYIYIYIYIYIIIIIII
+1044 AIAIAIAIAIAIAIAIAIAIAII...II
+1046 YIYIYIYIYIYIYIYIYIYIYIIIIIII
+1048 AIAIAIAIAIIIAIAIAIAIAIAI.IAI
+1050 YIYIYIYIIIIIYIYIYIYIYIYI.IYI
+1052 AIAIAIAIIIIIIIAIAIAIAIAIIIAI
+1054 YIYIYIIII..IIIYIYIYIYIYIYIYI
+1056 AIAIAIII....IIIIAIAIAIAIAIAI
+1058 YIYIIII...I..IIIYIYIYIYIYIYI
+1060 AIAIII...AI...IIIIAIAIAIAIAI
+1062 YIIII...IIIY...IIIYIYIYIYIYI
+1064 AIII...AAAIII...IIIIAIAIAIAI
+1066 YII...IIIIIYYY...IIIYIYIYIYI
+1068 AI...AAAAAIIIII...IIAIAIAIAI
+1070 YI.....IIIIYYYYY...IYIYIYIYI
+1072 AII...AAAAIIII....IIAIAIAIAI
+1074 YIII..IIIIIYYYY..IIIYIYIYIYI
+1076 AIAII...........IIAIAIAIAIAI
+1078 YIYIIIIIIIIIIIIIIIYIYIYIYIYI
+1080 AIAIAII.......IIAIAIAIAIAIAI
+1082 YIYIYIIIIIIIIIIIYIYIYIYIYIYI
+1084 AIAIAIAI.....IAIAIAIAIAIAIAI
+1086 YIYIYIYIIIIIIIYIYIYIYIYIYIYI
+1088 AIAIAIAII...IIAIAIAIAIAIAIAI
+1090 YIYIYIYIIIIIIIYIYIYIYIYIYIYI
+1092 AIAIAIAIAI.IAIAIAIAIAIAIAIAI
+1094 YIYIYIYIYIIIYIYIYIYIYIYIYIYI
+1096 WWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+
+1200 9(7(AI)IIAIAI)5(AI)
+1202 9(7(YI)IIYIYI)5(YI)
+1204 9(6(AI)6IAI)5(AI)
+1206 9(5(YI)3I..3IYI)5(YI)
+1208 9(5(AI)II4.4I)5(AI)
+1210 9(4(YI)3I.2(..I)II)4(YI)II
+1212 9(I3(IA)3I3.AI3.II)I3(IA)3I
+1214 9(IIYIY4I3.3IY3.I)IIYIY5I
+1216 9(4IA3I3.3A3I3.)4IA3I.I
+1218 9(.6I3.5I3Y..).6I..I
+1220 9(..4I3.5A5I.)..4I3.I
+1222 9(3.3I5.4I5Y)3.3I3.I
+1224 9(..IIAII3.4A4I..)..IIAII..I
+1226 9(.3IY3I..5I4Y.).3IY3I.I
+1228 9(I3(IA)II11.)I3(IA)3I
+1230 9(I3(IY)13I)I3(IY)3I
+1232 9(5(AI)I7.II)5(AI)
+1234 9(5(YI)10I)5(YI)
+1236 9(6(AI)5.IAI)5(AI)
+1238 9(6(YI)6IYI)5(YI)
+1240 9(7(AI)IIAIAI)5(AI)
+1242 *9(6(IY)II3(IY))4(IY)I

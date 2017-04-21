@@ -1,0 +1,45 @@
+   1 C	2/1-ES PASSZE+REX
+   2 C
+  10 NP4=10.0	C:LEVALASZTAS
+  11 NP2=9.0	C:BEKEZDES       
+  12 NP3=10.0	C:2/1
+  13 NP1=10.0	C:REX 
+  14 NP5=12.0	C:SLAG
+  40 START
+  50 YG:6/235;
+  55 WM=10;WMI=7
+  60 <<	S:D.I-DI./DI.-D.I;			 Y:5/2;		NP4-4	V0		S1 S2
+  62 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;			V#  T1 S1    T2
+  64 <<	S:DI..(12.0)-D..I(12.0)/UVND..I;							VL1 V#	   S1	 T2
+  66 >>	S:DII.-D.II;		     Y:6;				  S1
+  68 <<	S:DII.-0/0-R;		     Y:6/0;			       S1 S2	        
+  70 >>	S:DII.(2)-D.II(2)/DII.(3)-0; Y:5/2;				   S1 S2
+  72 <<	S:0-D.II/DII.-D.II;			    NP3-3   V0	       S1 S2
+  74 RBEG*RS1
+  76 >>	S:DII.-D.II;						       S1 S2
+  78 <<								       S1 S2
+  80 REND
+  81 IF	RS17=10	GOTO 500
+  82 >>	S:R-0/0-R;				   S1 S2
+  84 IF	RS2=0 END C----	CSAK PASSZE ----------
+  90 Y:3/5/2;
+  95 NP1-1
+ 100 RBEG*RS2
+ 105 <<	S:R-R;		  T1 S1	S2
+ 110 >>			  T1 S1	S2
+ 115 REND
+ 120 END
+ 500 C--- NYAK PASSZE TORESSEL -----------
+ 502 WM=0
+ 504 >>	S:UVSDI.; V#	T2
+ 506 <<	S:UVSD.I;		   V#	T2
+ 508 WM=10
+ 510 >>	S:R-0;			NP5-0	      S1 S2
+ 512 <<	S:U^ND..I;   V#	  T1
+ 514 >>	S:U^ND..I;   V#	  T1
+ 516 RBEG*RS3
+ 518 <<	S:DII.-D.II;		NP3-3	      S1 S2
+ 520 >>					      S1 S2
+ 522 REND
+ 524 END
+ 999 <>	W0 S0

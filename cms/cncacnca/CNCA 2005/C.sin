@@ -1,0 +1,300 @@
+   1 C KARAKUTTA GYONGY VAGY KUKORICAS
+   2 C AZ ALJAN ZSAKKOTESU NORVEG MINTA
+   3 C CP KARA VAGY 2005 TELI/KARAKUTTA KOSZTUM                                      E-H:70CM     U:59CM  
+   4 C-----------------------+------------+-----------+--------+--------+--------+
+   5 C Y2:4LUSI-NYERS
+   6 C Y5:3LUSI-FUZFA
+   7 C Y3:4LUSI-FEKETE
+   8 C-----------------------+------------+------------+------------+-------------+
+  26 C NP4=13.5;            C:LEVALASZTAS
+  27 C  B2=11.7;            C:BEKEZDES, 1SOR REX A ZSAK ELOTT
+  28 C NP1=14.5;            C:KORSLAG
+  29 C  J3=E:12.5 H:12.25; C GYONGY,KUKORICA
+  30 C  J2=E:13.25 H:13.00   C:ZSAK !!!!!!!!!HA SZAKITJA AT KELL FUZNI A SIMA DIOBA!!!!!!!!!!!!!
+  40 START        
+  50 YG:6/2356;
+  52 C-------------GYONGY ---------------------------1/1 NINCS BENNE!!!-------------------
+  58 C IF RS10=8   RS19=0	    C E-H	    18'
+  59 C IF RS10=11  RS19=1	    C U		     18'
+  60 C IF RS10=25  RS19=2	    C 3DB.GALLER    
+  61 C IF RS10=22  RS19=13	   C 3DB.1/1 GARBO
+  62 C IF RS10=13  RS19=12	   C 3DB.1/1 KEREK NYAK JACQ. SZEGELLYEL
+  63 C IF RS10=16  RS19=14	   C 2DB.CSONAK NYAK
+  64 C-------------KUKORICAS ------------------------------------------
+  70C  IF RS10=35 RS19=6	     C E-H	   18'
+  71C  IF RS10=15 RS19=7	     C U		    18'
+  72 C IF RS10=25  RS19=8	    C 3DB.GALLER	   
+  73 C IF RS10=10  RS19=13	   C 3DB.1/1 GARBO
+  74C  IF RS10=45  RS19=12	   C 3DB.1/1 KEREK NYAK JACQ. SZEGELLYEL
+  75 C IF RS10=19  RS19=14	   C 2DB.CSONAK NYAK
+  76 C----------------------------------------------------------------------------
+  77 C---SZOKNYA:!!!!!A SZOKNYAT NEM TELJES TUAGYON KOTI! LE KELL TOLNI A TUKET!!!!!!!------357 TU------ WM%=-15 ------
+  82 C IF #100=12  RS19=20     C 1DB    GYONGY SZOKNYA JAC.-DAL----- 80CM
+  83 C IF #100=6   RS19=21     C 1DB    GYONGY SZOKNYA JAC.-DAL----- 60CM
+  86 C IF #100=60  RS19=24     C 1DB KUKORICAS SZOKNYA JAC.-DAL----- 80CM VAGY 85CM (KESZEN-NYERSEN +5CM)
+  87 C IF #100=30  RS19=25     C 1DB KUKORICAS SZOKNYA JAC.-DAL----- 60CM
+  90 C IF #100=24  RS19=28     C 1DB KUKORICAS SZOKNYA SIMA--------- 60CM 0.45KG
+  91 C IF #100=15  RS19=29     C 1DB KUKORICAS SZOKNYA SIMA--------- 80CM 0.60KG
+  92 C----------------------------------------------------------------------------------------------------
+ 100 IF RS19=0  RS1=80  RS2=5  RS17=0     C E-H       3LAP  71CM:93   60CM:80
+ 102 IF RS19=1  RS1=87  RS2=5  RS17=1     C U         4LAP    
+ 105 IF RS19=6  RS1=80  RS2=5  RS17=0     C E-H       3LAP  71CM:93   60CM:80
+ 107 IF RS19=7  RS1=87  RS2=5  RS17=1     C U         4LAP    
+ 110 IF RS19=2  RS1=15  RS2=1  RS17=2     C GALLER GYONGY
+ 111 IF RS19=8  RS1=17         RS17=2     C GALLER KUKORICAS
+ 112 IF RS19=12                RS17=2     C 1/1 KEREK NYAK JACQ. SZEGELLYEL
+ 113 IF	RS19=13		              RS17=2	    C 1/1	GARBO NYAK JACQ. SZEGELLYEL
+ 114 IF RS19=14                RS17=2     C    CSONAK NYAK JACQ. SZEGELLYEL
+ 115 C----------------------------------------------------------------------------------------------------
+ 116 IF RS19=20 RS1=110 RS2=5  RS17=3    C 1DB    GYONGY SZOKNYA JAC.----- 80CM
+ 117 IF RS19=21 RS1=78  RS2=5  RS17=3    C 1DB    GYONGY SZOKNYA JAC.----- 60CM
+ 118 IF RS19=24 RS1=120 RS2=5  RS17=3    C 1DB KUKORICAS SZOKNYA JAC.----- 80CM:110 85CM:120
+ 119 IF RS19=25 RS1=78  RS2=5  RS17=3    C 1DB KUKORICAS SZOKNYA JAC.----- 60CM
+ 120 IF RS19=28 RS1=91         RS17=3    C 1DB SIMA KUKORICAS SZOKNYA JAC. NELKUL------- 60CM
+ 121 IF RS19=29 RS1=124        RS17=3    C 1DB SIMA KUKORICAS SZOKNYA JAC. NELKUL------- 80CM
+ 122 C------------------------------------------------------------------------------
+ 160 JA1=1002; PA:1:<JA1>;
+ 161 IF	RS17=0 FA=1-179	 PM:<*>6:3(FA**);    C**3 LAP E-H
+ 162 IF	RS17=1 FA=1-135	 PM:<*>7:4(FA);	     C**4 LAP U	      VAGY
+ 163 IF	RS17=1 FA=1-134	 PM:<*>8:4(FA*);     C**4 LAP U	      VAGY
+ 164 IF	RS17=2 FA=1-272	 PM:<*>7:2FA;	       C**3DB.GALLER VAGY	3DB.1/1	GARBO OSZTAS NELKUL
+ 165 IF	RS17=3 FA=1-348	 PM:<*>7:FA;         C**1 LAP SZOKNYA*********359TU**********
+ 166 C FA=1-348; PM:<*>7:FA;                 C BARMELYIK KOTHETO IGY, AHOGY A SZOKNYA, 2 LAPBAN, OSZTAS NELKUL
+ 167 C------------------------------------------------------------------------------
+ 168 IF	RS19=12	GOTO 800		     C 1/1 KEREK NYAK JACQ. SZEGELLYEL (3DB)
+ 169 IF	RS19=14	GOTO 800		     C    CSONAK NYAK JACQ. SZEGELLYEL (2DB)
+ 170 IF	RS19=28	GOTO 450		     C 1DB SIMA KUKORICAS SZOKNYA 80CM !!!!!!!!!!!!!!!!!NINCS KESZ!!!!!!!!!
+ 171 IF	RS19=29	GOTO 450		     C 1DB SIMA KUKORICAS SZOKNYA 60CM
+ 178 C
+ 179 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+ 180 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 181 << S:DI.-D.I/UVND.I;             Y:3;	             	        ML       S1    T2
+ 182 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 183 << S:R-0/0-R;                    Y:6/0;  V#        	        ML       S1 S2
+ 184 >> S:R-R;                        Y:3;         NP2-2         ML       S1
+ 185 Y:3;
+ 186 REP*2
+ 187 << S:R-0;		                            V#    NP1-01       ML    S1
+ 188 >> S:0-R;		                            V#    NP0-         ML    S1
+ 189 REPEND
+ 190 IF RS19>23 GOTO 300 C***KUKORICAS SZOKNYA***
+ 191 IF RS19>19 GOTO 200 C***GYONGY SZOKNYA***
+ 192 IF RS19>5  GOTO 300 C***KUKORICAS H-U-GALLER***           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 199 C*****GYONGY  TEST-UJJA-NYAKAK (RS19=0-1-2-3-4-5)********************
+ 200 IF RS19=2 GOTO 208; C***GALLER***
+ 201 IF RS19=3 GOTO 208; C***GARBO***
+ 202 JA1=1000(1000-1002);
+ 204 Y:2/3;
+ 206 GOSUB 500-510*2 C**** ZSAKKOTESU NORVEG PASSZE*****
+ 208 Y:3;
+ 210 << S:R-0;		                            V# NP-0    S1
+ 212 JA1=1004;  C1004 .I.I.I.I.
+ 213 >> S:0-R/UVNI*;		                         NP0-    S1    T2
+ 214 IF RS19=1 GOTO 242; C***UJJA***
+ 215 IF RS19=5 GOTO 242; C***UJJA***
+ 216 IF RS19=2 GOTO 242; C***GALLER***
+ 218 << S:U^N./I*-./UVN.;    NP3-3  Y:2;         T1 S1    T2
+ 220 >> S:R-R;               NP2-2       ML         S1
+ 222 << S:R-0;               NP1-01                 S1
+ 224 >> S:0-R;               NP0-            V#     S1
+ 226 JA1=1010(1010-1056) C**NORVEG**
+ 228 Y:3/2; GOSUB 500-510*4;
+ 230 Y:5/2; GOSUB 500-510*4;
+ 232 Y:3/2; GOSUB 500-510*4;
+ 234 << S:0-0;  Y:0; NP0-0   V# S1
+ 235 >> S:0-0;  Y:0; NP01-01 V# S1
+ 236 << S:R-0;		     Y:2;          NP-0          V#   S1
+ 238 JA1=1004;  C1004 .I.I.I.I.
+ 240 >> S:0-R/UVNI*;		         NP0-                S1   T2
+ 244 Y:2/5;
+ 246 << S:U^N./I*-%./I*-.;  NP3-3         V# T1 S1 S2  C
+ 248 >> S:I*-%./I*-.;                     V#    S1 S2  C
+ 250 RBEG*RS2
+ 252 GOSUB 600-610 C***GYONGY***
+ 254 REND
+ 256 << S:I*-%./I*-.;               V#          S1 S2  C
+ 258 >> S:I*-%./I*-./UVN.;                      S1 S2  T2 C
+ 262 << S:R-R;              Y:2;         ML     S1
+ 264 >> S:R-0;                   NP1-01         S1
+ 268 JA1=1058(1058-1096)C**NORVEG**
+ 270 Y:3/2; GOSUB 500-510*2;
+ 272 Y:3/5; GOSUB 500-510*2;
+ 274 Y:2/5; GOSUB 500-510*2;
+ 276 Y:3/5; GOSUB 500-510*2;
+ 278 Y:3/2; GOSUB 500-510*2;
+ 280 << S:0-0;  Y:0; NP0-0   V# S1
+ 281 >> S:0-0;  Y:0; NP01-01 V# S1
+ 282 << S:R-0;		          Y:2;       NP-0     V#       S1
+ 284 JA1=1004;  C1004 .I.I.I.I.
+ 286 >> S:0-R/UVNI*;		           NP0-              S1  T2
+ 290 << S:U^N./I*-%./I*-.;  NP3-3 Y:2/5;        T1 S1 S2  C
+ 291 >> S:I*-%./I*-.;                     V#       S1 S2  C
+ 292 RBEG*RS1
+ 293 GOSUB 600-610 C***GYONGY***
+ 294 REND
+ 295 << S:I*-%./I*-.;            V#      S1 S2
+ 296 >> S:I*-%./I*-./UVN.;          ML   S1 S2 T2
+ 297 RS10=RS10-1
+ 298 IF RS10>0 GOTO 52
+ 299 END
+ 300 C*****KUKORICAS  TEST-UJJA-NYAKAK (RS19=6-7-8-9-10-11)*****************************
+ 301 << S:R-0;		             NP-0     Y:3;   V#    S1
+ 302 JA1=1004;  C1004 .I.I.I.I.
+ 304 >> S:0-R/UVNI*;		       NP0-                  S1    T2
+ 306 IF RS19=7  GOTO 338; C                                                   ***UJJA***
+ 307 IF RS19=11 GOTO 338; C                                                   ***UJJA***
+ 308 << S:U^N./I*-./UVN.;    NP3-3  Y:2;        T1 S1    T2
+ 310 >> S:R-R;               NP2-2       ML        S1
+ 312 << S:R-0;               NP1-01                S1
+ 314 >> S:0-R;               NP0-            V#    S1
+ 316 JA1=1010(1010-1056) C**NORVEG**
+ 318 Y:3/2; GOSUB 500-510*4;
+ 320 Y:5/2; GOSUB 500-510*4;
+ 322 Y:3/2; GOSUB 500-510*4;
+ 324 << S:0-0;  Y:0; NP0-0   V# S1
+ 325 >> S:0-0;  Y:0; NP01-01 V# S1
+ 326 << S:R-0;		            Y:2;   NP-0         V#    S1
+ 328 JA1=1004;  C1004 .I.I.I.I.
+ 330 >> S:0-R/UVNI*;		        NP01-1                S1   T2
+ 334 IF RS19=8 GOTO 380 C                                                  ***GALLER***
+ 338 Y:5/2/2/5;
+ 340 << S:U^N./I*-./I*-%.;  NP3-3         V# T1 S1 S2  C
+ 342 >> S:I*-%./I*-.;                     V#    S1 S2  C
+ 344 RBEG*RS2 C***KET NORVEG KOZTI KUKORICA  Y:5/2/2/5;***
+ 346 GOSUB 700-710 C***KUKORICA***
+ 348 REND
+ 350 << S:I*-./I*-%.;               V#          S1 S2  C
+ 352 >> S:I*-%./I*-./UVN.;                      S1 S2  T2 C
+ 355 << S:R-R;              Y:2;          ML     S1 
+ 358 >> S:R-0;  Y:2; NP1-01     S1
+ 360 JA1=1058(1058-1096)C**NORVEG**
+ 362 Y:3/2; GOSUB 500-510*2;
+ 364 Y:3/5; GOSUB 500-510*2;
+ 366 Y:2/5; GOSUB 500-510*2;
+ 368 Y:3/5; GOSUB 500-510*2;
+ 370 Y:3/2; GOSUB 500-510*2;
+ 372 << S:0-0;  Y:0; NP0-0   V# S1
+ 373 >> S:0-0;  Y:0; NP01-01 V# S1
+ 374 << S:R-0;		                  NP-0   Y:2;    V#    S1
+ 376 JA1=1004;  C1004 .I.I.I.I.
+ 378 >> S:0-R/UVNI*;		            NP0-             S1  T2
+ 382 Y:5/2/2/5;
+ 384 << S:U^N./I*-./I*-%.;  NP3-3            T1 S1 S2  C
+ 386 >> S:I*-%./I*-.;                     V#    S1 S2  C
+ 388 RBEG*RS1
+ 390 GOSUB 700-710 C***KUKORICA***
+ 392 REND
+ 394 << S:I*-./I*-%.;            V#      S1 S2
+ 396 >> S:I*-./I*-./UVN.;           ML   S1 S2 T2
+ 397 RS10=RS10-1
+ 398 IF RS10>0 GOTO 52
+ 399 END C**********************************************************************************
+ 449 C********************SIMA KUKORICAS SZOKNYA**************************************
+ 450 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 452 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+ 454 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 456 << S:R-0/0-R;                    Y:6/0;  V#        	        ML       S1 S2
+ 458 >> S:R-R;                        Y:2;         NP2-2         ML       S1
+ 460                                  Y:2;
+ 462 REP*2
+ 464 << S:R-0;		                            V#    NP1-01       ML    S1
+ 466 >> S:0-R;		                            V#    NP0-        ML    S1
+ 468 REPEND
+ 470 << S:R-0;		                      Y:2;   V#   NP-0 S1
+ 472 JA1=1004;  C1004 .I.I.I.I.
+ 474 >> S:0-R/UVNI*;		                            NP0- S1    T2
+ 478 Y:5/2/2/5;
+ 480 << S:U^N./I*-./I*-%.;  NP3-3         V# T1 S1 S2  C
+ 482 >> S:I*-%./I*-.;                     V#    S1 S2  C
+ 484 RBEG*RS1
+ 488 NP3-3
+ 490 << S:I*-./I*-%.;          V#          S1 S2  C
+ 492 >> S:I*-%./I*-.;          V#          S1 S2  C
+ 494 REND
+ 495 << S:I*-./I*-%.;            V#      S1 S2
+ 496 >> S:I*-./I*-./UVN.;           ML   S1 S2 T2
+ 497 RS10=RS10-1
+ 498 IF RS10>0 GOTO 52
+ 499 END
+ 500 C**************ZSAKKOTESU NORVEG MINTA***********************
+ 504 NP2-2
+ 506 << S:<1+>I-.*/.*-I;           V#          S1 S2
+ 508 >> S:<1+>I*-./.-I*;           V#          S1 S2
+ 510 C************************************************************
+ 600 C*****GYONGY********Y:2/5;***********************************
+ 604 NP3-3
+ 606 << S:I*-%./I*-.;          V#          S1 S2  C
+ 608 >> S:I*-%./I*-.;          V#          S1 S2  C
+ 610 C************************************************************
+ 700 C*****KUKORICAS  Y:5/2/2/5;**********************************
+ 704 NP3-3
+ 706 << S:I*-./I*-%.;          V#          S1 S2  C
+ 708 >> S:I*-%./I*-.;          V#          S1 S2  C
+ 710 C************************************************************
+1000 ..II
+1002 ..II
+1004 .I.I
+1010 ....
+1012 .I.I
+1014 .III
+1016 .III
+1018 II.I
+1020 I...
+1022 I...
+1024 I...
+1026 ..I.
+1028 .III
+1030 .III
+1032 .I.I
+1034 .I.I
+1036 II.I
+1038 II.I
+1040 I...
+1042 ..I.
+1044 ..I.
+1046 ..I.
+1048 .III
+1050 II.I
+1052 II.I
+1054 .I.I
+1056 ....
+1058 ......
+1060 ...II.
+1062 ..IIII
+1064 .IIIII
+1066 II...I
+1068 I.....
+1070 II...I
+1072 I.....
+1074 ...I..
+1076 ..IIII
+1078 .IIII.
+1080 ...I..
+1082 I.....
+1084 II...I
+1086 I.....
+1088 II...I
+1090 .IIIII
+1092 ..IIII
+1094 ...II.
+1096 ......
+1100 ..III.
+1102 .IIIII
+1104 II...I
+1106 I.....
+1108 ...II.
+1110 ..II..
+1112 I.....
+1114 II...I
+1116 .IIIII
+1118 ..III.
+1120 ..II.
+1122 .IIII
+1124 II..I
+1126 I....
+1128 ..III
+1130 .III.
+1132 I....
+1134 II..I
+1136 .IIII
+1138 ..II.

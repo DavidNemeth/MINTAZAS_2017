@@ -1,0 +1,81 @@
+   1 C CP SPK
+   2 C 
+   4 C       15.0    0            0     14.5                                14.75
+   5 C  1: <-------------       ------------->  BEKEZDES,KORSLAG,1SZV.KREPP ------
+   6 C       15.0    0            0     15.0                                15.00
+  19 C        
+  20 C J4:13.5                                  LEVALASZTAS
+  21 C        
+  25 C TUAGYKORREKCIOK: V0:->1.5                            A PANTHOZ: V0:0
+  26 C                  R1:->2 _________R2: - ________R3:-             R1:0
+  27 C                  L1:<-1 _________L2: - ________L3:-
+  28 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  80 C********************************************************************************
+  82 IF RS10=3 RS17=1  C*** PULOVER H
+  84 IF RS10=1 RS17=2  C*** TUNIKA  H
+  85 IF RS10=3 RS17=3  C*** U
+  87 IF RS10=2 RS17=4  C*** 4 LAPOS PULOVER H
+  88 C******HA A TEST 3 LAPOS:********************************************************
+  90 IF RS17=1 RS1=124       C PUL.H
+  92 IF RS17=2 RS1=154       C TUN.H
+  93 IF RS17=3 RS1=124       C U
+  94 C******HA A PULOVER TEST 4 LAPOS:************************************************
+  96 IF RS17=4 RS1=130       C PUL.H
+  97 C********************************************************************************
+ 100 JA1=1990;  C 1990 IIIIAI
+ 102 PA:<JA1>; 
+ 104 FA=1-6; 
+ 106 PM:9.<FA>548:<.>;
+ 108 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 110 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 112 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 114 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 116 >> S:R-R;                        Y:5;        NP4-4          ML       S1
+ 118 Y:2/2/5/5;
+ 120 REP*5 C***PIKO***
+ 122 << S:NA-0;                                   NP-0    S1
+ 124 >> S:0-NA;                                   NP0-   S1
+ 126 REPEND
+ 128 REP*7
+ 130 << S:R-0;		                                NP-0             S1
+ 132 >> S:0-R;		                                NP0-             S1
+ 134 REPEND
+ 400 C**HATA-UJJA (1SZV.KREPP)*******************************************************
+ 402 JA1=1362;            C KREPP
+ 404           FA=10-187;                C*3LAP
+ 406           PM:<.>8:3(FA..);          C*3LAP************
+ 408 IF RS17>2 FA=28-161                 C*4LAP************
+ 410 IF RS17>2 PM:<.>8:4(FA.);           C*4LAP************
+ 412 << S:U^NN./UVN.;                    NP0-0        T1 T2
+ 414 >>                                  NP0-0        T1 T2
+ 416 JA2=1362(1334-1362); C KREPP
+ 418 Y:2/2/5/5;
+ 420 RBEG*RS1
+ 422 << S:U^N<2->N./.-N./UVNI;                         T1 S1     T2
+ 424 >>                                                T1 S1     T2
+ 426 REND C******
+ 428 << S:U^ND.I/DI.-D.I;                          NP4-4       T1 S1
+ 430 >> S:DI.-D.I/UVND.I;                                         S1   T2
+ 432 C*********************************************************************
+ 434 RS10=RS10-1
+ 436 IF RS10>0 GOTO 56
+ 438 END 
+1334 II.II.I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...II.II
+1336 I.I.IIII..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..II.I.I
+1338 .I.I....II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II..I.II
+1340 .III..I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I.I.I..III..I..IIII
+1342 I...II.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.I.I.II...II.II...I
+1344 ..I..I.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III..I.I
+1346 II.II.I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...II.II
+1348 II.II.I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..II.II
+1350 ..I..I.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II..I.I
+1352 II.II...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I.II.II
+1354 ..I..III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.I..I.I
+1356 I...II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.II.II.I...I.III...I
+1358 .III..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I..I..I.III.I...IIII
+1360 II.II.I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..I..III.III..II.II
+1362 ..I..I.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II.II...I...II..I.I
+1990 IIIIAI

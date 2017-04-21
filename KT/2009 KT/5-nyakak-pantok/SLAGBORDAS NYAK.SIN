@@ -1,0 +1,34 @@
+
+C 1/1 BEKEZDES UTAN:2SOR SLAG ELOL, MAJD 2SOR SLAG HATUL  -  A BUKLE A HOLDBA!!!!!
+C KERESZTBE BORDAS PASSZE
+
+  10 NP4=13.0   C:LEVALASZTAS
+  11 NP2=10.8   C:BEKEZDES,1/1-ES PASSZE
+  12 NP3=13.0   C:SLAG
+  40 START
+  50 YG:6/23456;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+ 180 C************581TU**************************************************************
+ 182 JA1=1010
+ 186 PA:1:<JA1>;
+ 196 FA=1-2;              PM:<.>7:<FA> 576:<.>;        CJELOLES NELKUL
+ 198 C********************************************************************************
+
+ 200 >>	S:D.I-DI./UVSD.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^SDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	VU	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0        S1
+ 214 << S:0-DI./D.I-0/UVSR;         Y:2/5;     NP2-2               S1 S2 T2
+ 216 >> S:R-0/R-0/UVSR;                        NP3-3               S1 S2 T2
+ 217 RBEG*RS1
+ 218 << S:U^SN./.-N./.-N./UVSR;                                   T1 S1 S2 T2
+ 220 >> S:R-0/R-0/UVSR;                                              S1 S2 T2
+ 222 REND
+ 224 END
+
+1010 II

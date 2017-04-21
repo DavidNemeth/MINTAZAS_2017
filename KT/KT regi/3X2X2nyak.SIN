@@ -1,0 +1,41 @@
+ 800 C---NYAK-----GUMIVAL ES 3 CSAVARASSAL--------------------------------------------------------------
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.4   C:1/1-ES PASSZE
+ 808 NP4=11.5   C:LEVALASZTAS
+ 810 YG:6/256;
+ 812 WM=20
+ 814 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 816 >> S:0-R/R-0;                      Y:5/2;            VU           S1 S2
+ 818 << S:R-0/0-R;                      Y:5/2;      NP1-1              S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;	Y:5/2;	    NP1-1	       S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		Y:5;			    T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		Y:6;	    NP0-   VL1	    T1	  S2
+ 826 <<	S:R-0/0-D.I/R-0;		Y:0/6/0;    NP2-2  V#	    T1 S1 S2
+ 828 >>	S:DI.-D.I;			Y:5;	    NP0-   V# V0 ML    S1   
+ 830 << S:DI.-0;                         Y:6;    NP0-           V#          S1
+ 832 >> S:DI.(6.5)-0;                         Y:6;               V#          S1
+ 834 << S:0-D.I(10.0)/DI.(10.0)-D.I(10.0);     Y:5/2;             V#          S1 S2
+ 836 WM=26
+ 838 JA1=1999
+ 840 FA=1-6
+ 842 PA:JA1;
+ 844 PM:<.> 9:<FA> 537:<.>;
+ 846 >>S:DI.(10.0)-D.I(10.0)/DI.-D.I/UVS.;           Y:2/5;                    S1 S2 T2
+ 848 REP*2
+ 850 VJA^1
+ 852 WM=20
+ 854 << S:U^SY*/.(13.5)-Y*(13.5)/.-Y*;  Y:2/5;             V0       T1 S1 S2
+ 856 WM=12
+ 858 >> S:.-*/UVS*;                     Y:2;               VL2         S1    T2
+ 860 << S:.-Y;                          Y:2;               VR2         S1
+ 862 VJA^0
+ 864 WM=20
+ 866 >> S:U^SY/.-Y*/.-Y*/UVSY*;         Y:2/5;                      T1 S1 S2 T2
+ 868 REPEND
+ 870 << S:U^SY*/.(14.0)-Y*(14.0)/.-Y*/UVSY*;  Y:2/5;       V0       T1 S1 S2 T2
+ 872 >> S:U^SD.I/DI.-D.I/DI.-D.I;       Y:2/5;      NP2-2  V0       T1 S1 S2
+ 874 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	           VU V0	       S1 S2
+ 876 >>	S:D.I-DI./DI.-D.I;		Y:5/2;	           VU V0	       S1 S2
+ 878 END
+1999 .YY**.

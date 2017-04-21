@@ -1,0 +1,151 @@
+1C 1/1 PASSZE-2 SZINU CSIKOS SLAG-1/1 GARBO NYAKKAL
+1C UA. MINT A DANA-V CSAK SZIMMETRIKUSAN KOTVE, URES LOKETEKKEL. EZ A JO!!
+1C    50 YG:6/23456;
+1C-----------------------+------------+------------+------------+-------------+
+1C DANA 'V' BUKLE PULOVER, FUZOVEL
+1C-----------------------+------------+------------+------------+-------------+
+1C  Y:2/5 ALAP PLATIROZVA  (HB A LYUKBA) AZ 1/1 GARBO NYAK KOTESENEL A PLATIROZAST MEG KELL FORDITANI!!!
+1C-----------------------+------------+------------+------------+-------------+
+1C  Y:3/4 SZIN PLATIROZVA  (HB A LYUKBA)
+1C-----------------------+------------+------------+------------+-------------+
+1C     ALAP BUKLE:0.21
+1C             HB:0.09
+1C     SZIN BUKLE:0.16
+1C             HB:0.07
+1C-----------------------+------------+------------+------------+-------------+
+1C            SUM:0.53
+1C-----------------------+------------+------------+------------+-------------+
+  10 C 2/1 LEVALASZTAS ELSO TUAGYON:
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP2=10.4  C:BEKEZDES
+  22 NP3=11.0  C:1/1
+  23 NP1=13.9  C SLAG  13.8-13.9
+  24 NP5=13.9  C SLAG  13.8-14.0
+  40 START
+  50 YG:6/23456;
+  51 WM=18;WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+
+C**********************GARBO*********************************************************
+  54 C IF #100=2   RS17=6           C 3 1/1 GARBO NYAK - A PLATIROZAST MEG KELL FORDITANI!!!
+C**********************KIS MERET:*********************************************************
+  55 C IF #100=10  RS17=0           C 4 E              CSIKOS 'V' MINTA. FUZOVEL VAGY FUZO NELKUL
+  56 C IF #100=5   RS17=1           C 4 H
+  57 C IF #100=69  RS17=2           C 5 U  
+C**********************NAGY MERET *********************************************************
+  58C  IF #100=6   RS17=3           C  U-E-E-U  31'
+  59C  IF #100=3   RS17=4           C  U-H-H-U  16'
+  60 C IF #100=1   RS17=5           C  U-H-E-U  
+C*******************************************************************************
+  61 IF RS17=0  RS19=0 RS1=4 RS2=50 RS18=0  C E  RS18=0/1 0:FUZO NELKUL(NINCS BENNE LYUK)  1:LYUKKAL,FUZOVEL
+  62 IF RS17=1  RS19=1 RS1=4 RS2=71         C H
+  63 IF RS17=2  RS19=1 RS1=4 RS2=65         C U
+
+  64 IF RS17=3  RS19=2 RS1=4 RS2=56         C U-E-E-U 
+  65 IF RS17=4  RS19=3 RS1=4 RS2=77         C U-H-H-U 
+  66 IF RS17=5  RS19=4 RS1=4 RS2=56         C U-H-E-U 
+
+  67 IF RS17=6         RS1=25 RS2=0         C 3 1/1 GARBO NYAK
+C************************************************************************************************************
+  68 NP3=11.0             C:1/1
+  69 IF RS17=6  NP3=10.8  C:1/1 GARBO
+
+  70 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                    S1    T2
+  72 <<	S:U^ND.I/DI.-D.I/D.I-DI.;		  Y:2/0;  ML                 T1 S1 S2
+  74 >> S:DI.-D.I/D.I-DI.;           Y:5/0;  ML           VR1      S1 S2
+  76 << S:U^NDI./0-D.I/R-DI.;                ML                 T1 S1 S2
+  78 >> S:DI.-D.I;                   Y:6;    ML           V0 VU       S2
+  80 << S:0-D.I/R-0;                 Y:6/0;  ML              VU    S1 S2            
+  81 WM=12
+  82 >>	S:DI.(2)-D.I(2)/0-D.I(3);		  Y:2/5;;	                VU    S1 S2
+  84 Y:2/5;
+  86 << S:DI.-0/DI.-D.I;                    NP3-3    VU      S1 S2
+  88 >> S:DI.-D.I;                                     VU      S1 S2
+  90 IF RS1=0 GOTO 100
+  92 RBEG*RS1
+  94 <<                               Y:5/2;           VU      S1 S2
+  96 >>                                                VU      S1 S2
+  98 REND
+  99 IF RS2=0 GOTO 700
+
+ 100 IF RS18=0 JA1=1004(1004-1004);   C E  LYUK, FUZO NELKUL
+ 102 IF RS18=1 JA1=1002(1002-1008);   C E  LYUKKAL, FUZOVEL
+ 104 JA3=1012;                        C U-H (SIMAN CSAK CSIKOS)
+ 106 PA:1:<JA1>:601:<JA3>;
+C************581TU***********************************************************************************
+ 108 IF RS19=0 FA=25-166;FB=45-186;                      PM:<.>6:FB.FB.FA.FA;  C*E  4LAP
+ 110 IF RS19=1                                           PM:<.>;               C*5 U VAGY 4 H
+ 112 IF RS19=2 FD=41-205;FA=14-178;FB=637-755;           PM:<.>7:FBFD.FDFB; C*U-E-E-U FA:SZIMM. VAGY FD:ASZIMM.
+ 114 IF RS19=3                                           PM:<.>;               C*U-H-H-U
+ 116 IF RS19=4 FD=41-205;FA=14-178;FC=614-778;FB=637-755;PM:<.>7:FBFC.FDFB;    C*U-H-E-U FA VAGY FD
+
+C****************************************************************************************************
+ 200 WM=0
+ 202 << S:U^SN./UVS.;                                  T1       T2
+ 204 >> S:U^SN./N.-./N.-./UVS.;        Y:0/0;          T1 S1 S2 T2
+ 206 NP1-1
+
+ 207 IF RS19=1 GOTO 270 C***** H-U ******
+ 208 IF RS19=3 GOTO 270 C***** H-U ******
+ 209 C
+
+ 210 REP*21
+ 212 GOSUB 500-520
+ 214 WM=14;WMI=4
+ 216 << S:U^SN./.-N./.-N.;                  V0  NP1-1  T1 S1 S2
+ 218 >> S:U^SN./.-N./.-N.(5)/UVS<1->AY.;               T1 S1 S2 T2  C VKC>2
+ 220 WM=0
+ 222 << S:U^SY/Y-0/0-A;           Y:0/0;    VR1        T1 S1 S2     C VKB>2
+ 224 >> S:U^SA/AYI-0/AYI-0;       Y:0/0;    VL1        T1 S1 S2     C VKA>4
+ 226 REPEND
+
+ 228 RBEG*RS2
+ 230 GOSUB 500-520
+ 232 WM=14;WMI=4  C 14-15
+ 234 << S:U^SN./.-N./.-N.;                  V0  NP1-1  T1 S1 S2
+ 236 >> S:U^SN./.-N./.-N.(5)/UVSAY.;                   T1 S1 S2 T2  C VKC>2
+ 238 WM=0
+ 240 << S:U^SY/Y-0/0-A;           Y:0/0;    VR1        T1 S1 S2     C VKB>2
+ 242 >> S:U^SA/AYI-0/AYI-0;       Y:0/0;    VL1        T1 S1 S2     C VKA>4
+ 244 REND
+ 245 GOSUB 500-520
+ 246 << S:U^SN./.-N./.-N./UVNDI.;               V0     T1 S1 S2 T2
+ 248 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVNDI.;  NP4-4        T1 S1 S2 T2
+ 249 GOSUB 500-520
+ 250 <<                                                T1 S1 S2 T2
+ 252 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVNR;    NP4-4        T1 S1 S2 T2
+ 254 END
+
+ 270 RBEG*RS2 C ******H-U*****
+ 272 GOSUB 500-520
+ 274 WM=13;WMI=4
+ 276 << S:R-0;                                  VU        S1 S2
+ 278 >>                                         VU        S1 S2
+ 280 REND
+ 282 << S:U^ND.I/DI.-D.I/DI.-D.I;        NP3-3        T1 S1 S2
+ 288 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVND.I;                 T1 S1 S2 T2
+ 290 END
+
+ 500 C **CSIKOZAS*************
+ 501 #1=#1+1
+ 502 IF#1=1 Y:3/4;
+ 503 IF#1=2 Y:3/4;
+ 504 IF#1=3 Y:3/4;
+ 505 IF#1=4 Y:3/4;
+ 507 IF#1=5 Y:2/5;
+ 508 IF#1=6 Y:2/5;
+ 509 IF#1=7 Y:2/5;
+ 510 IF#1=8 Y:2/5;
+ 512 IF#1=8 #1=0
+ 520 C **********************
+
+ 700 C**1/1 GARBO NYAK VEGE*****
+ 702 <<                                              VU      S1 S2
+ 704 >> S:DI.-D.I/DI.-D.I/UVSD.I;                            S1 S2 T2
+ 706 END
+
+1002 90A2(4AI)4YI195Y
+1004 99AI200Y
+1006 90A2(4AI)4YI195Y
+1008 99AI200Y
+1012 300.

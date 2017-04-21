@@ -1,0 +1,94 @@
+ 700 C-----------------------------------------------
+ 702 C MEL. PANT: RS17=51
+ 704 C KK.  PANT: RS17=50
+ 706 C A GOMBLYUKAK SZAMANAK BEALLITASA:       786.SOR
+ 708 C A GOMBLYUKAK KOZTI TAVOLSAG BEALLITASA: 818.SOR
+ 710 C-----------------------------------------------
+
+ 712 NP4=13.1   C:LEVALASZTAS                     
+ 714 NP10=11.5  C:1/1
+ 716 NP11=9.5   C BEKEZDES
+ 718 NP12=13.7  C:SLAG,CSIPKE
+ 724 NP15=14.4  C:1SOR SLAG
+
+ 740 START        
+ 742 MSEC=0.6
+ 744 YG:8=E/4=A 5=B 7=G;
+ 746 WM=10; WMI=7
+ 748 YD8=54-10
+ 750 YD7=12-42
+ 752 YD6=8-16
+ 754 YD5=22-28
+ 756 YD4=22-28
+ 758 YD3=14-8
+ 760 YD2=36-36
+ 762 YD1=42-48
+ 764 SEN=1-600
+ 766 <>	S0Y
+ 768 WM=9; WMI=6
+ 770 <<	S:D.I-DI./DI.-D.I;		    Y:=A/=B;	 NP4-4  V0	VU ML    SX SX
+ 772 >> S:D.I-DI./UVNDI.;       Y:=A;                  ML    SX SX
+ 774 << S:DI.-D.I/UVND.I;       Y:=A;          	       ML    SX SX
+ 776 >> S:R-R;		                Y:=E;	    NP4-11 VU    ML    SX
+ 778 << S:R-0/0-R;              Y:=E/0;   NP4-4	 VU    ML    SX SX
+ 780 >> S:R(11)-R(11)/R(12)-0;  Y:=B/=A;            VU ML    SX SX
+ 782 JA1=1987(1984-1987);
+ 784 PA:<JA1>;FA=1-8;FB=17-24;
+
+ 785 C*****GOMBLYUKAK SZAMA:*************
+ 786 PM:7. I 7FA <FB> 593:I<.>;
+ 787 C************************************
+
+ 788 << S:R-0/0-R;		            Y:=B/=A;  NP12-12   VU       SX SX
+ 790 >> S:0-R/R-0/UVSR;		                           VU       SX SX SX
+ 792 Y:=A/=A/=B/=B;
+ 794 NP15-15
+ 796 REP*3
+ 798 << S:R-0;                                  VU      SX
+ 800 WM=0
+ 802 >> S:U^SA;                                 VL1  SX
+ 804 << S:U^SY;                                 VR1  SX
+ 806 WM=10
+ 808 >> S:U^SI/.-N./UVS<1->N.;  VKA>2   NP12-12   V0   SX SX SX
+ 812 REPEND
+ 814 IF RS17=51 GOTO 854
+
+ 816 C*****GOMBLYUKAK KOZTI TAVOLSAG:*****
+ 818 FA=1-24;
+ 822 C************************************
+
+ 824 << S:R-0/U^SN.;          Y:=B;                SX SX
+ 826 >> S:.*(11.0)-N./*(4)-0/UVSI;     Y:=B/0;              SX SX SX
+ 828 WM=0
+ 830 << S:UVSY;                                 VL1  SX
+ 832 >> S:UVSA*;                                VR2  SX
+ 834 WM=10
+ 836 << S:N*(12)-0;                     Y:=A;        V0      SX
+ 838 >> S:U^SD.I/DI.-D.I;           NP10-10          S1 SX
+ 840 << S:DI.-D.I/DI.-D.I;          Y:=B/=A;      VU      SX SX
+ 842 >>                                         VU      SX SX
+ 844 <<                                         VU      SX SX
+ 846 >> S:DI.-D.I/DI.-D.I/UVSD.I;                       SX SX SX
+ 848 << S:R(9.5)-R(7.6)/R(4)-0;       Y:=B/=A;            SX SX
+ 850 >> S:0-R/R-0;                  NP12-12     VU      SX SX
+ 852 END
+ 854 C----MELLENY PANTHOZ:--------------------------------------
+ 856 C REP*1
+ 858 C << S:R-0;                                  VU      SX
+ 860 C >> S:U^SN./.-N./UVSN.;     VKA>2           V0   SX SX SX
+ 862 C REPEND
+ 864 << S:U^SD.I/DI.-D.I/DI.-D.I;    Y:=B/=A; NP10-10   SX SX SX
+ 866 REP*1   
+ 868 >> S:DI.-D.I/DI.-D.I;                      VU      SX SX
+ 870 <<                                         VU      SX SX
+ 872 REPEND
+ 874 >> S:DI.-D.I/DI.-D.I/UVSD.I;                        SX SX SX
+ 876 << S:R(9.5)-R(7.6)/R(4)-0;       Y:=B/=A;             SX SX
+ 878 >> S:0-R/R-0;                  NP12-12     VU      SX SX
+ 880 END
+
+1984 IIIIIIY*A200IIIIIIIIIIIIIII
+1985 IIAIYIII
+1986 IAAIYYII
+1987 AAAIYYYI
+

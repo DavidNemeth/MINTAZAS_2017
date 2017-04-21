@@ -1,0 +1,159 @@
+ 1C 3M-BOLERO 1X1-JACQUARD
+
+    A LEVALASZTAST IS JAC.-BOL KOTI
+   !!! FIGYELEM!!! A 322-324 SOROKBAN A VKA A KET GEPEN NEM EGYFORMA !!!!!!
+   !!! MINIMUM 2XO PAMUTOT AT KELL PARAFINOZNI - A KT-N MIND A 4-ET !!!!!
+   !!! A TOBBI XO-T IS BE KELL KENNI PARAFINNAL!!! KT:WM%=5
+   !!! A KT-N JOBBAN MEGY A FEKETE, MERT LAGYABB FONAL !!!
+   !!! A SZELFESZITOKET BELJEBB KELL HUZNI !!!
+
+1 C 3 MENETES BOLERO - JAC:R2009/VALIBO...
+1 C 1/1-BEN KOTVE, VAKSZEMMEL:4SZAL:1TX,1HB,2PAMUT
+1C-----------------------+------------+------------+------------+-------------+
+1C FONAL:0.3KG:   HB:  0.09*1200 =108                  LYUK
+1C                TX:  0.05*1050 = 53 1030/1070(F/F)   LYUK
+1C              15/1:3*0.08* 500 =120                  HOLD
+1C             LUREX:                                  LYUK
+1C                     ---------------
+1C                     0.30* 803 =281FT
+1C VARRAS:                        140  
+1C VASALAS:                        20 
+1C GOMB:                            3  
+1C REZSI:                          22  
+1C --------------------------------------
+1C SUM:                           465      KLTS./ORA:650FT/ORA  LUREX:+0.015*4500=70
+1C ELADAS:                        900                                           1000
+1C H.:                            445/42'     H./ORA:700FT/ORA                   460
+1C-----------------------+------------+------------+------------+-------------+------
+1C 
+
+   1 C NPK=0-0.2  LUREXXEL:NPK=0.4-0.5 (MINDKETTO SZV.-BE KELL A LUREX)
+
+  10 NP4=13.2;             C LEVALASZTAS
+  11 NP2=10.0              C BEKEZDES
+  12 NP3=15.0              C KORSLAG
+  16 NP1=14.8              C:CSIPKE  14.8-15.0  LUREX:NPK=0.4-0.5-1.0
+  18 NP5=6.0               C:VAKSZEM     
+  20 NP6=8.0               C:LEDOBAS
+  40 START
+  50 YG:6/23456;
+  51 WM=18;WMI=7
+  52 <<	S:0-R/D.I-DI.;		         Y:5/2;	    NP4-4 VU V0	G        S1 S2
+  52 <<	S:R(2)-R(2)/R(4)-0;	 Y:5/2;	 NP4-4 VU V0	 S1 S2 C EZ JOBB HA LE KELL ROVIDITENI
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+  60 C***********************************************KG.:**************IDO:**********
+  62 IF #100=3   RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.3 KG.   35'  1DB:42'
+  64 IF #100=5   RS17=1    C 3 DB. HATA     *2=6    0.2                 28'
+  66 IF #100=8   RS17=2    C 2 PAR ELEJE    *3=6    0.15                22'
+  68 IF #100=11  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  70 IF #100=13  RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.3 KG.   35'  1DB:42'
+  72 IF #100=15  RS17=1    C 3 DB. HATA     *2=6    0.2                 28'
+  74 IF #100=18  RS17=2    C 2 PAR ELEJE    *3=6    0.15                22'
+  76 IF #100=23  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  78C IF #100=25  RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.3 KG.   35'  1DB:42'
+  80C IF #100=27  RS17=1    C 3 DB. HATA     *2=6    0.2                 28'
+  82C IF #100=30  RS17=2    C 2 PAR ELEJE    *3=6    0.15                22'
+  84C IF #100=33  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  99 C***********************************3/4-ES-HOSSZU:****KG.:**************IDO:**********
+ 100  IF RS17=0  RS1=10 RS19=0   C 2 PAR UJJA 7-10 *3=6    0.25  1DB:0.3 KG.   35'  1DB:42'
+ 102  IF RS17=1  RS1=9  RS19=0   C 3 DB. HATA 8-9  *2=6    0.2                 28'
+ 104  IF RS17=2  RS1=6  RS19=2   C 2 PAR ELEJE  6  *3=6    0.15                22'
+ 106  IF RS17=3  RS1=2  RS19=2   C 2 DB. GALLER 2  *3=6    0.05                 8'
+ 180 C************581TU**************************************************************
+ 182 JA1=1130(1102-1128)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 187           FA=23-304; FB=39-322;   PM:1:4(I.)  FA    FB <I.>;   C*NINCS JELOLES
+ 188C IF RS19=2 FA=23-304; FB=77-358;   PM:1:4(I.)  FA I. FB <I.>;   C*2DB
+ 188 IF RS19=2 FA=24-304; FB=39-322;   PM:1:3(I.)I FA I. FB <I.>;   C*2DB
+ 194 C********************************************************************************
+
+ 200 >>	S:.-I/UVN.;   	               Y:5;	    	 NP4-4              S1    T2
+ 202 <<	S:U^NI/.-I;		                     			    NP3-3           T1 S1
+ 204 >>	S:U^N./0-I/I-I;		             Y:2/6;	    NP0-  VR1	      T1	S1 S2
+ 206 <<	S:0-I/R-0;		                  Y:6/0;     NP2-2 VU	          S1 S2
+
+ 212 >>	S:.(2)-I;		                  	Y:5;	            VU V0 ML     S1
+ 214 REP*2
+ 216 << S:0-I/.-0;                    Y:2/5;     NP3-3 VU           S1 S2
+ 220 >>                               Y:5/2;           VU           S1 S2
+ 222 REPEND
+ 224 << S:0-I;                        Y:2;                          S1
+ 226 >> S:U^S./I(5)-I(1)/<1->N.(6)-0; Y:2/0;          VR1    T1 S1 S2
+
+ 300 C****SZIMMETRIKUS CSIPKE*1SOR/3LOKET*****EGESZ CIKLUS:16SOR/32LOKET*******
+ 302 NP5-1
+ 304 WM=8
+ 306 Y:5/0/5/0/2/0/2/0;
+
+ 308 RBEG*RS1 C---------------------------------------------------------
+ 312 << S:.(5)-N.*/.(6)-0;            VU V0       S1 S2
+ 313 WM=6 WMI=3
+ 314 >> S:.(5)-N.*/.(6)-0/UVSAY;                  S1 S2 T2
+
+ 318 REP*8
+ 320 WM=0
+ 322 <> S:U^SA;   VKA>5                  VL2   T1 C PKT: VKA>5 4-6   KT: VKA>2-4 ****
+ 324 <> S:U^SY;   VKA<1                  VR2   T1 C PKT: VKA<1 1-0   KT: VKA<2 ******
+ 326 WM=8 WMI=3  C9
+ 328 <> S:U^S<1->G/.+(5)-N.*+/.(6)-0/UVSAY;   V0    T1 S1 S2 T2
+ 330 REPEND
+
+ 332 REP*2
+ 334 GOSUB 320-328
+ 336 <> S:U^S<1->G/.+(5)-N.*+/.(6)-0/UVSAY;     V0    T1 S1 S2 T2
+ 338 REPEND
+
+ 339 WM=10 WMI=7
+ 340 << S:U^S<1->G/.+(5)-N.*+/.(6)-0;         VU      T1 S1 S2
+ 342 >> S:<1->.(5)-N.*/.(6)-0;         VU         S1 S2
+ 344 REND C---------------------------------------------------------
+
+ 345 << S:.(5)-N.*/.(6)-0;         VU         S1 S2
+ 346 >>                            VU         S1 S2
+ 347 WM=18
+ 348 << S:.-N.*/.-N.*;       NP4-4  Y:5/2; VU S1 S2
+ 350C >> S:.-N.*/.-N.*;       NP4-4         VU S1 S2
+ 352C << S:.-N.*/.-N.*;                     VU S1 S2
+ 354 >> S:.-N.*/.-N.*/UVSN.*;                 S1 S2 T2
+ 356 END
+
+999 W0 S0
+
+1100 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1102 I.I.G.I.I.I.G.I.I.I.G.I.I.I.G.I.I.I.G.
+1104 I.I***I.I.I***I.I.I***I.I.I***I.I.I***
+1106 I.I*+*I.G.I*+*I.G.I*+*I.G.I*+*I.G.I*+*
+1108 I.Y.A.I***Y.A.I***Y.A.I***Y.A.I***Y.A.
+1110 I.I.I.I*+*I.G.I*+*I.G.I*+*I.G.I*+*I.I.
+1112 I.I.I.Y.A.I***Y.A.I***Y.A.I***Y.A.I.I.
+1114 I.Y.I.I.I.I*+*I.G.I*+*I.G.I*+*I.I.I.A.
+1116 I.Y.Y.I.I.Y.A.I***Y.A.I***Y.A.I.I.A.A.
+1118 I.Y.Y.Y.I.I.I.I*+*I.G.I*+*I.I.I.A.A.A.
+1120 I.Y.Y.Y.Y.I.I.Y.A.I***Y.A.I.I.A.A.A.A.
+1122 I.Y.Y.Y.Y.Y.I.I.I.I*+*I.I.I.A.A.A.A.A.
+1124 I.Y.Y.Y.Y.Y.Y.I.I.Y.A.I.I.A.A.A.A.A.A.
+1126 I.Y.Y.Y.Y.Y.Y.Y.I.I.I.I.A.A.A.A.A.A.A.
+1128 I.Y.Y.Y.Y.Y.Y.Y.Y.I.I.A.A.A.A.A.A.A.A.
+1130 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.
+1132 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+1100 381W
+1102 10(I.)I8(.I2(.I.I.G3(.I).G)3(.I).G).I2(.I.I.G3(.I).G)12(.I).W
+1104 11(I.)8(I.2(I.I3*I.I.I3*)I.I.I3*)I.2(I.I3*I.I.I3*)12(I.)W
+1106 11(I.)8(I.G2(.I*+*I.G.I*+*I).G.I*+*)I.G2(.I*+*I.G.I*+*I)11(.I).W
+1108 10(I.)I8(2(.I3*Y.A).I.2(Y.A.I3*)Y.A).I3*2(Y.A.I3*Y.A.I.)11(I.)W
+1110 10(I.)I8(.I*+*I.G.I*+*4(I.)I2(.I*+*I.G)).I*+*I.G.I*+*5(I.)I*+*I.G12(.I).W
+1112 11(I.)8(Y.A.I3*Y.A5(.I).2(Y.A.I3*))Y.A.I3*Y.A5(.I).Y.A.I3*12(I.)W
+1114 I.Y9(.I).8(I.G.I*+*3(I.)A.I.Y4(.I)*+*I.G.I*+*)I.G.I*+*3(I.)A.I.Y4(.I)*+*11(I.)A.W
+1116 I.Y.Y.7(I.)I8(.I3*Y.A.I.I.A.A.I.Y.Y.I.I.Y.A.I3*Y.A).I3*Y.A.I.I.A.A.I.Y.Y.I.I.Y.A10(.I).A.A.W
+1118 I3(.Y).6(I.)I8(.I*+*3(I.)A.A.A.I3(.Y).3(I.)I*+*I.G).I*+*3(I.)A.A.A.I3(.Y).12(I.)A.A.A.W
+1120 I4(.Y).6(I.)8(Y.A.I.I.4(A.)I4(.Y).I.I.Y.A.I3*)Y.A.I.I.4(A.)I4(.Y).10(I.)A3(.A).W
+1122 I5(.Y).5(I.)8(3(I.)A4(.A).I5(.Y).3(I.)I*+*)3(I.)A4(.A).I5(.Y).8(I.)A4(.A).W
+1124 I6(.Y).3(I.)I8(.I.I.6(A.)I6(.Y).I.I.Y.A).I.I.6(A.)I6(.Y).6(I.)A5(.A).W
+1126 10(I7(.Y).4(I.)A6(.A).)W
+1128 10(I8(.Y).I.I.A7(.A).)W
+1130 190(I.)W
+1132 381W

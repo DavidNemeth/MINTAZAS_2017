@@ -1,0 +1,142 @@
+   1 C QVELLE 2. 1/1 PASSZEVAL
+   1 C                        NP1=   NP6=       RS1=
+   1 C-----------------------+---------------+------------+------------+-------------+
+   1 C 3XLUSIFIL:                              55             39
+   1 C   GILETTI:                              53             38
+   1 C-----------------------+---------------+------------+------------+-------------+
+  10 NP1=14.0  C:MINTA 
+  13 NP4=12.5  C:LEVALASZTAS
+  16 NP6=14.4   C:U-H 2SZV.BAL-BAL KREPP
+  18 NP14=12.2  C:U-H (14)
+  19 NP2=11.4 C 1/1 
+  20 NP8=9.4 C 1/1(14)
+  40 START        
+  50 YG:6/256;
+  53 WM=18;WMI=7
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  77 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  78 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  80 REP*3 C4
+  82 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+  84 << S:DI.(2)-D.I/DI.-D.I;                             VU           S1 S2
+  90 REPEND
+  92 >> S:DI.-D.I/DI.(8)-D.I/UVND.I;                                   S1 S2 T2
+
+ 100 IF #100=35 RS1=53 C53/55 GILETTI/LUSI
+ 102 IF #100=15 RS1=38 C38/39 GILETTI/LUSI
+
+ 400 JA1=1100(1000-1002); C********************************************************
+ 401 PA:1:<JA1>;
+ 402 FA=5-182;                           C*3LAP************
+ 404 PM:<.>9:3(IFA)I7.;                  C*3LAP************
+ 406 IF RS1<45 FA=9-142                  C*4LAP************
+ 408 IF RS1<45 PM:<.>7:4(IFA)I;          C*4LAP************
+ 410 VJA^0
+ 412 WM=20
+ 415 NP1-1
+ 416 << S:U^NN./.-N./.-N./UVNN.;     Y:2/5;   VKC>2       T1 S1 S2 T2
+ 418 >> S:R-0/R-0;                                           S1 S2
+ 420 Y:2/2/5/5;
+ 425 << S:U^NN./.-N./UVNN.;                   VKC         T1 S1   T2
+ 430 >> S:U^NN./.-N./UVNN.;                   VKC         T1 S1   T2
+ 435 REP*25
+ 440 WM=0
+ 445 << S:U^NA;                               VL1 VKB>6   T1
+ 450 >> S:U^NY;                                   VR1 VKA>6   T1
+ 455 WM=20
+ 460 << S:U^N<1->N./.-N./UVNN.;                  VU V0  VKC>2   T1 S1   T2 
+ 465 >> S:U^N<1->N./.-N./UVNN.;                     VU             T1 S1   T2
+ 470 REPEND
+ 475 << S:R-0;                                  S1
+ 480 >> S:R-0;                                  S1
+
+ 500 C********KREPP***********
+ 504 JA2=1218(1204-1218)
+ 506 FA=6-183;
+ 508 PM:<.>8:3(IFAI);
+ 510 FD=28-160
+ 512 IF RS1<45 PM:<.>7:4(IFDI);  C********* UJJA **********
+ 514 PA:<JA2>;
+ 522 WM=24
+ 524 << S:U^NN./.-N./.-N./UVNN.;             Y:2/5;  NP6-6  VKC V0  T1 S1 S2 T2
+ 526 RBEG*RS1
+ 528 >> S:U^N<2->N./.(6)-N./.(14)-N./UVNN.;               VKC V0   T1 S1 S2 T2
+ 530 << S:U^N<2->N./.(6)-N./.(6)-N./UVNN.;                VKC      T1 S1 S2 T2 
+ 532 REND
+ 538 >> S:U^SD.I/DI.(4)-D.I(4)/DI.(2)-D.I/UVNR;                    T1 S1 S2  T2
+ 540 END
+
+
+ 958 <> W0 S0
+1000 190I
+1002 190I
+1004 95(IY)
+1006 190I
+1008 190.
+1010 190I
+1012 7(3I3.I.A.I3.4I5.I)3I3.I.A.I3.4I4.
+1014 7(II..4(.I)3.4I3.II)II..4(.I)3.4I3.
+1016 7(I3.I.Y3.A.I3.4I.3I)I3.I.Y3.A.I3.4I.I
+1018 7(2(...I.I..).7I)2(...I.I..).5I
+1020 7(..I.Y3.I3.A.I3.5I.)..I.Y3.I3.A.I3.4I
+1022 15(.I.I3.3I..).I.I3.3I
+1024 7(I.Y3.IIYII3.A2(.I..).)I.Y3.IIYII3.A.I3.I.
+1026 7(.I3.7I...I.I5.I).I3.7I...I.I4.
+1028 7(Y3.IIYI.IAII3.A.I3.I.)Y3.IIYI.IAII3.A.I3.
+1030 7(2(3.4I)..4(.I))2(3.4I)..3(.I)
+1032 7(..IIYI5.IAII3.A.I.Y.)..IIYI5.IAII3.A.I.
+1034 7(.3I2(I3.)4I...I.I..).3I2(I3.)4I...I.I
+1036 7(IIYI3.3I3.IAII3.Y3.)IIYI3.3I3.IAII3.Y.
+1038 7(2(3I3.II)II5.I)2(3I3.II)II4.
+1040 7(YI3.IIA2(IAII3.)II)YI3.IIA2(IAII3.)
+1042 15(I3.4I.3I)I3.4I.I
+1044 7(3.IIAI3.IAII3.IYI.IAI)3.IIAI3.IAII3.IYI.I
+1046 7(..4I5.4I.2(.3I))..4I5.4I..3I.I
+1048 7(..IA2(I3.)IAI..IYI.IAI)..IA2(I3.)IAI..IYI.I
+1050 7(.3I...I.I..3(.3I)).3I...I.I..2(.3I).I
+1052 7(.3I..I.Y.I..3I.IYI.IAI).3I..I.Y.I..3I.IYI.I
+1054 7(.4I..I.I..I2(3I.)3I).4I..I.I..I2(3I.)I
+1056 7(..IAI2(I..)IIYI..IYI.IAI)..IAI2(I..)IIYI..IYI.I
+1058 7(2(..5I.)2(.3I))2(..5I.).3I.I
+1060 7(I..IIAII.IIYII..IIYI.IAI)I..IIAII.IIYII..IIYI.I
+1062 7(II..5I2(4I..).II)II..5I2(4I..).
+1064 7(AII..IIAIYII..IIY2(I..)I)AII..IIAIYII..IIYI..I.
+1066 7(2(4I..I)3I..I.I..)2(4I..I)3I..I.I
+1068 7(.IA2(II..I)IYI..I.A.I.).IA2(II..I)IYI..I.A.
+1070 7(2(..4I..I)3(.I))2(..4I..I).I.I
+1072 7(I..IAII3.IIYI..I.Y3.A.)I..IAII3.IIYI..I.Y3.
+1074 7(.I.2(.4I)..I.I5.I).I.2(.4I)..I.I4.
+1076 7(A.I..IA3IYI..I.Y3.I3.)A.I..IA3IYI..I.Y3.I.
+1078 7(.I.I..5I..I.I3.3I..).I.I..5I..I.I3.3I
+1080 7(..A.I..IYI..I.Y3.5I.)..A.I..IYI..I.Y3.4I
+1082 3(3.I3(.I.)I3.7I2(...I.I..).7I)3.I3(.I.)I3.7I2(...I.I..).5I
+1084 7(I3.A.I3.I.Y3.8I)I3.A.I3.I.Y3.6I
+1086 7(II..4(.I)3.5I.3I)II..4(.I)3.5I.I
+1088 7(3I3.A.I.Y3.5I3.II)3I3.A.I.Y3.5I3.
+1090 7(4I...I.I3.5I5.I)4I...I.I3.5I4.
+1092 7(8IY15I)8IY13I
+1094 190.
+1096 190.
+1098 190I
+1100 95(IY)
+1102 190I
+
+1104 190.
+1106 190.
+1108 7(8AI11YI3A)8AI11YIA
+1110 4I.176I.7I.
+1204 I..2(.II)3.
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II.3(.I)..I
+1212 ..I3(I.)II.
+1214 I.2(.3I)..
+1216 .I2(I3.)II
+1218 .II2(I..)3I

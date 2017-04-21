@@ -1,0 +1,175 @@
+C KORSLAG PASSZE + SLAG BUKLE TUNIKA 65*80
+C                   2/5: PASSZE 7.5 BUKLE+FEKETE HB
+
+ 1C 2'0 CSONAK NYAK 3 GYONGGYEL
+
+   1C BUKLE     
+   1C        LAJTOS   2250         
+   1C FEKETE HB 
+   1C       VAGY: IZA     32/2-ES: 
+   1C       VAGY: TAMAS   30/2-ES:1650FT
+   1C       VAGY: BAJAI   32/2-ES:  
+   1C             LAJTOS: 30/2    1690
+   1C             LAJTOS: 16/1    1590
+   1C         PADAR ROBI: 30/2
+   1C------------------------------------------------------------------------------
+   1C                  SUM.: 1013.09:1990 FT/KG                               
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+  
+1C3XL:65*78  0.60*2000= 1200      200       40        70     1510     2150    640     20'   1900    30%
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C       UJKT:NPK=  7.5:0.1  6.0:0.4  RS2:-6--8   UJ:WM%=20
+C        PKT:NPK=  7.5:0.1  6.0:0.4
+C         KT:NPK=  7.5:0    6.0:0.3
+  10 C-----LAJTOS 7.5-OS BUKLE:-------6.0 BUCLE:NPK=+0.3 RS2:-2--3
+  10 NP4=12.6    C:LEVALASZTAS              
+  11 NP2=10.2    C:BEKEZDES 10.2
+  12 NP3=13.0    C:KORSLAG PASSZE         
+  15 NP1=13.5    C:SLAG
+
+
+  40 START        
+  50 YG:6/23456;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;               Y:5/2;  NP4-4    VU V0       S1 S2
+
+C&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+ 
+
+  63 C IF #100=4   RS17=50	 C KORSLAG PANT LYUK NELKUL
+  64 C IF #100=4   RS17=52	 C KORSLAG PANT LYUK NELKUL   1/1 LYUKACSOS BEKEZDESSEL    3'   0.05
+  65 C IF #100=24  RS17=51	 C KORSLAG PANT 5 GOMBLYUKKAL 1/1 LYUKACSOS BEKEZDESSEL    3'   0.05
+  66 C IF #100=21   RS17=0   C TTT                                                     17'   0.48KG
+  68 C IF #100=6   RS17=4   C 4U                                                      13'   0.37KG
+  70  IF #100=4   RS17=10   C 10ZSEB                                                      
+C                                                                             SUM:   21'   0.56
+C&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+ C***************TUK.:*********PAS:*****MINTA:***************************KESZEN:******VASALVA:**************
+C-----EREDETI MERETEK:------------------------------------------------------------------------MINTA:-RS1---RS2:---6.0:NPK=0.4
+  80 IF RS17=0  RS19=3         RS1=7     RS2=84    RS18=0      C TTT  XL 65*78          67*82          7   82       74
+  81 IF RS17=4  RS19=4         RS1=7     RS2=60    RS18=0      C 4U                     48*60          7   58       54
+  82 IF RS17=10 RS19=1         RS1=3     RS2=19    RS18=0      C 10ZSEB                 18*20          3              
+  83 IF RS17=50 RS19=4         RS1=8               RS18=1      C PANT                                  8
+  84 IF RS17>50 GOTO600
+C*******************************************************************************************************
+  90 C************581TU**************************************************************
+  92 JA1=1000            C 1000 .
+  94 PA:1:<JA1>;
+  96 IF RS19=0  FA=1-164;FB=1-120;               PM:<.>6:FB*FA*FA*FB;      C*U-T-T-U 
+  98 IF RS19=1                                   PM:<.>;                    C*1
+ 100 IF RS19=3  FA=1-190;                        PM:<.>6:FA*FA*FA;          C*TTT
+ 102 IF RS19=4  FA=1-142                         PM:<.>6:FA*FA*FA*FA;       C*4
+ 104 IF RS19=5  FA=1-113                         PM:<.>6:FA*FA**FA*FA*FA;   C*5
+ 106 IF RS19=6  FA=1-162 F1=1-81                 PM:<.>6:FA*FA**F1*FA;      C*T-T-1/2E-T
+ 108 C*******************************************************************************
+ 170 C MS C*******************************************************************************
+
+
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                                     S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	             S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU           S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU        S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU        S1
+ 210 Y:2/5;
+ 212 RBEG*RS1
+ 214 << S:0-R/R-0;		                                NP3-3     VU          S1 S2
+ 216 >> S:R-0/0-R;		                                          VU          S1 S2
+ 218 REND
+ 220 IF RS18=1 END
+
+ 230 << S:0-R/R-0;		                                          VU          S1 S2
+ 240 >> S:R-0/0-R/UVSR;    NP1-1  S1 S2 T2
+
+ 250 C MS C***********************************************************************************************
+ 262 WM=18
+ 264 << S:R-0/0-R;                  Y:2/0;          NP1-1  VU            S1 S2
+ 266 >> S:U^S*/.-*(4)/*(4)-0;                                         T1 S1 S2
+ 270 RBEG*RS2
+ 272 << S:.-*;                       Y:5/2;        NP1-4    VU         S1 S2
+ 274 >>                                                     VU         S1 S2
+ 276 REND
+ 277 C MS C*******************************************************************************
+
+ 278 << S:U^ND.I/DI.-D.I/DI.-D.I;              NP2-2      T1 S1 S2 
+ 280 C>>                                                  T1 S1 S2 T2
+ 282 C<< S:DI.-D.I/DI.-D.I;                          VU      S1 S2
+ 284 >> S:DI.-D.I/DI.(4)-D.I(4)/UVND.I;                     S1 S2 T2
+ 286 END
+
+ 600 C ************** ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL ************
+ 602 C CNCA 2010/ CP NP
+ 604 NP4=12.6    C LEVALASZTAS           12.6
+ 606 NP12=10.0   C BEKEZDES,1/1,REX      10.0
+ 608 NP13=13.0   C SLAG PASSZE           14.0 13.2
+ 609 NP14=12.5   C 1/1                   12.5
+ 610 NP11=7.5    C:GOMBLYUK               7.0
+ 612 C START
+ 614 C YG:6/256;
+ 616 C <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	      NP4-4   V0	VU      S1 S2
+ 618 WM=20
+ 620 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                            S1    T2
+ 622 <<	S:U^ND.I/DI.-D.I;		              			                      T1 S1
+ 624 >> S:DI.-D.I;                   Y:5;                 VR1 VU     S1
+ 626 << S:U^NDI./0-D.I;                                           T1 S1
+ 628 >> S:0-D.I/DI.-D.I;             Y:2/6;               V0 VU      S1 S2
+ 630 << S:0-D.I/R-0;                 Y:6/0;                  VU      S1 S2
+
+ 632 >>	S:D.I-D.I;		                 Y:5;	          NP12-12   VU      S1
+ 633 << S:0-D.I/D.I-0;               Y:2/5;         NP14-14    VU      S1 S2
+ 634 >>                                                        VU      S1 S2
+ 635 << S:D.I(14)-DI.(12);                      Y:2;                       VU      S1
+ 636 >> S:DI.(12)-D.I(14);                                                 VU      S1
+
+
+ 638 REP*2
+ 640 << S:R-0/0-R;                   Y:2/5;         NP13-13    VU      S1 S2
+ 642 >> S:0-R/R-0;                                             VU      S1 S2
+ 644 REPEND
+ 646 IF RS17=52 GOTO 680 C *** GOMBLYUK NELKUL ***
+C----------GOMBLYUK-------------------
+ 648 JA1=1990;  C 1990 +YTI200.
+ 650 PA:JA1; 
+ 652 FA=1-32; C1-28 1-34
+ 654 PM:<.>388:5FA; C 5 GOMBLYUK - - JOBB OLDALRA KELL TENNI A LYUKAKAT, MERT A PLTIROZAS ELOL CSIKOZ
+ 654 PM:<.>392:5FA; C 5 GOMBLYUK - - JOBB OLDALRA KELL TENNI A LYUKAKAT, MERT A PLTIROZAS ELOL CSIKOZ
+
+ 656 WM=20 C20
+ 660 << S:0-R/R-0;                                  VU      S1 S2
+ 662 C GOMBLYUKAK:
+C--------VAGY 4TU---- +YTI200. -----FREDIHEZ-------------------------------------------------
+ 664 >> S:U^S+YTI/T(11)-R/T(8.0)-0;  Y:5/0;               T1 S1 S2
+ 666 WM=0
+ 668 << S:UVS+Y;                          VL2                T2
+ 670 >> S:UVSTI;                         VR2                T2
+ 672 WM=20 C22
+ 674 << S:.YI(13)-+T(11);          Y:5;   V0  VU               S1
+ 676 WM=20 C24
+ 678 >> S:+T(11)-.YI(13)/R(13)-0;  Y:5/2; VL1 VU               S1 S2
+C--------VAGY 3TU----- +YTI200. ----28-AS LENCSE-------------------------------------------------
+ 664 >> S:U^SYTI/T(11)-R/T(8.0)-0;  Y:5/0;               T1 S1 S2
+ 666 WM=0
+ 668 << S:UVSY;                          VL1                T2
+ 670 >> S:UVSTI;                         VR2                T2
+ 672 WM=20 C22
+ 674 << S:.+YI(13)-T(11);          Y:5;   V0  VU               S1
+ 676 WM=20 C24
+ 678 >> S:T(11)-.+YI(13)/R(13)-0;  Y:5/2; VL1 VU               S1 S2
+C----------------------------------------------------------------------
+ 680 REP*4
+ 682 << S:0-R/R-0;                       V0  VU               S1 S2
+ 684 >> S:R-0/0-R;                           VU               S1 S2
+ 686 REPEND
+ 688 END
+
+ 999 <> S0 W0 VU
+
+1990 +YTI200.
+
+
+ 999 CC<< S:0-0/0-0/0-0;            Y:6/6/6;  NP4-4    VU V0     T1 S1 S2
+ 999 <> S0 W0 VU
+
+1000 200.

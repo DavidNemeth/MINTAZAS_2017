@@ -1,0 +1,13 @@
+ 90  >> S:U^S*;                             NP-0       VL1          T1
+ 95  << S:U^S+;                             NP-0       VR1          T1
+100  >> S:U^SI/.-N./.-N./UVSI.;      Y:2/5;             V0          T1 S1 S2 T2
+105  << S:UVS+;                             NP0-       VL1                   T2
+110  >> S:UVS*;                             NP0-       VR1                   T2
+160 << S:U^N<1->I+Y/.-*I+Y/UVNNY;          V0         T1    S2 T2
+170 >> S:U^N<1->I+Y/.-*I+Y/UVNN+;          VR1        T1    S2 T2
+270 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 V# V0	       S1 S2
+1214 13.2(+4..*.*4.II+4.*.*.4.II+...*.*6.II+2(..*3.)II)+4..*.*4.II+4.*.*.4.II+...*.*18.
+201     IF RS1>10 GOSUB 210-220
+203     IF RS1>10 GOTO 250
+205 REP*5
+258    IF RS1<10 GOSUB 160-170*91

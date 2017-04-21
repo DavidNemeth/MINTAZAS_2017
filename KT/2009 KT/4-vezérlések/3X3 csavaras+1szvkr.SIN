@@ -1,0 +1,33 @@
+
+  10 NP1=13.2                 C MINTA ELOL
+ 305 NPJ1:.=13.2 I=14.8 ;     C MINTA HATUL
+
+ 100 JA1=1104(1104-1106) C FONAS
+ 102 JA2=1218(1204-1218) C RIZS
+ 104 PA:<JA2>:JA1;
+ 106 FA=7-183; PM:<.>9:3(FA3.);
+
+C--SZELEKTIV SZOROSSAG:--------
+ 300 JA3=1600;
+ 302 PANP:1:JA3;
+ 304 PMNP:<.>7:3(FA..);
+
+ 306 VJA^0
+ 308 WM=16
+ 310 RBEG*RS1 C*******  FONASOK SZAMA *************  ...OTBW+G... ******************
+ 312 << S:U^SI/.(1)-N.(J1)/UVS<2->.;                Y:5;   V0        T1 S1    T2
+ 314 >> S:U^SI/.(1)-N.(J1)/UVSI;                    Y:5;             T1 S1    T2
+ 316 << S:U^S<1-2->I/.(1)-IOTB+/0-+(8.0)/UVSIOTB;   Y:2/0; VL3       T1 S1 S2 T2
+ 318 >> S:U^S<1->I/.-IOBW+(J1)/0-O(8.0)/UVSI;       Y:2/0; VR2 VKC>4 T1 S1 S2 T2
+ 320 << S:U^S<2->OTBI/.-N.(J1)/UVSN.;               Y:5;   VR3 VKD>6 T1 S1    T2 
+ 322 >> S:U^S<2->N./.(1)-N.(J1)/UVS<2->.;           Y:5;   V0        T1 S1    T2
+ 324 Y:2/2/5/5;
+ 326 REP*1
+ 328 << S:U^SI/.(1)-N.(J1)/UVS<2->.;                                 T1 S1    T2
+ 330 >> S:U^SI/.(1)-N.(J1)/UVS<2->.;                                 T1 S1    T2
+ 332 REPEND
+ 334 REND C******************** ...OTBW+G ******************************************
+1001 .....*...I.........I.........I.........I.........I.........I.........I.........I.........I....*....I.........I.........I.........I.........I.........I.........I.........I.........I...*
+1104 XXXXXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXXX..OTBW+G..XXXXXXXXXXXXXXXXXXXXX
+1106 XXXXXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXXX...OTBW+G..XXXXXXXXXXXXXXXXXXXXX
+1600 ...................IIIIIIIIIIII...............IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII....................

@@ -1,0 +1,63 @@
+ 1     START
+ 2     GOTO 612 
+ 12    RS19=1;IF RS1<18 RS17=1
+ 13    NP1=14.7   C:
+ 14    NP2=12.4   C:1/1-ES PASSZE
+ 15    NP4=12.5   C:LEVALASZTAS
+ 16    NP5=14.4   C--MINTA ELSO TUAGY
+ 17    NP6=14.9   C--MINTA HATSO TUAGY
+ 18    NP7=15.0
+ 19     NP8=12.5   C--SVED PASSZE ELOL
+ 20     NP9=12.5   C--SVED PASSZE HATUL
+ 50    YG:6/256;
+ 51 WM=22
+ 52 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 54 >> S:R-0/0-R;                       Y:5/2;      NP1-1              S1 S2
+ 55 <<	S:D.I-DI./DI.-D.I/UVNR;	        Y:5/2;	    NP4-4	       S1 S2 T2
+ 56 WM=15
+ 57 >>	S:R-R;		                Y:6;	    NP2-0   	     	  S2
+ 58 <<	S:0-R/R-0/0-R;		        Y:0/6/0;    NP2-2   	    T1 S1 S2
+ 59 >>	S:R-R(6.5)/0-R(2);		Y:5/2;	             ML    S1 S2
+C  
+ 60 <<	S:R-0/0-R;			Y:5/2;		   	       S1 S2
+ 62 >>                                                                 S1 S2
+C
+ 64 WM=18
+ 66    JA1=1136(1136-1138)
+ 68    FA=3-7
+ 70    PA:JA1;
+ 72    PM:<.> 9:<FA> 516:<.>;IF RS1<20 PM:<.> 9:<FA> 574:<.>;
+ 74 << S:R-0/0-R/UVS.;                  Y:5/2;      NP2-2            S1 S2 T2
+
+ 76   REP*3
+ 78 >> S:U^N<1->N./.-N./.-N./UVNNT.;   Y:2/5; NP8-9  V0  VKA>2      T1 S1 S2 T2
+ 80    VJA^0
+ 82 << S:U^N<1->N./.-N./.-N./UVNNY.;   Y:2/5;        VL1 VKB>2      T1 S1 S2 T2
+ 84   REPEND
+
+ 86 >> S:U^N<1->N./.-N./.-N./UVNNT.;   Y:2/5; NP8-9  V0  VKA>1      T1 S1 S2 T2
+ 88 << S:U^N<1->N./.-N./.-N./UVNN.;   Y:2/5;        VL1 VKB>2      T1 S1 S2 T2
+
+350 << S:DI.-D.I/D.I-DI.;                                       NP2-2         S1 S2
+360 >>                                                                        S1 S2
+370 END
+
+
+
+500 C--NYAK----'V'
+510 C START
+520 C GOSUB 12-88
+530 C >>	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+540 C GOTO 350
+600 C--NYAK----'O' GUMIVAL
+610 START
+612 GOSUB 12-59
+614 << S:R(7.5)-0/0-R;                       Y:6/2;                     S1 S2
+616 >> S:R(7.5)-0/0-R;                                                      S1 S2
+618 GOSUB 64-74
+623 GOSUB 78-82*3
+625 GOSUB 86-88
+630 >>	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+640 GOTO 350
+1136 .37(..IYI)..
+1138 .37(..ITI)..

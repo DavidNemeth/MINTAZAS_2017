@@ -1,0 +1,57 @@
+  14   NP1=15.0            C:MINTA H     14.5
+  15   NP6=14.6            C:MINTA E     14.2
+  16   NP2=11.8            C:BEKEZDES
+  18   NP3=14.0            C:SLAG PASSZE
+  20   NP4=13.5            C:LEVALASZTAS
+  22   NP5=14.5            C:LEVALASZTAS
+
+  40  START
+  50 YG:6/256;
+  52 WM=22 WMI=7
+  56 << S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4   VU V0	ML      S1 S2
+  59 >> S:D.I-DI.;                    Y:5;                      ML      S1
+  62 << S:U^ND.I/DI.-D.I;        	                              ML   T1 S1
+  64 >> S:U^NDI./0-R;                 Y:2;                      ML   T1 S1
+  66 << S:0-0;                        Y:0;                      ML      S1
+
+  68 >> S:R-R;		                      Y:6;	                     ML         S2
+  71 << S:0-R/R-0;		                  Y:6/0;            	       ML      S1 S2
+  74 >> S:R-R;		                      Y:5;        NP2-2                 S1
+  76 Y:5/2/2/5;
+  77 REP*2
+  80 << S:0-R/R-0;		                          	   NP3-3                 S1 S2
+  83 >> S:0-R/R-0;                                                      S1 S2
+  84 REPEND
+  88 << S:0-R/R-0;		                          		                        S1 S2
+  95 FA=1-9;
+ 100           PM:<.>8:3(2.6I 18FA3. 6I);
+ 102 IF RS17=1 PM:<.>8:4(1.2I 14FA3. 2I);
+ 105 JA1=1000
+ 115 PA:<JA1>;
+ 122 WM=0
+ 125 >> S:UVS.;                                       T2
+ 130 << S:U^SN.;                                      T1
+ 200 C-----MINTA-----
+ 200 VJA^0
+ 202 WM=22
+ 204 Y:5/2;
+ 206 NP6-1
+ 210 >> S:.-N.;                            VU       S1 S2 
+ 220 RBEG*RS1 C***  FONASOK SZAMA  ****...OTBW+G**************************************
+ 225 <> S:.-N./.-N./UVNI;                            S1 S2 T2
+ 240 <> S:U^SI/.-IOTB/.-IOTB/UVSIOTB;   VL3       T1 S1 S2 T2
+ 245 <> S:U^SI/.-I+BW/.-I+BW/UVSI;      VR2 VKB>3 T1 S1 S2 T2  C VR1 HELYETT VR2:T HELYETT:+   SZEBB
+ 250 <> S:U^SIOTB/.-N./.-N./UVSN.;      VR3 VKD>5 T1 S1 S2 T2
+ 260 <> S:U^SN./.-N./.-N.;              V0        T1 S1 S2
+ 265 C>> S:.-N.;     VU    S1 S2                                     C EZ A SOR KIIKTATVA ROVIDEBB A FONAS
+ 270 REND C******************** ...OTBW+G *******************************
+ 280 S:.-N.;                                            VU    S1 S2 
+ 290 >> S:.-N./.-N./UVSDI.;                                   S1 S2 T2
+ 472 << S:U^SD.I/DI.-D.I/DI.-D.I;            NP4-4         T1 S1 S2
+ 474 >> S:DI.-D.I/DI.-D.I/UVSD.I;                             S1 S2 T2
+ 475 END
+1000 ...OTBW+G
+
+
+
+

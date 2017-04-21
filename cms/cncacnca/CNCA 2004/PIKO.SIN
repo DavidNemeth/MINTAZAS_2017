@@ -1,0 +1,34 @@
+   1 C SLAG PIKO PANT  CP PIKO
+   2 C        -      -            -      -
+   3 C  1: <-------------       -------------> BEKEZDES  
+   4 C        -      -            0     15.0
+   5 C B2:  11.75                              REX     
+   6 C        0     14.0          0     14.0
+   7 C J3: <-------------       -------------> KORSLAG PIKO
+   8 C       14.0    0           14.0    0 
+   9 C B4:=J4=13.5                              LEVALASZTAS
+  10 C 10 SULY
+  40 START
+  50 YG:6/256;
+  60 << S:D.I-DI./DI.-D.I;	          Y:2/5;	 ML  NP4-4   V#   V0	     S1 S2
+  70 JA1=1990;  C 1990 IIIIAI
+  75 PA:<JA1>; 
+  80 FA=1-6; 
+  85 PM:9.<FA>548:<.>;
+  90 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  92 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+  94 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  96 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  98 >> S:R-R;                        Y:2;        NP1-01         ML    S1 C VAGY:NP2-2
+ 100 << S:NA-0/0-NA;                  Y:5/2;      NP3-3             S1 S2
+ 102 REP*2 C***PIKO***
+ 104 >> S:0-NA/NA-0;                                                S1 S2
+ 106 << S:NA-0/0-NA;                                                S1 S2
+ 108 REPEND
+ 110 REP*3
+ 112 >> S:0-R/R-0;                                                  S1 S2
+ 114 << S:R-0/0-R;                                                  S1 S2
+ 116 REPEND
+ 118 >> S:R-R/R-R;                         NP2-2                   S1 S2
+ 120 END
+1990 IIIIAI

@@ -1,0 +1,201 @@
+   1C  404NT
+   1C       14.5   14.5         14.5   14.5
+   1C  1: <-------------       ------------->:MINTA 
+   1C       14.5   14.5         14.5   14.5 
+   1C       11.5   11.5         11.5   11.5
+   1C J2: <-------------       ------------->:1/1-ES PASSZE
+   1C       11.5   11.5         11.5   11.5
+   1C       11.0    0           11.0    0
+   1C B2: <-------------       ------------->:BEKEZDES,GUMI
+   1C        -      -            7.0   10.0
+   1C       14.5    0            0     14.5
+   1C J3: <-------------       ------------->:MINTA
+   1C       14.5    0            0     14.5 
+   1C       14.5    0            0     14.5
+   1C B3: <-------------       ------------->:MINTA
+   1C       14.5    0            0     14.5
+   1C       13.0   13.0          -      -
+   1C J4: <-------------       ------------->:ELVALASZTAS
+   1C       13.0   13.0          -      -
+   1C        -      -           13.0   13.0
+   1C B4: <-------------       ------------->:ELVALASZTAS 
+   1C        -      -           13.0   13.0
+   1 C**********SZALVEZETOK***************************
+   2 C-------BAL-------------------------JOBB----------------
+   3 C   1:-                         1:4.SZIN: 3FUZFA BRILL
+   4 C   2:-                         2:ALAP:1BRILL+1HB+24/1+12/1:NP5=14.8
+   5 C   3:-                         3:3.SZIN: 2 75%MELIRSZURKE
+   6 C   4:1.SZIN:1SZUR.+2FEK.BRILL  4:2.SZIN: 2 BARNA PAMUT
+   7 C   5:-                         5:ALAP
+   8 C   6:ELV.                      6:GUMI
+   9 C**TEST:RS17=0  UJJA:RS17=1  NYAK:SP800************************ 
+  10 	START
+  18 C 276   #1=4      C&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST HOSSZA &&&&
+  19 C 256 IF RS17=1 GOSUB 200-228 C*************** UJJA HOSSZA ****
+  20 C 276   #1=1      C&&&&&&&&&&&&&&&&&&&&&&&&&&& TEST HOSSZA &&&&
+  21 C 256 IF RS17=1 GOSUB 200-224 C*************** UJJA HOSSZA ****
+  50 	YG:46/123456;
+  59 <<	S:D.I-DI./DI.-D.I;        Y:5/2; NP4-4 V#V0 ML    S1 S2
+  62 >>	S:D.I-DI./DI.-D.I/UVNDI.; Y:5/2; NP4-4      ML    S1 S2 T2
+  64 <<	S:U^ND.I/DI.-D.I;         Y:5;		 NP3-3      ML T1 S1
+  66 >>	S:U^NDI./D.I-D.I;         Y:6;   NP30-3 VL1 ML T1    S2
+  67 <<	S:R-0/0-D.I;              Y:0/6; NP4-4  V#  ML    S1 S2
+  68 >>	S:R-0/DI.-D.I;            Y:0/5; NP2-2 V#V0 ML    S1 S2
+  69 <<S:0-D.I;                  Y:6;   NP0-   V#        S1
+  70 >>S:0-D.I;                         NP0-                S2
+  71 <<	S:DI.-0/DI.-D.I;          Y:5/2; NP2-2  V#  ML    S1 S2
+  72 REP*8
+  74 >>	S:DI.-D.I;		             Y:5/2;         V#	       S1 S2
+  75 <<							                              V#	     S1 S2
+  76 REPEND
+  77 GOSUB 74
+  80 <<	S:DI.-D.I/DI.-D.I/UVND.I;				                 S1 S2 T2
+ 150 >> S:R-0/R-0;              Y:2/5;  NP1-01          S1 S2
+ 160    PA:JA1;
+ 162    FA=1-40
+ 164    PM:10I <FA> 215:III 419:III 623:<I>;
+ 190 C********************************************************************
+ 200 GOSUB 300-380           C ---1/1 -ES SAV------
+ 202   Y:2/2/4/4/2/2;
+ 204 GOSUB 400-460           C ------POTTYOK-------
+ 206   JA1=1070(1044-1070)
+ 208   #1=7
+ 210 GOSUB 500-540           C --BAL-BAL-----------
+ 212   Y:5/5/3/3/5/5;
+ 214 GOSUB 400-460           C ------POTTYOK-------
+ 216   JA1=1044(1044-1070)
+ 218   #1=7
+ 220 GOSUB 600-640           C --BAL-BAL TUKROZVE--
+ 222   Y:5/5/1/1/5/5;
+ 224 GOSUB 400-460           C ------POTTYOK-------
+ 226 GOSUB 300-380           C ---1/1 -ES SAV------
+ 228 GOSUB 700-740           C ----EGYFALAS NORVEG MINTA--------
+ 230 GOSUB 300-380           C ---1/1 -ES SAV------
+ 232   Y:2/2/4/4/2/2;
+ 234 GOSUB 400-460           C ------POTTYOK-------
+ 236   JA1=1022(1004-1022)
+ 238   #1=5
+ 240 GOSUB 500-540           C --BAL-BAL-----------
+ 242   Y:5/5/1/1/5/5;
+ 244 GOSUB 400-460           C ------POTTYOK-------
+ 246   JA1=1004(1004-1022)
+ 248   #1=5
+ 250 GOSUB 600-640           C --BAL-BAL TUKROZVE--
+ 251   Y:5/5/3/3/5/5;
+ 252 GOSUB 400-460           C ------POTTYOK-------
+ 253 IF RS17=0 GOSUB 200-252 C********TEST*********
+ 254 IF RS17=0 GOTO 258
+ 256 IF RS17=1 GOSUB 200-228 C**********************************UJJA*********
+ 257  END                    C IF RS17=1 GOTO 280
+ 258 GOSUB 300-380           C ---1/1 -ES SAV------
+ 260   Y:2/2/4/4/2/2;
+ 262 GOSUB 400-460           C ------POTTYOK-------
+ 264   JA1=1070(1044-1070)
+ 266   #1=7
+ 268 GOSUB 500-540           C --BAL-BAL-----------
+ 270   Y:5/5/3/3/5/5;
+ 272 GOSUB 400-460           C ------POTTYOK-------
+ 274   JA1=1044(1044-1070)
+ 276   #1=RS1      C&&&&&&&&&& TEST HOSSZA &&&&&&&&&&&&
+ 278 GOSUB 600-640           C --BAL-BAL TUKROZVE--
+ 280 END
+300  C ---1/1 -ES SAV-------------------------------------------------------
+ 302    JA1=1082(1078-1082)
+ 312    Y:2/2/5/5; 
+ 325 << S:U^N./I-./UVN.;                       NP3-3   T1 S1    T2
+ 330 >> S:R-0;                                            S1
+ 335    GOSUB 325
+ 339                                           NP3-03
+ 340    GOSUB 330
+ 345 << S:U^N<1->./I-./I-.;            Y:5/2;  NP1-1   T1 S1 S2
+ 350 >> S:I-0;                         Y:4;    NP3-03     S1
+ 355 << S:I-.;                         Y:4;               S1
+ 360 >> S:I-0;                         Y:2;    NP-0       S1
+ 365 << S:U^N<1->./I-./UVN.;           Y:2;            T1 S1    T2
+ 370 >> S:R-0;                         Y:5;    NP-0       S1
+ 375    GOSUB 325
+ 380 >> S:R-0/R-0;                     Y:2/5;  NP1-01     S1 S2
+400  C ------POTTYOK-----A SZALVEZETOKET A GOSUB ELOTT KELL MEGADNI---------
+ 410 JA1=1076
+ 420                                           NP3-03
+ 430 GOSUB 450-460
+ 438 << S:U^N*/I-*;                                    T1 S1
+ 442 >> S:I-*/UVN*;                                       S1 T2
+ 450 << S:R-0;                                            S1
+ 460 >> S:R-0;                                 NP3-03     S1
+500  C --BAL-BAL--A #1-ET ES A JACQUARDOT A GOSUB ELOTT KELL MEGADNI--------
+ 505 << S:R-0/R-0;                    Y:2/5;  NP1-01      S1 S2
+ 507    Y:2/2/5/5;
+ 508                                          NP3-3
+ 510    REP*#1
+ 520 >> S:U^N<1->./I-./UVN.;                           T1 S1    T2
+ 530 <<                                       NP3-3    T1 S1    T2
+ 535    REPEND
+ 540 >> S:R-0/R-0;                     Y:2/5; NP1-01      S1 S2
+600  C --BAL-BAL TUKROZVE--A #1-ET ES A JACQUARDOT A GOSUB ELOTT KELL MEGADNI-
+ 605 << S:R-0/R-0;                     Y:2/5; NP1-01      S1 S2
+ 607    Y:2/2/5/5;
+ 608                                          NP3-3
+ 610    REP*#1
+ 620 >> S:U^N<1+>./I-./UVN.;                           T1 S1    T2
+ 630 <<                                       NP3-3    T1 S1    T2
+ 635    REPEND
+ 640 >> S:R-0/R-0;                     Y:2/5; NP1-01      S1 S2
+700  C ----EGYFALAS NORVEG MINTA--------------------------------------------
+ 705    JA1=1034(1028-1034)
+ 710 << S:R-0;                         Y:2;   NP3-03      S1 
+ 712 >> S:R-0;                         Y:2;   NP3-03      S1
+ 714                                          NP1-1
+ 715    REP*2
+ 720 << S:*I-0/IT-0<1->;               Y:3/5;             S1 S2
+ 725 >>                                                   S1 S2
+ 730    REPEND
+ 735 << S:R-0;                         Y:2;   NP3-03      S1
+ 740 >> S:R-0;                         Y:2;   NP3-03      S1
+ 800 C---------NYAK-----------
+ 805 START
+ 810 GOSUB 12-68
+ 812 <<	S:DI.-0/0-D.I;	                  Y:5/2; NP2-2  V#   S1 S2
+ 815 GOSUB 72-150
+ 820 END
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 IIIII...II.III.II...IIIIII..I.I.I.I.I..I
+1006 IIII.....II.I.II.....IIIII...I.I.I.I...I
+1008 III.......II.II.......IIII....I.I.I....I
+1010 II.........III.........III.....I.I.....I
+1012 I...........I...........II......I......I
+1014 IIIIIIIIIIIIIIIIIIIIIIIIII..IIIIIIIII..I
+1016 I.IIIIIIIII.I.IIIIIIIII.IIII.IIIIIII.III
+1018 I..IIIIIII..I..IIIIIII..IIIII.IIIII.IIII
+1020 I...IIIII...I...IIIII...IIIIII.III.IIIII
+1022 I....III....I....III....IIIIIII.I.IIIIII
+1024 ........................................
+1026 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1028 ****TT**T**TT****TTT****TT**T**TT****TTT
+1030 T****TT***TT****TT*TT****TT***TT****TT*T
+1032 TT****TT*TT****TT***TT****TT*TT****TT***
+1034 *TT****TTT****TT**T**TT****TTT****TT**T*
+1036 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1038 ........................................
+1040 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1042 .........I.........I.........I.........I
+1044 ....IIII.I.IIII....I....IIII.I.IIII....I
+1046 ...II.III.III.II...I...II.III.III.II...I
+1048 ..III..II.II..III..I..III..II.II..III..I
+1050 .IIII...III...IIII.I.IIII...III...IIII.I
+1052 IIIII....I....IIIIIIIIIII....I....IIIIII
+1054 IIIII.........IIIIIIIIIII.........IIIIII
+1056 I....IIIIIIIII....III....IIIIIIIII....II
+1058 II....IIIIIII....II.II....IIIIIII....II.
+1060 .II....IIIII....II...II....IIIII....II..
+1062 ..II....III....II.....II....III....II...
+1064 ...II....I....II.......II....I....II....
+1066 IIIIII...I...IIIIII.IIIIII...I...IIIIII.
+1068 .IIIIII..I..IIIIII...IIIIII..I..IIIIII..
+1070 ..IIIIII.I.IIIIII.....IIIIII.I.IIIIII...
+1072 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1074 ........................................
+1076 ....*....*....*....*....*....*....*....*
+1078 ........................................
+1080 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1082 ........................................

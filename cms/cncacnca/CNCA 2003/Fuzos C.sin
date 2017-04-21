@@ -1,0 +1,205 @@
+   1 C CP FUZOS (VAGY:KT2003/FUZOS K)***UGYAN EZ A MINTA BAL-BAL KREPPEL:CNCA2004/JENCIC
+   2 C H-U: CP Y
+   3 C       14.5   0              9.0  14.5
+   4 C  1: <-------------       ------------->  MINTA
+   5 C       14.5   0              0    14.5
+   6 C       14.75 14.75          14.75 14.75
+   7 C J2: <-------------       ------------->  H-U:CP Y
+   8 C         -     -              -     - 
+   9 C       11.5  11.5           11.5  11.5
+  10 C B2: <-------------       ------------->  BEKEZDES,PASSZE
+  11 C       11.5  11.5           11.5  11.5     (PIKO PANT)
+  12 C         -     -              -     -    
+  13 C J3: <-------------       -------------> 
+  14 C         -     -              -     -
+  15 C       
+  16 C B3: <-------------       ------------->
+  17 C       
+  18 C       13.0   13.0         13.0   13.0
+  19 C J4: <-------------       ------------->  LEVALASZTAS
+  20 C       13.0   13.0         13.0   13.0
+  21 C B4:=J4                                   IGY IS MEGY, AHOGY A FODROS ES A SIVI:
+  22 C TUAGYKORREKCIOK: V0:->2.25-3.0                                V0:->2.5
+  23 C                  R1:->1-3____________R2: - ________R3:-       R1:->3.0
+  24 C                  L1:->1.5-2.25_______L2: - ________L3:-       L1:->1.5
+  25 C  7-8 SULY 
+  26 C                           NP1=         RS1=
+  27 C                           E/H        ELEJE:       UJJA:        HATA:        
+  28 C TUNIKA                                               1-35        36-
+  29 C-----------------------+------------+------------+------------+-------------+
+  30 C   3X16/1 PAMUT(F-F):
+  31 C 
+  32 C-----------------------+------------+------------+------------+-------------+
+  33 C   2X16/1 PAMUT+1BRILL: 15.25/14.75      69
+  34 C 
+  35 C-----------------------+------------+------------+------------+-------------+
+  36 C          1991 ....AIA
+  40 START 
+  42 YG:6/256;
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   V#   V0	   S1 S2
+  48 JA1=1991;
+  50 PA:<JA1>; 
+  52 FA=2-8; 
+  54 PM:<.>6:77FA;
+  56 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  58 << S:U^NA/.I-A;                         ML                     T1 S1
+  60 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  62 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  64 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  66 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  70 << S:0-./.-.;                           ML                        S1 S2
+  71 >> S:.-.;                               ML                        S1 S2
+  72 Y:2/2/5/5;
+  73 <<                                      ML                        S1
+  74 >>                                      ML                        S1
+  75 << S:.-.;                               ML                        S1
+  76 >> S:.I-.I;                             ML                        S1
+  77 << S:R-R;                               ML                        S1
+  78 >> S:R-R;                               ML                        S1
+  79 << S:R-R;                               ML                        S1
+  80 >> S:R-R;                               ML                        S1
+  81 << S:R-R;                               ML                        S1
+  82 >> S:R-R;                               ML                        S1
+ 100 JA1=1234
+ 174 PA:1:<JA1>;
+ 176 FA=7-182;
+ 178 PM:<.>8:3(.FA...);
+ 182 << S:U^NN./UVN.;     NP01-01     T1  T2
+ 184 >> S:U^NN./UVN.;     NP01-01     T1  T2
+ 186 JA1=1234(1148-1218)
+ 205 VJA^0
+ 206 Y:5/5/2/2;
+ 216 REP*94 C*********** +/- 18  ************
+ 220 << S:U^N<1->N./.Z-N.Z/UVNNY.;        V0         T1 S1    T2
+ 225 >> S:U^N<1->N./.Z-N.Z/UVNNA.;        VL1        T1 S1    T2
+ 228 REPEND
+ 230 JA1=1146(1004-1074)
+ 232 RBEG*RS1
+ 234 GOSUB 220-225
+ 236 REND
+ 238 GOSUB 220
+ 240 >> S:U^N<1->N./.Z-N.Z/UVNR;                 V0         T1    S1  T2
+ 245 << S:U^ND.I/DI.-D.I/DI.-D.I;          Y:2/5;        NP4-4  T1 S1 S2
+ 250 >> S:DI.-D.I/DI.-D.I/UVND.I;                                  S1 S2  T2
+ 255 END
+1002 IIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIII
+1004 I.Z....Z......Z....Z.....IIIIIIAIIIAA......Z......Z..IIAAIIIII.....Z......Z....Z......Z....Z......Z....Z......Z....Z......Z..IIAAIIIII.....Z......Z..IIIIIIAIIIAA..Z......Z....Z......Z....Z..I
+1006 ...Z.Z..Z..Z...Z.Z..Z..Z..YYIIIIIIIII..Z.Z..Z..Z.....IIIIIYYII...Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z.....IIIIIYYII...Z..Z..Z...Z..YYIIIIIIIII...Z..Z...Z.Z..Z..Z...Z.Z..Z.I
+1008 ..Z....Z......Z....Z......IIIIIAIIAA..Z....Z......Z..IAAAIIIII.....Z......Z....Z......Z....Z......Z....Z......Z....Z......Z..IAAAIIIII.....Z......Z...IIIIIAIIAA...Z......Z....Z......Z....Z..I
+1010 Z...Z.Z...Z.Z...Z.Z...Z.Z..YYIIIIIII....Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z...Z..YYIIIIIII..Z...Z.Z...Z.Z...Z.Z...Z.Z...I
+1012 .Z......Z....Z......Z....Z.IIIIAIAA..Z......Z....Z...AAIAIIIII......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z...AAIAIIIII......Z....Z.....IIIIAIAA.....Z....Z......Z....Z......Z.I
+1014 ..Z..Z...Z.Z..Z..Z...Z.Z....YYIIIII...Z..Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..Z..YYIIIII..Z...Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1016 ...Z..Z........Z..Z.........IIIIII.....Z..Z..........IIAAIIIII....Z........Z..Z........Z..Z........Z..Z........Z..Z..........IIAAIIIII....Z........Z....IIIIII....Z........Z..Z........Z..Z...I
+1018 .Z..Z..Z..Z..Z..Z..Z..Z..Z...II.II...Z..Z..Z..Z..Z...IIIIIYYII..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z...IIIIIYYII..Z..Z..Z..Z..Z....II.II..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..I
+1020 ...Z.....Z.Z...Z.....Z.Z.....I.I.II....Z.....Z.Z.....IAAAIIIII.......Z.Z...Z.....Z.Z...Z.....Z.Z...Z.....Z.Z...Z.....Z.Z.....IAAAIIIII.......Z.Z...Z.....I.I.II......Z.Z...Z.....Z.Z...Z.....ZI
+1022 .Z......Z....Z......Z....Z..III.III..Z......Z....Z...IIIIIYYYI......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z...IIIIIYYYI......Z....Z......III.III.....Z....Z......Z....Z......Z.I
+1024 Z...Z..Z....Z...Z..Z....Z...II.I.III....Z..Z....Z....AAIAIIIII..Z..Z....Z...Z..Z....Z...Z..Z....Z...Z..Z....Z...Z..Z....Z....AAIAIIIII..Z..Z....Z...Z...II.I.III...Z....Z...Z..Z....Z...Z..Z..I
+1026 ..Z..Z...Z.Z..Z..Z...Z.Z...II.I.I.II..Z..Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..Z.II.I.I.II.....Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1028 ...Z....Z......Z....Z......III.I.I.II..Z....Z........IIAAIIIII......Z......Z....Z......Z....Z......Z....Z......Z....Z........IIAAIIIII......Z......Z...III.I.I.II...Z......Z....Z......Z....Z.I
+1030 Z...Z.Z...Z.Z...Z.Z...Z.Z.III.I.I.III...Z.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z...Z.III.I.I.III.....Z.Z...Z.Z...Z.Z...Z.Z...I
+1032 ..Z......Z....Z......Z....II.I.I.I.III.......Z....Z..IAAAIIIII.......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z..IAAAIIIII.......Z....Z...II.I.I.I.III...Z....Z......Z....Z......ZI
+1034 .Z...Z..Z..Z.Z...Z..Z..Z.II.I.I.I.I.II...Z..Z..Z.Z...IIIIIYYYI...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...IIIIIYYYI...Z..Z..Z.Z...II.I.I.I.I.II..Z..Z.Z...Z..Z..Z.Z...Z..Z.I
+1036 ..Z...Z.......Z...Z......III.I.I.I.I.II...Z.......Z..AAIAIIIII....Z.......Z...Z.......Z...Z.......Z...Z.......Z...Z.......Z..AAIAIIIII....Z.......Z..III.I.I.I.I.II.......Z...Z.......Z...Z...I
+1038 ...Z.Z..Z..Z...Z.Z..Z...III.I.I.I.I.III..Z..Z..Z.....IIIIIYIYY...Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z.....IIIIIYIYY...Z..Z..Z....III.I.I.I.I.III....Z...Z.Z..Z..Z...Z.Z..Z.I
+1040 ..Z....Z......Z....Z....II.I.I.I.I.I.III...Z......Z..IIAAIIIII.....Z......Z....Z......Z....Z......Z....Z......Z....Z......Z..IIAAIIIII.....Z........II.I.I.I.I.I.III......Z....Z......Z....Z..I
+1042 Z...Z.Z...Z.Z...Z.Z....II.I.I.I.I.I.I.II..Z...Z.Z....IIIIIYYII..Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z..II.I.I.I.I.I.I.II..Z.Z...Z.Z...Z.Z...Z.Z...I
+1044 .Z......Z....Z......Z..III.I.I.I.I.I.I.II...Z....Z...IAAAIIIII......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z...IAAAIIIII......Z......III.I.I.I.I.I.I.II....Z......Z....Z......Z.I
+1046 ..Z..Z...Z.Z..Z..Z....III.I.I.I.I.I.I.III....Z.Z..Z..IIIIIYYYI...Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z..III.I.I.I.I.I.I.III..Z..Z..Z...Z.Z..Z..Z...ZI
+1048 ...Z..Z........Z..Z...II.I.I.I.I.I.I.I.II.Z..........AAIAIIIII....Z........Z..Z........Z..Z........Z..Z........Z..Z..........AAIAIIIII....Z.......II.I.I.I.I.I.I.I.II......Z..Z........Z..Z...I
+1050 .Z..Z..Z..Z..Z..Z..Z..I.I.I.I.I.I.I.I.I.I..Z..Z..Z...IIIIIYIYY..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z..Z...IIIIIYIYY..Z..Z..Z...I.I.I.I.I.I.I.I.I.I.Z..Z..Z..Z..Z..Z..Z..Z..I
+1052 ...Z.....Z.Z...Z......II.I.I.I.I.I.I.I.II....Z.Z.....IIAAIIIII.......Z.Z...Z.....Z.Z...Z.....Z.Z...Z.....Z.Z...Z.....Z.Z.....IIAAIIIII.......Z.Z..II.I.I.I.I.I.I.I.II..Z...Z.....Z.Z...Z.....ZI
+1054 .Z......Z....Z......Z.I.I.I.I.I.I.I.I.I.I...Z....Z...IIIIIYYII......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z...IIIIIYYII......Z.....I.I.I.I.I.I.I.I.I.I....Z......Z....Z......Z.I
+1056 Z...Z..Z....Z...Z..Z..II.I.I.I.I.I.I.I.II..Z....Z....IAAAIIIII..Z..Z....Z...Z..Z....Z...Z..Z....Z...Z..Z....Z...Z..Z....Z....IAAAIIIII..Z..Z....Z.II.I.I.I.I.I.I.I.II...Z...Z..Z....Z...Z..Z..I
+1058 ..Z..Z...Z.Z..Z..Z....I.I.I.I.I.I.I.I.I.I....Z.Z..Z..IIIIIYYYI...Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z..I.I.I.I.I.I.I.I.I.I..Z..Z..Z...Z.Z..Z..Z...ZI
+1060 ...Z....Z......Z....Z.II.I.I.I.I.I.I.I.II...Z........AAIAIIIII......Z......Z....Z......Z....Z......Z....Z......Z....Z........AAIAIIIII......Z.....II.I.I.I.I.I.I.I.II......Z....Z......Z....Z.I
+1062 Z...Z.Z...Z.Z...Z.Z...III.I.I.I.I.I.I.III.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z.III.I.I.I.I.I.I.III.Z.Z...Z.Z...Z.Z...Z.Z...I
+1064 ..Z......Z....Z.......IIIIIIIIIAIIIIIIAA.....Z....Z..IIAAIIIII.......Z....Z......Z....Z......Z....Z......Z....Z......Z....Z..IIAAIIIII.......Z....IIIIIIIIIAIIIIIIAA......Z......Z....Z......ZI
+1066 .Z...Z..Z..Z.Z...Z..Z..YYIIIIIIIIIIIIIII.Z..Z..Z.Z...IIIIIYYII...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...IIIIIYYII...Z..Z..Z...YYIIIIIIIIIIIIIII...Z.Z...Z..Z..Z.Z...Z..Z.I
+1068 ..Z...Z.......Z...Z....IIIIIIIIAIIIIIAA...Z.......Z..IAAAIIIII....Z.......Z...Z.......Z...Z.......Z...Z.......Z...Z.......Z..IAAAIIIII....Z........IIIIIIIIAIIIIIAA.......Z...Z.......Z...Z...I
+1070 ...Z.Z..Z..Z...Z.Z..Z...YYIIIIIIIIIIIII..Z..Z..Z.....IIIIIYYYI...Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z.....IIIIIYYYI...Z..Z..Z....YYIIIIIIIIIIIII.Z..Z...Z.Z..Z..Z...Z.Z..Z.I
+1072 ..Z....Z......Z....Z....IIIIIIIAIIIIAA.....Z......Z..AAIAIIIII.....Z......Z....Z......Z....Z......Z....Z......Z....Z......Z..AAIAIIIII.....Z......Z.IIIIIIIAIIIIAA........Z....Z......Z....Z..I
+1074 I...Z.Z...Z.Z...Z.Z...Z..YYIIIIIIIIIII..Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z....YYIIIIIIIIIII....Z.Z...Z.Z...Z.Z...Z.Z...I
+1076 .Z......Z....Z......Z....IIIIIIAIIIAA.......Z....Z...IIAAIIIII......Z....Z......Z....Z...........Z......Z....Z......Z....Z...IIAAIIIII......Z....Z...IIIIIIAIIIAA...Z....Z......Z....Z......Z.I
+1078 ..Z..Z...Z.Z..Z..Z...Z.Z..YYIIIIIIIII.Z..Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z..Z...Z.Z..Z..Z...I....Z..Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z...YYIIIIIIIII....Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1080 ...Z..Z........Z..Z.......IIIIIAIIAA...Z..Z..........IAAAIIIII....Z........Z..Z........Z....AI.....Z..Z........Z..Z..........IAAAIIIII....Z........Z..IIIIIAIIAA..Z........Z..Z........Z..Z...I
+1082 .Z..Z..Z..Z..Z..Z..Z..Z....YYIIIIIII.Z..Z..Z..Z..Z...IIIIIYYYI..Z..Z..Z..Z..Z..Z..Z..Z..Z...IIY..Z..Z..Z..Z..Z..Z..Z..Z..Z...IIIIIYYYI..Z..Z..Z..Z..Z..YYIIIIIII...Z..Z..Z..Z..Z..Z..Z..Z..Z..I
+1084 ...Z.....Z.Z...Z.....Z.Z...IIIIAIAA....Z.....Z.Z.....AAIAIIIII.......Z.Z...Z.....Z.Z...Z...AAII....Z.....Z.Z...Z.....Z.Z.....AAIAIIIII.......Z.Z...Z...IIIIAIAA......Z.Z...Z.....Z.Z...Z.....ZI
+1086 .Z......Z....Z......Z....Z..YYIIIII..Z......Z....Z...IIIIIYIYY......Z....Z......Z....Z.....IIIYY........Z....Z......Z....Z...IIIIIYIYY......Z....Z......YYIIIII.....Z....Z......Z....Z......Z.I
+1088 Z...Z..Z....Z...Z..Z....Z...IIIIII..Z...Z..Z....Z....IIAAIIIII..Z..Z....Z...Z..Z....Z.....AAAIII....Z..Z....Z...Z..Z....Z....IIAAIIIII..Z..Z....Z...Z...IIIIII..Z..Z....Z...Z..Z....Z...Z..Z..I
+1090 ..Z..Z...Z.Z..Z..Z...Z.Z..Z..II.II....Z..Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z..Z...Z.Z..Z...IIIIYYY....Z...Z.Z..Z..Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z..Z...II.II...Z...Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1092 ...Z....Z......Z....Z........I.I.II....Z....Z........IAAAIIIII......Z......Z.............AAAAIIII..Z....Z......Z....Z........IAAAIIIII......Z......Z.....I.I.II.....Z......Z....Z......Z....Z.I
+1094 Z...Z.Z...Z.Z...Z.Z...Z.Z...III.III.....Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z...Z.Z..I..Z....IIIIIYYYY..Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z...Z.Z.III.III...Z...Z.Z...Z.Z...Z.Z...Z.Z...I
+1096 ..Z......Z....Z......Z......II.I.III..Z......Z....Z..AAIAIIIII.......Z....Z.....AI......AAAAAIIIII............Z......Z....Z..AAIAIIIII.......Z....Z.....II.I.III.....Z....Z......Z....Z......ZI
+1098 .Z...Z..Z..Z.Z...Z..Z..Z.Z.II.I.I.II.....Z..Z..Z.Z...IIIIIYIYY...Z..Z..Z.Z...Z..IIY.....IIIIIIYYYYY......I...Z...Z..Z..Z.Z...IIIIIYIYY...Z..Z..Z.Z...Z.II.I.I.II....Z..Z.Z...Z..Z..Z.Z...Z..Z.I
+1100 ..Z...Z.......Z...Z........III.I.I.II.Z...Z.......Z..IIAAIIIII....Z.......Z....AAII....AAAAAAIIIIII.....AI....Z...Z.......Z..IIAAIIIII....Z.......Z....III.I.I.II.Z.......Z...Z.......Z...Z...I
+1102 ...Z.Z..Z..Z...Z.Z..Z..Z..III.I.I.III..Z.Z..Z..Z.....IIIIIYYII...Z..Z..Z...Z...IIIYY...IIIIIIIYYYYYY....IIY....Z.Z..Z..Z.....IIIIIYYII...Z..Z..Z...Z..III.I.I.III...Z..Z...Z.Z..Z..Z...Z.Z..Z.I
+1104 ..Z....Z......Z....Z......II.I.I.I.III.....Z......Z..IAAAIIIII.....Z......Z...AAAIII..AAAAAAAIIIIIII...AAII...Z....Z......Z..IAAAIIIII.....Z......Z...II.I.I.I.III.Z......Z....Z......Z....Z..I
+1106 Z...Z.Z...Z.Z...Z.Z...Z..II.I.I.I.I.II..Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z.....IIIIYYY.IIIIIIIIYYYYYYY..IIIYY....Z.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z....II.I.I.I.I.II....Z.Z...Z.Z...Z.Z...Z.Z...I
+1108 .Z......Z....Z......Z....III.I.I.I.I.II.....Z....Z...AAIAIIIII......Z....Z...AAAAIIII.IIIIIIIIIIIIIII.AAAIII........Z....Z...AAIAIIIII......Z....Z...III.I.I.I.I.II.Z....Z......Z....Z......Z.I
+1110 ..Z..Z...Z.Z..Z..Z...Z..III.I.I.I.I.III..Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..IIIIIYYYY.YYYYYYIIIIIIII.IIIIYYY....Z...Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z.III.I.I.I.I.III..Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1112 ...Z..Z........Z..Z.....II.I.I.I.I.I.III..Z..........IIAAIIIII....Z.........AAAAAIIIII.IIIIIIIAAAAAA.AAAAIIII..Z..Z..........IIAAIIIII....Z.........II.I.I.I.I.I.III.......Z..Z........Z..Z...I
+1114 .Z..Z..Z..Z..Z..Z..Z...II.I.I.I.I.I.I.II...Z..Z..Z...IIIIIYYII..Z..Z..Z..Z..IIIIIIYYYYY.YYYYYIIIIIII.IIIIIYYYY..Z..Z..Z..Z...IIIIIYYII..Z..Z..Z..Z.II.I.I.I.I.I.I.II..Z..Z..Z..Z..Z..Z..Z..Z..I
+1116 ...Z.....Z.Z...Z.......III.I.I.I.I.I.I.II....Z.Z.....IAAAIIIII.......Z.Z...AAAAAAIIIIII.IIIIIIAAAAA.AAAAAIIIII.......Z.Z.....IAAAIIIII.......Z.Z...III.I.I.I.I.I.I.II..Z...Z.....Z.Z...Z.....ZI
+1118 .Z......Z....Z......Z.III.I.I.I.I.I.I.III...Z....Z...IIIIIYYYI......Z......IIIIIIIYYYYYY.YYYYIIIIII.IIIIIIYYYYY.....Z....Z...IIIIIYYYI......Z.....III.I.I.I.I.I.I.III....Z......Z....Z......Z.I
+1120 Z...Z..Z....Z...Z..Z..II.I.I.I.I.I.I.I.II..Z....Z....AAIAIIIII..Z..Z......AAAAAAAIIIIIII.IIIIIAAAA.AAAAAAIIIIII....Z....Z....AAIAIIIII..Z..Z....Z.II.I.I.I.I.I.I.I.II...Z...Z..Z....Z...Z..Z..I
+1122 ..Z..Z...Z.Z..Z..Z....I.I.I.I.I.I.I.I.I.I....Z.Z..Z..IIIIIYIYY...Z...Z.Z..IIIIIIIIYYYYYYY.YYYIIIII.IIIIIIIYYYYYY.....Z.Z..Z..IIIIIYIYY...Z...Z.Z..I.I.I.I.I.I.I.I.I.I..Z..Z..Z...Z.Z..Z..Z...ZI
+1124 ...Z....Z......Z....Z.II.I.I.I.I.I.I.I.II...Z........IIAAIIIII......Z.....IIIIIIIIIIIIIII.IIIIAAA.AAAAAAAIIIIIII....Z........IIAAIIIII......Z.....II.I.I.I.I.I.I.I.II......Z....Z......Z....Z.I
+1126 Z...Z.Z...Z.Z...Z.Z...I.I.I.I.I.I.I.I.I.I.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z..YYYYYYIIIIIIII..YYIIII.IIIIIIIIYYYYYYY.....Z.Z....IIIIIYYII..Z.Z...Z.Z.I.I.I.I.I.I.I.I.I.I.Z.Z...Z.Z...Z.Z...Z.Z...I
+1128 ..Z......Z....Z.......II.I.I.I.I.I.I.I.II....Z....Z..IAAAIIIII.......Z.....IIIIIIIAAAAAA...IIIAA..IIIIIIIIIIIIIII....Z....Z..IAAAIIIII.......Z....II.I.I.I.I.I.I.I.II.....Z......Z....Z......ZI
+1130 .Z...Z..Z..Z.Z...Z..Z.I.I.I.I.I.I.I.I.I.I...Z..Z.Z...IIIIIYYYI...Z..Z..Z.Z..YYYYYIIIIIII....YIII...YYYYYYIIIIIIII...Z..Z.Z...IIIIIYYYI...Z..Z..Z..I.I.I.I.I.I.I.I.I.I..Z.Z...Z..Z..Z.Z...Z..Z.I
+1132 ..Z...Z.......Z...Z...II.I.I.I.I.I.I.I.II.Z.......Z..AAIAIIIII....Z.........IIIIIIAAAAA.....IIA....IIIIIIIAAAAAA..Z.......Z..AAIAIIIII....Z.......II.I.I.I.I.I.I.I.II.....Z...Z.......Z...Z...I
+1134 ...Z.Z..Z..Z...Z.Z..Z.III.I.I.I.I.I.I.III...Z..Z.....IIIIIYIYY...Z..Z..Z.....YYYYIIIIII.....III.....YYYYYIIIIIII....Z..Z.....IIIIIYIYY...Z..Z..Z..III.I.I.I.I.I.I.III..Z...Z.Z..Z..Z...Z.Z..Z.I
+1136 ..Z....Z......Z....Z..IIIIIIIIIAIIIIIIAA...Z......Z..IIAAIIIII.....Z......Z..IIIIIAAAA..............IIIIIIAAAAA....Z......Z..IIAAIIIII.....Z......IIIIIIIIIAIIIIIIAA......Z....Z......Z....Z..I
+1138 Z...Z.Z...Z.Z...Z.Z....YYIIIIIIIIIIIIIII..Z...Z.Z....IIIIIYYII..Z.Z...Z.Z.....YYYIIIII..Z.Z...Z.Z....YYYYIIIIII...Z...Z.Z....IIIIIYYII..Z.Z...Z.Z..YYIIIIIIIIIIIIIII..Z.Z...Z.Z...Z.Z...Z.Z...I
+1140 .Z......Z....Z......Z..IIIIIIIIAIIIIIAA.....Z....Z...IAAAIIIII......Z....Z....IIIIAAA.......Z....Z...IIIIIAAAA......Z....Z...IAAAIIIII......Z....Z.IIIIIIIIAIIIIIAA......Z......Z....Z......Z.I
+1142 ..Z..Z...Z.Z..Z..Z...Z..YYIIIIIIIIIIIII..Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z..Z....YYIIII....Z...Z.Z..Z...YYYIIIII...Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z....YYIIIIIIIIIIIII..Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1144 ...Z..Z........Z..Z.....IIIIIIIAIIIIAA....Z..........AAIAIIIII....Z........Z...IIIAA...Z..Z........Z..IIIIAAA..Z..Z..........AAIAIIIII....Z.........IIIIIIIAIIIIAA.........Z..Z........Z..Z...I
+1146 IZ..Z..Z..Z..Z..Z..Z..Z..YYIIIIIIIIIII..Z..Z..Z..Z...IIIIIYIYY..Z..Z..Z..Z..Z...YIII....Z..Z..Z..Z.....YYIIII...Z..Z..Z..Z...IIIIIYIYY..Z..Z..Z..Z...YYIIIIIIIIIII.Z..Z..Z..Z..Z..Z..Z..Z..Z..I
+1148 I..Z.....Z.Z...Z.....Z.Z.IIIIIIAIIIAA..Z.....Z.Z.....IIAAIIIII.......Z.Z...Z....IIA....Z.......Z...Z...IIIAA...Z.....Z.Z.....IIAAIIIII.......Z.Z...Z.IIIIIIAIIIAA....Z.Z...Z.....Z.Z...Z.....ZI
+1150 .Z......Z....Z......Z.....YYIIIIIIIII.......Z....Z...IIIIIYYII......Z....Z......III..Z.......I...Z......YIII........Z....Z...IIIIIYYII......Z....Z....YYIIIIIIIII...Z....Z......Z....Z......Z.I
+1152 Z...Z..Z....Z...Z..Z....Z.IIIIIAIIAA....Z..Z....Z....IAAAIIIII..Z..Z....Z...Z.......Z...Z...AI..Z...Z...IIA.....Z..Z....Z....IAAAIIIII..Z..Z....Z...Z.IIIIIAIIAA...Z....Z...Z..Z....Z...Z..Z..I
+1154 ..Z..Z...Z.Z..Z..Z...Z.Z...YYIIIIIII..Z..Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z..Z..Z...Z.Z..Z..Z..IIY...Z..Z..III...Z..Z...Z.Z..Z..IIIIIYYYI...Z...Z.Z..Z....YYIIIIIII.Z...Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1156 ...Z....Z......Z....Z......IIIIAIAA....Z....Z........AAIAIIIII......Z......Z....Z......Z...AAII....Z...........Z....Z........AAIAIIIII......Z......Z...IIIIAIAA.....Z......Z....Z......Z....Z.I
+1158 Z...Z.Z...Z.Z...Z.Z...Z.Z...YYIIIII.....Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z.Z...Z.Z...Z..IIIYY....Z.Z...Z.Z...Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z...YYIIIII...Z...Z.Z...Z.Z...Z.Z...Z.Z...I
+1160 ..Z......Z....Z......Z......IIIIII....Z......Z....Z..IIAAIIIII.......Z....Z......Z....Z...AAAIII..Z......Z....Z......Z....Z..IIAAIIIII.......Z....Z.....IIIIII.......Z....Z......Z....Z......ZI
+1162 .Z...Z..Z..Z.Z...Z..Z..Z.Z...II.II...Z...Z..Z..Z.Z...IIIIIYYII...Z..Z..Z.Z...Z..Z..Z.Z....IIIIYYY....Z..Z..Z.Z...Z..Z..Z.Z...IIIIIYYII...Z..Z..Z.Z...Z...II.II...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z.I
+1164 ..Z...Z.......Z...Z.......Z..I.I.II...Z...Z.......Z..IAAAIIIII....Z.......Z...Z.......Z..AAAAIIII.....Z.......Z...Z.......Z..IAAAIIIII....Z.......Z...Z..I.I.II...Z.......Z...Z.......Z...Z...I
+1166 ...Z.Z..Z..Z...Z.Z..Z..Z....III.III....Z.Z..Z..Z.....IIIIIYYYI...Z..Z..Z...Z.Z...I.......IIIIIYYYY...Z..Z..Z...Z.Z..Z..Z.....IIIIIYYYI...Z..Z..Z...Z.Z..III.III..Z..Z..Z...Z.Z..Z..Z...Z.Z..Z.I
+1168 ..Z....Z......Z....Z........II.I.III..Z....Z......Z..AAIAIIIII.....Z......Z.....AI......AAAAAIIIII............Z....Z......Z..AAIAIIIII.....Z......Z.....II.I.III...Z......Z....Z......Z....Z..I
+1170 Z...Z.Z...Z.Z...Z.Z...Z.Z..II.I.I.II....Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z...IIY.....IIIIIIYYYYY......I..Z...Z.Z...Z.Z....IIIIIYIYY..Z.Z...Z.Z...Z..II.I.I.II..Z...Z.Z...Z.Z...Z.Z...Z.Z...I
+1172 .Z......Z....Z......Z......III.I.I.II.......Z....Z...IIAAIIIII......Z....Z.....AAII....AAAAAAIIIIII.....AI...Z......Z....Z...IIAAIIIII......Z....Z.....III.I.I.II...Z....Z......Z....Z......Z.I
+1174 ..Z..Z...Z.Z..Z..Z...Z.Z..III.I.I.III....Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z....IIIYY...IIIIIIIYYYYYY....IIY...Z..Z...Z.Z..Z..IIIIIYYII...Z...Z.Z..Z...III.I.I.III....Z.Z..Z..Z...Z.Z..Z..Z...ZI
+1176 ...Z..Z........Z..Z.......II.I.I.I.III.Z..Z..........IAAAIIIII....Z........Z..AAAIII..AAAAAAAIIIIIII...AAII....Z..Z..........IAAAIIIII....Z........Z..II.I.I.I.III.........Z..Z........Z..Z...I
+1178 .Z..Z..Z..Z..Z..Z..Z..Z..II.I.I.I.I.II..Z..Z..Z..Z...IIIIIYYYI..Z..Z..Z..Z....IIIIYYY.IIIIIIIIYYYYYYY..IIIYY....Z..Z..Z..Z...IIIIIYYYI..Z..Z..Z..Z...II.I.I.I.I.II....Z..Z..Z..Z..Z..Z..Z..Z..I
+1180 ...Z.....Z.Z...Z.....Z...III.I.I.I.I.II......Z.Z.....AAIAIIIII.......Z.Z.....AAAAIIII.IIIIIIIIIIIIIII.AAAIII...Z.....Z.Z.....AAIAIIIII.......Z.Z.....III.I.I.I.I.II..Z.Z...Z.....Z.Z...Z.....ZI
+1182 .Z......Z....Z......Z...III.I.I.I.I.III.....Z....Z...IIIIIYIYY......Z....Z...IIIIIYYYY.YYYYYYIIIIIIII.IIIIYYY.......Z....Z...IIIIIYIYY......Z....Z..III.I.I.I.I.III......Z......Z....Z......Z.I
+1184 Z...Z..Z....Z...Z..Z....II.I.I.I.I.I.III...Z....Z....IIAAIIIII..Z..Z....Z...AAAAAIIIII.IIIIIIIAAAAAA.AAAAIIII...Z..Z....Z....IIAAIIIII..Z..Z....Z...II.I.I.I.I.I.III....Z...Z..Z....Z...Z..Z..I
+1186 ..Z..Z...Z.Z..Z..Z...Z.II.I.I.I.I.I.I.II.....Z.Z..Z..IIIIIYYII...Z...Z.Z....IIIIIIYYYYY.YYYYYIIIIIII.IIIIIYYYY...Z...Z.Z..Z..IIIIIYYII...Z...Z.Z...II.I.I.I.I.I.I.II...Z..Z..Z...Z.Z..Z..Z...ZI
+1188 ...Z....Z......Z....Z..III.I.I.I.I.I.I.II...Z........IAAAIIIII......Z......AAAAAAIIIIII.IIIIIIAAAAA.AAAAAIIIII......Z........IAAAIIIII......Z......III.I.I.I.I.I.I.II......Z....Z......Z....Z.I
+1190 Z...Z.Z...Z.Z...Z.Z...III.I.I.I.I.I.I.III.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z..IIIIIIIYYYYYY.YYYYIIIIII.IIIIIIYYYYY...Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z.III.I.I.I.I.I.I.III.Z.Z...Z.Z...Z.Z...Z.Z...I
+1192 ..Z......Z....Z.......II.I.I.I.I.I.I.I.II....Z....Z..AAIAIIIII.......Z....AAAAAAAIIIIIII.IIIIIAAAA.AAAAAAIIIIII......Z....Z..AAIAIIIII.......Z....II.I.I.I.I.I.I.I.II.....Z......Z....Z......ZI
+1194 .Z...Z..Z..Z.Z...Z..Z.I.I.I.I.I.I.I.I.I.I...Z..Z.Z...IIIIIYIYY...Z..Z..Z..IIIIIIIIYYYYYYY.YYYIIIII.IIIIIIIYYYYYY....Z..Z.Z...IIIIIYIYY...Z..Z..Z..I.I.I.I.I.I.I.I.I.I..Z.Z...Z..Z..Z.Z...Z..Z.I
+1196 ..Z...Z.......Z...Z...II.I.I.I.I.I.I.I.II.Z.......Z..IIAAIIIII....Z.......IIIIIIIIIIIIIII.IIIIAAA.AAAAAAAIIIIIII..Z.......Z..IIAAIIIII....Z.......II.I.I.I.I.I.I.I.II.....Z...Z.......Z...Z...I
+1198 ...Z.Z..Z..Z...Z.Z..Z.I.I.I.I.I.I.I.I.I.I...Z..Z.....IIIIIYYII...Z..Z..Z...YYYYYYIIIIIIII..YYIIII.IIIIIIIIYYYYYYY...Z..Z.....IIIIIYYII...Z..Z..Z..I.I.I.I.I.I.I.I.I.I..Z...Z.Z..Z..Z...Z.Z..Z.I
+1200 ..Z....Z......Z....Z..II.I.I.I.I.I.I.I.II..Z......Z..IAAAIIIII.....Z.......IIIIIIIAAAAAA...IIIAA..IIIIIIIIIIIIIII..Z......Z..IAAAIIIII.....Z......II.I.I.I.I.I.I.I.II.....Z....Z......Z....Z..I
+1202 Z...Z.Z...Z.Z...Z.Z...I.I.I.I.I.I.I.I.I.I.Z...Z.Z....IIIIIYYYI..Z.Z...Z.Z...YYYYYIIIIIII....YIII...YYYYYYIIIIIIII.....Z.Z....IIIIIYYYI..Z.Z...Z.Z.I.I.I.I.I.I.I.I.I.I.Z.Z...Z.Z...Z.Z...Z.Z...I
+1204 .Z......Z....Z......Z.II.I.I.I.I.I.I.I.II...Z....Z...AAIAIIIII......Z....Z..IIIIIIAAAAA.....IIA....IIIIIIIAAAAAA....Z....Z...AAIAIIIII......Z.....II.I.I.I.I.I.I.I.II....Z......Z....Z......Z.I
+1206 ..Z..Z...Z.Z..Z..Z....III.I.I.I.I.I.I.III....Z.Z..Z..IIIIIYIYY...Z...Z.Z..Z..YYYYIIIIII.....III.....YYYYYIIIIIII.....Z.Z..Z..IIIIIYIYY...Z...Z.Z..III.I.I.I.I.I.I.III..Z..Z..Z...Z.Z..Z..Z...ZI
+1208 ...Z..Z........Z..Z...IIIIIIIIIAIIIIIIAA..Z..........IIAAIIIII....Z..........IIIIIAAAA....Z.........IIIIIIAAAAA...Z..........IIAAIIIII....Z.......IIIIIIIIIAIIIIIIAA.......Z..Z........Z..Z...I
+1210 .Z..Z..Z..Z..Z..Z..Z...YYIIIIIIIIIIIIIII...Z..Z..Z...IIIIIYYII..Z..Z..Z..Z....YYYIIIII..Z..Z..Z..Z...YYYYIIIIII....Z..Z..Z...IIIIIYYII..Z..Z..Z....YYIIIIIIIIIIIIIII..Z..Z..Z..Z..Z..Z..Z..Z..I
+1212 ...Z.....Z.Z...Z.....Z.IIIIIIIIAIIIIIAA......Z.Z.....IAAAIIIII.......Z.Z...Z..IIIIAAA..Z.....Z.Z.....IIIIIAAAA.......Z.Z.....IAAAIIIII.......Z.Z...IIIIIIIIAIIIIIAA..Z.Z...Z.....Z.Z...Z.....ZI
+1214 .Z......Z....Z......Z...YYIIIIIIIIIIIII.....Z....Z...IIIIIYYYI......Z....Z.....YYIIII.......Z....Z....YYYIIIII......Z....Z...IIIIIYYYI......Z....Z..YYIIIIIIIIIIIII.Z....Z......Z....Z......Z.I
+1216 Z...Z..Z....Z...Z..Z....IIIIIIIAIIIIAA..Z..Z....Z....AAIAIIIII..Z..Z....Z...Z..IIIAA....Z..Z....Z.....IIIIAAA...Z..Z....Z....AAIAIIIII..Z..Z....Z...IIIIIIIAIIIIAA......Z...Z..Z....Z...Z..Z..I
+1218 I.Z..Z..Z.Z...Z..Z..Z.Z..YYIIIIIIIIIII...Z..Z.Z...Z..IIIIIYIYY...Z..Z.Z...Z..Z..YIII..Z..Z..Z.Z...Z....YYIIII....Z..Z.Z...Z..IIIIIYIYY...Z..Z.Z...Z..YYIIIIIIIIIII..Z.Z...Z..Z..Z.Z...Z..Z..Z.I
+1220 ...Z...Z.......Z...Z.....IIIIIIAIIIAA..Z...Z.........IIAAIIIII.....Z.......Z....IIA....Z...Z.......Z...IIIAA...Z...Z.........IIAAIIIII.....Z.......Z.IIIIIIAIIIAA..Z.......Z...Z.......Z...Z..I
+1222 Z...Z.Z...Z.Z...Z.Z...Z...YYIIIIIIIII...Z.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z...Z...III.....Z.Z...Z.Z...Z...YIII....Z.Z...Z.Z....IIIIIYYII..Z.Z...Z.Z.....YYIIIIIIIII.Z...Z.Z...Z.Z...Z.Z...Z.Z...I
+1224 ..Z......Z....Z......Z....IIIIIAIIAA..Z......Z....Z..IAAAIIIII.......Z....Z...........Z......Z....Z.....IIA...Z......Z....Z..IAAAIIIII.......Z....Z...IIIIIAIIAA.....Z....Z......Z....Z......ZI
+1226 .Z...Z..Z..Z.Z...Z..Z..Z...YYIIIIIII.Z...Z..Z..Z.Z...IIIIIYYYI...Z..Z..Z.Z...Z..Z..Z.Z...Z..Z..Z.Z...Z..III..Z...Z..Z..Z.Z...IIIIIYYYI...Z..Z..Z.Z.....YYIIIIIII.Z..Z..Z.Z...Z..Z..Z.Z...Z..Z.I
+1228 ..Z...Z.......Z...Z........IIIIAIAA...Z...Z.......Z..AAAAIIIII....Z.......Z...Z.......Z...Z.......Z...Z.......Z...Z.......Z..AAAAIIIII....Z.......Z....IIIIAIAA...Z.......Z...Z.......Z...Z...I
+1230 ...Z.Z..Z..Z...Z.Z..Z..Z....YYIIIII....Z.Z..Z..Z.....IIIIIYYYY...Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z...Z.Z..Z..Z.....IIIIIYYYY...Z..Z..Z...Z.Z..YYIIIII..Z..Z..Z...Z.Z..Z..Z...Z.Z..Z.I
+1232 ..Z....Z......Z....Z........IIIIIII...Z....Z......Z..IIIIIIIII.....Z......Z....Z......Z....Z......Z....Z......Z....Z......Z..IIIIIIIII.....Z......Z.....IIIIIII....Z......Z....Z......Z....Z...
+1234 I...........................IIIIIII..................IIIIIIIII...............................................................IIIIIIIII..................IIIIIII................................
+1236 IIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIII
+1991 ....AIA
+

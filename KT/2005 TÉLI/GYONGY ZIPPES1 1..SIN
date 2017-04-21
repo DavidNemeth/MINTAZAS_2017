@@ -1,0 +1,143 @@
+   1 C ZIIPPZARAS GYONGY KENGURUZSEBBEL ES KAPUCNIVAL
+   1 C CNCA 2003:CP NORVEG RS19=0/1/2(T/U/NY) RS10=
+   1 C 2.SZV.:4 FARMERKEK PAMUT     5.SZV.:4 S.KEK HB
+   1 C DUPLAN HAJTOTT 1/1 NYAK MINTAS SZELEL :RS19=2
+  1 C  RS1=(FIX 54-55)
+  1 C                           E-H:70CM   U:60CM      KAPUCNI:23CM  ZSEB:20CM
+  1 C-----------------------+------------+------------+------------+-------------+
+  1 C 2X4SZAL LUSI NP2=13.8       89           77             29        26
+  1 C 2X2LUSI+2TX            NP2=13.8 NP3=15.0  RS1=20
+  1 C 2X2LUSI+2TX            NP2=12.8 NP3=14.5  RS1=20
+  1 C 2X2LUSI+1HB            NP2=12.5 NP3=14.5  RS1=20
+  1 C 2X2LUSI+1TX            NP2=12.5 NP3=14.5  RS1=20
+  1 C 2X2LUSI+1HB            NP2=12.2 NP3=14.2  RS1=20
+  1 C 2X3LUSI+1HB            NP2=13.2 NP3=15.0  RS1=20 (AZ 5-OSBOL MENET KOZBEN AZ EGYIK HB ELFOGYOTT)
+  1 C 5:3LUSI1HB 2:2LUSI1HB  NP2=13.2 NP3=14.2  RS1=20 
+  1 C 5:2LUSI1TX 2:3LUSI1TX  NP2=13.2 NP3=14.2  RS1=30 
+  1 C 5:2LUSI1HB 2:3LUSI1HB  NP2=13.0 NP3=14.2  RS1=20 
+  1 C 5:2LUSI1TX 2:3LUSI1TX  NP2=13.0 NP3=14.2  RS1=40 EZ MARADT A GEPBEN
+  1 C-----------------------+------------+------------+------------+-------------+
+  1 C 5:2LUSI1HB 2:4LUSI     NP2=12.4 NP3=14.2  RS1=20 
+  1 C 5:2LUSI1HB 2:4LUSI     NP2=12.0 NP3=14.2  RS1=20 
+  1 C-----------------------+------------+------------+------------+-------------+
+  1 C 5:3LUSI1TX 2:4LUSI     NP2=13.5 NP3=15.0  RS1=20 KI KELL PROBALNI!
+
+
+  10 NP4=12.8;   C:LEVALASZTAS
+  12 NP3=14.2;   C:BEKEZDES,KORSLAG,ZSAKKOTESU NORVEG
+  14 NP2=12.0;   C GYONGY  13.6-14.0
+
+
+  40 START        
+  50 YG:6/256;
+  52 WM=24;WMI=7
+  54 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+
+  58 IF #100=2  RS19=0           C TEST
+  60 IF #100=1  RS19=1           C U
+  61C IF #100=1  RS19=2           C KAPUCNI PM MEG NEM JO
+
+  64C IF RS19=0  RS1=89             C TEST: KAPUCNIS KENGURU:4LAP
+  66C IF RS19=1  RS1=77             C U:4LAP
+
+  68 >> S:D.I-DI./DI.-D.I/UVNDI.;                            ML       S1 S2 T2
+  70 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+  72 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  74 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  85 >> S:R-R;                        Y:2;        NP3-03         ML       S1
+  95 JA1=1118(1006-1008);
+  98 PA:1:<JA1>;
+
+ 100 FA=7-185;
+ 105 PM:<*>6:3(FA**);  C 553TU
+ 110 IF RS19=1 FA=2-136          C**4 LAP
+ 115 IF RS19=1 PM:<*>7:4(FA);    C**4 LAP
+ 110 IF RS19=1 FA=2-135          C**
+ 115 IF RS19=1 PM:<*>7:FA*FA*FAFA;    C**
+
+ 120 Y:5;
+ 125 REP*3
+ 130 << S:R-0;		                                              ML    S1
+ 135 >> S:0-R;		                                              ML    S1
+ 140 REPEND
+
+C 145 WM=24 C20
+C 150 REP*28 C************* ZSAKKOTESU NORVEG MINTA****************
+C 155 << S:<1->I-.*+/.*+-I;    Y:5/2; VU    ML    S1 S2
+C 160 >> S:<1->I*+-./.-I*+;           VU    ML    S1 S2
+C 165 REPEND C****************************************************
+
+ 170 JA1=1004; C1004 .I.I.I.I.I.I.I.I.I.I.I. 105 PM:<*>6:3(FA**);
+ 175 << S:U^N./UVNI*;     VKA>2   ML T1 T2
+ 180 >> S:0-0;   Y:0; S1
+ 182 NP2-2
+ 183 WM=30 C26
+ 185 RBEG*RS1 C*****GYONGY*************************************
+ 190 << S:I*-./I*-%.;   Y:5/2; VU      S1 S2  C
+ 192 >> S:I*-./I*-%.;          VU      S1 S2  C
+ 200 REND C****************************************************
+ 205 << S:I*-./I*-%.;            V#      S1 S2
+ 210 >> S:I*-./I*-./UVN.;          ML   S1 S2 T2
+ 215 END
+
+1002 190I
+1004 95(.I)
+1006 189.I
+1008 189.I
+1010 47(3I.)II
+1012 47(3I.)II
+1014 47(I.II)II
+1016 47(I.II)II
+1018 189.I
+1020 94(I.)II
+1022 190I
+1024 190I
+1026 95(.I)
+1028 189.I
+1030 10(2(..I3.)6.)..I5.II
+1032 10(2(.3I..)6.).3I3.3I
+1034 10(2(..II.)8.)..II3.3I
+1036 10(.2(.3I)..I5.I).2(.3I)I
+1038 10(5I.7I3.II)5I.4I
+1040 10(4I3.5I5.I)4I3.3I
+1042 10(.I3(I.)II8.).I3(I.)II
+1044 10(5.I12.)..2(3.I)
+1046 10(.I3(I.)II8.).I3(I.)II
+1048 10(4I3.5I5.I)4I3.3I
+1050 10(5I.7I3.II)5I.4I
+1052 10(.2(.3I)..I5.I).2(.3I)I
+1054 10(2(..II.)4.I3.)..II3.3I
+1056 10(2(.3I..).I.I..).3I3.3I
+1058 10(2(..I3.).I.I..)..I5.II
+1060 10(12.I3.I.)9.I
+1062 10(12.I3.I.)9.I
+1064 10(6.2(5.I))9.I
+1066 10(6.2(5.I))9.I
+1068 10(I9.I7.)I8.I
+1070 10(I8.2(.I..).)I8.I
+1072 10(2(.I6.)..).I7.I
+1074 10(2(..I3.)I3.I.)..I5.II
+1076 10(..I3.2(..I)6I)..I5.II
+1078 10(2(3.I)4.5I.)2(3.I).I
+1080 10(4.3I7.I3.)4.3I..I
+1082 189.I
+1084 10(14.I3.)9.I
+1086 10(12.5I.)9.I
+1088 10(11.7I)9.I
+1090 10(12.I3.I.)9.I
+1092 189.I
+1094 10(14.I3.)9.I
+1096 189.I
+1098 189.I
+1100 95(.I)
+1102 190I
+1104 190I
+1106 94(I.)II
+1108 189.I
+1110 47(I.II)II
+1112 47(I.II)II
+1114 47(3I.)II
+1116 47(3I.)II
+1118 190.
+1120 2(5I.84I)4I.5I

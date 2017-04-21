@@ -1,0 +1,35 @@
+800    C---------2X2 FONOTT NYAK-----------------------------------------
+805    START
+806    NP1=14.2 C NP1=14.9   C:FONAS
+807    NP2=10.8 C NP2=11.5  C:1/1
+808    NP4=11.5  C:LEVALASZTAS
+810    YG:6/256;
+820    WM=20
+825 << S:R-R/R-0;                      Y:2/5;      NP4-4  V0          S1 S2
+830 >> S:R-R/R-R;                                                     S1 S2
+835 << S:R-R/R-0;                                                     S1 S2
+840 >> S:D.I-DI./DI.-D.I/UVSDI.;       Y:2/5;      NP1-1              S1 S2 T2
+845 << S:U^SD.I/DI.-D.I;               Y:2;                        T1 S1
+850 >> S:U^SDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+855 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#       T1 S1 S2
+860 >> S:R-0/DI.-D.I;                  Y:0/2;      NP02-2 V# V0    T1 S1   
+865 << S:DI.I.I.I.(6.5)-0/0-D.I;       Y:6/2;             V#          S1 S2
+870 >> S:DI.I.I.I.-0/DI.I.I.I.-D.I.I.I.I; Y:6/2;   NP2-2  V#          S1 S2
+875 << S:DI.I.I.I.-D.I.I.I.I;          Y:2/5;             V#          S1 S2
+880     JA1=1999
+882     FA=1-6
+884     PA:JA1;
+890     PM:<.> 9:27FA 7. 27FA 7. 27FA;
+900 >> S:DI.I.I.I.-D.I.I.I.I/DI.-D.I/UVS.;  Y:2/5;                    S1 S2 T2
+903    REP*2
+904    VJA^1
+905 << S:U^SY*/.-Y*/.-Y*;              Y:2/5;      NP1-1  V0       T1 S1 S2
+910 >> S:.-*/UVS*;                     Y:2;               VL2         S1    T2
+915 << S:.-Y;                          Y:2;               VR2         S1
+917    VJA^0
+920 >> S:U^SY/.-Y*/.-Y*/UVSY*;         Y:2/5;                      T1 S1 S2 T2
+930    REPEND
+935 << S:U^SD.I/DI.-D.I/DI.-D.I;       Y:2/5;      NP2-2  V0       T1 S1 S2
+940 >> S:DI.-D.I;                      Y:2/5;             V#          S1 S2
+945    END
+1999 .YY**.

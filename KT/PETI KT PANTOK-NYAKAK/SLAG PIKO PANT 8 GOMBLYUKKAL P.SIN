@@ -1,0 +1,54 @@
+ 900 C***KK PANT SLAG PIKOVAL, 7-8 GOMBLYUK, ******
+ 901 NP4=12.5;             C:LEVALASZTAS
+ 902 NP10=11.5              C:BEKEZDES,REX
+ 903 NP11=14.0              C:KORSLAG PIKO
+ 904 NP12=14.8              C:SLAG GOMBLYUK ELOTT
+ 905 NP13=7.0               C:GOMBLYUK
+ 906C START        
+ 907C YG:6/256;
+ 908 WM=20;WMI=7
+ 909C YG:6/256;
+ 910C << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+ 912 JA1=1990;  
+ 914 PA:<JA1>; 
+ 916 FA=1-6; 
+ 918 PM:9.<FA>548:<.>;
+ 920 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 922 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+ 924 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 926 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 928 >> S:R-R;                        Y:2;        NP10-10        ML       S1
+ 930 << S:0-NA/NA-0;                  Y:2/5;      NP11-11           S1 S2
+ 932 REP*2 C***PIKO***
+ 934 >> S:NA-0/0-NA;                                                S1 S2
+ 936 << S:0-NA/NA-0;                                                S1 S2
+ 938 REPEND
+ 940 CREP*1
+ 942 C>> S:R-0/0-R;                                                  S1 S2
+ 944 C<< S:R-0/0-R;                                                  S1 S2
+ 946 CREPEND
+ 948 >> S:R-0/0-R;                                                   S1 S2
+ 950 << S:R-0/0-R;                              NP12-12              S1 S2
+ 952 VJA^1
+ 956    PM:15.7(YTI17*)<*>544:<.>; C    65CM-ES KK-HOZ
+ 956    PM:15.8(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL.)
+ 956    PM:15.9(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (9 GOMBLYUKKAL.)
+ 956    PM:15.7(YTI19*)<*>544:<.>; C    70CM-ES KK-HOZ  (V NYAKUHOZ:7 GOMBLYUKKAL, O NYAKUHOZ 8 GOMBLYUKKAL.)19* VAGY 20*
+ 962 C GOMBLYUKAK:
+ 964 WM=0
+ 966 >> S:U^STI/UVSYT;                        VL2                T1       T2
+ 968 << S:U^SY/UVSI;                          VR1                T1       T2
+ 970 WM=25
+ 972 >> S:T(13)-.*IY(11)/.*IY(11)-T(13);      V0                    S1 S2
+ 974 NP11-11
+ 976 << S:R-0/0-R;                            VR1 V#                S1 S2
+ 978 >>                               Y:2/5;      V#                S1 S2
+ 980 <<                               Y:5/2;  V0                    S1 S2
+ 982 >>                                                             S1 S2
+ 984 <<                                                             S1 S2
+ 986 >> S:R-R/R-R;                        NP10-10                   S1 S2
+ 988 END
+
+ 999 <> W0 S0
+
+1990 IIIIAI

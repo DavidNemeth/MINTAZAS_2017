@@ -1,0 +1,4 @@
+160 << S:U^N<1->I+Y*/.*-I+Y/UVNNY;         V0         T1    S2 T2
+170 >> S:U^N<1->I+Y*/.*-I+Y/UVNN+;         VR1        T1    S2 T2
+210 << S:<1->.%*-0/<1->.-*/UVN*;         NP-0     V0     S1 S2 T2
+220 >>                                   NP-0            S1 S2 T2

@@ -1,0 +1,67 @@
+
+  2009.11.28.: KT-NPK(3)=-0.2
+
+ SÜLLYESZTÕ LAKATOK  KORREKCIÓI:
+     Bootoláskor mindig újra be kell írni!
+     NPK(x)=n  x:A lakat sorszáma (1-16)           4,8,9.13-NAK NEM LEHET NPK-T ADNI, MERT MINDIG BEALL 6.5-RE!
+               n:0.00- (+-)2.00
+
+     15A      15B
+    1   2    3?  (4)           
+  <-----------------            
+    5   6    7   (8)            
+     15C      15D
+
+     15A      15B
+   (9)  10  11   12             
+  ------------------>                   
+  (13)  14  15   16
+     15C      15D
+
+A KOVETKEZO SORT URESEN JARATVA, LEHET NEZNI A MOTOROK MOZGASAT. NPK(5,6,7,8)=-2 ES NPK(13,14,15,16)=2
+998 << S:R(12.0)-0; Y:2/5/6; T1 S1 S2
+
+      (3):A SZELEKTIV SZOROSSAGOT NEHEZEN VISELI  AZ 1. MOTOR BE LETT TÉVE HELYETTE. A KALIBRÁLÁST ELLENÕRIZNI KELL!!!
+  NPK(16): CSAPÁGY KELL BELE
+ PANELEK (NADELSENKER):
+ 15A:hl (1,2,9,10)
+ 15B:hr (3.4.11.12) 
+ 15C:vl (5,6,13,14)
+ 15D:vr (7,8,15,16)
+   2,10:HIBAZIK: 
+1.:E-H KABEL FELCSERELVE:AHIBA ELOREJOTT 7,15-RE
+2.:KABEL VISSZA,  15A-15B felcserelve :AHIBA UGYAN OTT MARADT: 4,12 IS ROSSZ LEHET.
+3.:15B 15A HELYERE(MARAD)
+   15A 15D HELYERE
+   15D 15B HELYERE: AHIBANAK ELORE KENE JONNIE 7,15-RE
+   
+
+ 103 C:SZOROSSAG TESZT
+ 110 << S:UVSDI.;                   T2
+ 112 >> S:UVSD.I;                   T2
+ 120 NP5=8.5    C:T1 <-ELOL
+ 121 NP6=12.5
+ 122 NP7=12.5
+ 123 NP16=12.5
+ 124 NP15=12.5
+ 125 NP14=12.5
+ 129    Y:3/5/2;
+ 130 RBEG*RS3
+ 140 << S:R(5)-0/R(6)-0/R(7)-0;       T1 S1 S2
+ 150 >> S:R(16)-0/R(15)-0/R(14)-0;       T1 S1 S2
+ 160 REND
+ 170 << S:U^SDI.;                   T1
+ 180 >> S:U^SD.I;                   T1
+ 190 NP1=12.5
+ 200 NP2=12.5
+ 210 NP3=12.5
+ 220 NP12=10.5  C:T1 ->HATUL
+ 230 NP11=12.5
+ 240 NP10=12.5
+ 245    Y:3/5/2;
+ 250 RBEG*RS3
+ 260 << S:0-R(1)/0-R(2)/0-R(3);       T1 S1 S2
+ 270 >> S:0-R(12)/0-R(11)/0-R(10);       T1 S1 S2
+ 280 REND
+ 500 END
+

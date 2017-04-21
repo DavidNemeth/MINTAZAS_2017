@@ -1,0 +1,470 @@
+C VKA!!!!!!KIJAVITVA
+   1 C 70CM-ES KK 8DB GOMBLYUKKAL, VAGY 72CM-ES TUNIKA    1DB.:40'
+   1 C E:RS17=0   H:RS17=1    U:RS17=2
+  10 NP1=14.2  C:MINTA 14.4
+  12 NP4=12.5  C:LEVALASZTAS
+  14 NP3=14.8  C:CSIPKE PASSZE  
+  16 NP2=11.2  C BEKEZDES
+  18 NP5=14.0  C:KORSLAG
+  20 NP8=11.2  C CSIPKE MADONNA NYAK (CSAK KEREK)
+
+
+  40 START        
+  42 YG:6/256;
+  44 WM=18; WMI=7
+  46 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  47 VJA^1
+C**************************************************************************************************
+  48 IF #100<31 GOTO 600 C PANT 8 GOMBLYUKKAL
+  49C IF #100=85  RS17=3          C KEREK MADDONNA NYAK (1 LEVETEL-2DB)
+  50C IF #100=70  RS17=0          C  E 20'
+  51C IF #100=60  RS17=1          C  H 15'
+  52C IF #100=50  RS17=2          C  U  7'
+  53 IF #100=65  RS17=0          C  E 
+  54 IF #100=55  RS17=1          C  H 
+  55 IF #100=45  RS17=2          C  U  
+C**************************************************************************************************
+  56 IF RS17=3 GOTO 500           C NYAK
+  57 IF RS17=0 RS1=157          C  E LAGYABB FEHER:146  SZINES:152
+  58 IF RS17=1 RS1=157          C  H               146         152
+  59 IF RS17=2 RS1=60           C  U
+C**************************************************************************************************
+  60 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  64 >> S:R-R;		                      Y:6;	                    	   ML          S1
+  66 << S:R-0/0-R;                    Y:6/0;            	  VU      ML       S1 S2
+  68 >> S:R-R;                        Y:5;        NP2-2           ML       S1
+  70 JA1=1980;  
+  72 PA:<JA1>; 
+  74 FA=1-6; 
+C**************************************************************************************************
+  76 PM:9.<FA>548:<.>; C************553TU
+  76 PM:9.<FA>575:<.>; C************581TU 
+C**************************************************************************************************
+  78 NP5-5
+  80 Y:2/5; 
+  82 REP*2 C***PIKO***
+  84 << S:0-NA/NA-0;                                                S1 S2
+  86 >> S:NA-0/0-NA;                                                S1 S2
+  88 REPEND
+  90 REP*3
+  92 << S:0-R/R-0;                                                  S1 S2
+  94 >> S:R-0/0-R;                                                  S1 S2
+  96 REPEND
+
+ 100 JA1=1332(1004-1130);          C***** 1SZV.CSIPKE ELEJE**********
+ 102 IF RS17>0 JA1=1468(1336-1338);C***** 1SZV.CSIPKE H-U************
+ 103 JA2=1520(1502-1520);          C***** APRO CSIPE 1.****************
+ 103 JA2=1626(1602-1628);          C***** APRO CSIPE 2.****************
+ 104 PA:1:<JA2>:1:<JA1>;
+C**************************************************************************************************
+ 108           FA=4-181;  PM:<.>9:3(IFA)I7.;         C*E-H**********553TU
+ 112 IF RS17=2 FA=26-159; PM:<.>7:4(IFA)I;           C*U************553TU
+C**************************************************************************************************
+ 108           FA=1-187;  PM:<.>7:3(IIFA)II;          C*E-H**********581TU
+ 112 IF RS17=2 FA=23-162; PM:<.>7:4(IIFA)I;           C*U************581TU
+C*****************************************************************************************
+ 114 VJA^0
+ 116 NP1-1
+ 118 << S:0-R/R-0/UVS.;                                               S1 S2 T2
+ 120 >> S:U^SN./.-N./.-N./UVSNY.;                        V0 VKA<1  T1 S1 S2 T2   C  VKA<1!!!!!!!!!!!!!!!!!
+ 130 WM=20
+ 135 Y:2/2/5/5;
+ 140 RBEG*RS1  C PASSZE 1SZV. CSIPKE
+ 145 << S:U^S<1-2->N.*/.*-N.*/UVSNA.;                      VL1 VKB>5 T1    S1 T2   C VKB>5 !!!!!!!!!!!!!!!!!
+ 150 >> S:U^S<1-2->N.*/.*-N.*/UVSNY.;                      V0  VKA    T1    S1 T2   CVKA  !!!!!!!!!!!!!!!!!
+ 155 REND
+
+ 160 << S:U^N<1-2->N./.-N./.-N./UVNN.;        Y:2/5;    VL1     T1 S1 S2 T2 CVKB!!!!!!!!
+ 165 >> S:U^NDI./D.I-DI./D.I-DI./UVSDI.;    NP4-4     V0     T1 S1 S2 T2    CVKA !!!!!!!
+ 170 END
+
+
+ 500 C** CSIPKE NYAK ************
+ 502 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+ 504 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 506 >> S:DI.-D.I;                   Y:5;                 VU  VR1        S1
+ 508 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+ 510 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+ 512 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+ 514 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	        NP8-8   V0 VU      S1 S2
+ 516 << S:DI.-0;                     Y:6;                      VU      S1
+ 518 >>                                                        VU      S1
+ 520 << S:DI.-D.I;                   Y:2/5;                       VU      S1 S2
+ 522 PA:1:<JA1>;
+ 524 FA=1-2
+C**************************************************************************************************
+ 526 PM:<.>7:I<FA>547:I<.>;  C*553TU
+ 526 PM:<.>7:I<FA>575:I<.>;  C*581TU 
+C**************************************************************************************************
+ 528 JA1=1102(1100-1102);
+ 530 >> S:DI.-D.I/DI.(1)-D.I(1)/UVN.Y;                             S1 S2   T2
+ 532 VJA^0
+ 534 NP1-1
+ 536 WM=22
+ 538 REP*1
+ 540 << S:U^S<1->N./.-N./.-N./UVSNA.;                      VL1 VKB>5 T1 S1 S2 T2 CVKB>5!!!!!!!
+ 542 >> S:U^S<1->N./.-N./.-N./UVSNY.;                      V0        T1 S1 S2 T2
+ 544 REPEND
+ 546 << S:U^S<1->N./.-N./.-N./UVSNA.;                      VL1 VKB>5 T1 S1 S2 T2 CVKB>5!!!!!!!
+ 548 >> S:U^S<1->N./.-N./.-N./UVSN.;                       V0        T1 S1 S2 T2
+ 550 END
+
+ 600 C***REX PIKO PANT 8 GOMBLYUKKAL*****
+ 602 NP4=12.6   C:LEVALASZTAS,1/1
+ 603 NP9=11.2   C:BEKEZDES,REX
+ 605 NP3=14.8   C:SLAG GOMBLYUK ELOTT
+ 606 NP10=14.2  C:SLAG PASSZE
+ 607 NP6=7.0    C:GOMBLYUK
+ 610C START 
+ 612C YG:6/256;
+ 614C WM=24
+ 616C << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1990; 
+ 620 PA:<JA1>; 
+ 622 FA=2-7; C FA=1-7 VAGY 2-7;
+C**************************************************************************************************
+ 624 PM:<.>5:<FA>547:<.>;  C*553TU
+ 624 PM:<.>5:<FA>575:<.>;  C*581TU
+C**************************************************************************************************
+ 626 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+ 628 << S:U^NA/.I-A;                         ML                     T1 S1
+ 630 >> S:.I-A;                      Y:5;    ML             VR1        S1
+ 632 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+ 634 >> S:.I-.I;                     Y:6;    ML             V0            S2
+ 636 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+ 638 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP9-9              S1 S2
+
+ 642 << S:0-./.-.;                   Y:5/2;                  ML          S1 S2
+ 644 >> S:.-.;                                               ML          S1 S2
+ 646 <<                                                      ML          S1 S2
+ 648 >> S:.-./.I-.I;                                         ML          S1 S2
+ 650 << S:R-R;                                                         S1 S2
+ 652 >> S:R-0/0-R;                             NP10-10                S1 S2
+ 654 << S:R-0/0-R;                             NP3-3                S1 S2
+ 655 VJA^1
+C********************553TU:******************************************************************************
+ 656    PM:15.8(YTI17*)<*>544:<.>; C    65CM-ES KK-HOZ  (7 GOMBLYUKKAL, AZ ELSOT LE KELL VAGNI)
+ 656    PM:15.8(YTI19*)<*>544:<.>; C    70CM-ES KK-HOZ  (V NYAKUHOZ:7 GOMBLYUKKAL, O NYAKUHOZ 8 GOMBLYUKKAL.)
+ 656    PM:15.8(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL.)
+C********************581TU:******************************************************************************
+ 656    PM:15.8(YTI17*)<*>575:<.>; C    65CM-ES KK-HOZ  (7 GOMBLYUKKAL, AZ ELSOT LE KELL VAGNI)
+ 656    PM:15.8(YTI19*)<*>575:<.>; C    70CM-ES KK-HOZ  (V NYAKUHOZ:7 GOMBLYUKKAL, O NYAKUHOZ 8 GOMBLYUKKAL.)
+ 656    PM:15.8(YTI16*)<*>575:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL.)
+C**************************************************************************************************
+ 658 C GOMBLYUKAK:
+ 660 WM=0
+ 662 >> S:U^STI/UVSYT;                        VL2                T1       T2
+ 664 << S:U^SY/UVSI;                          VR1                T1       T2
+ 666 WM=25
+ 668 >> S:T(6)-.*IY(10)/.*IY(10)-T(6);          V0                    S1 S2
+ 670 NP10-10
+ 672 << S:R-0/0-R;                            VR1 V#                S1 S2
+ 676 >>                               Y:2/5;      V#                S1 S2
+ 678 <<                               Y:5/2;  V0                    S1 S2
+ 680 >>                                                             S1 S2
+ 682 <<                                                             S1 S2
+ 684 >> S:R-R;                                  NP2-2               S1 S2
+ 686 END
+ 999 <> W0 S0
+
+1990 4.AIA
+
+1980 4IAA
+
+1500 WWWWW
+1502 IAII.
+1504 III..
+1506 A..*.
+1508 II.*Y
+1510 A.A..
+1512 I....
+1514 I.I..
+1516 I.*Y.
+1518 IAII.
+1520 I.I..
+1522 WWWWW
+
+1500 WWWWW
+1502 IAII.
+1504 III..
+1506 A..*.
+1508 II.*Y
+1510 A.A..
+1512 I..I.
+1514 I.*..
+1516 I.*Y.
+1518 .AII.
+1520 I.I..
+1522 WWWWW
+
+1600 WWWWWW
+1602 *YII..
+1604 .IIIIA
+1606 .IYIII
+1608 ..IIA.
+1610 I.I.YI
+1612 IAI.II
+1614 .I..IY
+1616 *I...I
+1618 *YIIII
+1620 .IIIIA
+1622 .IYIII
+1624 I.IIAI
+1626 .III..
+1628 *IAI..
+1630 WWWWWW
+
+1600 WWWWWW
+1602 *YII..
+1604 .IIIIA
+1606 .IYIII
+1608 ..IIA.
+1610 I.I.YI
+1612 IAI.II
+1614 II..IY
+1616 II...I
+1618 *YIIII
+1620 .IIIIA
+1622 .IYIII
+1624 ..IIAI
+1626 .III..
+1628 IIAI..
+1630 WWWWWW
+
+
+1002 190I
+1004 W31XI..3I..3Y..I.I..2(.3I)..IX2(30XI)..3I..3Y..I.I..2(.3I)..I37XI
+1006 32X2(I..II)I..I.I..3A..3I..IX2(30XI)2(..3I)..I.I..3A..3I..I37XI
+1008 32XI.2(..3Y).I.2(I..II)I..IX2(30XI).2(..3Y).I.2(I..II)I..I37XI
+1010 32XI.2(..3I).I.I2(.3A.)..IX2(30XI).2(..3I).I.I2(.3A.)..I37XI
+1012 32XI..2(..3Y)I.I2(.3I.)..IX2(30XI)..2(..3Y)I.I2(.3I.)..I37XI
+1014 31XI3.2(..3I)I.I2(3A..)..IXX2(29XI)3.2(..3I)I.I2(3A..)..I37XI
+1016 30XI5.2(..3Y).I2(3I..)3.IXX2(28XI)5.2(..3Y).I2(3I..)3.I36XI
+1018 30XI5.2(..3I).2(3A..)5.IX2(28XI)5.2(..3I).2(3A..)5.I35XI
+1020 29XI..6I2(3I..3I.)6.IXX2(27XI)..6I2(3I..3I.)6.I35XI
+1022 29XI.3I3.3AI.2(.3I)..9I..IX2(27XI).3I3.3AI.2(.3I)..9I..I34XI
+1024 28XI..10I.2(.3I)..I3Y3.3I.IXX2(26XI)..10I.2(.3I)..I3Y3.3I.I34XI
+1026 28XI.3I3.3AII.2(.3I)..10I..IX2(26XI).3I3.3AII.2(.3I)..10I..I33XI
+1028 27XI..11I.2(.3I)..II3Y3.3I.IXX2(25XI)..11I.2(.3I)..II3Y3.3I.I33XI
+1030 27XI.3I3.3A3I.3A2(..3I)8I..IX2(25XI).3I3.3A3I.3A2(..3I)8I..I32XI
+1032 26XI..12I.3I3.3Y.3I3Y3.3I.IXX2(24XI)..12I.3I3.3Y.3I3Y3.3I.I32XI
+1034 26XI.3I3.3A.3I3A7I.12I..IX2(24XI).3I3.3A.3I3A7I.12I..I31XI
+1036 25XI..II2(7I.)..I3Y3I.3Y3.3I.IXX2(23XI)..II2(7I.)..I3Y3I.3Y3.3I.I31XI
+1038 25XI.3I3.3A..II3A3I2(9I.).IX2(23XI).3I3.3A..II3A3I2(9I.).I30XI
+1040 24XI..II2(7I..).II3YII..3Y3.3I.IXX2(22XI)..II2(7I..).II3YII..3Y3.3I.I30XI
+1042 24XI.3I3.3A3.I3A4I2(9I..)IX2(22XI).3I3.3A3.I3A4I2(9I..)I29XI
+1044 23XI..II2(7I3.)3I3YI3.3Y3.3I.IXX2(21XI)..II2(7I3.)3I3YI3.3Y3.3I.I29XI
+1046 22XI..3I2(3.3A.)13I3.9I..IXX2(20XI)..3I2(3.3A.)13I3.9I..I28XI
+1048 22XI..9I3.2(.3I)3.3I2(.3Y3.)3I..IX2(20XI)..9I3.2(.3I)3.3I2(.3Y3.)3I..I27XI
+1050 22XI2(..3I.)..3A..9I.3I4.9I..IX2(20XI)2(..3I.)..3A..9I.3I4.9I..I27XI
+1052 22XI..6I2(3I3.3I..)3Y2(3.3I)..IX2(20XI)..6I2(3I3.3I..)3Y2(3.3I)..I27XI
+1054 22XII2(.3I..)3A..3A4I2(3I..).9I.IIX2(20XI)I2(.3I..)3A..3A4I2(3I..).9I.II27XI
+1056 23XI..6I3Y2(.3I.)..2(..3Y)2(..3I.)IX2(21XI)..6I3Y2(.3I.)..2(..3Y)2(..3I.)I28XI
+1058 23XII.3I3.6I..3A9I..3I.3A6I..IX2(21XI)I.3I3.6I..3A9I..3I.3A6I..I28XI
+1060 24XI..6I3YII..3I7.3Y.2(.II)I3.3I.I2(I22X)I..6I3YII..3I7.3Y.2(.II)I3.3I.II28XI
+1062 24XII.3I3.5I.3A11I..II3A6I..IX2(22XI)I.3I3.5I.3A11I..II3A6I..I29XI
+1064 25XI..6I3YI.3I9.3Y.5I3.3I.I2(I23X)I..6I3YI.3I9.3Y.5I3.3I.II29XI
+1066 25XII.3I..2(.4I)11I.I3A6I..IX2(23XI)I.3I..2(.4I)11I.I3A6I..I30XI
+1068 26XI..6I2(3Y..)5.2(.3I)I3.3I.I2(I24X)I..6I2(3Y..)5.2(.3I)I3.3I.II30XI
+1070 26XII2(.3I..)10I3A..3A6I..IX2(24XI)I2(.3I..)10I3A..3A6I..I31XI
+1072 27XI..6I2(3Y..)4.3I2(..3I.)I2(I25X)I..6I2(3Y..)4.3I2(..3I.)II31XI
+1074 27XII2(.3I..)8I3A..3A6I..IX2(25XI)I2(.3I..)8I3A..3A6I..I32XI
+1076 28XI..6I2(3Y..)..3I2(..3I.)I2(I26X)I..6I2(3Y..)..3I2(..3I.)II32XI
+1078 28XII2(.3I..)6I3A..3A6I..IX2(26XI)I2(.3I..)6I3A..3A6I..I33XI
+1080 29XI..6I2(3Y..)3I2(..3I.)I2(I27X)I..6I2(3Y..)3I2(..3I.)II33XI
+1082 29X2(II.).2(..3I).3A..3A6I..IX2(27XI)I.II..2(..3I).3A..3A6I..I34XI
+1084 30XI..5I2(3I..3I.)3.II.I2(I28X)I..5I2(3I..3I.)..2(.II)34XI
+1086 30XII5.2(.3I..3I)6I.IX2(28XI)I5.2(.3I..3I)6I.I35XI
+1088 31XI5.2(.3I..3I)7.2(I29X)I5.2(.3I..3I)7.I35XI
+1090 31XII4.2(.3I..3I)6.I2(I29X)II4.2(.3I..3I)6.II35XI
+1092 32XII3.2(.3I..3I)5.I2(I30X)II3.2(.3I..3I)5.II36XI
+1094 33XII3.3I.3A2(..3I)4.I2(I31X)II3.3I.3A2(..3I)4.II37XI
+1096 34XI..2(.3I)3.3Y.3I3.I2(I32X)I..2(.3I)3.3Y.3I3.II38XI
+1098 34XI3.3I3AI.2(I.II)I3.IX2(32XI)3.3I3AI.2(I.II)I3.I39XI
+1100 34XI3.6II.I.I3Y3I3.IX2(32XI)3.6II.I.I3Y3I3.I39XI
+1102 34XI3.II3AII.I.7I3.IX2(32XI)3.II3AII.I.7I3.I39XI
+1104 34XI3.6II.I.II3YII3.IX2(32XI)3.6II.I.II3YII3.I39XI
+1106 34XI3.I3AIII.I.7I3.IX2(32XI)3.I3AIII.I.7I3.I39XI
+1108 34XI3.6II.I.3I3YI3.IX2(32XI)3.6II.I.3I3YI3.I39XI
+1110 34XI3.3A.III.I.7I3.IX2(32XI)3.3A.III.I.7I3.I39XI
+1112 34XI3.II2(I.3I.)3Y3.IX2(32XI)3.II2(I.3I.)3Y3.I39XI
+1114 34XI..3A.2(.3I.I)II3.IX2(32XI)..3A.2(.3I.I)II3.I39XI
+1116 34X2(I..II)I.I.3I..3Y..IX2(32XI)2(..3I).I.III..3Y..I39XI
+1118 33XII2(.3A.).I2(.3I.).IXX2(31XI)I2(.3A.).I2(.3I.).I39XI
+1120 33X2(I..II)I.I.I2(.3Y.)IIX2(31XI)2(..3I).I.I2(.3Y.)II38XI
+1122 33XI2(.3A.).I.I2(.3I.).IX2(31XI)2(.3A.).I.I2(.3I.).I38XI
+1124 32XII2(.3I.).I.I2(..3Y).IXX2(30XI)I2(.3I.).I.I2(..3Y).I38XI
+1126 32XI..3I.3A3.I.2(I..II)I.IIX2(30XI)..3I.3A3.I.2(I..II)I.II37XI
+1128 32XI.2(.3I)...I.I3.3Y.3I..IX2(30XI).2(.3I)...I.I3.3Y.3I..I37XI
+1130 W31XI.2(.3I)...I.I..2(.3I)..IX2(30XI).2(.3I)...I.I..2(.3I)..I37XI
+1132 32XI..3I..3Y..I.I..2(.3I)..IX2(30XI)..3I..3Y..I.I..2(.3I)..I37XI
+1134 32XII2(.3I.).I.I..3A..3I..IX2(30XI)I2(.3I.).I.I..3A..3I..I37XI
+1136 33XI2(..3Y).I.2(I..II)I.I2(I31X)I2(..3Y).I.2(I..II)I.II37XI
+1138 33XII2(.3I.)I.I2(.3A.).IX2(31XI)I2(.3I.)I.I2(.3A.).I38XI
+1140 34XI2(..3Y)I.I2(.3I.)I2(I32X)I2(..3Y)I.I2(.3I.)II38XI
+1142 34XII.3I..4I.I2(3A..)IX2(32XI)I.3I..4I.I2(3A..)I39XI
+1144 35XI2(..3Y).4I..3I.I2(I33X)I2(..3Y).4I..3I.II39XI
+1146 35X2(I..II)I2(.3A.).IX2(33XI)2(..3I).2(3A..)I40XI
+1148 35XI.2(.3I..3I)..IX2(33XI).2(.3I..3I)..I40XI
+1150 35XI.2(.3I..3I)..IX2(33XI).2(.3I..3I)..I40XI
+1152 35XI.2(.3I..3I)..IX2(33XI).2(.3I..3I)..I40XI
+1154 35XI.2(.3I..3I)..IX2(33XI).2(.3I..3I)..I40XI
+1156 35XI.2(.3I..3I)..IX2(33XI).2(.3I..3I)..I40XI
+1158 35XI..3I.3A2(..3I)..IX2(33XI)..3I.3A2(..3I)..I40XI
+1160 35XI.2(.3I)3.3Y.3I..IX2(33XI).2(.3I)3.3Y.3I..I40XI
+1162 35XI..3I3AI.2(I.II)I..IX2(33XI)..3I3AI.2(I.II)I..I40XI
+1164 35XI..6II.I.I3Y3I..IX2(33XI)..6II.I.I3Y3I..I40XI
+1166 35XI..II3AII.I.7I..IX2(33XI)..II3AII.I.7I..I40XI
+1168 35XI..6II.I.II3YII..IX2(33XI)..6II.I.II3YII..I40XI
+1170 35XI..I3AIII.I.7I..IX2(33XI)..I3AIII.I.7I..I40XI
+1172 35XI..6II.I.3I3YI..IX2(33XI)..6II.I.3I3YI..I40XI
+1174 35XI..3A.III.I.7I..IX2(33XI)..3A.III.I.7I..I40XI
+1176 35XI..II2(I.3I.)3Y..IX2(33XI)..II2(I.3I.)3Y..I40XI
+1178 34XI..3A.2(.3I.I)II..IXX2(32XI)..3A.2(.3I.I)II..I40XI
+1180 34X2(I..II)I.I.3I..3Y.IXX2(32XI)2(..3I).I.III..3Y.I40XI
+1182 33XI2(..3A)..I2(.3I.).IXX2(31XI)2(..3A)..I2(.3I.).I39XI
+1184 33X2(I..II)I.I.I2(.3Y.)IXX2(31XI)2(..3I).I.I2(.3Y.)I39XI
+1186 33XI2(.3A.).I.I2(.3I.).IX2(31XI)2(.3A.).I.I2(.3I.).I38XI
+1188 32X2(I..II)I..I.I2(..3Y).IXX2(30XI)2(..3I)..I.I2(..3Y).I38XI
+1190 32XI..3I.3A3.I.2(I..II)I..IX2(30XI)..3I.3A3.I.2(I..II)I..I37XI
+1192 32XI.2(.3I)...I.I3.3Y.3I..IX2(30XI).2(.3I)...I.I3.3Y.3I..I37XI
+1194 32XI.2(.3I)...I.I..2(.3I)..IX2(30XI).2(.3I)...I.I..2(.3I)..I37XI
+1196 32XI..3I..3Y..I.I..2(.3I)..IX2(30XI)..3I..3Y..I.I..2(.3I)..I37XI
+1198 32XII2(.3I.).I.I..3A..3I..IX2(30XI)I2(.3I.).I.I..3A..3I..I37XI
+1200 33XI2(..3Y).I.2(I..II)I.I2(I31X)I2(..3Y).I.2(I..II)I.II37XI
+1202 33XII2(.3I.)I.I2(.3A.).IX2(31XI)I2(.3I.)I.I2(.3A.).I38XI
+1204 34XI2(..3Y)I.I2(.3I.)I2(I32X)I2(..3Y)I.I2(.3I.)II38XI
+1206 34XII.3I..4I.I2(3A..)IX2(32XI)I.3I..4I.I2(3A..)I39XI
+1208 35XI2(..3Y).4I..3I.I2(I33X)I2(..3Y).4I..3I.II39XI
+1210 35X2(I..II)I2(.3A.).IX2(33XI)2(..3I).2(3A..)I40XI
+1212 35X2(I..II)II2(3I..)IX2(33XI)2(..3I)I2(3I..)I40XI
+1214 35X2(I..II)AI2(3I..)IX2(33XI)..3I..IIAI2(3I..)I40XI
+1216 35X2(I..II)IIY2(II..I)X2(33XI)2(..3I)IY2(II..I)40XI
+1218 35XI..3I..IAAI2(3I..)IX2(33XI)..3I..IAAI2(3I..)I40XI
+1220 35X2(I..II)I.YYI..3I..IX2(33XI)2(..3I).YYI..3I..I40XI
+1222 35XI..3I..AA2(..3I)..IX2(33XI)..3I..AA2(..3I)..I40XI
+1224 35X2(I..II).I.YY..3I..IX2(33XI)..3I..II.I.YY..3I..I40XI
+1226 35XI..3I.AA..I.2(II..I)X2(33XI)..3I.AA..I.2(II..I)40XI
+1228 35XI..I2(II.)4.YY.3I..IX2(33XI)..I2(II.)4.YY.3I..I40XI
+1230 35XI..3IAA.2(..I)I.3I..IX2(33XI)..3IAA.2(..I)I.3I..I40XI
+1232 35XI..4II.I.II..YY3I..IX2(33XI)..4II.I.II..YY3I..I40XI
+1234 35XI..IIAA..I.II..5I..IX2(33XI)..IIAA..I.II..5I..I40XI
+1236 X.33XI..4I.2(..I)..YYII..IX2(33XI)..4I.2(..I)..YYII..I34X.5XI
+1238 X.33XI..IAA..3(..I)3I..IX2(33XI)..IAA..3(..I)3I..I34X.5XI
+1240 2(..33XI..II2(I..)4.I.YYI..I33X)..5XI
+1242 2(3.32XI..AA..II4.2(.II)I..I33X)3.4XI
+1244 2(.I.32XI..3I2(.I..)I3.YY..I32X.).I.4XI
+1246 2(AI..31X..AA.I4.AI6.II..I32X.)AI..3XI
+1248 2(IIY.31X..I2(I..).IIY..I3.YY..31X..)IIY.3XI
+1250 2(AII..29X..AA3.I..AAII.3(.I)I..31X.A)AII..XXI
+1252 2(I.YY.29X..I2(I..).II.YY..II..YY..29X..I)I.YY.XXI
+1254 2(..II..27X..AA3.I..AA..I2(I..).II..29X.AA)..II..XI
+1256 2(3.YY.27X..I2(I..).II3.YY..II..YY..27X..II)3.YY.XI
+1258 2(.I.II..25X..AA..II..AA..I2(.II.)3I..27X.AA.).I.II..I
+1260 2(.I..YY.25X..3I2(.II.).I..YY3.II.YY..25X..II.).I..YY.I
+1262 2(2(II..)23X..AA.II3.AA2(..II).2(..I)I..25X.AA..)II..II.I
+1264 2(3I..YY.23X..II..I.2(..II)I..YY4.I.YY..23X..II..)3I..YYI
+1266 2(I2(II..)21X..AA..I3.AA..A3I2(..II.)II..23X.AA..A)3I..3I
+1268 2(IIY3.YY.21X.2(.II)..2(.II)IIY3.YY..I3.YY..21X.2(.II))IIY3.YI
+1270 2(II2(II..)19X..AA..I3.AA..A3I2(II..)4.II..21X.AA..AI)4I..II
+1272 2(..IYI..YY.19X..II6.II.3I..IYI..YY..I.I.YY..19X.2(.II)I)..IYI..I
+1274 2(..3IA.II..17X..AA..I.I.AA..AAI..3IA.II.3(.I)I..19X.AA..AAI)..3IA.I
+1276 2(3IYYI..YY.17X..II.3(.I)I..6IYYI..YY..I.I.YY..17X2(..II)I)3IYYI.I
+1278 2(7I.II..15X..AA4.I.AA..9I2(II.)3(.I)I..17X.AA..4I)8I
+1280 2(..4IY..YY.15X..II.3(.I)I..IIYI..4IY..YY4.I.YY..15X2(..II)YI)..4IYI
+1282 2(..IAII2(II.).13X..AA.I.I..AA..A4I..IAII2(II.)...I.II..15X.AA..A4I)..IA4I
+1284 2(7IY..YY.13X..II3.2(I..I)3IY7IY..YY..I3.YY..13X2(..II)IIY)8I
+1286 2(IIAI..I2(II.).11X..AA3.I..AA..AI..4IAI..I2(II.).I3.II..13X.AA..AI..II)IIAI..II
+1288 2(Y3I..IYY..YY.11X..II3.3(I..I)YY3I..I2(YY..)I3.YY..11X2(..II)..IY)Y3I..II
+1290 2(IAA4I2(II..)9X..AA..II..AA..2(AA6I)..II.2(..I)I..11X.AA..AA5I)IAA5I
+1292 2(10I..YY.9X3(..II).18I..YY..I3.YY..9X.2(.II)6I)8I
+1294 2(4I..IAI2(II.).7X..AA..I3.AA.2(A4I..I)AI2(II.)5.II..9X.AA.A4I..IA)4I..II
+1296 2(IIYI..4IY..YY.7X..I2(I..).II.2(3IYI..I)3IY..YY..I3.YY..7X.2(.II)IYI..II)IIYI..II
+1298 2(6IA3I2(II.).4XIX.AA..I3.AA.2(A7I)A3I2(II.).I3.II..7X.AA.A7IAI)6IAI
+1300 2(..IY4I..IY..YY.4X2(I..I)3.II.2(II..IYII)II..IY..YY..II..YY..I4X.2(.II)..IY4I)..IY4I
+1302 2(..3IAAI..I2(II.).3XI.AA..I3.AA.3(AAI..3I)3(.II.).I4X2(.AA)I..3IAAI)..3IAAI
+1304 2(3IYY6IYY..YY.3XI.I2(I..).II.3(6IYY)..YY..II..YY.I3X.2(.II)4IYY3I)3IYY3I
+1306 2(12I2(II.).XXI2(.II.)AA..25I3(.II.)I3X.AA..11I)8I
+1308 2(..4IYI..4IY.YY.XXI2(.II.)II.3(IIYI..II)IIY.YY3.2(I.I)XX.2(.II)YI..4IYI)..4IYI
+1310 2(..IA4I..IAI2(II.).X2(I.I)I.AA.3(A4I..I)AI2(II.)..2(I.I)XX.AA.A4I..IA4I)..IA4I
+1312 2(2(7IY).YY.X2(I.I)..II.3(4IY3I)4IY.YY4.II.IX.2(.II)IIY7IY)8I
+1314 2(2(IIAI..II).II..I.II3.AA.3(AI..4I)AI.2(.II)4.II.IX.AA.AI..4IAI..II)IIAI..II
+1316 2(2(Y3I..IY)Y.YY.I.II3.II.3(II..IYYI)II..I2(YY.)2(..II.I)I..IYY3I..IY)Y3I..II
+1318 2(2(IAA5I)I2(.II..)AA.4(AA6I).II3.II.I2(.AA)6IAA5I)IAA5I
+1320 2(17I..YY2(..II).32I..YY2(..II.)15I)8I
+1322 2(2(4I..IA)II2(.II.)AA..4(3I..IAI)I2(.II.).AA..3I..IA4I..IA)4I..II
+1324 2(2(IIYI..II)IIY.YY2(.II).4(IIYI..II)IIY.YY2(.II.)2(IIYI..II))IIYI..II
+1326 2(2(6IAI)I2(II.)IIAA.A4(6IAI)I3(II.)AA.A2(6IAI))6IAI
+1328 2(2(..IY4I)..IY.YY4I.4(I..IY3I)I..IY.YY2(II.)2(I..IY3I)I)..IY4I
+1330 2(2(..3IAAI).2(.II)IAA.4(AI..3IA)AI.2(.II)IIAA.2(AI..3IA)AI)..3IAAI
+1332 W2(2(.IYY3I.)2(.II)3I.4(II..IYYI)2(II..)YY3I.2(II..IYYI)II.).IYY3I
+1334 3I.2(21I.45I)2(20I.I)8I
+1336 W92X16X80XI
+1338 W92X16X80XI
+1340 46X.46X16X28X.51XI
+1342 45X..46X16X27X..51XI
+1344 45X3.45X16X27X3.50XI
+1346 44X4.45X16X26X4.50XI
+1348 44X..I..44X16X26X..I..49XI
+1350 43X..AI..44X16X25X..AI..49XI
+1352 43X..IIY..43X16X25X..IIY..48XI
+1354 42X..AAII..43X16X24X..AAII..48XI
+1356 42X..II.YY..42X16X24X..II.YY..47XI
+1358 41X..AA..II..42X16X23X..AA..II..47XI
+1360 41X..II.I.YY..41X16X23X..II.I.YY..46XI
+1362 40X..AA..I.II..41X16X22X..AA..I.II..46XI
+1364 40X..II5.YY..40X16X22X..II5.YY..45XI
+1366 39X..AA.2(..I)I..40X16X21X..AA.2(..I)I..45XI
+1368 39X..II.I.II..YY..39X16X21X..II.I.II..YY..44XI
+1370 38X..AA..I2(.II.).39X16X20X..AA..I2(.II.).44XI
+1372 X.36X..II.2(..I)..YY..37X.16X20X..II.2(..I)..YY..37X.5XI
+1374 X.35X..AA..3(..I)I..37X.16X19X..AA..3(..I)I..37X.5XI
+1376 2(..35X..I2(I..)4.I.YY..35X)..5XI
+1378 2(3.33X..AA..II4.2(.II)..35X)3.4XI
+1380 2(.I.33X..3I2(.I..)I3.YY..33X.).I.4XI
+1382 2(AI..31X..AA.I4.AI6.II..33X.)AI..3XI
+1384 2(IIY.31X..I2(I..).IIY..I3.YY..31X..)IIY.3XI
+1386 2(AII..29X..AA3.I..AAII.3(.I)I..31X.A)AII..XXI
+1388 2(I.YY.29X..I2(I..).II.YY..II..YY..29X..I)I.YY.XXI
+1390 2(..II..27X..AA3.I..AA..I2(I..).II..29X.AA)..II..XI
+1392 2(3.YY.27X..I2(I..).II3.YY..II..YY..27X..II)3.YY.XI
+1394 2(.I.II..25X..AA..II..AA..I2(.II.)3I..27X.AA.).I.II..I
+1396 2(.I..YY.25X..3I2(.II.).I..YY3.II.YY..25X..II.).I..YY.I
+1398 2(2(II..)23X..AA.II3.AA2(..II).2(..I)I..25X.AA..)II..II.I
+1400 2(3I..YY.23X..II..I.2(..II)I..YY4.I.YY..23X..II..)3I..YYI
+1402 2(I2(II..)21X..AA..I3.AA..A3I2(..II.)II..23X.AA..A)3I..3I
+1404 2(IIY3.YY.21X.2(.II)..2(.II)IIY3.YY..I3.YY..21X.2(.II))IIY3.YI
+1406 2(II2(II..)19X..AA..I3.AA..A3I2(II..)4.II..21X.AA..AI)4I..II
+1408 2(..IYI..YY.19X..II6.II.3I..IYI..YY..I.I.YY..19X.2(.II)I)..IYI..I
+1410 2(..3IA.II..17X..AA..I.I.AA..AAI..3IA.II.3(.I)I..19X.AA..AAI)..3IA.I
+1412 2(3IYYI..YY.17X..II.3(.I)I..6IYYI..YY..I.I.YY..17X2(..II)I)3IYYI.I
+1414 2(7I.II..15X..AA4.I.AA..9I2(II.)3(.I)I..17X.AA..4I)8I
+1416 2(..4IY..YY.15X..II.3(.I)I..IIYI..4IY..YY4.I.YY..15X2(..II)YI)..4IYI
+1418 2(..IAII2(II.).13X..AA.I.I..AA..A4I..IAII2(II.)...I.II..15X.AA..A4I)..IA4I
+1420 2(7IY..YY.13X..II3.2(I..I)3IY7IY..YY..I3.YY..13X2(..II)IIY)8I
+1422 2(IIAI..I2(II.).11X..AA3.I..AA..AI..4IAI..I2(II.).I3.II..13X.AA..AI..II)IIAI..II
+1424 2(Y3I..IYY..YY.11X..II3.3(I..I)YY3I..I2(YY..)I3.YY..11X2(..II)..IY)Y3I..II
+1426 2(IAA4I2(II..)9X..AA..II..AA..2(AA6I)..II.2(..I)I..11X.AA..AA5I)IAA5I
+1428 2(10I..YY.9X3(..II).18I..YY..I3.YY..9X.2(.II)6I)8I
+1430 2(4I..IAI2(II.).7X..AA..I3.AA.2(A4I..I)AI2(II.)5.II..9X.AA.A4I..IA)4I..II
+1432 2(IIYI..4IY..YY.7X..I2(I..).II.2(3IYI..I)3IY..YY..I3.YY..7X.2(.II)IYI..II)IIYI..II
+1434 2(6IA3I2(II.).4XIX.AA..I3.AA.2(A7I)A3I2(II.).I3.II..7X.AA.A7IAI)6IAI
+1436 2(..IY4I..IY..YY.4X2(I..I)3.II.2(II..IYII)II..IY..YY..II..YY..I4X.2(.II)..IY4I)..IY4I
+1438 2(..3IAAI..I2(II.).3XI.AA..I3.AA.3(AAI..3I)3(.II.).I4X2(.AA)I..3IAAI)..3IAAI
+1440 2(3IYY6IYY..YY.3XI.I2(I..).II.3(6IYY)..YY..II..YY.I3X.2(.II)4IYY3I)3IYY3I
+1442 2(12I2(II.).XXI2(.II.)AA..25I3(.II.)I3X.AA..11I)8I
+1444 2(..4IYI..4IY.YY.XXI2(.II.)II.3(IIYI..II)IIY.YY3.2(I.I)XX.2(.II)YI..4IYI)..4IYI
+1446 2(..IA4I..IAI2(II.).X2(I.I)I.AA.3(A4I..I)AI2(II.)..2(I.I)XX.AA.A4I..IA4I)..IA4I
+1448 2(2(7IY).YY.X2(I.I)..II.3(4IY3I)4IY.YY4.II.IX.2(.II)IIY7IY)8I
+1450 2(2(IIAI..II).II..I.II3.AA.3(AI..4I)AI.2(.II)4.II.IX.AA.AI..4IAI..II)IIAI..II
+1452 2(2(Y3I..IY)Y.YY.I.II3.II.3(II..IYYI)II..I2(YY.)2(..II.I)I..IYY3I..IY)Y3I..II
+1454 2(2(IAA5I)I2(.II..)AA.4(AA6I).II3.II.I2(.AA)6IAA5I)IAA5I
+1456 2(17I..YY2(..II).32I..YY2(..II.)15I)8I
+1458 2(2(4I..IA)II2(.II.)AA..4(3I..IAI)I2(.II.).AA..3I..IA4I..IA)4I..II
+1460 2(2(IIYI..II)IIY.YY2(.II).4(IIYI..II)IIY.YY2(.II.)2(IIYI..II))IIYI..II
+1462 2(2(6IAI)I2(II.)IIAA.A4(6IAI)I3(II.)AA.A2(6IAI))6IAI
+1464 2(2(..IY4I)..IY.YY4I.4(I..IY3I)I..IY.YY2(II.)2(I..IY3I)I)..IY4I
+1466 2(2(..3IAAI).2(.II)IAA.4(AI..3IA)AI.2(.II)IIAA.2(AI..3IA)AI)..3IAAI
+1468 W2(2(.IYY3I.)2(.II)3I.4(II..IYYI)2(II..)YY3I.2(II..IYYI)II.).IYY3I
+1470 3I.2(21I.45I)2(20I.I)8I

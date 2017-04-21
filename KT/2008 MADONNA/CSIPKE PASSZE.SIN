@@ -1,0 +1,85 @@
+CSIPKE PASSZE:LUSI+TX TUNIKAHOZ
+  16 NP3=14.5;             C:CSIPKE PASSZE    MADONNA:  16 NP3=14.8;             C:CSIPKE PASSZE
+  18 NP7=13.5;             C:CSIPKE PASSZE              18 NP7=14.6;             C:CSIPKE PASSZE
+  20 NP5=14.0              C:KORSLAG                    20 NP5=14.6              C:KORSLAG
+  22 NP4=12.5;             C:LEVALASZTAS
+  24 NP2=10.0              C BEKEZDES
+  40 START        
+  41 YG:6/256;
+  42 WM=18;WMI=7
+  43 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0         S1 S2
+
+C******************************************
+C************************************
+
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 101 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 102 >> S:R-R;		                      Y:6;	       NP4-2     VU   ML          S2
+ 103 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU   ML       S1 S2
+ 104 >> S:R-R;                        Y:5;        NP2-2      VU  ML       S1
+C***************************************************************************************************************
+ 105 JA1=1028(1004-1006)   C CSIPKE PASSZE
+ 110 PA:1:<JA1>;
+ 112            FA=3-189;   PM:<.>7:3(IIFA)II;          C*3LAP
+ 121 IF RS17=2  FA=27-166;  PM:<.>7:4(IIFA)I;           C*4LAP U
+C***************************************************************************************************************
+ 140 Y:2/2/5/5;
+ 142 << S:R-0;		                             ML   NP5-5  VU         S1
+ 144 >> S:0-R;		                             ML          VU          S1
+ 146 << S:R-0/UVNNI;                         ML                    S1 T2
+ 148 >> S:U^NI/NI-I;                         ML                 T1 S1
+ 150 REP*5  C 5 VAGY 6 VAGY 3
+ 152 WM=0
+ 154 << S:U^NA;                                   VL1       T1
+ 156 >> S:U^NY;                                   VR1       T1
+ 158 WM=16 C20
+ 160 << S:U^NI/.-N./UVN<1-3-5->.;          NP7-7      V0        T1 S1 T2 
+ 162 >> S:U^NI/.-I/UVN<1-3-5->NI;          NP3-3                T1 S1 T2
+ 164 REPEND
+ 166 << S:.-I;                         NP1-1      VU           S1             C II...............
+ 168 >>                                           VU           S1
+C********************************************************************************
+
+C VAGY-(REP*6):
+1002 WWWWWWWWWWWWWWWW
+1004 ................
+1006 IIIIIIIIIIIIIIII
+1008 AIAIAIAIYIYIYIYI
+1010 IIIIII.I.IIIIIII
+1012 IAIAIAAIYYIYIYII
+1014 IIIII..I..IIIIII
+1016 AIAIAAAIYYYIYIYI
+1018 IIII...I...IIIII
+1020 IAIAAAAIYYYYIYII
+1022 III....I....IIII
+1024 AIAAAAAIYYYYYIYI
+1026 II.....I.....III
+1028 IAAAAAAIYYYYYYII
+1030 WWWWWWWWWWWWWWWW
+
+C VAGY-(REP*5):
+1006 WWWWWWWWWWWW
+1008 ............
+1010 IIIIIIIIIIII
+1012 YIYIYIAIAIAI
+1014 .IIIIIIIII.I
+1016 YYIYIIIAIAAI
+1018 ..IIIIIII..I
+1020 YYYIYIAIAAAI
+1022 ...IIIII...I
+1024 YYYYIIIAAAAI
+1026 ....III....I
+1028 YYYYYIAAAAAI
+1030 WWWWWWWWWWWW
+
+C VAGY-(REP*3):
+1012 WWWWWWWWWW
+1014 ..........
+1016 IIIIIIIIII
+1018 .IIIIIII.I
+1020 YYIYIAIAAI
+1022 ..IIIII..I
+1024 YYYIIIAAAI
+1026 ...III...I
+1028 YYYYIAAAAI
+1030 WWWWWWWWWW

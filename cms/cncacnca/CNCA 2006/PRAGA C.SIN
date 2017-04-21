@@ -1,0 +1,98 @@
+   1 C CP PRAGA RS10= RS17=0/1/2/3 ******** 2 FELE MADONNA MINTA:PRAGA:RS17=0/1 ES RAKOS:RS17=2/3 *****
+   2 C *******(TUNIKA:ROSALIE3**CP ROSALIE RS10= RS17=) ********
+   4 C       15.3    0            0     15.5
+   5 C  1: <-------------       ------------->  BEKEZDES,KORSLAG,MINTA,1SZV.KREPP
+   6 C       15.3    0            0     16.0
+   7 C B2: 12.0 BEKEZDES
+  19 C        
+  20 C J4:13.5                                  LEVALASZTAS
+  21 C  8 SULY                                             ***OK!***2007.12.01.:***OK!******
+  25 C TUAGYKORREKCIOK: V0:->2.5                           RAKOS:->3.0  PRAGA:->2.5 (3-AL IS JO AZ UJ
+  26 C                  R1:->1.5________R2: - ________R3:-       ->1.5               VEZERLES MIATT)
+  27 C                  L1:<-1 _________L2: - ________L3:-
+  28 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  62 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  64 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML          S2    T2
+  66 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  68 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  70 >> S:R-R;                        Y:5;        NP2-2          ML       S1
+  71 C********************************************************************************
+  72C IF RS10=1 RS17=0      C*** MADONNA TEST         PRAGA
+  73C IF RS10=3 RS17=1      C*** MADONNA U            PRAGA
+  76C IF RS10=2 RS17=2      C*** MADONNA TEST         RAKOS
+  77C IF RS10=4 RS17=3      C*** MADONNA U            RAKOS
+  80 C*************************************************************
+  81 IF RS17=0  RS1=130          C T    LUSI+TX:123
+  82 IF RS17=1  RS1=17           C U             17
+  85 IF RS17=2  RS1=133          C T    LUSI+TX:133
+  86 IF RS17=3  RS1=17           C U             17            
+ 101 C********************************************************************************
+ 102           JA1=1030(1004-1030)   C   PRAGA
+ 103 IF RS17=2 JA1=1334(1304-1334)   C   RAKOS
+ 104 IF RS17=3 JA1=1334(1304-1334)   C   RAKOS
+ 112 PA:<JA1>;
+ 114           FA=5-117;  PM:<.>8:4(FA..);   C*4LAP-UJJAHOZ EZ IS JO*472 TU***!! HA EZT AKAROM, A TOBBIT KI KELL CEZNI!!!
+ 116           FA=6-138;  PM:<.>8:4(FA..);   C*4LAP-PRAGA***TELI TUAGY****553*****
+ 117 IF RS17>1 FA=10-142; PM:<.>8:4(FA..);   C*4LAP-RAKOS***TELI TUAGY*********
+ 119 Y:2/2/5/5;
+ 120 REP*2
+ 121 << S:R-0;		                                NP1-01           S2
+ 122 >> S:0-R;		                                NP01-1              S1
+ 123 REPEND
+ 124 << S:R-0/UVNNI;                            NP-0             S2    T2
+ 125 >> S:U^NI/NI-I;                                          T1    S1
+ 132 C*************CIKLUS***SZIMMETRIKUS CSIPKE***********************************
+ 136 RBEG*RS1
+ 138 << S:U^NY;               VR1 NP0-0     T1
+ 140 >> S:U^NAW;              VL1 NP0-0     T1
+ 142 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S1    T2 
+ 144 >> S:U^NI/.-I*/UVN<1->NI;                                  T1    S2 T2
+ 146 REND
+ 147 C*************CIKLUS**********************************************************
+ 148 << S:U^NY;                                   VR1 NP0-0     T1
+ 150 >> S:U^NAW;                                  VL1 NP0-0     T1
+ 152 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S2    T2 
+ 154 >> S:U^NI/.-I/UVNDI.;                                      T1    S1 T2
+ 158 << S:U^ND.I/DI.-D.I;                           NP4-4       T1 S2
+ 160 >> S:DI.-D.I/UVND.I;                                             S1 T2
+ 164 RS10=RS10-1
+ 166 IF RS10>0 GOTO 56
+ 168 END 
+1000 IA
+1002 WWWWWWWWW
+1004 ....I....
+1006 IIIAIYIII
+1008 ...I.I...
+1010 IIA*I*YII
+1012 ..I...I..
+1014 IA*III*YI
+1016 II.....II
+1018 W*IIIII*Y
+1020 I.......I
+1022 IYYYIAAAI
+1024 I...I...I
+1026 IYYYIAAAI
+1028 I...I...I
+1030 IYYYIAAAI
+1032 WWWWWWWWW
+1302 IIIIIIIIII
+1304 IIIIIIIIII
+1306 IY.......A
+1308 II.......I
+1310 IYYIIIIIAA
+1312 IIIIIIIIII
+1314 IYYY...AAA
+1316 IIII...III
+1318 IIAIAIYIYI
+1320 IIII.I.III
+1322 IAIAAIYYIY
+1324 III..I..II
+1326 IIAAAIYYYI
+1328 II...I...I
+1330 IAAAAIYYYY
+1332 I....I....
+1334 IAAAAIYYYY
+1336 WWWWWWWWWW

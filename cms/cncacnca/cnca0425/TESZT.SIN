@@ -1,0 +1,15 @@
+   1 C SZELEKTORTESZT   - CP TESZT
+  40 START
+  42 YG:6/256;
+  46 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP4-4  V# V0	      S1 S2
+  48 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	                     S1 S2 T2
+  60 Y:2/2/5/5;
+  70 << S:DI.-D.I/UVND.I;                                               S1    T2
+  80 >> S:R-0;                NP1-01    S1            
+  95  REP*10
+ 100 << S:D.III-0/UVSD.III;   NP-0      S1 T2  C VAGY S2 MINDEN SORBAN
+ 105 >> S:DI.II-0/UVSDI.II;   NP-0      S1 T2
+ 110 << S:DII.I-0/UVSDII.I;   NP-0      S1 T2
+ 115 >> S:DIII.-0/UVSDIII.;   NP-0      S1 T2
+ 120 REPEND
+ 130 END

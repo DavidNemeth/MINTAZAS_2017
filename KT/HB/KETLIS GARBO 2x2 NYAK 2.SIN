@@ -1,0 +1,55 @@
+   1 C
+   1 C KETLIS 2/2 GARBO NYAK TETSZOLEGES SZELESSEGBEN 2DB---A MEGFOGO SORT A 3/4 SZV.-VEL - OLCSO PAMUT - KOTI.
+  10 C
+  12 NP7=8.0             C: 
+  14 NP2=10.4            C:BEKEZDES 11.2
+  16 NP6=12.3            C:2*2      12.5  12.0  12.3
+  18 NP5=14.4            C:SLAG E
+  20 NP8=14.6            C:SLAG H
+  22 NP3=15.0            C:KETLI SOR
+  24 NP4=12.6            C:LEVALASZTAS
+  40 START
+  50 YG:6/23456; C------- Y2.5:2HB  Y3,4:VALAMI MARADEK FONAL
+  52 RS1=22
+  54 WM=18 WMI=7
+C------------------------------------------------------------------------------------------
+  56 JA1=1000; PA:1:<JA1>; FA=1-4;                                         C1000 II**
+  58 PM:<.I>489:<+>;                                                       C WM%=-22 
+  60 << S:.-I/I-.;	           NP4-4  Y:3/4;	  V0	 VU       S1 S2
+  62 PM:6.7:<FA>484:<.>489:<+>;
+C------------------------------------------------------------------------------------------
+  68 >> S:U^SI/.*-I/UVS.*;           Y:3;               T1 S1    T2
+  70 << S:.*-I;                      Y:2;     VR1          S1            C Y:4; VAGY Y:2;
+  72 >> S:.*-0/UVSI;                 Y:4;     VR2          S1    T2
+  74 << S:.*-0;                      Y:5;     VR1          S1            C Y:3; VAGY Y:5;
+  76 >> S:.*-I;                      Y:6;                     S2
+  78 << S:.*-0/0-I;                  Y:6/0;                S1 S2
+  80 >> S:.*-I/.-I;           NP2-2  Y:2/5;                S1 S2         C Y:4/3; VAGY Y:2/5;
+  82 << S:.*-0;                      Y:6;                  S1
+  84 >>                                       V0              S2
+  90 RBEG*RS1
+  92 << S:.*-I;               NP6-6  Y:2/5;   VU           S1 S2         C Y:4/3; VAGY Y:2/5;
+  94 >>                                       VU           S1 S2
+  96 REND
+  98 << S:.*-I/UVSI;                 Y:2;                  S1    T2
+ 100 >> S:.*I-*I;             NP7-7                        S1
+ 102 REP*2
+ 104 << S:0-*I/.*I-0;         NP5-8  Y:5/2;                S1 S2
+ 106 >> S:.*I-0/0-*I;                                      S1 S2
+ 108 REPEND
+ 110 WM=22
+ 112 << S:0-*I/.*I-0;         NP3-3                        S1 S2  C***KETLI***
+
+C*** MEGFOGO *******
+ 114 >> S:0-*I;                    Y:6;                     S2
+ 116 << S:.*I-0;                                            S1
+ 118 Y:2/5;                                                              C Y:4/3; VAGY Y:2/5;
+ 120 REP*5
+ 122 >> S:.*I-0/0-*I;                                      S1 S2
+ 124 << S:0-*I/.*I-0;         NP5-5  Y:3/4;                S1 S2
+ 126 REPEND
+ 128 >> S:.*I-0/0-*I;                                      S1 S2
+ 130 END
+
+1000 *II*
+

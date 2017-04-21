@@ -1,0 +1,115 @@
+   1C VEGELSZAMOLAS:  22286 CM
+   1C                 168 H X 1500FT (6E)=252000 FT (1008 E)
+   1C                 LYCRA:   9KG X 1800= 16000 FT   (64 E)
+   1C                   SUM:              268000 FT (1072 E)
+C-------------------------------------------------------------------------------------------------------
+   9 C  BAL:                             I          JOBB:
+  10 C                                   I          Y2,Y5:SOTET +LYCRA  - 2SOTET+1L(PASSZE+ALAP A MINTABAN)
+  11 C                                   I          Y3,Y4:FEHER SZIN        - 2FEHER   (SZIN A MINTABAN)
+  12 C  Y6:   LEVALASZTAS                I          Y6:   FEHER +LYCRA  - 2FEHER+1L(PASSZE)
+C-------------------------------------------------------------------------------------------------------
+C 1CM=0.453MIN
+C FONALFELHASZNALAS:                                        IDO:                AR:
+C LYCRA:  FEHER 100 DTEX/FEKETE 70 DTEX: 0.0004KG/CM       0.4527MIN/CM       1500FT/H     60E/H
+C PAMUT:                      ALAP/SZIN: 0.0026KG/CM       0.4   MIN/RS       25FT/MIN    1E/MIN
+C                                                                             VASALAS:
+C                                                                         KB.   0.7FT*CM
+C                                                                           44CM.-IG:30FT
+C                                                                            FELETTE:40FT
+
+
+  16 NP4=12.0 C 13.5                     C:LEVALASZTAS
+  18 NP2=8.4                             C:BEKEZDES  1639
+  20 NP3=8.0  C 8.0 8.0  8.0 C           C REX
+  22 NP1=8.4  C 8.8 8.4  8.0 C           C:FELTARTAS
+
+
+
+  40  START
+  50 YG:6/23456;
+  55 WM=15;WMI=7
+  60 << S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML   NP4-4   V0	VU      S1 S2
+  65 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;    ML                      S1    T2
+  70 <<	S:DI.-D.I/UVND.I;		              			 ML                      S1    T2
+  75 >> S:R-0/R-R;                   Y:2/6;  ML           V0         S1 S2
+  80 << S:R-0/0-R;                   Y:6/0;  ML                      S1 S2
+  85 >>	S:R(2)-R(8.0);		             Y:5;	   ML                      S1      C 7.0
+
+
+  99 C***********************************************1CM:1.135RS****VASTAGABB LYCRAVAL 100-AS PIROS-FEHER
+ 100 C IF #100=5  RS1=39   C  5DB.   34CM  16'
+ 101 C IF #100=10 RS1=50   C 27DB.   44CM  20'
+ 102 IF #100=2  RS1=52   C 27DB.   46CM  20'
+ 103 IF #100=1  RS1=58   C 27DB.   51CM  20'
+ 104 C IF #100=27 RS1=63   C 12DB.   56CM  25'
+ 105 C IF #100=59 RS1=74   C 18DB.   65CM  29'
+ 106 C IF #100=28 RS1=81   C 16DB.   71CM  32'
+  99 C***********************************************1CM:1.198RS****70-ES    ECRU-FEHER
+ 100 C IF #100=2   RS1=41   C  2DB.   34CM  
+ 101 C IF #100=10  RS1=53   C 47DB.   44CM  
+ 102 IF #100=2   RS1=55   C 47DB.   46CM  
+ 103 IF #100=1   RS1=61   C 47DB.   51CM  
+ 104 C IF #100=27  RS1=67   C 24DB.   56CM  
+ 105 C IF #100=99  RS1=78   C 26DB.   65CM  
+ 106 C IF #100=112 RS1=85   C 13DB.   71CM  
+ 107 C IF #100=65  RS1=90   C 19DB.   75CM  
+ 108 C IF #100=73  RS1=97   C  8DB.   81CM  
+  99 C***********************************************1CM:1.23RS****70-ES VEKONY FEKETE LYCRA   SZURKE-ZOLD
+ 100 C IF #100=1   RS1=48   C 47DB.   39CM  
+ 101 C IF #100=2   RS1=54   C 47DB.   44CM  
+ 102C IF #100=2   RS1=57   C 47DB.   46CM  
+ 103C IF #100=2   RS1=63   C 47DB.   51CM  
+ 104 C IF #100=27  RS1=69   C 24DB.   56CM  
+  99 C***********************************************1CM:1.141RS****70+100    SARGA-FEHER
+ 100 C IF #100=2   RS1=39   C  2DB.   34CM  
+ 101 C IF #100=49  RS1=50   C 47DB.   44CM  
+ 102C IF #100=2   RS1=52   C 47DB.   46CM  
+ 103C IF #100=1   RS1=58   C 47DB.   51CM  
+ 104 C IF #100=73  RS1=64   C 24DB.   56CM  
+  
+ 105 C IF #100=99  RS1=74   C 26DB.   65CM  
+ 106 C IF #100=112 RS1=81   C 13DB.   71CM  
+ 107 C 
+ 108 C 
+ 119 C***************************************************
+C--------------1000 III*--------581TU-----------------                               
+ 120 JA1=1000
+ 122 PA:<JA1>;FA=1-4;
+ 124 PM:<.>7:I 135FA 4I;  C E     CM  557TU
+ 124 PM:<.>7:I 140FA 3I;  C E     CM  577TU   
+ 124 PM:<.>7:I 137FA 3I;  C E 120 CM  565TU   
+ 124 PM:<.>7:I 141FA 4I;  C E     CM  581TU  TELI TUAGY
+C--------------------------------------- 
+ 128 << S:R-0/UVN.;                    Y:2;     ML   NP3-3           S1    T2
+ 130 >> S:0-N.;                                                      S1
+ 132 << S:U^S*/.I-I*/.I-I*;            Y:5/2;                     T1 S1 S2
+ 134 >> S:.I-I*;                                                     S1 S2
+ 140 REP*2
+ 142 <<                    Y:6;                                      S1
+ 144 >>                                                              S2
+ 146 REPEND
+                 
+ 200 RBEG*RS1 C*****************************************************
+ 205 REP*1
+ 210 << S:.I-I*;           Y:5/2; NP3-3                              S1 S2
+ 215 >>                                                              S1 S2
+ 220 REPEND
+ 225 REP*1
+ 228 << S:.I-I%*;          Y:4/3; NP1-1                              S1 S2
+ 230 >>                                                              S1 S2
+ 240 REPEND
+ 245 REND
+ 250 REP*1
+ 255 << S:.I-I*;           Y:5/2;                                    S1 S2
+ 260 >> S:.I-I*/.I*(4)-I*(4);                                        S1 S2
+ 265 REPEND
+ 270 END
+
+
+ 999 <> W0 S0
+
+1000 III*
+
+
+
+

@@ -1,0 +1,95 @@
+1 C VADASZ ---- FERFI FELSZOVET,2/1-ES PASSZEVAL - 3 SZALVEZETOVEL------ 
+1 C HATRA NEZ.
+
+1C-----------+-----------------------------------+-----------------------------------+
+1C  MERET:                  TEST: 10'-11'                       UJJA: 9'-10'
+1C-----------+-----------------------------------+-----------------------------------+
+1C            SZELESSEGE:  PASSZE     FELSZOVET   SZELESSEGE:  PASSZE      FELSZOVET
+1C                         HOSSZA:     HOSSZA:                 HOSSZA:      HOSSZA:
+1C-----------+-----------------------------------+-----------------------------------+
+1C             3X60CM.            78CM.            3X55CM             70CM.
+1C 1:          540TU        5CM.        73CM.      495TU        13CM.       57CM.
+1C           +-----------------------------------+-----------------------------------+
+1C  0.64KG     RS17=1       RS1=4       RS2=68     RS17=0       RS1=11      RS2=53
+1C-----------+-----------------------------------+-----------------------------------+
+1C             3X65CM.            82CM.            3X55CM             75CM.
+1C 2:          581TU        5CM.        77CM.      495TU        13CM.       62CM.
+1C           +-----------------------------------+-----------------------------------+
+1C  0.68KG     RS17=2       RS1=4       RS2=72     RS17=0       RS1=11      RS2=58
+1C-----------+-----------------------------------+-----------------------------------+
+1C A 2-EST JOBBROL , A 3-AST ES AZ 5-OST BALROL KELL BEFUZNI !!!!
+1C CSAK SIMA DIO HASZNALHATO !!!!
+1C FONALFEKEK LAZAN !!!!
+1C FELSZOVET SZORZO:RS2=0.934X...CM.
+1C 2/1-ES NYAK:SP500 (RS17=2: IGY KIJON 3 'V' NYAK!)
+  10 C
+  11   NP1=12.5            C:FELSZOVET
+  12   NP5=8.5             C:      T1 <-ELOL
+  13   NP7=10.5            C:      T1 ->HATUL
+  14   NP2=12.0            C:BEKEZDES
+  16   NP3=11.0            C:2/1 PASSZE
+  18   NP6=7.0             C:      T1 <-ELOL
+  19   NP8=9.0             C:      T1 ->HATUL
+  20   NP4=12.5            C:LEVALASZTAS
+  40 START
+  42    YG:6/2356;
+  44    WM=20 WMI=7
+  46 << S:D.I-DI./DI.-D.I;	          Y:5/2;	ML      NP4-4   VU   V0	     S1 S2
+  48 >> S:U^SD.I./DI.I-D.I./UVSDI.I; Y:5;   ML                        T1 S1    T2
+  50 << S:D..I-D.I./UVSD.I.;                ML              VL1 VKA>4    S1    T2
+  52 >> S:DI.I-0/DI.I-DII.;          Y:2/6; ML                           S1 S2
+  54 << S:DI.I-0/0-DII.;             Y:6/0; ML                           S1 S2
+  56 >> S:DI.I-DII.;                 Y:5;   ML      NP2-02                S1
+  57    WM=10
+  58 << S:DI.I(9.5)-0;               Y:6;   ML                           S1
+  60 >> S:DI.I(9.5)-0;                      ML                           S1
+  70    Y:3/5/2;
+  72    WM=15
+  74    NP3-3
+  75 << S:0-DII./DI.I-DII./DI.I-DII.;                          V0     T1 S1 S2
+  76    WM=25
+  76 RBEG*RS1  C PASSZE
+  78 >> S:DI.I-DII.(8)/DI.I-DII.(3)/DI.I-DII.;                        T1 S1 S2
+  80 << S:DI.I(6)-DII./DI.I(3)-DII./DI.I-DII.;                        T1 S1 S2
+  82 REND
+  83 GOSUB 78
+  84 PA:<I>;
+  86 IF RS17=0 FA=1-162  C UJJA              3X55CM. 495 TU
+  88 IF RS17=1 FA=1-177  C 1-ES MERET TEST   3X60CM. 540 TU
+  90 IF RS17=2 FA=1-191  C 2-ES MERET TEST   3X65CM. 581 TU
+  91 PM:4*FA*FA*FA<*>;
+  92 IF RS17=0 GOTO 94
+  93 PM:4*FAIFAIFA<*>;
+  94 << S:DI.I-DII./DI.I-DII.;       Y:5/2;                              S1 S2
+  95 >> S:R-0/0-R/UVS*;                             NP1-1                S1 S2 T2
+  97 RBEG*RS2
+  98 << S:I*(5)-I/I*(1)-0/I*-I;      Y:3/2/5;                          T1 S1 S2
+ 100 >> S:I*-0/I*-I/I*-0;            Y:3/2/5;                          T1 S1 S2
+ 102 REND
+ 104 END
+ 500 C----- 2/1-ES NYAK PASSZE ------ RS4=8 -----
+ 501 RS4=8
+ 502 NP2=11.0            C:BEKEZDES
+ 504 NP3=11.3            C:2/1 PASSZE
+ 506 NP6=7.3             C:      T1 <-ELOL
+ 508 NP8=9.3             C:      T1 ->HATUL
+ 510 NP4=12.5            C:LEVALASZTAS
+ 512 START
+ 514 YG:6/235;
+ 516 WM=20 WMI=7
+ 518 << S:D.I-DI./DI.-D.I;	          Y:5/2;	ML      NP4-4   VU   V0	     S1 S2
+ 520 >> S:U^SD.I./DI.I-D.I./UVSDI.I; Y:5;   ML                        T1 S1    T2
+ 522 << S:D..I-D.I./UVSD.I.;                ML              VL1 VKA>4    S1    T2
+ 524 >> S:DI.I-0/DI.I-DII.;          Y:2/6; ML                           S1 S2
+ 526 << S:DI.I-0/0-DII.;             Y:6/0; ML                           S1 S2
+ 528 >> S:DI.I-DII.;                 Y:5;   ML      NP2-2                S1
+ 534 Y:3/5/2;
+ 536 WM=25
+ 538 NP3-3
+ 540 << S:0-DII./DI.I-0/DI.I-DII.;                          V0        T1 S1 S2
+ 542 RBEG*RS4
+ 544 >> S:DI.I-DII.(8)/DI.I-DII.(3)/DI.I-DII.;                        T1 S1 S2
+ 546 << S:DI.I(6)-DII./DI.I(3)-DII./DI.I-DII.;                        T1 S1 S2
+ 548 REND
+ 550 GOSUB 544
+ 560 END

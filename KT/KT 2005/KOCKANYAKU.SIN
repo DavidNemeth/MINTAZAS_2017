@@ -1,0 +1,130 @@
+   1C     CSIPKE PASSZE KORSLAG BEKEZDESSEL
+   1C LUSIFIL:NPK=0
+   1C GILETTI:NPK=-0.3
+  13 NP4=12.5              C:LEVALASZTAS
+  15 NP2=10.0              C BEKEZDES
+  24 NP6=14.6              C:E-U-H 2SZV.BAL-BAL KREPP
+  40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  54 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+
+  60 IF #100=30  RS17=0            C E
+  62 IF #100=24  RS17=1            C H
+  64 IF #100=9   RS17=2            C U
+  66 IF #100=18  RS17=3            C NYAK (1 LEVETEL:2DB)
+  68 NP3=14.5              C:CSIPKE PASSZE
+  70 IF RS17=3 NP3=14.0    C:CSIPKE PASSZE ANYAKHOZ
+  72 IF RS17=0  RS1=43            C E  220 REP*3   VAGY RS1=37, 220 REP*6
+  74 IF RS17=1  RS1=66            C H
+  76 IF RS17=2  RS1=21            C U H:51 R:21
+
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S1
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:5;        NP2-2         ML       S1
+ 110 JA1=1062(1002-1004)   C CSIPKE PASSZE
+ 111 JA2=1204(1204-1218)   C RIZS
+ 112 PA:1:<JA1>;
+ 113           FA=6-184;                 C*3LAP
+ 114           PM:<.>6:3(IFAI);          C*3LAP************
+ 115 IF RS17=2 FA=5-138                  C*4LAP************
+ 116 IF RS17=2 PM:<.>7:4(IFA)I;          C*4LAP************
+ 117 IF RS17=3 FA=7-22;FB=7-15           C*NYAK OSZTAS NELKUL
+ 118 IF RS17=3 PM:<.>7:33FAFB;           C*NYAK OSZTAS NELKUL
+ 119 Y:2/2/5/5;
+ 120 REP*1
+ 121 << S:R-0;		                             ML   NP3-3           S1
+ 122 >> S:0-R;		                             ML                    S1
+ 123 REPEND
+ 124 << S:R-0/UVNNI;                         ML                    S1 T2
+ 125 >> S:U^NI/NI-I;                         ML                 T1 S1
+
+ 136 REP*15
+ 137 WM=0
+ 138 << S:U^NA;                                   VL1 VKB>6     T1
+ 140 >> S:U^NY;                                   VR1 VKA>6     T1
+ 141 WM=20
+ 142 << S:U^NI/.-N./UVN<1->.;          NP3-3      V0  VKC>1     T1 S1 T2 
+ 144 >> S:U^NI/.-I(13.4)/UVN<1->NI;                   VKC       T1 S1 T2
+ 146 REPEND
+ 147 WM=25
+ 148 << S:U^NN./.-N./.-N./UVNN.;    Y:2/5;   NP3-3              T1 S1 S2 T2
+ 152 IF RS17>0 GOTO400 C**************H-U**********
+ C******** ELEJE *******************************************************
+ 200 REP*2
+ 205 PA:<JA2>;
+ 215 NP6-6
+ 220 REP*3 C 3 VAGY 6
+ 225 >> S:U^N<2->N./.-N./.-N./UVNN.;                VKC>1 V0   T1 S1 S2 T2
+ 230 <<                                             VKC        T1 S1 S2 T2 
+ 235 REPEND
+ 236 >>                                                        T1 S1 S2 T2
+ 237 PA:<JA1>;
+ 238 JA1=1002
+ 239 << S:U^NN./.-N./UVNN.;          Y:2;                      T1 S1    T2
+ 240 >> S:R-0;                                                    S1
+ 245 JA1=1062(1002-1004)   C CSIPKE
+ 248 Y:2/2/5/5;
+ 249 GOSUB 136-148
+ 251 REPEND
+ 253 GOTO 400
+ C**********************************************************************
+ 400 C******** H-U RIZS***********
+ 403 IF RS17=3 GOTO 428 C NYAK
+ 404 PA:<JA2>;
+ 416 WM=25
+ 418 NP6-6
+ 419 Y:2/5;
+ 420 RBEG*RS1
+ 422 >> S:U^N<2->N./.-N./.-N./UVNN.;                VKC>1 V0   T1 S1 S2 T2
+ 424 << S:U^N<2->N./.-N./.-N./UVNN.;                VKC        T1 S1 S2 T2 
+ 426 REND
+ 428 >> S:U^SD.I/DI.-D.I/DI.-D.I/UVNR;    NP4-4         T1 S1 S2 T2
+ 430 END C******** H-U RIZS***********
+ 999 <> W0 S0
+
+1002 W190I
+1004 W190I
+1006 11(13.AIY)13.AI
+1008 11(13.3I)13.II
+1010 11(Y11IAAIY)Y11IAAI
+1012 191I
+1014 11(YY9.3AIY)YY9.3AI
+1016 11(II9.5I)II9.4I
+1018 11(3Y7I4AIY)3Y7I4AI
+1020 191I
+1022 11(4Y5.5AIY)4Y5.5AI
+1024 11(4I5.7I)4I5.6I
+1026 11(I4Y3I4AIAIY)I4Y3I4AIAI
+1028 11(4II.I.8I)4II.I.7I
+1030 11(A4I.I.I3IY3I)A4I.I.I3IYII
+1032 11(4II.I.8I)4II.I.7I
+1034 11(2(IAA)I2(YYI)YIA)2(IAA)I2(YYI)YI
+1036 11(3I2(I..)7I)3I2(I..)6I
+1038 11(AAI3AIY2(YYI)II)AAI3AIY2(YYI)I
+1040 11(II2(I3.)6I)II2(I3.)5I
+1042 11(AI4AIYY2(YYI)A)AI4AIYY2(YYI)
+1044 11(I2(I4.)5I)I2(I4.)4I
+1046 11(I5AI5Y4I)I5AI5Y3I
+1048 11(2(I5.)4I)2(I5.)3I
+1050 11(6AI6Y3I)6AI6YII
+1052 11(2(6.I)II)2(6.I)I
+1054 11(6AI7YIA)6AI7YI
+1056 23(6.I.)6.I
+1058 11(6AI7YIA)6AI7YI
+1060 23(6.I.)6.I
+1062 W11(5AI7YIAA)5AI7YI
+1064 4I..2(.14I)58I.2(42I.3I)4I
+
+1204 I...II.II...
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II..I.I.I..I
+1212 ..II.I.I.II.
+1214 I..III.III..
+1216 .II...I...II
+1218 .III..I..III
+

@@ -1,0 +1,82 @@
+   1 C---RS19=1:3PAMUT,RS19=0:2PAMUT1VASTAGABB PAMUT
+   2 C---RS18=1:GUMIVAL,RS18=0:GUMI NELKUL
+   3 C---RS17=1:HATA,UJJA,RS17=0:ELEJE
+   4 C---ELEJE,HATA:523TU,RS1=22
+   5 C---UJJA:TELI TUAGY,RS1=18
+  10 	START 
+  11    NP5=13.2 NP5=14.8 ;IF RS19=1 NP5=14.0  C:MINTA ELOL---
+  12 	NP1=13.4 NP1=14.8 ;IF RS19=1 NP1=14.0  C:MINTA HATUL--
+  13    NP6=13.3 NP6=14.7 ;IF RS19=1 NP6=13.9  C:HATA---------
+  14 	NP2=11.1 NP2=11.4 ;IF RS19=1 NP2=11.2  C:1/1-ES PASSZE
+  15 	NP4=12.0                               C:LEVALASZTAS
+  16 RS18=1
+  50 	YG:6/256;
+  51 	WM=17
+  59 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+  60 >> S:0-R/R-0;                      Y:5/2;            VU           S1 S2
+  61 << S:R-0/0-R;                      Y:5/2;      NP1-1              S1 S2
+  62 >>	S:D.I-DI./DI.-D.I/UVNDI.;	Y:5/2;	    NP1-1	       S1 S2 T2
+  63 <<	S:U^ND.I/DI.-D.I;		Y:5;			    T1 S1
+  64 >>	S:U^NDI./D.I-D.I;		Y:6;	    NP0-   VL1	    T1	  S2
+  65 <<	S:R-0/0-D.I/R-0;		Y:0/6/0;    NP2-2  V#	    T1 S1 S2
+  66 >>	S:R(2)-0/DI.-D.I(2);            Y:0/5;	    NP0-   V# V0    T1 S1
+  67 IF RS18=0 GOTO 73
+  68 << S:DI.(2)-0/0-D.I(2);		Y:6/2;	    NP0-   V#	       S1 S2
+  69 >> S:DI.-0/DI.-D.I;                Y:6/2;             V#          S1 S2
+  70 IF RS18=1 GOTO 75    
+  73 <<	S:DI.-0/0-D.I;			Y:5/2;	    NP2-2  V#	       S1 S2
+  74 >>	S:DI.-D.I;	               	Y:5/2;		   V#	       S1 S2
+  75 <<	S:DI.-D.I;                      Y:5/2;             V#	       S1 S2
+  76 >>							   V#	       S1 S2
+  80 <<	S:DI.-D.I/DI.-D.I;		Y:5/2;             V#          S1 S2
+  81 IF RS18=1 GOSUB 74-80
+  82 >> S:DI.-D.I/DI.-D.I/UVSD.I;       Y:5/2;		               S1 S2 T2
+  86 IF RS17=1 GOTO 200
+  87 C--ELEJE---
+  88  JA1=1030(1021-1032)
+  91  PA:JA1;
+ 100 C FA=38-61
+ 101   FA=5-28
+ 114  PM:<.>7:3(7FA...); C--176:.. 348:.. 518:<.>;
+ 116 WM=18
+ 120 VJA^0
+ 125 Y:5/5/2/2;
+ 130 RBEG*RS1
+ 135 REP*6 
+ 140 << S:U^S<1->I+Y/.(5)-N.(1)/UVSN+; V0         T1 S1    T2
+ 145 >> S:U^S<1->I+Y/.(5)-N.(1)/UVSNY; VL1 VKA>3  T1 S1    T2
+ 150 REPEND
+ 155 REND
+ 156 << S:U^S<1->I+Y/.(5)-N.(1)/UVSR;                     V0      T1 S1    T2
+ 157 >> S:DI.-D.I;			    NP4-4 VU V0	       S1
+ 160 END
+ 200 C--HATA---
+ 438 JA1=1002(1001-1002)
+ 439 PA:JA1;
+ 440 FA=1-2
+ 441 PM:<.>7:<FA> 176:.. 347:.. 517:<.>;
+ 442 IF RS1<19 PM:<.>7:<FA> 148:.. 290:.. 432:.. 575:<.>;
+ 443 WM=22
+ 444 RBEG*RS1
+ 445 REP*3
+ 446 << S:U^N<1+>I/.(6)-I(6)/.(6)-I(6)/UVNI; Y:5/2;T1 S1 S2 T2 
+ 447 >>                                            T1 S1 S2 T2 
+ 448 REPEND
+ 449 REND
+ 450 END 
+1001 .II.
+1002 I..I
+1020 65.
+1021 4(I.)3.II6.YY..4(.I)4.II2(..II.)5.YY3.2(..II)
+1022 4(I.)4.++5.II..4(.I)..2(..II)4.++2(5.II)..II
+1023 4(.I)4.II4.YY4.5(.I)I2(..II4.)YY..2(..II)..
+1024 4(.I)5.++3.II4.4(.I)2(.II.)6.++2(3.II.).II..
+1025 4(I.)5.II..YY4.4(.I)..2(..II)5.II..YY5.2(..II)
+1026 4(I.)4.II++.II4.4(.I)..2(..II)4.II++.II5.2(..II)
+1027 4(.I)3.YY.IIYYII4.4(.I)2(.II.)4.YY.IIYYII..2(..II)..
+1028 4(.I)..2(.II)II.++4.3(I.)I2(.II.)3.2(.II)II.++.2(..II)..
+1029 4(I.)..YY..II2(II.).4(.I)..2(..II)..YY..II2(II.)..2(..II)
+1030 3(I.)2(I3.I)II..++.4(.I)..3(..II)3.3I..++..2(..II)
+1031 4(.I)3(..II.).5(.I)I2(..II..)2(.II..)2(II..)
+1032 4(.I)3.++2(..II.).4(.I)2(.II.)4.++2(..II.)2(.II.).
+1033 65.

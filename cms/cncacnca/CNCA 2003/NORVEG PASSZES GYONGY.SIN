@@ -1,0 +1,169 @@
+   1 C NORVEG ZSAKKOTESU PASSZE+GYONGY  JAC.:RAJZOK3/GYONGY
+   2 C CP NORVEG RS19=0/1/2(T/U/NY) RS10=(DARABSZ. HA EGYBE VAN KOTVE AZ U-H-NY)
+   3 C 2.SZV.:3 NYERS     5.SZV.:3SZINES PAMUT
+   4 C DUPLAN HAJTOTT 1/1 NYAK MINTAS SZELEL :RS19=2
+   5 C
+   6 C       13.5   13.5         13.5   13.5 
+   7 C  1: <-------------       ------------->NORVEG PASSZE, BEKEZDES
+   8 C       14.0   14.0         14.0   14.0 (MEG LEHETNE PROBALNI ATTENNI J3-RA!
+   9 C       13.0   13.0         13.0   13.0             141-142-T KI KELL CEZNI)
+  10 C J2: <-------------       ------------->  GYONGY
+  11 C       13.0   13.0         13.0   13.0
+  12 C       11.56  11.56        11.56  11.56
+  13 C B2: <-------------       ------------->   1/1 NYAK (UA. SZOROSSAG MINT A MASNI)
+  14 C       11.56  11.56        11.56  11.56
+  15 C         -     -            0     14.0
+  16 C J3: <-------------       -------------> KORSLAG !!!!MOST ITT VAN A NORVEG PASSZE IS!!!!!!!
+  17 C       14.0    0            -      -       BEALLITAS:AHOGY AZ NP 1-NEL VAN IRVA!!!
+  18 C        
+  19 C B3: <-------------       -------------> 
+  20 C       
+  21 C       13.5   12.5         13.5   13.5
+  22 C J4: <-------------       ------------->  LEVALASZTAS
+  23 C       13.5   12.5         13.5   13.5
+  24 C B4:=J4=13.5                              BEKEZDES
+  25 C TUAGYKORREKCIOK: V0:->0
+  26 C                  R1:-__________R2: - ________R3:-
+  27 C                  L1:-__________L2: - ________L3:-
+  28 C                             NP1=                           RS1=(FIX 54-55)
+  29 C                                                      E-H          U:
+  30 C-----------------------+------------+------------+------------+-------------+
+  31 C 3NYERS(2.SZV.)+3SZINES LUSIFIL(5.SZV.)               90           70
+  32 C           (460+570)/2=515
+  33 C-----------------------+------------+------------+------------+-------------+
+  34 C 0.84 KG X515FT=433FT+90+5=530  1TUNIKA:24'(CSIGA)
+  35 C-----------------------+------------+------------+------------+-------------+
+  36 C 10 SULY +3 TARCSA
+  40 START
+  50 YG:6/256;
+  51  IF RS10=27  RS19=0 C  TEST
+  52  IF RS10=12  RS19=1 C  UJJA
+  53C  IF RS10=6   RS19=2 C  NYAK
+  54  IF RS19=0 RS1=90
+  55  IF RS19=1 RS1=70
+  56 << S:D.I-DI./DI.-D.I;            Y:2/5;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:2;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  80 IF RS19=2 GOTO 400
+  85 >> S:R-R;                        Y:2;        NP1-01         ML    S1 C VAGY:NP2-2
+  95 JA1=1118(1006-1008);
+  98 PA:1:<JA1>;
+ 100 FA=7-185;
+ 105 PM:<*>6:3(FA**);  C 553TU
+ 110 IF RS19=1 FA=2-136          C**4 LAP
+ 115 IF RS19=1 PM:<*>7:4(FA);    C**4 LAP
+ 120 Y:2;
+ 125 REP*6
+ 130 << S:R-0;		                                    NP3-03    ML    S1
+ 135 >> S:0-R;		                                    NP0-      ML    S1
+ 140 REPEND
+ 141 << S:0-0; NP0-0;   ML Y:0; S1 C KI LEHET CEZNI 
+ 142 >>        NP01-01; ML      S1 C KI LEHET CEZNI 
+ 150 REP*28
+ 155 << S:<1->I-.*+/.*+-I;    Y:5/2; V#    ML    S1 S2
+ 160 >> S:<1->I*+-./.-I*+;           V#    ML    S1 S2
+ 165 REPEND
+ 170 JA1=1004; C****************1004 .I.I.I.I.I.I.I.I.I.I.I. *****PM:<*>7:4(FA)**********
+ 175 << S:U^N.+/UVNI*;     NP0-0 ML T1 T2
+ 180 >> S:0-0; NP01-01 Y:0; S1
+ 182 NP2-2
+ 185 RBEG*RS1
+ 190  << S:I*-+%./I*-+.;      Y:2/5; V#      S1 S2  C SIMA GYONGY I*-+./I*-+%.;Y:2/5; IGY JOBB, DE NEM MUKODIK A BOLCNI.
+ 192  >>                             V#      S1 S2  C SIMA GYONGY
+ 195C << S:I*-+./I*-+%.;      Y:5/2; V#      S1 S2  C DUPLA GYONGY
+ 196C >> S:I*-+%./I*-+.;      Y:2/5; V#      S1 S2  C DUPLA GYONGY
+ 200 REND
+ 205 << S:I*-%./I*-.;                V#      S1 S2
+ 210 >> S:I*-%./I*-./UVN.;              ML   S1 S2 T2
+ 212 RS10=RS10-1
+ 214 IF RS10>0 GOTO 51
+ 215 END
+ 400 C****DUPLAN HAJTOTT 1/1 NYAK MINTAS SZELEL :RS19=1**************
+ 401 JA1=1118(1108-1108);
+ 402 PA:1:<JA1>;
+ 404 FA=7-185;
+ 406 PM:<*>7:3(FA*);
+ 407 >> S:R-R;                     Y:2;        NP2-2        ML       S1
+ 408 NP1-1
+ 410 Y:5/2;
+ 412 REP*4
+ 414 << S:I-.*/.*-I;    Y:5/2;     V#        S1 S2
+ 416 >> S:I*-./.-I*;               V#        S1 S2
+ 418 REPEND
+ 420 REP*3
+ 422 << S:<1->I-.*/.*-I;           V#        S1 S2
+ 424 >> S:<1->I*-./.-I*;           V#        S1 S2
+ 426 REPEND
+ 428 << S:I*-./.-I*/UVND.I;                  S1 S2 T2
+ 430 >> S:U^NDI./D.I-DI./D.I-DI.;  NP2-2  T1 S1 S2
+ 432 REP*12 C14
+ 434 << S:D.I-DI.;                  V#       S1 S2
+ 436 >>                             V#       S1 S2
+ 438 REPEND
+ 440 <<                             V#       S1 S2
+ 442 >> S:D.I-DI./D.I-DI./UVNDI.;       ML  S1 S2 T2
+ 444 RS10=RS10-1
+ 446 IF RS10>0 GOTO 51
+ 448 END
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1006 .............................................................................................................................................................................................I
+1008 .............................................................................................................................................................................................I
+1010 III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.II
+1012 III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.II
+1014 I.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.IIII
+1016 I.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.IIII
+1018 .............................................................................................................................................................................................I
+1020 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1022 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1024 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1026 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1028 .............................................................................................................................................................................................I
+1030 ..I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....II
+1032 .III...III.........III...III.........III...III.........III...III.........III...III.........III...III.........III...III.........III...III.........III...III.........III...III.........III...III
+1034 ..II...II...........II...II...........II...II...........II...II...........II...II...........II...II...........II...II...........II...II...........II...II...........II...II...........II...III
+1036 ..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.IIII
+1038 IIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIII
+1040 IIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...III
+1042 .II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II
+1044 .....I.................I.................I.................I.................I.................I.................I.................I.................I.................I.................I...I
+1046 .II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II.........II.I.I.II
+1048 IIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...IIIII.....IIIII...III
+1050 IIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIIIIII...IIIIIII.IIII
+1052 ..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.III..I.....I..III.IIII
+1054 ..II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...II.....I.....II...III
+1056 .III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III...I.I...III...III
+1058 ..I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....I....I.I....I.....II
+1060 ............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I..........I
+1062 ............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I..........I
+1064 ...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I.........I
+1066 ...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I...........I.....I.........I
+1068 I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I........I
+1070 I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I.........I...I...I........I
+1072 .I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I.........I.......I
+1074 ..I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....I...I...I...I.....II
+1076 ..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....I..IIIIIII..I.....II
+1078 ...I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I....IIIII....I...I.I
+1080 ....III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III.......I.......III..I
+1082 .............................................................................................................................................................................................I
+1084 ..............I.................I.................I.................I.................I.................I.................I.................I.................I.................I............I
+1086 ............IIIII.............IIIII.............IIIII.............IIIII.............IIIII.............IIIII.............IIIII.............IIIII.............IIIII.............IIIII..........I
+1088 ...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII...........IIIIIII.........I
+1090 ............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I.............I...I..........I
+1092 .............................................................................................................................................................................................I
+1094 ..............I.................I.................I.................I.................I.................I.................I.................I.................I.................I............I
+1096 .............................................................................................................................................................................................I
+1098 .............................................................................................................................................................................................I
+1100 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1102 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1104 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1106 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1108 .............................................................................................................................................................................................I
+1110 I.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.IIII
+1112 I.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.IIII
+1114 III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.II
+1116 III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.III.II
+1118 ..............................................................................................................................................................................................
+1120 IIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIII

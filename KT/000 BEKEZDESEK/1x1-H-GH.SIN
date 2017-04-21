@@ -1,0 +1,31 @@
+  10 C*** 1/1 HATUL LOOG, A GUMI IS HATUL VAN****
+  12 C
+  14 C*** A LEVALASZTAST JAC.-BOL KOTI.********
+  16 C
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP12=12.0  C:BEKEZDES
+  22 NP15=12.5  C:1/1
+  40   START        
+  50   YG:6/256;	
+  55 WM=14;WMI=7
+  60    << S:D.I-DI./DI.-D.I; Y:5/2;  NP4-4 VU V0  S1 S2 C*****SPF*******
+
+ 100 
+ 102 JA1=1001; C *I
+ 104 PA:1:<JA1>;
+ 106 FA=1-2;
+ 108 PM:<.>7:<FA>576:<.>;
+ 110 >>	S:D.I-DI./UVS.*;   	       Y:5;                              S1    T2
+ 112 <<	S:U^SI/.*-I;		              			                           T1 S1
+ 114 >> S:U^S*/.I-I;               Y:6;                   VR1     T1    S2
+ 116 << S:.-I/I-0;                 Y:6/0;                    VU      S1 S2
+ 118 >>	S:.*-I;		                  Y:2;	          NP12-12 V0 VU      S1
+ 120 << S:.-I;                     Y:6;           NP15-15    VU      S1
+ 122 >> S:.*-0/.-I;                Y:5/6;                    VU      S1 S2
+
+ 124 REP*1
+ 126 << S:.*-I;                    Y:2/5;                    VU      S1 S2
+ 128 >>                                                      VU      S1 S2
+ 130 REPEND
+
+1001 *I

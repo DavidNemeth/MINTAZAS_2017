@@ -1,0 +1,84 @@
+
+   1 C*********NAGYLYUKU NAGYKABAT***************
+     C-------------UA MINT A ROJTOS NAGYLYUKU KARDIGAN CSAK KORSLAG PASSZEVA ES PODROS PANTTAL*******************
+
+  10 NP4=12.4              C:LEVALASZTAS
+  12 NP2=10.0              C:BEKEZDES  10.0  2011.01.: HA KISZAKITJA A 258. SORBAN, EZEN IS KENE LAZITANI!
+  14 NP5=13.0              C:KORSLAG 
+  16 NP3=14.6              C:
+  18 NP1=13.8   C MINTA
+
+
+  40 START
+  50 YG:6/25;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  54 C**********NYAK**********************************
+  56 C IF #100=1   RS17=50        C PIKO PANT
+  62 C*****MINTA****************************************KT,ML:***GYORS:***
+  64  IF #100=1   RS17=0         C T-T-T             50'
+  66  IF #100=2   RS17=1         C U-U-U-U            30'      
+  68  IF #100=3   RS17=3         C 2 KAPUCNI          17'
+  92 C************************************************
+  94 IF RS17=50 GOTO 600          C PIKO PANT 0.04
+ 100 C*****MINTA*****************************************KG:**************
+ 102 IF RS17=0  RS19=1 RS1=42            C T T 1/2T    0.55           FEKETE MINTA:0.3
+ 104 IF RS17=1  RS19=1 RS1=27            C H UUUU      0.33            
+ 106 IF RS17=3  RS19=1 RS1=15            C 2 KAPUCNI   0.3            
+ 108 C***************************************************1DB.KB.:0.76+PODROS PANT
+ 110 C************581TU****************************************************************
+ 112 JA1=1000
+ 114 PA:2:<JA1>;
+ 116 FA=2-9;              PM:7.<FA> 574:8.;        C*MELLENY PANT JELOLES NELKUL
+ 118 C********************************************************************************
+
+ 120 >> S:D.I-DI./DI.-D.I/UVNDI.;                                        S1 S2 T2
+ 122 << S:DI.-D.I/UVND.I;             Y:5;	             	                S1    T2
+ 124 >> S:R-R;		                      Y:6;	       NP4-2     VU              S2
+ 126 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU           S1 S2
+ 128 >> S:R-R;                        Y:5;        NP2-2     VU           S1
+ 130 REP*2
+ 132 << S:0-R/R-0;		                  Y:5/2;      NP5-5     VU           S1 S2
+ 134 >> S:R-0/0-R;		                                        VU           S1 S2
+ 136 REPEND
+ 138 << S:0-R/R-0;		                                        VU           S1 S2
+ 140 >> S:R-0/0-R/UVSN.;		                                                S1 S2 T2
+
+ 142 << S:U^S./N.-.;                        Y:2;     NP3-3        VU         T1  S1
+ 144 >> S:U^SN./0-R;                                        T1 S1 
+ 498    NP1-1
+ 499 JA1=1004(1004-1010)
+ 500 RBEG*RS1
+ 504 <> S:0-R/0-R/UVS<1+>Y;            Y:5/2;             VL1      S1 S2 T2
+ 506 PKV:1:<JA1>;
+ 508 <> S:U^SY/0-R/0-R/UVSY;                              V0    T1 S1 S2 T2
+ 509 PKV:0;
+ 510 <> S:U^SY/0-R/0-R/UVS<1+>YA;                         VR1   T1 S1 S2 T2
+ 512 PKV:3:<JA1>;
+ 514 <> S:U^SA;                                           V0    T1
+ 516 <> S:U^SY;                                           VR2   T1
+ 518 <> S:0-NYA/0-NYA/UVS<1+>YA;                          VR1      S1 S2 T2
+ 520 <> S:U^SA;                                           V0    T1
+ 522 <> S:U^SY;                                           VR2   T1
+ 524 PKV:0;
+ 526 <> S:<1+>0-.*/0-.+;                              VU  V0      S1 S2
+ 530 REND
+ 532 GOSUB 504-509
+ 534 <> S:U^SY/0-R/0-R;                               VR1   T1 S1 S2
+ 536 <> S:0-R/0-R/UVND.I;                             V0       S1 S2 T2
+
+ 538 IF #124=1 GOTO 542
+ 540 >> S:D.I-DI.;		              			      NP2-2       VU          S1 S2
+ 542 << S:D.I-DI.;	                        NP2-2       VU          S1 S2
+ 544 >> S:D.I-DI./D.I-DI./UVSDI.;	                     VU          S1 S2 T2
+ 546 END
+
+
+ 999 <> W0 S0
+1000 I
+
+1004 .......Y.......Y
+1006 ..YA......YA....
+1008 .Y..A....Y..A...
+1010 .*+*+....*+*+...

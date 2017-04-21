@@ -1,0 +1,83 @@
+ 160 C*** ARAN 1. (BALRA KEZD) ******* *BBHYAA+ ***************************************
+ 162 WM=10 WMI=7
+ 164 VJA^0
+ 166 <> S:U^S<1->N.*+/.*+(15.0)-N.*+(15.0)/UVSN.*+; 	VKB>4	 VL1  	T1 S1	 T2
+ 168 WM=0
+ 170 <> S:U^SYA+;					                                      V0   	T1
+ 172 <> S:UVSY;				                      ML          VKA>10	VL3		        T2 C VKA>6-10
+ 174 WM=15
+ 176 <> S:U^S<1-2->BHI/.*Y(J1)-N.*Y(J1)/UVSN.*Y;     VKF>6	 VR1	  T1 S1	 T2
+ 178 WM=0
+ 180 <> S:U^S*BH;					                                      V0	   T1
+ 182 <> S:UVSH;				                                  VKE<3 	VR3		        T2
+ 190 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!! ************************
+ 160 C*** ARAN 1.2 (BALRA KEZD) ******** *BBHYAA+ ************************************
+ 162 WM=10 WMI=7
+ 164 VJA^0
+ 166 <> S:U^S<1->N.*/.*(J1)-N.*(J1)/UVSN.*;         	VKB>4	 VL1  	T1 S1	 T2
+ 168 WM=0
+ 170 <> S:U^SYA+;					                                      V0   	T1
+ 172 <> S:UVSY;				                             ML   VKA>10	VL3		        T2 C VKA>6-10
+ 174 WM=15
+ 176 <> S:U^S<1-2->*BHI/.Y(J1)-N.Y(J1)/UVSN.Y;       VKF>6	 VR1	  T1 S1	 T2
+ 178 WM=0
+ 180 <> S:U^S*BH;					                                      V0	   T1
+ 182 <> S:UVSH;				                                  VKE<3 	VR3		        T2
+ 190 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!! ************************
+ 160 C*** ARAN 1.3 (BALRA KEZD) ******** *BBHYAA+ ************************************
+ 162 WM=15 WMI=7
+ 164 VJA^0
+ 166 <> S:U^S<1-2->N.*/.*+(J1)-N.*(J1)/UVSIBH;      	VKB>4	 VL1  	T1 S1	 T2
+ 168 WM=0
+ 170 <> S:+-0/UVSA;				                              VKA>5	 VL3		    S1  T2 C VKA>6-10
+ 172 <> S:U^SA;                                      VKF>6  VR1   T1
+ 174 WM=15 WMI=7
+ 176 <> S:U^S<1->*BHI/.(J1)-N.(J1)/UVSIYA+;                 V0 	  T1 S1	 T2
+ 178 WM=0
+ 180 <> S:UVSH;					                                 VKE<3 	VR3	         T2
+ 182 <> S:0-0;                                              VR1      S1
+ 190 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS JOBBRA JOHET!!! ************************
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 200 C*** ARAN 2. (JOBBRA KEZD) ********** *BBHYAA+ **********************************
+ 202 WM=15 WMI=7
+ 204 VJA^0
+ 206 <> S:U^S<1-2->AYBHI/.+*(J1)-AYBHI(J1)/UVSAYBHI; VKF>6	 VR1	  T1 S1	 T2
+ 208 WM=0
+ 210 <> S:U^SBH*;					                                      V0	   T1
+ 212 <> S:UVSH;				                                  VKE<3 	VR3		        T2
+ 214 WM=10
+ 216 <> S:U^S<1->AYI/.H+(15.0)-AY*BI(15.0)/UVS*BIAY;	VKB>4	 VL1  	T1 S1	 T2
+ 218 WM=0
+ 220 <> S:U^SAY+;					                                      V0   	T1
+ 222 <> S:UVSY;				                      ML          VKA>10	VL3		        T2 C VKA>6-10
+ 240 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS BALRA JOHET!!! *************************
+ 200 C*** ARAN 2.2 (JOBBRA KEZD) ********** *BBHYAA+ **********************************
+ 202 WM=15 WMI=7
+ 204 VJA^0
+ 206 <> S:U^S<1-2->N.+/.+(J1)-N.+(J1)/UVSN.+;        VKF>6	 VR1	  T1 S1	 T2
+ 208 WM=0
+ 210 <> S:U^SBH*;					                                      V0	   T1
+ 212 <> S:UVSH;				                                  VKE<3 	VR3		        T2
+ 214 WM=10
+ 216 <> S:U^S<1->YA+I/.H(J1)-N.H(J1)/UVSN.H;	        VKB>4	 VL1  	T1 S1	 T2
+ 218 WM=0
+ 220 <> S:U^SAY+;					                                      V0   	T1
+ 222 <> S:UVSY;				                              ML  VKA>10 VL3		        T2 C VKA>6-10
+ 240 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS BALRA JOHET!!! *************************
+ 200 C*** ARAN 2.3 (JOBBRA KEZD) ********** *BBHYAA+ **********************************
+ 202 WM=15 WMI=7
+ 204 VJA^0
+    UJ SZIMBOLUM KELL!!!
+ 206 <> S:U^S<1-2->N.+/.+(J1)-N.+(J1)/UVSN.+*B; Y:5;        V0 	  T1 S1	 T2
+ 208 WM=0
+ 210 <> S:UVSH;					                                 VKE<3 	VR3	         T2
+ 212 WM=10
+ 214 <> S:U^S<1->YA+I/.H+(J1)-N.H(J1)/UVSI*B;	 Y:2;  VKB>4	 VL1  	T1 S1	 T2
+ 216 WM=0
+ 220 <> S:+-0/UVSA;				                        Y:0;  VKA>5 VL3		    S1  T2 C VKA>6-10
+ 224 <> S:U^SA;                                      VKF>6  VR1   T1
+ 240 C*** ARAN ***** !!!EZ UTAN CSAK CSAVARAS BALRA JOHET!!! *************************
+1038 XXXXXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXXXXXXXXI
+1040 XXXXXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXX...IIIIII....YAA+*BBH..YAA+*BBH....IIIIII...XXXXXXXXXXXXXXXXXXI
+1042 XXXXXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXXXXXXXXI
+1044 XXXXXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXX...IIIIII...YAA+..*BBHYAA+..*BBH...IIIIII...XXXXXXXXXXXXXXXXXXI

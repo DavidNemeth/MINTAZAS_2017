@@ -1,0 +1,249 @@
+ 1  C	825RFPC.SIN
+  10 	START
+  50 	YG:6/256;
+  56 <<	S:R-R/R-0;		  Y:2/5;   NP4-4		   S1 S2
+  58 >>	S:0-R/R-0/UVNR;		ML				     S1	S2 T2
+  59 <<	S:R-DII./R-0;						   S1 S2
+  60 >>	S:R-0;			  Y:5/6;			   S1 S2
+  70 <<	S:R-DII./R-0;		  Y:6/0;			   S1 S2
+  80 >>	S:R-0/DI.I-DII.;	  Y:0/2;   NP2-2	VR1	   S1 S2
+  82 	Y:2/5;  
+  84 	IF RS17=1  Y:2/6/6/2;
+  90 <<	S:DI.I-0/0-DII.;					    S1 S2
+ 100 >>	S:0-DII./DI.I-DII.;		    NP3-3	 V0	    S1 S2
+ 110 	RBEG*RS1
+ 120 <<	S:DI.I-DII.;		  Y:2/5;			   S1 S2
+ 130 >>								   S1 S2
+ 140 	REND
+ 142   #1=RS2 
+ 145   IF RS19=1	 GOTO  250	 C  HATA
+ 150 <<	S:R-0;			Y:2;  NP1-01			S2
+ 160 >>	S:0-R;			Y:2;			       S2 
+ 170  C	---------------------------------------------------------------------
+ 176  JA1=1004(1004-1420) PA:JA1;
+ 178 	FB=1-72; 
+ 180  IF RS5=1 PM:3(+)4FB5(+)2FB<+>;
+ 182  IF RS6=1 PM:10(+)4FB21(+)4FB<+>;
+ 184  IF RS7=1 PM:18(+)4FB36(+)4FB<+>;
+ 210 	IF #1>0	#2=1999			   GOSUB 800
+ 246 	END
+ 250 <<	S:R-0;			Y:2;  NP3-03			S2
+ 260 >>	S:0-R;			Y:2;			       S2 
+ 300 <<	S:UVN R;     ML			     NP0-0		      T2   
+ 304 >>								    S0
+ 306 	IF #1>0	#2=1999			   GOSUB 450
+ 308 	END
+ 310 C **********************************************************************
+ 450 	GOSUB 454-466  C HATA 2	SZ.
+ 454 <<	S:R-0/R-0;			    Y:2/5;		     S1	S2
+ 456 >>								     S1	S2
+ 460 	#1=#1-2	#2=#2-1	IF #1>0	IF #2>0	GOTO 454
+ 466 C .....................................................................
+ 800 	GOSUB 802-812  C RELIEF	1 SZ.
+ 802  Y:2/2/5/5;
+ 804 <<	S:U^NYA+/0-R;	  ML  NP01-1				  T1	S2
+ 806 >>	S:A*-R;							       S2
+ 808 <<	S:<1+>U^NYA+/0-R;     ML  NP0-				   T1	 S2
+ 810 >>	S:A*-R;							       S2
+ 812 	#1=#1-1#2=#2-1 IF #1>0 IF #2>0 GOTO 808
+ 899 C .......................................................................
+1002 ........................................................................................................................................................................................................
+1004 ........................................................................................................................................................................................................
+1006 ........................................................................................................................................................................................................
+1008 ........................................................................................................................................................................................................
+1010 ........................................................................................................................................................................................................
+1012 ........................................................................................................................................................................................................
+1014 ........................................................................................................................................................................................................
+1016 ........................................................................................................................................................................................................
+1018 ........................................................................................................................................................................................................
+1020 ........................................................................................................................................................................................................
+1022 ***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**
+1024 ****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**Y
+1026 *****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YY
+1028 ******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYY
+1030 *******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY
+1032 ********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*
+1034 *********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY**
+1036 ******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY***
+1038 ******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY
+1040 ******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY
+1042 ******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY
+1044 ******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY
+1046 ******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY
+1048 ******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY
+1050 ******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY
+1052 ******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY
+1054 ******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY
+1056 ******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY
+1058 ******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY
+1060 ******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY
+1062 ******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY
+1064 ******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY
+1066 ******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY
+1068 ******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY
+1070 ******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY
+1072 ******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY
+1074 ******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY
+1076 ******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY
+1078 ******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY
+1080 ******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY
+1082 ******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY
+1084 ******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY
+1086 ******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY
+1088 ******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY
+1090 ******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY
+1092 ******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY
+1094 ******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY
+1096 ******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY
+1098 ******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY
+1100 ******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY
+1102 ******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY
+1104 ******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY
+1106 ******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY
+1108 ******AY******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY******AY
+1110 ******AY******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY******AY
+1112 ******AY******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY******AY
+1114 ******AY******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY******AY
+1116 ******AY******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY******AY
+1118 ******AY******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY******AY
+1120 ******AY******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY******AY
+1122 ******AY******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY******AY
+1124 ******AY******AY******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY******AY******AY
+1126 ******AY******AY******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY******AY******AY
+1128 ******AY******AY******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY******AY******AY
+1130 ******AY******AY******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY******AY******AY
+1132 ******AY******AY******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY******AY******AY
+1134 ******AY******AY******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY******AY******AY
+1136 ******AY******AY******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY******AY******AY
+1138 ******AY******AY******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY******AY******AY
+1140 ******AY******AY******AY******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY******AY******AY******AY
+1142 ******AY******AY******AY******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY******AY******AY******AY
+1144 ******AY******AY******AY******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY******AY******AY******AY
+1146 ******AY******AY******AY******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY******AY******AY******AY
+1148 ******AY******AY******AY******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY******AY******AY******AY
+1150 ******AY******AY******AY******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY******AY******AY******AY
+1152 ******AY******AY******AY******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY******AY******AY******AY
+1154 ******AY******AY******AY******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY******AY******AY******AY
+1156 ******AY******AY******AY******AY******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY******AY******AY******AY******AY
+1158 ******AY******AY******AY******AY******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY******AY******AY******AY******AY
+1160 ******AY******AY******AY******AY******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY******AY******AY******AY******AY
+1162 ******AY******AY******AY******AY******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY******AY******AY******AY******AY
+1164 ******AY******AY******AY******AY******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY******AY******AY******AY******AY
+1166 ******AY******AY******AY******AY******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY******AY******AY******AY******AY
+1168 ******AY******AY******AY******AY******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY******AY******AY******AY******AY
+1170 ******AY******AY******AY******AY******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY******AY******AY******AY******AY
+1172 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AAAA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YYYY*****AY******AY******AY******AY******AY******AY******AY******AY******AY
+1174 ******AY******AY******AY******AY******AY******AY******AY******AY******AY*******AAAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYYY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1176 ******AY******AY******AY******AY******AY******AY******AY******AY******AY********AAAA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YYYY*******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1178 ******AY******AY******AY******AY******AY******AY******AY******AY******AY*********AAAA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YYYY********AY******AY******AY******AY******AY******AY******AY******AY******AY
+1180 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY**AAAA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YYYY*********AY******AY******AY******AY******AY******AY******AY******AY******AY
+1182 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY***AAAA**AA*AAA*YYY*YY***AA*AAA*YYY*YY**YYYY**AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1184 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY****AAAA**AA*AA*YY*YY*****AA*AA*YY*YY**YYYY***AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1186 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY*****AAAA**AA*A*Y*YY*******AA*A*Y*YY**YYYY****AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1188 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AAAA**AA***YY*********AA***YY**YYYY*****AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1190 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY*******AAAA**AA*YY***********AA*YY**YYYY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1192 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY********AAAA**A*Y*************A*Y**YYYY*******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1194 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY*********AAAA*********************YYYY********AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1196 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY**********AAAA*******************YYYY*********AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1198 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1200 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1202 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1204 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1206 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1208 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1210 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1212 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1214 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1216 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1218 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1220 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1222 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1224 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1226 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1228 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1230 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1232 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1234 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1236 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1238 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1240 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1242 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1244 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1246 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1248 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1250 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1252 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1254 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1256 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1258 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1260 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1262 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1264 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1266 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1268 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1270 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1272 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1274 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1276 ******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY******AY
+1278 ........................................................................................................................................................................................................
+1280 A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*
+1282 Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*
+1284 ********************************************************************************************************************************************************************************************************
+1286 ........................................................................................................................................................................................................
+1288 ********************************************************************************************************************************************************************************************************
+1290 ****A***************A***************A***************A***************A***************A***************A***************A***************A***************A***************A***************A***************A***
+1292 .*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*******
+1294 **A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y****.*.*.**A***Y*
+1296 ************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*************.*.*********
+1298 ***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y***.*.*.***A***Y
+1300 .*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*********.*.*.*.*******
+1302 *.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y**.*.***.*.**A*Y*
+1304 .*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****.*.*****
+1306 *.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.
+1308 **.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*.***AY****.*.*.*
+1310 ***.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.
+1312 ****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.***A***Y*****.*.*
+1314 ***.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.***********.*.*.
+1316 **.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*.**A***Y**.*.*.*
+1318 *.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.
+1320 .*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****.*.*A*Y*.*.*****
+1322 *.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.*******.*.***.*.******
+1324 ........................................................................................................................................................................................................
+1326 A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*A*
+1328 Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*Y*
+1330 ********************************************************************************************************************************************************************************************************
+1332 ........................................................................................................................................................................................................
+1334 A*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY
+1336 A*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*
+1338 A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**
+1340 ***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**Y
+1342 A*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YY
+1344 A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*
+1346 ****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*Y
+1348 ***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YY
+1350 ***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AA
+1352 ****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*A
+1354 Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*
+1356 Y*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA
+1358 Y*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**A
+1360 Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**
+1362 Y*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*
+1364 Y*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA
+1366 A*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY***AA*AAA*YYY*YY
+1368 A*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*****AA*AA*YY*YY*
+1370 A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**Y*A**AA*A*Y*YY**
+1372 ***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**YY*AA**AA***YY**Y
+1374 A*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YYY*AAA**AA*YY**YY
+1376 A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*Y*A*AA**A*Y**YY*
+1378 ****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*YY*AA*AA*****YY*Y
+1380 ***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YYY*AAA*AA***YY*YY
+1382 ***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***.....
+1384 ***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYY
+1386 ***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***.....
+1388 ***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYY
+1390 ***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***.....
+1392 ***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYY
+1394 ***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***.....
+1396 ***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYY
+1398 ***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***......*......***.....
+1400 ***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYYY*AAAAAA***YYYYY

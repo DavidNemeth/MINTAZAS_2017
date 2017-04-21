@@ -1,0 +1,119 @@
+   1 	C N C A	_ 3 KT.	FFI 2X2	FANG 
+   2 	C ************************************
+   3 	C ** balint jozsef                  **
+   4 	C ************************************
+   5 	C 
+   6 	C RS11=0/1	TEST/UJJA
+   7 	C 
+   8 	C RS10=1	GARBONYAK VAGY KORNYAK
+   9 	C
+  10 	C
+  11 	NP1=10.0;     C	BEKEZDES
+  12 	NP2=11.0;     C	LEVALASZTAS
+  13 	NP3=11.0;     C	PASSZE
+  14 	NP4=12.4;     C	 MINTA ELOL / MINTA HATUL
+  15 	NP5=13.5;     C	 NYAK 
+  16 	NP6=13.2;     C 
+  18 	NP7=13.8;
+  20 	NP8=13.0;
+  21 	NP9=11.4;
+  22 	NP10=12.5;
+  40 	START
+  41 MSEC=0.4
+  42 YG:3=E/4=A 5=B 6=C;  C 	YG:6/123456;
+  43 WM=10; WMI=5
+  44 YD8=54-10
+  45 YD7=12-42
+  46 YD6=8-16
+  47 YD5=22-28
+  48 YD4=22-28
+  49 YD3=14-8
+  50 YD2=36-36
+  51 YD1=42-48
+  52 SEN=1-630
+  53 <>	S0Y
+  54 	WM=20	 WMI=7
+  90 	C-------------------------------1100 *62(AA..)AA-------------------
+ 100 	JA1=1100
+ 102 	PA:JA1;
+ 104 	FA=1-1 FB=2-197	FC=2-148 FD=2-5
+ 106 	IF RS11=0 PM:18FA 3(3FA FB)<FA>; C TEST	3 LAPOS
+ 108 	IF RS11=1 PM:19FA 4(2FA FC)<FA>; C UJJA	4 LAPOS
+ 110 	IF RS11=3 PM:18FA 2(3FA FB)<FB>; C TEST	3 LAPOS
+ 112 	IF RS10>0 PM:18FA <FD> 620:<FA>; C KORNYAK
+ 114 	IF RS10>0 GOTO 800
+ 300 	C------------------------------	ANFANG-2X2 ---------------------
+ 304 	JA1=1100
+ 306 <<	S:R(12.0)-R(12.0)/R(12.2)-0;   ML1		Y:=A/=B;	SX SX
+ 308 >>	S:R-0(12.0)/R(12.5)-R(13.0);	      	Y:=A/=B;	SX SX 
+ 309 <<	S:UVSA;	 V0  W0	 ML T2
+ 310 >>	S0 W0
+ 311 <<	S:R(10.5)-0/R-0;		                 	Y:=A/=B;	SX SX
+ 312 >>	S:R-0/R-.*;		                   	V0	Y:=A/=E;	 SX SX
+ 314 <<	S:R(12.0)-0/0-.*(12.5)/UVS*;		      Y:=0/=E;	 SX SX SX
+ 316 >>	S:A*(1)-.(1);                   VL2			Y:=B;	 SX
+ 318 <<	S:A*(2)-0/*-.(2);                V0 Y:=A/=B;	SX SX
+ 320 >>	S:A*(3)-.(3)/A*-.;        ML0	  V#	 Y:=A/=B;	SX SX
+ 324 <<	S:A*(3)-.(3);                      	Y:=A;	V#  SX 
+ 326 >>	S:A*(3)-.(3);		                 V#           SX
+ 329 	REP*2
+ 330 <<	S:A*(3)-.(3);	                      Y:=C;	V#  SX 
+ 332 >>	S:A*(3)-.(3);	                  	V#          SX
+ 334 	REPEND
+ 335 IF	RS10=1 GOTO 700
+ 336 IF	RS10>1 GOSUB 724-726
+ 337 	RBEG*RS1 C 1100 *62(AA..)AA 
+ 338 <<	S:A*(3)-.(3)/*A-.;           	Y:=A/=B;	V#  SX SX 
+ 340 >>	S:A*(3)-.(3)/*A-.;	           Y:=A/=B;	V#  SX SX
+ 342 	REND
+ 344 	IF RS10>0 END
+ 400 	C----------------------------------------------------------------
+ 402 	RBEG*RS2
+ 404 <<	S:*%A(8.6)-.(4)/*A(4)-%.(8.6);	Y:=A/=B;	V#  SX SX 
+ 406 >>	V#  SX SX
+ 407 	REND
+ 408 <<	  SX SX
+ 409 >>	  SX SX
+ 410 	END
+ 700 	C------------------------------------------------------------------
+ 724 <<	S:A*(3)-.(3);	              Y:=A/=B;		V#	 SX SX 
+ 726 >>	S:A*(3)-.(3);	              Y:=A/=B;		V#	 SX SX
+ 788 <<	S:A*-.;			                  Y:=A;    	V#	 SX
+ 790 >>	S:A*-./UVSR;	              	Y:=A;		       SX SX
+ 792 <<	S:R-0;			                   Y:=B;	NP5-05	 SX
+ 794 >>	S:R-0;			                   Y:=B;	NP-0	     SX
+ 796 <<	S:U^S.;		                        	NP0-0	W0	 SX 
+ 798 >>				                              	NP03-03	  SX
+ 799 	GOTO 837
+ 800 	C------------------------------	ANFANG-2X2 ---------------1100 *62(AA..)AA------
+ 804 	JA1=1100
+ 806 <<	S:R(12.0)-R(12.0)/R(12.2)-0;   ML1		Y:=A/=B;	SX SX
+ 808 >>	S:R-0(12.0)/R(12.5)-R(13.0);		      Y:=A/=B;	SX SX 
+ 809 <<	S:UVSA;	                          V0  W0	 ML SX
+ 810 >>	S0 W0
+ 811 <<	S:R(10.5)-0/R-0;	                 		Y:=A/=B;	SX SX
+ 812 >>	S:R-0/R-.*;		                   	V0	Y:=A/=E;	 SX SX
+ 814 <<	S:R(12.0)-0/0-.*(12.5)/UVS*;		     Y:=0/=E;	 SX SX SX
+ 816 >>	S:A*(1)-.(1);                       VL2			Y:=B;	 SX
+ 818 <<	S:A*(2)-0/0-.(2);               V0		  Y:=A/=B;	SX SX
+ 820 >>	S:A*(3)-.(3)/A*-.;  ML0	  V#	 Y:=A/=B;		SX SX
+ 822 	REP*3
+ 824 <<	S:A*(3)-.(3);	              Y:=A;	V#  SX 
+ 826 >>	S:A*(3)-.(3);	                	V#  SX1
+ 828 	REPEND
+ 829 	REP*2
+ 830 <<	S:A*(3)-.(3);	            Y:=C;	V#  SX 
+ 831 >>	S:A*(3)-.(3);		V#  S1
+ 832 	REPEND
+ 833 	GOSUB 824-826*2
+ 834 IF	RS10=1 GOTO 700
+ 835 IF	RS10>1 GOSUB 724-726
+ 837 	RBEG*RS1
+ 839 <<	S:A*(3)-.(3)/*A-.;	        Y:=A/=B;	V#  SX SX 
+ 840 >>	S:A*(3)-.(3)/*A-.;	        Y:=A/=B;	V#  SX SX
+ 842 	REND
+ 844 	IF RS10>0 END
+ 998 <>	S:R-R/R-0;                 Y:=A/=0;     SX SX
+ 999 <>S0 W0
+1100 *62(AA..)AA
+

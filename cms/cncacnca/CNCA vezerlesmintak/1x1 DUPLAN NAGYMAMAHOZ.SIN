@@ -1,0 +1,20 @@
+   1 C1/1 DUPLAN HAJTOTT NYAK NAGYMAMAHOZ
+   2 C LEVALASZTAS HATSO TUAGYON
+  10 C NP2-2:11.5      8CM.
+  40 START
+  52 YG:6/256;
+  54 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+  56 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  58 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  60 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  62 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  64 >> S:DI.-D.I;                   Y:6;    ML             V0 V#         S2
+  66 << S:0-D.I/R-0;                 Y:6/0;  ML                V#      S1 S2            
+  68 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      V#      S1 S2
+  70 << S:DI.-0/DI.-D.I;                                       V#      S1 S2
+  72 REP*10
+  74 >> S:DI.-D.I;                                     V#           S1 S2
+  76 <<                                                V#           S1 S2
+  78 REPEND
+  80 >> S:DI.-D.I/DI.-D.I/UVND.I;                      V#           S1 S2 T2
+ 100 END

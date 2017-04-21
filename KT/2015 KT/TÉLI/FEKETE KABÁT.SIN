@@ -1,0 +1,309 @@
+C    
+C CIPPES VAGY GOMBOLOPANTOS, FELSZOVET HB KABAT
+C 
+C  
+   1C PAMUT: 650-700     HA A SZIN 2*HB:
+   1C    HB:1590-1650 
+    C   SUM:1120-1150           1241
+   1C------------------------------------------------------------------------------
+   1C 1HB+1PAMUT         SUM.: 1015.09:1150 FT/KG                               
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK:  I  GOZ  I SUMM: I ELADAS: I H:      I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C PONCSO                                                                                 50'
+1C 130*85       0.82*1150=943    250    FREDI 5*11=25  90     1310     2000      690            828
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C M 55*72      0.68*1150=780    200    KISIDA 5*11=55 70     1200     1800       600     ML37'   970    33%
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C L  60*72     0.80*1150=900   350     60CM CIPP
+1C KAPUCNIS  ELLA                           80         70     1400     2300       900     ML44'  1227    39%
+C  60*79!!           *1241=993            ZSV:10              1500                800            1090    34%
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C XL 60*74     0.80*1150=900   350     60CM CIPP
+1C KAPUCNIS  TIMI                           80         70     1400     2300       900     ML44'  1227    39%
+1C--------+--------+----------+---------+-----------+-------+-------+---------+---------+------+-------+-----+
+1C   SZALVEZETOK:
+1C---VAGY:---------------------------------------------------------------------------------------------
+1C                                Y:2:  FELSZOVET:  FEKETE   PAMUT+HB    HB A LYUKBA
+1C                                Y:5:  FELSZOVET:  SZINES   PAMUT+HB    HB A LYUKBA
+1C                                Y:3:  PASSZE:  FEKETE   3HB V.2HB 1PAMUT (PLATIROZVA, EZ LATSZIK ELOL)           
+1C                                Y:4:  PASSZE:  FEKETE   3HB V.2HB 1PAMUT                  
+1C-----------------------+------------+----------------------------------------------------------------
+C
+C     UJKT:NPK=+0.2 WM%=25
+C      PKT:NPK=+0.1 WM%=0-10
+C       KT:NPK= 0
+  10 C--------------------------------------------
+  10 NP4=12.6    C:LEVALASZTAS  12.8            
+  11 NP2=11.0    C:BEKEZDES     11.0
+  12 NP1=13.1    C:  KORSLAG    13.2
+  13 NP3=12.7    C:2/1 PASSZE   12.7
+  15 NP6=12.3    C: MINTA       12.8
+
+  40 START        
+  50 YG:6/23456;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:2/5;  NP4-4    VU V0       S1 S2
+  52 << S:D.I-DI./DI.-D.I;            Y:2/4;  NP4-4    VU V0       S1 S2
+
+C--- M PODROS PANTTAL,5KISIDA----VAGY----------------------------KESZEN:------VASALVA:------MIN:--------KG:----------
+  60 C IF #100=1   RS17=0         C  UTTU M ELLAOLDALVARRAS NELKUL  55*72          75       ML:37'        0.63  
+C--- M PODROS PANTTAL,5KISIDA----VAGY-------------------------------------------------------------------------------
+  61 C IF #100=2   RS17=1         C  TTT1/2 M ELLA                55*72                     ML:38'        0.65
+  62 C IF #100=2   RS17=5         C  UUUUU                                                  ML:33'        0.52  SUM:0.63
+C----L 60CM RT10 CIPPZARRAL, ZSEBBEL------------------ELLA---------------------------------------------------------
+  63  IF #100=48  RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'        0.60
+  64  IF #100=49  RS17=4         C  UUUU                                                   ML:31'        0.48
+  65  IF #100=36  RS17=6         C  3 KAPUCNI                                              ML:16'        0.30  SUM:0.80
+  66  IF #100=43  RS17=8         C  8 FERDE ZSEB                                           ML:12'        0.21
+  67  IF #100=47  RS17=7         C  3 GALLER                                                             0.16  SUM:0.76
+C                                                                                      CIPPZAR TAKAROPANT:0.01
+
+  68  IF #100=19  RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'        0.60
+  69  IF #100=33  RS17=4         C  UUUU KT:08.24. FUST ST=1 NPK=0 WM%=0
+C----80CM-ES KABAT PANTTAL, 5 KISIDA GOMBBAL KOCKA ZSEBBEL------------------------------------------------1LAP:----1DB:------
+  71 C IF #100=20  RS17=3         C  TTT                          62*80      65*83          ML:39'        0.65    0.43
+  72 C IF #100=15  RS17=4         C  UUUU                                                   ML:31'        0.48    0.24
+  73 C IF #100=27  RS17=10        C 10 KOCKA ZSEB - 5JOBBOS,5BALOS                          ML:11'        0.18    0.04
+  75 C IF #100=20  RS17=7         C  3 GALLER                                                             0.16    0.06
+  79 C IF #100=55  RS17=50        C 1 GOMBOLAS PANT  GOMBLYUK NELKUL                                      0.06    0.06      
+C----PONCSO---------------------------------------------------------------------------------------------------SUM:0.83-------
+  76 C IF #100=2   RS17=9         C 1+1/2 TEST  VASALVA:135*88                             ML:44'        0.73
+C------- PANT, PASSZE PLATIROZVA Y:2/5: AT KELL FUZNI --------
+  77 C IF #100=1   RS17=52        C MANDZSETTA 2/1 PASSZE                                                 0.08
+C----------------------------------------------------------------------------------------------------------------
+C
+C
+C------------------------PASSZE:---MINTA ----TEST/PASSZE/PANT:RS18:0/1/2--------------- VASALVA:----KESZEN:    MINTA:
+  90 IF RS17=0  RS19=0   RS1=3     RS2=           RS18=0                  C UTTU   40+60+60+40*75      55*72     
+  91 IF RS17=1  RS19=2   RS1=3     RS2=           RS18=0                  C TTT1/2         200*75      55*72     
+  92 IF RS17=3  RS19=3   RS1=3     RS2=           RS18=0                  C TTT             65*85      62*80 GOMBOS KABAT
+
+  93 IF RS17=2  RS19=3   RS1=3     RS2=170        RS18=0    C175 170           C TTT            65*77      62*72 CIPPES KABAT
+  94 IF RS17=4  RS19=4   RS1=3     RS2=140        RS18=0    C145 140           C UUUU           47*62
+  96 IF RS17=6  RS19=3   RS1=3     RS2=65         RS18=0    C72  65            C 3 KAPUCNI      200*30
+  98 IF RS17=7  RS19=3   RS1=3     RS2=35         RS18=0    C39  35            C 3 GALLER       200*16?
+  99 IF RS17=8  RS19=8   RS1=3     RS2=50         RS18=0    C51  50            C 8 ZSEB         200*24
+ 100 IF RS17=10 RS19=10  RS1=1     RS2=43         RS18=0    C44  43            C 10 ZSEB        200*20
+
+ 101 IF RS17=9  RS19=1   RS1=0     RS2=           RS18=0                  C 1+1/2 TEST  VASALVA:135*88
+C------------------------------------------------------------------------------------------
+ 102 IF RS17=52 RS19=0   RS1=15  RS15=1           RS18=1                  C 2/1 PASSZE 
+ 106 IF RS17=50                                   RS18=2                  C REX PANT GOMBLYUK NELKUL RS1 BEALLITASA:733
+C-----------------------------------------------------------------------------------------------ML:55'----1.05-----------
+ 130 IF RS18=1 GOTO 510                                                   C 2/1 PASSZE
+ 133 IF RS18=2 GOTO 700                                                   C  REX PANT
+
+ C************581TU**************************************************************
+
+ 146 JA1=1502;
+ 158 PA:1:<JA1>;
+
+ 160 IF RS19=0  F1=20-188;F2=41-155;      PM:<I*>6:F2 I  F1 I   F1 I  F2;        C*U-T-T-U  VAGY
+ 160 IF RS19=0  F1=5-339;F2=40-156;       PM:<I*>6:F2 I  F1 I  F2;               C*U-TT-U   VAGY OLDALVARRAS NELKUL
+C                 325TU      122TU
+C                2*58CM       43CM
+
+ 162 IF RS19=1  F1=7-384;F2=8-198;        PM:<I*>6:F1    I*     F2;              C*1TEST+1/2ELEJE
+ 164 IF RS19=2  F1=23-184;F2=16-97;       PM:<I*>6:F1 I  F1 I   F2 I  F1;        C*TTT+1/2E
+ 166 IF RS19=3  F1=26-214;                PM:<I*>6:F1 I* F1 I*  F1;              C*3  
+ 168 IF RS19=4  F1=33-173;                PM:<I*>6:F1 I* F1 I*  F1 I* F1;        C*4 
+ 170 IF RS19=5  F1=47-159;                PM:<I*>7:4(F1I*)F1 <I*>;               C*5 
+ 171 IF RS19=8  F1=1-8;                   PM:<I*>6:<F1> 577:<I*>;                C*OSZTAS NELKUL
+ 172 IF RS19=10 F1=1-56;                  PM:<I*>7:9(F1 I*)F1 <I*>;              C*10 ZSEB
+
+ 190 C MS C*******************************************************************************
+
+ 200 >>	S:U^NDI./D.I-DI.;            Y:2;                          T1 S1
+ 202 <<	S:U^ND.I/0-R;		              Y:3;                          T1    S2
+ 204 >> S:R-R;               NP2-4   Y:6;                  VU            S2 
+ 206 << S:0-R/R-0;                   Y:6/0;                VU         S1 S2
+
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCVAGY          
+ 208 >>	S:R(2)-R(2)/R(1)-0;    	     Y:3/4;                VU         S1 S2
+ 209 IF RS1=0 GOTO 218
+ 210 RBEG*RS1
+ 212 << S:0-R/R-0;           NP1-1   Y:4/3;                VU         S1 S2
+ 214 >>                              Y:4/3;                VU         S1 S2
+ 216 REND
+ 218 << S:0-R/R-0;           NP1-1   Y:4/3;                VU         S1 S2
+ 220 >> S:0-R/R-0/UVSI*;             Y:4/3;                           S1 S2 T2
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+C------------------------------------------------------------------------
+C  12 NP3=12.2    C:2/1 PASSZE     LAJTOS:12.2 PADAR:12.5
+C  13 NP1=10.5    C:  FELSZOVET             
+C  15 NP6=12.8    C: FEKETE BUKLE  LAJTOS:12.8 PADAR:13.0
+C  16 NP7=12.8    C: SZINES BUKLE  
+C***********************************************************************************************
+ 335 WM=18 C 15-18
+ 345 Y:2/5;
+ 348 NP6-6
+
+ 356 JA1=1502(1502-1508); C LEGJOBB
+
+ 400 RBEG*RS2
+ 402 << S:<1->*A-./I.-A;     VU              S1 S2
+ 404 >> S:<1->*A-./I.-A;     VU              S1 S2
+ 406 REND
+ 408 CMS
+
+ 410 << S:DI.-D.I/D.I-DI.;     VU     Y:5/2;  NP4-4     S1 S2
+ 412 >>                        VU                       S1 S2
+ 414 END
+C************************************************************************************************
+
+
+C*********** 2/1-ES PASSZE ********************************************************************
+ 510 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:4;                          T1 S1    T2
+ 512 <<	S:DI..-D..I/UVND..I;		       Y:5;      VL1                    S1    T2
+ 514 >> S:DII.-0/DII.-D.II;          Y:5/6;                  VU       S1 S2      C  
+ 516 << S:DII.-0/D..I-R;             Y:6/0;                  VU       S1 S2      C              
+ 518 >>	S:DII.-D.II;           Y:2;	   NP2-2           VU       S1         C 
+ 520 IF RS15=0 GOTO 530  C---GUMI NELKUL RS15=0-----
+ 522 << S:0-D.II;                    Y:6;                       VU       S1          
+ 524 >>                                                        VU       S2          
+ 526 << S:DII.-0/DII.-D.II;    Y:2/5;   NP3-3       V0   VU       S1   S2       
+ 528 GOTO 532            C---GUMIVAL RS15=1---------
+ 530 << S:0-D.II/DII.-0;             Y:5/2;  NP3-3       V0   VU      S1 S2       
+ 532 RBEG*RS1
+ 534 >> S:DII.-D.II;                 Y:2/5;    NP3-3          VU      S1 S2       
+ 536 <<                                                        VU      S1 S2       
+ 538 REND
+C---------- HA KELL JELOLES: --------------------------------------------------------------------
+ 542 C JELOLES:
+ 543 IF RS19=0 PM:<.>;                         C* OSZTAS NELKUL
+ 544 IF RS19=2 PM:<.>290:I;                    C* 2 LAP C 290/291
+ 546 IF RS19=3 PM:<.>194:I 388:I;              C* 3 LAP C PM:<.>194:I 388:I;
+ 548 IF RS19=4 PM:<.>145:I 290:I 435:I;        C* 4 LAP C PM:<.>145:I 290:I 435:I;VAGY:PM:<.>290:I
+ 552 >> S:I-I/DII.-D.II/DII.-D.II;     Y:0/2/5; VU    T1 S1 S2
+C---------- HA NEM KELL JELOLES: ---------------------------------------------------------------
+ 552 >> S:DII.-D.II/DII.-D.II;                Y:2/5; VU      S1 S2
+ 554 END 
+C**********************************************************************************************************
+
+C------------FELSZOVET GOMBOLAS PANT -1SOR REX+1SOR SLAG ELOL+1SOR SLAG HATUL - GOMBLYUKAZNI KELL -------------
+ 700 NP4=12.8    C:LEVALASZTAS              
+ 702 NP12=11.2    C:BEKEZDES   11.0  10.8 11.0  11.4 
+ 704 NP11=13.4    C:  KORSLAG  13.2  12.8 13.2  13.5
+ 706 NP10=11.4    C:  REX      11.0  10.8 11.0  11.4
+ 708 CSTART        
+ 710 CYG:6/23456;
+ 712 WM=16;WMI=7
+ 714 C<< S:D.I-DI./DI.-D.I;            Y:2/4;  NP4-4    VU V0       S1 S2
+ 716 C------581TU----1000 A
+----
+ 718 JA1=1000; C 1000 A
+ 720 PA:1:<JA1>;
+ 722 PM:5.<I> 577:5.;                C*OSZTAS NELKUL
+
+ 723 C--GOMBOLAS PANT Y:3/4 - 1SOR REX + 1SOR SLAG ELOL + 1SOR SLAG HATUL -------------
+ 724 >>	S:U^NDI./D.I-DI.;            Y:3;                          T1 S1
+ 724 >>	S:U^NDI./D.I-DI.;            Y:2;                          T1 S1
+
+ 726 <<	S:U^ND.I/0-R;		              Y:3;                          T1 S1
+ 728 >> S:R-R;               NP2-4   Y:6;                  VU            S2 
+ 730 << S:0-R/R-.;                   Y:6/0;                VU         S1 S2
+
+ 732 >>	S:I(12)-I(12)/I(11)-0;    	  Y:3/4;                VU         S1 S2
+ 733 RS1=3
+ 734 RBEG*RS1
+ 736 << S:0-I(11)/I(10)-I(10);       Y:4/3;           VU         S1 S2
+ 738 >> S:I(11)-0/0-I(11);                            VU         S1 S2
+ 740 << S:I(10)-I(10)/I(11)-0;       Y:3/4;           VU         S1 S2
+ 742 >> S:0-I(11)/I(10)-I(10);       Y:4/3;           VU         S1 S2
+ 744 << S:I(11)-0/0-I(11);                            VU         S1 S2
+ 746 >> S:I(10)-I(10)/I(11)-0;       Y:3/4;           VU         S1 S2
+ 748 REND
+ 749 GOSUB 736-738
+ 750 C
+ 752 C
+ 754 END
+
+ 999 <> S0 W0 VU
+
+1000 A
+
+C1 JO         3.
+1002 AAAA....
+1004 .AAAA...
+1006 ..AAAA..
+1008 ...AAAA.
+1010 ....AAAA
+1012 ...AAAA.
+1014 ..AAAA..
+1016 .AAAA...
+C2 ---
+1102 AAAA....
+1104 ....AAAA
+1106 ....AAAA
+1108 AAAA....
+C3 -
+1202 AA..
+1204 .AA.
+1206 ..AA
+1208 .AA.
+C4 --
+1302 AA..
+1304 ..AA
+1306 ..AA
+1308 AA..
+C5 -
+1402 AAAA....
+1404 ..AAAA..
+1406 ..AAAA..
+1408 ....AAAA
+1410 ....AAAA
+1412 ..AAAA..
+1414 ..AAAA..
+1416 AAAA....
+C6 LEGJOBB
+1502 A.
+1504 .A
+1506 .A
+1508 A.
+C7 JO
+1602 A.
+1604 .A
+C8 --
+1702 AAA...
+1704 .AAA..
+1706 ..AAA.
+1708 ...AAA
+1710 ..AAA.
+1712 .AAA..
+C9 --
+1802 AAA...
+1804 ...AAA
+1806 ...AAA
+1808 AAA...
+C10 JO        2.
+1902 AAA...
+1904 .AAA..
+1906 .AAA..
+1908 ..AAA.
+1910 ..AAA.
+1912 ...AAA
+1914 ...AAA
+1916 ..AAA.
+1918 ..AAA.
+1920 .AAA..
+1922 .AAA..
+1924 AAA...
+C11 ? EZT MÉG KI KELL PROBALNI!
+1952 AAAA....
+1954 .AAAA...
+1956 .AAAA...
+1958 ..AAAA..
+1960 ..AAAA..
+1962 ...AAAA.
+1964 ...AAAA.
+1966 ....AAAA
+1968 ....AAAA
+1970 ...AAAA.
+1972 ...AAAA.
+1974 ..AAAA..
+1976 ..AAAA..
+1978 .AAAA...
+1980 .AAAA...
+1982 AAAA....

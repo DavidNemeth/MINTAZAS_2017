@@ -1,0 +1,56 @@
+   1 C**SECURITI PULOVER ------------FELSZOVET JACQUARDBOL---SIN:ELOL----GUMI,FELSZOVET SLAG:HATUL
+  10 C*** 1/1 HATUL VALASZT LE, A GUMI IS HATUL VAN****
+  12 C
+  14 C*** A LEVALASZTAST JAC.-BOL KOTI.********
+C UJ KT-HOZ:         
+C---------+---------+---------+---------+---------+---------+---------+
+C              S         M         L        XL        2XL      3XL
+C---------+---------+---------+---------+---------+---------+---------+
+C   UJJA:             50*62      50*64
+C TUSZAM:            490/3LAP   490/3LAP   JAVITOTT TU ES CIKLUS
+C    RS2:              108        112
+C    WM%:               0          0
+C---------+---------+---------+---------+---------+---------+---------+
+C   TEST:             60*76      62*80
+C TUSZAM:            390/2LAP   400/2LAP
+C    RS2:              130        140
+C    WM%:              -15        -15
+C---------+---------+---------+---------+---------+---------+---------+
+C PASZE:7CM :RS1=11
+C**SZELESSEG BEALLITASA:108.SORBAN ------PL 414TU: 108 PM:1:<FA>415:<+>; A 415.SORTOL NEM KOTI MEG AZ SPF-ET SEM----
+  16 C
+  17 NP1=11.0   C FELSZOVET    10.9 VAGY 11.0
+  18 NP4=13.0   C:LEVALASZTAS
+  20 NP12=9.5   C:BEKEZDES     
+  22 NP15=11.0  C:1/1          10.9 VAGY 11.0
+  40   START        
+  50   YG:6/23456;	
+  55 WM=12;WMI=7
+  60 C
+ 100 
+ 102 JA1=1001; C .I
+ 104 PA:1:<JA1>;
+ 106 FA=1-2;
+ 108 PM:1:<FA>491:<+>;
+ 109 << S:I-./.-I;         Y:5/2;         NP4-4  VU V0      S1 S2 C**************** SPF *****************
+ 110 >>	S:I-./.-I/UVS.;   	                                 S1 S2 T2
+ 112 <<	S:U^SI/.-I;		             Y:3;                           T1 S1
+ 114 >> S:U^S./I-I;               Y:6;                   VR1     T1    S2
+ 116 << S:0-I/I-0;                 Y:6/0;                    VU      S1 S2
+ 118 >>	S:.-I;		                  Y:3;	          NP12-12 V0 VU      S1                 C BEKEZD
+ 120 << S:0-I;                     Y:6;           NP15-15    VU      S1                 C GUNI HATUL
+ 122 >>                                                      VU      S1                 C GUMI
+
+ 124 << S:.-0/.-I;               Y:4/3;                    VU      S1 S2
+ 126 RBEG*RS1
+ 128 >> S:.-I;                                              VU      S1 S2
+ 130 <<                                                      VU      S1 S2
+ 132 REND
+ 134 >> S:I.-0/0-I.;                               NP1-1              S1 S2
+ 136 RBEG*RS2   C--------------------FELSZOVET: SLAG HATUL------------------------------------
+ 138 << S:.I-.I/0-.I;                 Y:2/5;                            S1 S2
+ 140 >>                            Y:5/2;                            S1 S2
+ 142 REND
+ 144 END
+
+1001 .I

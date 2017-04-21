@@ -1,0 +1,40 @@
+  54 C**********NYAK**********************************
+  56 C IF #100=15  RS17=50        C CSIPKE NYAK
+  58 C IF #100=33  RS17=51        C MASNIS GOMBLYUKAS PANT
+  60 C IF #100=30  RS17=52        C MASNIS MELLENY PANT0
+  62 C*****1.MINTA************************************
+  64 C IF #100=16  RS17=0         C E    CS
+  66 C IF #100=1   RS17=1         C H    KR
+  68 C IF #100=2   RS17=2         C U    KR H/R
+  70 C IF #100=15  RS17=3         C RU   CS
+  72 C IF #100=23  RS17=4         C ME   CS
+  74 C IF #100=2   RS17=5         C MH   KREPP
+  76 C IF #100=15  RS17=9         C U-E-H-U
+  78 C*****2.MINTA************************************
+  80 C IF #100=6   RS17=12        C E    CS
+  82 C IF #100=9   RS17=13        C H    KR
+  84 C IF #100=5   RS17=16        C U    KR H/R
+  86 C IF #100=15  RS17=17        C RU   CS
+  88 C IF #100=2   RS17=11        C ME-H CS
+  90 C IF #100=3   RS17=19        C U-E-H-U
+  92 C************************************************
+  94 IF RS17=50 GOTO 500          C CSIPKE NYAK
+  96 IF RS17=51 GOTO 600          C MASNIS GOMBLYUKAS PANT
+  98 IF RS17=52 GOTO 600          C MASNIS MELLENY PANT0
+ 100 C*****1.MINTA******(NP=13.3 , 3CM PASSZE ES NORMAL CSIPKE ESETEN)******************************
+ 102 IF RS17=0  RS19=3 RS1=152            C E  28' CS         T:152  (VASALVA:75CM-KESZEN:68CM)
+ 104 IF RS17=1  RS19=3 RS1=170            C H  28' KR                                                   
+ 106 IF RS17=2  RS19=4 RS1=130            C HU 26' KR       H/R:130/57
+ 108 IF RS17=3  RS19=4 RS1=               C RU     CS       H/R:130/57
+ 110 IF RS17=4  RS19=3 RS1=               C ME 29' CS             
+ 112 IF RS17=5  RS19=3 RS1=               C MH 29' KR         
+ 114 IF RS17=9  RS19=5 RS1=146            C U-E-H-U CS
+ 116 C*****2.MINTA************************************
+ 118 IF RS17=0  RS19=3 RS1=152            C E  28' CS         T:152
+ 120 IF RS17=1  RS19=3 RS1=170            C H  28' KR                                                   
+ 122 IF RS17=2  RS19=4 RS1=130            C HU 26' KR       H/R:130/57
+ 124 IF RS17=3  RS19=4 RS1=               C RU     CS       H/R:130/57
+ 126 IF RS17=4  RS19=3 RS1=               C ME 29' CS             
+ 128 IF RS17=5  RS19=3 RS1=               C MH 29' KR         
+ 130 IF RS17=9  RS19=5 RS1=146            C U-E-H-U CS
+ 132 C************************************************

@@ -1,0 +1,274 @@
+  1 C                        101 FA=12-177;
+  2 C '8' HELYETT '11':      104 PM:<.>8:3(WFAW.);
+  3 C  MINDEN 'Z'-T ES 'W'-T KI KELL CSERELNI:    P'Z'T RET.  P'W'O RET.
+  4 C POTTY UTAN BE KELL IRNI EGY 'O'-T 820 << S:R-0/<1-1->.O%-0; Y:2/5; S1 S2
+  5 C POTTY UTAN BE KELL IRNI EGY 'O'-T 825 >> S:R-0/<1-1->.O%-0; Y:2/5; S1 S2
+ 10  START         C****HALSZALKAS****
+ 12    C NP1=14.2  C:MINTA ------------------
+ 15    C NP4=12.5  C:LEVALASZTAS-------------
+ 18    C NP2=14.2  C:PASSZE,CSIPKE ALJ-------
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;		       Y:5/2;	     NP4-4  VU  V0	       S1 S2
+  59 >>                             Y:5/2;      NP4-4                 S1 S2
+  62 << S:D.I-DI./DI.-D.I/UVNR;	   Y:5/2;	     NP2-2	                S1 S2 T2
+  68 >> S:R-R;		                    Y:6;	       NP -0   	            S1
+  71 << S:0-R/R-0;		               Y:0/6;               	          S1 S2
+  74 >> S:R-R/R-0;	                 	Y:2/5;	   NP2-2          ML     S1 S2
+  80 << S:0-R;		                    Y:2;		     NP01-1                S2
+  95 JA1=1414(1408-1414);CIFRS1>17IFRS1<37JA1=1570          C======4LAP======
+  98 PA:1:JA1;
+ 101 FA=12-177;           CIFRS1>17IFRS1<37FA=29-160         C======4LAP======
+ 104 PM:<.>11:3(WFAW.);   CIFRS1>17IFRS1<37PM:<.>10:4(FA ..);C======4LAP======
+ 106 >> S:R-0/UVN.W;                Y:2;        NP-0         S2   T2
+ 107 << S:U^NN.W/.W-N.W/UVNN.W;     Y:2;  ML               T1 S2   T2 C###ML###
+ 108 Y:2/5/5/2;
+ 110 REP*4              C *******  PASSZE  ***********************************
+ 116 >> S:U^N*;                                VL1 NP0-0 T1
+ 125 << S:U^N+;                                VR1 NP0-0 T1
+ 128 >> S:U^NW/.-N./UVNN.;                     V0        T1 S2   T2 
+ 134 << S:<1->R-0;                                              S2
+ 140 REPEND                C ****************************************************
+ 145 IF RS1>15 GOTO 800    C******HATA*************
+ 150 JA1=1406(1332-1394)   C  *********  CSIPKE+KREPP ***************************
+ 152 JA2=1003(1003-1010)
+ 153 PA:<JA2>1:<JA1>;
+ 155 >> S:U^NN./.-N./UVNNY;                        NP1-1 T1 S2    T2
+ 160    Y:2/2/5/5;
+ 162 GOSUB 170-182*66
+ 163 JA1=1330(1014-1330)
+ 165 RBEG*RS1           
+ 166 REP*4
+ 170    VJA^0
+ 175    WM=15
+ 178  PK^:2:<JA2>2:<JA1>;
+ 180 << S:U^N<1-2->N.ZY/.%Z-N.Z/UVNNA.;           VL1        T1    S2 T2
+ 181  PK^:1:<JA2>1:<JA1>;
+ 182 >> S:U^N<1-2->N.ZA/.%Z-N.Z/UVNNY.Z;          V0         T1    S2 T2
+ 183 REPEND
+ 185 REND               C*****************************************************
+ 186 GOSUB 180
+ 188 >> S:U^S<1->N.ZA/.Z-N.Z/UVNN.Z;           V0        T1 S2    T2
+ 190 END
+ 800 JA1=1004(1003-1010)   C******HATA*************
+ 805 PA:<JA1>;
+ 807 >> S:R-0;                      NP1-01        S2
+ 808                                NP2-02
+ 810 RBEG*RS1
+ 815 REP*4          
+ 820 << S:R-0/<1-1->.O%-0;            Y:2/5;               S1 S2
+ 825 >> S:R-0/<1-1->.O%-0;            Y:2/5;               S1 S2
+ 830 REPEND
+ 835 REND
+ 850 END
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1003 ..............................................................................................................................................................................................
+1004 .Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.I
+1005 ..............................................................................................................................................................................................
+1006 ..Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z..I
+1007 ..............................................................................................................................................................................................
+1008 .Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.Z.I
+1009 ..............................................................................................................................................................................................
+1010 Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...Z...ZI
+1012 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1014 XX.....YY...III..III.........IIIIII.......................................................................................................................IIIIII........III..III...AAI.....XXI
+1016 XX.....IYY...IIIIII.............IIII.....................................................................................................................IIII............IIIIII....AA......XXI
+1018 XXX.....YY....IIII..............IIIII.Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.IIIII.............IIII....AAI.....XXXI
+1020 XXX.....IYY.....................IIIII.Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.IIIII.....................AA......XXXI
+1022 XXXX.....YY........................II...................................................................................................................II.......................AAI.....XXXXI
+1024 XXXX.....IYY...........IIII........II...................................................................................................................II.......IIII............AA......XXXXI
+1026 XXXXX.....YY..........IIIIII.......II.....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.....II......IIIIII..........AAI.....XXXXXI
+1028 XXXXX.....IYY........III..III.......I.....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.....I......III..III.........AA......XXXXXI
+1030 XXXXXX.....YY........III..III..................................................................................................................................III..III........AAI.....XXXXXXI
+1032 XXXXXX.....IYY.......III..III..................................................................................................................................III..III........AA......XXXXXXI
+1034 XXXXXXX.....YY.......III.IIII.......I.........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.........I......IIII.III.......AAI.....XXXXXXXI
+1036 XXXXXXX.....IYY.........IIII........II........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z........II.......IIII..........AA......XXXXXXXI
+1038 XXXXXXXX.....YY........IIII.........III...............................................................................................................III........IIII........AAI.....XXXXXXXXI
+1040 XXXXXXXX.....IYY......IIII..........III...............................................................................................................III.........IIII.......AA......XXXXXXXXI
+1042 XXXXXXXXX.....YY.....IIII...........II....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z....II..........IIII.....AAI.....XXXXXXXXXI
+1044 XXXXXXXXX.....IYY....III..III.......I.....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.....I......III..III.....AA......XXXXXXXXXI
+1046 XXXXXXXXXX.....YY....III..III..................................................................................................................................III..III....AAI.....XXXXXXXXXXI
+1048 XXXXXXXXXX.....IYY...III..III........IIIIII.......................................................................................................IIIIII.......III..III....AA......XXXXXXXXXXI
+1050 XXXXXXXXXXX.....YY...III..III.........IIIIII..........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z..........IIIIII........III..III...AAI.....XXXXXXXXXXXI
+1052 XXXXXXXXXXX.....IYY...IIIIII.............IIII.........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.........IIII............IIIIII....AA......XXXXXXXXXXXI
+1054 XXXXXXXXXXXX.....YY....IIII..............IIIII.................................................................................................IIIII.............IIII....AAI.....XXXXXXXXXXXXI
+1056 XXXXXXXXXXXX.....IYY.....................IIIII.................................................................................................IIIII.....................AA......XXXXXXXXXXXXI
+1058 XXXXXXXXXXXXX.....YY........................II....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z....II.......................AAI.....XXXXXXXXXXXXXI
+1060 XXXXXXXXXXXXX.....IYY...........IIII........II....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z....II.......IIII............AA......XXXXXXXXXXXXXI
+1062 XXXXXXXXXXXXXX.....YY..........IIIIII.......II.................................................................................................II......IIIIII..........AAI.....XXXXXXXXXXXXXXI
+1064 XXXXXXXXXXXXXX.....IYY........III..III.......I.................................................................................................I......III..III.........AA......XXXXXXXXXXXXXXI
+1066 XXXXXXXXXXXXXXX.....YY........III..III................Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...............III..III........AAI.....XXXXXXXXXXXXXXXI
+1068 XXXXXXXXXXXXXXX.....IYY.......III..III................Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...............III..III........AA......XXXXXXXXXXXXXXXI
+1070 XXXXXXXXXXXXXXXX.....YY.......III.IIII.......I.................................................................................................I......IIII.III.......AAI.....XXXXXXXXXXXXXXXXI
+1072 XXXXXXXXXXXXXXXX.....IYY.........IIII........II...............................................................................................II.......IIII..........AA......XXXXXXXXXXXXXXXXI
+1074 XXXXXXXXXXXXXXXXX.....YY........IIII.........III..Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z..III........IIII........AAI.....XXXXXXXXXXXXXXXXXI
+1076 XXXXXXXXXXXXXXXXX.....IYY......IIII..........III..Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z..III.........IIII.......AA......XXXXXXXXXXXXXXXXXI
+1078 XXXXXXXXXXXXXXXXXX.....YY.....IIII...........II...............................................................................................II..........IIII.....AAI.....XXXXXXXXXXXXXXXXXXI
+1080 XXXXXXXXXXXXXXXXXX.....IYY....III..III.......I.................................................................................................I......III..III.....AA......XXXXXXXXXXXXXXXXXXI
+1082 XXXXXXXXXXXXXXXXXXX.....YY....III..III................Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z......Z........Z.......Z...............III..III....AAI.....XXXXXXXXXXXXXXXXXXXI
+1084 XXXXXXXXXXXXXXXXXXX.....IYY...III..III........IIIIII..Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z......Z........Z.......Z..IIIIII.......III..III....AA......XXXXXXXXXXXXXXXXXXXI
+1086 XXXXXXXXXXXXXXXXXXXX.....YY...III..III.........IIIIII...................................................................................IIIIII........III..III...AAI.....XXXXXXXXXXXXXXXXXXXXI
+1088 XXXXXXXXXXXXXXXXXXXX.....IYY...IIIIII.............IIII.................................................................................IIII............IIIIII....AA......XXXXXXXXXXXXXXXXXXXXI
+1090 XXXXXXXXXXXXXXXXXXXXX.....YY....IIII..............IIIII...Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...IIIII.............IIII....AAI.....XXXXXXXXXXXXXXXXXXXXXI
+1092 XXXXXXXXXXXXXXXXXXXXX.....IYY.....................IIIII...Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...IIIII.....................AA......XXXXXXXXXXXXXXXXXXXXXI
+1094 XXXXXXXXXXXXXXXXXXXXXX.....YY........................II...............................................................................II.......................AAI.....XXXXXXXXXXXXXXXXXXXXXXI
+1096 XXXXXXXXXXXXXXXXXXXXXX.....IYY...........IIII........II...............................................................................II.......IIII............AA......XXXXXXXXXXXXXXXXXXXXXXI
+1098 XXXXXXXXXXXXXXXXXXXXXXX.....YY..........IIIIII.......II.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......II......IIIIII..........AAI.....XXXXXXXXXXXXXXXXXXXXXXXI
+1100 XXXXXXXXXXXXXXXXXXXXXXX.....IYY........III..III.......I.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......I......III..III.........AA......XXXXXXXXXXXXXXXXXXXXXXXI
+1102 XXXXXXXXXXXXXXXXXXXXXXXX.....YY........III..III..............................................................................................III..III........AAI.....XXXXXXXXXXXXXXXXXXXXXXXXI
+1104 XXXXXXXXXXXXXXXXXXXXXXXX.....IYY.......III..III..............................................................................................III..III........AA......XXXXXXXXXXXXXXXXXXXXXXXXI
+1106 XXXXXXXXXXXXXXXXXXXXXXXXX.....YY.......III.IIII.......I...Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...I......IIII.III.......AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXI
+1108 XXXXXXXXXXXXXXXXXXXXXXXXX.....IYY.........IIII........II..Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z..II.......IIII..........AA......XXXXXXXXXXXXXXXXXXXXXXXXXI
+1110 XXXXXXXXXXXXXXXXXXXXXXXXXX.....YY........IIII.........III...........................................................................III........IIII........AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXI
+1112 XXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY......IIII..........III...........................................................................III.........IIII.......AA......XXXXXXXXXXXXXXXXXXXXXXXXXXI
+1114 XXXXXXXXXXXXXXXXXXXXXXXXXXX.....YY.....IIII...........II......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z......II..........IIII.....AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1116 XXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY....III..III.......I.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.......I......III..III.....AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1118 XXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YY....III..III..............................................................................................III..III....AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1120 XXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY...III..III........IIIIII...................................................................IIIIII.......III..III....AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1122 XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YY...III..III.........IIIIII....Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z....IIIIII........III..III...AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1124 XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY...IIIIII.............IIII...Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z...IIII............IIIIII....AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1126 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YY....IIII..............IIIII.............................................................IIIII.............IIII....AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1128 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY.....................IIIII.............................................................IIIII.....................AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1130 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YY........................II......Z.......Z.......Z.......Z.......Z.......Z.......Z......II.......................AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1132 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYY...........IIII........II......Z.......Z.......Z.......Z.......Z.......Z.......Z......II.......IIII............AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1134 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......YY..........IIIIII.......II.............................................................II......IIIIII..........AAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1136 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......IYY........III..III.......I.............................................................I......III..III.........AA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1138 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......YY........III..III..........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.........III..III........AAI......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1140 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......IYY.......III..III..........Z.......Z.......Z.......Z.......Z.......Z.......Z.......Z.........III..III........AA.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1142 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........YY.......III.IIII.......I.............................................................I......IIII.III.......AAI.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1144 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........IYY.........IIII........II...........................................................II.......IIII..........AA........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1146 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........YY........IIII.........III....Z.......Z.......Z.......Z.......Z.......Z.......Z....III........IIII........AAI........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1148 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........IYY......IIII..........III....Z.......Z.......Z.......Z.......Z.......Z.......Z....III.........IIII.......AA.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1150 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..........YY.....IIII...........II...........................................................II..........IIII.....AAI.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1152 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..........IYY....III..III.......I.............................................................I......III..III.....AA..........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1154 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...........YY....III..III..................Z.......Z.......Z.......Z.......Z.......Z.................III..III....AAI..........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1156 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...........IYY...III..III........IIIIII....Z.......Z.......Z.......Z.......Z.......Z....IIIIII.......III..III....AA...........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1158 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX............YY...III..III.........IIIIII...............................................IIIIII........III..III...AAI...........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1160 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX............IYY...IIIIII.............IIII.............................................IIII............IIIIII....AA............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1162 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..II.........YY....IIII..............IIIII.....Z.......Z.......Z.......Z.......Z.....IIIII.............IIII....AAI............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1164 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..II.........IYY.....................IIIII.....Z.......Z.......Z.......Z.......Z.....IIIII.....................AA.............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1166 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II......YY........................II...........................................II.......................AAI.............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1168 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II......IYY...........IIII........II...........................................II.......IIII............AA..............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1170 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....II.........YY..........IIIIII.......II.Z.......Z.......Z.......Z.......Z.......Z.II......IIIIII..........AAI..............XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1172 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....II.........IYY........III..III.......I.Z.......Z.......Z.......Z.......Z.......Z.I......III..III.........AA.........II....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1174 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..II....II......YY........III..III..........................................................III..III........AAI.........II....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1176 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..II....II......IYY.......III..III..........................................................III..III........AA......II........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1178 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II.........YY.......III.IIII.......I.....Z.......Z.......Z.......Z.......Z.....I......IIII.III.......AAI......II........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1180 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II.........IYY.........IIII........II....Z.......Z.......Z.......Z.......Z....II.......IIII..........AA.........II......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1182 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....II....II......YY........IIII.........III.......................................III........IIII........AAI.........II......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1184 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....II....II......IYY......IIII..........III.......................................III.........IIII.......AA......II....II....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1186 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........II.........YY.....IIII...........II........Z.......Z.......Z.......Z........II..........IIII.....AAI......II....II....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1188 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........II.........IYY....III..III.......I.........Z.......Z.......Z.......Z.........I......III..III.....AA.........II........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1190 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II....II......YY....III..III..........................................................III..III....AAI.........II........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1192 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......II....II......IYY...III..III........IIIIII...............................IIIIII.......III..III....AA......II....II......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1194 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..........II.........YY...III..III.........IIIIII......Z.......Z.......Z......IIIIII........III..III...AAI......II....II.AAAI.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1196 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.IYYY.....II.........IYY...IIIIII.............IIII.....Z.......Z.......Z.....IIII............IIIIII....AA.........II.....AAA..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1198 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..YYY...II....II......YY....IIII..............IIIII.........................IIIII.............IIII....AAI.........II....AAAI..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1200 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..IYYY..II....II......IYY.....................IIIII.........................IIIII.....................AA......II....II..AAA...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1202 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...YYY......II.........YY........................II........Z.......Z........II.......................AAI......II....II.AAAI...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1204 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...IYYY.....II.........IYY...........IIII........II........Z.......Z........II.......IIII............AA.........II.....AAA....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1206 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....YYY...II....II......YY..........IIIIII.......II.........................II......IIIIII..........AAI.........II....AAAI....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1208 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....IYYY..II....II......IYY........III..III.......I.........................I......III..III.........AA......II....II..AAA.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1210 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YYY......II.........YY........III..III............Z.......Z.......Z...........III..III........AAI......II....II.AAAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1212 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYYY.....II.........IYY.......III..III............Z.......Z.......Z...........III..III........AA.........II.....AAA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1214 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......YYY...II....II......YY.......III.IIII.......I.........................I......IIII.III.......AAI.........II....AAAI......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1216 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......IYYY..II....II......IYY.........IIII........II.......................II.......IIII..........AA......II....II..AAA.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1218 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......YYY......II.........YY........IIII.........III......Z.......Z......III........IIII........AAI......II....II..III.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1220 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......III......II.........IYY......IIII..........III......Z.......Z......III.........IIII.......AA.........II......IYYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1222 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAAI....II....II......YY.....IIII...........II.......................II..........IIII.....AAI.........II.......YYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1224 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAA.....II....II......IYY....III..III.......I.........................I......III..III.....AA......II....II.....IYYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1226 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAAI.........II.........YY....III..III........................................III..III....AAI......II....II......YYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1228 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAA..........II.........IYY...III..III........IIIIII......I......IIIIII.......III..III....AA.........II..........IYYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1230 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAAI........II....II......YY...III..III.........IIIIII....III....IIIIII........III..III...AAI.........II...........YYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1232 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAA.........II....II......IYY...IIIIII.............IIII..IIIII..IIII............IIIIII....AA......II....II.........IYYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1234 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAAI.............II.........YY....IIII..............IIIII.......IIIII.............IIII....AAI......II....II..........YYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1236 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAA..............II.........IYY.....................IIIII.......IIIII.....................AA.........II..............IYYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1238 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAAI............II....II......YY........................II.......II.......................AAI.........II...............YYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1240 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAA.............II....II......IYY...........IIII........II.......II.......IIII............AA......II....II.............IYYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1242 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAAI.................II.........YY..........IIIIII.......II.......II......IIIIII..........AAI......II....II..............YYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1244 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAA..................II.........IYY........III..III.......I.......I......III..III.........AA.........II.................AAA..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1246 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..YYY...............II....II......YY........III..III......................III..III........AAI.........II......AAAI......AAAI..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1248 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..IYYY......IYYY....II....II......IYY.......III..III......................III..III........AA......II....II....AAA.......AAA...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1250 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...YYY.......YYY........II.........YY.......III.IIII......................IIII.III.......AAI......II....II...AAAI......AAAI...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1252 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...IYYY......IYYY.......II.........IYY.........IIII........................IIII..........AA.........II.......AAA.......AAA....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1254 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....YYY.......YYY.....II....II......YY........IIII.............I............IIII........AAI.........II......AAAI......AAAI....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1256 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....IYYY......IYYY....II....II......IYY......IIII.............III............IIII.......AA......II....II....AAA.......AAA.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1258 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YYY.......YYY........II.........YY.....IIII.............IIIII............IIII.....AAI......II....II...AAAI......AAAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1260 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYYY......IYYY.......II.........IYY....III..III........IIIIIII.......III..III.....AA.........II.......AAA.......AAA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1262 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......YYY.......YYY.....II....II......YY....III..III.......IIII.IIII......III..III....AAI.........II......AAAI......AAAI......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1264 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......IYYY......IYYY....II....II......IYY...III..III......IIII...IIII.....III..III....AA......II....II....AAA.......AAA.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1266 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......YYY.......YYY........II.........YY...III..III.....IIII..I..IIII....III..III...AAI......II....II...AAAI......AAAI.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1268 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......IYYY......IYYY.......II.........IYY...IIIIII.....IIII..III..IIII....IIIIII....AA.........II.......AAA.......AAA........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1270 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........YYY.......YYY.....II....II......YY....IIII..........................IIII....AAI.........II......AAAI......AAAI........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1272 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........IYYY......IYYY....II....II......IYY.........................................AA......II....II....AAA.......AAA.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1274 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........YYY.......YYY........II.........YY........................................AAI......II....II....III.......III.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1276 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........III.......III.XX.....II.........IYY...........IIII........IIII............AA.........II........IYYY......IYYY........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1278 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........AAAI......AAAI.XX...II....II......YY..........IIIIII......IIIIII..........AAI.........II.....XX..YYY.......YYY........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1280 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........AAA.......AAA..XX...II....II......IYY........III..III....III..III.........AA......II....II...XX..IYYY......IYYY.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1282 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......AAAI......AAAI..XX..................YY........III..III....III..III........AAI......II....II...XX...YYY.......YYY.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1284 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......AAA.......AAA...XX.........I........IYY.......III..III....III..III........AA..................XX...IYYY......IYYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1286 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAAI......AAAI...XX........II.........YY.......III.IIII....IIII.III.......AAI........I.........XX....YYY.......YYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1288 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAA.......AAA....XX.......III.........IYY.........IIII......IIII..........AA.........II........XX....IYYY......IYYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1290 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAAI......AAAI....XX......AAAI...X......YY........IIII........IIII........AAI.....X...III.......XX.....YYY.......YYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1292 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAA.......AAA.....XX......AAA....X......IYY......IIII..........IIII.......AA......X...IYYY......XX.....IYYY......IYYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1294 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAAI......AAAI.....XX.....AAAI....XX......YY.....IIII............IIII.....AAI.....XX....YYY......XX......YYY.......YYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1296 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAA.......AAA......XX.....AAA.....XX......IYY....III..III....III..III.....AA......XX....IYYY.....XX......IYYY......IYYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1298 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAAI......AAAI......XX....AAAI.....XXX......YY....III..III....III..III....AAI.....XXX.....YYY.....XX.......YYY.......YYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1300 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAA.......AAA.......XX....AAA..I...XXX......IYY...III..III....III..III....AA......XXX.....IYYY....XX.......IYYY......IYYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1302 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAAI......AAAI.......XX...AAAI.II...XXXX......YY...III..III....III..III...AAI.....XXXX...I..YYY....XX........YYY.......YYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1304 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAA.......AAA........XX...AAA.III...XXXX......II....IIIIII......IIIIII....AA......XXXX...II.IYYY...XX........IYYY......IYYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1306 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAAI......AAAI........XX...IIIAAAI...XXXXX.....II.....IIII........IIII.....II.....XXXXX...III.YYY...XX.........YYY.......YYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1308 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAA.......AAA.........XX...II.AAA....XXXXX.................................II.....XXXXX...IYYYIII...XX........AAA.......AAA..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1310 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..YYY.......YYY........XX...I.AAAI....XXXXXX......................................XXXXXX....YYY.II...XX.......AAAI......AAAI..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1312 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..IYYY......IYYY.......XX.....AAA.....XXXXXX......................................XXXXXX....IYYY.I...XX.......AAA.......AAA...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1314 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...YYY.......YYY.......XX....AAAI.....XXXXXXX....................................XXXXXXX.....YYY.....XX......AAAI......AAAI...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1316 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...IYYY......IYYY......XX....AAA..I...XXXXXXX.......IIIII........................XXXXXXX.....IYYY....XX......AAA.......AAA....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1318 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....YYY.......YYY......XX...AAAI.II...XXXXXXX......AAAAAII...........IIIII.......XXXXXXX...I..YYY....XX.....AAAI......AAAI....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1320 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....IYYY......IYYY.....XX...AAA.III...XXXXXXX......AAAAAYYY.........IIYYYYY......XXXXXXX...II.IYYY...XX.....AAA.......AAA.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1322 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YYY.......YYY.....XX...IIIAAAI...XXXXXXX.....AAAAAIYYY........AAAYYYYY......XXXXXXX...III.YYY...XX....AAAI......AAAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1324 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYYY......IYYY....XX...II.AAA....XXXXXXX.....AAAAAYYYYY.......AAAIYYYYY.....XXXXXXX...IYYYIII...XX....AAA.......AAA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1326 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......YYY.......YYY....XX...I.AAAI....XXXXXXX....AAAAAIYYYYY......AAAAAYYYYY.....XXXXXXX....YYY.II...XX...AAAI......AAAI......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1328 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......IYYY......IYYY...XX.....AAA.....XXXXXXX....AAAAA.IYYYYY.....AAAAAIYYYYY....XXXXXXX....IYYY.I...XX...AAA.......AAA.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1330 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......YYY.......YYY...XX....AAAI.....XXXXXXX...AAAAAI..YYYYY....AAAAAI.YYYYY....XXXXXXX.....YYY.....XX..AAAI......AAAI.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1332 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......IYYY......IYYY..XX....AAA..I...XXXXXXX...AAAAA...IYYYYY...AAAAA..IYYYYY...XXXXXXX.....IYYY....XX..AAA.......AAA........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1334 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........YYY.......YYY..XX...AAAI.II...XXXXXXX...IIII.....YYYYY..AAAAAI...YYYYY...XXXXXXX...I..YYY....XX.AAAI......AAAI........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1336 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........IYYY......IYYY.XX...AAA.III...XXXXXXX...III......IIII...AAAAA.....IIII...XXXXXXX...II.IYYY...XX.AAA.......AAA.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1338 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........YYY.......YYY.XX...IIIAAAI...XXXXXXX...II....AAAAAI.....IIII......III...XXXXXXX...III.YYY...XX.III.......III.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1340 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........III.......III.XX...II.AAA....XXXXXXX...I.....AAAAA.......IYYYYY....II...XXXXXXX...IYYYIII...XX.IYYY......IYYY........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1342 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........AAAI......AAAI.XX...I.AAAI....XXXXXXX........AAAAAI...II...YYYYY.....I...XXXXXXX....YYY.II...XX..YYY.......YYY........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1344 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........AAA.......AAA..XX.....AAA.....XXXXXXX........AAAAA.........IYYYYY........XXXXXXX....IYYY.I...XX..IYYY......IYYY.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1346 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......AAAI......AAAI..XX....AAAI.....XXXXXXX.......AAAAAI...IIII...YYYYY........XXXXXXX.....YYY.....XX...YYY.......YYY.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1348 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......AAA.......AAA...XX....AAA..I...XXXXXXX.......AAAAA...........IYYYYY.......XXXXXXX.....IYYY....XX...IYYY......IYYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1350 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAAI......AAAI...XX...AAAI.II...XXXXXXX......AAAAAII..IIIIII...YYYYY.......XXXXXXX...I..YYY....XX....YYY.......YYY......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1352 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......AAA.......AAA....XX...AAA.III...XXXXXXX......AAAAAYYY.........IIYYYYY......XXXXXXX...II.IYYY...XX....IYYY......IYYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1354 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAAI......AAAI....XX...IIIAAAI...XXXXXXX.....AAAAAIYYY..IIII..AAAYYYYY......XXXXXXX...III.YYY...XX.....YYY.......YYY.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1356 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....AAA.......AAA.....XX...II.AAA....XXXXXXX.....AAAAAYYYYY.......AAAIYYYYY.....XXXXXXX...IYYYIII...XX.....IYYY......IYYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1358 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAAI......AAAI.....XX...I.AAAI....XXXXXXX....AAAAAIYYYYY..II..AAAAAYYYYY.....XXXXXXX....YYY.II...XX......YYY.......YYY....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1360 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....AAA.......AAA......XX.....AAA.....XXXXXXX....AAAAA.IYYYYY.....AAAAAIYYYYY....XXXXXXX....IYYY.I...XX......IYYY......IYYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1362 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAAI......AAAI......XX....AAAI.....XXXXXXX...AAAAAI..YYYYY....AAAAAI.YYYYY....XXXXXXX.....YYY.....XX.......YYY.......YYY...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1364 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...AAA.......AAA.......XX....AAA..I...XXXXXXX...AAAAA...IYYYYY...AAAAA..IYYYYY...XXXXXXX.....IYYY....XX.......IYYY......IYYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1366 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAAI......AAAI.......XX...AAAI.II...XXXXXXX...IIII.....YYYYY..AAAAAI...YYYYY...XXXXXXX...I..YYY....XX........YYY.......YYY..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1368 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..AAA.......AAA........XX...AAA.III...XXXXXXX...III......IIII...AAAAA.....IIII...XXXXXXX...II.IYYY...XX........IYYY......IYYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1370 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAAI......AAAI........XX...IIIAAAI...XXXXXXX...II....AAAAAI.....IIII......III...XXXXXXX...III.YYY...XX.........YYY.......YYY.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1372 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.AAA.......AAA.........XX...II.AAA....XXXXXXX...I.....AAAAA.......IYYYYY....II...XXXXXXX...IYYYIII...XX........AAA.......AAA..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1374 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..YYY.......YYY........XX...I.AAAI....XXXXXXX........AAAAAI...II...YYYYY.....I...XXXXXXX....YYY.II...XX.......AAAI......AAAI..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1376 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..IYYY......IYYY.......XX.....AAA.....XXXXXXX........AAAAA.........IYYYYY........XXXXXXX....IYYY.I...XX.......AAA.......AAA...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1378 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...YYY.......YYY.......XX....AAAI.....XXXXXXX.......AAAAAI...IIII...YYYYY........XXXXXXX.....YYY.....XX......AAAI......AAAI...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1380 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...IYYY......IYYY......XX....AAA..I...XXXXXXX.......AAAAA...........IYYYYY.......XXXXXXX.....IYYY....XX......AAA.......AAA....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1382 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....YYY.......YYY......XX...AAAI.II...XXXXXXX......AAAAAII..IIIIII...YYYYY.......XXXXXXX...I..YYY....XX.....AAAI......AAAI....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1384 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....IYYY......IYYY.....XX...AAA.III...XXXXXXX......AAAAAYYY.........IIYYYYY......XXXXXXX...II.IYYY...XX.....AAA.......AAA.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1386 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....YYY.......YYY.....XX...IIIAAAI...XXXXXXX.....AAAAAIYYY..IIII..AAAYYYYY......XXXXXXX...III.YYY...XX....AAAI......AAAI.....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1388 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.....IYYY......IYYY....XX...II.AAA....XXXXXXX.....AAAAAYYYYY.......AAAIYYYYY.....XXXXXXX...IYYYIII...XX....AAA.......AAA......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1390 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......YYY.......YYY....XX...I.AAAI....XXXXXXX....AAAAAIYYYYY..II..AAAAAYYYYY.....XXXXXXX....YYY.II...XX...AAAI......AAAI......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1392 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......IYYY......IYYY...XX.....AAA.....XXXXXXX....AAAAA.IYYYYY.....AAAAAIYYYYY....XXXXXXX....IYYY.I...XX...AAA.......AAA.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1394 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......YYY.......YYY...XX....AAAI.....XXXXXXX...AAAAAI..YYYYY....AAAAAI.YYYYY....XXXXXXX.....YYY.....XX..AAAI......AAAI.......XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1396 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.......IYYY......IYYY..XX....AAA..I...XXXXXXX...AAAAA...IYYYYY...AAAAA..IYYYYY...XXXXXXX.....IYYY....XX..AAA.......AAA........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1398 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........YYY.......YYY..XX...AAAI.II...XXXXXXX...IIII.....YYYYY..AAAAAI...YYYYY...XXXXXXX...I..YYY....XX.AAAI......AAAI........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1400 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX........IYYY......IYYY.XX...AAA.II....XXXXXXX...III.......IIII..AAAAA.....IIII...XXXXXXX...II.IYYY...XX.AAA.......AAA.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1402 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.........YYY.......YYY.XX...II..I.....XXXXXXX...II.........III..III........III...XXXXXXX....II.YYY...XX.III.......III.........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1404 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..........II........II.XX...I.........XXXXXXX...I...........II..II..........II...XXXXXXX.....I..II...XX.II........II..........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1406 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...........I.........I.XX.............XXXXXXX................I..I............I...XXXXXXX.........I...XX.I.........I...........XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI
+1408 +++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW***I
+1410 ++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W****I
+1412 +++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW****W++++WWW***I
+1414 ++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W*****W+++++W****I
+1416 IIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII

@@ -1,0 +1,171 @@
+1C TRK LEVELES - AZSUR 1 PASSZEVAL
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  12 NP3=13.6              C KORSLAG
+  13 NP5=13.6              C PASSZE
+  14 NP6=14.4;             C PASSZE
+  16 NP1=13.3              C:CSIPKE
+  20 NP7=13.3              C:1SZV KREPP
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+  54 C**********NYAK**********************************
+  56 C IF #100=15  RS17=50        C CSIPKE NYAK
+  58 C IF #100=33  RS17=51        C MASNIS GOMBLYUKAS PANT
+  60 C IF #100=30  RS17=52        C MASNIS MELLENY PANT0
+  62 C*****1.MINTA************************************
+  64 C IF #100=16  RS17=0         C E    CS
+  66 C IF #100=1   RS17=1         C H    KR
+  68 C IF #100=2   RS17=2         C U    KR H/R
+  70 C IF #100=15  RS17=3         C RU   CS
+  72 C IF #100=23  RS17=4         C ME   CS
+  74 C IF #100=2   RS17=5         C MH   KREPP
+  76 C IF #100=15  RS17=9         C U-E-H-U
+  92 C************************************************
+  94 IF RS17=50 GOTO 500          C CSIPKE NYAK
+  96 IF RS17=51 GOTO 600          C MASNIS GOMBLYUKAS PANT
+  98 IF RS17=52 GOTO 600          C MASNIS MELLENY PANT0
+ 100 C*****1.MINTA************************************
+ 102 IF RS17=0  RS19=3 RS1=152            C E  28' CS         T:152  (VASALVA:75CM-KESZEN:68CM)
+ 104 IF RS17=1  RS19=3 RS1=155            C H  28' KR                                                   
+ 106 IF RS17=2  RS19=4 RS1=130            C HU 26' KR       H/R:130/57
+ 108 IF RS17=3  RS19=4 RS1=               C RU     CS       H/R:130/57
+ 110 IF RS17=4  RS19=3 RS1=               C ME 29' CS             
+ 112 IF RS17=5  RS19=3 RS1=               C MH 29' KR         
+ 114 IF RS17=9  RS19=6 RS1=146            C U-E-H-U CS
+ 132 C************************************************
+ 180 C************581TU**************************************************************
+ 182 JA1=1026(1006-1008)   C CSIPKE PASSZE
+ 184 JA2=1080(1052-1080)   C KREPP
+ 186 PA:1:JA2:1:JA1;
+ 188 IF RS19=3  FA=1-187;            PM:<.>7:3(IIFA)II;           C*3LAP
+ 190 IF RS19=4  FA=24-163;           PM:<.>7:4(IIFA)I;            C*4LAP
+ 192 IF RS19=5  FA=38-149;           PM:<.>6:5(IFAI);             C*5U
+ 194 IF RS19=6  FA=19-168;FB=29-158; PM:<.>7:IIFBIIFAIIFAIIFBI;   C*U-E-H-U
+ 196 C********************************************************************************
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/2/5/5;
+ 212 REP*2
+ 214 << S:R-0;		                             ML   NP3-3     VU          S1
+ 216 >> S:0-R;		                             ML             VU          S1
+ 218 REPEND
+ 220 << S:0-R;                               ML             VU          S1
+ 221 >> S:R-0/UVS.;                          ML                         S1    T2
+ 222 << S:U^SN./.-N./UVSAY;                  ML  NP6-6               T1 S1    T2
+ 223 >> S:NI-I;                              ML             VU          S1
+
+ 224 REP*4
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+ 234 << S:U^NI/.-N./UVN<1->.;               NP5-5 V0        T1 S1 T2 
+ 236 >> S:U^NI/.-I/UVN<1->NI;               NP6-6           T1 S1 T2
+ 238 REPEND
+ 240 GOSUB 226-234
+ 242 >> S:U^NI/.-I/UVNI;                    NP6-6           T1 S1 T2
+C********************************************
+ 290 IF RS17=1  GOTO 400 C 1 H. KR
+ 291 IF RS17=2  GOTO 400 C 1 HU KR
+ 292 IF RS17=5  GOTO 400 C 1 MH KR
+
+ 300 C ******************1SZV. CSIPKE*************************
+ 302 JA1=1158(1104-1162) C TRK LEVELES
+ 306 C********************************************************
+ 308 VJA^0
+ 309 WM=15
+ 310 Y:5/5/2/2;
+ 312 NP1-1
+ 314 RBEG*RS1
+ 316 << S:U^S<1-2->N.*/.*-N.*/UVNNY.;             V0         T1 S1    T2
+ 318 >> S:U^S<1-2->N.*/.*-N.*/UVSNA.;             VL1        T1 S1    T2
+ 320 REND
+ 322 << S:U^S<1->N./.-N./UVNN.;                   V0         T1 S1    T2
+ 324 >> S:U^ND.I/DI.-D.I/UVNR;           NP4-4               T1 S1    T2
+ 326 END C************************************************
+
+ 400 C** HATA-UJJA ** 1SZV.KREPP **
+ 402 PA:1:<JA2>;
+ 412 WM=15
+ 414 Y:2/2/5/5;
+ 416 NP7-7
+ 418 RBEG*RS1
+ 420 << S:U^N<2->N./.-N./UVNI;                     T1 S1     T2
+ 422 >>                                            T1 S1     T2
+ 424 REND
+ 426 << S:U^SD.I/DI.-D.I;              NP4-4       T1 S1
+ 428 >> S:DI.-D.I/UVSD.I;                             S1     T2
+ 430 END
+
+1004 WWWWWWWWWWWW
+1006 20(IIIIIIIIIIII)
+1008 20(IIIIIIIIIIII)
+1010 20(AIAIYIYIYIAI)
+1012 20(II.I.IIIIIII)
+1014 20(IAAIYYIYIIIA)
+1016 20(I..I..IIIIII)
+1018 20(AAAIYYYIYIAI)
+1020 20(...I...IIIII)
+1022 20(AAAIYYYYIIIA)
+1024 20(...I....III.)
+1026 20(AAAIYYYYYIAA)
+1028 WWWWWWWWWWWW
+
+1050 WWWWWWWWWWWW
+1052 20(II.II...I...)
+1054 20(I.I.I..III..)
+1056 20(.I.I.II...II)
+1058 20(.III..I.I.I.)
+1060 20(I...II.I.I.I)
+1062 20(..I..III.III)
+1064 20(II.II...I...)
+1066 20(II.III..I..I)
+1068 20(..I...II.II.)
+1070 20(II.II.I...I.)
+1072 20(..I..I.III.I)
+1074 20(I...I.II.II.)
+1076 20(.III.I..I..I)
+1078 20(II.III..I..I)
+1080 20(..I...II.II.)
+1082 WWWWWWWWWWWW
+
+1102 WWWWWWWWWWWWWWWWWWWWWW
+1104 10(I....III...I.......AAA)
+1106 10(I.I..IYII..I.......III)
+1108 10(I.*..IIA*..I......AAAI)
+1110 10(I..YIIII.YII......IIII)
+1112 10(I..IIIAI.III.....AAAII)
+1114 10(I...YII...YI.....IIIII)
+1116 10(I.IIA.I.IIA.....AAAIII)
+1118 10(I.III.IYIII.....IIIIII)
+1120 10(I.IAI..IIAI.....IIIIII)
+1122 10(I.II...III.......YYIII)
+1124 10(..*IIIIA*III.I...IIIAA)
+1126 10(...YIIII.YII.IY...YIII)
+1128 10(...IIIAI.III.II...IIA.)
+1130 10(...IYII..IYI.IYY......)
+1132 10(.....III...I.III......)
+1134 10(..I..IYII..I.IYYY.....)
+1136 10(..*..IIA*..I.IIII.....)
+1138 10(...YIIII.YII.IIYYY....)
+1140 10(...IIIAI.III.IIIII....)
+1142 10(....YII...YI.IIIYYY...)
+1144 10(..IIA.I.IIA..IIIIII...)
+1146 10(..III.IYIII..IIIIYYY..)
+1148 10(..IAI..IIAI..IIIIIII..)
+1150 10(..II...III...IIIIIII..)
+1152 10(..*I..IA*III.IIIIAA...)
+1154 10(I..YI.II.YII..YYIII...)
+1156 10(I..IIIAI.III..IIIA...A)
+1158 10(I.IIYIII..I....YII...I)
+1160 10(I.IIIAIIIII.........AA)
+1162 10(I..IYII..IYI........II)
+1164 WWWWWWWWWWWWWWWWWWWWWW

@@ -1,0 +1,203 @@
+
+   1 C CSIPKE BETETES LAMBADA - A HAROMSZOG A LAKU BETETEK BELOCKOLVA
+   1 C PASSZE NELKUL, SZELEK ELLOCKOLVA, NYAK VISSZATUZVE, BEFUZVE
+
+   1 C PLATIROZAS:FEHER A LYUKBA, SZIN A HOLDBA
+
+   1 C                                                 
+C  1 C 3T.FEHER PAMUT:                                         
+C  1 C 3T.NYERS PAMUT:                                         
+  10 NP4=12.8   C:LEVALASZTAS                                              
+  11 NP2=12.2   C:BEKEZDES,1/1-ES PASSZE                       
+  12 NP1=12.5   C:CSIPKE                                       12.6
+  20 NP7=13.0   C:2SZV KREPP                                   12.8
+
+   1 C PASSZE: AZSUR 2B  - PARALELOGRAMMA ALAKU ---- 1 JAC.SOR
+C------------------------------------------------------------------------------------
+C  1  3PAMUT       3T.FEHER     3T.NYERS   2T.FEH+1L.FEK.   L.MOGYI    L.FUST
+C-------------------------------------------------------------------------------------
+C KT                            -0.2          -0.1             0           
+C----------------------------------------------------------------------------------
+C PKT KB.UA.                           
+C--------------------------------------------------------------------------------------
+C UJ  KB.UA.                                                        
+C-------------------------------------------------------------------------------------
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 47*60 MI 3*15/1 I 0.38KG*  I  200    I 2DB.ZSV.:I   60  I  530  I   800   I 270 IGY:15'I       I     I 
+1C LAMBADAI        I *700=266 I         I    5     I       I       I         I     IML:19'I  810  I 37% I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 55*65XLI 3*15/1 I 0.48     IPM200    I    5     I   60  I  600  I   850   I 250 IGY:18'I  728 I     I
+1C LAMBADAI        I *700=336 I E250    I          I       I       INEM JO!!!I     IML:22'I       I 38% I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C 60*70XXL 3*15/1 I 0.51     IPM200    I    5     I   60  I  620  I   900   I 280 IGY:20'I  840  I     I
+1C LAMBADAI        I *690=352 I E250    I          I       I       I         I     IML:24'I       I     I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+1C        I 3*15/1 I 0.6      I PM 140  I          I   60  I  620  I   1050  I 420 IGY:   I       I     I
+1C SZOKNYAI        I *690=420 I         I          I       I       I         I     IML:   I       I   % I
+1C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+  40 START
+  50 YG:6/23456;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	    S1 S2
+  60 C***** M:**!!!NEM JO 3 LAPBAN KELL KOTNI -* 525 TU(3*169TU) - ******************************VASALAS:*********GYORS:***
+
+  62 C IF #100=41  RS17=0         C TTTT(581TU) VAGY                                               4* 55*65     16'
+  62 C IF #100=4   RS17=7         C TTT (529TU) VAGY                                               3* 55*65       
+
+  64 C IF #100=33  RS17=1         C UUUUU KR.    -                                                5* 40*25      6'
+  66 C IF #100=36  RS17=2         C CSIPKE BETET - NAGY HAROMSZOGEK KB 3.5 LAMBADAHOZ               1*200*25     12'
+  C********************************************************************************************1DB LAMBADA KB:15'
+  68 C***** XL:************* 
+  70 C IF #100=16  RS17=3         C TTT KR                                                        3* 60*70     15'
+  72 C IF #100=32  RS17=1         C UUUUU KR     -                                                5* 40*25      6'
+  74 C IF #100=3   RS17=2         C CSIPKE BETET - NAGY HAROMSZOGEK KB 3.5 LAMBADAHOZ               1*200*25     12'
+  76 C***** XXL:************* 
+  78 C IF #100=34  RS17=6         C TTT KR                                                        3* 65*75      
+  80 C IF #100=54  RS17=1         C UUUUU KR     -                                                5* 40*25      6'
+  82 C IF #100=6   RS17=2         C CSIPKE BETET - NAGY HAROMSZOGEK KB 3 LAMBADAHOZ               1*200*25     12'
+  84 C***** SZOKNYA************* 
+  85  IF #100=29  RS17=9          C  M 10CSIK (1.66 SZOKNYA)            VASALVA:190*80CM
+  86 C IF #100=1   RS17=4          C  L  9CSIK (1.5 SZOKNYA)             VASALVA:190*90CM
+  87 C IF #100=23  RS17=8          C XL  8CSIK (1.33SZOKNYA)             VASALVA:190*90CM
+  88  IF #100=47  RS17=5          C CSIPKE BETET SZOKNYAHOZ             VASALVA:55CM 
+
+
+  C*********************************************************************************************1DB LAMBADA KB:18'
+ C************************************************************************************************* KG: ***************
+ 100 IF RS17=6  RS19=3  RS1=80 C80-85         C  TTT   XXL                       85                        0.53
+ 101 IF RS17=3  RS19=3  RS1=73 C73-78         C  TTT   XL 28'                    75                        0.48
+
+ 102 IF RS17=0  RS19=4  RS1=76 C85            C  TTTT  M 28'  581TU              80                        0.48
+ 103 IF RS17=7  RS19=7  RS1=70                C  TTT   M      527TU                                        0.37      
+
+ 104 IF RS17=1  RS19=5  RS1=27                C RUUUUU                           27                        0.16
+ 106 IF RS17=2  RS19=11 RS1=11                C CSIPKE BETET 3 LAMBADAHOZ        10                        0.164
+
+C SZOKNYA:
+ 107 IF RS17=9  RS19=11 RS1=90   C  M 50*70-ES SZOKNYA -10DB 17CM   SZELES CSIK  VASALVA:10*19  (190CM)*80CM RS1: 90-100    
+ 108 IF RS17=4  RS19=9  RS1=112  C  L 60*80-AS SZOKNYA - 9DB 20CM   SZELES CSIK  VASALVA: !!!9*23 NEM BIZTOS H KIJON!!!
+ C                                                                 (207CM)*90CM RS1:112-122  24'  0.65
+ 109 IF RS17=8  RS19=10 RS1=105  C XL 65*80-AS SZOKNYA - 8DB 21.5CM SZELES CSIK  VASALVA: 8*23.5(190CM)*90CM RS1:105-115  24'  0.65
+ 110 IF RS17=5  RS19=12 RS1=24        C OSZTAS NELKUL CSIPKE BETET SZOKNYAHOZ VASALVA:190*55CM;RS1:23-24           0.32
+                                      C 1 SZOKNYAHOZ 6DB HAROMSZOG ALAKU BETET KELL   M-HEZ ELEG:190*50
+                                      C 1 LEVETELBOL 17 DB HAROMSZOG SZABHATO KI (A=20CM M=55CM))
+C******************************************************************************************* SUM:M: 0.35 XL:0.43********0.6*************
+
+ 150 C************581TU**************************************************************
+ 152 JA1=1022(1004-1022);  C CSIPKE BETET 1
+ 154 JA2=1314(1300-1314);  C KREPP
+ 156 PA:1:<JA2>:301:<JA1>;
+ 158 IF RS19=1  FA=1-12;             PM:*<.>7:II <FA>  573:II<.>;          C*1
+ 160 IF RS19=2  FA=3-285;            PM:*<.>7:2(...FA)..;                  C*2
+ 162 IF RS19=3  FA=3-189;            PM:*<.>7:3(..FA)..;                   C*3
+ 164 IF RS19=4  FA=26-165;           PM:*<.>7:4(..FA).;                    C*4
+ 166 IF RS19=5  FA=40-151;           PM:*<.>6:5(.FA.);                     C*5
+ 168 IF RS19=6  FA=21-170;FB=31-160; PM:*<.>7:..FB..FA..FA..FB.;           C*U-E-H-U
+
+ 169 IF RS19=10 FA=1-68;             PM:*<.>9:8(FA 3.);                    C*8
+ 171 IF RS19=9  FA=1-61;             PM:*<.>8:4(FA..)5(..FA);              C*9
+ 172 IF RS19=11 FA=1-56;             PM:*<.>7:5(FA.)5(FA.);                C*10
+
+ 174 IF RS19=12 FA=301-305;          PM:*<.>7:II <FA>          573:II<.>;  C*1 CSIPKE BETET
+ 176 IF RS19=13 FA=301-305;          PM:*<.>7:II <FA> 289:III  573:II<.>;  C*2 CSIPKE BETET
+C***************527 TU (3*169TU*** LE KELL TOLNI A TUKET!! **************************************
+ 195 IF RS19=7  FA=13-181;                       PM:*<.>7:IIFAIIFAIIFAII;      C*3LAP
+ 196 IF RS19=8  FA=35-160;                       PM:*<.>7:4(IIFA)I;            C*4LAP
+C********************************************************************************************************************
+
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	            VU VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0        S1
+ 222 << S:0-DI./D.I-0;               Y:2/5;     NP2-2 VU           S1 S2
+C-----------------------
+ 224C >> S:D.I-DI.;                                    VU           S1 S2
+ 228C << S:D.I-DI.;                                    VU           S1 S2
+C-----------------------
+ 236 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;                            S1 S2 T2
+ 240 IF RS19>11 GOTO 400 C CSIPKE BETET
+----------------------------------------------------------------------------------------------------------------------
+
+ 300 C** HATA-UJJA ** 2SZV.KREPP **
+ 302 PA:1:<JA2>;
+ 304 WM=15
+ 306 Y:2/5;
+ 308 NP7-7
+ 310 RBEG*RS1
+ 312 << S:U^SI/.*-I/.*-I/UVS<2->.;                       T1 S1 S2 T2
+ 314 >> S:U^SI/.*-I/.*-I/UVS<2->.;                       T1 S1 S2 T2
+ 316 REND
+ 318 << S:U^SI/.*-I/.*-I/UVSI;           Y:2/5;     T1 S1 S2 T2
+ 320 >> S:U^SD.I/DI.-D.I/DI.-D.I/UVSD.I;  NP4-4     T1 S1 S2 T2
+ 322 END
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+ 400 C*******CSIPKE BETET********
+ 402 JA1=1022(1004-1022);   C CSIPKE BETET
+ 404 VJA^0
+ 406 WM=15
+ 408 NP1-1
+ 410 Y:2/2/5/5;
+ 412 RBEG*RS1
+ 414 REP*5
+ 416 << S:U^S<1->IY/.*-IY/UVSI;                      V0    T1    S2 T2
+ 418 >> S:U^S<1->IA/. -IA/UVSI;                      VL1   T1    S2 T2
+ 420 REPEND
+ 422 REND
+ 424 << S:U^S<1->IY/.*-IY/UVSI;                      V0    T1    S2 T2
+ 426 >> S:U^S<1->IA/. -IA/UVSIA;                     VL1   T1    S2 T2
+
+ 428 << S:U^SD.I/DI.-D.I/DI.-D.I;   Y:2/5;    NP4-4  V0    T1 S1 S2
+ 430 >> S:DI.-D.I/DI.-D.I/UVSD.I;                            S1 S2  T2
+ 432 END
+
+ 999 <> W0 VU S0
+
+
+1002 WWWWW
+1004 .AI..
+1006 .I.Y.
+1008 A..I.
+1010 I...Y
+1012 I...I
+1014 Y...I
+1016 I..A.
+1018 .Y.I.
+1020 .IA..
+1022 .II..
+1024 WWWWW
+
+1250 WWWWWWWWWWWW
+1252 II.II...I...
+1254 I.I.I..III..
+1256 .I.I.II...II
+1258 .III..I.I.I.
+1260 I...II.I.I.I
+1262 ..I..III.III
+1264 II.II...I...
+1266 II.III..I..I
+1268 ..I...II.II.
+1270 II.II.I...I.
+1272 ..I..I.III.I
+1274 I...I.II.II.
+1276 .III.I..I..I
+1278 II.III..I..I
+1280 ..I...II.II.
+1282 WWWWWWWWWWWW
+
+1300 III.IIII.II.
+1302 I.II..I.I..I
+1304 II..I.II.II.
+1306 .III.I..II.I
+1308 I.I.I.I..II.
+1310 .I.III.II.II
+1312 III..II..I..
+1314 .I.II..II.II

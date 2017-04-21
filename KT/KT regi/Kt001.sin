@@ -1,0 +1,52 @@
+  1 C---------GYONGY FONASSAL KT-RA---------------(581TU)------KT001.SST-----
+ 10    START
+ 12    NP1=14     C:MINTA
+ 13    NP2=13.5   C:1/1-ES PASSZE
+ 15    NP4=11.5   C:LEVALASZTAS
+ 50    YG:6/25;
+ 51    WM=15
+ 59 << S:R-R/R-0;                      Y:2/5;      NP4-4  V0    ML    S1 S2
+ 60 >> S:R-R/R-R;                                               ML    S1 S2
+ 61 << S:R-R/R-0;                                               ML    S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP1-1        ML    S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:2;                     ML T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1   ML T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP2-2  V#    ML T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/2;             V# V0 ML T1 S1   
+ 71 << S:DI.-0/0-D.I;                  Y:2/5;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;            Y:2/5;           V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+100    JA1=1100
+101    JA2=1101
+106    FA=52-66
+108    FB=31-66
+110    PA:1:<JA1>;
+112    PM:<A> 6:FA 4FB;
+114    NPJ1:Z=12.0 *=14.5 +=14.5 I=14.5 T=14.5 .=14.5 Y=14.5;
+140 << S:DI.-D.I/DI.-D.I/UVNAW;                 Y:2/5;               S1 S2 T2
+160 >> S:U^NNAW/AW-NAW/AW-*+IT.Y%Z(J1);                 NP1-1     T1 S1 S2 
+180 <> S:AW-NAW(1)/AW-*+IT.Y%Z(J1);                               T1 S1 S2
+190    VJA^0
+200    RBEG*RS1
+210 << S:AW-NAW(1)/AW.-*+IT.Y%Z(J1)/.(8.5)-0/UVNZ.Y; Y:2/5/0;     T1 S1 S2 T2
+220 >> S:U^NZ.Y/AW(1)-Z*T.Y(1)/UVNZ*.TY;             Y:2;     VL3 T1 S1    T2
+225    PK^:<JA1>:<JA2>;
+230 << S:U^NZ.Y/AW-.GB*I+%Z(J1)/0-.(8.5)/UVNZB+;     Y:2/0;   VR1 T1 S1 S2 T2
+235    PK^:<JA1>;
+240 >> S:U^NZ*TY./AW-NAW(1)/AW-*+IT.Y%Z(J1)/UVNNAW;  Y:5/2;   VR3 T1 S1 S2 T2   
+250 <> S:U^NNAW/AW-NAW(1)/AW-*+IT.Y%Z(J1);                    V0  T1 S1 S2
+260 >> S:AW-NAW(1)/AW+-*+IT.Y%Z(J1)/+(8.5)-0/UVNZ*;  Y:5/2/0;     T1 S1 S2 T2
+270 << S:U^NZ*/AW(1)-Z*T.Y(1)/UVNZ*.TY;              Y:5;     VR3 T1 S1    T2
+275    PK^:<JA1>:<JA2>;
+280 >> S:U^NZ*/AW-.GB*T+%Z(J1)/0-+(8.5)/UVNZG.;      Y:5/0;   VL1 T1 S1 S2 T2
+285    PK^:<JA1>;
+290 << S:U^NZ*TY./AW-NAW(1)/AW-*+IT.Y%Z(J1)/UVNNAW;  Y:2/5;   VL3 T1 S1 S2 T2
+300    GOSUB 250
+310    REND
+320    GOSUB 180*4
+330    END
+1100 6A12(WZ)3W3*+II3T3I.YYWW12(WZ)W7A
+1101 33X.GGIYTT*IIYTBB+34X

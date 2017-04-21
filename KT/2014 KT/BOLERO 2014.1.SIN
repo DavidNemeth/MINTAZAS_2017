@@ -1,0 +1,167 @@
+    1 C 
+   1 C  
+   1 C                         
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I GOZ   I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3/4U   I 2*15/1 I 0.35KG*  I         I          I       I       I         I     I      I       I     I 
+C BOLERO I 1*TX   I *900=315 I  140    I    12    I  60   I 530   I  850    I 320 I  26' I 738   I     I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+
+  10 NP4=13.0   C:LEVALASZTAS
+  11 NP2=11.0   C:BEKEZDES,1/1
+  12 NP3=11.0            C 1/1
+
+  14 NP1=14.6        C SLAG,CSIPKE
+  20 NP7=13.6              C:2SZVCS:E         
+  22 NP8=14.5              C:2SZVCS:H         
+
+  40 START
+  50 YG:6/256;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  55 C***********************************DB:(20 KOMPLETTHEZ)*****TOUREN:************MIN:********
+C    --------XXL BOLERO:-----
+  60C IF #100=55 RS17=50  C PANT                                                   2'
+  61C IF #100=68 RS17=3   C TTT                                 
+  63C IF #100=59 RS17=4   C UUUU 3/4U                            
+                                                                                                                                                                                                        
+C      -------OVES TOP:-----------------
+  73C IF #100=50 RS17=2   C TT-TT           29'
+  75C IF #100=35 RS17=5   C UUUUU 3/4U    
+
+C************************************************************
+ 100 C**2LUSI+1TX******RS18=0:U-H***RS18=1:E (PASSZE NELKUL)************************
+ 102 C************************************************************************KESZEN:***SZABVA:***VASALVA:
+ 104 IF RS17=3  RS19=3  RS1=5 RS2=6     C 25'TTT  2XL BOLERO
+ 106 IF RS17=4  RS19=4  RS1=3 RS2=6     C 14'UUUU 3/4 U
+
+ 108 IF RS17=2  RS19=2  RS1=7 RS2=6     C 25'TT-TT OVES KK
+ 110 IF RS17=5  RS19=5  RS1=3 RS2=6     C 14'UUUUU RU
+
+  
+ 180 C************581TU**************************************************************
+ 182 JA1=1000(1000-1006)  C 1/1 ES 2SZVCS
+ 184 PA:1:<JA1>;
+ 186 FC=1-2;          
+ 188 PM:<.>8:II <FC> 574:II<.>;
+ 190 C********************************************************************************
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0        S1
+ 214 << S:0-DI./D.I-0;               Y:2/5;     NP2-2 VU           S1 S2
+ 216 >> S:D.I-DI./D.I-DI.;                                   S1 S2
+
+ 218 REP*1
+ 220 << S:D.I-DI.;                                    VU           S1 S2
+ 222 >>                                               VU           S1 S2
+ 224 REPEND
+
+ 300 C ******************2SZV. CSIPKE **************************
+ 302 VJA^0
+ 304 WM=18
+ 306 << S:D.I-DI./D.I-DI./UVS.*;     NP7-8      S1 S2 T2
+ 308 >> S:U^S N./.-N./.-N./UVS<1->NA;         VL1       T1 S1 S2 T2
+ 310 REP*1 C***
+ 312 << S:U^S N./.-N./.-N./UVS<1->NY;  Y:5/2; V0        T1 S1 S2 T2
+ 314 >> S:U^S N./.-N./.-N./UVS<1->NA;         VL1       T1 S1 S2 T2
+ 316 REPEND
+ 318 << S:U^SN./.-N./.-N./UVS<1->.*;             V0     T1 S1 S2 T2
+ 320 REP*1
+ 322 >> S:.*-IY;             Y:5/2;  VU   NP2-2     S1 S2
+ 324 <<                              VU             S1 S2
+ 326 REPEND
+ 328 >> S:.*-IY/.*(4)-IY(4)/UVSN.*;                    S1 S2 T2
+
+ 330 IF RS17=50 END C$$$$$$$$$$$ PANT $$$$$$$$$$$$
+
+ 340 C***** MINTA *******581TU**************************************************************
+ 342 JA1=1100(1100-1132)  C 
+
+ 346 IF RS19=2 FA=6-285;                    PM:<.>7:IIFAII.IIFAII; C*2LAP TOP TESTHEZ OLDALVARRAS NELKUL
+
+ 348 IF RS19=3 FA=5-191;                    PM:<.>7:3(IIFA)I;     C*3
+ 350 IF RS19=3 FA=5-191;                    PM:<.>7:3(IIFA)I;     C*3
+
+ 352 IF RS19=4 FB=51-190;                   PM:<.>7:4(IIFB)I;     C*4
+ 354 IF RS19=4 FB=51-190;                   PM:<.>7:4(IIFB)I;     C*4
+
+ 358 IF RS19=5 FC=6-114;                    PM:<.>7:I4(FCII.II)FCII;    C*5
+
+ 359 IF RS19=0 FC=1-10;                     PM:<.>8:I <FC> 575:I<.>;
+C****************************************************************************************************
+ 360 WM=18
+ 362  RBEG*RS1 C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 364 << S:U^SN./.-N./.-N./UVS.;   NP1-1   Y:5/2;   T1 S1 S2 T2
+
+ 366  REP*1 C************ SLAG*************SUMM 12 SOR
+ 368 >> S:.-N.;        VU       S1 S2
+ 370 <<                VU       S1 S2
+ 372  REPEND
+
+ 374 REP*3 C****************** CSIPKE**************
+ 376 <> S:<1->.-IAY/.-IAY/UVSAY;           V0       S1 S2 T2
+ 378 WM=0
+ 380 <> S:U^SA;                            VL1    T1
+ 382 <> S:U^SY;                            VR1    T1
+ 384 WM=18
+ 386 REPEND
+
+ 388  REP*2 C*************SLAG**************************
+ 390 <> S:<1->.-I/.-I;                 V0  VU        S1 S2
+ 392  REPEND
+
+ 400 GOSUB 374-386 C CSIPKE
+ 402 GOSUB 390*4   C SLAG
+ 404 GOSUB 374-386 C CSIPKE
+ 406 GOSUB 390*2  C SLAG
+ 408 REND C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ 420 RBEG*RS2 C*************SLAG**************************
+ 422 << S:.-N.;                     VU        S1 S2
+ 424 >>                             VU        S1 S2
+ 426 REND
+ 428 << S:.-N./.-N./UVSD.I;;                  S1 S2 T2
+ 430 >> S:U^SDI./D.I-DI./D.I-DI.;   NP2-2  T1 S1 S2
+ 434 << S:D.I-DI.;                  VU        S1 S2
+ 442 >> S:D.I-DI./D.I-DI./UVSDI.;   NP4-4    S1 S2 T2
+ 444 END
+
+ 999 <> W0 VU S0
+
+1000 *Y
+1002 A*
+
+1000 *Y
+1002 *A
+1004 Y*
+1006 A*
+
+1100 IIIIIIIIII
+1102 IIIIIIIIII
+1104 IIIAIIYIII
+1106 IIAAIIYYII
+1108 IAAAIIYYYI
+
+1110 I*IIIIII*I
+1112 I**IIII**I
+1114 I***II***I
+1116 I***II***I
+1118 I**AIIY**I
+1120 I*AAIIYY*I
+1122 IAAAIIYYYI
+
+1124 I*IIIIII*I
+1126 I**IIII**I
+1128 I**AIIY**I
+1130 I*AAIIYY*I
+1132 IAAAIIYYYI
+
+
+
+

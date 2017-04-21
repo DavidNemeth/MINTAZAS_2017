@@ -1,0 +1,89 @@
+   1 C UA. MINT A FONOTT BUKLE, CSAK VAK SZEMEKKEL.-SLAG PASSZEVAL
+  10 C
+  14   NP1=14.8            C:MINTA H     15.0
+  15   NP6=14.2            C:MINTA E     14.3
+  16   NP2=11.8            C:BEKEZDES
+  18   NP3=13.8            C:SLAG PASSZE 13.8
+  19   NP7=14.2            C:SLAG H-U    14.4
+  20   NP8=14.2            C:BORDAS H-U  
+  21   NP4=13.2            C:LEVALASZTAS
+  22   NP5=14.5            C:LEVALASZTAS
+
+  40  START
+  50 YG:6/256;
+  52 WM=16;WMI=7
+  54 << S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4   VU V0	ML      S1 S2
+C***************************************************
+  68 C IF #100=118  RS17=3          C  E  1FONAS,1BORDA
+  70 C IF #100=12   RS17=4          C  H  6*2 BORDAS
+  72 C IF #100=13   RS17=5          C  U  6*2 BORDAS
+C***************************************************
+  86 IF RS17=3  RS1=35              C  E
+  88 IF RS17=4  RS1=80              C  H 
+  90 IF RS17=5  RS1=65              C  U
+C***************************************************
+
+ 100 >> S:D.I-DI.;                    Y:5;                      ML      S1
+ 102 << S:U^ND.I/DI.-D.I;        	                              ML   T1 S1
+ 104 >> S:U^NDI./0-R/R-R;             Y:2/6;                    ML   T1 S1 S2
+ 106 << S:0-R/R-0;		                  Y:6/0;            	       ML      S1 S2
+ 108 >> S:R-R;		                      Y:5;        NP2-2                 S1
+ 110 Y:5/2/2/5;
+ 112 REP*1C4
+ 114 << S:0-R/R-0;		                          	   NP3-3                 S1 S2
+ 116 >> S:0-R/R-0;                                                      S1 S2
+ 118 REPEND
+
+ 120 JA1=1000
+ 122 PA:<JA1>;FA=1-8;FB=1-16;FC=9-16
+ 130 IF RS17=3 PM:<.>7:3(9I 7FBFA**9I4.);
+ 132 IF RS17=4 PM:<.>7:3(9I 15FC **9I4.);  GOTO 500
+ 134 IF RS17=5 PM:<.>7:4(9I 10FC **9I4.);  GOTO 500
+ 136 VJA^0
+ 138 << S:0-R/R-0/UVS.*;		           Y:5/2;                S1 S2 T2
+ 140 >> S:U^SN.*/.*-N.*/.*-N.*;             NP6-1   VU  T1 S1 S2 
+ 142 RBEG*RS1 C***  FONASOK SZAMA  ***OTBW+G *************************
+ 143 << S:.*-N.*;                                   V#     S1 S2
+ 144 >>S:.*-N.*/.*-N.*/UVNI;                               S1 S2 T2
+ 145 WM=14
+ 146 << S:U^NI/.*-IBW+G/0-G(10.5)/UVNI; Y:2/0;  VL1     T1 S1 S2 T2
+ 147 WM=0
+ 148 >> S:UVNW+G;                               V0               T2
+ 149 WM=12
+ 150 << S:U^NI/.*-IOTBW(1)/0-O(10.5)/UVNI; Y:5/0; VR1     T1 S1 S2 T2
+ 151 WM=0
+ 152 >> S:U^S*/*-IW+G/UVNOTB;     Y:0;  NP2-2 V0        T1 S1    T2
+ 153 << S:U^SOTB;                             VL3       T1
+ 154 >> S:U^SW+G;                             VR3       T1
+ 155 << S:U^SI/N.-0/UVS*;            Y:0;     V0        T1 S1    T2
+ 156 WM=16
+ 157 >> S:.*-N.*;                    Y:5/2; NP6-1  V#      S1 S2
+ 158 << S:.*-N.*;                    Y:5/2; NP6-1  V#      S1 S2
+ 159 >>                                            V#      S1 S2
+ 170 REND C******************** ***OTBW+G *******************************
+ 172 << S:.*-N.*;                                  V#      S1 S2 
+ 174 >> S:.*-N.*/.*-N.*/UVSDI.;                            S1 S2 T2
+ 176 << S:U^SD.I/DI.-D.I/DI.-D.I;         NP4-4         T1 S1 S2
+ 178 >> S:DI.-D.I/DI.-D.I/UVSD.I;                          S1 S2 T2
+ 180 END
+
+ 500 C**H-U*SLAG VAGY 2*6 BORDAS****
+ 505 << S:0-R/R-0/UVS.*;		        Y:5/2;                  S1 S2 T2
+ 510 >> S:U^SN.*/.*-N.*/.*-N.*;            NP7-7   VU  T1 S1 S2 
+ 515 RBEG*RS1 C***  SLAG*****
+ 520 << S:.*-N.*;  VU     S1 S2
+ 525 >>            VU     S1 S2
+ 530 REND
+ 532 << S:.*-N.*;                                VU      S1 S2 
+ 534 >> S:.*-N.*/.*-N.*/UVSDI.;                          S1 S2 T2
+ 536 << S:U^SD.I/DI.-D.I/DI.-D.I;       NP4-4         T1 S1 S2
+ 538 >> S:DI.-D.I/DI.-D.I/UVSD.I;                        S1 S2 T2
+ 540 END
+
+
+
+1000 **OTBW+G**IIIIII
+
+
+
+

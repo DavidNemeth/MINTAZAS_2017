@@ -1,0 +1,45 @@
+C 600 C 1/1 BEKEZDES, MASNI, A VEGEN 1/1
+
+C KISEBB MASNI
+C A 24-ESNEL KISEBB GOMB MEGY BELE CSAK
+ 600 C UA CSAK A SZELET JAC.-BOL KOTI, IGY NEM SZAKITJA
+
+ 608 NP4=12.4    C:LEVALASZTAS,1/1
+ 609 NP14=11.0   C:1/1             
+ 610 NP10=10.0   C:BEKEZDES,REX  11.0 10.5 10.0
+ 612 NP12=14.4   C:SLAG GOMBLYUK ELOTT
+ 614 NP13=14.0   C:SLAG PASSZE
+ 616 NP11=6.0    C:GOMBLYUK
+618  START 
+620  YG:6/256;
+ 622 WM=24
+624  << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 626 JA1=1980; C1980 ....AIA
+ 628 PA:<JA1>; 
+ 630 FA=2-7; C FA=1-7 VAGY 2-7;
+ 632 PM:6+.<FA>573:2.<+>; C*581TU
+ 634 >> S:D.I-DI./UVN+.I;	           	Y:2;                     	    S1    T2
+ 636 << S:U^NA/+.I-A;                                            T1 S1
+ 638 >> S:+.I-A;                      Y:5;                VU VR1    S1
+ 640 << S:+.I-0/UVNA;                             NP-0              S1    T2
+ 642 >> S:+.I-.I;                     Y:6;                VU V0        S2
+ 644 << S:+.I-0/0-+.I;                 Y:6/0;              VU        S1 S2
+ 646 >> S:+.I-.I/+.-0;                 Y:5/2;      NP10-10 VU        S1 S2
+ 648 << S:+-./+.-.;                   Y:2/5;               VU       S1 S2
+ 650 >> S:.+-./+.-.;                   Y:5/2;               VU       S1 S2
+ 652 << S:.+-./+.-.;                                        VU       S1 S2
+
+ 654 >> S:.+-./+.I-.I/UVSDI.;                                         S1 S2 T2
+ 656 << S:U^SD.I/DI.(14.0)-D.I(14.0)/DI.(14)-D.I(14);     T1 S1 S2
+ 658 >> S:DI.-D.I;                                     VU    S1 S2
+ 660 REP*1
+ 662 <<       VU   S1 S2
+ 664 >>        VU  S1 S2
+ 666 REPEND
+ 668 <<       VU   S1 S2
+ 670 >> S:DI.-D.I/DI.(4)-D.I(4)/UVSD.I;      S1 S2 T2
+ 672 END
+
+ 999 <> W0 S0
+
+1980 4.AIA

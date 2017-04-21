@@ -1,0 +1,153 @@
+   1 C   ESZKIMO
+   2 C  KAGYLOS KK. U-H: 1SZV. KREPP  RAJZOK4/MADONNA
+   3 C------------------------------------------------
+   4 C J4:LEVALASZTAS             
+   5 C J3: CSIPKE ALUL
+   6 C J2:PASSZE
+   7 C  1: CSIPKE FELUL
+   8 C B2:BEKEZDES
+   9 C B3:BAL-BAL KREPP
+  10 C------------------------------------------------
+  40 START        
+  50 YG:6/256;
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  60 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML          S2 T2
+  64 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  66 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  68 >> S:R-R;                        Y:5;        NP2-2          ML       S1
+  70 Y:2/2/5/5;
+  72 REP*1
+  74 << S:R-0;		                                NP2-02           S2
+  76 >> S:0-R;		                                NP0-             S1
+  78 REPEND
+  80 << S:R-0;                                  NP-0             S2
+  86 JA1=1160(1154-1160); C*PASSZE
+  87 JA2=1218(1204-1218); C**KREPP**
+  88 PA:1:<JA2>1:<JA1>;
+  90 C********************************************************************************
+ 102 IF RS19=2 FA=2-188;                    PM:<.>9:2(IIFA)II;            C 2LAP
+ 104 IF RS19=3 FA=2-188;                    PM:<.>9:3(IIFA)II;            C 3LAP
+ 105 IF RS19=4 FA=6-145;                    PM:<.>9:4(IIFA)II;            C 4LAP
+ 110 C********************************************************************************
+ 111 >> S:0-R/UVN.;		                             ML                 S2    T2
+ 125 REP*4 
+ 130 << S:U^NN./.-N./UVNI;                                     T1    S2 T2
+ 135 >> S:UVNA;                             NP0-0        VR1               T2
+ 140 << S:UVNY;                             NP0-0        VL1               T2
+ 145 >> S:<1->R-0;                                 V# V0       S2
+ 150 REPEND
+ 155 JA1=1152(1066-1068);
+ 160 VJA^0
+ 175 Y:2/2/5/5;
+ 177                                       NP3-3
+ 180 REP*21 C******ALSO 1SZV.CSIPKE******
+ 185 << S:U^N<1-2->N./.-N./UVNNY.;                        V0      T1 S2    T2
+ 190 >> S:U^N<1-2->N./.-N./UVNNA.;                        VL1     T1 S2    T2
+ 195 REPEND
+ 206 RBEG*RS1 C******1SZV. KREPP **********
+ 208 << S:U^N<1-2->N./.-N./UVNN.;                         V0      T1 S2    T2
+ 210 >> S:U^N<2->N./.-N./UVNN.;           NP3-3                   T1 S2    T2
+ 220 REND
+ 222 IF RS2=0 GOTO 250 C** KREPP H-U **
+ 228 Y:2/2/5/5;
+ 230 JA1=1064(1004-1042);
+ 233 NP1-1
+ 235 RBEG*RS2 C***************** FELSO CSIPKE*****************
+ 240 GOSUB 185-190
+ 245 REND
+ 250 << S:U^N<1-2->N./.-N./.-N./UVNN.;     Y:2/5;  NP4-4  V0      T1 S1 S2 T2
+ 255 >> S:U^NDI./D.I-DI./D.I-DI./UVNDI.;                          T1 S1 S2 T2
+ 260 END
+1002 180I
+1004 9(.Y5I3.5I3Y..)
+1006 9(..3IA3.5A5I.)
+1008 9(3.3I5.4I5Y)
+1010 9(..IA3I3.4A4I..)
+1012 9(.II..YII..5I4Y.)
+1014 9(IA4.3I11.)
+1016 9(I3.I..Y12I)
+1018 9(3.AI3.3I7.IA)
+1020 9(..3IY3.Y9I.)
+1022 9(.3AI2(II3.).IA..)
+1024 9(5I3Y3.Y5I3.)
+1026 9(4A5I3.3IA3.A)
+1028 9(.4I5Y3.3I4.)
+1030 9(4A4I4.IA3I3.)
+1032 9(5I4Y..II..YII..)
+1034 9(10.IA4.3I.)
+1036 9(11I3.I..YII)
+1038 9(I7.IA3.AI3.II)
+1040 9(9I3.3IY3.Y)
+1042 9(II4.IA3.3A3I3.)
+1044 9(.Y5I3.5I3Y..)
+1046 9(..3IA3.5A5I.)
+1048 9(3.3I5.4I5Y)
+1050 9(.2(.II)3.4A4I..)
+1052 9(.II.X.II..5I4Y.)
+1054 9(II.3X.II11.)
+1056 9(I.5X.12I)
+1058 9(.7X.II7.II)
+1060 9(9X.9I.)
+1062 9(10X.I5.I.X)
+1064 9(11X.5I.XX)
+1066 180X
+1068 180X
+1070 9(12X4.4X)
+1072 9(11X.4I.3X)
+1074 9(10X.6I.XX)
+1076 9(9X2(.3I.)X)
+1078 .8(7X.3I4.3I.X)7X.3I4.3I.
+1080 I.8(5X.3I.2(..I)II.X)5X.3I.2(..I)II
+1082 II.8(3X.3I3.AI3.3I.X)3X.3I3.AI3.II
+1084 3I.8(X.3I3.3IY3.3I.X)X.3I3.3IY3.I
+1086 4I8(.3I3.3A3I3.3I.).3I3.3A3I3.
+1088 9(.6I3.5I3Y..)
+1090 9(..4I3.5A5I.)
+1092 9(3.3I5.4I5Y)
+1094 9(..5I3.4A4I..)
+1096 9(.3IY3I..5I4Y.)
+1098 9(I3(IA)II11.)
+1100 9(I3(IY)13I)
+1102 9(5(AI)I7.II)
+1104 9(5(YI)10I)
+1106 9(6(AI)5.IAI)
+1108 9(6(YI)6IYI)
+1110 9(7(AI)IIAIAI)
+1112 9(7(YI)IIYIYI)
+1114 9(6(AI)6IAI)
+1116 9(5(YI)3I..3IYI)
+1118 9(5(AI)II4.4I)
+1120 9(4(YI)3I.2(..I)II)
+1122 9(I3(IA)3I3.AI3.II)
+1124 9(IIYIY4I3.3IY3.I)
+1126 9(4IA3I3.3A3I3.)
+1128 9(.6I3.5I3Y..)
+1130 9(..4I3.5A5I.)
+1132 9(3.3I5.4I5Y)
+1134 9(..IIAII3.4A4I..)
+1136 9(.3IY3I..5I4Y.)
+1138 9(I3(IA)II11.)
+1140 9(I3(IY)13I)
+1142 9(5(AI)I7.II)
+1144 9(5(YI)10I)
+1146 9(6(AI)5.IAI)
+1148 9(6(YI)6IYI)
+1150 9(7(AI)IIAIAI)
+1152 9(7(YI)IIYIYI)
+1154 YIIIIIIIAI
+1156 YYIIIIIAAI
+1158 YYYIIIAAAI
+1160 YYYYIAAAAI
+1162 3I2(II.)2(65I.I)39I.7I
+1202 WWWWWWWWWWWW
+1204 I...II.II...
+1206 .II.I...I.II
+1208 I..I.III.I..
+1210 II..I.I.I..I
+1212 ..II.I.I.II.
+1214 I..III.III..
+1216 .II...I...II
+1218 .III..I..III
+1220 WWWWWWWWWWWW

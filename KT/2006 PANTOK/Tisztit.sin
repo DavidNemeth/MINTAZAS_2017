@@ -1,0 +1,33 @@
+C TISZTITAS:
+C   KT:2007.06.30.
+C CNCA:2007.06.30.
+C  PKT:2007.06.30.
+C
+   1 C TISZTITO PROGRAM ES TUAGYVALTO MOTOR TESZT (VK2?)
+  10 C A CNCA-N:CP TISZTIT
+  11  NP1=14.4;    C **KT**
+  12  NP4=12.8;    C **KT**
+  40 START
+  50 YG:/25;
+  52  WM=17        C **KT**
+  54 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4  ML V0      S1 S2
+  56 >> S:DI.-D.I/D.I-DI./UVNDI.;                  ML           S1 S2 T2
+  58 << S:DI.-D.I/UVND.I;           Y:2;           ML              S2 T2
+  60 >> S:R-0;                              NP1-0  ML           S1
+  62 <<                             Y:5;    NP-0   ML           S1
+  64 >>                                     NP-0   ML           S1
+  66 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4  ML           S1 S2
+  68 >> S:DI.-D.I/D.I-DI.;                         ML           S1 S2
+  70 << S:U^ND.I/DI.-D.I;           Y:2;           ML        T1    S2
+  72 >> S:U^NDI./0-R;                       NP0-1  ML        T1 S1
+  74 << S:0-R;                      Y:5;    NP0-   ML           S1
+  76 >>                                     NP0-   ML           S1
+  78 << S:DI.-D.I;                  Y:2;    NP4-4  ML           S1
+  80 >> S:D.I-DI.;                                 ML           S1
+  81  WM=0
+ 82C RBEG*RS1 C***************TUAGY FINOMBEALLITO TESZT ************** HA CSAK TISZTITANI AKAROK 82-88 KICEZ.
+ 84C << S:0-0;                      Y:0;    NP0-0                S1
+ 86C >>                                     NP0-0    VKA>10  VU  S1
+ 88C REND     C*******************************************************
+  90 END
+ 999 <> W0 S0

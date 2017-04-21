@@ -1,0 +1,236 @@
+ 1C FFI. KAROMINTA - 3 SZINU MINTA    2000FT+HIMZES
+
+1C-----------------------+------------+------------+------------+-------------+
+1C  6 ELVALASZTO SZAL      6  GUMI 
+1C-----------------------+------------+------------+------------+-------------+
+1C  5  2XHB ALAP PIROS     5  1XHB ALAP   PIROS
+1C-----------------------+------------+------------+------------+-------------+
+1C                         4  1XHB 2.SZIN FEHER (VEKONY CSIK.EBBOL FOGY A LEGKEVESEBB)
+1C-----------------------+------------+------------+------------+-------------+
+1C                         3  1XHB 1.SZIN KEK
+1C-----------------------+------------+------------+------------+-------------+
+1C                         2  2XHB ALAP   PIROS (CSAK A PASSZEHOZ)
+1C-----------------------+------------+------------+------------+-------------+
+1C
+  10   NP1=10.0;           C:3 SZINU JAC.  10.0
+  12   NP3=10.4;           C:FELSZOVET     10.2 10.5
+  14   NP2=9.6             C:BEKEZDES,1/1  10.4 10.2  10.0 9.8
+  20   NP4=12.8            C:LEVALASZTAS   12.8
+  40 START
+  50 YG:56/23456;	
+  55 WM=16;WMI=7
+C-----------------------+------------+------------+------------+-------------+
+  70 C  IF #100=5   RS17=0   RS18=0      C E   E   70CM+7CM.PASSZE  101'   VAGY: RS18=0: Y:4/3/5;
+  71 C  IF #100=4   RS17=0   RS18=1      C E   E   70CM+7CM.PASSZE  101'   VAGY: RS18=1: Y:3/4/5;
+  72 C  IF #100=9   RS17=1               C H   T   70CM+7CM.PASSZE   30'
+  74 C  IF #100=8   RS17=2               C U   U   58CM+7CM.PASSZE      23'
+  76 C  IF #100=6   RS17=50              C 1/1 NYAK
+C---E-H:-----------FELSZOVET:RS1=2.26/1CM---------+------------+------------+------------+-------------+
+  80   IF RS17=0   RS1=173  RS19=0      C E  78CM T   71CM+7CM.PASSZE  3 SZINU NORVEG
+  82   IF RS17=1   RS1=134  RS19=1      C H  78CM T   71CM+7CM.PASSZE  FELSZOVET
+C-----------------------+------------+------------+------------+-------------+
+  80   IF RS17=0   RS1=181  RS19=0      C E  81CM T   74CM+7CM.PASSZE  3 SZINU NORVEG
+  82   IF RS17=1   RS1=140  RS19=1      C H  81CM T   74CM+7CM.PASSZE  FELSZOVET
+C-----------------------+------------+------------+------------+-------------+
+  80   IF RS17=0   RS1=193  RS19=0      C E  86CM T   79CM+7CM.PASSZE  3 SZINU NORVEG
+  82   IF RS17=1   RS1=149  RS19=1      C H  86CM T   79CM+7CM.PASSZE  FELSZOVET
+C---UJJA:--RS1=1.9/1CM------------------+------------+------------+------------+-------------+
+  84   IF RS17=2   RS1=110  RS19=1      C U  65CM U   58CM+7CM.PASSZE  FELSZOVET  115  108
+  84   IF RS17=2   RS1=124  RS19=1      C U  72CM U   65CM+7CM.PASSZE  FELSZOVET
+C-----------------------+------------+------------+------------+-------------+
+  90 JA1=1001;PA:1:<JA1>;
+  92 FA=1-2; C 1001 IY
+
+C*****UJJA:581TU*****************************************************************************
+C---------3DB UJJA OSZTAS NELKUL:---------5.3*36=189TU-52CM.----
+  95 PM:<*>6:<FA>577:<*>; C 581TU
+C******E-H: WM%=-30**********FA:204.SOR MINDIG ALLANDO. A SZELESSEG 1 MINTAELEMMEL(36TU=2*5CM)NOVELHETO VAGY CSOKKENTHETO. IGY 1 LAPRA 18 TU JUT-KB.5CM.***
+C---------2DB TEST OSZTAS NELKUL:----------2LAP OSZTAS NELKUL:2*(6*36=216TU-60CM.)----
+
+  95 PM:<*>6:<FA>442:<*>447:<W>; C 446TU   WM%=-20
+
+C---------2DB TEST OSZTAS NELKUL:----------2LAP OSZTAS NELKUL:2*(6.5*36=234TU-65CM.)----
+  95 PM:<*>6:<FA>478:<*>483:<W>; C 482TU   WM%=-17
+C---------2DB TEST OSZTAS NELKUL:----------2LAP OSZTAS NELKUL:2*(7*36=252TU-70CM.)----
+  95 PM:<*>6:<FA>514:<*>519:<W>; C 518TU   WM%=-11
+C**********************************************************************************
+C  95 PM:1:<FA>; C HA TELI TUAGYON AKLAROK SPF-ET KOTNI
+C!!!!!!!!!!AZ ELEJE PM-ET A 204.SORBAN IS BE KELL ALLITANI_!!!!!!!!!!!!!!!!!
+
+  99 << S:*I-Y/*Y-*I;        Y:2/5;         NP4-4   VU V0      S1 S2
+ 100 >>	S:*I-Y/UVS*Y;   	      Y:2;                              S1    T2
+ 102 <<	S:U^SI/*Y-I;		              			                          T1 S1
+ 104 >> S:U^SY/*-I/*I-I;          Y:5/6;                    VR1  T1 S1 S2
+ 106 << S:*-I/I-0;                Y:6/0;                    VU      S1 S2
+ 108 >>	S:*Y-I;		                 Y:2;	            NP2-2 V0 VU      S1
+ 110 << S:*-I/*Y-0;               Y:6/2;                    VU      S1 S2
+ 112 >> S:*-I;                                              VU         S2
+ 114 << W0 S0
+
+C--1/1 PASSZE-----------2SZV.:Y:5/2;----------------------------------------------
+ 116 >> S:*Y-I;                   Y:5/2;                    VU      S1 S2
+ 118 WM=14
+ 120 RS2=9
+ 121 IF RS17=50 RS2=10
+ 122 RBEG*RS2
+ 124 << S:*Y-I;                                             VU      S1 S2
+ 126 >>                                                     VU      S1 S2
+ 128 REND
+ 130 << S:.*Y-I/.*Y-I/UVSI;                                         S1 S2 T2
+C--------------------------------------------------------------------------
+
+ 132 >> S:NW-IY;            NP1-1   Y:2;                                  S1
+ 140 IF RS17=50 END
+ 150 IF RS19=1 GOTO 400 C FELSZOVET
+
+ 200 JA2=1146(1004-1146);
+ 202 PKV:1:<JA2>;
+ 204 FA=30-65; PM:1:<FA>447:<W>;                   C V.30-65 V.43-7 V.13-48 V.48-13 MINDEGY
+ 300 NP1-1
+ 302 IF RS18=0 Y:4/3/5;
+ 304 IF RS18=1 Y:3/4/5;
+
+C***VAGY: S1 S2 ***************************************
+ 306 RBEG*RS1
+ 308 WM=12
+ 309 C
+ 310 << S:<2->.-I/I-Y;                   S1 S2
+ 312 WM=0
+ 314 >> W0 S0
+ 316 WM=10
+ 318 << S:+-I;                            S1
+ 320 WM=12
+ 322 >> S:<2->.-Y/I-I;                   S1 S2
+ 324 WM=0
+ 326 << W0 S0
+ 328 WM=10
+ 330 >> S:+-Y;                            S1
+ 332 REND
+C***************************************************
+C***VAGY: T1 S1 S2 ***************************************
+ 306 RBEG*RS1
+ 308 WM=12
+ 309 C Y:3/4/5; C A PETI KT-N JOBB T1-EN NEM JO A 4. MAGNES EZERT CSAK IGY MEGY:Y:3/4/5; 
+ 310 << S:<2->.-I/I-Y;                   S1 S2
+ 312 WM=0
+ 314 >> W0 S0
+ 316 WM=10
+ 318 << S:+-I;                            S1
+ 320 WM=12
+ 322 >> S:<2->.-Y/I-I/+-Y;             T1 S1 S2
+ 324 REND
+ 326 C
+ 328 C
+ 330 C
+ 332 C
+C***************************************************
+C***VAGY: T1 S1 S2 ***************************************
+ 306 RBEG*RS1
+ 308 WM=12
+ 309  Y:3/4/5; C A PETI KT-N JOBB T1-EN, A KT-N PEDIG EGYIK T1-EN SEM JO A 4. MAGNES EZERT CSAK IGY MEGY:Y:3/4/5; 
+ 310 << S:<2->.-I/I-Y/+-I;             T1 S1 S2
+ 312 >> S:<2->.-Y/I-I/+-Y;             T1 S1 S2
+ 314 REND
+ 316 C
+ 318 C
+ 320 C
+ 322 C
+ 324 C
+ 326 C
+ 328 C
+ 330 C
+ 332 C
+C***************************************************
+ 334 END
+
+ 400 C-------***  IY  ***------- FELSZOVET -------------------------------------
+ 402 NP3-3
+ 404 WM=15
+ 406 RBEG*RS1
+C VAGY:
+ 408 << S:0-NW/NW-NW;                    Y:5/2;             S1 S2
+ 410 >> S:0-NW/NW-NW;                                       S1 S2
+C VAGY:
+ 408 << S:0-IY/NW-IY;                  Y:5/2;             S1 S2
+ 410 >> S:*-IY/NW-IY;                                     S1 S2
+ 412 REND
+ 414 END
+
+
+ 999 <> W0 S0
+1001 IY
+1002 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1004 +.+++++++++++++++III+++++++++++++++.
+1006 +.+++++++++++++++III+++++++++++++++.
+1008 ++.+++++++++++++IIIII+++++++++++++.+
+1010 ++.+++++++++++++IIIII+++++++++++++.+
+1012 +++.+++++++++++IIIIIII+++++++++++.++
+1014 +++.+++++++++++IIIIIII+++++++++++.++
+1016 ++++.+++++++++IIIIIIIII+++++++++.+++
+1018 ++++.+++++++++IIIIIIIII+++++++++.+++
+1020 +++++.+++++++IIIIIIIIIII+++++++.++++
+1022 +++++.+++++++IIIIIIIIIII+++++++.++++
+1024 ++++++.+++++IIIIIIIIIIIII+++++.+++++
+1026 ++++++.+++++IIIIIIIIIIIII+++++.+++++
+1028 +++++++.+++IIIIIIIIIIIIIII+++.++++++
+1030 +++++++.+++IIIIIIIIIIIIIII+++.++++++
+1032 ++++++++.+IIIIIIIIIIIIIIIII+.+++++++
+1034 ++++++++.+IIIIIIIIIIIIIIIII+.+++++++
+1036 +++++++++.IIIIIIIIIIIIIIIII.++++++++
+1038 +++++++++.IIIIIIIIIIIIIIIII.++++++++
+1040 ++++++++II.IIIIIIIIIIIIIII.II+++++++
+1042 ++++++++II.IIIIIIIIIIIIIII.II+++++++
+1044 +++++++IIII.IIIIIIIIIIIII.IIII++++++
+1046 +++++++IIII.IIIIIIIIIIIII.IIII++++++
+1048 ++++++IIIIII.IIIIIIIIIII.IIIIII+++++
+1050 ++++++IIIIII.IIIIIIIIIII.IIIIII+++++
+1052 +++++IIIIIIII.IIIIIIIII.IIIIIIII++++
+1054 +++++IIIIIIII.IIIIIIIII.IIIIIIII++++
+1056 ++++IIIIIIIIII.IIIIIII.IIIIIIIIII+++
+1058 ++++IIIIIIIIII.IIIIIII.IIIIIIIIII+++
+1060 +++IIIIIIIIIIII.IIIII.IIIIIIIIIIII++
+1062 +++IIIIIIIIIIII.IIIII.IIIIIIIIIIII++
+1064 ++IIIIIIIIIIIIII.III.IIIIIIIIIIIIII+
+1066 ++IIIIIIIIIIIIII.III.IIIIIIIIIIIIII+
+1068 +IIIIIIIIIIIIIIII.I.IIIIIIIIIIIIIIII
+1070 +IIIIIIIIIIIIIIII.I.IIIIIIIIIIIIIIII
+1072 IIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIII
+1074 IIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIII
+1076 +IIIIIIIIIIIIIIII.I.IIIIIIIIIIIIIIII
+1078 +IIIIIIIIIIIIIIII.I.IIIIIIIIIIIIIIII
+1080 ++IIIIIIIIIIIIII.III.IIIIIIIIIIIIII+
+1082 ++IIIIIIIIIIIIII.III.IIIIIIIIIIIIII+
+1084 +++IIIIIIIIIIII.IIIII.IIIIIIIIIIII++
+1086 +++IIIIIIIIIIII.IIIII.IIIIIIIIIIII++
+1088 ++++IIIIIIIIII.IIIIIII.IIIIIIIIII+++
+1090 ++++IIIIIIIIII.IIIIIII.IIIIIIIIII+++
+1092 +++++IIIIIIII.IIIIIIIII.IIIIIIII++++
+1094 +++++IIIIIIII.IIIIIIIII.IIIIIIII++++
+1096 ++++++IIIIII.IIIIIIIIIII.IIIIII+++++
+1098 ++++++IIIIII.IIIIIIIIIII.IIIIII+++++
+1100 +++++++IIII.IIIIIIIIIIIII.IIII++++++
+1102 +++++++IIII.IIIIIIIIIIIII.IIII++++++
+1104 ++++++++II.IIIIIIIIIIIIIII.II+++++++
+1106 ++++++++II.IIIIIIIIIIIIIII.II+++++++
+1108 +++++++++.IIIIIIIIIIIIIIIII.++++++++
+1110 +++++++++.IIIIIIIIIIIIIIIII.++++++++
+1112 ++++++++.+IIIIIIIIIIIIIIIII+.+++++++
+1114 ++++++++.+IIIIIIIIIIIIIIIII+.+++++++
+1116 +++++++.+++IIIIIIIIIIIIIII+++.++++++
+1118 +++++++.+++IIIIIIIIIIIIIII+++.++++++
+1120 ++++++.+++++IIIIIIIIIIIII+++++.+++++
+1122 ++++++.+++++IIIIIIIIIIIII+++++.+++++
+1124 +++++.+++++++IIIIIIIIIII+++++++.++++
+1126 +++++.+++++++IIIIIIIIIII+++++++.++++
+1128 ++++.+++++++++IIIIIIIII+++++++++.+++
+1130 ++++.+++++++++IIIIIIIII+++++++++.+++
+1132 +++.+++++++++++IIIIIII+++++++++++.++
+1134 +++.+++++++++++IIIIIII+++++++++++.++
+1136 ++.+++++++++++++IIIII+++++++++++++.+
+1138 ++.+++++++++++++IIIII+++++++++++++.+
+1140 +.+++++++++++++++III+++++++++++++++.
+1142 +.+++++++++++++++III+++++++++++++++.
+1144 .+++++++++++++++++I+++++++++++++++++
+1146 .+++++++++++++++++I+++++++++++++++++
+1148 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1150 .......I.....................I......

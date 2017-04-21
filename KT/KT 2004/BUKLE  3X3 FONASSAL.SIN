@@ -1,0 +1,140 @@
+C (14) IDEIGLENESEN KIJAVITVA
+
+1C ZSEBES BUKLE 3X3: 8SOR/10LOKET VAK SZEMEKKEL (LEGBIZTONSAGOSSABB FONAS)
+1C 0.48KG
+1C 0.48KG=0.33KG+0.14KG
+1C H-U-NYAK-ZSEB:CP SLAG/CNCA2004
+1C                              E: RS17=0         H: RS17=1         U: RS17=2
+1C--------------------------+-----------------+------------------+----------------+
+1C 1 TOROK BUKLE+HB:   NPK=0          26              66            52
+1C         FEKETE      NPK=+0.2       
+1C         BORDO       NPK=0
+1C         FUZFA       NPK=-0.2
+1C         FARMERKEK   NPK=-0.2        
+1C         PADLIZSAN
+1C         OLAJZOLD
+1C         MOGYORO
+1C         S.KEK
+1C         PIROS       NPK=0
+1C         NYERS
+1C         VIZKEK
+1C         FEHER
+1C         BARACK      NPK=0 
+1C         ORGONA
+1C         KORALL
+1C   MOS OPTIKA:       NPK=+0.4     25               64              51
+1C--------------------------+-----------------+------------------+----------------+
+  10 NP1=14.2; NP9=14.2         C MINTA ELOL, H-U
+ 130 NPJ1:.=14.2 I=14.4 ;       C MINTA HATUL
+  12 NP4=12.6; NP10=12.6        C LEVALASZTAS
+  14 NP2=11.2; NP8=11.2         C 1/1
+  15 NP3=12.2;                  C 1/1 A PODROS NYAKHOZ
+  16 NP5=13.6                   C SLAG A PODROS NYAKHOZ
+  40 START
+  45 WM=20; WMI=7
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+
+C***************************************************************************
+  62  IF #100=18  RS17=3            C NYAK VAGY SP800
+  64C IF #100=14  RS17=0            C E
+  66  IF #100=14  RS17=1            C H
+  68  IF #100=6   RS17=2            C U
+  70 IF RS17=3 GOTO 816          C NYAK
+  72C IF RS17=0 RS1=26            C E
+  74 IF RS17=1 RS1=66            C H
+  76 IF RS17=2 RS1=52            C U
+C***************************************************************************
+
+  80 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  82 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  84 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  86 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  88 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  90 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  92 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  94 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  96 REP*4 C4
+  98 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+ 100 << S:DI.(2)-D.I/DI.-D.I;                             VU           S1 S2
+ 102 REPEND
+ 104 IF RS17>0 GOTO 400
+ 110 JA1=1104;
+ 112 PA:JA1;
+ 114 FA=6-184
+ 116 PM:<.>7:3(FA..);
+
+ 118 JA2=1600;
+ 120 PANP:1:JA2;
+ 122 PMNP:<.>7:3(FA..);
+ 150 C-----MINTA-----
+ 155 VJA^0
+ 160 >> S:DI.-D.I/DI.(8)-D.I/UVN.*;                        S1 S2 T2
+ 162 WM=22
+ 165 << S:U^NN.*/.*-N.*/.*-N.*;           Y:2/5;   NP1-1     T1 S1 S2
+ 170 RBEG*RS1 C***  FONASOK SZAMA  10/10...... ***OTBW+G*** ................................
+ 172 WM=22
+ 174 >> S:.*(1)-N.*(J1)/.*(9)-N.*(J1);   Y:2/5;  V0 VU          S1 S2
+ 176 << S:.*(1)-N.*(J1)/.*(1)-N.*(J1);              VU          S1 S2
+ 178 >> S:.*(1)-N.*(J1)/.*(9)-N.*(J1);              VU          S1 S2
+ 180 << S:.*(1)-N.*(J1)/.*(1)-N.*(J1)/UVNW+G;                   S1 S2 T2
+ 182 WM=18
+ 184 >> S:.*O-IOTB/O-0;                     Y:2/0;           S1 S2
+ 186 << S:.*W+G-IG/0-G/UVNOTB;                               S1 S2 T2
+ 188 WM=0
+ 190 >> S:U^NOTB;                            VL3         T1
+ 192 << S:U^NW+G;                            VR3         T1
+ 200 REND C******************** ...OTBW+G... *******************************
+ 202 >> S:.*(1)-N(J1).*/.*(9)-N.*(J1)/UVSDI.;  Y:2/5; V0              S1 S2 T2
+ 204 << S:U^SD.I/DI.-D.I;                   Y:2;  NP4-4       T1 S1
+ 206 >> S:DI.-D.I/UVSD.I;                                        S1    T2
+ 208 END
+ 400 C ***********H-U********
+ 404 WM=22
+ 416 PA:<I>;
+ 418 FA=7-182
+ 420 PM:<.>10:3(FA...);
+ 422 IF RS17=2 FA=1-135
+ 424 IF RS17=2 PM:<.>6:4(FA.);
+ 426 >> S:DI.-D.I/DI.(8)-D.I/UVN.;                         S1 S2 T2
+ 428 << S:U^NN./.-N./.-N.;           Y:2/5;   NP1-1     T1 S1 S2
+ 445 RBEG*RS1
+ 450 >> S:.-N./.(9)-N.;                         VU         S1 S2
+ 455 << S:.(1)-N./.-N.;                         VU         S1 S2
+ 460 REND C******************** ...OTBW+G *******************************
+ 465 >> S:.-N./.(9)-N./UVSDI.;                                   S1 S2 T2
+ 470 << S:U^SD.I/DI.-D.I;            Y:2;       NP4-4         T1 S1
+ 475 >> S:DI.-D.I/UVSD.I;                                        S1    T2
+ 480 END
+
+ 800 C************************  PODROS NYAK *********************
+ 802 NP5=13.6            C SLAG
+ 804 NP4=12.6; NP10=12.6  C LEVALASZTAS
+ 806 NP3=12.2;           C 1/1
+ 808 START
+ 810 WM=20; WMI=7
+ 812 YG:6/23456;
+ 814 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML   NP4-4 V0	VU      S1 S2
+ 816 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                    S1    T2
+ 818 <<	S:U^ND.I/DI.-D.I;		              			 ML                 T1 S1
+ 820 >> S:DI.-D.I;                   Y:5;    ML         VR1        S1
+ 822 << S:U^NDI.;                            ML                 T1
+ 824 >> S:DI.-D.I;                   Y:6;    ML         V0 VU      S1
+ 826 << S:0-D.I/R-0;                 Y:6/0;  ML            VU      S1 S2            
+ 828 >>	S:DI.-D.I;		                 Y:2;	        NP3-3    VU         S2
+ 830 << S:0-D.I;                     Y:6;    ML                    S1       C GUMIVAL
+ 832 >> S:0-D.I;                             ML                       S2    C GUMIVAL
+ 834 << S:U^NDI./0-R/0-R;            Y:5/2;       NP5-5         T1 S1 S2
+ 836 REP*3
+ 838 >> S:0-R;                                                     S1 S2
+ 840 <<                                                            S1 S2
+ 842 REPEND
+ 844 >> S:0-R/0-R/UVND.I;                                          S1 S2 T2
+ 848 << S:D.I-DI.;                   Y:5;         NP3-3            S1
+ 852 >> S:D.I-DI./UVNDI.;                                          S1    T2
+ 854 END
+1000 I..I
+1006 6I.31I2(56I.)29I.8I
+1104 20I**OTBW+G**5(17I**OTBW+G**I)20I
+1600 19.12I5(15.12I.)19.
+1900 5.*8(3.I6.)3.I4.*8(4.I5.)4.I3.*

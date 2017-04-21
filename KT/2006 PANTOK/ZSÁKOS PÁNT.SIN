@@ -1,0 +1,53 @@
+C EZ A JO
+C-----3 PAMUT:---------------------------------------
+  16 NP4=12.6               C LEVALASZTAS
+  20 NP11=14.4              C BEKEZDES  
+  22 NP15=14.2              C KORSLAG PIKO
+  24 NP12=10.0              C A ZSAKOCSKAK BEKEZDESE (2SOR HATUL)
+C-----2LUSI+1TX:---------------------------------------
+  16 NP4=12.5               C LEVALASZTAS
+  20 NP11=14.2              C BEKEZDES  
+  22 NP15=14.0              C KORSLAG PIKO
+  24 NP12=10.0              C A ZSAKOCSKAK BEKEZDESE (2SOR HATUL)
+C--------------------------------------------
+
+  40 START        
+  50 YG:6/256;
+  52 WM=26;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4  VKA>0  VU V0       S1 S2 CVKA>1
+
+ C********KORSLAG PIKO PASSZE***************************
+  80 JA1=1990;  C 1990 *+*+*AA
+  82 PA:<JA1>; 
+  84 FA=1-6; C VAGY
+  84 FA=1-7; C VAGY
+
+C************************************************************************
+  86 PM:8.<FA>546:<.>; C 553 TURE
+C************************************************************************
+  86 PM:8.<FA>574:<.>; C TELI TUAGYRA (581TU)
+C************************************************************************
+
+  88 >> S:D.I-DI./DI.-D.I/UVNDI.;                       VKA            S1 S2 T2
+  90 << S:DI.-D.I/UVND.I;             Y:5;	             VKA	           S1    T2
+  92 >> S:R-R;		                      Y:6;	                 VU            S2
+  94 << S:R-0/0-R;                    Y:6/0;                VU	        S1 S2
+  96 >> S:R-R;                        Y:5;    NP11-011      VU         S1
+  98 << S:0-NA/NA-0;                  Y:2/5;  NP15-15       VU         S1 S2
+  99 WM=31
+ 100 REP*2 C***PIKO***
+ 102 >> S:0-NA/NA-0;                  Y:5/2;                VU         S1 S2
+ 104 << S:0-NA/NA-0;                  Y:2/5;                VU         S1 S2
+ 106 REPEND
+
+ 108 >> S:0-R/R-0/UVN+*;              Y:5/2;            VKA            S1 S2 T2
+ 110 << S:0-N+/R-0;                   Y:2/5;  NP15-12      VU         S1 S2
+ 112 >> S:R-0/0-N*;                                        VU         S1 S2
+ 114 << S:R-0/0-R;                            NP15-15       VU         S1 S2
+ 116 >> S:0-R/R-0;                                          VU         S1 S2
+ 118 REP*3
+ 120 << S:R-0/0-R;                                       VKA VU        S1 S2
+ 122 >> S:0-R/R-0;                                       VKA VU        S1 S2
+ 124 REPEND
+ 126 END
+1990 *+*+*AA

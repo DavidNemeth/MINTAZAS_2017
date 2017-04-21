@@ -1,0 +1,166 @@
+1C HAROMSZOGES (R2-L2) 11'00
+1C JAC.:RAJZOK4/HAROMSZOGES
+1C                                          E-H:77CM        U: 
+1C 3 LUSIFIL                                 10-           -9
+1C--------------------------+------------+-------------+-----------+-----------+
+1C                        TUNIKA:            12            4
+1C                      NPK=0--0.2          12'10          5'40
+1C--------------------------+------------+-------------+------------+-----------+
+
+
+  10 NP1=14.2   C:MINTA E-H-U
+  11 NP14=12.2  C:MINTA (14)
+  20           NP3=11.2   C:REX PASSZE
+  21           NP13=9.2   C:REX PASSZE (14)
+  22           NP4=12.5   C:LEVALASZTAS
+  23           NP5=14.0   C:LEVALASZTAS
+  40 START
+  50 YG:6/256;
+  52 WM=18 WMI=7
+  54 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  56 JA1=1994; 
+  58 PA:<JA1>; 
+  60 FA=1-7; C FA=1-7 VAGY 2-7;
+
+  62 PM:<.>5:<FA>547:<.>;
+  64 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	      S1    T2
+  66 << S:U^NA/.I-A;                         ML                     T1 S1
+  68 >> S:.I-A;                      Y:5;    ML             VR1        S1
+  70 << S:.I-0/UVNA;                         ML     NP-0               S1    T2
+  72 >> S:.I-.I;                     Y:6;    ML             V0            S2
+  73 << S:.I-0/0-.I;                 Y:6/0;  ML                        S1 S2
+
+  74 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP3-3              S1 S2
+  78 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  80  >> S:.-./.(13)-.;                       ML                        S1 S2
+  82  << S:.-./.-.;                           ML     NP3-3              S1 S2
+  84 >> S:.-./.I(13)-.I;                     ML                        S1 S2
+  86  << S:R-R/R-R;                           ML     NP3-3              S1 S2
+  88  >> S:R-R/R(13)-R;                       ML                        S1 S2
+  99 << S:R-R;                      Y:5;     ML     NP3-3   S1
+
+ 100  IF#100=28   RS1=12  C E-H
+ 103  IF#100=12   RS1=4   C U
+
+
+
+ 120 JA1=1002(1004-1050);           C E-H
+ 122 IF RS1<10 JA1=1054(1056-1102); C U
+ 129 JA2=1600(1602-1632);C VAGY
+ 129 JA2=1502(1502-1516);C VAGY
+ 136 PA:<JA2>:JA1;
+ 138 FA=6-184
+ 139 FB=29-162
+ 140 PM:<.>8:3(FA.);
+ 141 IF RS1<10 PM:<.>8:4(FB.);  C**U**
+ 142 >> S:UVS.;            VKB>3       T2
+ 144 << S:U^SN.;           VKB    T1
+ 146 >> S:.-N./UVNN.;                       NP1-1            S1 T2
+
+ 150 VJA^0
+ 160 WM=22
+ 200 Y:2/5;
+ 202 RBEG*RS1
+ 205 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            VL2  VKH<0   T1 S1 S2 T2
+ 206 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNI;           VL1  VKI<1   T1 S1 S2 T2
+ 207 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            V0   VKJ<2   T1 S1 S2 T2
+ 208 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNI;           VR1  VKK>6   T1 S1 S2 T2
+ 209 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            VR2  VKL>5   T1 S1 S2 T2
+ 210 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNN.;          V0   VKJ     T1 S1 S2 T2
+
+ 211 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            VR2  VKM>4   T1 S1 S2 T2
+ 212 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNI;           VR1  VKO>6   T1 S1 S2 T2
+ 213 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            V0   VKP>1   T1 S1 S2 T2
+ 214 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNI;           VL1  VKN>4   T1 S1 S2 T2
+ 215 << S:U^N<1-2->N./.(1)-N.H/<1->.-N.H/UVNI;            VL2  VKO>2   T1 S1 S2 T2
+ 216 >> S:U^N<1-2->N./.-N.H/<1->.(14)-N.H/UVNN.;          V0   VKJ     T1 S1 S2 T2
+ 218 REND C**********************************************************************
+ 220 IF RS1=4 GOSUB 205-210
+ 254 << S:U^SD.I/DI.-D.I;           Y:2;        NP4-4            T1 S1
+ 256 >> S:DI.-D.I/UVSD.I;                                           S1    T2
+ 258 END
+ 999 <> W0 S0
+1000 190I
+1002 W188XI
+1004 W11X7(7X.I.6X.3IHI.)16XI
+1006 12X7(7X.I.6X.IIHHI.)16XI
+1008 12X7(XX2(6X.)II3HI.)16XI
+1010 12X7(XX2(6X.)I4HI.)16XI
+1012 12X7(16X.A3HI.)16XI
+1014 12X7(16X.A3HI.)16XI
+1016 12X7(17X.AHHI.)16XI
+1018 12X7(17X.AHHI.)16XI
+1020 12X7(18X.AHI.)16XI
+1022 12X7(18X.AHI.)16XI
+1024 12X7(6X.3I.8X.AI.)16XI
+1026 12X7(6X.3I.8X.AI.)16XI
+1028 11X7(7X.IH3I.6X.I.)17XI
+1030 11X7(7X.IHHII.6X.I.)17XI
+1032 10X7(8X.I3HII.6X.)18XI
+1034 10X7(8X.I4HI.6X.)18XI
+1036 XX7(16X.I3HA.)26XI
+1038 XX7(16X.I3HA.)26XI
+1040 X7(17X.IHHA.)27XI
+1042 X7(17X.IHHA.)27XI
+1044 7(18X.IHA.)28XI
+1046 7(18X.IHA.)28XI
+1048 12X7(6X.IA.8X.3I.)16XI
+1050 W11X7(6X.IA.8X.3I.)16XI
+1052 7I.2(20I.46I)2(18I.4I)II
+1054 W188XI
+1056 W34X5(7X.I.6X.3IHI.)39XI
+1058 35X5(7X.I.6X.IIHHI.)39XI
+1060 35X5(XX2(6X.)II3HI.)39XI
+1062 35X5(XX2(6X.)I4HI.)39XI
+1064 46X5(5X.A3HI.11X)28XI
+1066 46X5(5X.A3HI.11X)28XI
+1068 46X5(6X.AHHI.11X)28XI
+1070 46X5(6X.AHHI.11X)28XI
+1072 46X5(7X.AHI.11X)28XI
+1074 46X5(7X.AHI.11X)28XI
+1076 35X5(6X.3I.8X.AI.)39XI
+1078 35X5(6X.3I.8X.AI.)39XI
+1080 34X5(7X.IH3I.6X.I.)40XI
+1082 34X5(7X.IHHII.6X.I.)40XI
+1084 33X5(8X.I3HII.6X.)41XI
+1086 33X5(8X.I4HI.6X.)41XI
+1088 25X5(16X.I3HA.)49XI
+1090 25X5(16X.I3HA.)49XI
+1092 24X5(17X.IHHA.)50XI
+1094 24X5(17X.IHHA.)50XI
+1096 23X5(18X.IHA.)51XI
+1098 23X5(18X.IHA.)51XI
+1100 35X5(6X.IA.8X.3I.)39XI
+1102 W34X5(6X.IA.8X.3I.)39XI
+1104 7I.2(20I.46I)2(18I.4I)II
+ C KREPP 1:
+1500 WWWWWWWWWWWW
+1502 I...II.II...
+1504 .II.I...I.II
+1506 I..I.III.I..
+1508 II..I.I.I..I
+1510 ..II.I.I.II.
+1512 I..III.III..
+1514 .II...I...II
+1516 .III..I..III
+1518 WWWWWWWWWWWW
+C KREPP 2:
+1600 IIIIIIIIIIII
+1602 .......Z..Z.
+1604 ..Z..Z..Z..Z
+1606 .Z.Z...Z....
+1608 Z....Z......
+1610 ....Z...Z..Z
+1612 .Z.Z..Z..Z..
+1614 Z......Z....
+1616 ..Z.Z...Z.Z.
+1618 .Z....Z.....
+1620 Z..Z.Z...Z..
+1622 ......Z...Z.
+1624 Z..Z...Z.Z..
+1626 ......Z....Z
+1628 ..Z.Z...Z.Z.
+1630 Z....Z......
+1632 .Z.Z..Z..Z..
+1633 IIIIIIIIIIII
+ 1994 ....AIA

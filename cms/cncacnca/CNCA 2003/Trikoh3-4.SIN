@@ -1,0 +1,168 @@
+   1 C TRIKOH4 ES H3 EGYBEN *****MINDKETTO GYORSABB,DE KELL A J2 ES A B4 IS!!! *****
+   2 C CP TRIKOH34  RS10= RS17=0/1 (H4/H3) (RS1,RS2FIX)
+   3 C  REX PIKOPANT: CP PANT                      
+   4 C       16.0    0            0     16.0
+   5 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   6 C       16.0    0            0     16.0
+   7 C       16.0   16.0          -      -
+   8 C J2: <-------------       ------------->  MINTA <-
+   9 C       15.2   15.2          -      -      (ELOL CSAK A SZELSZEMEKET KOTI)
+  10 C       10.5   10.5         10.5   10.5 
+  11 C B2: <-------------       ------------->  CP PANT
+  12 C       10.5   10.5         10.5   10.5
+  13 C        0     15.0         15.0    0
+  14 C J3: <-------------       ------------->  PASSZE
+  15 C        0     15.0         15.0    0
+  16 C        -      -            -      -
+  17 C B3: <-------------       -------------> 
+  18 C        -      -            -      -
+  19 C       13.5   12.5         13.5   13.5
+  20 C J4: <-------------       ------------->  LEVALASZTAS
+  21 C       13.5   12.5         13.5   13.5
+  22 C        -      -           16.0   16.0 
+  23 C B4: <-------------       ------------->  MINTA -> 
+  24 C        -      -           15.2   15.2    (ELOL CSAK A SZELSZEMEKET KOTI)
+  25 C TUAGYKORREKCIOK: V0:->1.5
+  26 C                  R1:->2 _________R2: - ________R3:-
+  27 C                  L1:<-1 _________L2: - ________L3:-
+  28 C  TRIKOH4:RS17=0:             NP1=      E-H:
+  29 C  (LEGAPROBB MINTA)           NP2=      RS1=
+  30 C-----------------------+------------+------------+------------+-------------+
+  31 C 3X16/1 LUSIFIL:              16.0    16 FIX:189.SOR(221 KITOROLHETO:1/2 CIKLUS)
+  32 C ----------------------------------------------------------------------------
+  33 C  TRIKOH3:RS17=1:                    RS1=   RS2=
+  34 C-----------------------+------------+------------+------------+-------------+
+  35 C 3X16/1 PAMUT: 4 ATORSOZVA    16.0    11     5 (1-7) FIX:302.ES304.SOR
+  36 C ----------------------------------------------------------------------------
+  37 C   8-9 SULY 
+  40 START
+  50 YG:6/256;      C:MELLENY:
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  76 IF RS10=1 RS17=0
+  78 IF RS10=2 RS17=1
+  80 IF RS17=1 GOTO 300
+  83 JA1=1314(1302-1312);
+  98 PA:1:<JA1>;
+ 100           FA=7-140                   C*4LAP************
+ 101           PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 106 Y:2/2/5/5;
+ 107 REP*1
+ 108 << S:R-0;		                             ML       NP3-03        S2
+ 110 >> S:0-R;		                             ML       NP0-          S2
+ 112 REPEND
+ 114 << S:R-0/UVN+*.;                        ML       NP-0          S2 T2
+ 116 >> S:U^NOA/.+*-OA;                      ML               T1    S2
+ 118 REP*5
+ 120 << S:U^N+;                                   VR1 NP0-0   T1
+ 122 >> S:U^N*;                                   VL1 NP0-0   T1
+ 124 << S:.-N./UVN+*;                         V0                S2 T2 
+ 126 >> S:.+*-OA;                                     V#            S2
+ 128 REPEND
+ 139           FA=9-142                   C*4LAP************
+ 140 << S:U^NN./.-N.;                          T1    S2
+ 141 >> S:.-N./UVNN.;              NP1-1          S1    T2
+ 142 << S:R-0;                     NP-0           S1
+ 145 >> S:R-0;                     NP-0           S1
+ 175 VJA^0
+ 182 Y:2/2/5/5;
+ 185 << S:U^N<1->N./.-N./UVNAY;  Y:2;       V0                T1 S1    T2
+ 189 RS1=16
+ 190 RBEG*RS1
+ 191 >> S:.AY-I;                            V#                   S1
+ 192 << S:U^NY;                             VR1    NP0-0     T1
+ 193 >> S:U^NA;                             VL1    NP0-0     T1
+ 194 << S:<1->.-N./UVNAY.;       Y:5;       V0                   S1    T2
+ 195 >> S:.AY-I;                            V#                   S1
+ 196 << S:U^NY;                             VR1    NP0-0     T1
+ 197 >> S:U^NA;                             VL1    NP0-0     T1
+ 198 << S:<1->.-N./.-N.;         Y:2/5;     V0     NP2-2         S1 S2
+ 199 >> S:<1->.-N./UVNAY.;       Y:2;              NP1-1         S1    T2
+ 200 << S:.AY-I;                            V#                   S1
+ 201 >> S:U^NY;                             VR1    NP0-0     T1
+ 202 << S:U^NA;                             VL1    NP0-0     T1
+ 203 >> S:<1->.-N./UVNAY.;       Y:5;       V0                   S1    T2
+ 204 << S:.AY-I;                            V#                   S1
+ 205 >> S:U^NY;                             VR1    NP0-0     T1
+ 206 << S:U^NA;                             VL1    NP0-0     T1
+ 207 >> S:<1->.-N./.-N.;         Y:2/5;     V0     NP4-4         S1 S2
+ 208 << S:<1->.-N./UVNAY.;       Y:2;              NP1-1         S1    T2
+ 220 REND
+ 221 GOSUB 191-199
+ 222 IF#124=1 GOTO 240
+ 230 >> S:.AY-I/UVNDI.;                                          S1    T2
+ 232 << S:U^ND.I/DI.-D.I;         Y:5;  V0         NP4-4      T1 S1
+ 234 >> S:DI.-D.I/UVND.I;                                        S1    T2
+ 236 END
+ 240 << S:.AY-I/UVNDI.;                            NP4-4         S1    T2
+ 242 >> S:U^ND.I/DI.-D.I/DI.-D.I/UVND.I;   Y:2/5;             T1 S1 S2 T2
+ 244 RS10=RS10-1
+ 246 IF RS10>0 GOTO 56
+ 248 END
+ 300 C*********TRIKOH3**************************************************
+ 302 RS1=11
+ 304 RS2=5
+ 306 JA1=1018(1002-1016);
+ 308 PA:1:<JA1>;
+ 310 FA=7-140                   C*4LAP************
+ 312 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 314 Y:2/2/5/5;
+ 316 REP*1
+ 318 << S:R-0;		                             ML       NP3-03        S2
+ 320 >> S:0-R;		                             ML       NP0-          S2
+ 322 REPEND
+ 324 << S:R-0/UVN+*.;                        ML       NP-0          S2 T2
+ 326 >> S:U^NOA/.+*-OA;                      ML               T1    S2
+ 328 REP*5
+ 330 << S:U^N+;                                   VR1 NP0-0   T1
+ 332 >> S:U^N*;                                   VL1 NP0-0   T1
+ 334 << S:.-N./UVN+*;                         V0                S2 T2 
+ 336 >> S:.+*-OA;                                     V#            S2
+ 338 REPEND
+ 340 FA=9-142                   C*4LAP************
+ 342 << S:U^NN./.-N.;                          T1    S2
+ 344 >> S:.-N./UVNN.;              NP1-1          S1    T2
+ 346 << S:R-0;                     NP-0           S1
+ 348 >> S:R-0;                     NP-0           S1
+ 350 VJA^0
+ 352 Y:2/2/5/5;
+ 354 << S:U^N<1->N./.-N./UVNAY;         V0                T1 S1    T2
+ 356 RBEG*RS1
+ 358 REP*7
+ 360 >> S:.AY-I;                        V#                   S1
+ 362 << S:U^NY;                         VR1    NP0-0     T1
+ 364 >> S:U^NA;                         VL1    NP0-0     T1
+ 366 << S:<1->.-N./UVNAY.;              V0                   S1    T2
+ 368 REPEND
+ 370 >> S:.-N.;                                              S1
+ 372 << S:<1->.-N./UVNAY.;                                   S1    T2
+ 374 REND
+ 376 RBEG*RS2
+ 378 GOSUB 360-366
+ 380 REND
+ 382 >> S:.AY-I/UVNDI.;                                      S1    T2
+ 384 << S:U^ND.I/DI.-D.I;               V0         NP4-4  T1 S1
+ 386 >> S:DI.-D.I/UVND.I;                                    S1    T2
+ 388 RS10=RS10-1
+ 390 IF RS10>0 GOTO 56
+ 392 END
+1002 IIIIIIIIII
+1004 IIYYYIAAAI
+1006 IIIYYIAAII
+1008 AIIIYIAIII
+1010 IAIIAIYIIY
+1012 YIIAAIYYII
+1014 IIAAIIIYYI
+1016 IAAIIIIIYY
+1018 O*****A+++++
+1302 IIIIIIII
+1304 IYYIIIAA
+1306 IIYYIAAI
+1308 IIIIIIII
+1310 IAAIIIYY
+1312 IAIIIIIY
+1314 O*****A+++++

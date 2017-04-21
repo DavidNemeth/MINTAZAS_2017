@@ -1,0 +1,434 @@
+    1 C ZIIPPZARAS GYONGY ZSEBBEL ES GALLERRAL
+   1 C PASSZEJA ZSAKKOTESU:Y:5/3
+  1 C                                      E-H:70CM     U:59CM  
+  1 C-----------------------+------------+-----------+--------+--------+--------+
+  1 C Y5:3LUSI(FUZFA)   Y2:4LUSI(NYERS)        100        92        
+  1 C Y3:3LUSI(FEKETE) (Y4:4LUSI(FARMER))
+  1 C-----------------------+------------+------------+------------+-------------+
+C FONALFELHASZNALAS:   CSIKKAL:   CSIK NEKUL:
+C  2:4NYERS                0.40          0.50                 NYERS LUSI:445
+C  5:3FUST                 0.32          0.37                     SZINES:560  SUM.:500FT/KG
+C (4:4FARMER               0.10          0.00 NEMKELL CSIK!!)
+C  3:3FEKETE               0.10          0.05
+C----------------------------------------------------
+C     SUM.:                        0.92   (0.92*500=460FT)
+C------------------------------------------------------------------------------
+  1 C   ZIPPES KARDIGAN.:      PULOVER:
+  1 C     FONAL: 460             460
+  1 C VALLTOMES:   5               5
+  1 C    VARRAS: 200             150
+  1 C   VASALAS:  25              25
+  1 C 60CM.ZIPP:  70
+  1 C         ----------     -----------
+  1 C     OSSZ.: 760             640
+  1 C        E.:1250            1050
+  1 C        H.: 490             410
+C------------------------------------------------------------------------------
+
+C KT:NPK=0  PKT:NPK=-0.2
+  10 NP4=12.6;   C:LEVALASZTAS
+  12 NP2=11.0;   C:BEKEZDES
+  14 NP3=13.0;   C:KORSLAG,ZSAKKOTESU NORVEG
+  16 NP1=12.0;   C GYONGY
+  17 NP6=12.1;   C KUKORICAS 12.0 (2006.09.09.:12.1)
+  18 NP5=12.0;   C:1/1 GARBO
+
+  40 START        
+  50 YG:6/23456;
+  50 YG:6/2356;                                                                    C (HA NEM KELL A CSIK-Y:4)
+  51 WM=20;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:4/2;      NP4-4    VU V0 ML       S1 S2
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2    C!!!!HA NEM KELL A CSIK!!)
+  53C IF#100=18 MS C(MACHINE STOP)
+C-------------GYONGY3SZV.-VEL----------------------------------------------
+  58 C IF #100=36  RS19=0	     C E-H	     21'	 (ST=37)
+  59 C IF #100=24  RS19=1	     C U		     18'
+
+  60 C IF #100=28  RS19=2	     C 3DB.GALLER    
+  61 C IF #100=36  RS19=3	     C 3DB.1/1 GARBO
+  62 C IF #100=18  RS19=12	    C 3DB.1/1 KEREK NYAK JACQ. SZEGELLYEL
+C-------------GYONGY4SZV.-VEL(Y4:ALUL A KET NORVEG MINTA KOZT SZINES)------
+  63 C IF #100=36  RS19=4	     C E-H	     21'
+  64 C IF #100=10  RS19=5	     C U		     18'
+
+  65 C IF #100=4   RS19=2	     C 3DB.GALLER    
+  66 C IF #100=22  RS19=3	     C 3DB.1/1 GARBO
+  67 C IF #100=20  RS19=12	    C 3DB.1/1 KEREK NYAK JACQ. SZEGELLYEL
+C-------------KUKORICAS 3SZV.-VEL------------------------------------------
+  68  IF #100=24 RS19=6	     C E-H	    21'
+  69C  IF #100=9  RS19=7	     C U		    18'
+
+  70  IF #100=8  RS19=8	     C 3DB.GALLER	   (HA TORLOM A 135-OT, MASIK JAC.-OT KOT A GALLERBA) 
+  71 C IF #100=8  RS19=9	     C 3DB.1/1 GARBO
+  72 C IF #100=18  RS19=12	    C 3DB.1/1 KEREK NYAK JACQ. SZEGELLYEL
+C-------------KUKORICAS 4SZV.-VEL(Y4:ALUL A KET NORVEG MINTA KOZT SZINES)--
+  73 C IF #100=9   RS19=10	    C E-H	     21'
+  74 C IF #100=5   RS19=11	    C U		     18'
+
+  75 C IF #100=4   RS19=8	     C 3DB.GALLER  (HA TORLOM A 135-OT, MASIK JAC.-OT KOT A GALLERBA)   
+  76 C IF #100=2   RS19=9	     C 3DB.1/1 GARBO
+  77 C IF #100=35  RS19=12	    C 3DB.1/1 KEREK NYAK JACQ.	SZEGELLYEL
+C----------------------------------------------------------------------------
+  78 C IF #100=9   RS19=13	     C 3DB.1/1 GARBO NYAK JACQ.	SZEGELLYEL (EZ A GARBO MINDEGYIKHEZ JO)
+C----------------------------------------------------------------------------
+
+  79 IF RS19=0  RS1=80  RS2=5  RS17=0     C E-H       3LAP         *******60CM PULOVER*******VAGY
+  79 IF RS19=0  RS1=93  RS2=5  RS17=0     C E-H       3LAP   93-98 *******71CM TUNIKA********VAGY 93
+  80 IF RS19=1  RS1=86  RS2=5  RS17=1     C U         4LAP   87
+  81 IF RS19=2  RS1=15  RS2=1  RS17=2     C GALLER
+  82 IF RS19=3  RS1=13  RS2=1  RS17=2     C 1/1 GARBO
+  83 IF RS19=4  RS1=80  RS2=18 RS17=0     C E-H       3LAP   87
+  84 IF RS19=5  RS1=82  RS2=10 RS17=1     C U         4LAP   87
+
+  85 IF RS19=6  RS1=80  RS2=5  RS17=0     C E-H       3LAP         *******60CM PULOVER*******VAGY
+  85 IF RS19=6  RS1=94  RS2=5  RS17=0     C E-H       3LAP   94-99 *******71CM TUNIKA********VAGY
+  86 IF RS19=7  RS1=86  RS2=5  RS17=1     C U         4LAP   86-89
+  87 IF RS19=8  RS1=15  RS2=1  RS17=2     C GALLER
+  88 IF RS19=9  RS1=13         RS17=2     C 1/1 GARBO
+  89 IF RS19=10 RS1=80  RS2=18 RS17=0     C E-H       3LAP   87
+  90 IF RS19=11 RS1=82  RS2=10 RS17=1     C U         4LAP   87
+
+  91 IF RS19=12                RS17=2     C 1/1 KEREK NYAK JACQ. SZEGELLYEL
+  92 IF	RS19=13		              RS17=2	    C 1/1	GARBO NYAK JACQ. SZEGELLYEL
+  93 JA1=1002; PA:1:<JA1>; C1002 ..II
+C----------554TU--------------------------------------------------------------------
+  94 IF	RS17=0 FA=1-179	 PM:<*>6:3(FA**);    C**3 LAP E-H
+  95 IF	RS17=1 FA=1-135	 PM:<*>7:4(FA);	     C**4 LAP U	      VAGY
+  96 IF	RS17=1 FA=1-134	 PM:<*>8:4(FA*);     C**4 LAP U	      VAGY
+  97 IF	RS17=2 FA=1-272	 PM:<*>7:2FA;	     C**3DB.GALLER VAGY	3DB.1/1	GARBO OSZTAS NELKUL
+C----------581TU--------------------------------------------------------------------
+  94 IF	RS17=0 FA=1-282	 PM:<*>8:2(FA**);    C**2 LAP PON ****************VAGY 2LAP PONCSOHOZ
+  94 IF	RS17=0 FA=1-188	 PM:<*>8:3(FA**);    C**3 LAP E-H ****************VAGY 3LAP TUNIKAHOZ
+  95 IF	RS17=1 FA=1-141	 PM:<*>9:4(FA);	     C**4 LAP U	      VAGY
+  96 IF	RS17=1 FA=1-140	 PM:<*>10:4(FA*);     C**4 LAP U	      VAGY
+  97 IF	RS17=2 FA=1-284	 PM:<*>8:2FA;	       C**3DB.GALLER VAGY	3DB.1/1	GARBO OSZTAS NELKUL
+C------------------------------------------------------------------------------
+  98 IF	RS19=12	GOTO 800		     C 1/1 KEREK NYAK JACQ. SZEGELLYEL
+  99 IF	RS19=13	GOTO 900		     C 1/1 GARBO NYAK JACQ. SZEGELLYEL
+
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 101 << S:DI.-D.I/UVND.I;             Y:3;	             	        ML       S1    T2
+ 102 >> S:R-R;		                      Y:6;	       NP4-2     	   ML          S2       CVU
+ 103 << S:R-0/0-R;                    Y:6/0;      NP4-4	        ML       S1 S2       CVU
+ 104 >> S:R-R;                        Y:3;        NP2-2         ML       S1          CVU
+ 122 Y:3;
+ 124 REP*2
+ 126 << S:R-0;		                            VU    NP3-3       ML    S1
+ 128 >> S:0-R;		                            VU                ML    S1
+ 130 REPEND
+ 135 IF RS19=8 GOTO 208; C***GALLER KUKORICA***APRO JAC.-OT KOT A GALLERBA, HA TORLOM A SZELESSEBBET KOTI)
+ 140 IF RS19>5 GOTO 300 C***KUKORICAS***
+
+C*****GYONGY  TEST-UJJA-NYAKAK (RS19=0-1-2-3-4-5)********************
+ 200 IF RS19=2 GOTO 208; C***GALLER GYONGY***
+ 201 IF RS19=3 GOTO 208; C***GARBO***
+ 202 JA1=1000(1000-1002);
+ 204 Y:2/3;
+ 206 GOSUB 500-510*2 C**** ZSAKKOTESU NORVEG PASSZE*****
+
+ 208 Y:3;
+ 210 << S:R-0;		                            VU     S1
+ 211 JA1=1004;  C1004 .I.I.I.I.
+ 212 >> S:0-R/UVNI*;		                             S1    T2
+ 213 IF RS19=1 GOTO 242; C***UJJA***
+ 214 IF RS19=5 GOTO 242; C***UJJA***
+ 215 IF RS19=2 GOTO 242; C***GALLER GYONGY***
+ 216 IF RS19=8 GOTO 336; C***GALLER KUKORICA***
+ 217 IF RS19=3 GOTO 242; C***GARBO***
+ 218 << S:U^N./I*-./UVN.;    NP1-1  Y:2;        T1 S1    T2
+ 220 >> S:R-R;               NP2-2       ML VU     S1
+ 222 << S:R-0;               NP3-3          VU     S1
+ 224 >> S:0-R;                              VU     S1
+ 226 JA1=1010(1010-1056) C**NORVEG**
+ 228 Y:3/2; GOSUB 500-510*4;
+ 230 Y:5/2; GOSUB 500-510*4;
+ 232 Y:3/2; GOSUB 500-510*4;
+ 234 Y:2;
+ 236 << S:R-0;		                             VU   S1
+ 238 JA1=1004;  C1004 .I.I.I.I.
+ 240 >> S:0-R/UVNI*;		                             S1   T2
+
+ 242 WM=28
+ 244 Y:2/5; IF RS19>3 Y:4/3;
+ 246 << S:U^N./I*-%./I*-.;  NP1-1         VU T1 S1 S2  C
+ 248 >> S:I*-%./I*-.;                     VU    S1 S2  C
+ 250 RBEG*RS2 C***KET NORVEG KOZTI GYONGY VAGY Y:2/5; VAGY Y:4/3;***
+ 252 GOSUB 600-610 C***GYONGY***
+ 254 REND
+ 256 << S:I*-%./I*-.;               VU          S1 S2  C
+ 258 >> S:I*-%./I*-./UVN.;                      S1 S2  T2 C
+
+ 260 WM=20; 
+ 262 << S:R-R;              Y:2; NP2-2   ML VU     S1
+ 264 >> S:R-0;                   NP3-3      VU     S1
+ 268 JA1=1058(1058-1096)C**NORVEG**
+ 270 Y:3/2; GOSUB 500-510*2;
+ 272 Y:3/5; GOSUB 500-510*2;
+ 274 Y:2/5; GOSUB 500-510*2;
+ 276 Y:3/5; GOSUB 500-510*2;
+ 278 Y:3/2; GOSUB 500-510*2;
+ 280 Y:2;
+ 282 << S:R-0;		                          VU       S1
+ 284 JA1=1004;  C1004 .I.I.I.I.
+ 286 >> S:0-R/UVNI*;		                             S1  T2
+ 288 IF RS19=3 GOTO 750 C *** 1/1 GARBO ***
+ 290 WM=28
+ 291 << S:U^N./I*-%./I*-.;  NP1-1 Y:2/5;        T1 S1 S2  C
+ 292 >> S:I*-%./I*-.;                     VU       S1 S2  C
+ 293 RBEG*RS1
+ 294 GOSUB 600-610 C***GYONGY***
+ 295 REND
+ 296 << S:I*-%./I*-.;            VU      S1 S2
+ 297 >> S:I*-%./I*-./UVN.;          ML   S1 S2 T2
+ 298 END
+C**********************************************************************************
+
+C*****KUKORICAS  TEST-UJJA-NYAKAK (RS19=6-7-8-9-10-11)*****************************
+ 300 << S:R-0;		                      Y:3;   VU    S1
+ 302 JA1=1004;  C1004 .I.I.I.I.
+ 304 >> S:0-R/UVNI*;		                             S1    T2
+ 306 IF RS19=7  GOTO 336; C                                                   ***UJJA***
+ 307 IF RS19=11 GOTO 336; C                                                   ***UJJA***
+ 308 << S:U^N./I*-./UVN.;    NP1-1  Y:2;        T1 S1    T2
+ 310 >> S:R-R;               NP2-2       ML  VU    S1
+ 312 << S:R-0;               NP3-3           VU    S1
+ 314 >> S:0-R;                               VU    S1
+ 316 JA1=1010(1010-1056) C**NORVEG**
+ 318 Y:3/2; GOSUB 500-510*4;
+ 320 Y:5/2; GOSUB 500-510*4;
+ 322 Y:3/2; GOSUB 500-510*4;
+ 324 Y:2;
+ 326 << S:R-0;		                             VU    S1
+ 328 JA1=1004;  C1004 .I.I.I.I.
+ 330 >> S:0-R/UVNI*;		                             S1   T2
+ 332 IF RS19=9 GOTO 750 C                                                  *** 1/1 GARBO ***
+ 334 IF RS19=8 GOTO 380 C                                                  ***GALLER***
+ 336 WM=28
+ 338 Y:5/2/2/5; IF RS19>9 Y:3/4/4/3;
+ 340 << S:U^N./I*-./I*-%.;  NP6-6         VU T1 S1 S2  C
+ 342 >> S:I*-%./I*-.;                     VU    S1 S2  C
+ 344 RBEG*RS2 C***KET NORVEG KOZTI KUKORICA VAGY Y:5/2/2/5; VAGY Y:3/4/4/3;***
+ 346 GOSUB 700-710 C***KUKORICA***
+ 348 REND
+ 350 << S:I*-./I*-%.;               VU          S1 S2  C
+ 352 >> S:I*-%./I*-./UVN.;                      S1 S2  T2 C
+ 354 WM=20; 
+ 356 << S:R-R;              Y:2; NP2-2   ML  VU     S1
+ 358 >> S:R-0;                   NP3-3       VU     S1
+ 360 JA1=1058(1058-1096)C**NORVEG**
+ 362 Y:3/2; GOSUB 500-510*2;
+ 364 Y:3/5; GOSUB 500-510*2;
+ 366 Y:2/5; GOSUB 500-510*2;
+ 368 Y:3/5; GOSUB 500-510*2;
+ 370 Y:3/2; GOSUB 500-510*2;
+ 372 Y:2;
+ 374 << S:R-0;		                             VU    S1
+ 376 JA1=1004;  C1004 .I.I.I.I.
+ 378 >> S:0-R/UVNI*;		                             S1  T2
+ 380 WM=28
+ 382 Y:5/2/2/5;
+ 384 << S:U^N./I*-./I*-%.;  NP6-6            T1 S1 S2  C
+ 386 >> S:I*-%./I*-.;                     VU    S1 S2  C
+ 388 RBEG*RS1
+ 390 GOSUB 700-710 C***KUKORICA***
+ 392 REND
+ 394 << S:I*-./I*-%.;            VU      S1 S2
+ 396 >> S:I*-./I*-./UVN.;           ML   S1 S2 T2
+ 398 END
+C**********************************************************************************
+
+
+ 500 C**************ZSAKKOTESU NORVEG MINTA***********************
+ 502 WM=20
+ 504 NP3-3
+ 506 << S:<1+>I-.*/.*-I;           VU          S1 S2
+ 508 >> S:<1+>I*-./.-I*;           VU          S1 S2
+ 510 C************************************************************
+
+ 600 C*****GYONGY********Y:2/5; VAGY Y:4/3;***********************
+ 602 WM=28
+ 604 NP1-1
+ 606 << S:I*-%./I*-.;          VU          S1 S2  C
+ 608 >> S:I*-%./I*-.;          VU          S1 S2  C
+ 610 C************************************************************
+
+ 700 C*****DUPLA GYONGY (KUKORICAS) Y:3/4/4/3; VAGY Y:5/2/2/5;****
+ 702 WM=28
+ 704 NP6-6
+ 706 << S:I*-./I*-%.;          VU          S1 S2  C
+ 708 >> S:I*-%./I*-.;          VU          S1 S2  C
+ 710 C************************************************************
+
+ 750 C**********1/1 GARBO NYAK************************************
+ 752 << S:U^N./I*-./I*-.;   Y:2/5;   NP5-5   VU T1 S1 S2
+ 754 RBEG*RS1
+ 756 >> S:I*-./I*-.;                    VU         S1 S2
+ 758 <<                                 VU         S1 S2
+ 760 REND
+ 762 >> S:I*-./I*-./UVN.;                          S1 S2 T2
+ 764 END
+ 766 C************************************************************
+
+C**************1/1-ES KEREK NYAK JAC. SZEGELLYEL*******************VAGY CSONAK
+ 800 WM=18;WMI=7
+ 810 >>	S:D.I-DI./UVNDI.;   	      	 Y:4;    ML                        S1    T2
+ 810 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;    ML                        S1    T2     C (HA NEM KELL A CSIK-Y:4)
+
+ 812 <<	S:U^ND.I/DI.-D.I;		          Y:5;			 ML                     T1 S1
+ 814 >> S:DI.-D.I;                   Y:5;    ML         VU  VR1        S1
+ 816 << S:DI.-0/UVND.I;              Y:5;    ML         VKA>3          S1    T2
+ 818 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+ 820 << S:DI.-0/0-R;                 Y:6/0;  ML                VU      S1 S2            
+ 822 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML   NP5-5        VU      S1 S2
+ 824 << S:0-D.I;                     Y:6;                      VU      S1
+ 826 >>                                                        VU      S1
+
+C---------------KEREK VAGY CSONAK (828-834-IG A CSONAKNYAKHOZ KI KELL CEZNI)-------------
+ 828 REP*2
+ 830 << S:DI.-D.I/DI.-D.I;           Y:2/5;            VU           S1 S2
+ 832 >>                                                VU           S1 S2
+ 834 REPEND
+C----------------------------------------------------------------------------------------
+
+ 836 << S:DI.-D.I/UVND.I;      NP1-1  Y:2;           S1    T2
+ 838 >> S:R-R;                 NP2-2       ML VU     S1
+ 844 JA1=1120(1120-1138)C**VAGY*
+ 844 JA1=1100(1100-1118)C**VAGY* EZ A JOBB
+ 846 Y:3/2; GOSUB 500-510;
+ 848 Y:3/5; GOSUB 500-510;
+ 850 Y:2/5; GOSUB 500-510;
+ 852 Y:3/5; GOSUB 500-510;
+ 854 Y:3/2; GOSUB 500-510;
+
+ 864  << S:0-R/R-0;		            Y:5/2;        VU    S1 S2
+ 866  JA1=1004;  C1004 .I.I.I.I.
+ 868  >> S:0-R/R-0/UVNI*;		                          S1 S2 T2
+
+ 870 << S:U^N./I*-./I*-.;   Y:2/5;   NP4-4      T1 S1 S2
+ 872 >> S:I*-./I*-.;                         VU    S1 S2
+ 874 << S:I*-.;             Y:2;             VU    S1
+ 876 >> S:I*-./UVN.;                               S1    T2
+ 878 END
+
+C******************* 1/1 GARBO**************
+ 900 WM=18;WMI=7
+ 902 >>	S:D.I-DI./UVNDI.;		       	   ML			            S1	 T2
+ 904 <<	S:U^ND.I/DI.-D.I;			  Y:5;			 ML	         		T1 S1
+ 906 >>	S:DI.-D.I;		          Y:5;    ML		VU  VR1	     S1
+ 908 <<	S:DI.-0/UVND.I;		     Y:5;    ML		     	       S1    T2           CVKA>3
+ 910 >>	S:DI.-D.I;		          Y:6;    ML		   V0 VU     S1
+ 912 <<	S:DI.-0/0-R;		        Y:6/0;  ML		      VU     S1 S2	        
+ 914 >>	S:DI.-D.I/DI.-0;			   Y:2/5;	 ML NP5-5	 VU	    S1 S2
+ 916 <<	S:0-D.I/DI.-D.I;				                    VU     S1 S2
+ 918 >>	S:DI.-D.I;					                         VU     S1 S2
+ 920 REP*1
+ 922 <<	S:DI.-D.I;				                          VU	    S1 S2
+ 924 >>						                                   VU	    S1 S2
+ 926 REPEND
+ 928 <<	S:DI.-D.I/UVND.I;           NP1-1  Y:2;	       S1	   T2
+ 930 >>	S:R-R;		                    NP2-2	ML    VU     S1
+ 932 JA1=1100(1100-1118)
+ 934 Y:3/2; GOSUB 500-510;
+ 936 Y:3/5; GOSUB 500-510;
+ 938 Y:2/5; GOSUB 500-510;
+ 940 Y:3/5; GOSUB 500-510;
+ 942 Y:3/2; GOSUB 500-510;
+ 944 <<	S:0-R/R-0;			       Y:5/2;	       VU    S1 S2
+ 946 JA1=1004;	C1004 .I.I.I.I.
+ 948 >>	S:0-R/R-0/UVNI*;					                   S1 S2 T2
+ 950 <<	S:U^N./I*-./I*-.;   Y:2/5;   NP5-5	  T1 S1 S2
+ 952 REP*15
+ 954 >>	S:I*-./I*-.;			                   VU	   S1 S2
+ 956 <<					                              VU	   S1 S2
+ 958 REPEND
+ 960 >>	S:I*-./I*-./UVN.;	           NP4-4	     S1 S2 T2
+ 962 END
+
+ 999 <> W0 S0
+
+1000 ..II
+1002 ..II
+
+1004 .I.I
+
+
+1010 ....
+1012 .I.I
+1014 .III
+1016 .III
+1018 II.I
+1020 I...
+1022 I...
+1024 I...
+
+1026 ..I.
+1028 .III
+1030 .III
+1032 .I.I
+1034 .I.I
+1036 II.I
+1038 II.I
+1040 I...
+
+1042 ..I.
+1044 ..I.
+1046 ..I.
+1048 .III
+1050 II.I
+1052 II.I
+1054 .I.I
+1056 ....
+
+
+CY:.2
+C  I3
+1058 ......
+1060 ...II.
+1062 ..IIII
+1064 .IIIII
+CY:.5
+C  I3
+1066 II...I
+1068 I.....
+1070 II...I
+1072 I.....
+CY:.5
+C  I2
+1074 ...I..
+1076 ..IIII
+1078 .IIII.
+1080 ...I..
+CY:.5
+C  I3
+1082 I.....
+1084 II...I
+1086 I.....
+1088 II...I
+CY:.2
+C  I3
+1090 .IIIII
+1092 ..IIII
+1094 ...II.
+1096 ......
+
+1100 ..III.
+1102 .IIIII
+1104 II...I
+1106 I.....
+1108 ...II.
+1110 ..II..
+1112 I.....
+1114 II...I
+1116 .IIIII
+1118 ..III.
+
+1120 ..II.
+1122 .IIII
+1124 II..I
+1126 I....
+1128 ..III
+1130 .III.
+1132 I....
+1134 II..I
+1136 .IIII
+1138 ..II.

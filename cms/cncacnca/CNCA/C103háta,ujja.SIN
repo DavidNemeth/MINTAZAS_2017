@@ -1,0 +1,64 @@
+500 C:---------BAL-BAL AZSUR FONOTT PULOVER HATA,UJJA----------
+501 C:--------uj bekezdes es fonas---------------
+502    START
+503    GOSUB 59-132
+504    GOTO 556
+505    YG:6/253;
+506 << S:R-R/R-0;                      Y:2/5;      NP4-4   V0   ML    S1 S2
+508 >>                                 Y:2/5;                         S1 S2
+510 <<                                 Y:2/5;                         S1 S2
+512 >>                                 Y:2/5;                         S1 S2
+514 << S:D.I-DI./DI.-D.I/UVNR;         Y:2/5;                   ML    S1 S2 T2
+516 >> S:R-0/R-R;                      Y:2/6;                   ML    S1 S2
+518 << S:R-0/0-R;                      Y:6/0;                   ML    S1 S2
+520 >> S:R-R;                          Y:5;        NP4-04  V0   ML       S2
+521 << S:R-0;                          Y:2;        NP3-03             S1
+522 >> S:0-R;                          Y:2;        NP03-3             S1
+523 << S:R-0;                          Y:5;        NP-0               S1
+524 >> S:0-R;                          Y:5;        NP0-               S1
+525 C:------------PASSZE----------------
+526    JA1=1002(1002-1020)
+527    PA:JA1;
+528    FA=2-179
+529    PM:<*>10:3(FA*);
+530 << S:U^S./UVSN.;                               NP0-0           T1       T2
+531 >> S:0-0;                          Y:0;        NP04-04            S1
+532 << S:N.-.;                         Y:2;                V# ML   T1
+533 >> S:U^SYA;                                    NP0-0      ML   T1 
+534 << S:0-0;                          Y:0;        NP01-01            S1
+535 >> S:<1->*-N*;                     Y:2;        NP3-3              S1
+537 REP*5
+538 << S:<1+>UVSY;                                 NP0-0   VL1              T2
+540 >> S:UVNA;                                     NP0-0   VR1              T2
+542 << S:U^N./N.-.;                    Y:5;                V0      T1 S1
+544 >> S:U^SAY/*-N*;                   Y:5;                        T1 S1
+546 << S:<1+>UVSY;                                 NP0-0   VL1              T2
+548 >> S:UVNA;                                     NP0-0   VR1              T2
+550 << S:U^N./N.-.;                    Y:2;                V0      T1 S1
+552 >> S:U^SAY/*-N*;                   Y:2;                        T1 S1
+554 REPEND
+556    JA1=1001
+558    FA=4-183
+560    PA:JA1;
+561    PM:<*>6:FATFATFA
+562    PK^:4:JA1;
+563    PKV:4:JA1;
+564 << S:U^SN*/*-N*/UVNT*;             Y:5;        NP3-3      ML   T1 S1    T2
+566 >> S:*T-N*T;                       Y:5;        NP3-3   V#         S1 
+568 <> S:*T-N*T;                       Y:2/5/3;    NP2-2   V#      T1 S1 S2
+569    GOSUB 568
+574 RBEG*RS3
+575 << S:*T-N*T/*T-N*T/UVN.;           Y:2/5;      NP1-1              S1 S2 T2
+576    PK^:6:JA1;
+577 >> S:U^N./*TI-.AY/I-0/UVS.;        Y:2/0;      NP3-3   VL2     T1 S1 S2 T2
+578 << S:UVNAY;                                    NP0-0   VL3              T2
+579    PK^:3:JA1;
+580 >> S:U^N./*T-.+AY/0-+/UVN.;        Y:5/0;              VR1     T1 S1 S2 T2
+581    PK^:1:JA1;
+582 << S:U^N+A./*T-N*T/*T-N*T/UVNN*T;  Y:2/5;      NP1-1   VR3     T1 S1 S2 T2
+583    PK^:4:JA1;
+584 >> S:U^NN*T/*T-N*T/*T-N*T;         Y:2/5;              V0      T1 S1 S2
+586    GOSUB 568*2
+588 REND
+590 END
+1001 TTTTTT........6(TT+AAYIOTT..............)TT+AAYIOTT8.10T.....TT+AAYIOTT......TTTTTTTTTTT

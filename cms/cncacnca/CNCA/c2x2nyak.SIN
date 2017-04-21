@@ -1,0 +1,36 @@
+800    C---------2x2 FONOTT NYAK-----------------------------------------
+805    START
+810    YG:6/256;
+812 <<	S:DI.-D.I/D.I-DI.;		Y:5/2;	NP4-4	   V#	V0     S1 S2C
+814 >>	S:R-0/0-R;				NP2-2	   V#	       S1 S2C
+816 <<						NP1-1	   V#	       S1 S2C
+825 C << S:R-R/R-0; Y:2/5; NP4-4 V0 S1 S2          C----S:D.I-DI./DI.-D.I; Y:2/5; NP4-4 V0 V# S1 S2
+830 C >> S:R-R/R-R;                 S1 S2
+835 C << S:R-R/R-0;                 S1 S2
+840 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP1-1              S1 S2 T2
+845 << S:U^ND.I/DI.-D.I;               Y:2;                        T1 S1
+850 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1      T1    S2
+855 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#       T1 S1 S2
+860 >> S:R-0/DI.-D.I;                  Y:0/2;      NP0-   V# V0    T1 S1   
+865 << S:DI.I.I.I.-0/0-D.I;            Y:6/2;      NP0-   V#          S1 S2
+870 >> S:DI.I.I.I.-0/DI.I.I.I.-D.I.I.I.I; Y:6/2;          V#          S1 S2
+875 << S:DI.I.I.I.-D.I.I.I.I;          Y:2/5;             V#          S1 S2
+880    JA1=1000
+882    FA=7-18
+884    PA:1:JA1;
+890    PM:<T> 13:44FA;       
+891    PKV:3:JA1;
+892    PK^:3:JA1;
+900 >> S:DI.I.I.I.-D.I.I.I.I/DI.-D.I/UVNT;  Y:2/5; NP4-4  V#          S1 S2 T2
+903    REP*2
+905 << S:U^NY*/T-Y*/T-Y*;              Y:2/5;      NP1-1  V0       T1 S1 S2
+910 >> S:T-*/UVS*;                     Y:2;        NP3-3  VL2         S1    T2
+915 << S:T-Y;                          Y:2;        NP3-3  VR2 V#      S1
+918    PK^:1:JA1;
+920 >> S:U^NY/T-Y*/T-Y*/UVNY*;         Y:2/5;      NP1-1           T1 S1 S2 T2
+925    PK^:3:JA1;
+930    REPEND
+935 << S:U^ND.I/DI.-D.I/DI.-D.I;       Y:2/5;      NP4-4  V0       T1 S1 S2
+940 >> S:DI.-D.I;                      Y:2/5;             V#          S1 S2
+945    END
+1000 TTTTTTYY**TTYY**TTYY**TTYY**TT

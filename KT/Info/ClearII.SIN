@@ -1,0 +1,14 @@
+   1 C PONCSO 3-HOZ:
+  40 START 
+  50 YG:6/256;
+  60 JA1=1001(1000-1001)
+  62 PA:<JA1>;
+  64 FA=1-308  C 1001  .I.I.I.I.I.I.I.I
+  66               PM:+++++.IFA.I. 319:<+>;
+  70 <<	S:I-./.-I;     		            Y:5/2;	  NP4-4   V0	 ML   S1 S2
+  72 >>                                                   ML   S1 S2
+ 100 END
+ 110 C CLEAR FORDITASA:CPF CLEARII.SIN
+ 111 C EZT SPF KOZBEN NEM VESZI BE, CSAK, HA ELOTTE SP-T UTOK!
+ 112 C HA IGY SEM VESZI BE, UJRA KELL INDITANI A PC-T .
+1001 .I.I.I.I.I.I.I.I

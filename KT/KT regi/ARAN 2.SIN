@@ -1,0 +1,177 @@
+  1 C--ARAN 2--E:RS1=25  H:RS1=69  U:RS1=43  NYAK:SP600  2SZAL PAMUT+1HB
+  2 START
+  3 NP1=14.7   C:LEVALASZTAS
+  4 NP2=12.4   C:1/1-ES PASSZE
+  5 NP4=11.5   NP14=9.5 C:LEVALASZTAS
+  6 YG:6/235;
+  7 WM=20
+  8 <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	    NP4-4 VU V0	       S1 S2
+  11 >>	S:D.I-DI./DI.(14)-D.I/UVNDI.;   	Y:5/2;	                 S1 S2 T2
+  12 <<	S:U^ND.I/DI.-D.I;		         Y:5;			    NP1-1	           T1 S1
+  13 >>	S:U^NDI./D.I-D.I;		         Y:6;	      NP4-4  VL1	       T1	  S1
+  14 <<	S:R-0/0-D.I;		              Y:0/6;         V#	        S1 S2
+  15 >>	S:DI.-D.I;		                	Y:5;	             V# V0 ML     S1   
+  16 <<	S:DI.-0/0-D.I;			           Y:5/2;		          V#	          S1 S2
+  18 WM=26
+  28    JA1=1999
+  30    FA=1-6
+  32    PA:JA1;
+  34    PM:<.> 9:<FA> 543:<.>;
+  37 >>S:DI.(8.0)-D.I(10.0)/DI.(10.0)-D.I/UVS.;           Y:2/5;                    S1 S2 T2
+  38 REP*1 C3
+  40    VJA^1
+  41    WM=20
+  42 << S:U^SY*/.(13.9)-Y*(14.5)/.-Y*;  Y:2/5;             V0       T1 S1 S2
+  43    WM=12
+  44 >> S:.-*/UVS*;                     Y:2;               VL2         S1    T2
+  46 << S:.-Y;                          Y:2;               VR2         S1
+  48    VJA^0
+  49    WM=20
+  50 >> S:U^SY/.-Y*/.(13.0)-Y*/UVSY*;         Y:2/5;           VKE>4      T1 S1 S2 T2
+  52 REPEND
+  54 << S:U^SY*/.(14.0)-Y*(14.0)/.-Y*/UVSY*;  Y:2/5;       V0       T1 S1 S2 T2
+  66 JA1=1500(1504-1522)                C IF RS17=1  JA1=1098(1002-1096)
+  67 PA:501:JA1 1:FEFDFA3FBFCFDFE;
+  68 F1=1-154                           C IF RS17=1 F1=510-663
+  69 FA=501-509 FB=510-523 FC=524-532 FD=534-565 FE=566-580 FF=581-591
+  72 PM:<.>9:WWW3(7W.F1 .11W.4W)543:<.>;C PM:<.>12:3(8.F1 8.3W3.3W)540:<.>;
+  73 IF RS1>30 GOTO 500
+  74 >>S:U^SN./.(15.0)-N.(15.0)/.(13.0)-N./UVSN.;  Y:5/2;            T1 S1 S2 T2
+  75 C---ARAN 2 SZALVEZETOVEL----------------------------------------------------
+  76 RBEG*RS1
+  77 Y:5/5/2/2;
+  78 REP*4
+  80 WM=15 WMI=7
+  82 VJA^0
+  84 <>S:U^S<1+>AYBHW/.+*(15.0)-AYBHW/UVSAYBHW;      VKF>6     VR1     T1 S1    T2
+  86 <>S:U^SBH*;                                        V0      T1
+  88 WM=0
+  90 <>S:UVSH;                                VKE<3     VR3              T2
+  92 WM=10
+  94 <>S:U^SAYW/.H+-AY*BW/UVS*BWAY;                     VL1     T1 S1    T2
+  96 WM=0
+  98 <>S:U^SAY+;                                        V0      T1
+  99 <>S:UVSY;                                VKA>10    VL3              T2
+ 100 REPEND
+ 104 IF #1=0 GOTO 155 C-- CSAVARAS BALRA---
+ 105 IF #1=1 GOSUB 183-202 C--CSAVARAS JOBBRA---
+ 106 C
+ 107 REND
+ 108 <>	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 115 IF #1=0 GOSUB 108
+ 120 END
+ 150 C---CSAVARAS BALRA--------
+ 155 Y:5/2/0/5/0/5;
+ 157 WM=15
+ 158 VJA^0
+ 160 <>S:U^S<1+>N./.-N./UVSN.;                      VR1  T1 S1    T2
+ 163 <>S:U^SNW.;                                    V0   T1
+ 165 <>S:U^SW/.-WGIT/0-T/UVSWGI;                    VL3  T1 S1 S2 T2
+ 170 <>S:U^SW/.-WTIG/0-G(9.0)/UVSW;           VKC>3 VR1  T1 S1 S2 T2
+ 175 <>S:U^SIGW/.-N.(15.0)/UVSN.;             VKD>5 VR3  T1 S1    T2
+ 177 #1=1
+ 178 GOTO 106
+ 180 C---CSAVARAS JOBBRA--------
+ 183 Y:2/5/0/2/0/2;
+ 184 WM=15
+ 185 VJA^0
+ 186 <>S:U^S<1+>N./.-N./UVSN.;                      VR1  T1 S1    T2
+ 188 <>S:U^SNW.;                                    V0   T1
+ 190 <>S:U^SW/.-WGIT/0-T/UVSWGI;                    VR3  T1 S1 S2 T2
+ 195 <>S:U^SW/.-WTIG/0-G(9.0)/UVSW;           VKC   VL1  T1 S1 S2 T2
+ 200 <>S:U^SIGW/.-N.(15.0)/UVSN.;             VKB>6 VL3  T1 S1    T2
+ 202 #1=0
+ 205 END
+ 500 C-----HATA-UJJA-----------
+ 505 JA2=1600
+ 510 PA:JA2;
+ 512 WM=28 WMI=7
+ 515 >>S:U^SN./.(15.0)-N.(15.0)/.-N.;   Y:5/2;            T1 S1 S2
+ 520 RBEG*RS1
+ 530 <<S:.-N.;                                      V#       S1 S2
+ 540 >>                                             V#       S1 S2
+ 550 REND
+ 560 END
+ 600 C-----GARBO NYAK--------------------------------------------------
+ 604 START 
+ 608 NP1=14.7   C:
+ 612 NP2=12.4   C:1/1-ES PASSZE
+ 616 NP4=12.5   C:LEVALASZTAS
+ 620 YG:6/256;
+ 624 WM=20
+ 628 <<	S:D.I-DI./DI.-D.I;	            	Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 632 >> S:R-0/0-R;                      Y:5/2;      NP1-1             S1 S2
+ 636 << S:D.I-DI./DI.-D.I/UVNR;	        Y:5/2;	    NP1-1	            S1 S2 T2
+ 640 WM=15 
+ 644 >> S:R-0/R-R;		                   Y:5/6;	    NP2-0   	           S1 S2
+ 648 << S:0-R/R-0/0-R;		               Y:0/6/0;    NP2-2   	      T1 S1 S2
+ 652 >> S:R-R(6.5);	                   	Y:2;	             ML          S1
+ 656 WM=25
+ 660 << S:R(12.0)-0/0-R(12.0);       		Y:2/5;		   	                  S1 S2    
+ 664 >> S:R-0/0-R;                                                    S1 S2
+ 668 JA1=1700(1700-1800)
+ 672 PA:JA1;
+ 676 F1=1-154
+ 680 PM:<.>9:WWW3(7W.F1 .11W.4W)543:<.>
+ 684 << S:R(14.0)-0/0-R(14.0)/UVS.;                VKA>3     S1 S2 T2
+ 688 >> S:U^SN./.-N./.-N.;                         VKA    T1 S1 S2
+ 692 REP*9
+ 696 <<S:.-N.;                                      V#       S1 S2
+ 700 >>                                             V#       S1 S2
+ 704 REPEND
+ 708 <<S:.-N./.-N./UVS<1->.;                                 S1 S2 T2
+ 712 >>S:U^SN./.-N./.-N.;                                 T1 S1 S2
+ 716 GOSUB 696-700*7
+ 720 END
+ 800 C---FONOTT NYAK-------------------------------------------------------------------
+ 801 START
+ 810 GOSUB 3-36
+ 815 GOSUB 40-50*2
+ 818 GOSUB 54
+ 935 >> S:U^SD.I/DI.-D.I/DI.-D.I;       Y:2/5;      NP2-2  V0       T1 S1 S2
+ 937 REP*2
+ 940 <> S:DI.-D.I;                      Y:2/5;             V#          S1 S2
+ 941 REPEND
+ 942 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 943 >>	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 945    END
+1500 ..WWW........WWWWWW........WWW.....WWW...WWWWWW....WWWWWW...WWW....WWW.WWWWWW.....WWWWWW......
+1504 ..YAA+......*BBHYAA+......*BBH.....WWW..*BBHYAA+..*BBHYAA+..WWW....WWW.WWWYAA+....WWWYAA+.....
+1506 ...YAA+....*BBH..YAA+....*BBH......WWW..WWW..WWW..WWW..WWW..WWW....WWW.WWW.WWW....WWW.WWW.....
+1508 ....YAA+..*BBH....YAA+..*BBH.......WWW..WWW..WWW..WWW..WWW..WWW....WWW.WWW.WWW....WWW.WWW.....
+1510 .....YAA+*BBH......YAA+*BBH........YAA+*BBH..YAA+*BBH..YAA+*BBH....YAA+WWW.WWW....YAA+WWW.....
+1512 ......GIITOO........GIITOO..........GIITOO....GIITOO....GIITOO......GIITOO.WWW.....GIITOO.....
+1514 .....*BBHYAA+......*BBHYAA+........*BBHYAA+..*BBHYAA+..*BBHYAA+....*BBHWWW.WWW....*BBHWWW.....
+1516 ....*BBH..YAA+....*BBH..YAA+.......WWW..WWW..WWW..WWW..WWW..WWW....WWW.WWW.WWW....WWW.WWW.....
+1518 ...*BBH....YAA+..*BBH....YAA+......WWW..WWW..WWW..WWW..WWW..WWW....WWW.WWW.WWW....WWW.WWW.....
+1520 ..*BBH......YAA+*BBH......YAA+.....WWW..YAA+*BBH..YAA+*BBH..WWW....WWW.WWW*BBH....WWW*BBH.....
+1522 ..WWW........OOTIIG........WWW.....WWW...OOTIIG....OOTIIG...WWW....WWW.OOTIIG.....OOTIIG......
+1600 .....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW.....WWWWW....
+1700 ........WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW......WWWWWW........
+1800 ..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..WW..
+1999 .YY**.
+1900 C .:FEH     W:FEK     G:FUZOLD  I:PIR
+1901 C Y:V.SAR   A:V.LIL   +:EGKEK   *:S.KEK  
+1902 C T:ENCIAN  O:BORDO   B:S.LIL   H:KEKI
+2000 C*****PROBA I******
+2000C  84 <>S:U^S<1+>AYBHW+/.*-AYBHW+/UVSAYBHW+;      VKF>6     VR1     T1 S1    T2
+2000C  86 <>S:U^SBH*;                                        V0      T1
+2000C  88 WM=0
+2000C  90 <>S:UVSH;                                VKE<3     VR3              T2
+2000C  92 WM=10
+2000C  94 <>S:U^SAYW/.H-AY*BW/UVS*BWAY;                     VL1     T1 S1    T2
+2000C  96 WM=0
+2000C 98 <>S:U^SAY+;                                        V0      T1
+2000C  99 <>S:UVSY;                                VKA>10    VL3              T2
+2000 C*****PROBA I******
+2000C  78 Y:5/0/5/2/0/2;
+2000C  84 <>S:U^S<1+>AYBHW/.+*-AYBHW+/0-+(9.0)/UVSAYBHW; VKF>6 VR1   T1 S1 S2 T2
+2000C  86 <>S:U^SBH*;                                        V0      T1
+2000C  88 WM=0
+2000C  90 <>S:UVSH;                                VKE<3     VR3              T2
+2000C  92 WM=10
+2000C  94 <>S:U^SAYW/.H-AY*BW(15.0)/UVS*BWAY;                     VL1     T1 S1    T2
+2000C  96 WM=0
+2000C  98 <>S:U^SAY+;                                        V0      T1
+2000C  99 <>S:UVSY;                                VKA>10    VL3              T2
+

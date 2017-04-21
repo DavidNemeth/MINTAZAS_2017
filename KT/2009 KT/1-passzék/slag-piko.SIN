@@ -1,0 +1,33 @@
+   1 C KORSLAG PIKO PASSZE
+
+  10 C---KORSLAG PIKO -2LUSI+1TX:---------------------------------------
+  12 NP4=12.5               C LEVALASZTAS
+  14 NP2=10.0   C BEKEZDES
+  16 NP3=14.0   C SLAG PASSZE
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+
+--- ide kell a#100 és a tûkiosztás!--------
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                                     S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	               	           S1    T2
+ 204 >> S:R-R;		                      Y:6;	                 VU            S2
+ 206 << S:R-0/0-R;                    Y:6/0;                VU	        S1 S2
+ 208 >> S:R-R;                        Y:5;    NP2-2         VU         S1
+ 210 << S:0-NA/NA-0;                  Y:2/5;  NP3-3       VU         S1 S2
+ 212 WM=22 C24
+ 214 REP*2 C***PIKO***
+ 216 >> S:0-NA/NA-0;                  Y:5/2;                VU         S1 S2
+ 218 << S:0-NA/NA-0;                  Y:2/5;                VU         S1 S2
+ 220 REPEND
+ 222 >> S:0-R/R-0;                    Y:5/2;                           S1 S2
+ 224 WM=18
+ 226 REP*3
+ 228 << S:R-0/0-R;                                          VU         S1 S2
+ 230 >> S:0-R/R-0;                                          VU         S1 S2
+ 232 REPEND
+
+1990 *****AA

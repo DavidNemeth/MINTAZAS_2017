@@ -1,0 +1,48 @@
+ 600 C SLAG PIKO PANT  (TICHOV)  1'24  VAR 2,3
+ 602 NP1=11.5   C:REX
+ 606 NP2=10.0   C:BEKEZDES
+ 608 NP4=12.5   C:LEVALASZTAS
+ 610 NP5=14.5   C:LEVALASZTAS
+ 614 NP8=14.0   C:SLAG PASSZE
+ 616 START
+ 618 YG:6/256;
+ 620 WM=20 WMI=7
+ 622 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 624 JA1=1990; 
+ 626 PA:<JA1>; 
+ 628 FA=1-6; 
+ 630 PM:<.>10:89FA;
+ 632 >> S:U^SA /NA-A/UVSNA;          Y:5;           NP5-5             T1 S1    T2
+ 634 << S:NA+-A/UVSA;                                      VL1  VKA>3    S1    T2
+ 636 >> S:NA-NA;                     Y:6;           NP4-4  V0               S2
+ 638 << S:NA-0/0-R;                  Y:6/0;                              S1 S2
+ 640 VJA^0
+ 642 >> S:R-R/NA-0;                  Y:2/5;         NP2-2                S1 S2
+ 644                                                NP8-8
+ 646 Y:2/5/5/2;
+ 647 WM=22
+ 648 REP*2
+ 650 << S:NA-0/0-NA;                         S1 S2
+ 652 >>                                      S1 S2
+ 654 REPEND C I+AY*T
+ 656 << S:R-0/0-R;                           S1 S2
+
+ 657 C     VAR2.:
+ 658 >> S:U^ST/R-0/0-R/UVST;              T1 S1 S2 T2
+ 660 << S:U^S*I/R-0/0-R/UVS*I;            T1 S1 S2 T2
+ 662 >> S:U^ST/R-0/0-R/UVST;              T1 S1 S2 T2
+ 664 << S:R-0/0-R;                           S1 S2
+
+ 657 C     VAR3.:
+ 658 >> S:R-0/0-R/UVST;                      S1 S2 T2
+ 660 << S:R-0/0-R/UVS*I;                     S1 S2 T2
+ 662 >> S:R-0/0-R/UVST;                      S1 S2 T2
+ 664 << S:R-0/0-R;                           S1 S2
+
+ 666 REP*3
+ 668 >> S:R-0/0-R;                           S1 S2
+ 670 <<                                      S1 S2
+ 672 REPEND
+ 674 >>                                      S1 S2
+ 680 END
+1990 I+AY*T

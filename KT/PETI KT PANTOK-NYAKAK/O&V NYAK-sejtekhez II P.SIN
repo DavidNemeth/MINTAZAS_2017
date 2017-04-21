@@ -1,0 +1,54 @@
+ 900 C O&V CSIPKE NYAK  GUMIVAL (ONDOHOZ) !!!EZ A LEGJOBB LYUKACSOS NYAK!!! 2002.02.13.
+ 902 NP2=11.0   C1/1,BEKEZDES
+ 904 NP3=11.2   C:REX 
+ 906 NP4=12.6   C:LEVALASZTAS,1/1-ES VARROSZEGELY
+ 908 NP1=14.0   C:SLAG,LEVALASZTAS
+ 910 NP6=13.2   C:SORMINTA
+ 914 START
+ 916 YG:6/346;
+ 918 WM=20 WMI=7
+ 920 << S:D.I-DI./DI.-D.I;	          Y:3/4;	        NP4-4   VU   V0	     S1 S2
+ 922 >> S:D.I-DI./UVSDI.;            Y:3;           NP3-3                S1    T2
+ 924 << S:U^SD.I/DI.-D.I;                           NP1-1             T1 S1
+ 926 >> S:U^SDI./D.I-D.I;            Y:6;           NP4-4   VR1       T1 S1
+ 928 << S:0-D.I/D.I-0;               Y:6/0;                              S1 S2
+ 930 >> S:DI.-D.I/0-D.I;             Y:4/3;         NP2-2   V0   VU      S1 S2
+ 932 << S:DI.(8.0)-0;                Y:6;                        VU      S1
+ 934 >> S:DI.(8.0)-0;                Y:6;                        VU      S1
+ 938 << S:DI.-D.I;                   Y:4/3;         NP2-2        VU      S1 S2 C VAGY
+ 938 << S:DI.-D.I;                   Y:4;           NP2-2        VU      S1    C VAGY 2 SORRAL ROVIDEBB 1/1
+ 940 PA:JA1;
+ 942 PM:<FA>1:9.544:<.>;
+ 944 JA1=1000
+ 946 FA=1-2
+ 948 VJA^1
+ 952 >> S:DI.-D.I/DI.-D.I/UVS.;                                 S1 S2 T2 C VAGY
+ 952 >> S:DI.-D.I/UVS.;                                         S1    T2 C VAGY 2 SORRAL ROVIDEBB 1/1
+ 954 C<< S:U^SN./.-N./UVSN.;             Y:4; VKC>2   NP6-6  T1 S1    T2 C KIIKTATHATO
+ 956 C>> S:R-0;                                                 S1       C KIIKTATHATO
+ 958 << S:U^SN./.-N./UVSN.;               Y:3; VKC>2  NP6-6  T1 S1    T2
+ 960 >> S:R-0;                                                        S1
+ 962 << S:U^SN./.-N./.-N./UVSI;                Y:4/3; VKC>2  T1 S1 S2 T2
+ 964 >> S:.I-*/.-N.;                                  VU    S1 S2
+ 966 WM=0
+ 968 << S:UVS*;                       VR1                             T2
+ 970 >> S:0-0;                                     Y:0;         S1
+ 972 WM=18
+ 974 VJA^0
+ 976 << S:.I-*/.-N.;                            Y:4/3; VU    S1 S2
+ 978 WM=0
+ 980 >> S:UVSI.;                      V0 VKD>4                        T2
+ 982 << S:0-0;                                     Y:0;         S1
+ 984 WM=18
+ 986 >> S:.I-*/.-N.;                           Y:4/3; VU    S1 S2
+ 988 << S:U^SI/.-N./.-N./UVNN.;                           T1 S1 S2 T2
+ 990 C>> S:R-0;                                    Y:3;         S1       C KIIKTATHATO
+ 991 C<< S:U^NN./.-N./UVNN.;                                 T1 S1    T2 C KIIKTATHATO
+ 992 >> S:R-0;                                     Y:4;         S1
+ 993 << S:U^NN./.-N.;                       NP1-1            T1 S1
+ 994 >> S:.-N./.-N./UVNDI.;                        Y:3/4;       S1 S2 T2
+ 995 << S:U^SD.I/DI.-D.I;           NP2-2  Y:4;       T1 S1   
+ 996 >> S:DI.-D.I/UVSD.I;                                S1    T2
+ 997 END
+ 999 <> W0 S0
+1000 97(I*)I

@@ -1,0 +1,150 @@
+ C TRK  VAGY PETIKT2005/TRK P
+ C  1 VAGY 2 SZV.-VEL IS MEGY A RIZS. AT KELL IRNI:224. ES 400-434. SOROKAT!
+ C  (1SZV.-VEL:NPK=+0-+0.1)
+   1 C                        NP1=   NP6=          E 25'         H        U          NYAK
+   1 C-----------------------+---------------+------------+------------+-------------+-----------
+   1 C                           14.5         RS17=0        RS17=1        RS17=2      RA17=3
+   1 C   LUSIFIL:                               132            66             52/21
+   1 C   GILETTI:  NPK=-0.2                     130            65             51/20    
+   1 C-----------------------+---------------+------------+------------+-------------+-----------
+
+  10 NP1=14.4              C:MINTA CSIPKE
+  12 NP4=12.5;             C:LEVALASZTAS
+  14 NP5=13.8              C:KORSLAG
+  16 NP2=10.0              C BEKEZDES
+  18 NP6=14.4              C H-U RIZS
+  20 NP3=13.2              C:LEGYEZO CSIPKE PASSZE
+  22 NP7=12.8              C:LEGYEZO CSIPKE PASSZE
+  24 NP8=11.2              C 1/1
+
+  40 START        
+  50 YG:6/256;
+  52 WM=20;WMI=7
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    VU V0 ML       S1 S2
+
+  58C IF #100=8   RS17=3            C NYAK
+  60 IF #100=21  RS17=0            C E
+  62 IF #100=15  RS17=1            C H
+  64 IF #100=9   RS17=2            C U
+
+  66 IF RS17=0  RS1=132          C E
+  68 IF RS17=1  RS1=66           C H
+  70 IF RS17=2  RS1=21           C U H/R 
+
+
+  80 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  82 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  84 >> S:R-R;		                      Y:6;	              VU 	   ML          S1     C !VU!
+  86 << S:R-0/0-R;                    Y:6/0;            	VU     ML       S1 S2
+  88 >> S:R-R;                        Y:5;        NP2-2  VU     ML       S1        C !VU!
+  90 Y:2/2/5/5;
+  92 REP*2
+  94 << S:R-0;		                             ML   NP5-5  VU       S1
+  96 >> S:0-R;		                             ML          VU        S1
+  98 REPEND
+
+ 100 JA1=1144(1004-1006)
+ 102 PA:1:<JA1>;
+ 104 FA=5-182; FB=29-161; FC=10-19; C:BARHOVA LEHET TENNI*****
+ 106 PM:<.>8:3(.FA.);               C E-H ********************
+ 108 IF RS17=2 PM:<.>8:4(.FB.);     C U   ********************
+ 110 IF RS17=3 PM:<.>7:54FC;        C NY  ********************
+ 112 << S:U^NI;		                             ML               T1
+ 114 >> S:UVN.;		                             ML                       T2
+ 116 NP3-3
+ 118 << S:.-I;                      Y:2;            VU          S1
+ 120 #2=11
+ 122 IF RS17=2 #2=1 C UJJA
+ 124 REP*#2C***********LEGYEZO***********
+ 126 REP*2 
+ 128 WM=0
+ 130 <> S:U^N<1->IY/UVN.A;              T1       T2
+ 132 <> S:U^NA/UVNY;         VKB>2  VL1  T1       T2 C VKB>3...E HELYETT MECHANIKUSSAN 0-ROL <-2 -RE LETT ALLITVA!
+ 134 <> S:U^N<1->I/UVN.;           V0   T1       T2
+ 136 WM=20
+ 138 <> S:.-I/UVN<1->.; Y:5; NP7-7 VU      S1    T2
+ 140 <> S:U^NI/.-I;     Y:2; NP3-3 VU   T1 S1
+ 142 REPEND C*****************************
+ 144 REPEND C*****************************
+
+ 146 >> S:.-I;                                   NP8-8   VU        S1        C 1/1
+ 148 REP*4
+ 150 << S:.-I/.-I;                      Y:5/2;           VU        S1 S2
+ 152 >> S:.-I/.-I;                                       VU        S1 S2
+ 154 REPEND
+ 156 <<                                                  VU        S1 S2
+ 158 >> S:.-I/.-I/UVNI;                                            S1 S2 T2
+ 160 END
+1002 190I
+1004 4.91(I.)3.I
+1006 4.91(I.)3.I
+1008 4.91(I.)3.I
+1010 4.91(I.)3.I
+1012 4.91(I.)3.I
+1014 4.91(I.)3.I
+1016 4.91(I.)3.I
+1018 4.91(I.)3.I
+1020 3.8(5(.I)I3(I.)I)19(.I)4.I
+1022 3.8(4(.I).AIY3(.I))19(.I)4.I
+1024 3.8(5(.I)I3(I.)I)19(.I)4.I
+1026 3.10(5(.I)I3(I.)I).I4.I
+1028 3.8(4(.I)AAIYYI.I.I).2(4(I.)AIY3(.I).)I4.I
+1030 3.8(.I.3(I.I.I)).2(I.I.I3(.I.)I.I.)I4.I
+1032 3.8(.I.3(I.I.I)).2(I.I.I3(.I.)I.I.)I4.I
+1034 3.8(3(.I).3AI3Y.I.I).2(3(I.)IAAIYY3(I.))I4.I
+1036 3.10(5(.I)I3(I.)I).I4.I
+1038 3.10(5(.I)I3(I.)I).I4.I
+1040 3.8(3(.I)4AI4YI.I).2(3(I.)3AI3Y.I.I.)I4.I
+1042 3.16(.I.2(I.I))2(2(3(.I).).I.I).I4.I
+1044 3.16(.I.2(I.I))2(2(3(.I).).I.I).I4.I
+1046 3.8(.I.I.5AI5Y.I).2(I.I.I4AI4YI.I.)I4.I
+1048 3.10(5(.I)I3(I.)I).I4.I
+1050 3.10(5(.I)I3(I.)I).I4.I
+1052 3.8(.I.I6AI6YI).2(I.I.5AI5Y.I.)I4.I
+1054 3.8(.2(I.I)5(.I)I).2(I2(.I.)I.I.I2(.I.))I4.I
+1056 3.8(.2(I.I)5(.I)I).2(I2(.I.)I.I.I2(.I.))I4.I
+1058 3.8(.I.7AI7Y).2(IYI6AI6YIA)I4.I
+1060 3.10(5(.I)I3(I.)I).I4.I
+1062 3.10(5(.I)I3(I.)I).I4.I
+1064 4.8(IYI6AI6YIA)I2(YY.5AI5Y.AAI)4.I
+1066 4.8(4I6(.I)II)I2(I..5(.I)3.II)4.I
+1068 4.8(4I6(.I)II)I2(I..5(.I)3.II)4.I
+1070 4.8(IYYI5AI5YIAA)I2(3Y.4AI4Y.3AI)4.I
+1072 4.8(II2(III.I.)4I)I2(II...I.III.I...3I)4.I
+1074 4.8(II2(III.I.)4I)I2(II...I.III.I...3I)4.I
+1076 4.8(I3YI4AI4YI3A)I2(4Y.3AI3Y.4AI)4.I
+1078 3.8(.I.III4(I.)4I).2(I.II..3(.I)3.II.)I4.I
+1080 3.8(.I.III4(I.)4I).2(I.II..3(.I)3.II.)I4.I
+1082 4.8(I4YI3AI3YI4A)I2(5Y.AAIYY.5AI)4.I
+1084 4.7(.2(I.3I).4I.I)2(II.II)I.II2(2(II.I)I3.3I3.)II.I.4.I
+1086 4.7(.2(I.3I).4I.I)2(II.II)I.II2(2(II.I)I3.3I3.)II.I.4.I
+1088 4.7(.5YIAAIYYI5A)I5YIAAIYYI2(5AI6Y.AIY.A)5A5.I
+1090 3.7(..2(.I.I3I).I)3I2(I.4I.)4I2(I.I2(I3.)II.I...)3.I
+1092 3.7(..2(.I.I3I).I)3I2(I.4I.)4I2(I.I2(I3.)II.I...)3.I
+1094 4.7(.AI4YIAIYI4AIY)IAI4YIAIYI4AIYI2(AI5Y.I.5AIY.)4.I
+1096 ..7(4..I.I8I.I)2(6I.3I)3I2(I.I2(I..)II.I.4.)..I
+1098 ..7(4..I.I8I.I)2(6I.3I)3I2(I.I2(I..)II.I.4.)..I
+1100 3.7(3.AI4Y3I4AIY)3IAI4Y3I4AIY3I2(AI5YI5AIY3.)3.I
+1102 .2(6..I.I6I.I).2(5.2(.I.II).I.).2(4..I.I5II.I..)5.2(2(I.6I)II)2(I.II.)I6.2(.I.II).I8.I
+1104 .2(6..I.I6I.I).2(5.2(.I.II).I.)6.I.3I.2(III.I.5..I.I3I)2(3I.6I)I.8I2(2(I.II.)I7.).I
+1106 ..4(5.6AI6Y)5.6A.2(6Y5.6AI)6Y5I6AI6Y5I2(5A.I.5Y5.)..I
+1108 6..I.II5.II.I.3..I.II..I.2(.II.I.4.2(I.I).I).II.I.3..I.II3.2(..II.I.3..I.II..I).2(2(.II)3I2(II.)3.).II.I.3..I.II5.II.I.6.I
+1110 ..2(5.I.2(II.I)I.I).4(3.2(.2(I.I)).)4.2(I.I).2(2(I.I)4I2(II.)II)2(I.I)5.I.2(II.I)I.I.6.I
+1112 3.2(3.7AI7Y).4(..7A.7Y.)..7A.2(7Y3I7AI)7Y3.7AI7Y6.I
+1114 6.I.II..I.I..II.I...I.II..3I.2(.II.I...2(I.I).I.I).3(II.I...I.II..I.I..)I2(I.3I2(II.).I.I..I)I.I...I.II..I.I..II.I.5.I
+1116 3.4(3.2(I.I).I.2(I.I))3.2(I.I)..2(.2(I.I)3.2(I.I).I).2(2(I.I)II2(II.)I.I.)2(I.I)3.2(I.I).I.2(I.I)6.I
+1118 4.4(.8AI8Y).8A.2(8Y.8AI)Y2(7YI8AIY)7Y.8AI8Y5.I
+1120 3.2(.II)2(..I.).2(II.I)I.3(.I).2(.2(II.I)4(I.)I).2(II.I)2(I..)2(.I..2(II.I)I..I.I).3(I..2(II.I)2(I..).)I.2(.II)4.I
+1122 4.2(II.2(II.I.I)I.I)I5(2(I.I).I.I.2(I.I)I)I2(.2(II.I.I)I.3I).2(II.I.I)I.II4.I
+1124 4.2(I8AI8Y)I5(8A.8YI)A2(7AI8YIA)7AI8YI4.I
+1126 4.I.II.4(.I)..II.I.II..I.III.I.2(2(.II.I)4(.I)).6(II.I.II.4(.I)..)II.I.3.I
+1128 3.4(.2(I.I)5(.I)I).2(I.I).I..5(.3(I.I.I).I).I.2(I.I)4.I
+1130 4.4(I8AI8Y)I8A.5(8YI8AI)8YI4.I
+1132 4.3I2(..I.I.).5I.5(.I).2(.4I6(I.)I).5I..I.I..2(.I.I..5I.3(.I)).3(I.I..5I..I.I3.)I.I..3I4.I
+1134 4.2(2(II3(I.))II)I5(I7(I.)3I)I2(2(3(I.)II)II)2(3(I.)II)I4.I
+1136 4.2(I8AI8Y)I5(8A.8YI)A2(7AI8YIA)7AI8YI4.I
+1138 4.II.6(.I)..3I.3(.I)I3(I.)2(.II7(I.)I).6(3I.6(.I)..)II4.I
+1140 4.4(I8(I.)I)I4(I.).5(4(.I)I4(I.)I)4(.I)I4.I
+1142 4.4(I8AI8Y)I8A.5(8YI8AI)8YI4.I
+1144 3.2(5(.I)I3(I.)I)27(.I).5(4(I.)II4(I.))I4.I
+1146 2(4I.85I)3I.6I

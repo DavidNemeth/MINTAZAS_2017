@@ -1,0 +1,160 @@
+
+   1 C*********NAGYLYUKU ROJTOS KARDIGAN 2*******************
+   1 C KULONBSEG A MASIK NAGYLYUKU ROJTOSHOZ KEPEST. HOGY KETFELE LYUKKAL VAN: ALUL A REGI, A MELL FOLOTT UJ*************
+     C PLATIR:TX FELUL
+
+   1 C A GALLER KORBESZEGVE PIKOPANTTAL, HOGY A PANT JOL KANYARODJON 1/1-EL KELL BEFEJEZNI
+   1 C 1 NAGY GOMBBAL, KUKACCAL
+
+  10 NP4=13.0   C:LEVALASZTAS
+  11 NP2=12.0   C:BEKEZDES,1/1-ES PASSZE REGI:11.2
+  12 NP1=13.8   C MINTA
+C  KT: WM%=0   NPK=0
+C PKT: WM%=-10 NPK= 
+C  UJ: WM%=0   NPK= 
+C FEKETE: NPK=0.6
+
+  40 START
+  50 YG:6/25;
+  51 WM=15 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  54 C**********NYAK**********************************
+  56  IF #100=3  RS17=50        C PIKO PANT + 1/1 HOGY KONNYEBBEN KANYARODJON A GALLERNAL
+  58 C*****MINTA****************************************KT,ML:***GYORS:********KESZ MERET
+  60 C IF #100=4  RS17=0         C T-T-T                28'                      51*64
+  62 C IF #100=1   RS17=5         C  H  U-U-U-U-U                                 55+ROJT
+  64 C IF #100=6  RS17=2         C 3 GALLER      
+
+  66C  IF #100=1   RS17=1         C 3/4 U-U-U-U-U                                 45
+ 92 C************************************************
+  94 IF RS17=50 GOTO 600          C PIKO PANT 0.04
+C------------------------------------------------------------------------------------------------------------
+C                             TAMAS PAMUT      TAMAS PAMUT      30KG.FEKETE (2XO PAR)       BAJA FEKETE
+C                              +FEHER TX        +MOGYI TX             +T.TX                   +BAJA TX
+C------------------------------------------------------------------------------------------------------------
+C KT :WM%=0      NPK=              0               0.2                0.5                        0.3
+C------------------------------------------------------------------------------------------------------------
+CPKT :WM%=-10    NPK=              0               0.2                                           0.3
+C------------------------------------------------------------------------------------------------------------
+C UJ :WM%=0      NPK=           
+C------------------------------------------------------------------------------------------------------------
+ 100 C*****MINTA**********************************************KG:*********KESZEN:********
+ 102 IF RS17=0  RS19=1 RS1=7   RS2=12         C TTT           0.35       65CM+ROJT
+ 104 IF RS17=5  RS19=1 RS1=11  RS2=0          C  H  UUUU      0.37       55CM+ROJT
+ 105 IF RS17=1  RS19=1 RS1=7   RS2=0          C 3/4 UUUU      0.25       35CM+ROJT
+ 106 IF RS17=2  RS19=1 RS1=0   RS2=5          C 3 GALLER      0.1
+ 132 C***************************************************3/4U:1DB.KB.:0.4-0.44KG+ROJT
+ 180 C************581TU****************************************************************
+ 182 JA1=1010(1004-1010)
+ 186 PA:2:<JA1>;
+ 196 FA=2-9;              PM:7.<FA> 574:8.;        C*MELLENY PANT JELOLES NELKUL
+ 198 C********************************************************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 202 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	               VR1	  	   S1
+ 206 <<	S:UVSDI.;		                      	                               T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI.(9.0);		           	Y:5;	            VU V0        S1
+ 214 << S:0-DI./D.I-0;               Y:2/5;     NP2-2 VU           S1 S2
+ 216 REP*2
+ 218 >> S:D.I-DI.;                                    VU           S1 S2
+ 220 <<                                               VU           S1 S2
+ 222 REPEND
+ 230 >> S:U^SD.I/0-R/0-R;                      NP1-1           T1 S1 S2
+ 240 IF RS1=0 GOTO 540
+ 500 RBEG*RS1  C************************************************************************************
+ 502 REP*2
+ 504 <> S:0-R/0-R/UVS<1->Y;                               VL1      S1 S2 T2
+ 506 PKV:1:<JA1>;
+ 508 <> S:U^SY/0-R/0-R/UVSY;                              V0    T1 S1 S2 T2
+ 509 PKV:0;
+ 510 <> S:U^SY/0-R/0-R/UVS<1->YA;                         VR1   T1 S1 S2 T2
+ 512 PKV:3:<JA1>;
+ 514 <> S:U^SA;                                           V0    T1
+ 516 <> S:U^SY;                                           VR2   T1
+ 518 <> S:0-NYA/0-NYA/UVS<1->YA;                          VR1      S1 S2 T2
+ 520 <> S:U^SA;                                           V0    T1
+ 522 <> S:U^SY;                                           VR2   T1
+ 524 PKV:0;
+ 526 <> S:<1->0-.*I/0-.+I;                             VU  V0      S1 S2
+ 528 REPEND
+ 530 REND     C***1004 .*+*I....*+*I...*********************************************************************************
+ 532 IF RS2=0 GOTO 558
+ 540 JA1=1002(1000-1002)
+
+ 542 RBEG*RS2 C************************************************************************************
+ 544 REP*2
+ 546 <> S:0-R/0-R;                                  VU       S1 S2
+ 548 <> S:0-R/0-R/UVS<1->YA;                                  S1 S2 T2
+ 550 <> S:U^SA;                                      VL1   T1
+ 552 <> S:U^SY;                                      VR1   T1
+ 554 <> S:0-R/0-.Y;                                VU V0       S1 S2
+ 555 REPEND
+ 556 REND
+ 558 << S:0-R/0-R;                                 VU           S1 S2
+ 560 >> S:0-R/0-R/UVSD.I;                                     S1 S2 T2
+ 561 << S:D.I-DI.;	                        NP2-2       VU          S1 S2
+ 562 >> S:D.I-DI.;	                                    VU          S1 S2
+ 563 << S:D.I-DI.;	                                    VU          S1 S2
+ 564 >> S:D.I-DI./D.I-DI./UVSDI.;	                     VU          S1 S2 T2
+ 566 END       C************************************************************************************
+
+ 600 C*********** REX PIKO PANT *******************************-
+ 608 NP4=12.6    C:LEVALASZTAS,
+ 610 NP10=10.0   C:BEKEZDES,REX  11.0 10.5 10.0
+ 612 NP11=11.5   C:1/1
+618C  START 
+620C  YG:6/256;
+ 622 WM=18 C 24
+624C  << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+
+ 626 JA1=1980; C1980 ....AIA
+ 628 PA:<JA1>; 
+ 630 FA=2-7; C FA=1-7 VAGY 2-7;
+ 632 PM:6+.<FA>573:2.<+>; C*581TU
+
+ 634 >> S:D.I-DI./UVN+.I;	           	Y:2;                     	    S1    T2
+ 636 << S:U^NA/+.I-A;                                            T1 S1
+ 638 >> S:+.I-A;                      Y:5;                VU VR1    S1
+ 640 << S:+.I-0/UVNA;                                               S1    T2
+ 642 >> S:+.I-.I;                     Y:6;                   V0        S2
+ 644 << S:+.I-0/0-+.I;                Y:6/0;              VU        S1 S2
+ 646 >> S:+.I-.I/+.-0;                Y:5/2;      NP10-10 VU        S1 S2
+ 648 << S:+-./+.-.;                   Y:2/5;              VU        S1 S2
+ 650 >> S:.+-./+.-.;                  Y:5/2;              VU        S1 S2
+ 652 << S:.+-./+.-.;                                      VU        S1 S2
+ 654 >> S:.+-./+.I-.I;                                    VU        S1 S2
+
+C******* VAGY REX ***********
+C 660 REP*3 
+C 662 << S:R-.AI/R-.AI;                   S1 S2
+C 664 >>                                  S1 S2
+C 666 REPEND
+C 668 END
+
+C******* VAGY 1/1 **************
+ 660 << S:R-.AI/R-.AI/UVSDI.;                   S1 S2 T2
+ 662 >> S:U^SD.I/DI.-D.I/DI.-D.I;   NP11-11   T1 S1 S2
+ 664 << S:DI.-D.I;                   VU          S1 S2
+ 666 >>                              VU          S1 S2
+ 668 <<                              VU          S1 S2
+ 670 >> S:DI.-D.I/DI.-D.I/UVSD.I;               S1 S2 T2
+ 672 END
+
+ 999 <> W0 S0
+
+1980 4.AIA
+
+
+1000 ..YA..YA..YA..YA
+1002 YA..YA..YA..YA..
+
+1004 .*+*+....*+*+...
+1004 .*+*I....*+*I...
+1006 .Y..A....Y..A...
+1008 ..YA......YA....
+1010 .......Y.......Y
+

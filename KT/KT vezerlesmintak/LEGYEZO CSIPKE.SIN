@@ -1,0 +1,41 @@
+           LEGYEZO CSIPKE  JAC.:2005/TRK
+           5 LOKET/2 SOR
+           I:SZIN       FEKETE
+           A:SZIN ->    KEKI
+           Y:SZIN <-    SARGA
+           .:FONAK      FEHER
+           +:FONAK->    KIRALYKEK
+           *:FONAK<-    PETROL
+  14 NP3=13.2              C:LEGYEZO CSIPKE PASSZE 1 NYAK:13.0
+  15 NP7=12.8              C:LEGYEZO CSIPKE PASSZE 2 NYAK:12.4
+
+ 100 JA1=1040(1030-1040)
+ 102 PA:1:<JA1>;
+ 104 FA=5-182; FB=29-161; FC=10-19; C:BARHOVA LEHET TENNI*****
+ 106 PM:<.>8:3(.FA.);               C E-H ********************
+ 108 IF RS17=2 PM:<.>8:4(.FB.);     C U   ********************
+ 110 IF RS17=3 PM:<.>7:54FC;        C NY  ********************
+ 112 << S:U^NIAY;		                             ML               T1
+ 114 >> S:UVN.+*;		                             ML                       T2
+ 116 NP3-3
+ 118 << S:.+*-IAY;                      Y:2;            VU          S1
+ 120 REP*3 C***********LEGYEZO***********
+ 122 REP*2
+ 128 WM=0
+ 130 <> S:U^NI*Y/UVN.A+;                     T1       T2
+ 132 <> S:U^NA+/UVN*Y;                VL1    T1       T2 C VKB>3...E HELYETT MECHANIKUSSAN 0-ROL <-2 -RE LETT ALLITVA!
+ 134 <> S:U^N<1->IYA/UVN.+;           V0     T1       T2
+ 136 WM=20
+ 138 <> S:.+*-IAY;                      Y:5;     NP7-7   VU        S1
+ 140 <>                                 Y:2;     NP3-3   VU        S1
+ 142 REPEND
+ 144 REPEND C*****************************
+
+1028 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1030 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1032 I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.I.II
+1034 I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.I.I.IA.YI.II
+1036 I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.I.I.A+I*Y.II
+1038 IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YI.IA+A.Y*YII
+1040 A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*Y.A+A+I*Y*YI
+1042 IIII.IIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIII.IIIIII

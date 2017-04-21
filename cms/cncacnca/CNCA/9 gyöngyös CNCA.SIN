@@ -1,0 +1,158 @@
+
+   GYÖNGYÖS
+   1C       14.5    9.0         9.0    14.5
+   1C  1: <-------------       ------------->  CSIPKE
+   1C       14.5    10           10    14.5
+   1C         -      -           -      -
+   1C J2: <-------------       ------------->  HATA-UJJA (KREPP)
+   1C      15.5-16 15.5-16     15.5-16 15.5-16
+   1C        10    15.0          7      7
+   1C B2: <-------------       ------------->  BEKEZDES-KORSLAG
+   1C        10     10          14.0   13.0
+   1C        0     15.0         15.0    0
+   1C J3: <-------------       ------------->  PASSZE
+   1C        0     16.0         15.0    0
+   1C        -      -           15.0   10
+   1C B3: <-------------       ------------->  KORSLAG (1SOR)
+   1C        -      -           10     15.0
+   1C       12.5   12.5         12.5   12.5
+   1C J4: <-------------       ------------->  LEVALASZTAS
+   1C       13.0   13.5         12.5   12.5
+   1C B4:=J4
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+      HA A PASSZÉBAN SZAKÍTJA A FONALAT A KÖVETKEZÕKÖN KELL VÁLTOZTATNI:
+             0     16.0         16.0    0
+      J3: <-------------       ------------->  PASSZE
+             0     15.0         14.5    0
+      111 << S:U^NY/NIY-IY;         Y:5;    VR1 V#       ML     T1 S2
+      119 >> S:U^NY/NIY-IY;         Y:5;    V0  V#       ML     T1 S2
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+   1C TUAGYKORREKCIOK:
+   1C                V0:->2
+   1C                R1:<-1  ________R2:<-1.5 ________R3:<-2.0
+   1C                L1:->1.25_______L2:  -   ________L3:->2.25
+   1C  KB A SULYOK FELE (5.5 DB)!!! A 2-ES PLATIRDIOT MINNEL MAGASABBRA 
+         KELL ALLITANI,VAGY VENNI EGY EREDETIT MERT CSIKOZ!!!!!!!!!
+
+                 2X16/1-ES PAMUT+1TX:   2HB+1TX(POMAZI) VAGY 1HB+2TX(SPRODEBB),VAGY
+                                        3X15/1 FEHER,VAGY FEKETE PAMUT,VAGY
+                                        2X16/1-ES PAMUT+1 CIRMOS:
+                      NP2=15.5            NP2=15.25-16
+  -------------------------------------------------------
+  ELEJE: RS17=0       RS1=11-14           RS1=6-10    (CSAK A KT-N)
+  -------------------------------------------------------
+  HÁTA:  RS17=1       RS1=38-40           RS1=36-38
+  -------------------------------------------------------
+  UJJA:  RS17=1       RS1=26-28 (ROV.:9)  RS1=25-27 (ROV.:8)
+
+  KEREK NYAK GUMIVAL (LYUKACSOS):SP900  (CSAK A KT-N)
+  SPICCES NYAK (LYUKACSOS):      SP700  (CSAK A KT-N)
+  
+  40  START
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;		       Y:5/2;	     NP4-4   V# V0	ML      S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;  Y:5/2;                    ML      S1 S2 T2
+  62 << S:DI.-D.I/R-0/UVND.I;  	   Y:5/2;	          	        ML      S1 S2 T2
+  68 >> S:R-R;		                    Y:6;	                  	 ML         S2
+  71 << S:R-0/0-R;		              Y:6/0;            	       ML        S1 S2
+  74 >> S:R-R/R-0;	               	Y:2/5;	     NP2-2         ML      S1 S2
+  80 << S:R-0/0-R;		               Y:2/5;		                 ML      S1 S2
+  83 >> S:R-0/0-R;                  Y:2/5;      NP3-3         ML      S1 S2
+  95 JA1=1086;
+  98 PA:1:JA1;
+  99 FA=7-182; IF RS17=1 IF RS1<30 FA=29-160 C:BAL OLDALT:+ __ JOBB OLDALT:* !!!!!!!!!
+ 101 PM:<.>9:3(.FA..);IF RS17=1 IF RS1<30 PM:<.> 10:4(FA ..);C======4LAP======
+ 103 << S:U^NN./.-N./UVN.+;       Y:2;     NP3-3   ML        T1 S2   T2
+ 105 REP*2          C *******  PASSZE  ***********************************
+ 107 >> S:UVN*;                                 VR2  NP0-0  ML         T2
+ 109 PKV:2:JA1;
+ 111 << S:NI-I;                        Y:5;     VR1 V#       ML           S2
+ 112 PKV:2:JA1 7:.; PK^:1:JA1 182:.;IF RS1<30 PKV:2:JA1 29:.; PK^:1:JA1 160:.;
+ 113 >> S:U^N*+Y/.-N./UVN*;            Y:2;                  ML     T1    S2 T2
+ 114 PKV:0;  PK^:0;
+ 115 << S:UVN+;                                 VL1 NP0-0    ML              T2
+ 119 >> S:NI-I;                         Y:5;    V0  V#       ML           S2
+ 121 << S:U^N*+Y/.-N./UVN+;             Y:2;                 ML     T1    S2 T2
+ 123 REPEND         C  ***************************************************
+ 124 PA:4:JA1 10:I 184:I.; IF RS17=1 IF RS1<30 PA:4:JA1 32:I 162:I.;
+ 126 FA=10-185;       IF RS17=1 IF RS1<30 FA=32-163          C======4LAP======
+ 150 JA1=1084(1028-1084);
+ 155 >> S:U^NY/UVNNY;                            ML    NP01-01    T1 T2
+ 160    Y:5/2/2/5;
+ 165 REP*13           C 13*******  CSIPKE+KREPP  ****************************
+ 170    PK^:5:JA1 10:.I 185:I; IF RS17=1 IF RS1<30 PK^:5:JA1 32:.I 163:I;
+ 180 << S:U^N<1->N.*Y/.*-N.*/UVNNA.*;                 VL1  ML  T1 S1   T2
+ 181    PK^:0;
+ 182 >> S:U^N<1->N.A/.*-N.*/UVNNY.;                   V0  ML  T1 S1    T2
+ 185 REPEND          C*****************************************************
+ 187 GOSUB 170-180
+ 188    PK^:0;
+ 190 >> S:U^N<1->N./.*-N.*/UVN*I;           Y:2;   V0   ML      T1 S1    T2
+ 198 JA1=1026(1004-1018)C *******  KREPP+3X3-AS FONAS  ***********************
+ 205    PK^:7:JA1;
+ 210 << S:.*-O+/0-+/UVNO;                  Y:2/0; VL3   ML       S1 S2 T2
+ 215    PK^:2:JA1; IF RS17=1 IF RS1<30 PKV:4:JA1  161:..;
+ 220 >> S:U^N<1->*/.*-O+/0-+/UVN*;         Y:5/0; VR2    ML    T1 S1 S2 T2
+ 225    PK^:1:JA1; PKV:0;
+ 230 << S:U^N<1->O/.*-N.*/UVNN.*;          Y:5;   VR3    ML    T1 S1    T2
+ 235    PK^:0;
+ 240 >> S:U^N<1->N./.*-N.*/UVNN.;          Y:2;   V0     ML    T1 S1    T2
+ 245    PKV:4:JA1;
+ 250 << S:<1->.*;                           NP2-02      ML  V#      S1
+ 260 >> S:<1->.%*-0/<1->.*-0;             Y:2/5; V0  NP-0 V#      S1 S2
+ 300 RBEG*RS1
+ 302 REP*2
+ 305 << S:<1->.%*-0/<1->.*-0;            Y:2/5; NP-0       V#     S1 S2
+ 306 >>                                         NP-0       V#     S1 S2
+ 308 REPEND
+ 310 REND
+ 312 <<S:U^NDI./D.I-DI./D.I-DI.;               NP4-4      T1 S1 S2
+ 313 C>>S:D.I-DI./D.I-DI.;                               V#   S1 S2
+ 314 C<<                                                 V#   S1 S2
+ 315 >>S:D.I-DI./D.I-DI./UVNDI.;                             S1 S2 T2
+ 320 END
+1002 190I
+1004 63(.*.)I
+1006 189.I
+1008 63(*..)I
+1010 189.I
+1012 63(.*.)I
+1014 189.I
+1016 63(..*)I
+1018 189.I
+1020 2(.*.).*2(.2(..6I4(..*))..6I.3(..*).).2(..6I4(..*))..6I13.I
+1022 9(11.3O3T3.)10.I
+1024 9.2(2(..+T3OT.3(..*)..)..+T3OT4(..*))2(..+T3OT.3(..*)..)..+T3OT13.I
+1026 9(11.3OT+T3.)10.I
+1028 7.2(.2(3.6O..3(..*))3.6O.3(..*)).2(3.6O..3(..*))3.6O13.I
+1030 9(11.4IYY3.)10.I
+1032 8.2(2(3.AAII3Y3(..*).)3.AAII3Y.3(..*))2(3.AAII3Y3(..*).)3.AAII3Y12.I
+1034 9(10.3A3IYY..)10.I
+1036 7.2(.2(..AAI..I3Y3(..*))..AAI..I3Y2(.*.).*).2(..AAI..I3Y3(..*))..AAI..I3Y11.I
+1038 9(9.3AI..IIYY.)9.AI
+1040 6.8(3.AAI.II..3Y2(..*))3.AAI.II..3Y9.AI
+1042 9(8.3A..II..IYY)8.AAI
+1044 Y4.8(3.AA3I..II.3Y3.*)3.AA3I..II.3Y7.AAI
+1046 9(Y6.3A2(.II.)IY)Y6.3AI
+1048 9(YY5.AA2(II..)IIY)YY5.AAII
+1050 9(YY4.3A2(II..)3I)YY4.3AII
+1052 9(3Y3.AA3(I..I))3Y3.AAI.I
+1054 9(IYY..3A3(I..I))IYY..3AI.I
+1056 9(.3YIAAI3(.II.)).3YIAAI.II
+1058 9(.3I3A3(..II).).3I3A..II
+1060 9(IAA4I3(II..)I)IAA6I.I
+1062 9(3A.IYY3(II..)I)3A.IYYII.I
+1064 9(AAI..3Y2(.II.).3I)AAI..3Y.II
+1066 9(AA3.IYYI2(II..)IIA)AA3.IYY3I
+1068 9(AI4.3Y2(..II)..A)AI4.3Y.I
+1070 9(A5.IYY2(..II).AA)A5.IYY.I
+1072 9(I6.3YI..II3.AA)I6.3YI
+1074 9(7.IYY3.II..3A)7.IYYI
+1076 9(8.3YII..IIAAI)8.YYI
+1078 9(8.IYYII..I3A.)8.IYI
+1080 9(9.3Y.3IAAI.)9.YI
+1082 9(9.IYY3I3A..)9.II
+1084 9(10.3Y5I..)10.I
+1086 9(3*YY8+II5*)3*YY4+I
+1088 6I.21I2(.64I.)21I.8I

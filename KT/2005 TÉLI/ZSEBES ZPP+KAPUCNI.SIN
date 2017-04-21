@@ -1,0 +1,141 @@
+1C
+c!!!!!!!!!! NP11=11.8 ES NP12=11.4 !!!!!!!!! PKT-HOZ AT KELL IRNI:NP11=14.8 NP12=14.4
+C
+C ZSEBECSKES MINTA ZIPPZARRAL,KAPUCNIVAL,ZSEBBEL
+C
+C------------------------------------------------------------------------------
+  1 C   ZIPPES KK.:
+  1 C     FONAL: 350
+  1 C   CIPPZAR:  50 (50CM)
+  1 C VALLTOMES:   4
+  1 C ZSINORVEG:   -
+  1 C    VARRAS: 250
+  1 C   VASALAS:  40
+  1 C     OSSZ.: 694
+  1 C        E.:1000
+  1 C        H.: 306
+C------------------------------------------------------------------------------
+C  Y2:3*NYERS LUSI
+C  Y5:2*NYERS LUSI AT KELL PARAFINOZNI!
+C  Y3:3*SZINES LUSI A TOROK FUST VEKONY ES SZAKAD, EZERT AT KELL PARAFINOZNI,DE:NPK=-0.2 ES RS1=34,HA RS19=2.
+C
+  10 NP1=14.8; NP11=14.8;   C:MINTA -ZSEBECSKES MINTA,SLAG
+  12 NP3=13.0               C:MINTA -A ZSEBECSKEK BEKEZDO KETTO SORA
+  14 NP2=12.0;              C:MINTA-1/1,REX
+  16 NP8=14.4; NP12=14.4    C SLAG A PASSZEBAN
+  18 NP5=10.5;              C:BEKEZDES,1/1-ES PASSZE 10.5-11.5
+  20 NP6=13.2               C:SORMINTA 14.0
+  22 NP4=12.5               C:LEVALASZTAS
+  40 START        
+  50 YG:6/235;
+  60 WM=20;WMI=7
+  62 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4   VU V0 ML      S1 S2
+  64 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;    ML                        S1    T2
+  66 <<	S:U^ND.I/DI.-D.I;		          Y:3;		  ML                     T1 S1
+  68 >> S:DI.-D.I;                   Y:2;    ML             VR1        S1
+  70 << S:U^NDI.;                            ML                     T1
+  72 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  74 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  76 >>	S:DI.(11.0)-D.I(11.0);		     Y:3;	   ML                VU      S1
+  78 << S:0-D.I;                                    NP5-5      VU      S1
+  80 >> S:DI.-0;                                               VU      S1
+  82 << S:DI.-D.I;                                             VU      S1
+  84 >> S:DI.-D.I;                                             VU      S1
+  86 << S:0-R;                                      NP8-8              S1
+  88 >> S:R-0;                                                         S1
+  90 REP*2
+  92 << S:0-R/R-0;                   Y:2/3;                            S1 S2
+  94 >>                                                                S1 S2
+  96 REPEND
+  98 <<                                                                S1 S2
+
+C*******************************************************1DB.:27'*****************
+ 100C  IF#100=8  RS19=0    C TEST                 (3LAP)   19'00
+ 101C  IF#100=36 RS19=1    C UJJA                 (4LAP)   19'10
+C*********************************************************25'*****1DB:0.75KG*470=350FT*********
+ 102  IF#100=24 RS19=2    C 2TEST+2UJJA EGYBEN   (4LAP)   20'00  1*0.68KG
+ 103C  IF#100=10 RS19=3    C 2KAPUCNI+2ZSEB       (2LAP)    9'00  2*0.12KG 
+ 104C  IF#100=108 RS19=4    C ZSEB                 (12DB)    5'    6*0.05KG
+C************************************************************************
+ 105  IF RS19=0 RS1=33    C TEST    60CM (NEMKELL ELVAGNI,170CM-RE FEL LEHET TENNI)
+ 106  IF RS19=1 RS1=33    C UJJA    58CM (100CM-RE KI KELL HUZNI)
+ 107  IF RS19=2 RS1=35    C T+U     60CM (100CM-RE KI KELL HUZNI DUPLAN)RS1=34-36
+ 108  IF RS19=3 RS1=11    C KAPUCNI 24CM
+ 109  IF RS19=4 RS1=4     C ZSEB    15CM
+C************************************************************************
+
+ 112 JA1=1002(1000-1006)
+ 114 PA:<JA1>;
+ 116 FA=5-182;FB=9-141;FC=1-268;FD=1-538;FE=1-118;FF=1-148;
+ 118 IF RS19=0 PM:<.Y>9:3(FA.Y);                         C*TEST 3LAP**********
+ 120 IF RS19=1 PM:<.Y>8:4(FB.Y);                         C*UJJA 4LAP**********
+ 122 IF RS19=2 PM:<.Y>8:FE.YFF.YFF.YFE;                  C*2TEST+2UJJA EGYBEN ***
+ 124 IF RS19=3 PM:<.Y>8:2(FC.Y);                         C*KAPUCNI 2LAP**
+ 126 IF RS19=4 PM:<.Y>9:FD;                              C*ZSEB**
+
+ 148 WM=28
+ 150 VJA^1
+ 152 >> S:0-R/R-0/UVS.Y*+;                  NP8-8                  S1 S2 T2
+ 154 REP*2
+ 156 << S:R-0/.(6)-I*(3)/Y(6)-I+;                 VU   Y:3/5/2; T1 S1 S2
+ 158 >> S:R(12)-0/.(6)-(8)N.Y/R(8)-0/UVS<1-1->*+;               T1 S1 S2 T2
+ 160 REPEND
+ 162 << S:R(8)-0/Y(6)-(3)I*/.-I+;                 VU            T1 S1 S2
+ 164 >> S:R(12)-0/Y(6)-(8)N.Y/R(8)-0;                  VU       T1 S1 S2
+ 166 << S:.(6)-N.Y/R(8)-0;                             Y:2/5;      S1 S2
+ 168 >> S:Y(6)-N.Y/R(8)-0;                                         S1 S2
+ 170 << S:U^SN.Y/.(6)-N.Y/Y-N.Y/UVSN.Y;                         T1 S1 S2 T2
+ 
+
+C*****************************CSIPKE****SORMINTA: 2.MINTAELEM********************************************
+ 230 WM=20
+ 235 >> S:<1->R-0/R-0;         NP8-8                     S1 S2
+ 240 << S:U^SN.Y/.Y-N.Y;                   Y:3;   VKC>2  T1 S1
+ 245 >> S:.Y-N.Y/UVSI;                                     S1    T2
+
+ 250 << S:.YI-*;                NP6-6               VU    S1
+ 255 >> S:.Y-N.Y;                                    VU    S1
+
+ 260 WM=0
+ 265 << S:UVS*;                       VR1                     T2
+ 270 >> S:0-0;                                Y:0;       S1
+ 275 WM=18
+ 280 VJA^0
+
+ 285 << S:.YI-*;                               Y:3; VU    S1
+ 290 >> S:.Y-N.Y;                                    VU    S1
+
+ 295 WM=0
+ 300 << S:UVSI.Y;                      V0 VKD>4                T2
+ 305 >> S:0-0;                                Y:0;       S1
+ 310 WM=18
+
+ 315 << S:.YI-*;                               Y:3; VU    S1
+ 320 >> S:.Y-N.Y;                                    VU    S1
+
+ 325 << S:U^SI/.Y-N.Y/UVNN.Y;                    Y:2;    T1 S1    T2
+ 335 >> S:R-0;                                           S1
+ 340 <<                                                  S1
+C*************************************************************************************************************
+ 350 >> S:U^SN.Y/.Y-N.Y/UVS*;           NP1-1            T1 S1    T2
+C*****************************ZSEBECSKEK**********************************************************************
+ 352 WM=28
+ 355 RBEG*RS1
+ 360 << S:U^SI/.Y*-I/.Y-N.Y;          NP2-2    Y:2/5;  T1 S1 S2
+ 365 >> S:R-0/R-N.Y;                           Y:5/2;     S1 S2    C  Y:2/5;(VEKONYABB VAGY Y:5/2;(VASTAGABB)
+ 370 << S:R-N.Y/UVS<1->*+;     VKA>2  NP2-2    Y:5;       S1    T2 C Y:2 VASTAGABB  Y:5 VEKONYABB, DE AT KELL ORSOZNI
+
+ 375 >> S:.(6)-(3)I*;                     VU                 S1
+ 380 << S:R(1)-0/Y(6)-I+/.(6)-(1)N.Y;        VU      Y:3/5/2;T1 S1 S2
+ 385 >> S:R(11)-0/R(1)-0/Y(6)-N.Y/UVS<1->*;                      T1 S1 S2 T2
+ 390 REND
+C*************************************************************************************************************
+ 395 << S:U^SI/.Y*-I;                 NP4-4   Y:2;    T1 S1
+ 400 >> S:.Y*-I/UVSI;                                    S1    T2
+ 405 END
+
+ 999 <> W0 S0
+1000 I*
+1002 II*+*+
+1004 I*
+1006 +*+II*

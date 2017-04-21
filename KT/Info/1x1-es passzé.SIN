@@ -1,0 +1,23 @@
+ 1/1-es passzé
+  16   NP2=12.0            C:BEKEZDES
+  18   NP3=11.2            C:1/1-ES PASSZE
+  20   NP4=12.5            C:LEVALASZTAS
+  22   NP5=14.5            C:LEVALASZTAS
+
+  40 START
+  42 YG:6/256;
+  44 WM=20 WMI=7
+  46 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP4-4  VU V0	      S1 S2
+  48 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	                  S1 S2 T2
+  50 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP5-5           T1 S1
+  52 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+  54 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+  56 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+  58 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+  60 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+  62 << S:0-D.I/DI.-D.I;                    Y:5/2;   NP3-3  VU          S1 S2
+  64 REP*2
+  66 >> S:DI.-D.I;                                          VU          S1 S2
+  68 <<                                                     VU          S1 S2
+  70 REPEND
+

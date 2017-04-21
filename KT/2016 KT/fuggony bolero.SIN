@@ -1,0 +1,399 @@
+    1 C 
+   1 C FUGGONY BOLERO
+   1 C                         
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I EGYEB I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C 3/4U   I 2*15/1 I 0.29KG*  I         I          I       I       I         I     I      I       I32-37I 
+C BOLERO I 1*TX   I*1000=290 I  140    I          I       I 430   I   680   I 210 IML:  'I  786  I  %  I
+C 47CM   I        I* 930=270 I         I          I       I 410   I         I 230 IGY:15'I   -   I     I
+C                  * 910=264                                404               246           984
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+C HU     I 2*15/1 I 0.39 KG*  I         I          I       I       I         I     I      I       I32-37I 
+C BOLERO I 1*TX   I*1000=    I  140    I          I       I       I   750   I     I P:  'I       I  %  I
+C  57CM  I        I* 930=    I         I          I       I       I         I     I K:  'I   -   I     I
+C                  * 910= 
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
+
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  12 NP3=14.4              C KORSLAG 
+  13 NP5=14.4              C PASSZE
+  14 NP6=14.4;             C 1 SOR SLAG
+
+  20 NP7=13.4              C:2SZVCS:E         13.4
+  22 NP8=14.2              C:2SZVCS:H         13.8-14.0
+
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
+
+  55 C***********************************DB:(20 KOMPLETTHEZ)*****TOUREN:************MIN:********
+C    --------S-M-L------
+  60C IF #100=76  RS17=50  C BON PRIX     20                       39          GY: 6'   ML:7'
+  61 CIF #100=1   RS17=0   C EEEEE         4                        58          GY:10'   ML:
+  62 IF #100=1   RS17=1   C HHHH          5                        70          GY:12'   ML:15' 
+  63 CIF #100=3   RS17=6   C UUUUU 3/4U    8                        61          GY:10'   ML:
+                                                                                                                                                                                                        
+  64C IF #100=39  RS17=50  C BON PRIX     20                       39          
+  65CC IF #100=1  RS17=0   C EEEEE         4                        58         
+  66CC IF #100=2  RS17=1   C HHHH          5                        70         
+  67CC IF #100=4  RS17=6   C UUUUU 3/4U    8                        61         
+
+      -------L-XL-------------SUM:37 -- 19 -- 28 -------------------------------------------------------
+  72C IF #100=75 RS17=50  C BON PRIX    20
+  73CCC IF #100=13 RS17=2   C EEEE         5
+  74CCC IF #100=18 RS17=3   C HHHH         5
+  75CCC IF #100=8  RS17=5   C UUUUU 3/4U   8
+
+  76C IF #100=131 RS17=50  C BON PRIX    20 
+  77 CIF #100=9   RS17=2   C EEEE         5
+  78 CIF #100=11  RS17=3   C HHHH         5
+  79 CIF #100=7   RS17=5   C UUUUU 3/4U   8
+
+      -------2XL-3XL-------------SUM:37 -- 19 -- 28 -------------------------------------------------------
+  80 C IF #100=75 RS17=50  C BON PRIX    20
+  82  CIF #100=14 RS17=7   C EEEE         5
+  84 C IF #100=16 RS17=8   C HHH          7
+  86 C IF #100=13 RS17=5   C UUUUU 3/4U   8
+
+C       -------------------HU:----------------
+  99 C IF #100=27   RS17=7   C UUUUU HU      8
+C************************************************************
+C------------------------------------------------------------------------------------------------------------
+C                          TAMAS FEH.PAMUT    TAMAS FEH.PAMUT    30KG L.FEKETE(2-4XO PAR)    
+C                              +FEHER TX         +MOGYI TX                  +T.TX 
+C------------------------------------------------------------------------------------------------------------
+C KT :WM%=0     NPK=                                 0                        0
+C------------------------------------------------------------------------------------------------------------
+CPKT :WM%=0     NPK=                                               
+C------------------------------------------------------------------------------------------------------------
+C UJ :WM%=10     NPK=          0.1                  
+C------------------------------------------------------------------------------------------------------------
+C--MERETEK:----KESZEN:-----SZABVA:-----VASALVA:---(SZ*H)---
+C    EEEEE:    38*44        40*46       42*48
+C     HHHH:    46*48        48*50       50*52
+C 3/4UUUUU:    40*39        42*41       44*43
+C  H UUUUU:    40*59        42*60       44*62
+C    VALLA:    41
+C-----S------M---+---L------XL------2XL-----3XL----------------------------------
+C   43*43  46*45 + 50*47   54*49   57*52   60*55  (SZELESSEGE*HOSSZA)ERIKA MERETE
+CUJ:49*44  51*46 + 53*48   55*50   57*52   59*54  (SZELESSEGE*HOSSZA)NEMET MERET
+C--------------------------------------------------------------------------------
+ELLA:      46*48                   57*52
+C--------------------------------------------------------------------------------
+ 100 C**2LUSI+1TX******RS18=0:U-H***RS18=1:E (PASSZE NELKUL)************************
+ 100 C************************************************************************KESZEN:***SZABVA:***VASALVA:
+ 102 IF RS17=0  RS19=5 RS18=1 RS1=54   C           C S-M-L EEEEE  52-54-56                       M:52*47
+ 104 IF RS17=1  RS19=4 RS18=0 RS1=55   C           C S-M-L HHHH   53-55-57                       M:56*50
+
+ 106 IF RS17=2  RS19=4 RS18=1 RS1=57   C           C L-XL EEEE 57                                XL:54*52
+ 107 IF RS17=3  RS19=4 RS18=0 RS1=60   C           C L-XL HHHH 60                                XL:60*55
+
+ 108 IF RS17=7  RS19=4 RS18=1 RS1=60   C           C 2XL-3XL EEEE 60                             3XL:58*56
+ 109 IF RS17=8  RS19=3 RS18=0 RS1=60   C           C 2XL-3XL HHH  60                             3XL:64*59
+
+ 110 IF RS17=6  RS19=5 RS18=0 RS1=39   C          C UUUUU  3/4: S-L  40-43   20 40                40*40
+ 112 IF RS17=5  RS19=5 RS18=0 RS1=49   C          C UUUUU  3/4:XL-3XL 50     25*40                50*43 
+  
+ 114 IF RS17=50 RS1=3                              C BOLERO PANT
+ 115 IF RS17=51 RS1=4                              C BABOS BOLERO PANTJA (GYORSABB)
+ 118 C************************************************
+ 120 IF RS17=50 GOTO 700          C BON PRIX - 
+ 121 IF RS17=51 GOTO 800          C BABOS PANTJA 
+
+ 180 C************581TU**************************************************************
+ 183 JA1=1026(1006-1008)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 
+ 192 IF RS19=3 FA=5-191;                    PM:<.>7:3(IIFA)I;     C*3E-H
+ 194 IF RS19=4 FB=1-140;                   PM:<.>7:4(IIFB)I;     C*4EH
+ 196 IF RS19=5 FC=5-116;                    PM:<.>7:I5(IFC)II;    C*5U
+ 198 C********************************************************************************
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                                      S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	              S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU            S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU         S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU         S1
+ 209 IF RS18=1 GOTO 600 C ELEJE PASSZE NELKUL
+ 210 Y:2/2/5/5;
+ 212 REP*1
+ 214 << S:R-0;		                                 NP3-3     VU          S1
+ 216 >> S:0-R;		                                           VU          S1
+ 218 REPEND
+
+ 220 << S:0-R;                                             VU          S1
+ 221 >> S:R-0/UVS.;                                                    S1    T2
+ 222 << S:U^SN./.-N./UVSAY;                    NP6-6               T1 S1    T2
+ 223 >> S:NI-I;                                             VU         S1
+
+ 224 REP*4
+ 226 WM=0
+ 228 << S:U^NA;                                   VL1       T1
+ 230 >> S:U^NY;                                   VR1       T1
+ 232 WM=16
+ 234 << S:U^NI/.-N./UVN<1->.;               NP5-5 V0        T1 S1 T2 
+ 236 >> S:U^NI/.-I/UVN<1->NI;               NP6-6           T1 S1 T2
+ 238 REPEND
+ 240 GOSUB 226-230
+ 249 C********************************************************
+
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+       C----------- ELEJE 2SZVCS 1SZV.VEL------------------
+ 400 C**********************
+ 402 JA1=1268(1102-1268)     C MINTA
+ 404 JA2=1090                C 2SZV.HALO
+ 405 PA:1:<JA2>:1:<JA1>;
+
+ 406 Y:5/5/2/2;
+ 408 VJA^0
+ 410 WM=16
+ 412 NP7-8
+ 414 RBEG*RS1
+ 416 << S:U^S<1->N./ .-N. /UVS<1->.; V0     T1    S1 T2
+ 418 >> S:U^S    N./ .-N. /UVS  NA.;        T1    S1 T2
+ 420 << S:U^S<1->N./ .-N. /UVS<1->.; VL1    T1    S1 T2
+ 422 >> S:U^S    N./ .-N. /UVS  NA.;        T1    S1 T2 
+ 424 REND
+ 
+ 426 << S:U^SN./.-N./.-N./UVNN.;        Y:5/2;   V0  T1 S1 S2 T2
+ 428 >> S:U^ND.I/DI.-D.I/DI.-D.I;       NP4-4        T1 S1 S2
+ 430 << S:DI.-D.I/DI.-D.I;                       VU     S1 S2
+ 432 >> S:DI.-D.I/DI.-D.I/UVND.I;                       S1 S2 T2
+ 434 END
+ 436 C************************************************
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ 600 C**** RS18=1:BOLERO ELEJE PASSZE NELKUL ***************
+ 602 << S:R-0/0-R/UVSDI.;		      Y:2/5;  NP3-3     S1 S2 T2
+ 604 >> S:U^SD.I/DI.-D.I/DI.-D.I;        NP4-4  T1 S1 S2
+ 606 << S:DI.-D.I;                       VU        S1 S2
+ 608 >> S:DI.-D.I/DI.-D.I/UVSD.I;                  S1 S2 T2
+ 610 GOTO 400 C**********************************************
+
+ 700 C***************** BON PRIX PANT*************************
+
+ 700 C BOLEROHOZ SZELESEBB PANT: RS1= A MINTAELEMEK SZAMA 
+ 700 CRS1=3
+
+ 702 C KESKENY SZIMM. CSIPKE NYAK GUMI NELKUL (MINT AZ ANTIE)-1/1 BEKEZDESSEL
+ 704 NP4=12.4  C:LEVALASZTAS
+ 706 NP10=10.8  C:BEKEZDES    10.8
+ 708 NP11=12.2  C:1/1 KORSLAG 12.2
+ 710 NP12=13.4  C:CSIPKE PASSZE  13.5
+ 712 NP13=13.8  C:CSIPKE PASSZE  13.5
+
+718 C START        
+720 C YG:6/256;
+ 722 WM=18; WMI=7
+724 C <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	       NP4-4   V0	VU      S1 S2
+ 726 VJA^1
+ 728 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
+ 730 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 732 >> S:DI.-D.I;                   Y:5;                   VR1VU      S1
+ 734 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+ 736 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
+ 738 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
+ 740 >>	S:DI.(10)-D.I(10)/0-D.I(11);	Y:2/5;	                V0 VU      S1 S2
+ 742 JA1=1997(1994-1997);
+ 744 PA:<JA1>;
+ 746 FA=1-8;  PM:*8.I<FA>573:I<.>;        C**581TU**
+ 748 Y:5/5/2/2;
+ 750 << S:DI.(11)-0/UVS.*;                       VU      S1 T2
+ 752 >> S:U^SN.*/.-N.*/UVSI;           NP13-13    VU   T1 S1 T2
+ 753 RBEG*RS1
+ 754 REP*3
+ 756 WM=0
+ 758 << S:UVSY;                                 VL1  T2
+ 760 >> S:UVSA;                                 VR1  T2
+ 762 WM=16
+ 764 << S:R-0;                       NP12-12    VU V0   S1
+ 766 >> S:U^SN.*/.-N.*/UVS<1->I;       NP13-13       V0 T1 S1 T2 
+ 768 REPEND
+ 770 GOSUB 756-762
+ 772 << S:.*I-YA(6.5);                NP12-12 V0 VU      S1
+ 782 >> S:U^SI/.-N.*A(12)/UVS<1->I;   NP13-13 V0      T1 S1 T2
+ 783 REND
+ 786 GOSUB 754-768
+ 787 GOSUB 756-762
+ 788 << S:.*I(12)-YA(6.5);                        V0 VU  S1
+ 790 >> S:U^SI/.-N.*A/UVSN.*;          NP13-13    V0   T1 S1  T2
+ 792 REP*2
+ 794 << S:R-0;                       NP12-12    VU       S1 
+ 796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
+ 798 REPEND
+ 799 END  C**********************************
+
+ 800 C BABOS BOLERO PANTJA
+ 801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
+ 802 NP14=10.6               C:1/1
+ 803 NP11=9.6               C BEKEZDES       9.4-9.8
+ 804 NP12=13.6             C PASSZE        13.6-13.8
+ 805 NP13=13.8              C PASSZE        13.8-14.0
+ 806 C START
+ 807 C YG:6/256;
+ 808 WM=14 WMI=7
+ 811 C <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 812 JA1=1060(1050-1060)   C CSIPKE PASSZE
+ 813 PA:1:<JA1>;
+ 814 FA=1-8; PM:*6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 818 <<	S:UVSDI.;		                      	                               T2
+ 819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 822 Y:2/2/5/5;
+ 823 << S:D.I-0;                                NP13-13 VU           S1
+ 824 >> S:0-DI./UVS.;                                              S1    T2
+ 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S1    T2
+ 826 >> S:N*-0;                          NP13-13         VU           S1
+ 827 VJA^1
+ 829 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 830 REP*3
+ 831 WM=0
+ 832 << S:U^SA;                                   VL1      T1
+ 833 >> S:U^SY;                                   VR1      T1
+ 834 WM=12
+ 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S1 T2 
+ 836 >> S:N*-0;                          NP13-13         VU     S1
+ 837 REPEND
+ 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S1 T2 
+ 839 >> S:N*-0;                          NP13-13         VU     S1
+ 840 REND C*********************************
+C VAGY
+ 841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
+ 842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+C VAGY
+ 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S1 
+ 842 >> S:D.I(4)-DI.(4)/UVSDI.;	                     S1    T2
+ 843 END
+
+
+ 999 <> W0 VU S0
+
+1994 YAIIIIII
+1995 IIIAIYII
+1996 IIAAIYYI
+1997 IAAAIYYY
+
+1004 WWWWWWWWWWWW
+1006 IIIIIIIIIIII
+1008 IIIIIIIIIIII
+1010 AIAIAIYIYIYI
+1012 IIII.I.IIIII
+1014 IAIAAIYYIYII
+1016 III..I..IIII
+1018 AIAAAIYYYIYI
+1020 II...I...III
+1022 IAAAAIYYYYII
+1024 I....I....II
+1026 AAAAAIYYYYYI
+1028 WWWWWWWWWWWW
+
+1048 WWWWWWWW
+1050 IYYYIAAA
+1052 IYYIIIAA
+1054 IYYYIAAA
+1056 IAAAIYYY
+1058 IIAAIYYI
+1060 IAAAIYYY
+1062 WWWWWWWW
+
+1090 A*
+1092 Y*
+
+1100 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1102 .XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1104 .IXXXX.XXXXXXXXXXXXXXX.XXX.XXXXXXXXXXXXXXX.XXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1106 .IXXXI.IXXXXXXXXXXXXXI.IXI.IXXXXXXXXXXXXXI.IXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1108 IIXXXII.XXXXXXXXXXXXX.IIXII.XXXXXXXXXXXXX.IIXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1110 IXXXXXI..XXXXXXXXXXX..IXXXI..XXXXXXXXXXX..IXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1112 IXXXXXII..XXXXXXXXX..IIXXXII..XXXXXXXXX..IIXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1114 IXXXXXXI....XXXXX....IXXXXXI....XXXXX....IXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1116 XXXXXXXIII.........IIIXXXXXIII.........IIIXXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1118 XXXXXXXXXIII.....IIIXXXXXXXXXIII.....IIIXXXXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1120 XXXXXXXXXXXIIIIIIIXXXXXXXXXXXXXIIIIIIIXXXXXXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1122 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1124 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1126 .XXXXX.XXXXXXXXXXXXXXX.XXX.XXXXXXXXXXXXXXX.XXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1128 .IXXXI.IXXXXXXXXXXXXXI.IXI.IXXXXXXXXXXXXXI.IXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1130 .IXXXII.XXXXXXXXXXXXX.IIXII.XXXXXXXXXXXXX.IIXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1132 IIXXXXI..XXXXXXXXXXX..IXXXI..XXXXXXXXXXX..IXXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1134 IXXXXXII..XXXXXXXXX..IIXXXII..XXXXXXXXX..IIXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1136 IXXXXXXI....XXXXX....IXXXXXI....XXXXX....IXXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1138 IXXXXXXIII.........IIIXXXXXIII.........IIIXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1140 XXXXXXXXXIII.....IIIXXXXXXXXXIII.....IIIXXXXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1142 XXXXXXXXXXXIIIIIIIXXXXXXXXXXXXXIIIIIIIXXXXXXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1144 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1146 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1148 XXXXXX.XXXXXXXXXXXXXXX.XXX.XXXXXXXXXXXXXXX.XXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1150 .XXXXI.IXXXXXXXXXXXXXI.IXI.IXXXXXXXXXXXXXI.IXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1152 .IXXXII.XXXXXXXXXXXXX.IIXII.XXXXXXXXXXXXX.IIXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1154 .IXXXXI..XXXXXXXXXXX..IXXXI..XXXXXXXXXXX..IXXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1156 IIXXXXII..XXXXXXXXX..IIXXXII..XXXXXXXXX..IIXXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1158 IXXXXXXI....XXXXX....IXXXXXI....XXXXX....IXXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1160 IXXXXXXIII.........IIIXXXXXIII.........IIIXXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1162 IXXXXXXXXIII.....IIIXXXXXXXXXIII.....IIIXXXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1164 XXXXXXXXXXXIIIIIIIXXXXXXXXXXXXXIIIIIIIXXXXXXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1166 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1168 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1170 XXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1172 XXXXXXXXXXXXXXXXXXXXXXX...XXXXXXXXXXXXXXXXXXXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1174 .XXXXXXXXXXXXXXXXXXXXX.....XXXXXXXXXXXXXXXXXXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1176 .IXXXXXXXXXXXXXXXXXXXI.....IXXXXXXXXXXXXXXXXXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1178 .IXXXXXXXXXXXXXXXXXXX.......XXXXXXXXXXXXXXXXXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1180 IIXXXXXXXXXXXXXXXXXX.........XXXXXXXXXXXXXXXXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1182 IXXXXXXXXXXXXXX......II...II......XXXXXXXXXXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1184 IXXXXXXXXXXXXX.........I.I.........XXXXXXXXXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1186 IXXXXXXXXXXX...........I.I...........XXXXXXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1188 XXXXXXXXXXXIIIIIIII.....I.....IIIIIIIIXXXXXXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1190 XXXXXXXXXXXXXIAIAIIII...I...IIIIAIAIXXXXXXXXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1192 XXXXXXXXXXXX......AIII..I..IIIA......XXXXXXXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1194 XXXXXXXXXX..........AII...IIA..........XXXXXXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1196 XXXXXXXXX....III.....II...II.....III....XXXXXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1198 .XXXXXXX...II...II...III.III...II...II...XXXXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1200 .IXXXXXI.I........I...AI.IA...I........I.IXXXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1202 .IXXXXX....III.....I..II.II..I.....III....XXXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1204 IIXXXXI..IIIIIII....I..I.I..I....IIIIIII..IXXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1206 IXXXXXI.IIIAIAIII...I..III..I...IIIAIAIII.IXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1208 IXXXXXIIIA.....AII...I.III.I...IIA.....AIIIXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1210 IXXXXXXXI.......III..I..I..I..III.......IXXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1212 XXXXXXX..........AII....I....IIA..........XXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1214 XXXXXXI....III....III...I...III....III....IXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1216 XXXXXXI..II...II...AI...I...IA...II...II..IXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1218 XXXXXX..I.......I...II.....II...I.......I..XXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1220 XXXXXI.I.........I..III...III..I.........I.IXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1222 .XXXXI.....IIIII.....AI...IA.....IIIIII....IXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1224 .IXXXI...IIIIIIIII...III.III...IIIIIIIIII..IXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1226 .IXXXI.IIIAIAIAIIII...AI.IA...IIIAIAIAIAII.IXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1228 IIXXXIIIA........AII...I.I...IIA........IIIIXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1230 IXXXXXXI..........III..I.I..III..........AXXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1232 IXXXXXX............AI..III..IA............XXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1234 IXXXXXI............III..I..III............IXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1236 XXXXXX..............AI..I..IA..............XXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1238 XXXXXI......III......II.I.II......III......IXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1240 XXXXXI....II....II....I...I....II....II....IXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1242 XXXXXI..II............II.II............II..IXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1244 XXXXXIII........IIII...I.I...IIII........IIIXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1246 .XXXXXX.........IXXII..III..IIXXI.........XXXXXX.XXXII..XXXXXXXXXXXXXXXXXXXXXXXXXXX..IIXXX
+1248 .IXXXXII.......IIXXXII..I..IIXXXII.......IIXXXXI.IXXXI...XXXXXXXXXXXXXXXXXXXXXXXXX...IXXXI
+1250 .IXXXXXI......IIXXXXXI..I..IXXXXXII......IXXXXXI..XXXII...XXXXXXXXXXXXXXXXXXXXXXX...IIXXX.
+1252 IIXXXXXII...IIIXXXXXXII...IIXXXXXXIII...IIXXXXXII.IXXXII....XXXXXXXXXXXXXXXXXXX....IIXXXI.
+1254 IXXXXXXXIIIIIXXXXXXXXXI...IXXXXXXXXXIIIIIXXXXXXXI..XXXXIII...XXXXXXXXXXXXXXXXX...IIIXXXX..
+1256 IXXXXXXXXXXXXXXXXXXXXXII.IIXXXXXXXXXXXXXXXXXXXXXI..IXXXXXII...XXXXXXXXXXXXXXX...IIXXXXXI..
+1258 IXXXXXXXXXXXXXXXXXXXXXXI.IXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXII....XXXXXXXXXXX....IIXXXXXX..I
+1260 XXXXXXXXXXXXXXXXXXXXXXXI.IXXXXXXXXXXXXXXXXXXXXXXXI..IXXXXXXIII.....XXXXX.....IIIXXXXXXI..I
+1262 XXXXXXXXXXXXXXXXXXXXXXXIIIXXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXXXII.............IIXXXXXXXX..II
+1264 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..XXXXXXXXII..........IIIXXXXXXXX..IIX
+1266 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXI...XXXXXXXXXIII.....IIIXXXXXXXXX...IXX
+1268 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXII..IXXXXXXXXXXIIIIIIIXXXXXXXXXXI..IIXX
+1270 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

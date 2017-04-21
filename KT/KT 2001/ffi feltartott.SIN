@@ -1,0 +1,89 @@
+   1 C FFI FELTARTOTT  3X16/1 PAMUT
+   1 C E-H:RS1=73 RS2=53 GUMIS PASSZEVAL!!  RS17=0
+   1 C   U:RS1=78 RS2=24 GUMIS PASSZEVAL!!  RS17=1
+   1 C NY:SP500 DUPLAN HAJTOTT,1/1-ES, GARBO
+  10 NP1=12.2 C12.5 C13.0
+  11 NP2=13.3 C13.5 C13.0
+  12 NP3=14.5   C:LEVALASZTAS
+  13 NP5=11.5   C:1/1-ES PASSZE
+  14 NP4=13.0   C:LEVALASZTAS
+  17 NP8=11.0   C:H-U FELTARTOTT        RS19=0  12.0...12.5...11.5...NYAK...11.0
+  40 START
+  50 YG:6/2356;
+  51 WM=22 WMI=7
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	     S1    S2
+  53 >>	S:D.I-DI./DI.-D.I/UVNDI.;   	      	    	                S1    S2 T2
+  54 <<	S:U^ND.I/DI.-D.I;		          Y:5;			    NP3-3         T1 S1
+  55 >>	S:U^NDI./D.I-D.I;		          Y:6;	      NP0-   VL1	      T1	   S2
+  56 <<	S:R-0/0-D.I/R-0;		           Y:0/6/0;   NP5-5  VU	       T1 S1 S2
+  57 >>	S:DI.(8.0)-D.I;		          	 Y:5;	             VU V0 ML     S1
+  72 << S:DI.(7.5)-0;                Y:6;            VU           S1
+  74 >> S:DI.(7.5)-0;                                VU           S1
+  76 << S:0-D.I/DI.-D.I;             Y:2/5;     NP5-5  VU           S1 S2
+  82 REP*6C1
+  84 >> S:DI.-D.I;                                     VU           S1 S2
+  86 <<                                                VU           S1 S2
+  88 REPEND
+ 400 C***************************************
+ 402 FA=7-182
+ 404 PM:<.>9:3(FA....);           C ELEJE-HATA ******************
+ 406 FD=29-160
+ 408 IF RS17=1 PM:<.>11:4(FD..);  C UJJA ************************
+ 410 JA2=1002 C HIHIHIHIHIHIHI
+ 412 PA:JA2;
+ 414 >> S:DI.-D.I/DI.-D.I/UVS.H;       VKA>0                 S1 S2 T2
+ 416 << S:U^SI/.H-I/.%H-I;                       NP8-8    T1 S1 S2
+ 418 WM=26
+ 420 Y:2/5;
+ 430 RBEG*RS1 C**********************************
+ 432 >> S:.H-%I/.%H-I;                          VU     S1 S2
+ 434 << S:.H-%I/.%H-I;                          VU     S1 S2
+ 436 REND
+ 438 >> S:.H-%I/.%H-I;                          VU     S1 S2
+ 440 <<                           Y:2/3;        VU     S1 S2
+ 442 >>                           Y:3/2;        VU     S1 S2
+ 444 <<                           Y:2/3;        VU     S1 S2
+ 446 REP*2
+ 448 >> S:.H-%I;                  Y:3;          VU     S1
+ 450 << S:.%H-I;                                VU     S1
+ 452 REPEND
+ 454 >> S:.H-%I/.%H-I;            Y:3/2;        VU     S1 S2
+ 456 <<                           Y:2/3;        VU     S1 S2
+ 458 >>                           Y:3/2;        VU     S1 S2
+ 460 << S:.H-%I/.%H-I;            Y:2/5;        VU     S1 S2
+ 462 RBEG*RS2 C***********************************
+ 464 GOSUB 432-434
+ 466 REND
+
+ 498 >> S:.H-I/.H-I/UVSI;               NP5-5                   S1 S2 T2
+ 499 END
+
+ 500 C DUPLAN HAJTOTT,KEREK,1/1-ES NYAK GUMIVAL KOZEPEN
+ 502 NP1=14.5   C:LEVALASZTAS
+ 504 NP2=11.5   C:1/1-ES PASSZE
+ 506 NP4=13.0   C:LEVALASZTAS
+ 508 START
+ 510 YG:6/256;
+ 512 WM=22 WMI=7
+ 514 <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 520 >>	S:D.I-DI./DI.-D.I/UVNDI.;   	Y:5/2;	    	             S1 S2 T2
+ 522 <<	S:U^ND.I/DI.-D.I;		         Y:5;			     NP1-1               T1 S1
+ 524 >>	S:U^NDI./D.I-D.I;		         Y:6;	      NP0-  VL1	       T1	  S2
+ 526 <<	S:R-0/0-D.I/R-0;		           Y:0/6/0;   NP2-2  VU	       T1 S1 S2
+ 528 >>	S:DI.(8.0)-D.I;		          	Y:5;	             VU V0 ML     S1
+ 534 << S:DI.-0/0-D.I;    Y:2/5;  NP2-2           VU  S1 S2
+ 536 REP*5
+ 538 >> S:DI.-D.I;                                               VU  S1 S2
+ 540 <<                                                          VU  S1 S2
+ 542 REPEND
+ 544 >>                                                          VU  S1 S2
+ 546 << S:DI.(7.5)-0;                         Y:6;               VU  S1
+ 548 >> S:DI.(7.5)-0;                         Y:6;               VU  S1
+ 550 NP2-2
+ 552 << S:DI.-D.I;          Y:2/5;                             VU  S1 S2
+ 554 GOSUB 538-540*6
+ 556 >> S:DI.-D.I/DI.(14.0)-D.I(14.0)/UVSD.I;                     S1 S2 T2
+ 558 END  
+
+1002 95(HI)
+1008 6I.174I.8I

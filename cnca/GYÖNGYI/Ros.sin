@@ -1,0 +1,124 @@
+   1 C SLAG PIKO + KREPP
+   2 C ****
+   3 C CNCA2007: CP ROS RS1=  RS17=1/0 (E/H) RS19=0/1/2/3 (ELEJE KIOSZTASOK:88-91.SORBAN)
+   4 C 
+   5 C NYERS LUSI+TX:      
+   6 C                                 14.5 -  0       0   - 14.5 
+   7 C  1:14.5 KORSLAG PIKO          <-------------  ------------->
+   8 C J2:                              0   - 14.5    14.5 -  0
+   9 C J3:                             
+  10 C B3:14.0 BAL-BAL          
+  11 C B2:11.7 BEKEZDES                  
+  12 C J4:12.5 LEVALASZTAS,1/1               
+  17 C********************************************************************************
+  40 START        
+  50 YG:6/346;
+  52 << S:D.I-DI./DI.-D.I;            Y:3/4;      NP4-4    V# V0 ML       S1 S2
+  53 VJA^1
+  60 C***********ROSATIE*******************************
+  62C  IF RS10=4   RS17=1 RS19=0 RS1=150  C E-E-F
+  64C  IF RS10=3   RS17=1 RS19=1 RS1=150  C H-E-F
+  66C  IF RS10=2   RS17=1 RS19=2 RS1=150  C H-H-F
+  68C  IF RS10=2   RS17=1 RS19=3 RS1=145  C E-E-E
+  70C  IF RS10=1   RS17=0 RS19=3 RS1=145  C H-H-H
+  80 C********************************************************************************
+  81 JA1=1990   C PASSZE
+  82 JA2=1990   C PASSZE
+  86 PA:1:<JA1>:501:<JA2>;
+  87 FA=14-234;FB=18-128;FC=16-199;F1=514-734;
+  88 IF RS19=0 PM:<.>10:IIFAIIFAIIFBII;        C*2.5LAP E-E-F ************
+  89 IF RS19=1 PM:<.>10:IIF1IIFAIIFBII;        C*2.5LAP H-E-F************
+  90 IF RS19=2 PM:<.>10:IIF1IIF1IIFBII;        C*2.5LAP H-H-F************
+  91 IF RS19=3 PM:<.>10:II3(FCII);            C*3LAP************
+  98 C********************************************************************************
+ 100 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+ 102 << S:DI.-D.I/UVND.I;             Y:3;	             	        ML          S2 T2
+ 104 >> S:R-R;		                      Y:6;	                  	   ML          S2
+ 106 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+ 108 >> S:R-R;                        Y:3;        NP2-2          ML       S1
+ 110 << S:0-NA/NA-0;                  Y:3/4;      NP1-1     V#            S1 S2
+ 112 REP*2 C***PIKO***
+ 114 >> S:0-NA/NA-0;                  Y:4/3;                V#            S1 S2
+ 116 << S:0-NA/NA-0;                  Y:3/4;                V#            S1 S2
+ 118 REPEND
+ 120 >> S:0-R/R-0;                    Y:3/4;                              S1 S2
+ 122 REP*3
+ 124 << S:0-R/R-0;                                          V#            S1 S2
+ 126 >> S:0-R/R-0;                                          V#            S1 S2
+ 128 REPEND
+ 129 IF RS17=1 GOTO 500 C ELEJE
+ 130 JA1=1040
+ 132 << S:UVN.;        NP 0-0       T2
+ 134 >> S:U^NN.;       NP03-03      T1
+ 400 C**********HATA-UJJA (KREPP)********
+ 402 Y:3/3/4/4;
+ 404 JA1=1040(1034-1062)   C KREPP
+ 406 RBEG*RS1
+ 408 << S:U^N<1->N./.-N./UVNR;                   V0     T1 S1     T2
+ 410 >>                                                 T1 S1     T2
+ 412 REND C******
+ 414 << S:U^ND.I/DI.-D.I;                           NP4-4       T1 S1
+ 416 >> S:DI.-D.I/UVND.I;                                           S1     T2
+ 418 C RS10=RS10-1
+ 420 C IF RS10>0 GOTO 52
+ 422 END
+ 500 C******ELEJE***(CSIPKE)**********--
+ 502 JA1=1948
+ 503 JA2=1040
+ 504 << S:UVN.;        NP 0-0       T2
+ 506 >> S:U^NN.;       NP03-03      T1
+ 508 JA1=1948(1902-1948)   C MINTA
+ 509 JA2=1040(1034-1062)   C KREPP
+ 510 VJA^0
+ 512 Y:4/4/3/3;
+ 514 RBEG*RS1
+ 516 << S:U^N<1-2->N./.-N./UVNNY.;             V0      T1 S1    T2
+ 518 >> S:U^N<1-2->N./.-N./UVNNA.;             VL1     T1 S1    T2
+ 520 REND
+ 522 << S:U^N<1-2->N./.-N./UVNN.;       NP4-4  V0      T1 S1    T2
+ 524 >> S:U^ND.I/DI.-D.I/UVNR;                       T1 S1    T2
+ 526 END C************************************************
+1032 WWWWWWWWWWWW
+1034 II.II...I...
+1036 I.I.I..III..
+1038 .I.I.II...II
+1040 .III..I.I.I.
+1042 I...II.I.I.I
+1044 ..I..III.III
+1046 II.II...I...
+1048 II.III..I..I
+1050 ..I...II.II.
+1052 II.II.I...I.
+1054 ..I..I.III.I
+1056 I...I.II.II.
+1058 .III.I..I..I
+1060 II.III..I..I
+1062 ..I...II.II.
+1064 WWWWWWWWWWWW
+1900 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1902 ...I.I...IIIIII......I...IIIIII...
+1904 ...I.I..I...IIIYII...IY.....IIIYII
+1906 I..I.I.A.IIAII......AII..IIAII....
+1908 .Y.I.I.I.....IYIII..IIIY.....IYIII
+1910 .I.I.IA..IIIAI.....AIIII.IIIAI....
+1912 ..YI.II......IIIII.IIIIIY....IIIII
+1914 ..II.A...IIIIII...AIIIIIIIIIIII...
+1916 ...Y.I......IIIYIIIIIIIII...IIIYII
+1918 ...I.I...IIAII....IIIIAA.IIAII....
+1920 ...I.I..I....IYIII.YYIII.....IYIII
+1922 I..I.I.A.IIIAI.....IIIA..IIIAI....
+1924 .Y.I.I.I.....IIIII..YII......IIIII
+1926 .I.I.IA..IIIIII......I...IIIIII...
+1928 ..YI.II.....IIIYII...IY.....IIIYII
+1930 ..II.A...IIAII......AII..IIAII....
+1932 ...Y.I.......IYIII..IIIY.....IYIII
+1934 ...I.I...IIIAI.....AIIII.IIIAI....
+1936 ...I.I..I....IIIII.IIIIIY....IIIII
+1938 I..I.I.A.IIIIII...AIIIIIIIIIIII...
+1940 .Y.I.I.I....IIIYIIIIIIIII...IIIYII
+1942 .I.I.IA..IIAII....IIIIAA.IIAII....
+1944 ..YI.II......IYIII.YYIII.....IYIII
+1946 ..II.A...IIIAI.....IIIA..IIIAI....
+1948 ...Y.I.......IIIII..YII......IIIII
+1950 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1990 *****AA

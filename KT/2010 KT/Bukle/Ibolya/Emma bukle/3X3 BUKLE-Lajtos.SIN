@@ -1,0 +1,159 @@
+C KULONBSEG: A FONAS LASABB. A MASIKBAN VAN 1SOR 2SZV.-VEL.
+
+   1 C DANA 3X3+1SZV.KREP BUKLE+ZSAKKOTESU SZINMINTA  2/5:1BUKLE+1HB  3:2HB
+   1 C 
+
+  10 C-----------------------ICA 6-OS BUKLE:------LAJTOS 6-OS BUKLE:----
+  10 NP4=12.6    C:LEVALASZTAS     NPK=-0.3            NPK=0
+  11 NP2=10.2    C:BEKEZDES 10.2
+  12 NP3=12.6    C:2/1           12.8  12.6
+
+
+  13 NP1=13.3                 C MINTA ELOL  
+  14 NP5=13.4                 C MINTA HATUL  VAGY
+ 306 NPJ1:.=13.4 I=13.9 ;     C MINTA HATUL  VAGY
+ 307 NPJ2:.=13.4 I=14.5 ;     C MINTA HATUL
+
+  40 START        
+  50 YG:6/2356;
+  51 WM=17;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-4    VU V0       S1 S2
+
+  62 C*************TM:5.3*******************MIN:*********TUR:********1DB.:*******
+  64 C IF #100=4   RS17=0         C E   
+  65 C IF #100=4   RS17=1         C H   
+  66 C IF #100=7   RS17=2         C U     
+  68  IF #100=1  RS17=3         C UEHU
+  69 C IF #100=8  RS17=10        C NYAK  
+ 100 C************PM:****GUMI:*****************************************RS2:*****NYERSEN:*****KESZEN:**
+ 101 IF RS17=0  RS19=3 RS15=0 RS18=0 RS1=6    RS2=36  C E     F                      
+ 102 IF RS17=1  RS19=3 RS15=0 RS18=1 RS1=6    RS2=70  C H     KR                      
+ 104 IF RS17=2  RS19=4 RS15=0 RS18=1 RS1=6    RS2=    C U     KR                        
+ 106 IF RS17=3  RS19=5 RS15=0 RS18=0 RS1=6    RS2=33  C UEHU  F-F-F-F 33    27CM ALULROL    63CM
+ 107 IF RS17=10 RS19=1 RS15=1 RS18=2 RS1=24   RS2=0  C          GARBO:24                       20CM
+ 132 C************************************************          KEREK:15
+
+ 150 
+ 152 C************581TU**************************************************************
+ 154 JA1=1204            C FONAS E
+ 155 JA3=1304            C FONAS U
+ 156 JA2=1120(1102-1130) C KREPP
+ 158 PA:1:<JA2>:<JA1>:201:<JA2>:401:<JA2>:401:<JA3>;
+ 160            FA=5-191;                        PM:<.>9:3(FA..);          C*3LAP
+ 162 IF RS19=4  FA=15-153;                       PM:<.>9:4(FA...);         C*4LAP
+ 164 IF RS19=1  FA=15-41;                        PM:<.>9:<FA> 572:<.>;     C*1LAP
+ 192 IF RS19=5  F1=20-176;F2=220-376;F3=423-546; PM:<.>8:F3IIF1IF1IIF3;    C*U-E-H-U
+ 166 C*******************************************************************************
+ 200 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+ 202 <<	S:DI..-D..I/UVND..I;		            		 ML             VL1        S1    T2
+ 204 >> S:D..I-R/DII.-D.II;          Y:0/6;  ML                        S1 S2
+ 206 << S:DII.-0/D..I-R;              Y:6/0;  ML                        S1 S2            
+ 208 >>	S:DII.(2)-D.II(2)/0-D.II(3); Y:5/2;	 ML                        S1 S2
+C---------------------------------------------------
+ 210 IF RS15=1 GOTO 220  C---GUMI NELKUL-----
+ 212 << S:DII.-0;                    Y:6;    ML                        S1
+ 214 >>                                      ML                        S2
+ 216 << S:DII.-D.II;                 Y:5/2;  ML     NP3-3   V0         S1 S2
+ 218 GOTO 222            C---GUMIVAL RS15=0---------
+ 220 << S:0-D.II/DII.-D.II;                  ML     NP3-3   V0         S1 S2
+C---------------------------------------------------
+ 222 RBEG*RS1
+ 224 >> S:DII.-D.II;                                                   S1 S2
+ 226 <<                                                                S1 S2
+ 228 REND
+
+ 235 IF RS18=1 GOTO 380 C***KR**
+ 236 IF RS18=2 GOTO 400 C***NYAK**
+
+C--SZELEKTIV SZOROSSAG:--------
+ 300 JA4=1600;JA5=1602;JA6=1700;
+ 301 PANP:1:JA4:201:JA5:401:JA6;
+ 302            F1=5-191;                        PMNP:<.>9:3(F1..);          C*3LAP
+ 303 IF RS19=4  F1=15-153;                       PMNP:<.>9:4(F1...);         C*4LAP
+ 304 IF RS19=1  F1=15-41;                        PMNP:<.>9:<F1> 572:<.>;     C*1LAP
+ 305 IF RS19=5  F1=20-176;F2=220-376;F3=436-559; PMNP:<.>8:F3..F1.F1..F3;    C*U-E-H-U
+C-------------------------------
+ 309 >> S:DII.-D.II/DII.-D.II/UVS.*;                                 S1 S2 T2
+ 310 Y:2/2/5/5;
+ 312 WM=16;
+ 314 VJA^0
+ 316 << S:U^SN.*/.*(1)-N.*(J1)/UVS<2->*.;                           T1 S1    T2
+ 318 >> S:U^SN.*/.*(1)-N.*(J1)/UVS<2->.*;                               T1 S1    T2
+
+ 320 RBEG*RS2C************************************************************************
+ 350 C-------3X3 FONAS--------**OTBW+G**-----------------------------------------------
+ 351 << S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->.*;      Y:5/0; V0        T1 S1 S2 T2
+ 352 >> S:U^SI/.*(1)-N.*(J2)/N.*(4)-.*(4)/UVSI;                            T1 S1 S2 T2
+ 353 << S:U^S<2->I/.*(1)-IBW+G(J2)/N.*(4)-.G(4)/UVSI;     Y:2/0; VL1       T1 S1 S2 T2
+ 354 WM=0
+ 355 >> S:0-I.*(4)/UVSW+G;                                Y:0;   V0           S1    T2
+ 356 WM=12
+ 357 << S:U^S<2->I/.*(1)-IOTBW(J2)/I(4)-.O(4)/UVSI;       Y:5/0; VR1       T1 S1 S2 T2
+ 358 WM=0
+ 359 >> S:U^S*/*-.IW+G/UVSOTB;                      NP4-4  Y:0;   V0        T1 S1    T2
+ 360 << S:U^SOTB;                                                VL3       T1
+ 361 >> S:U^SW+G;                                                VR3       T1
+ 362 << S:U^SI/N.-./UVS*;                                 Y:0;   V0        T1 S1    T2
+ 363 WM=16
+ 364 >> S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->.*;      Y:2/0;           T1 S1 S2 T2
+ 365 WM=0
+ 366 << W0 S0 VU
+ 367 WM=16
+ 368 >> S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->.*;      Y:5/0;           T1 S1 S2 T2
+ 369 Y:2/0/2/0/5/0/5/0;
+ 370 REP*1
+ 371 << S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->.*;                       T1 S1 S2 T2
+ 372 >> S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->.*;                       T1 S1 S2 T2
+ 373 REPEND
+ 376 REND C***************************************************************************
+
+ 377 << S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVS<2->*.;                    T1 S1 S2 T2
+ 378 >> S:U^SI/.*(1)-N.*(J1)/N.*(4)-.*(4)/UVSN.*;                       T1 S1 S2 T2
+ 379 END
+
+
+ 380 JA1=1201 C**U-H-KREPP***
+ 382 >> S:DII.-D.II/DII.-D.II/UVS.;                                 S1 S2 T2
+ 384 Y:2/0/2/0/5/0/5/0;
+ 386 WM=18; NP1-1;
+ 388 RBEG*RS2
+ 390 REP*2
+ 392 << S:U^SN./.-N./N.-./UVS<2->.;        T1S1S2T2
+ 394 >>                                    T1S1S2T2
+ 396 REPEND
+ 398 REND
+ 399 END
+
+ 400 >> S:DII.-D.II/DII.-D.II/UVSD.II;               S1 S2 T2
+ 401 END
+
+ 999 <> S0 W0 VU
+
+1001 4.*4.I9.+..A2(2(6.I3.)6.Y2(9.I)3.)2(6.I3.)..A3.Y2(9.I)5.+2(3.I6.)3.I
+1201 200X
+1202 200I
+1602 200.
+1204 38X**OTBW+G**5(11X**OTBW+G**X)36X
+1600 37.12I5(9.12I.)35.
+
+1304 84X3(**OTBW+G)**95X
+1700 82.30I93.
+
+
+1100 IIIIIIIIIIII
+1102 II.II...I...
+1104 I.I.I..III..
+1106 .I.I.II...II
+1108 .III..I.I.I.
+1110 I...II.I.I.I
+1112 ..I..III.III
+1114 II.II...I...
+1116 II.III..I..I
+1118 ..I...II.II.
+1120 II.II.I...I.
+1122 ..I..I.III.I
+1124 I...I.II.II.
+1126 .III.I..I..I
+1128 II.III..I..I
+1130 ..I...II.II.
+1132 WWWWWWWWWWWW

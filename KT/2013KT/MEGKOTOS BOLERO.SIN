@@ -1,0 +1,111 @@
+   1 C RUHA PANT --------- OVES 2 PASSZEJABOL ---------
+
+  10 NP4=12.3;              C LEVALASZTAS
+  12 NP11=9.5               C BEKEZDES     2
+  14 NP12=14.0              C PASSZE       5
+  16 NP13=14.4              C PASSZE       6
+  18 NP10=11.8              C:SLAG
+  20 NP1=13.8   C MINTA
+  22 NP2=10.0              C:1/1
+C     KT:NPK=0
+C    PKT:NPK=0.2 WM%=-10
+C     UJ:NPK=0.2
+C FEKETE:NPK=0.3
+  40  START
+  42  YG:6/256;
+  44 WM=17 WMI=7
+  50  <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+
+  62 C*****MINTA*******************************************
+  64  IF #100=1   RS17=0         C T    
+  66  IF #100=2   RS17=1         C U
+  92 C************************************************
+  94 IF RS17=50 GOTO 600          C PIKO PANT 0.04
+  95 C*****MINTA*******************************************************
+  96 IF RS17=0  RS19=1 RS1=24            C T     50CM        FEKETE MINTA:0.3
+  97 IF RS17=1  RS19=1 RS1=13            C U     30CM    
+  99 C***************************************************
+
+
+    
+ 100 C************581TU**************************************************************
+ 102 JA1=1106(1100-1102)   C CSIPKE PASSZE
+ 104 PA:1:<JA1>;
+ 106 FA=1-8; PM:6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 108 C********************************************************************************
+ 110 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 112 <<	S:U^NDI./D.I-DI.;		              			                    T1 S1
+ 114 >>	S:D.I-DI.;		                 Y:2;	               VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 116 <<	S:UVSDI.;		                      	                               T2
+ 118 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 120 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 122 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+
+ 124 Y:2/2/5/5;
+ 126 << S:D.I-0;                                NP13-13 VU           S1
+ 128 >> S:0-DI./UVS.;                                              S1    T2
+ 130 << S:U^SN./.-N./UVSR;                                      T1 S1    T2
+ 132 >> S:R-0;                          NP13-13         VU           S1
+ 134 REP*3 C ******  AZSUR PASSZE *********
+ 136 WM=0
+ 138 << S:U^SA;                                   VL1      T1
+ 140 >> S:U^SY;                                   VR1      T1
+ 142 WM=17
+ 144 << S:U^SI*/.-N./UVS<1->N.;         NP12-12    V0       T1 S1 T2 
+ 146 >> S:R-0;                          NP13-13         VU      S1
+ 148 REPEND C*********************************
+
+ 150C << S:U^SN./.-N./UVSN.;                             T1 S1 T2
+ 154C >> S:R-0;                                      VU     S1
+
+ 200 C************581TU****************************************************************
+ 202 JA1=1000
+ 204 PA:2:<JA1>;
+ 206 FA=2-9;   PM:7.<FA> 574:8.;        C*MELLENY PANT JELOLES NELKUL
+ 208 C********************************************************************************
+
+ 400 WM=0
+ 402 << S:U^SDI.;                                   VU   T1
+ 404 >> S:U^SD.I;                                        T1
+ 406 WM=15 WMI=7
+ 498    NP1-1
+ 499 JA1=1004(1004-1010)
+ 500 RBEG*RS1
+ 504 <> S:0-R/0-R/UVS<1+>Y;            Y:5/2;             VL1      S1 S2 T2
+ 506 PKV:1:<JA1>;
+ 508 <> S:U^SY/0-R/0-R/UVSY;                              V0    T1 S1 S2 T2
+ 509 PKV:0;
+ 510 <> S:U^SY/0-R/0-R/UVS<1+>YA;                         VR1   T1 S1 S2 T2
+ 512 PKV:3:<JA1>;
+ 514 <> S:U^SA;                                           V0    T1
+ 516 <> S:U^SY;                                           VR2   T1
+ 518 <> S:0-NYA/0-NYA/UVS<1+>YA;                          VR1      S1 S2 T2
+ 520 <> S:U^SA;                                           V0    T1
+ 522 <> S:U^SY;                                           VR2   T1
+ 524 PKV:0;
+ 526 <> S:<1+>0-.*/0-.+;                              VU  V0      S1 S2
+ 530 REND
+ 532 GOSUB 504-509
+ 534 <> S:U^SY/0-R/0-R;                               VR1   T1 S1 S2
+ 536 <> S:0-R/0-R/UVND.I;                             V0       S1 S2 T2
+
+ 538 IF #124=1 GOTO 542
+ 540 >> S:D.I-DI.;		              			      NP2-2       VU          S1 S2
+ 542 << S:D.I-DI.;	                        NP2-2       VU          S1 S2
+ 544 >> S:D.I-DI./D.I-DI./UVSDI.;	                     VU          S1 S2 T2
+ 546 END
+
+
+ 999 <> W0 S0
+1000 I
+
+1004 .......Y.......Y
+1006 ..YA......YA....
+1008 .Y..A....Y..A...
+1010 .*+*+....*+*+...
+
+1100 IIIIIIII
+1102 IAAAIYYY
+1104 IIAAIYYI
+1106 IAAAIYYY
+

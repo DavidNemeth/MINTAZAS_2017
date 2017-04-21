@@ -1,0 +1,153 @@
+  10 	START 
+  11    NP5=14.0  C:MINTA ELOL---
+  12    NP1=14.4  C:MINTA HATUL--
+  15    NP4=12.5  C:LEVALASZTAS--
+  18    NP2=14.5  C:PASSZE-------
+  19    NP3=13.8  C:LEGYEZO------
+ 50     YG:6/23456;
+ 51     WM=20
+ 52  << S:D.I-DI./DI.-D.I;		             Y:5/2;	             NP4-4 VU V0	       S1 S2
+ 54  >> S:R-0/0-R;                       Y:5/2;      NP1-1                     S1 S2
+ 55  << S:D.I-DI./DI.-D.I/UVNR;	         Y:5/2;	    NP4-4	                     S1 S2 T2
+ 56     WM=15 
+ 57  >> S:R-R;		                       Y:6;	    NP2-0   	                      S1
+ 58  << S:0-R/R-0/0-R;		                Y:0/6/0;    NP2-2   	               T1 S1 S2
+ 59  >> S:R-R(6.5)/R-0;	              	Y:2/5;	             ML                 S1 S2
+ 60     WM=20
+ 61  << S:R-0/0-R;		                   Y:2/5;		   	   NP2-2                  S1 S2    
+ 62  >> S:R-0/0-R;                      Y:2/5;                                 S1 S2
+ 66     JA1=1236
+ 68     PA:1:JA1;
+ 69     FA=17-182 C FA=13-178               
+ 70     PM:<.>11:.3(FA...); C PM:<.> 10:3(FA ...);
+ 72     C------------------------------------------IF RS1>10 IF RS1<55 PM:<.> 9:4(FA ...);
+ 80  << S:U^NN./.-N.(15.0)/UVS.+;       Y:2;                           T1 S1    T2
+ 83   C  Y:4/3;
+ 85  REP*2
+ 87   >> S:UVS*;                                   VR2     NP2-2   T2
+ 88      PKV:2:JA1;
+ 89   << S:NI-I;                        Y:5;        VR1 VU    S1
+ 90   >> S:U^S*+Y/.-N./UVS*;            Y:2;           VKC>3 T1 S1   T2
+ 91   << S:UVS+;                                   VL1 VKA>6       T2
+92      PKV:1:JA1;
+93   >> S:NI-I;                         Y:5;        V0  VU    S1
+94   << S:U^S*+Y/.-N./UVS+;             Y:2;                T1 S1   T2
+95  REPEND
+96     WM=22 
+97  >> S:U^SN./.-N./UVSN.;              Y:2;                        T1 S1    T2
+
+  98 JA1=1002 FA=17-182;  PA:<JA1>; 
+  99 PM:<+> 11:+FA +++ FA +++ FA+; C PM:11(+)FA++++FA++++FA<+>; 
+ 101 JA1=1004(1004-1050)
+ 102 C ************************************************************************ 
+ 103 << S:U^S N.TI+;                                     VU       T1
+ 104 >> S:UVS .TI+;                                      V0                T2
+ 105 WM=20
+ 106 << S:.TI+-N.TI+;                   Y:2/5;    NP3-3       VU          S1 S2
+ 107 WM=0
+ 108 >> S:U^S ./UVS YA;                                          T1       T2
+ 110 << S:U^S YI;                                       VL1      T1
+ 112 >> S:U^S AT;                                       VR1      T1
+ 114 << S:UVS <1+>.TI+;                                  V0                T2
+ 115 WM=20
+ 116 >> S:.TI+-N.TI+;                   Y:2/5;                VU          S1 S2
+ 117 WM=0
+ 118 << S:U^S ./UVS YA;                                          T1       T2
+ 120 >> S:U^S YI;                                       VL1      T1
+ 122 << S:U^S AT;                                       VR1      T1
+ 124 REP*11 
+ 126 >> S:UVS <1+>.TI+;                                  V0                T2
+ 127 WM=20
+ 128 << S:.TI+-N.TI+;                   Y:2/5;                VU          S1 S2
+ 129 WM=0
+ 130 >> S:U^S ./UVS YA;                                          T1       T2
+ 132 << S:U^S YI;                                       VL1      T1
+ 134 >> S:U^S AT;                                       VR1      T1
+ 136 << S:UVS <1+>.TI+;                                  V0                T2
+ 137 WM=20
+ 138 >> S:.TI+-N.TI+;                    Y:2/5;                VU          S1 S2
+ 139 WM=0
+ 140 << S:U^S ./UVS YA;                                          T1       T2 
+ 142 >> S:U^S YI;                                       VL1      T1
+ 144 << S:U^S AT;                                       VR1      T1
+ 145 REPEND
+ 146 >> S:0-0;                                          V0           S1
+ 147 WM=20
+ 148 << S:+-N+/+-N+;                     Y:2/5; NP5-1                    S1 S2
+ 150 C ---ELEJE---523TU--------------------
+ 152 JA1=1106(1101-1106)
+ 154 PA:<JA1>;
+ 156 FA=13-178
+ 158 PM:<.> 11:IFA III FA III FAI;                          
+ 162 C--------------------------------------------------------------------
+170   IF RS1<15 GOTO 410 C-- HATA,UJJA -------
+180   IF RS1>25 GOTO 410
+190   WM=0
+200 >> S:U^SN./UVS.;                                                T1       T2
+201 << S:0-0;                                                          S1
+202    VJA^0
+205   RBEG*RS1
+207   WM=20
+208   WMI=7
+210 <> S:U^SN.*/.-N./.-N./UVS<1->N.*;      Y:2/5;       V0  VKA<0   T1 S1 S2 T2
+220 <>                                                  VL1 VKA>2   T1 S1 S2 T2
+230 <> S:U^SN.*/.-N./.-N./UVS<1->I;        Y:2/5;       V0  VKA<2   T1 S1 S2 T2
+235   WM=15
+240 <> S:U^SI/.-I*+Y/UVSI*;                Y:2;         VL1 VKA>3   T1 S1    T2
+245   WM=0
+250 <> S:UVSA+;                                         VL2                  T2
+255   WM=15
+260 <> S:U^SI*/.(13.5)-I*+Y/UVS<1->N.*+Y;  Y:5;         VR1 VKA>2   T1 S1    T2
+270 <> S:U^SIA+/.(5)-N./UVSN.;             Y:2;         VR2 VKA>4  T1 S1    T2
+280 <> S:U^SN./.-N./UVS<1->N.*;            Y:2;         V0          T1 S1    T2
+285   WM=20
+290 <> S:U^SN.*/.-N./.-N./UVS<1->N.*;      Y:2/5;       VL1 VKA>2   T1 S1 S2 T2
+300   REND
+310 <> S:U^SN.*/.-N./.-N./UVSN.;           Y:2/5;       V0  VKA<2   T1 S1 S2 T2
+320 <> S:D.I-DI./DI.-D.I;		               Y:5/2; NP4-4 VU V0	          S1 S2
+330   IF#124=0 GOSUB 320
+400   END
+410   C-- HATA,UJJA -------
+420   FA=13-14
+430   PM:<.> 11:I<FA> 178:III 347:III 516:I<.>;
+435   GOSUB 190-202                                                    
+450   RBEG*RS1
+460   GOSUB 207-220*2
+470   REND
+480   GOTO 310
+1236 I10*Y3+..7(5+I10*Y5+)5+I4*.5*Y10+I10*Y10+
+1002 10(*I9Y*9AT)
+1004 10(*3(IYY)I*3(TAA)T)
+1006 10(*3(YIY)Y*3(AAT)A)
+1008 10(*I3(YIY)*3(ATA)T)
+1010 10(..I2(YIY)YI*2(TAA)TAT.)
+1012 10(3*I2(YIY)Y*2(AAT)AT**)
+1014 10(4.I2(YIY)*2(ATA)T3.)
+1016 10(5*IYIYYI*TAATAT4*)
+1018 10(6.IYIYY*AATAT5.)
+1020 10(7*IYIY*ATAT6*)
+1022 10(8.IYI*TAT7.)
+1024 10(9*IY*AT8*)
+1026 10(10.I*T9.)
+1028 10(*3(TAA)T*3(IYY)I)
+1030 10(*3(AAT)A*3(YIY)Y)
+1032 10(*3(ATA)T*I3(YIY))
+1034 10(*2(TAA)TAT3.I2(YIY)YI)
+1036 10(*2(AAT)AT5*I2(YIY)Y)
+1038 10(*2(ATA)T7.I2(YIY))
+1040 10(*TAATAT9*IYIYYI)
+1042 10(*AATAT11.IYIYY)
+1044 10(*ATAT13*IYIY)
+1046 10(*TAT15.IYI)
+1048 10(*AT17*IY)
+1050 10(*T19.I)
+1052 220.
+1054 220.
+1056 220.
+1058 220*
+1101 20(*I)2(.A+YO)2(.5I)3(.A+YO).17(I*)I3(.A+YO)2(.5I)2(.A+YO).19(I*)
+1102 20(*I)2(.A+YO).I*3I.5I3(.A+YO).17(I*)I3(.A+YO).I*3I.5I2(.A+YO).19(I*)
+1103 20(*I)2(.A+YO).II*II.3I*I3(.A+YO).17(I*)I3(.A+YO).II*II.3I*I2(.A+YO).19(I*)
+1104 20(*I)2(.A+YO).*II*I.II*II3(.A+YO).17(I*)I3(.A+YO).*II*I.II*II2(.A+YO).19(I*)
+1105 20(*I)2(.A+YO)2(.I*II*)3(.A+YO).17(I*)I3(.A+YO)2(.I*II*)2(.A+YO).19(I*)
+1106 20(*I)2(.A+YO).5I.*II*I3(.A+YO).17(I*)I3(.A+YO).5I.*II*I2(.A+YO).19(I*)

@@ -1,0 +1,217 @@
+1C LAMBADA      A CNCA-N IS MEGY: CNCA 2002
+1C-----------------------+--------------------+-------------+-------------+
+1C 1.VAR: 200 << S:.*%+-I/NI-I; 
+1C 0.49KG 210 << S:.+%*-I/NI-I;                   TEST-13'-68CM   UJJA-11'-56CM
+1C                          NP1=   NP6=   NP7=     RS1=   RS2=     RS1=   RS2=
+1C-----------------------+----------------------+---------------+---------------+
+1C 3X16/1 LUSIFIL: NPK=-0.2 14.0   13.0   13.0     11     24        7      24
+1C-----------------------+----------------------+---------------+---------------+
+1C 3X15/1:                                                23               23
+1C-----------------------+----------------------+---------------+---------------+
+
+1C-----------------------+----------------------+---------------+---------------+
+1C 2.VAR: 200 << S:.*%+-I/.*%+-I; EZ A JOBB DE A CNCA-N NEM MEGY.
+1C 0.53KG 210 << S:.+%*-I/.+%*-I;                   TEST-14'        UJJA-12'
+1C                          NP1=   NP6=   NP7=     RS1=   RS2=     RS1=   RS2=
+1C-----------------------+----------------------+---------------+---------------+
+1C 2X15/1+1TX:             14.0    12.8   12.5      11     28      7      27-28
+1C-----------------------+----------------------+---------------+---------------+
+1C 3X15/1:
+1C-----------------------+----------------------+---------------+---------------+
+
+   1C            KAGYLOS NYAK:SP800 TELEN
+   1C             CSIPKE NYAK:SP700 NYARON
+  10 NP1=14.0            C:2 SZV.CSIPKE 14.0
+  12 NP14=12.2           C:2 SZV.CSIPKE (14)
+  14 NP6=13.0            C:DIO ELOL    13.0
+  16 NP15=11.2           C:DIO ELOL    (14)
+  18 NP7=13.0            C:DIO HATUL   13.0
+  20 NP5=11.8            C:1/1
+  22 NP3=13.8            C:SLAG PASSZE
+  24 NP4=13.4            C:LEVALASZTAS
+  40  START
+  50 YG:6/256;
+  52 WM=22 WMI=7
+  56 << S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4   VU V0	ML      S1 S2
+  59 >> S:D.I-DI.;                    Y:5;                      ML      S1
+  62 << S:U^ND.I/DI.-D.I;        	                              ML   T1 S1
+  64C >> S:U^NDI.;                                               ML   T1
+  66C << S:0-0;                        Y:0;                      ML      S1
+  68 >> S:U^NDI./R(12.0)-R;		          Y:6;	                     ML   T1    S2
+  71 << S:0-R/R-0;		                  Y:6/0;      NP4-4 	       ML      S1 S2
+  74 >> S:R(10.0)-R(12.0)/0-R(3);		   Y:2/5;                            S1 S2
+  80 << S:0-R/R-0;		                  Y:5/2;  	   NP3-3                 S1 S2
+  83 >> S:0-R/R(12.5)-0;              Y:2/5;                            S1 S2
+  85 << S:0-R/R-0;		                  Y:5/2;  		  NP3-3                 S1 S2
+  88C IF #100=20 RS1=11
+  90 JA1=1016(1004-1014)         C UJJA 4 LAP
+  92 FA=4-137                    C UJJA 4 LAP
+  94 PM:<.>8:4(FA.);             C UJJA 4 LAP
+  96 IF RS1>8 JA1=1116(1104-1114)C TEST 3 LAP
+  98 IF RS1>8 FA=7-182           C TEST 3 LAP
+ 100 IF RS1>8 PM:<.>10:3(FA...); C TEST 3 LAP
+ 110 PA:JA1;
+ 115 >> S:0-R/R(12.5)-0/UVSNI;            Y:2/5;                     S1 S2 T2
+ 120 << S:U^SI/NI-I/NI-I;                         NP5-5     T1 S1 S2
+ 125 C-----MINTA-----
+ 130 NP1-1
+ 135 WM=22
+ 140 VJA^0
+ 145 RBEG*RS1
+ 150 REP*3
+ 155 >> S:U^N<1->N./.-N./.(14)-N./UVNNA.;           V0         T1 S1 S2 T2
+ 160 << S:U^N<1->N./.-N./.-N./UVNNY.;   NP1-1        VL1 VKA>6 T1 S1 S2 T2
+ 165 REPEND
+ 170 REND
+ 175 >> S:U^N<1->N./.-N./.(14)-N./UVNN.;    Y:2/5;  V0        T1 S1 S2 T2
+ 180 JA1=1016
+ 185 << S:U^SI/NI-I/NI-I;                     NP6-7       T1 S1 S2
+ 188 WM=26
+ 190 RBEG*RS2
+ 195 >> S:.*%+-I/.*%+(15)-I;      VU   S1 S2
+ 200 << S:.*%+-I/.*%+-I; NP6-7    VU   S1 S2  C VAGY (RS2=28) NP6=12.8 NP7=12.5***SZEBB***
+ 200 << S:.*%+-I/NI-I;   NP6-7    VU   S1 S2  C VAGY (RS2=24) NP6=13.2 NP7=13.2
+ 205 >> S:.+%*-I/.+%*(15)-I;      VU   S1 S2
+ 210 << S:.+%*-I/.+%*-I; NP6-7    VU   S1 S2  C VAGY***SZEBB***
+ 210 << S:.+%*-I/NI-I;   NP6-7    VU   S1 S2  C VAGY
+ 215 REND
+ 220 >> S:NI-I/NI(15)-I/UVSI;             S1 S2 T2
+ 225 END
+
+ 700 C O&V CSIPKE NYAK  GUMIVAL(ONDOHOZ)  !!!!!!!EZ A LEGJOBB LYUKACSOS NYAK!!!!!!! 2002.02.13.
+ 701 NP2=10.5   C(12.0):1/1,BEKEZDES
+ 702 NP3=11.2   C:REX 
+ 703 NP4=12.5   C:LEVALASZTAS,1/1-ES VARROSZEGELY
+ 704 NP1=14.0   C:SLAG,LEVALASZTAS
+ 705 NP6=13.0   C:SORMINTA
+ 706 START
+ 707 YG:6/256;
+ 708 WM=20 WMI=7
+ 709 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 710 >> S:D.I-DI./UVSDI.;            Y:2;           NP3-3                S1    T2
+ 711 << S:U^SD.I/DI.-D.I;                           NP1-1             T1 S1
+ 712 >> S:U^SDI./D.I-D.I;            Y:6;           NP4-4   VR1       T1 S1
+ 713 << S:0-D.I/D.I-0;               Y:6/0;                              S1 S2
+ 714 >> S:DI.-D.I/0-D.I;             Y:5/2;         NP2-2   V0   VU      S1 S2
+ 715 << S:DI.(7.5)-0;                         Y:6;            VU        S1
+ 716 >> S:DI.(7.5)-0;                         Y:6;            VU        S1
+ 717 << S:DI.-D.I;                            Y:5/2; NP2-2    VU        S1 S2
+ 718 PA:JA1;
+ 719 PM:<FA>1:9.544:10.;
+ 720 JA1=1000
+ 721 FA=1-2
+ 722 VJA^1
+ 723 C 2 SORRAL LEROVIDITHETO: *****************************************
+ 724 >> S:DI.-D.I/DI.-D.I/UVS.;                                 S1 S2 T2
+ 725 << S:U^SN./.-N./UVSN.;                    Y:5;   NP6-6  T1 S1    T2
+ 726 >> S:R-0;                                                  S1
+ 727 << S:U^SN./.-N./UVSN.;                    Y:2;          T1 S1    T2
+ 728 >> S:R-0;                                                  S1
+ 729 C *****************************************************************
+ 730 << S:U^SN./.-N./.-N./UVSI;                Y:5/2;        T1 S1 S2 T2
+ 731 >> S:.I-*/.-N.;                                       VU   S1 S2
+ 732 WM=0
+ 733 << S:UVS*;                                        VR1            T2
+ 734 >> S:0-0;                                 Y:0;             S1
+ 735 WM=18
+ 736 VJA^0
+ 737 C 2 SORRAL LEROVIDITHETO: *****************************************
+ 738 << S:.I-*/.-N.;                           Y:5/2;  VU       S1 S2
+ 739 WM=0
+ 740 >> S:UVSI.;                                      V0 VKD>4        T2
+ 741 << S:0-0;                                 Y:0;             S1
+ 742 C *****************************************************************
+ 743 WM=18
+ 744 >> S:.I-*/.-N.;                           Y:5/2;  VU       S1 S2
+ 745 << S:U^SI/.-N./.-N./UVNN.;                              T1 S1 S2 T2
+ 746 C 2 SORRAL LEROVIDITHETO: *****************************************
+ 747 >> S:R-0;                                 Y:2;             S1
+ 748 << S:U^NN./.-N./UVNN.;                                  T1 S1    T2
+ 749 >> S:R-0;                                 Y:5;             S1
+ 750 << S:U^NN./.-N.;                     NP1-1             T1 S1
+ 751 >> S:.-N./UVNDI.;                         Y:2;             S1   T2
+ 752 << S:U^SD.I/DI.-D.I;                 NP4-4              T1 S1
+ 753 >> S:DI.-D.I/DI.-D.I/UVSD.I;              Y:5/2;           S1 S2 T2
+ 754 C *****************************************************************
+ 755 END
+
+ 800 C---KAGYLO NYAK---1/1-ES GUMIS SZEGELLYEL---
+ 801 C EZ A JO!! KAGYLO:1 SZALVEZETOVEL (IGY NEM HAGYJA EL)---
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:BEKEZDES
+ 808 NP5=12.5   C:LEVALASZTAS
+ 810 NP3=10.5   C:1/1
+ 811 NP6=12.5   C:1/1 A VARROSZEGELYNEL
+ 812 NP4=14.0   C:SLAG
+ 814 YG:6/256;
+ 816 WM=16
+ 818 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	  NP5-5  VU V0	      S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;           Y:5/2;	  	      VKC>3       S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                 Y:5;			  NP1-1  VKC      T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                 Y:6;	    NP0-   VL1	     T1	   S2
+ 826 <<	S:R-0/0-D.I/R-0;		                  Y:0/6/0; NP2-2  VU	      T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   Y:5;	           VU V0 ML    S1
+ 830 << S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 832 >> S:DI.(7.5)-0;                       Y:6;            VU          S1
+ 834 << S:0-D.I/DI.-D.I;                    Y:2/5;   NP3-3  VU          S1 S2
+ 836 JA1=1998    C 1998 *****YAY 
+ 838 FA=1-8
+ 840 PA:JA1;
+ 842 PM:<.> 9:<FA> 543:<.>;
+ 844 >> S:DI.-D.I/DI.-D.I;                             VU     S1 S2     C 1/1
+ 846 << S:DI.-D.I/DI.-D.I/UVS.;                               S1 S2 T2  C 1/1
+ 848 >> S:U^SN./.(4)-N.(4)/.-N.(15.0)/UVSN.;               T1 S1 S2 T2  C SLAG H
+ 850 << S:*.(4)-A(15.0)/*.-0;                          VU     S1 S2     C KAGYLO
+ 852 WM=28
+ 854 >> S:.*-0;                 Y:5;    VU   S1     C KAGYLO
+ 855 <<                                 VU   S1     C KAGYLO
+ 856 >>                                 VU   S1
+ 857 <<                                 VU   S1
+ 858 FA=5-6      C          *Y
+ 860 >> S:U^S*;                                            T1
+ 862 << S:U^SY;                                            T1
+ 864 WM=20
+ 866 >> S:.-N.(4)/.-N./UVSY;             Y:2/5;               S1 S2 T2  C SLAG H
+ 868 << S:.Y-*;                                 NP3-3  VU     S1 S2     C 1/1
+ 870 >>                                                VU     S1 S2     C 1/1
+ 872 << S:U^SY/.-N./.-N./UVSN.;                 NP4-4      T1 S1 S2 T2  C SLAG H
+ 874 >> S:R-0;                                                S1 S2     C SLAG E
+ 876 << S:U^SN./.-N./.-N./UVSD.I;                          T1 S1 S2 T2  C VARRO SZEGELY
+ 878 >> S:U^SDI./D.I-DI./D.I-DI.;              NP6-6       T1 S1 S2     C 
+ 880 << S:D.I-DI. ;                   Y:2;              VU    S1        C
+ 882 >> S:D.I-DI. /UVSDI.;                              VU    S1     T2  C
+ 884 END
+
+ 990 C FEHER     . FONAK 
+ 991 C FEKETE    I SZIN              
+ 992 C SARGA     Y SZIN ->
+ 993 C OKKERS.   A SZIN <-
+ 995 C S.SZURKE  * DIO
+ 996 C KIR.KEK   + DIO
+ SZABADOK:T+O BGHWZ
+
+ 999 <> W0 S0
+
+1000 7(I*)I
+1998 5*YAY
+1002 190I
+1004 12.7(3.II9.YY)65.I
+1006 II7(14IAA)76I
+1008 11.7(5.II7.YY)66.I
+1010 3I7(14IAA)75I
+1012 10.7(7.II5.YY)67.I
+1014 4I7(14IAA)74I
+1016 47(I*I+)II
+1018 5I.129I.54I
+
+
+1102 190I
+1104 20.9(3.II9.YY)25.I
+1106 10I9(14IAA)36I
+1108 19.9(5.II7.YY)26.I
+1110 11I9(14IAA)35I
+1112 18.9(7.II5.YY)27.I
+1114 12I9(14IAA)34I
+1116 47(I*I+)II
+1118 6I2(.86I.)8I

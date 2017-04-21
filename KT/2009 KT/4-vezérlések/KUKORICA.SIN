@@ -1,0 +1,22 @@
+ 1 C                                      E-H:70CM     U:59CM  
+  1 C-----------------------+------------+-----------+--------+--------+--------+
+  1 C Y5:3LUSI(FUZFA)  Y2:4LUSI(NYERS)        100        92        
+  1 C Y3:3LUSI(FEKETE) Y4:4LUSI(FARMER)
+  1 C-----------------------+------------+------------+------------+-------------+
+
+  17 NP6=12.0;   C KUKORICAS
+
+  96 JA1=1004; PA:1:<JA1>;
+  97 IF RS17=0 FA=1-179  PM:<*>6:3(FA**);    C**3 LAP E-H
+  98 IF RS17=1 FA=1-135  PM:<*>7:4(FA);      C**4 LAP U       VAGY
+  99 IF RS17=1 FA=1-134  PM:<*>8:4(FA*);     C**4 LAP U       VAGY
+ 100 IF RS17=2 FA=1-272  PM:<*>7:2FA;        C**3DB.GALLER VAGY 3DB.1/1 GARBO OSZTAS NELKUL
+
+ 700 C*****DUPLA GYONGY (KUKORICAS) Y:3/4/4/3; VAGY Y:5/2/2/5;****
+ 702 WM=28
+ 704 NP6-6
+ 706 << S:I*-./I*-%.;          VU          S1 S2  C
+ 708 >> S:I*-%./I*-.;          VU          S1 S2  C
+ 710 C************************************************************
+
+1004 .I.I

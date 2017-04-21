@@ -1,0 +1,72 @@
+ 500 C*******  RS1=11  9CM 1GOMBOS DIAGONALHOZ **********
+ 500 C******* 2/1-ES PASSZE, LEVALASZTAS ELSO TUAGYON *******
+ 500 C******* RS17=50/51 GUMIVAL/GUMI NELKUL
+ 502 C                          2HB:   1BUK.+1HB:     2LUSI+1TX:   2LUSI+1TX+1HB:
+ 504 NP4=12.6   C:LEVALASZTAS    12.6     12.6            12.6         14.0   
+ 506 NP12=9.8    C:BEKEZDES       9.0      10.2            9.8          10.2
+ 508 NP13=11.4   C:2/1            10.6      12.3           11.6         14.2
+C                          RS1=
+ 510 START
+ 512 YG:6/256;
+ 514 WM=14;WMI=7
+ 516 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+
+ 518 RS1=11  C 11 9CM 1GOMBOS DIAGONALHOZ
+
+ 520 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+ 522 <<	S:DI..-D..I/UVND..I;		            		 ML             VL1        S1    T2
+ 524 >> S:DII.-D.II;                 Y:6;    ML                           S2
+ 526 << S:DII.-0/0-R;                Y:6/0;  ML                        S1 S2            
+ 528 >>	S:DII.(12)-D.II(12)/DII.(13)-0; Y:5/2;	 ML                     S1 S2
+
+ 530 IF RS17=51 GOTO 540 C--GUMI NELKUL----
+C---------GUMIVAL-------------------------------------------------------
+ 532 << S:0-D.II;                     Y:6;       NP13-13       ML     S1
+ 534 >>                                                      ML        S2
+ 536 << S:DII.-D.II;                  Y:2/5;           V0           S1 S2
+ 538 GOTO  500 C*******  RS1=11  9CM 1GOMBOS DIAGONALHOZ **********
+ 500 C******* 2/1-ES PASSZE, LEVALASZTAS ELSO TUAGYON *******
+ 500 C******* RS17=50/51 GUMIVAL/GUMI NELKUL
+ 502 C                          2HB:   1BUK.+1HB:     2LUSI+1TX:   2LUSI+1TX+1HB:
+ 504 NP4=12.6   C:LEVALASZTAS    12.6     12.6            12.6         14.0   
+ 506 NP12=9.8    C:BEKEZDES       9.0      10.2            9.8          10.2
+ 508 NP13=11.4   C:2/1            10.6      12.3           11.6         14.2
+C                          RS1=
+ 510 START
+ 512 YG:6/256;
+ 514 WM=14;WMI=7
+ 516 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	V#      S1 S2
+
+ 518 RS1=11  C 11 9CM 1GOMBOS DIAGONALHOZ
+
+ 520 >>	S:U^ND..I/DII.-D..I/UVNDII.; Y:2;    ML                     T1 S1    T2
+ 522 <<	S:DI..-D..I/UVND..I;		            		 ML             VL1        S1    T2
+ 524 >> S:DII.-D.II;                 Y:6;    ML                           S2
+ 526 << S:DII.-0/0-R;                Y:6/0;  ML                        S1 S2            
+ 528 >>	S:DII.(12)-D.II(12)/DII.(13)-0; Y:5/2;	 ML                     S1 S2
+
+ 530 IF RS17=51 GOTO 540 C--GUMI NELKUL----
+C---------GUMIVAL-------------------------------------------------------
+ 532 << S:0-D.II;                     Y:6;       NP13-13       ML     S1
+ 534 >>                                                      ML        S2
+ 536 << S:DII.-D.II;                  Y:2/5;           V0           S1 S2
+ 538 GOTO 542
+C-----------------------------------------------------------------------
+
+ 540 << S:0-D.II/DII.-D.II;                  ML     NP13-13   V0         S1 S2
+ 542 RBEG*RS1
+ 544 >> S:DII.-D.II;                                                   S1 S2
+ 546 <<                                                                S1 S2
+ 548 REND
+ 550 >> S:DII.-D.II/DII.-D.II/UVND.II;                                 S1 S2 T2
+ 552 END
+
+C-----------------------------------------------------------------------
+
+ 540 << S:0-D.II/DII.-D.II;                  ML     NP13-13   V0         S1 S2
+ 542 RBEG*RS1
+ 544 >> S:DII.-D.II;                                                   S1 S2
+ 546 <<                                                                S1 S2
+ 548 REND
+ 550 >> S:DII.-D.II/DII.-D.II/UVND.II;                                 S1 S2 T2
+ 552 END

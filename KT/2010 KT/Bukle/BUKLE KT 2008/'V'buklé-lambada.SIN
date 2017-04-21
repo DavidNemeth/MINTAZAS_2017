@@ -1,0 +1,144 @@
+   1 C*****'V'BUKLE-LAMBADA **** A CNCA-N IS JOL MEGY:CP BUKLE RS19=0/1 RS1=
+1C                                          RS1= 
+1C                           NP1=      2 TEST+2 UJJA:
+1C-----------------------+------------+------------+--------------------------+
+1C BUKLE+15/1:               14.2         23
+1C MINDEN BUKLE ATORSOZVA
+1C VEKONYABB.TOROK BUKLE:NPK=+0.2
+1C-----------------------+------------+------------+--------------------------+
+---------------------------------------------------------------------------------
+1C  BAL:                 JOBB:
+1C  6:ELV. SZAL          2,5:ALAP - 1 BUKLE+1 15/1 PAMUT (FARMER,MOGYI,BORDO,STB)
+1C                       3,4:SZIN - 1 BUKLE+1 15/1 PAMUT (FEHER)
+---------------------------------------------------------------------------------
+1C BUKLE:KB 0.26+0.09=0.35 ->700F
+1C  15/1:KB 0.11+0.04=0.16 ->100F   =800+200=1000
+1C 1/1 NYAK:SP700 RS19=1: KEREK NYAK    RS18=0: CSIKKAL
+1C                RS19=2: ALLO NYAK     RS18=1: CSIK NELKUL
+1C                RS19=3: GARBO
+1 RS19=2
+  10 NP1=14.2   C:MINTA
+  12 NP3=14.5   C:LEVALASZTAS
+  14 NP2=10.5   C:1/1-ES PASSZE
+  16 NP4=13.0   C:LEVALASZTAS
+  40 START
+  50 YG:6/23456;
+  55 WM=22 WMI=7
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+  65 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+  70 <<	S:U^NDI./D.I-DI.;		              			    NP3-3           T1 S1
+  75 >>	S:U^ND.I/DI.-DI.;		          Y:6;	      NP0-  VR1	      T1	   S2
+  80 <<	S:R-0/0-DI./R-0;		           Y:0/6/0;   NP2-2 VU	       T1 S1 S2
+  85 >>	S:D.I(9.0)-DI.;		           	Y:2;	            VU V0 ML     S1
+  90 << S:D.I-0;                                NP2-2 VU           S1
+ 100 >> S:0-DI./D.I-DI./UVSDI.;      Y:5/2;                        S1 S2 T2
+ 110 WM=22
+ 115 JA1=1002
+ 120 PA:JA1;
+
+ 122 C********** 3 FELE PM 553 TURE ****************************
+
+ 125 FA=6-184
+ 130 PM:<.>7:3(FA..);     C***** 3 LAP *****
+
+ 125 FB=29-162
+ 130 PM:<.>8:4(FB.);      C***** 4 LAP *****
+
+ 125 FC=17-173; FD=40-151
+ 125 FC=14-176; FD=43-148 C**** 6 TUVEL SZELESEBB AHATA, 6-TAL KESKENYEBB AZ UJJA. ***
+ 130 PM:<.>7:FC.FC.FD.FD; C***** 2 TEST + 2 UJJA ******EZ A JO!!
+
+ 135 C*************************************************
+ 140      NP1-1
+ 142 Y:2/5;
+ 144 GOSUB 300-355*6
+ 146 IF RS18=0 Y:3/4;
+ 148 GOSUB 300-355*4
+ 150 Y:2/5;
+ 152 GOSUB 300-355*6
+ 154 IF RS18=0 Y:3/4;
+ 156 GOSUB 300-355*2
+ 158 Y:2/5;
+ 160 GOSUB 300-355*10
+ 162 IF RS18=0 Y:3/4;
+ 164 GOSUB 300-355*4
+ 166 Y:2/5;
+ 168 GOSUB 300-355*2
+ 170 IF RS18=0 Y:3/4;
+ 172 GOSUB 300-355*2
+ 174 Y:2/5;
+ 176 GOSUB 300-355*4
+ 178 IF RS18=0 Y:3/4;
+ 180 GOSUB 300-355*4
+ 182 Y:2/5;
+ 184 GOSUB 300-355*4
+ 186 IF RS18=0 Y:3/4;
+ 188 GOSUB 300-355*4
+ 190 Y:2/5;
+ 192 RBEG*RS1
+ 194 GOSUB 300-355
+ 196 REND
+ 198 GOSUB 310-315
+ 199 WM=18
+ 200 >> S:U^SN./.-N./.-N./UVSN.;                                        T1 S1 S2 T2
+ 202 << S:U^SD.I/DI.-D.I/DI.-D.I;                    NP4-4              T1 S1 S2
+ 204 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                          S1 S2 T2
+ 206 END
+
+ 300 C******** MINTA-VAR 1.**************
+ 310 WM=24
+ 315 << S:R-0/R-0;                             V0                    S1 S2
+ 320 >> S:U^SN./.-N./.-N./UVNI;                                   T1 S1 S2 T2
+ 325 WM=0
+ 330 << S:UVSA;                                VL1     VKA>4               T2
+ 335 >> S:UVS*;                                VR1                         T2
+ 355 C*****************************
+ 300 C******** MINTA-VAR 2.**************
+ 310 << S:R-0/R-0;                             V0                    S1 S2
+ 315 WM=0
+ 320 >> S:U^S*;                                VL1     VKA>4      T1
+ 325 << S:U^SA;                                VR1     VKB>2      T1
+ 330 WM=18
+ 335 >> S:U^NI/.-N./.-N./UVNN.;                V0      VKC>2      T1 S1 S2 T2
+ 355 C*****************************
+
+ 700 C************************ 1/1 NYAK *********************
+ 702 NP1=13.8   C:MINTA 13.5
+ 704 NP3=14.5   C:LEVALASZTAS
+ 706 NP2=10.7   C:1/1-ES PASSZE 10.5-11.0
+ 708 NP4=13.0   C:LEVALASZTAS
+ 710 START
+ 712 YG:6/23456;
+ 714 WM=22 WMI=7
+ 716 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 718 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 720 <<	S:U^NDI./D.I-DI.;		              			    NP3-3           T1 S1
+ 722 >>	S:U^ND.I/DI.-DI.;		          Y:6;	      NP0-  VR1	      T1	   S2
+ 724 <<	S:R-0/0-DI./R-0;		           Y:0/6/0;   NP2-2 VU	       T1 S1 S2
+ 726 >>	S:D.I(7.0)-DI.;		           	Y:2;	            VU V0 ML     S1
+ 728 << S:D.I-0;                                NP2-2 VU           S1
+ 730 >> S:0-DI./D.I-DI.;             Y:5/2;                        S1 S2
+ 732 #1=3              C KEREK NYAK
+ 734 #2=4
+ 736 IF RS19=2 #1=8    C ALLO NYAK
+ 738 IF RS19=2 #2=8
+ 740 IF RS19=3 #1=28   C GARBO
+ 742 REP*#1
+ 744 << S:D.I-DI.;             VU          S1 S2
+ 746 >>                        VU          S1 S2
+ 748 REPEND
+ 750 IF RS19=3 GOTO 768
+ 752 << S:U^SD.I/0-R/0-R(12.5)/UVSD.I;                        T1 S1 S2 T2
+ 754 NP2-2
+ 756 REP*#2
+ 758 >> S:D.I-DI.;             VU          S1 S2
+ 760 <<                        VU          S1 S2
+ 762 REPEND
+ 764 >> S:D.I-DI./D.I-DI./UVSDI.;          S1 S2 T2
+ 766 END
+ 768 <<                        VU          S1 S2
+ 770 >> S:D.I-DI./D.I-DI./UVSDI.;          S1 S2 T2
+ 772 END
+
+1002 94*I95A
+1004 4I.2(22I.44I)2(22I.)5I

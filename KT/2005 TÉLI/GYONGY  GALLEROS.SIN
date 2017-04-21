@@ -1,0 +1,138 @@
+   1 C ZIIPPZARAS GYONGY ZSEBBEL ES GALLERRAL------C PASSZEJA ZSAKKOTESU:Y:5/3
+   1 C PASSZEJA ZSAKKOTESU:Y:5/3
+  1 C                                      E1/2:70CM   H:70CM   U:59CM  ZSEB,GALLER:15CM
+  1 C-----------------------+------------+-----------+--------+--------+--------+
+  1 C Y5:3LUSI(FUZFA)  Y2:4LUSI(NYERS)      115      115       100        22     1DB.:KB.25'
+  1 C Y3:3LUSI(FEKETE) Y4:4LUSI(FARMER)
+  1 C-----------------------+------------+------------+------------+-------------+
+C FONALFELHASZNALAS:
+C 2:4NYERS            6*0.40=2.4
+C 5:3FUZFA            6*0.32=2.0 (EZT LEHET PLATIROZNI:1NYERS+2FUZFA)
+C 4:4FARMER           6*0.08=0.5
+C 3:3FEKETE           6*0.10=0.6
+C----------------------------------------------------
+C     SUM.:          6*0.90=5.4  (0.9*505-516=455-465FT)
+C------------------------------------------------------------------------------
+  1 C   ZIPPES KARDIGAN.:
+  1 C     FONAL: 465
+  1 C   CIPPZAR:  50 (50CM)
+  1 C VALLTOMES:   4
+  1 C ZSINORVEG:   -
+  1 C    VARRAS: 250
+  1 C   VASALAS:  40
+  1 C     OSSZ.: 810
+  1 C        E.:1250
+  1 C        H.: 440
+C------------------------------------------------------------------------------
+
+C KT:NPK=0  PKT:NPK=-0.2
+  10 NP4=12.6;   C:LEVALASZTAS
+  12 NP2=11.0;   C:BEKEZDES
+  14 NP3=13.0;   C:KORSLAG,ZSAKKOTESU NORVEG
+  16 NP1=12.2;   C GYONGY
+
+
+  40 START        
+  50 YG:6/23456;
+  52 WM=20;WMI=7
+  54 C
+  56 << S:D.I-DI./DI.-D.I;            Y:4/2;      NP4-4    VU V0 ML       S1 S2
+
+C----------------------------------------------------
+  57C IF #100=52  RS19=3           C U  18'        2
+  58C IF #100=44  RS19=2           C H  21'        3
+C----------------------------------------------------
+
+  59C IF #100=30  RS19=0            C E1 21'        6
+  60 IF #100=18  RS19=1            C E2 21'        6
+  62 IF #100=16  RS19=4           C ZSEB,GALLER   2
+  64 IF #100=10  RS19=2           C H  21'        3
+  66 IF #100=6   RS19=3           C U  18'        2
+
+C----------------------------------------------------
+
+  68 IF RS19=0  RS1=63  RS2=52     C E1          6LAP (RS2:KEK-HOSSZABB)  *****8-10 CM-RE VAN A VALYUTOL*****
+  70 IF RS19=1  RS1=81  RS2=36     C E2          6LAP (RS2:KEK-ROVIDEBB)
+  72 IF RS19=2  RS1=115            C H           3LAP
+  74 IF RS19=3  RS1=100            C U:          4LAP
+  76 IF RS19=4  RS1=6   RS2=16     C ZSEB,GALLER 1LAP(2GALLER+2PAR ZSEB)
+
+  78 >> S:D.I-DI./DI.-D.I/UVNDI.;                            ML       S1 S2 T2
+  80 << S:DI.-D.I/UVND.I;             Y:3;	             	        ML       S1    T2
+  82 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  84 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  86 >> S:R-R;                        Y:3;        NP2-2         ML       S1
+  88 JA1=1002;
+  90 PA:1:<JA1>;
+
+ 100 IF RS19=0 FA=1-88              C**6 LAP E1
+ 102 IF RS19=0 PM:<*>8:6(FA**);     C**6 LAP
+
+ 104 IF RS19=1 FA=1-88              C**6 LAP E2
+ 106 IF RS19=1 PM:<*>8:6(FA**);     C**6 LAP
+
+ 108 IF RS19=2 FA=1-179             C**3 LAP H
+ 110 IF RS19=2 PM:<*>6:3(FA**);     C**3 LAP
+
+ 112 IF RS19=3 FA=1-135             C**4 LAP U
+ 114 IF RS19=3 PM:<*>7:4(FA);       C**4 LAP
+
+ 116 IF RS19=4 FA=1-270             C**ZSEB,GALLER
+ 118 IF RS19=4 PM:<*>7:2(FA**);     C**2 GALLER+2PAR ZSEB
+
+ 120 NP3-3
+ 122 Y:3;
+ 124 REP*3
+ 126 << S:R-0;		                                              ML    S1
+ 128 >> S:0-R;		                                              ML    S1
+ 130 REPEND
+ 132 WM=20 C20
+ 134 Y:5/3;
+ 136 REP*2 C************* ZSAKKOTESU NORVEG MINTA****************
+ 138 << S:I-.*/.*-I;           VU    ML    S1 S2
+ 140 >> S:I*-./.-I*;           VU    ML    S1 S2
+ 142 REPEND C****************************************************
+ 144 Y:3;
+ 146 REP*4
+ 148 << S:R-0;		                                              ML    S1
+ 150 >> S:0-R;		                                              ML    S1
+ 152 REPEND
+
+ 170 JA1=1004; C1004 .I.I.I.I.I.I.I.I.I.I.I. 105 PM:<*>6:3(FA**);
+ 175 << S:U^N./UVNI*;     VKA>2   ML T1 T2
+ 180 >> S:0-0;   Y:0; S1
+ 182 NP1-1
+ 183 WM=28
+
+ 200 IF RS19=0 GOSUB 500-506 C E1
+ 202 IF RS19=0 GOSUB 400-406
+
+ 204 IF RS19=1 GOSUB 500-506 C E2
+ 206 IF RS19=1 GOSUB 400-406
+
+ 208 IF RS19=2 GOSUB 400-406 C H
+
+ 210 IF RS19=3 GOSUB 400-406 C U
+
+ 212 IF RS19=4 GOSUB 400-406 C ZSEB, GALLER
+ 214 IF RS19=4 GOSUB 500-506
+
+ 240 IF RS19>4 Y:2/5;
+ 250 << S:I*-%./I*-.;            V#      S1 S2
+ 252 >> S:I*-%./I*-./UVN.;          ML   S1 S2 T2
+ 254 END
+
+
+ 400 RBEG*RS1 C*****GYONGY*************************************
+ 402 << S:I*-%./I*-.;   Y:2/5; VU      S1 S2  C
+ 404 >> S:I*-%./I*-.;          VU      S1 S2  C
+ 406 REND C****************************************************
+
+ 500 RBEG*RS2 C*****GYONGY*************************************
+ 502 << S:I*-%./I*-.;   Y:4/3; VU      S1 S2  C
+ 504 >> S:I*-%./I*-.;          VU      S1 S2  C
+ 506 REND C****************************************************
+ 999 <> W0 S0
+
+1002 ..IIII..
+1004 .I

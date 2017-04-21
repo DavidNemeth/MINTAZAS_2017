@@ -1,0 +1,90 @@
+   1C BALINT  KREPP PONCSO
+   1C                  
+   1C------------NYERS LUSI+TX:NPK=0
+   1C------------NYERS LUSI+HB:NPK=+0.6
+   1C------------FEHER LUSI+TX:NPK=+0.4
+
+  10 NP1=13.0              C:KREPP
+  12 NP4=12.5;             C:LEVALASZTAS
+  14 NP2=10.0              C BEKEZDES
+  16 NP3=11.0              C:1/1
+
+  40 START        
+  50 YG:6/256;
+  60 WM=18;WMI=7
+  62 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4      V0  VU ML    S1 S2
+  64 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                          ML    S1    T2
+  66 <<	S:U^ND.I/DI.-D.I;		              			                       ML T1 S1
+  68 >> S:DI.-D.I;                   Y:5;        NP1-1      VR1    ML    S1
+  70 << S:U^NDI.;                                                  ML T1
+  72 >> S:DI.-D.I;                   Y:6;        NP4-4      V0  VU ML        S2
+  74 << S:0-D.I/R-0;                 Y:6/0;                     VU ML     S1 S2
+  76 >>	S:DI.-D.I;		                 Y:2;	       NP2-2      V0  VU ML     S1
+  78 << S:0-D.I;                     Y:5;        NP3-3          VU ML     S1
+  80 >> S:DI.-0;                                                VU ML     S1 
+C**************************************************************************
+  82  IF #100=1   RS17=0               C ELEJE             1PAR
+  84 C IF #100=16  RS17=1               C HATA              2DB.
+  86  IF #100=2   RS17=2               C 1/1 MANDZSETTA    3PAR
+  88  IF #100=3   RS17=3               C 1/1 NYAK          3DB.
+C***********************************************************NYERS LUSI+TX:NPK=0*****NYERS LUSI+HB:NPK=+0.6**
+  90 IF RS17=0  RS1=4   RS2=3   RS3=170 C ELEJE    1PAR 75X 69CM    170
+  92 IF RS17=1  RS1=0   RS2=0   RS3=350 C HATA     2DB. 75X130CM    350
+  94 IF RS17=2  RS1=24  RS2=23  RS3=0   C 1/1 UJJA 3PAR     30CM
+  96 IF RS17=3  RS1=4   RS2=3   RS3=0   C 1/1 NYAK 3DB.      7CM
+C*************************************************************************************************************
+  98 IF RS1=0 GOTO 200 C HATA
+ 100 WM=18;NP3-3
+ 102 RBEG*RS1
+ 104 << S:DI.-D.I;                Y:2/5;   VU   S1 S2
+ 106 >>                                    VU   S1 S2
+ 108 REND
+ 110 << S:DI.-D.I;                         VU   S1 S2
+ 112 >> S:DI.-0;                           VU   S1 S2
+ 114 RBEG*RS2
+ 116 << S:DI.-D.I;                         VU   S1 S2
+ 118 >>                                    VU   S1 S2
+ 120 REND
+C**************************KREPP*******************************************
+ 200 << S:DI.-D.I;                Y:2/5;   VU   S1 S2
+ 202 >> S:DI.-D.I/DI.(4)-D.I(4)/UVSD.I;         S1 S2 T2
+ 203 IF RS3=0 END C**** NYAK, MANDZSETTA *******
+ 204 JA1=1362(1334-1362);
+ 206 PA:<JA1>;
+C*******************************************
+ 208 FA=1-267; PM:<.>9:2(FA3.); C*553TU*
+C*******************************************
+ 208 FA=1-281; PM:<.>9:2(FA3.); C*581TU* 
+C*******************************************
+ 210 WM=16
+ 212 Y:2/2/5/5;
+ 214 NP1-1
+ 216 RBEG*RS3 C********
+ 218 << S:U^N<1->N./.-N./UVNI;        V0     T1 S1     T2
+ 220 >>                                      T1 S1     T2
+ 222 REND C************
+ 224 << S:U^SD.I/DI.-D.I;        NP4-4       T1 S1
+ 226 >> S:DI.-D.I/UVSD.I;                       S1     T2
+ 228 END
+ 999 <> W0 S0
+1332 WWWWWWWWWWWW
+1334 II.II...I...
+1336 I.I.I..III..
+1338 .I.I.II...II
+1340 .III..I.I.I.
+1342 I...II.I.I.I
+1344 ..I..III.III
+1346 II.II...I...
+1348 II.III..I..I
+1350 ..I...II.II.
+1352 II.II.I...I.
+1354 ..I..I.III.I
+1356 I...I.II.II.
+1358 .III.I..I..I
+1360 II.III..I..I
+1362 ..I...II.II.
+1364 WWWWWWWWWWWW
+
+
+
+

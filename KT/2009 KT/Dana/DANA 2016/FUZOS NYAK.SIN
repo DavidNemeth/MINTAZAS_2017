@@ -1,0 +1,55 @@
+ 500 C FUZOS MADONNA NYAK - DANA MADONNAHOZ
+ 501 C 2LUSI+1TX:NPK=0  MADONNAHOZ:NPK=0.2-0.4  2LUSI+1LUREX:NPK=-0.4
+ 502 C 1'31"
+ 503 C*******************
+ 504 NP4=12.4   C:LEVALASZTAS
+ 505 NP12=11.0  C:BEKEZDES
+ 506 NP13=12.0  C:1/1         12.5
+ 507 NP15=13.0  C SLAG        13.5
+
+508C START        
+509C YG:6/256;	
+ 510 WM=16;WMI=7
+511C << S:D.I-DI./DI.-D.I;            Y:5/2;        NP4-4    VU V0      S1 S2
+ 512 C** CSIPKE NYAK ************
+ 513 >>	S:D.I-DI./UVNDI.;   	      	 Y:5;                              S1    T2
+ 514 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 515 >> S:U^SDI./D.I-D.I;            Y:6;                   VR1     T1    S2
+ 516 << S:0-D.I/R-0;                 Y:6/0;                    VU      S1 S2
+ 517 >>	S:DI.-D.I;		                 Y:2;	        NP12-12   V0 VU      S1
+ 518 << S:DI.-0;                     Y:6;         NP13-13      VU      S1
+ 519 >> S:0-D.I/DI.-0;               Y:5/6;                    VU      S1 S2
+ 520 << S:DI.-D.I;                   Y:2/5;                    VU      S1 S2
+-----------------------------------------
+ 521 JA1=1000;
+ 522 PA:1:<JA1>;
+ 524 FA=1-6; PM:*<.>7:I<FA>574:I<.>;
+ 525 VJA^0
+C--------VAGY-------------------------------------------------------------------
+ 526 >> S:DI.-D.I/UVS.*;             Y:2;                              S1     T2
+ 528 << S:U^SN.*/.*-N.*/UVSN.*;                    NP15-15          T1 S1     T2
+ 530 >> S:R-0;                      Y:5/2;                    VU       S1 S2
+ 532 << S:U^SIY/.+*-IY/.+*-IY/UVSI;                           VL1   T1 S1 S2 T2
+ 534 >> S:U^SIY/.+*-IY/.+*-IY;                                V0    T1 S1 S2
+ 536 << S:U^S+/.*-N.*/UVSN.*;          Y:5;                         T1 S1    T2
+ 538 >> S:N*-0;                                               VU       S1
+ 540 << S:R-0;                      Y:2;                      VU       S1
+ 542 >> S:U^SN.*/.-N.*/UVSDI.;                                      T1 S1    T2
+ 544 << S:U^SD.I/DI.-D.I;           Y:5;            NP13-13         T1 S1
+ 546 >> S:DI.-D.I/UVSD.I;                                              S1    T2
+C-------VAGY-------(4 SORRAL SZELESEBB DE 2 LOKETTEL GYORSABB)------------------
+ 526 >> S:DI.-D.I/DI.-D.I/UVS.*;                                       S1 S2  T2
+ 528 << S:U^SN.*/.*-N.*/.*-N.*/UVSN.*;             NP15-15          T1 S1 S2  T2
+ 530 >> S:R-0;                                                VU       S1 S2
+ 532 << S:U^SIY/.+*-IY/.+*-IY/UVSI;                           VL1   T1 S1 S2 T2
+ 534 >> S:U^SIY/.+*-IY/.+*-IY;                                V0    T1 S1 S2
+ 536 << S:U^S+/.*-N.*/.*-N.*/UVSN.*;                                T1 S1 S2 T2
+ 538 >> S:R-0;                                                VU       S1 S2
+ 540 << S:U^SN.*/.-N.*/.-N.*/UVSDI.;                                T1 S1 S2 T2
+ 542 >> S:U^SD.I/DI.-D.I/DI.-D.I/UVSD.I;            NP13-13         T1 S1 S2 T2
+ 544 C
+ 546 C
+C--------------------------------------------------------------
+ 550 END C**********************************************************
+
+1992 ++IYI

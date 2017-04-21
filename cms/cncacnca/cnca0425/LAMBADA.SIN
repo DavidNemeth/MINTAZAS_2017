@@ -1,0 +1,94 @@
+   1 C LAMBADA   0.5KG
+   2 C                            NPJ2=       NPJ3=         TEST:        UJJA:
+   3 C                        2 SZV.CSIPKE    DIO       RS1=   RS2=  RS1=   RS2=
+   4 C-----------------------+------------+------------+------------+-------------+
+   5 C 2X16/1 PAMUT+1BRILL:    14.5-14.6     13.75       11     24     7     25
+   6 C-----------------------+------------+------------+------------+-------------+
+   7 C 3X16/1 PAMUT(F-F):
+   8 C-----------------------+------------+------------+------------+-------------+
+   9 C        -      -            -      -
+  10 C  1: <------+------       ------+------>
+  11 C        -      -            -      -
+  12 C       13.75  13.75        13.75  13.75
+  13 C J2: <------+------       ------+------>  DIO **********************
+  14 C       13.75  13.75        13.75  13.75
+  15 C       14.6    0            0     14.6
+  16 C J3: <------+------       ------+------>  KORSLAG 
+  17 C        0     14.6         14.6    0  
+  18 C        -      -           14.6   12.5
+  19 C B2: <------+------       ------+------>  BEKEZDES
+  20 C        -      -            0     10.5
+  21 C       14.6   14.6         14.6   14.6
+  22 C B3: <------+------       ------+------>  2 SZV.CSIPKE *************
+  23 C       14.6   14.6         14.6   14.6
+  24 C       13.0   13.0        X13.0  X13.0
+  25 C J4: <-------------       ------------->  LEVALASZTAS,1/1
+  26 C       13.0   13.0        X13.0  X13.0
+  27 C        X      X     
+  28 C B4: <-------------       ------------->
+  29 C        X      X          
+  30 C TUAGYKORREKCIOK:
+  31 C   V0:->2.25-2.5
+  32 C   R1:-     __________R2:-     ________R3:-
+  33 C   L1:->0.5 __________L2:-     ________L3:-
+  34 C 10 SULY
+  40  START
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;		          Y:5/2;	     NP4-4   VU V0	ML      S1 S2
+  59 >> S:D.I-DI.;                    Y:5;                      ML      S1
+  62 << S:U^ND.I/DI.-D.I;        	                              ML   T1 S1
+  64 >> S:U^NDI.;                                 NP0-0         ML   T1
+  66 << S:0-0;                        Y:0;        NP0-0         ML      S1
+  68 >> S:R-R;		                      Y:6;	                     ML         S2
+  71 << S:0-R/R-0;		                  Y:6/0;            	       ML      S1 S2
+  74 >> S:R-R/0-R;		                  Y:2/5;      NP2-2         ML      S1 S2
+  80 << S:0-R/R-0;		                  Y:5/2;  	   NP3-3                 S1 S2
+  83 >> S:0-R/R-0;                    Y:2/5;                            S1 S2
+  85 << S:0-R/R-0;		                  Y:5/2;  		                        S1 S2
+  90 JA1=1016(1004-1014)         C UJJA 4 LAP
+  92 FA=4-137                    C UJJA 4 LAP
+  94 PM:<.>8:4(FA.);             C UJJA 4 LAP
+  96 IF RS1>8 JA1=1116(1104-1114)C TEST 3 LAP
+  98 IF RS1>8 FA=7-182           C TEST 3 LAP
+ 100 IF RS1>8 PM:<.>10:3(FA...); C TEST 3 LAP
+ 110 PA:JA1;
+ 115 >> S:0-R/R-0/UVNNI;            Y:2/5;                     S1 S2 T2
+ 120 << S:U^NI/NI-I/NI-I;                         NP4-4     T1 S1 S2
+ 125 C-----MINTA-----
+ 130                                        NP3-3
+ 140 VJA^0
+ 145 RBEG*RS1
+ 150 REP*3
+ 155 >> S:U^N<1->N./.-N./.-N./UVNNA.;           V0        T1 S1 S2 T2
+ 160 << S:U^N<1->N./.-N./.-N./UVNNY.;           VL1       T1 S1 S2 T2
+ 165 REPEND
+ 170 REND
+ 175 >> S:U^N<1->N./.-N./.-N./UVNN.;    Y:2/5;  V0        T1 S1 S2 T2
+ 180 JA1=1016
+ 185 << S:U^NI/NI-I/NI-I;                     NP2-2       T1 S1 S2
+ 190 RBEG*RS2
+ 195 >> S:.*%+-I/.*%+-I;        V#      S1 S2
+ 200 << S:.*%+-I/NI-I;          V#      S1 S2
+ 205 >> S:.+%*-I/.+%*-I;        V#      S1 S2
+ 210 << S:.+%*-I/NI-I;          V#      S1 S2
+ 215 REND
+ 220 >> S:NI-I/NI-I/UVNI;             S1 S2 T2
+ 225 END
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 ...............II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY.................................................................I
+1006 IIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1008 ................II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY..................................................................I
+1010 IIIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1012 .................II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY...................................................................I
+1014 IIIIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1016 I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+II
+1018 IIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1102 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1104 .......................II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY...II.........YY.........................I
+1106 IIIIIIIIIIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1108 ........................II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY.....II.......YY..........................I
+1110 IIIIIIIIIIIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1112 .........................II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY.......II.....YY...........................I
+1114 IIIIIIIIIIIIIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIAAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1116 I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+I*I+II
+1118 IIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII..IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII

@@ -1,0 +1,182 @@
+   1 C PIRAMIS
+  10 NP1=12.8  C:MINTA
+  12 NP4=12.6  C:LEVALASZTAS
+  14 NP2=11.4  C:BEKEZDES
+  16 NP5=12.6  C:1/1
+  18 NP3=14.0  C SLAG
+  40   START        
+  50   YG:6/256;	
+  55 WM=14;WMI=7
+  60 << S:D.I-DI./DI.-D.I;        Y:5/2;         NP4-4   VU V0      S1 S2
+C****************************************************************1DB:40' 0.4KG
+  61 IF #100=7    RS17=0           C E-H                 231 TUR 43'12  
+  62 IF #100=1    RS17=1           C U                    99 TUR 18'32
+  63C IF #100=30   RS17=50          C NYAK
+  63C IF #100=32   RS17=51          C 2/1 GOMBLYUKAS PANT  10 TUR 1'53
+  64C IF #100=36   RS17=0           C E-H
+  65C IF #100=39   RS17=1           C U
+C*****************************************************************
+
+C*********************NPK=0*********************************************
+  66 IF RS17=0  RS1=75       C E-H   ' 68CM     180X68-RA KELL VASALNI. KESZEN:54X64CM
+  67 IF RS17=1  RS1=31       C U       28CM   
+  68 IF RS17=50 GOTO 800     C NYAK
+  69 IF RS17=51 GOTO 900     C 2/1 GOMBLYUKAS PANT
+C*****************************************************************
+  70 JA1=1001;PA:1:<JA1>;
+  75 FA=1-2; PM:<.>8:<FA>500:<.>;   C*505TU  1001 I*
+  75 FA=1-2; PM:<.>8:<FA>576:<.>;   C*581TU  1001 I*
+  80 >>	S:D.I-DI./UVS.*;   	      Y:5;                              S1    T2
+  85 <<	S:U^SI/.*-I;		              			                          T1 S1
+  90 >> S:U^S*/.I-I;              Y:6;                   VR1     T1    S2
+  95 << S:.-I/I-0;                Y:6/0;                    VU      S1 S2
+ 100 >>	S:.*-I/.-I;		             Y:2/5;	          NP2-2 V0 VU      S1 S2
+
+ 102 Y:2/2/5/5;
+ 104 << S:.*-0;                                             S2
+ 110 >> S:.*-I/UVSI;                                        S2 T2
+ 112 << S:R-0;                           NP3-3        VU    S2
+ 114 >> S:U^SI*/.-I*/UVSI*;                              T1 S2 T2
+ 116 << S:R-0;                                        VU    S2
+ 118 >> S:U^SI*/.-I*/UVSI*;                              T1 S2 T2
+
+
+
+ C ****************** 581 TU ****************************************
+ 190 IF RS17=0 FA=28-214; PM:<.>9:3(FA..); PA:1:<JA1>  28:I 213:I.;
+ C                                    268 PKV:2:<JA1> 28:.I 214:I;
+
+ 200 IF RS17=1 FA=6-146; PM:<.>8:4(FA.);   PA:1:<JA1>   6:I 145:I.;
+ C                                    268 PKV:2:<JA1>  6:.I 146:I;
+C*****************************************************************
+
+
+ C $$$$$$$ SZIMETRIKUS BAL-BAL AZSUR $$$$$$$$$ +,O,Z:KITOROLHETO, HA A VAR1.-ET HASZNALOM!!!!!! $$$$$$$$$$$
+ 250 JA1=1044(1004-1042)
+ 251 NP1-1
+ 252 VJA^1
+ 253 RBEG*RS1
+ 255 PKV:0;
+ 258 WM=14;WMI=7
+ 260 << S:U^S<1->I/.-I/.-I;              Y:5/2;         V0          T1 S1 S2
+ 262 WM=0;WMI=0
+ 264 >> S:U^S<1->AI/UVSY;                                           T1       T2 
+ 266 << S:UVSA;                                         VR2                  T2
+ 267 IF RS17=0 PKV:2:<JA1> 28:.I 214:I;
+ 268 IF RS17=1 PKV:2:<JA1>  6:.I 146:I;
+ 270 WM=14;WMI=7
+ 271 >> S:U^N<1->I/.-I/.-I;                             VR1  VKA>4  T1 S1 S2
+ 274 WM=0;WMI=0
+ 275 << S:U^S<1->YI/UVSA;                                           T1       T2 
+ 276 >> S:UVSY;                                         VL1                  T2
+ 320 REND
+ C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ 322 PK^:0; PKV:0;
+ 324 WM=15;WMI=7
+ 326 << S:U^N<1->I/.-I/.-I/UVSD.I;       Y:2/5;          V0          T1 S1 S2 T2
+ 328 >> S:U^SDI./D.I-DI./D.I-DI./UVSDI.;        NP4-4                T1 S1 S2 T2
+ 330 END
+C************************************
+
+ 800 C************* MADONNA NYAK 2007.12.01.**********EZ A LEGJOBB********
+ 802 C *** NEM RAGJA A SZELET, MERT A LEVALASZTAST IS JAC.-BOL KOTI.*********************
+ 804 C 1'31"
+ 806 C*******************
+ 808 NP4=13.0   C:LEVALASZTAS
+ 810 NP12=11.8  C:BEKEZDES
+ 812 NP15=12.8  C:1/1
+ 814 NP14=10.6  C:2SZV. CSIPKE NYAK HATUL    MADONNA:11.0   TUNIKA:10.8
+ 816 NP13=10.8  C:2SZV. CSIPKE NYAK ELOL     MADONNA:11.2   TUNIKA:11.0
+818 C  START        
+820 C  YG:6/256;	
+ 822 WM=16;WMI=7
+824 C  << S:D.I-DI./DI.-D.I;        Y:5/2;         NP4-4   VU V0      S1 S2
+ 826 C** CSIPKE NYAK ************
+ 830 JA1=1000;PA:1:<JA1>;
+ 832 FA=1-2; PM:<.>7:*<FA>576:<.>;   C*581TU  VAGY: PM:<.>7:*<FA>575:*<.>;
+ 834 >>	S:D.I-DI./UVS.*Y;   	      Y:5;                              S1    T2
+ 836 <<	S:U^SI/.*Y-I;		              			                          T1 S1
+ 838 >> S:U^SY/.*I-I;              Y:6;                   VR1     T1    S2
+ 840 << S:.*-I/I-0;                Y:6/0;                    VU      S1 S2
+ 842 >>	S:.*Y-I;		                 Y:2;	          NP12-12 V0 VU      S1
+ 844 << S:.-I;                     Y:6;           NP15-15    VU      S1
+ 846 >> S:.*Y-0/.-I;               Y:5/6;                    VU      S1 S2
+ 848 << S:.*Y-I;                   Y:2/5;                    VU      S1 S2
+ 850 >> S:.*Y-I/.*Y(13)-I(14)/UVS.*Y;                                S1 S2 T2
+ 852 VJA^0
+ 854 NP13-14
+ 856 REP*2
+ 858 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 860 >> S:U^SI*/.Y-I*/.Y-I*/UVS*;                  VKA<2  V0      T1 S1 S2 T2
+ 862 REPEND
+ 864 << S:U^SY*/.I-Y*/.I-Y*/UVS*;                         VL1     T1 S1 S2 T2
+ 866 >> S:U^SI*/.Y-I*/.Y-I*/UVSI*;                  VKA   V0      T1 S1 S2 T2
+ 868 END C**********************************************************
+
+ 900 C***************** 2/1-ES GOMBLYUKAS PANT *********************--
+ 902 NP4=12.2   C:LEVALASZTAS
+ 904 NP12=11.4  C:BEKEZDES
+ 906 NP13=14.0  C SLAG
+ 908 NP11=12.5  C 2/1
+C 912 START        
+C 914 YG:6/256;	
+ 916 WM=16;WMI=7
+C 918 << S:D.I-DI./DI.-D.I;       Y:5/2;           NP4-4    VU V0      S1 S2
+ 920 JA1=1001(1001-1002);
+ 922 PA:1:<JA1>;FA=1-6;
+ 924 PM:<.>8:<FA>500:<.>;   C**********505TU
+ 926 PM:<.>8:<FA>575:<.>;   C**********581TU
+ 928 >>	S:D.I-DI./UVS.*;   	      Y:5;                                    S2 T2
+ 930 <<	S:U^SI/.*-I;		              			                             T1    S2
+ 932 >> S:U^S*/.I-I;              Y:6;                         VR1  T1    S2
+ 934 << S:.-I/I-0;                Y:6/0;                    VU         S1 S2
+ 936 >>	S:.*-I/.-I;		             Y:2/5;	          NP12-12  VU V0      S1 S2
+ 938 << S:.*-0/.*-I/UVSI;                                              S1 S2 T2
+ 940 Y:2/2/5/5;
+ 942 >> S:R-0;                                     NP13-13  VU            S2
+ 944 << S:U^SI*/.-I*/UVSI*;                                         T1    S2 T2
+ 946 >> S:R-0;                                              VU            S2
+ 948 << S:U^SI*/.-I*/UVS<1->I;                                      T1    S2 T2
+ 949 WM=18
+ 950 >> S:U^S*/.I-*/.I-*;         Y:2/5;	          NP11-11          T1 S1 S2
+ 952 << S:.I-*/.I-*;         	                          VU         S1 S2
+ 954 VJA^0
+ 956 >> S:U^SI/.-N./UVSI.;         Y:2;            NP11-11     VR1  T1    S2 T2
+ 958 << S:.I-*/UVS*;                                                      S2 T2
+ 960 >> S:U^S*/.I-*/.I-*;         Y:5/2;                       V0   T1 S1 S2
+ 962 << S:.I-*;                                             VU         S1 S2
+ 964 >>                                                     VU         S1 S2
+ 966 <<                                                     VU         S1 S2
+ 968 >> S:.I-*/.I-*/UVS*;                                              S1 S2 T2
+ 970 END
+
+ 999 <> W0 S0
+
+1000 IY
+1001 I*
+1002 II*
+
+1004 II.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1006 IIAIAIAIAIAIAIAIYIYIYIYIYIYIYI
+1008 I.I.I.I.I.I.I..I..I.I.I.I.I.I.
+1010 IAIAIAIAIAIAIAAIYYIYIYIYIYIYIY
+1012 II.I.I.I.I.I..III..I.I.I.I.I.I
+1014 IIAIAIAIAIAIAAAIYYYIYIYIYIYIYI
+1016 I.I.I.I.I.I..IIIII..I.I.I.I.I.
+1018 IAIAIAIAIAIAAAAIYYYYIYIYIYIYIY
+1020 II.I.I.I.I..II.I.II..I.I.I.I.I
+1022 IIAIAIAIAIAAAAAIYYYYYIYIYIYIYI
+1024 I.I.I.I.I..II.III.II..I.I.I.I.
+1026 IAIAIAIAIAAAAAAIYYYYYYIYIYIYIY
+1028 II.I.I.I..II.IIIII.II..I.I.I.I
+1030 IIAIAIAIAAAAAAAIYYYYYYYIYIYIYI
+1032 I.I.I.I..II.II.I.II.II..I.I.I.
+1034 IAIAIAIAAAAAAAAIYYYYYYYYIYIYIY
+1036 II.I.I..II.II.III.II.II..I.I.I
+1038 IIAIAIAAAAAAAAAIYYYYYYYYYIYIYI
+1040 I.I.I..II.II.IIIII.II.II..I.I.
+1042 IAIAIAAAAAAAAAAIYYYYYYYYYYIYIY
+1044 I.....II.II.IIIIIII.II.II.....
+1046 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+

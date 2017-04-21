@@ -1,0 +1,57 @@
+
+   1 C 
+  10 C RENDOR PULOVERHEZ 1/1-ES KETLIS NYAK
+  10 C FA:PARATLAN LEGYEN. AKARHANY TURE KISZAMOLHATO
+  10 CC                    A ZSELSZEMEKEN TUL ATUKET NAM MOZGATJA!(NEM KELL LETOLNI)
+
+  11   NP1=10.8            C:FELSZOVET 11.4 11.0 10.8 10.6
+  14   NP2=11.2            C:BEKEZDES,1/1             C 3 SZALLAL:11.2  2 SZALLAL:10.2
+  15   NP6=11.2            C:BEKEZDES,1/1 NYAKHOZ
+  16   NP3=15.0            C:KETLI SOR
+  20   NP4=12.6            C:LEVALASZTAS
+C------------------------------------------------
+  40 START
+  50    YG:6/256;
+  55    WM=18 WMI=7
+  56 JA1=1010(1010-1012);
+  60 PA:<JA1>;
+
+ 120  PM:I.I.I3(FA*).<I.>;
+ 125   FA=1-189;      	      C         581TU    TELI TUAGY  FA:PARATLAN!!!!! AKARHANY TURE KISZAMOLHATO
+                             C                  A ZSELSZEMEKEN TUL ATUKET NAM MOZGATJA!(NEM KELL LETOLNI)
+
+
+ 600 C********************* 1/1 KETLIS NYAK**************************************
+ 602 << S:*IY-./.-*IY;	               Y:5/2; 	ML   NP4-4   VU   V0	     S1 S2
+ 604 >>	S:*IY-./UVN*IY;   	        	  Y:2;    ML                        S1    T2
+ 606 <<	S:U^N./*IY-.;		               Y:2;	 	 ML                     T1 S1
+ 608 >> S:*IY-.;                      Y:5;    ML            VR1 VU      S1
+ 610 << S:U^NIY*;                             ML                     T1
+ 612 >> S:IY*-.;                      Y:6;    ML             V0 VU      S1
+ 614 << S:0-./N+-0;                   Y:6/0;  ML                VU      S1 S2            
+ 616 >>	S:IY*-.;		                    Y:2;	   ML     NP6-6      VU      S1
+ 618 << S:IY*-0/0-.;                  Y:5/2;                    VU      S1 S2
+ 620 >> S:IY*-.;                                                VU      S1 S2
+ 622 REP*5 C PASSZE
+ 624 << S:IY*-.;                  Y:5/2;                  VU           S1 S2
+ 626 >>                                                    VU           S1 S2
+ 628 REPEND
+ C------VAGY GUMIVAL TOROSOR NELKUL:-----------------------------------------
+ 630 << S:IY*-./IY*-0;                  Y:2/6;               VU           S1 S2
+ 631 >> S:IY*-0/IY*-.;                  Y:6/2;               VU           S1 S2
+ 632 C
+ 633 C
+C----------------------------------------------------------------------------
+ 634 GOSUB 624-626*5
+ 640 <<                              Y:5;    NP3-3         VU              S2     C KETLI
+ 642 >>                              Y:6;    NP4-4         VU           S1        C MEGFOGO
+ 644 <<                                                    VU           S1
+ 646 C>>                             Y:6;                  VU           S1
+ 648 C<<                                                   VU           S1
+ 650 >>                              Y:6/5;                VU           S1 S2
+ 652 <<                              Y:6/2;                VU           S1 S2
+ 654 >> S:IY*-./UVN.;                Y:2;                  VU           S1    T2
+ 656 END C*************************************************************************
+
+1010 .Y
+1012 Y

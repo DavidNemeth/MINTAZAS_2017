@@ -1,0 +1,46 @@
+ 900 C---FONOTT NYAK PETI------1/1-ES VARRO SZEGELLYEL-----------------------------------------------
+ 902 START
+ 904 NP1=14.8   C:LEVALASZTAS
+ 906 NP2=11.5   C1/1,BEKEZDES
+ 908 NP4=12.6   C:LEVALASZTAS
+ 910 YG:6/346;
+ 912 WM=18 WMI=7
+ 914 << S:D.I-DI./DI.-D.I;	          Y:3/4;	        NP4-4   VU   V0	     S1 S2
+ 916 >> S:D.I-DI./UVSDI.;            Y:3;           NP3-3                S1    T2
+ 918 << S:U^SD.I/DI.-D.I;                           NP1-1             T1 S1
+ 920 >> S:U^SDI./D.I-D.I;            Y:6;           NP4-4   VR1       T1 S1
+ 922 << S:0-D.I/D.I-0;               Y:6/0;                              S1 S2
+
+ 924 >> S:DI.-D.I/0-D.I;             Y:4/3;         NP2-2   V0   VU      S1 S2
+ 926 << S:DI.(8.5)-0;                Y:6;                        VU      S1
+ 928 >> S:DI.(8.5)-0;                Y:6;                        VU      S1
+
+ 930 << S:DI.(2)-D.I/DI.-D.I;        Y:4/3;                      VU      S1 S2
+ 938 JA1=1999
+ 940 FA=1-6
+ 942 PA:JA1;
+ 944 PM:<.> 9:<FA> 543:<.>;
+ 946 >>S:DI.-D.I/DI.-D.I/UVS.;   Y:3/4;                   S1 S2 T2
+
+ 948 REP*2 C*********FONAS********
+ 950 VJA^1
+ 954 << S:U^SY*/.(13.6)-Y*(14.2)/.-Y*;        Y:3/4;  VKA>2   V0   T1 S1 S2
+ 956 WM=12
+ 958 >> S:.-*/UVS*;                           Y:3;       VL2 VKD>3    S1    T2
+ 960 << S:.-Y;                                Y:3;            VR2     S1
+ 962 VJA^0
+ 964 WM=20
+ 966 >> S:U^SY/.-Y*(13.6)/.-Y*/UVSY*;   Y:3/4;         VKE>5 T1 S1 S2 T2
+ 968 REPEND C********************
+
+ 970 << S:U^SY*/.(13.6)-Y*;                   Y:3;            V0   T1 S1
+ 972 PM:<W> 9:<FA> 543:<W>;
+ 974 >> S:U^S./W-NW/UVSNW;                                         T1 S1    T2
+
+ 976 << S:R-0;                                Y:4/3;                  S1 S2
+ 978 >> S:U^SNW/W-NW/W-NW/UVSD.I;                            T1 S1 S2 T2
+
+ 980 << S:U^SDI./D.I-DI./D.I-DI.;   NP4-4                    T1 S1 S2     C 
+ 982 >> S:D.I-DI./D.I-DI./UVSDI.;                   VU    S1 S2  T2  C
+ 984 END
+1999 .YY**.

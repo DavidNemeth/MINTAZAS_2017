@@ -1,0 +1,309 @@
+  1 C--ARAN 3 LKT--Y:2/3/5--U-H:3ME!!!---E:RS1=15  H:RS1=48  U:RS1=32  NYAK:SP600  2SZAL PAMUT+1HB
+  2 START
+  3 NP1=14.7   C:LEVALASZTAS
+  4 NP2=12.4   C:1/1-ES PASSZE
+  5 NP4=11.5   C:LEVALASZTAS
+  6 YG:6/2356;
+  7 WM=20
+  8 <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	    NP4-4 VU V0	       S1 S2
+  9 >> S:0-R/R-0;                   Y:5/2;            VU           S1 S2
+  10 << S:R-0/0-R;                  Y:3/2;      NP1-1              S1 S2
+  11 >>	S:D.I-DI./DI.-D.I/UVNDI.;   	Y:3/2;	    NP1-1	             S1 S2 T2
+  12 <<	S:U^ND.I/DI.-D.I;		         Y:5;			                    T1 S1
+  13 >>	S:U^NDI./D.I-D.I;		         Y:6;	      NP0-  VL1	       T1	  S2
+  14 <<	S:R-0/0-D.I/R-0;		           Y:0/6/0;   NP2-2  V#	       T1 S1 S2
+  15 >>	S:DI.-D.I;		                	Y:5;	             V# V0 ML     S1   
+  16 <<	S:DI.-0/0-D.I;			           Y:5/2;		          V#	          S1 S2
+  18 WM=26
+  28    JA1=1999
+  30    FA=1-6
+  32    PA:JA1;
+  34    PM:<.> 9:<FA> 543:<.>;
+  37 >>S:DI.(10.0)-D.I(10.0)/DI.-D.I/UVS.;   Y:2/5;               S1 S2 T2
+  38 REP*3
+  40    VJA^1
+  41    WM=20
+  42 << S:U^SY*/.(13.9)-Y*(14.5)/.-Y*;  Y:2/5;          V0     T1 S1 S2
+  43    WM=12
+  44 >> S:.-*/UVS*;                     Y:2;            VL2       S1    T2
+  46 << S:.-Y;                          Y:2;            VR2       S1
+  48    VJA^0
+  49    WM=20
+  50 >> S:U^SY/.-Y*/.-Y*/UVSY*;         Y:2/5;          VKE>4  T1 S1 S2 T2
+  52 REPEND
+  54 << S:U^SY*/.(14.0)-Y*(14.0)/.-Y*/UVSY*;  Y:2/5;    V0     T1 S1 S2 T2
+  66 JA1=1162(1002-1160)
+  67 PA:JA1;
+  68 F1=9-164
+  72 PM:<.>9:3(10W F1 11W..);
+  73 IF RS1>20 GOTO 500
+  74 >>S:U^SN./.(15.0)-N.(15.0)/.-N./UVSN.;  Y:5/2;            T1 S1 S2 T2
+  75 C---ARAN 2 SZALVEZETOVEL----------------------------------------------------
+  76 RBEG*RS1
+  77 REP*2
+  78 Y:5/5/2/2;
+  79 REP*3
+  80 WM=15 WMI=7
+  82 VJA^0
+  84 <>S:U^S<1->AYBHW/.+*-AYBHW/UVSAYBHW;     VKF>4     VR1     T1 S1    T2
+  86 <>S:U^SBH*;                                        V0      T1
+  88 WM=0
+  90 <>S:UVSH;                                VKE<3     VR3              T2
+  92 WM=10
+  94 <>S:U^S<1->AYW/.H+-AY*BW/UVS*BWAY;                 VL1     T1 S1    T2
+  96 WM=0
+  98 <>S:U^SAY+;                                        V0      T1
+  99 <>S:UVSY;                                VKA>8     VL3              T2
+ 100 REPEND
+ 104 IF #1=0 GOTO 155 C-- CSAVARAS BALRA---
+ 105 IF #1=1 GOSUB 183-202 C--CSAVARAS JOBBRA---
+ 106 REPEND
+ 107 REND
+ 108 <>	S:D.I-DI./DI.-D.I;		Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 115 IF #1=0 GOSUB 108
+ 120 END
+ 150 C---CSAVARAS BALRA--------
+ 155 Y:5/2/0/5/0/5;
+ 157 WM=15
+ 158 VJA^0
+ 160 <<S:U^S<1->N./.-N./UVSN.;                      VR1  T1 S1    T2
+ 163 >>S:U^SNW.;                                    V0   T1
+ 165 <<S:U^S<1->W/.-WGIT/0-T/UVSWGI;                VL3  T1 S1 S2 T2
+ 170 >>S:U^S<1->W/.-WTIG/0-G(9.0)/UVSW;       VKC>0 VR1  T1 S1 S2 T2
+ 175 <<S:U^S<1->IGW/.-N.(15.0)/UVSN.;         VKD>3 VR3  T1 S1    T2
+ 177 #1=1
+ 178 GOTO 106
+ 180 C---CSAVARAS JOBBRA--------
+ 183 Y:2/5/0/2/0/2;
+ 184 WM=15
+ 185 VJA^0
+ 186 >>S:U^S<1->N./.-N./UVSN.;                      VR1  T1 S1    T2
+ 188 <<S:U^SNW.;                                    V0   T1
+ 190 >>S:U^S<1->W/.-WGIT/0-T/UVSWGI;                VR3  T1 S1 S2 T2
+ 195 <<S:U^S<1->W/.-WTIG/0-G(9.0)/UVSW;       VKC   VL1  T1 S1 S2 T2
+ 200 >>S:U^S<1->IGW/.-N.(15.0)/UVSN.;         VKB>2 VL3  T1 S1    T2
+ 202 #1=0
+ 205 END
+ 500 C-----HATA-UJJA-----------
+ 505 JA2=1600
+ 510 PA:JA2;
+ 511 F1=1-156
+ 512 WM=30 WMI=7
+ 515 >>S:U^SN./.(15.0)-N.(15.0)/.-N.;   Y:5/2;            T1 S1 S2
+ 520 RBEG*RS1
+ 522 WM=30 WMI=3
+ 530 <<S:.-N.;                          Y:5/2/3;    VU    T1 S1 S2
+ 540 >>                                             VU    T1 S1 S2
+ 550 REND
+ 560 END
+ 600 C-----GARBO NYAK--------------------------------------------------
+ 604 START 
+ 608 NP1=14.7   C:
+ 612 NP2=12.4   C:1/1-ES PASSZE
+ 616 NP4=12.5   C:LEVALASZTAS
+ 620 YG:6/235;
+ 624 WM=20
+ 628 <<	S:D.I-DI./DI.-D.I;	            	Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 632 >> S:R-0/0-R;                      Y:5/2;                   S1 S2
+ 636 << S:D.I-DI./DI.-D.I/UVNR;	        Y:5/3;	    	            S1 S2 T2
+ 640 C WM=15 
+ 644 >> S:R-0/R-R;		                   Y:5/6;	    NP2-0   	           S1 S2
+ 648 << S:0-R/R-0/0-R;		               Y:0/6/0;    NP2-2   	      T1 S1 S2
+ 652 >> S:R-R(6.5);	                   	Y:3;	             ML          S1
+ 656 WM=25 WMI=7
+ 660 << S:R(12.0)-0/0-R(12.0);       		Y:2/5;		   	                  S1 S2    
+ 664 >> S:R-0/0-R;                                                    S1 S2
+ 668 JA1=1700(1700-1800)
+ 672 PA:JA1;
+ 676 F1=1-154
+ 680 PM:<.>9:WWW3(7W.F1 .11W.4W)543:<.>
+ 684 << S:R(14.0)-0/0-R(14.0)/UVS.;                VKA>3     S1 S2 T2
+ 688 >> S:U^SN./.-N./.-N.;                         VKA    T1 S1 S2
+ 690 WM=28
+ 692 REP*6
+ 696 <<S:.-N.;                          Y:5/2/3;    V#    T1 S1 S2
+ 700 >>                                             V#    T1 S1 S2
+ 704 REPEND
+ 708 <<S:.-N./.-N./UVS<1->.;                                 S1 S2 T2
+ 712 >>S:U^SN./.-N./.-N.;               Y:2/5;            T1 S1 S2
+ 716 GOSUB 696-700*6
+ 720 END
+ 800 C---FONOTT NYAK-------------------------------------------------------------------
+ 801 START
+ 802 GOSUB 3-15
+ 804 << S:DI.-0;                         Y:6;    NP0-           V#          S1
+ 806 >> S:DI.(6.5)-0;                         Y:6;               V#          S1
+ 808 << S:0-D.I(10.0)/DI.(10.0)-D.I(10.0);     Y:5/2;             V#          S1 S2
+ 810 GOSUB 18-37
+ 815 GOSUB 40-50*2
+ 818 GOSUB 54
+ 935 >> S:U^SD.I/DI.-D.I/DI.-D.I;       Y:2/5;      NP2-2  V0       T1 S1 S2
+ 942 <<	S:D.I-DI./DI.-D.I;		Y:5/2;	           VU V0	       S1 S2
+ 943 >>	S:D.I-DI./DI.-D.I;		Y:5/2;	           VU V0	       S1 S2
+ 945    END
+1999 .YY**.
+1002 W..W.WW2(.2(W.W).)2(.3W.)..OOTIIG.3(..3W)2(.W.)2(WW.W.W).4W3.OOTIIG3.WWW.W.2(W.3W)2(.W.)WW.2(W..WW)W3.OOTIIG.3(..3W).W.2($
+1003 $.W.WW)2(.W.)W
+1004 W..W.WW2(.2(W.W).)2(.3W.)..OOTIIG.3(..3W).W.2(.W.WW)W3(W.)3W3.OOTIIG3.4W.W.2(W.WW)W2(.W.)WW.2(W..WW)W3.OOTIIG.3(..3W).W.2$
+1005 $(.W.WW)2(.W.)W
+1006 W.WW.2(2(W.W).W)2(W..WW)W3.OOTIIG.2(..3W)..WW.W2(W.WW.)WW3(W.)4W3.OOTIIG3.WW3(W.)WW2(WW.)W2(W.WW.).2(3W..).OOTIIG.2(..3W)$
+1007 $..WW.W3(W.WW.)WW.W
+1008 W.WW.2(2(W.W).W)2(W..WW)W3.OOTIIG.2(..3W)..WW.W2(W.WW.)4W3(.W)WW3.OOTIIG3.4W.W.2(W.WW).W2(W.WW.).2(3W..).OOTIIG.2(..3W)..$
+1009 $WW.W3(W.WW.)WW.W
+1010 .W.2(.WW.W).W..WW.2(WW..W)WW..*BBHYAA+2(..3W)..W3(W.)2(.WW).YAA+W.W.*BBH..*BBHYAA+..YAA+W.W.*BBH.W3(W.).WW.2(WW..W)WW..*B$
+1011 $BHYAA+..3W..WW2(W..WW.W.)W3(W.).WW
+1012 .W.2(.WW.W).W..WW.2(WW..W)WW..*BBHYAA+2(..3W)..W3(W.)2(.WW).YAA+.W.W*BBH..*BBHYAA+..YAA+.W.W*BBH.W3(W.).WW.2(WW..W)WW..*B$
+1013 $BHYAA+..3W..WW2(W..WW.W.)W3(W.).WW
+1014 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+.W*BBH..*BBH.WYAA+..YAA+.W*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1016 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+W.*BBH..*BBHW.YAA+..YAA+W.*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1018 W..W.WW2(.2(W.W).).3W2(..YAA+*BBH)2(..3W)2(.W.)WW.W...YAA+*BBH..*BBHW.W.YAA+..YAA+*BBH3.3W2(.W.)WW.W..3W2(..YAA+*BBH)2(..$
+1019 $3W).W.2(.W.WW)2(.W.)W
+1020 W..W.WW2(.2(W.W).).3W2(..YAA+*BBH)2(..3W)2(.W.)WW.W...YAA+*BBH..*BBH.W.WYAA+..YAA+*BBH3.3W2(.W.)WW.W..3W2(..YAA+*BBH)2(..$
+1021 $3W).W.2(.W.WW)2(.W.)W
+1022 W.W.2(W3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)W2(.W..)..GIITOO3.WW3(W.)4W3.GIITOO.2(3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)$
+1023 $W.2(W3.W).W.WW
+1024 W.W.2(W3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)W2(.W..)..GIITOO3.4W3(.W)WW3.GIITOO.2(3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)$
+1025 $W.2(W3.W).W.WW
+1026 ..WW.W.W2(.WW.W.)WW..3W2(3.GIITOO.)..WW2(W..WW.)W.WW4.GIITOO3.WW3(W.)4W3.GIITOO..2(..WW.W).WW..3W2(3.GIITOO.)..WW2(W..WW.$
+1027 $)W.2(W.W)..WW.W
+1028 ..WW.W.W2(.WW.W.)WW..3W2(3.GIITOO.)..WW2(W..WW.)W.WW4.GIITOO3.4W3(.W)WW3.GIITOO..2(..WW.W).WW..3W2(3.GIITOO.)..WW2(W..WW.$
+1029 $)W.2(W.W)..WW.W
+1030 2(4(.W).)W.WW..3W2(..*BBHYAA+)..3W..W5(W.)WW3.*BBHYAA+..YAA+W.W.*BBH..*BBHYAA+3.W5(W.)WW..3W2(..*BBHYAA+)..3W..WW.W2(4(.W$
+1031 $).)W
+1032 2(4(.W).)W.WW..3W2(..*BBHYAA+)..3W..W5(W.)WW3.*BBHYAA+..YAA+.W.W*BBH..*BBHYAA+3.W5(W.)WW..3W2(..*BBHYAA+)..3W..WW.W2(4(.W$
+1033 $).)W
+1034 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBH.WYAA+..YAA+.W*BBH..*BBH.WYAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1036 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBHW.YAA+..YAA+W.*BBH..*BBHW.YAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1038 .WW2(.W.W.).W3(W.)W3(..YAA+*BBH)..W.W..W4(W.)*BBHW.W.YAA+..YAA+*BBH..*BBHW.W.YAA+.W.W..W3(W.)W3(..YAA+*BBH)..W.W..WW2(.W.$
+1039 $W.)2(.WW)
+1040 .WW2(.W.W.).W3(W.)W3(..YAA+*BBH)..W.W..W4(W.)*BBH.W.WYAA+..YAA+*BBH..*BBH.W.WYAA+.W.W..W3(W.)W3(..YAA+*BBH)..W.W..WW2(.W.$
+1041 $W.)2(.WW)
+1042 W.2(.W.WW)2(.W.)WW.W3(3.OOTIIG.)..3W2(.W.)2(WW.W.W).4W3.OOTIIG3.WWW.W.2(W.3W)2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)2(.W.)W
+1044 W.2(.W.WW)2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)W3(W.)3W3.OOTIIG3.4W.W.2(W.WW)W2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)2(.W$
+1045 $.)W
+1046 W.WW.2(2(W.W).W)W3(3.OOTIIG.)..WW.W2(W.WW.)WW3(W.)4W3.OOTIIG3.WW3(W.)WW4(WW.)W.WW3(3.OOTIIG.)..WW.W3(W.WW.)WW.W
+1048 W.WW.2(2(W.W).W)W3(3.OOTIIG.)..WW.W2(W.WW.)4W3(.W)WW3.OOTIIG3.4W.W.2(W.WW)2(.WW).W.WW3(3.OOTIIG.)..WW.W3(W.WW.)WW.W
+1050 .W.2(.WW.W).W.2(.WW)3(..*BBHYAA+)..W3(W.)2(.WW).YAA+W.W.*BBH..*BBHYAA+..YAA+W.W.*BBH.W3(W.)2(.WW)3(..*BBHYAA+)2(..WW.W.W)$
+1051 $3(W.).WW
+1052 .W.2(.WW.W).W.2(.WW)3(..*BBHYAA+)..W3(W.)2(.WW).YAA+.W.W*BBH..*BBHYAA+..YAA+.W.W*BBH.W3(W.)2(.WW)3(..*BBHYAA+)2(..WW.W.W)$
+1053 $3(W.).WW
+1054 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+.W*BBH..*BBH.WYAA+..YAA+.W*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1056 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+W.*BBH..*BBHW.YAA+..YAA+W.*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1058 W..W.WW2(.2(W.W).)3(*BBH..YAA+).3W2(.W.)WW.W...YAA+*BBH..*BBHW.W.YAA+..YAA+*BBH3.3W2(.W.)WW.W.3(*BBH..YAA+).WWW.W.2(.W.WW$
+1059 $)2(.W.)W
+1060 W..W.WW2(.2(W.W).)3(*BBH..YAA+).3W2(.W.)WW.W...YAA+*BBH..*BBH.W.WYAA+..YAA+*BBH3.3W2(.W.)WW.W.3(*BBH..YAA+).WWW.W.2(.W.WW$
+1061 $)2(.W.)W
+1062 W.W.2(W3.W).W.W...W.WWW2(4.GIITOO)4.WW2(W.W...W.)3.GIITOO3.WW3(W.)4W3.GIITOO3.2(.W...W.W)WW2(4.GIITOO)4.WWW.W...W.W.2(W3.$
+1063 $W).W.WW
+1064 W.W.2(W3.W).W.W...W.WWW2(4.GIITOO)4.WW2(W.W...W.)3.GIITOO3.4W3(.W)WW3.GIITOO3.2(.W...W.W)WW2(4.GIITOO)4.WWW.W...W.W.2(W3.$
+1065 $W).W.WW
+1066 ..WW.W.W2(.WW.W.)WW.3W2(4.GIITOO)4.3W2(.WW.W.)WW4.GIITOO3.WW3(W.)4W3.GIITOO..2(..WW.W)2(.WW)W2(4.GIITOO)4.3W2(.WW.W.)2(W.$
+1067 $W)..WW.W
+1068 ..WW.W.W2(.WW.W.)WW.3W2(4.GIITOO)4.3W2(.WW.W.)WW4.GIITOO3.4W3(.W)WW3.GIITOO..2(..WW.W)2(.WW)W2(4.GIITOO)4.3W2(.WW.W.)2(W.$
+1069 $W)..WW.W
+1070 2(4(.W).)W.WW.3(YAA+..*BBH).W5(W.)WW3.*BBHYAA+..YAA+W.W.*BBH..*BBHYAA+3.W5(W.)WW.3(YAA+..*BBH).WW.W2(4(.W).)W
+1072 2(4(.W).)W.WW.3(YAA+..*BBH).W5(W.)WW3.*BBHYAA+..YAA+.W.W*BBH..*BBHYAA+3.W5(W.)WW.3(YAA+..*BBH).WW.W2(4(.W).)W
+1074 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBH.WYAA+..YAA+.W*BBH..*BBH.WYAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1076 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBHW.YAA+..YAA+W.*BBH..*BBHW.YAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1078 .WW2(.W.W.).W3(W.)W3(..YAA+*BBH)..W.W..W4(W.)*BBHW.W.YAA+..YAA+*BBH..*BBHW.W.YAA+.W.W..W3(W.)W3(..YAA+*BBH)..W.W..WW2(.W.$
+1079 $W.)2(.WW)
+1080 .WW2(.W.W.).W3(W.)W3(..YAA+*BBH)..W.W..W4(W.)*BBH.W.WYAA+..YAA+*BBH..*BBH.W.WYAA+.W.W..W3(W.)W3(..YAA+*BBH)..W.W..WW2(.W.$
+1081 $W.)2(.WW)
+1082 W.2(.W.WW)2(.W.)WW.W3(3.OOTIIG.)..3W2(.W.)2(WW.W.W).4W3.OOTIIG3.WWW.W.2(W.3W)2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)2(.W.)W
+1084 W.2(.W.WW)2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)W3(W.)3W3.OOTIIG3.4W.W.2(W.WW)W2(.W.)WW.W3(3.OOTIIG.)..WWW.W.2(.W.WW)2(.W$
+1085 $.)W
+1086 W.WW.2(2(W.W).W)W3(3.OOTIIG.)..WW.W2(W.WW.)WW3(W.)4W3.OOTIIG3.WW3(W.)WW4(WW.)W.WW3(3.OOTIIG.)..WW.W3(W.WW.)WW.W
+1088 W.WW.2(2(W.W).W)W3(3.OOTIIG.)..WW.W2(W.WW.)4W3(.W)WW3.OOTIIG3.4W.W.2(W.WW)2(.WW).W.WW3(3.OOTIIG.)..WW.W3(W.WW.)WW.W
+1090 .W.2(.WW.W).W.2(.WW)3(..*BBHYAA+)..W3(W.)2(.WW).YAA+W.W.*BBH..*BBHYAA+..YAA+W.W.*BBH.W3(W.)2(.WW)3(..*BBHYAA+)2(..WW.W.W)$
+1091 $3(W.).WW
+1092 .W.2(.WW.W).W.2(.WW)3(..*BBHYAA+)..W3(W.)2(.WW).YAA+.W.W*BBH..*BBHYAA+..YAA+.W.W*BBH.W3(W.)2(.WW)3(..*BBHYAA+)2(..WW.W.W)$
+1093 $3(W.).WW
+1094 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+.W*BBH..*BBH.WYAA+..YAA+.W*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1096 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+W.*BBH..*BBHW.YAA+..YAA+W.*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1098 W..W.WW2(.2(W.W).).3W2(..YAA+*BBH)2(..3W)2(.W.)WW.W...YAA+*BBH..*BBHW.W.YAA+..YAA+*BBH3.3W2(.W.)WW.W..3W2(..YAA+*BBH)2(..$
+1099 $3W).W.2(.W.WW)2(.W.)W
+1100 W..W.WW2(.2(W.W).).3W2(..YAA+*BBH)2(..3W)2(.W.)WW.W...YAA+*BBH..*BBH.W.WYAA+..YAA+*BBH3.3W2(.W.)WW.W..3W2(..YAA+*BBH)2(..$
+1101 $3W).W.2(.W.WW)2(.W.)W
+1102 W.W.2(W3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)W2(.W..)..GIITOO3.WW3(W.)4W3.GIITOO.2(3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)$
+1103 $W.2(W3.W).W.WW
+1104 W.W.2(W3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)W2(.W..)..GIITOO3.4W3(.W)WW3.GIITOO.2(3.W).W2(.W..)3W2(3.GIITOO.)..3W2(..W.)$
+1105 $W.2(W3.W).W.WW
+1106 ..WW.W.W2(.WW.W.)WW..3W2(3.GIITOO.)..WW2(W..WW.)W.WW4.GIITOO3.WW3(W.)4W3.GIITOO..2(..WW.W).WW..3W2(3.GIITOO.)..WW2(W..WW.$
+1107 $)W.2(W.W)..WW.W
+1108 ..WW.W.W2(.WW.W.)WW..3W2(3.GIITOO.)..WW2(W..WW.)W.WW4.GIITOO3.4W3(.W)WW3.GIITOO..2(..WW.W).WW..3W2(3.GIITOO.)..WW2(W..WW.$
+1109 $)W.2(W.W)..WW.W
+1110 2(4(.W).)W.WW..3W2(..*BBHYAA+)..3W..W5(W.)WW3.*BBHYAA+..YAA+W.W.*BBH..*BBHYAA+3.W5(W.)WW..3W2(..*BBHYAA+)..3W..WW.W2(4(.W$
+1111 $).)W
+1112 2(4(.W).)W.WW..3W2(..*BBHYAA+)..3W..W5(W.)WW3.*BBHYAA+..YAA+.W.W*BBH..*BBHYAA+3.W5(W.)WW..3W2(..*BBHYAA+)..3W..WW.W2(4(.W$
+1113 $).)W
+1114 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBH.WYAA+..YAA+.W*BBH..*BBH.WYAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1116 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBHW.YAA+..YAA+W.*BBH..*BBHW.YAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1118 .WW2(.W.W.).W3(W.)2(W..WW)W..YAA+*BBH2(..3W)..W.W..W4(W.)*BBHW.W.YAA+..YAA+*BBH..*BBHW.W.YAA+.W.W..W3(W.)2(W..WW)W..YAA+*$
+1119 $BBH2(..3W)..W.W..WW2(.W.W.)2(.WW)
+1120 .WW2(.W.W.).W3(W.)2(W..WW)W..YAA+*BBH2(..3W)..W.W..W4(W.)*BBH.W.WYAA+..YAA+*BBH..*BBH.W.WYAA+.W.W..W3(W.)2(W..WW)W..YAA+*$
+1121 $BBH2(..3W)..W.W..WW2(.W.W.)2(.WW)
+1122 W..W.WW2(.2(W.W).)2(.3W.)..OOTIIG.3(..3W)2(.W.)2(WW.W.W).4W3.OOTIIG3.WWW.W.2(W.3W)2(.W.)WW.2(W..WW)W3.OOTIIG.3(..3W).W.2($
+1123 $.W.WW)2(.W.)W
+1124 W..W.WW2(.2(W.W).)2(.3W.)..OOTIIG.3(..3W).W.2(.W.WW)W3(W.)3W3.OOTIIG3.4W.W.2(W.WW)W2(.W.)WW.2(W..WW)W3.OOTIIG.3(..3W).W.2$
+1125 $(.W.WW)2(.W.)W
+1126 W.WW.2(2(W.W).W)2(W..WW)W3.OOTIIG.2(..3W)..WW.W2(W.WW.)WW3(W.)4W3.OOTIIG3.WW3(W.)WW2(WW.)W2(W.WW.).2(3W..).OOTIIG.2(..3W)$
+1127 $..WW.W3(W.WW.)WW.W
+1128 W.WW.2(2(W.W).W)2(W..WW)W3.OOTIIG.2(..3W)..WW.W2(W.WW.)4W3(.W)WW3.OOTIIG3.4W.W.2(W.WW).W2(W.WW.).2(3W..).OOTIIG.2(..3W)..$
+1129 $WW.W3(W.WW.)WW.W
+1130 .W.2(.WW.W).W..WW.2(WW..W)WW..*BBHYAA+2(..3W)..W3(W.)2(.WW).YAA+W.W.*BBH..*BBHYAA+..YAA+W.W.*BBH.W3(W.).WW.2(WW..W)WW..*B$
+1131 $BHYAA+..3W..WW2(W..WW.W.)W3(W.).WW
+1132 .W.2(.WW.W).W..WW.2(WW..W)WW..*BBHYAA+2(..3W)..W3(W.)2(.WW).YAA+.W.W*BBH..*BBHYAA+..YAA+.W.W*BBH.W3(W.).WW.2(WW..W)WW..*B$
+1133 $BHYAA+..3W..WW2(W..WW.W.)W3(W.).WW
+1134 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+.W*BBH..*BBH.WYAA+..YAA+.W*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1136 .W.W2(W.W..)2(W.W).6(W..WW)W2(..W.W)3(W.).YAA+W.*BBH..*BBHW.YAA+..YAA+W.*BBH2(..W.W)W.W.6(W..WW)W..2(W2(.W.)W)..W.WWW
+1138 W..W.WW2(.2(W.W).)2(.3W.).YAA+*BBH3(..3W)2(.W.)WW.W...YAA+*BBH..*BBHW.W.YAA+..YAA+*BBH3.3W2(.W.)WW.2(W..WW)W..YAA+*BBH3(.$
+1139 $.3W).W.2(.W.WW)2(.W.)W
+1140 W..W.WW2(.2(W.W).)2(.3W.).YAA+*BBH3(..3W)2(.W.)WW.W...YAA+*BBH..*BBH.W.WYAA+..YAA+*BBH3.3W2(.W.)WW.2(W..WW)W..YAA+*BBH3(.$
+1141 $.3W).W.2(.W.WW)2(.W.)W
+1142 W.W.2(W3.W).W.W3.2(W..WW)W3.GIITOO.2(..3W)2(..W.)W2(.W..)..GIITOO3.WW3(W.)4W3.GIITOO.2(3.W).W.W3.2(W..WW)W3.GIITOO.2(..3W$
+1143 $)2(..W.)W.2(W3.W).W.WW
+1144 W.W.2(W3.W).W.W3.2(W..WW)W3.GIITOO.2(..3W)2(..W.)W2(.W..)..GIITOO3.4W3(.W)WW3.GIITOO.2(3.W).W.W3.2(W..WW)W3.GIITOO.2(..3W$
+1145 $)2(..W.)W.2(W3.W).W.WW
+1146 ..WW.W.W2(.WW.W.)2(WW..W)WW3.GIITOO3.3W..WW2(W..WW.)W.WW4.GIITOO3.WW3(W.)4W3.GIITOO..2(..WW.W).2(WW..W)WW3.GIITOO3.3W..WW$
+1147 $2(W..WW.)W.2(W.W)..WW.W
+1148 ..WW.W.W2(.WW.W.)2(WW..W)WW3.GIITOO3.3W..WW2(W..WW.)W.WW4.GIITOO3.4W3(.W)WW3.GIITOO..2(..WW.W).2(WW..W)WW3.GIITOO3.3W..WW$
+1149 $2(W..WW.)W.2(W.W)..WW.W
+1150 2(4(.W).)W.2(WW..W)WW..*BBHYAA+2(..3W)..W5(W.)WW3.*BBHYAA+..YAA+W.W.*BBH..*BBHYAA+3.W5(W.)2(WW..W)WW..*BBHYAA+2(..3W)..WW$
+1151 $.W2(4(.W).)W
+1152 2(4(.W).)W.2(WW..W)WW..*BBHYAA+2(..3W)..W5(W.)WW3.*BBHYAA+..YAA+.W.W*BBH..*BBHYAA+3.W5(W.)2(WW..W)WW..*BBHYAA+2(..3W)..WW$
+1153 $.W2(4(.W).)W
+1154 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBH.WYAA+..YAA+.W*BBH..*BBH.WYAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1156 W.W.2(W3.W).W.W3.6(W..WW)W2(..W.)W2(.W..)*BBHW.YAA+..YAA+W.*BBH..*BBHW.YAA+2(..W.)W.W...6(W..WW)W2(..W.)W.2(W3.W).W.WW
+1158 .WW2(.W.W.).W3(W.)2(W..WW)W..YAA+*BBH2(..3W)..W.W..W4(W.)*BBHW.W.YAA+..YAA+*BBH..*BBHW.W.YAA+.W.W..W3(W.)2(W..WW)W..YAA+*$
+1159 $BBH2(..3W)..W.W..WW2(.W.W.)2(.WW)
+1160 .WW2(.W.W.).W3(W.)2(W..WW)W..YAA+*BBH2(..3W)..W.W..W4(W.)*BBH.W.WYAA+..YAA+*BBH..*BBH.W.WYAA+.W.W..W3(W.)2(W..WW)W..YAA+*$
+1161 $BBH2(..3W)..W.W..WW2(.W.W.)2(.WW)
+1162 W..W.WW2(.2(W.W).).3W..2(3W3.3W)2(..3W)2(.W.)2(WW.W.W).2(4W3.WW)W.W.2(W.3W)2(.W.)WW.W..3W..2(3W3.3W)2(..3W).W.2(.W.WW)2(.$
+1163 $W.)W
+1164 8W.154W.9W
+1166 13(2(W.W)..W.WW.)W.WW
+1168 13(2(W.W)..W.WW.)W.WW
+1170 13(W.3(W.W).W)W.WW
+1172 13(W.3(W.W).W)W.WW
+1174 13(.W3(W.).WW.W).3W
+1176 13(.W3(W.).WW.W).3W
+1178 13(.W2(.W.)WW.W.).W.W
+1180 13(.W2(.W.)WW.W.).W.W
+1182 13(2(W.W)..W.WW.)W.WW
+1184 13(2(W.W)..W.WW.)W.WW
+1186 13(WW..3(.W)3.)WW.W
+1188 13(WW..3(.W)3.)WW.W
+1190 13(2(.WW.W.)W).3W
+1192 13(2(.WW.W.)W).3W
+1194 13(.6(.W))..WW
+1196 13(.6(.W))..WW
+1198 13(WW..3(.W)3.)WW.W
+1200 13(WW..3(.W)3.)WW.W
+1202 13(.W.W..W3(W.)).W.W
+1204 13(.W.W..W3(W.)).W.W
+1206 173W
+1999 .YY**.
+1164 173W
+1600 15(5.5W)4.
+1700 ..12(6.6W)8.
+1800 38(..WW)..

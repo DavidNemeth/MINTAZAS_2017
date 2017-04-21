@@ -1,0 +1,94 @@
+  4 C---------RAGYA FONASSAL--3*15/1-ES PAMUT + 1 TREVIRA------------------------
+  5 C--TEST:RS1=18,UJJA:RS1=12,NYAKA:RS2=16 SP500-------------
+  6 C J4=11.25  J3=15<-S1 B3=15->S1 J2=13.5 B2=11.75 1=15 
+  7 C     V0              R1             R3             L1             L3      
+  8 C     I             I            I                  I                  I
+  9 C| | | | | | |   | | | | | | |  | | | | | | |  | | | | | | |  | | | | | | |
+ 10    START
+ 20  IF RS8=1   GOTO 500
+ 50    YG:6/25;
+ 59 << S:R-R/R-0;                      Y:2/5;      NP4-4  V0    ML    S1 S2
+ 60 >> S:R-R/R-R;                                               ML    S1 S2
+ 61 << S:R-R/R-0;                                               ML    S1 S2
+ 62 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP1-1        ML    S1 S2 T2
+ 64 << S:U^ND.I/DI.-D.I;               Y:2;                     ML T1 S1
+ 66 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1   ML T1    S2
+ 68 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#    ML T1 S1 S2
+ 70 >> S:R-0/DI.-D.I;                  Y:0/2;      NP2-2  V# V0 ML T1 S1   
+ 71 << S:DI.-0/0-D.I;                  Y:2/5;             V#          S1 S2
+ 74 >> S:DI.I.I...-D.I.I.I..;            Y:2/5;           V#          S1 S2
+ 75 <<                                                    V#          S1 S2
+ 76 >>                                                    V#          S1 S2
+ 78 << S:DI.-D.I/DI.-D.I;                                 V#          S1 S2
+ 79 >>                                                    V#          S1 S2
+100    JA1=1100
+101    JA2=1101
+102    IF RS19=5 GOTO 340
+103    IF RS19=3 GOTO 115
+104    GOTO340
+114 C:-------3 FONAS LAPONKENT---------------------------------------------
+115    FA=6-21
+120    FB=24-71
+121    FC=74-89
+125    PA:4:;
+126    PK^:<JA1>;
+127    PKV:<JA1>;
+130    PM:<A> 12:FA 3FB FC 191:FA 3FB FC 369:FA 3FB FC;       
+131 C:----------------------------------------------------------------------
+140 << S:DI.-D.I/DI.-D.I/UVNAOY;             Y:2/5;  NP4-4           S1 S2 T2
+150 >> S:U^NNAOY/AOY-NAOY/AOY-NAOY/UVN+;     Y:2/5;  NP1-1        T1 S1 S2 T2
+160    RBEG*RS1
+180 <> S:U^NO/A+Y-NA+Y/A+Y-NA+Y/UVNO;        Y:2/5;               T1 S1 S2 T2
+200 <> S:U^N+/AOY-NAOY/AOY-NAOY/UVN+;        Y:2/5;               T1 S1 S2 T2
+220    GOSUB 180
+225    PK^:7:<JA1>;
+230 <> S:U^N+/AOY*-+T/*-0/UVN+T;             Y:2/0;  NP3-3  VL3   T1 S1 S2 T2
+255    PK^:3:<JA1>3:<JA2>;
+256    PKV:4:<JA1>4:<JA2>;
+260 <> S:U^N+/AO-+TY/0-Y/UVN+;               Y:2/0;  NP3-3  VR1   T1 S1 S2 T2
+265    PK^:1:<JA1>;
+266    PKV:4:<JA1>;
+270 <> S:U^NOT/A+Y-NA+Y/A+Y-NA+Y/UVNNA+Y;    Y:2/5;  NP1-1  VR3   T1 S1 S2 T2
+275    PK^:4:<JA1>;
+280 <> S:U^NNAOY/AOY-NAOY/AOY-NAOY/UVN+;     Y:2/5;         V0    T1 S1 S2 T2
+290    GOSUB 180-200
+295    REND
+300    IF #124=0 GOSUB 180
+330    END
+335 C:-------5 FONAS LAPONKENT----------------------------------------------
+340    FA=6-21
+345    FB=34-61
+350    FC=74-90
+360    GOSUB 125-127
+365    PM:<A> 12:FA 5FB FC 191:FA 5FB FC 369:FA 5FB FC;
+370    GOTO 140
+371 C:---------1/1-ES PIKOS PANT--------------------------------------------
+400    GOSUB 10-79
+401    END
+490 C:---------KAMZSA NYAK--------------------------------------------------
+500 C   START
+510    YG:6/25;
+520 << S:R-R/R-0;                      Y:2/5;      NP4-4  V0    ML    S1 S2
+530 >> S:R-R/R-R;                                               ML    S1 S2
+540 << S:R-R/R-0;                                               ML    S1 S2
+545 >> S:D.I-DI./DI.-D.I/UVNDI.;       Y:2/5;      NP1-1        ML    S1 S2 T2
+550 << S:U^ND.I/DI.-D.I;               Y:2;                     ML T1 S1
+555 >> S:U^NDI./D.I-D.I;               Y:6;        NP0-   VL1   ML T1    S2
+560 << S:R-0/0-D.I/R-0;                Y:0/6/0;    NP4-4  V#    ML T1 S1 S2
+570 >> S:R-0/DI.-D.I;                  Y:0/2;      NP2-2  V# V0 ML T1 S1   
+571 << S:DI.-0/0-D.I;                  Y:2/5;             V#          S1 S2
+574 >> S:DI.I.I.I.-D.I.I.I.I;            Y:2/5;           V#          S1 S2
+600    JA1=1100
+615    FA=7-20
+625    PA:1:<JA1>;
+630    PM:<A> 11:13FA 189:AA13FA 369:AA13FA 545:<A>;       
+631 C:----------------------------------------------------------------------
+640 << S:DI.-D.I/DI.-D.I/UVSA;             Y:2/5;  NP2-2           S1 S2 T2
+650 >> S:A+-O/A+-O/UVNO;                   Y:2/5;                  S1 S2 T2
+652    RBEG*RS2
+655 << S:U^N+/AO-+/AO-+/UVN+;              Y:2/5;               T1 S1 S2 T2
+660 >> S:U^NO/A+-O/A+-O/UVNO;              Y:2/5;               T1 S1 S2 T2
+665    REND
+670    END
+1100 AAAAAA+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+OAYTTTI*IAA+O+O+O+O+O+O+O+O+O+O+O+O+O+O+O+OAAAAAAAAAAA
+1101 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXAYTTTIIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

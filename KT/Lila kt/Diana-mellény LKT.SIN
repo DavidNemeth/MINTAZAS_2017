@@ -1,0 +1,199 @@
+  1  C SP800:FONOTT NYAK SP900:PIKO PANT
+ 10  START C:MELLENY:E:14(308 SOR) TUNIKA:E:13(286 SOR) H:36 U:28
+ 11     NP5=15.0  C:
+ 12     NP1=14.6  C:MINTA ------14.5-14.7------
+ 15     NP4=12.5  C:LEVALASZTAS-------------
+ 18     NP2=14.7  C:PASSZE,CSIPKE ALJ-------
+ 19     NP3=13.3  C:
+  50 YG:6/256;
+  53 WM=20
+  56 << S:D.I-DI./DI.-D.I;		       Y:5/2;	     NP4-4  VU  V0	       S1 S2
+  59 >> S:R-0/0-R;                  Y:5/2;      NP1-1                 S1 S2
+  62 << S:D.I-DI./DI.-D.I/UVNR;	   Y:5/2;	     NP4-4	                S1 S2 T2
+  65 WM=15 
+  68 >> S:R-R;		                    Y:6;	       NP2-0   	            S2
+  71 << S:0-R/R-0/0-R;		           Y:0/6/0;    NP2-2   	         T1 S1 S2
+  74 >> S:R-R(6.5)/R-0;	            	Y:2/5;	                   ML     S1 S2
+  77 WM=20 WMI=7
+  80 << S:0-R;		                    Y:2;		     NP5-5                S1
+  95 JA1=1054(1048-1054);
+  98 PA:1:JA1;
+ 101 F1=7-182;           IF RS1>17 IFRS1<35 F1=29-160        C======4LAP======
+ 104 PM:<.>8:3(W F1 W.); IF RS1>17 IFRS1<35 PM:<.>9:4(WF1W.);C======4LAP======
+ 106 >> S:R-0/UVS.W;                Y:2;                      S1   T2
+ 107 << S:U^NN.W/.W-N.W/UVSN.W;     Y:2;  ML       VKA>2    T1 S1   T2 C###ML###
+ 108 Y:2/5/5/2;
+ 110 REP*4          C *******  PASSZE  ***********************************
+ 113 WM=0
+ 116 >> S:U^S+;                                VR1 NP2-2 T1
+ 125 << S:U^S*;                                VL1 VKC>1 T1
+ 126 WM=20
+ 128 >> S:U^SW/.-N./UVSN.;                     V0  VKA       T1 S2   T2 
+ 134 << S:R<1->-0;                                              S1
+ 140 REPEND         C  ***************************************************
+ 144 JA1=1046(1004-1046)          C  ********* CSIPKE+3X3-AS FONAS  *****
+ 146 JA2=1046(1024-1046)
+ 148 PA:501:JA1 601:JA2 1:3FA FB FA FC.FC.FC.FC FA FB 3FA
+ 149 FA=501-508 FB=509-542 FC=644-656
+ 150 FA=658-665 C--MASIK KREPP---
+ 151 F1=6-181
+ 152 PM:<.>8:3(I F1 I.);
+ 153 IF RS1>17 GOTO400 $$$$$$$$$$$$$ UJJA-HATA $$$$$$$$$$$$$$$$$$$$$$$$$
+ 155 >> S:U^SN./.-N./UVSNY;                        NP1-1 T1 S1    T2
+ 160    Y:2/2/5/5;
+ 165 RBEG*RS1
+ 166 REP*6
+ 170    VJA^0
+ 175    WM=20
+ 180 << S:U^S<1-2->N.Y/.Z-N.Z(1)/UVSNA.;           VL1 VKC   T1 S1    T2
+ 182 >> S:U^S<1-2->N.ZA/.Z-N.Z/UVSNY.Z;         V0  VKA    T1 S1    T2
+ 183 REPEND
+ 280 REP*1
+ 290 WM=15
+ 300 << S:U^S<1-2->N.YZ/.Z-N.Z(1)/UVSNA.Z;           Y:2;   VL1 VKC  T1 S1    T2
+ 310 WM=20
+ 320 >> S:U^S<1-2->N.A/.Z-N.Z/UVSAZI;                Y:2;   V0       T1 S1    T2
+ 325 << S:U^S<1-2->N.YZ/.Z-N.ZOT/0-G(8.0)/UVSIAY;    Y:5/0; VL1 VKC  T1 S1 S2 T2
+ 330 WM=0
+ 335 >> S:UVSOTB;                                             VL3           T2
+ 340 << S:U^SA;                                               VR1  T1
+ 345 WM=15
+ 350 >>S:U^S<1-2->IYZ/.Z-IYAOBW+(1)/0-O(8.0)/UVSIYAZ;Y:5/0;VR2VKE>1T1 S1 S2 T2
+ 355 WM=0
+ 360 << S:UVSW+G;                                             VR3           T2
+ 365 >> S:U^SY;                                               V0   T1
+ 370 REPEND         C   ***************************************************
+ 372    Y:2/2/5/5;
+ 374 GOSUB 170-182*3
+ 375 REND
+ 385 END
+ 400 PM:<.>8:3(I 22FA I.);C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HATA $$$$$$$$
+ 410 IF RS1<35 PM:<FA>1:8.141:..275:..409:.. 544:10.;C$$$$$UJJA$$$$$$$$
+ 415 JA2=1044(1024-1046)
+ 420 >> S:U^SN./.-N./UVSN.;                        NP1-1 T1 S1    T2
+ 425    WM=22
+ 430 RBEG*RS1
+ 432 REP*2
+ 435 << S:U^N<2-2->N./.-N./.-N./UVNN.;         Y:2/5; VKA  T1 S1 S2 T2
+ 440 >>                                              VKA  T1 S1 S2 T2
+ 445 REPEND
+ 450 REND
+ 460 END
+ 800 C---FONOTT NYAK----------------------------------------------------------
+ 802 START
+ 804 NP1=14.7   C:LEVALASZTAS
+ 806 NP2=12.0   C:1/1-ES PASSZE
+ 808 NP4=11.5   C:LEVALASZTAS
+ 810 YG:6/256;
+ 812 WM=20
+ 814 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	 NP4-4 VU V0	     S1 S2
+ 816 >> S:0-R/R-0;                           Y:5/2;            VU     S1 S2
+ 818 << S:R-0/0-R;                           Y:5/2;   NP1-1           S1 S2
+ 820 >>	S:D.I-DI./DI.-D.I/UVNDI.;            	Y:5/2;	  NP1-1	           S1 S2 T2
+ 822 <<	S:U^ND.I/DI.-D.I;		                  Y:5;			             T1 S1
+ 824 >>	S:U^NDI./D.I-D.I;		                  Y:6;	    NP0-  VL1	  T1	  S2
+ 826 <<	S:R-0/0-D.I/R-0;		                    Y:0/6/0; NP2-2  V#	  T1 S1 S2
+ 828 >>	S:DI.(8.0)-D.I;		                   	Y:5;	           V# V0 ML S1
+ 830 << S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 832 >> S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 834 << S:0-D.I(10.0)/DI.(10.0)-D.I(10.0);    Y:5/2;           V#     S1 S2
+ 836 WM=26
+ 838 JA1=1999
+ 840 FA=1-6
+ 842 PA:JA1;
+ 844 PM:<.> 9:<FA> 543:<.>;
+ 846 >>S:DI.(10.0)-D.I(10.0)/DI.-D.I/UVS.;   Y:2/5;                   S1 S2 T2
+ 848 REP*2
+ 850 VJA^1
+ 852 WM=20
+ 854 << S:U^SY*/.(13.9)-Y*(14.5)/.-Y*;        Y:2/5;          V0   T1 S1 S2
+ 856 WM=12
+ 858 >> S:.-*/UVS*;                           Y:2;            VL2     S1    T2
+ 860 << S:.-Y;                                Y:2;            VR2     S1
+ 862 VJA^0
+ 864 WM=20
+ 866 >> S:U^SY/.-Y*/.-Y*/UVSY*;               Y:2/5;         VKE>4 T1 S1 S2 T2
+ 868 REPEND
+ 870 << S:U^SY*/.(14.0)-Y*(14.0);             Y:2;            V0   T1 S1
+ 872 PM:<W> 9:<FA> 543:<W>;
+ 874 >> S:U^S./W-NW/UVSNW;                                         T1 S1    T2
+ 876 << S:R-0;                                Y:5/2;                  S1 S2
+ 878 >> S:U^SNW/W-NW/W-NW;                                         T1 S1 S2
+ 880 << S:W-NW/W-NW/UVSDI.;                   Y:5/2;  NP2-2 V0        S1 S2 T2
+ 882 >>	S:DI.-D.I/0-R;		                       Y:5/2;	      VU V0	   S1 S2
+ 884 END
+
+ 900 START C:SLAG PIKO PANT III SZIVECSKEKKEL*************
+ 902 NP4=12.5  C:LEVALASZTAS-------------------
+ 904 NP2=12.0  C:BEKEZDES----------------------
+ 906 NP1=14.9  C:KORSLAG-----------------------
+ 908 YG:6/256;
+ 910 WM=20 WMI=7
+ 912 << S:D.I-DI./DI.-D.I;		       Y:5/2;	    NP4-4  VU  V0	     S1 S2
+ 914 >> S:D.I-DI./DI.-D.I;          Y:5/2;                        S1 S2
+ 916 JA1=1998
+ 918 PA:<JA1>;
+ 920 FA=1-7;
+ 922 PM:8I<FA> 541:<I>;
+ 923 << S:D.I-DI./DI.-D.I/UVSIOA;	   Y:5/2;	         	            S1 S2 T2
+ 924 >> S:U^SNIOA/0-IOA(7.0)/IOA(1)-NIOA(1);           Y:0/2;    T1 S1 S2
+ 925 JA1=1997 C IIAOO..
+ 926 << S:I-AO/UVSO;                 Y:2;               VR2 VKB<2  S1    T2
+ 927 JA1=1996 C I.A..II
+ 928 >> S:I-A/UVSA;                   Y:5;               VL1 VKA>3  S1    T2
+ 929 JA1=1998
+ 930 << S:IOA-0;                                          V0       S1
+ 931 WM=15
+ 932 >> S:IOA.-IOA.;		                    Y:6;	       NP2-0   V0           S2
+ 934 << S:IOA.-0/.-R;		              Y:6/0;       NP2-2   	         S1 S2
+ 936 WM=25
+ 938 >> S:IOA.-IOA.(6.5);	                 	Y:5;	                 ML     S2
+ 940 Y:5/2/2/5;
+ 942   NP1-1
+ 944 REP*1
+ 946 << S:IA%.-0;                             		                     S2
+ 948 >> S:0-IA%.;                              	                       S2
+ 950 REPEND
+ 951 << S:IA%.-0;                                                      S2
+ 952 >> S:IA%.-0;                                                      S2
+ 953 << S:0-R;                                                      S1
+ 954 REP*3
+ 956 >> S:R-0/0-R;                    Y:5/2;                        S1 S2
+ 958 <<                               Y:2/5;                        S1 S2
+ 960 REPEND
+ 962 >> S:R-0/0-R;                  Y:5/2;	                          S1 S2
+ 964 C<< S:R-R/R-R;                              NP4-4                S1 S2
+ 970 END
+1996 I.A..II
+1997 IIAOO..
+1998 IOY.TOA
+
+1999 .YY**.
+1002 190I
+1004 4(.I)IY3IYI4A12.2(4IA)I147.I
+1006 4(I.)2(IY3I)I12.2(4IA)I147.I
+1008 4(.I)IY4IY2(4I3.II)IA5IAI147.I
+1010 4(I.)IY5IY2(3I3.3I)A5IAI147.I
+1012 3(.I).2(IIY3I)3.6I3.IIA6IAI147.I
+1014 4(I.)IY6IYII3.OTBW+G3.IIA6IAI147.I
+1016 4(.I)IY6IYII3.OTBW+G3.IA7IAI147.I
+1018 4(I.)IY7IYI3.OTBW+G3.IA7IAI147.I
+1020 4(.I)IY7IYI3.OTBW+G3.A8IAI147.I
+1022 4(I.)IY8IY3.3AI3Y..A8IAI147.I
+1024 4(.I)IY8IY..4A.3YIA9IAI.5IA7I.2(..II)124.I
+1026 4(I.)IY9IYI4A.4Y10IAI.5IAIY5I.2(..II)124.I
+1028 4(.I)IY10I4A..4Y10IAI.4IAAIY5I2(.II.)125.I
+1030 4(I.)IY10I4A3.4Y9IAI.4IAAIYY4I2(.II.)125.I
+1032 4(.I)IY9I4A4.4Y9IAI.3I3AIYY4I.2(..II)124.I
+1034 4(I.)IY9I4A5.4Y8IAI.3I3AI3Y3I.2(..II)124.I
+1036 4(.I)IY8I4A6.4Y8IAI.II4AI3Y3I2(.II.)125.I
+1038 4(I.)IY8I4A7.4Y7IAI.II4AI4YII2(.II.)125.I
+1040 4(.I)IY7I4A8.4Y7IAI.I5AI4YII.2(..II)124.I
+1042 4(I.)IY7I4A9.4Y6IAI.I5AI5YI.2(..II)124.I
+1044 4(.I)IY6I4A10.4Y6IAI.6AI5YI2(.II.)125.I
+1046 4(I.)IY6I4A11.4YIA3IAI.7I6Y2(.II.)125.I
+1048 15(3+3W4*W+)3+3W3*I
+1050 15(4+W5*W+)4+W4*I
+1052 15(3+3W4*W+)3+3W3*I
+1054 15(4+W5*W+)4+W4*I
+1056 2(5I.82I)4I.9I

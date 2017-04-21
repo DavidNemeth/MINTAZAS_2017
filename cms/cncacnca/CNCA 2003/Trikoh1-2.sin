@@ -1,0 +1,127 @@
+   1 C CP TRIKOH RS1= RS17=0/1/2/3(4 MINTA)  RS19=0/3/4 RS10=(75-78 SORBAN A MINTAKAT LEHET VALTOGATNI)
+   2 C                 4 MINTA: 1:RS17=0 INKABB:CP TRIKOH3 (GYORSABB)  ANVH-N:2189H_11
+   3 C                          2:RS17=1  2.                           ANVH-N:2189H_21
+   4 C                          3:RS17=2  1.                           ANVH-N:2189H_31
+   5 C  REX PIKOPANT: CP PANT   4:RS17=3 INKABB:CP TRIKOH4 (GYORSABB)  ANVH-N:2189H_41
+   6 C       16.0    0            0     16.0
+   7 C  1: <-------------       ------------->  BEKEZDES,MINTA
+   8 C       16.0    0            0     16.0
+   9 C       
+  10 C J2: <-------------       ------------->  
+  11 C                 
+  12 C       10.5   10.5         10.5   10.5
+  13 C B2: <-------------       -------------> CP PANT (2SZAL)
+  14 C       10.5   10.5         10.5   10.5
+  15 C        0     15.5         15.0    0
+  16 C J3: <-------------       ------------->  PASSZE
+  17 C        0     15.0         15.5    0
+  18 C       
+  19 C B3: <-------------       ------------->
+  20 C       
+  21 C       13.5   12.5         13.5   13.5
+  22 C J4: <-------------       ------------->  LEVALASZTAS
+  23 C       13.5   12.5         13.5   13.5
+  24 C B4:=J4=13.5                              BEKEZDES
+  25 C TUAGYKORREKCIOK: V0:->1.5
+  26 C                  R1:->2__________R2: - ________R3:-
+  27 C                  L1:<-1__________L2: - ________L3:-
+  28 C                            NP1=          RS1=
+  29 C                                        E-H 
+  30 C-----------------------+------------+------------+------------+-------------+
+  31 C 3X16/1 LUSIFIL:           16.0         24   SZELESSEGE:50-52CM KESZ MERET:48X58
+  32 C       4LAP:RS19=4                           HOSSZUSAGA:60-62CM
+  33 C       3LAP:RS19=3 ( TISZTA FEHERNEL ES FEKETENEL 4 ORSOT AT KELL PARAFINOZNI!)
+  34 C -JELOLES NELKUL:RS19=0 ------------------------------------------------------
+  35 C 0.18+0.025=0.21KGX477(560)=100(118)FT
+  39 C   8-9 SULY 
+  40 START
+  50 YG:6/256;      C:MELLENY:
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  59 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  62 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  68 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  71 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  74 >> S:R-R;                        Y:5;        NP1-01         ML       S1
+  75C IF RS10=3 RS17=0 A CP TRIKOH3 GYORSABB!!!!!!!
+  76 IF RS10=2 RS17=1
+  77 IF RS10=1 RS17=2
+  78C IF RS10=4 RS17=3  A CP TRIKOH4 GYORSABB!!!!!!!
+  80 IF RS17=0 JA1=1018(1002-1016);
+  81 IF RS17=1 JA1=1118(1102-1116);
+  82 IF RS17=2 JA1=1218(1202-1216);
+  83 IF RS17=3 JA1=1314(1302-1312);
+  98 PA:1:<JA1>;
+ 100           FA=9-142                    C*4LAP************
+ 101           PM:<.>7:FA.FA..FA.FA;       C*4LAP************
+ 102 IF RS19=4 FA=9-142                   C*4LAP************
+ 103 IF RS19=4 PM:<.>7:FA.FA..FA.FA;      C*4LAP************
+ 104 IF RS19=3 FA=4-182;                  C*3LAP************
+ 105 IF RS19=3 PM:<.>7:3(FA..);           C*3LAP************
+ 106 Y:2/2/5/5;
+ 107 REP*1
+ 108 << S:R-0;		                             ML       NP3-03        S2
+ 110 >> S:0-R;		                             ML       NP0-          S2
+ 112 REPEND
+ 114 << S:R-0/UVNYA.;                        ML       NP-0          S2 T2
+ 116 >> S:U^NI/.YA-I;                      ML               T1    S2
+ 118 REP*5
+ 120 << S:U^NY;                             ML    VR1 NP0-0   T1
+ 122 >> S:U^NA;                             ML    VL1 NP0-0   T1
+ 124 << S:.-N./UVNYA;                       ML  V0                S2 T2 
+ 126 >> S:.YA-I;                            ML       V#            S2
+ 128 REPEND
+ 140 << S:U^NN./.-N.;                       ML T1    S2
+ 141 >> S:.-N./UVNN.;              NP1-1    ML    S1    T2
+ 142 << S:R-0;                     NP-0     ML    S1
+ 145 >> S:R-0;                     NP-0     ML    S1
+ 175 CVJA^0
+ 182 Y:2/2/5/5;
+ 185 << S:U^N<1->N./.-N./UVNAY;         V0  ML            T1 S1    T2
+ 190 RBEG*RS1
+ 192 REP*4
+ 195 >> S:.AY-I;                        V#                   S1
+ 200 << S:U^NY;                         VR1    NP0-0     T1
+ 205 >> S:U^NA;                         VL1    NP0-0      T1
+ 210 << S:<1->.-N./UVNAY.;              V0                   S1    T2
+ 212 REPEND
+ 220 REND
+ 275 >> S:.AY-I/UVNDI.;                                      S1    T2
+ 280 << S:U^ND.I/DI.-D.I;               V0         NP4-4  T1 S1
+ 285 >> S:DI.-D.I/UVND.I;                                    S1    T2
+ 286 RS10=RS10-1
+ 288 IF RS10>0 GOTO 56
+ 290 END
+1002 IAIIAIYIIY
+1004 YIIAAIYYII
+1006 IIAAIIIYYI
+1008 IAAIIIIIYY
+1010 IIIIIIIIII
+1012 IIYYYIAAAI
+1014 IIIYYIAAII
+1016 AIIIYIAIII
+1018 YYIAAAAAIYYY
+1102 IIIYIAIIII
+1104 IIIYIAIIII
+1106 YIIYIAIIAI
+1108 IYIYIAIAII
+1110 IIYIIIAIII
+1112 YYIYIAIAAI
+1114 IYYIIIAAII
+1116 IIYYIAAIII
+1118 YYIAAAAAIYYY
+1202 AIIAIYIIYI
+1204 IIIAIYIIIA
+1206 IIAAIYYIII
+1208 IAAAIYYYII
+1210 IAAAIYYYII
+1212 IIAAIYYIII
+1214 IIIAIYIIII
+1216 AIIAIYIIYI
+1218 YYIAAAAAIYYY
+1302 IIIIIIII
+1304 IYYIIIAA
+1306 IIYYIAAI
+1308 IIIIIIII
+1310 IAAIIIYY
+1312 IAIIIIIY
+1314 YYIAAAAAIYYY

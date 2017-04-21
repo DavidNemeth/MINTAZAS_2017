@@ -1,0 +1,178 @@
+  10    START
+  50    YG:6/25;
+  60 << S:R-R/R-0;                Y:2/5;        NP4-4   V0     ML    S1 S2
+  62 >> S:0-R/R-0/UVN R;          Y:2/5;                       ML    S1 S2 T2
+  64 << S:R-DI./R-0;              Y:2/5;                V0           S1 S2
+  66 >> S:R-0;                    Y:5/6;                             S1 S2
+  67 << S:R-DI./R-0;              Y:6/0;                             S1 S2
+  68 >> S:D.I-DI.;                Y:2;          NP2-2                S1
+  74   RBEG* RS6
+  76 << S:D.I-0;                    Y:2;        NP3-3                  S2
+  78 >> S:0-DI.;                                                       S2
+  80   REND
+  84 << S:D.I-0;                Y:5;                                      S2
+  85 >> S:U^N R/0-R;            Y:5;      NP3-3          ML        T1     S2
+  86 JA1=1002 FA=20-200;  PA:<JA1>; PM:10+3FA <+>;
+  87 Y:2/2/5/5;
+  88   RBEG*RS1
+  90 << S:UVS TA;                         NP0-0   VL1    ML                T2
+  92 >> S:UVS IY;                         NP0-0   VR1    ML                T2  
+  94 << S:AOY-*IT+;                               V0  V#                  S2
+  96 >> S:U^N+AOY/0-R;                                   ML         T1    S2
+  98    REND
+ 100 << S:0-R;                                                       S2
+ 102 >> S:0-R;                                                       S2 
+ 106 C.................................................................
+ 113 #1=RS2  
+ 126 IF  #1>0 #2=11    JA1=1004(1004-1050)       GOSUB 500 C BALBAL CSIPKE  
+ 127 IF RS19=1 GOTO 150  
+ 128 IF  #1>0 #2=1999 JA1=1060(1060-1082)       GOSUB 600 C GYORS BBCSIPKE   
+ 129 END
+ 150 IF  #1>0 #2=1999 JA1=1128(1128-1154)       GOSUB 650 C GYORS BBCSIPKE   
+ 152 END 
+ 296 C ************************************************************************ 
+ 500    GOSUB 502-570 
+ 502 #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+ 504 << S:U^N N.TI;                      NP02-02 ML     V#       T1
+ 508 >> S:UVN .TI;                       NP0-0   ML     V0                T2
+ 510 << S:.TI-N.TI;               Y:2/5;                V#          S1 S2
+ 512 >> S:U^N ./UVN YA;                  NP0-0   ML              T1       T2
+ 514 << S:U^N YI;                        NP0-0   ML     VL1      T1
+ 516 >> S:U^N AT;                        NP0-0   ML     VR1      T1
+ 528 << S:UVN <1+>.TI;                   NP0-0   ML     V0                T2
+ 530 >> S:.TI-N.TI;               Y:2/5;                V0          S1 S2
+ 532 << S:U^N ./UVN YA;                  NP0-0   ML              T1       T2
+ 534 >> S:U^N YI;                        NP0-0   ML     VL1      T1
+ 536 << S:U^N AT;                        NP0-0   ML     VR1      T1
+ 538 REP*#3 
+ 548 >> S:UVN <1+>.TI;                   NP0-0   ML     V0                T2
+ 550 << S:.TI-N.TI;               Y:2/5;                V0          S1 S2
+ 552 >> S:U^N ./UVN YA;                  NP0-0   ML              T1       T2
+ 554 << S:U^N YI;                        NP0-0   ML     VL1      T1
+ 556 >> S:U^N AT;                        NP0-0   ML     VR1      T1
+ 558 << S:UVN <1+>.TI;                   NP0-0   ML     V0                T2
+ 560 >> S:.TI-N.TI;               Y:2/5;                V0          S1 S2
+ 562 << S:U^N ./UVN YA;                  NP0-0   ML              T1       T2 
+ 564 >> S:U^N YI;                        NP0-0   ML     VL1      T1
+ 566 << S:U^N AT;                        NP0-0   ML     VR1      T1
+ 568 REPEND
+ 570 >>                                                 V0            S0
+ 599 C ................................................................
+ 600 GOSUB 606-630 C 1 SZALVEZ.BBCSIPKE 
+ 606 #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+ 610 Y:2/2/5/5; 
+ 612 VJA^0
+ 614 << S:U^N R/0-R;                        ML  NP3-3 V0             T1 S2
+ 616 >> S:0-R/UVN NA+;                      ML  NP1-1 V0                S2 T2
+ 618 REP*#3 
+ 622 <<   S:U^N N./.-N./UVN NY+;            ML       VL1             T1 S2 T2 
+ 624 >>   S:U^N N./.-N./<1+>UVN NA+;        ML       V0              T1 S2 T2
+ 626 REPEND
+ 628 <<    S:U^N N./.-N./UVN NY+;           ML       VL1             T1 S2 T2 
+ 630 >>    S:U^N N./.-N./UVN R;             ML       V0              T1 S2 T2
+ 632 C ***********************************************************************
+ 650 GOSUB 652-672 C 1 SZALVEZ.BBCSIPKE 
+ 652 #3=#2 #1=#1-#2 IF #1<=0 #3=#3+#1
+ 654 Y:2/2/5/5; 
+ 656 VJA^0
+ 658 << S:U^N R/0-R;                        ML  NP3-3 V0             T1 S2
+ 660 >> S:0-R/UVN NA+;                      ML  NP1-1 V0                S2 T2
+ 662 REP*#3 
+ 664 <<   S:U^N N./.-N./<1+>UVN NY+;        ML       VL1             T1 S2 T2 
+ 666 >>   S:U^N N./.-N./<1+>UVN NA+;        ML       V0              T1 S2 T2
+ 668 REPEND
+ 670 <<    S:U^N N./.-N./<1+>UVN NY+;       ML       VL1             T1 S2 T2 
+ 672 >>    S:U^N N./.-N./UVN R;             ML       V0              T1 S2 T2
+ 999 C*********************************************************************************************
+1002 *IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT*IYYYYYYYYY*AAAAAAAAAT
+1004 *IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT
+1006 *YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA
+1008 *IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT
+1010 ..IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT.
+1012 ***IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT**
+1014 ....IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT...
+1016 *****IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT****
+1018 ......IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT.....
+1020 *******IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT******
+1022 ........IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT.......
+1024 *********IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT********
+1026 ..........I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T.........
+1028 *TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI*TAATAATAAT*IYYIYYIYYI
+1030 *AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY*AATAATAATA*YIYYIYYIYY
+1032 *ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY*ATAATAATAT*IYIYYIYYIY
+1034 *TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI*TAATAATAT...IYIYYIYYI
+1036 *AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY*AATAATAT*****IYIYYIYY
+1038 *ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY*ATAATAT.......IYIYYIY
+1040 *TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI*TAATAT*********IYIYYI
+1042 *AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY*AATAT...........IYIYY
+1044 *ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY*ATAT*************IYIY
+1046 *TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI*TAT...............IYI
+1048 *AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY*AT*****************IY
+1050 *T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I*T...................I
+1052 ............................................................................................................................................................................................................................
+1054 ............................................................................................................................................................................................................................
+1056 ............................................................................................................................................................................................................................
+1058 ****************************************************************************************************************************************************************************************************************************
+1060 *AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*...*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AAAA.YYYY*..YY*AA
+1062 AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*...*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA**..*AAA...YYY*..*YY**
+1064 A**..*AA.....YY*..**YY*.*AA**..**YY*.*AA**..*AA.....YY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AA.....YY*...*AA.....YY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AA.....YY*..**YY*.*AA**..**YY*.*AA***..*AA.....YY*..**YY*
+1066 *AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*...*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA*..*A.......Y*..YY*AA
+1068 AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*...*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA**..*AAAA.YYYY*..*YY**
+1070 A**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*...*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA***..*AAA...YYY*..**YY*
+1072 *AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*...*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AA.....YY*..YY*AA
+1074 AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*A.......Y*...*A.......Y*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA**..*A.......Y*..*YY**
+1076 A**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*...*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA***..*AAAA.YYYY*..**YY*
+1078 *AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*...*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AAA...YYY*..YY*AA
+1080 AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*...*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA**..*AA.....YY*..*YY**
+1082 A**..*A.......Y*..**YY*.*AA**..**YY*.*AA**..*A.......Y*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*A.......Y*...*A.......Y*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*A.......Y*..**YY*.*AA**..**YY*.*AA***..*A.......Y*..**YY*
+1084 *AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*...*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAAA.YYYY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AAAA.YYYY*..YY*AA
+1086 AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*...*AAA...YYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAA...YYY*..*YY**.**AA*..*YY**.**AA**..*AAA...YYY*..*YY**
+1088 A**..*AA.....YY*..**YY*.*AA**..**YY*.*AA**..*AA.....YY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AA.....YY*...*AA.....YY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AA.....YY*..**YY*.*AA**..**YY*.*AA***..*AA.....YY*..**YY*
+1090 *AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*...*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*A.......Y*..YY*AA.YY*AA..YY*AA.YY*AA*..*A.......Y*..YY*AA
+1092 AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*...*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AAAA.YYYY*..*YY**.**AA*..*YY**.**AA**..*AAAA.YYYY*..*YY**
+1094 A**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*...*AAA...YYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAA...YYY*..**YY*.*AA**..**YY*.*AA***..*AAA...YYY*..**YY*
+1096 *AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*...*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AA.....YY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AA.....YY*..YY*AA
+1098 AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*A.......Y*...*A.......Y*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*A.......Y*..*YY**.**AA*..*YY**.**AA**..*A.......Y*..*YY**
+1100 A**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*...*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*AAAA.YYYY*..**YY*.*AA**..**YY*.*AA***..*AAAA.YYYY*..**YY*
+1102 *AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*...*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA..YY*AA.YY*AA..*AAA...YYY*..YY*AA.YY*AA..YY*AA.YY*AA*..*AAA...YYY*..YY*AA
+1104 AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*...*AA.....YY*..*YY**.**AA*..*YY**.**AA*..*YY**.**AA*..*AA.....YY*..*YY**.**AA*..*YY**.**AA**..*AA.....YY*..*YY**
+1106 A**..*A.......Y*..**YY*.*AA**..**YY*.*AA**..*A.......Y*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*A.......Y*...*A.......Y*..**YY*.*AA**..**YY*.*AA**..**YY*.*AA**..*A.......Y*..**YY*.*AA**..**YY*.*AA***..*A.......Y*..**YY*
+1108 ............................................................................................................................................................................................................................
+1110 ............................................................................................................................................................................................................................
+1112 ............................................................................................................................................................................................................................
+1114 ............................................................................................................................................................................................................................
+1116 ............................................................................................................................................................................................................................
+1118 ............................................................................................................................................................................................................................
+1120 ............................................................................................................................................................................................................................
+1122 ............................................................................................................................................................................................................................
+1124 ............................................................................................................................................................................................................................
+1126 ............................................................................................................................................................................................................................
+1128 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1130 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1132 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1134 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1136 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1138 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1140 ....Y**A.......Y**A.......**A.......**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.....
+1142 ....Y**A.......Y**A.......**A.......**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.....
+1144 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1146 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1148 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1150 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1152 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1154 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1156 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1158 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1160 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1162 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1164 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1166 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1168 ....Y**A.......Y**A.......**A.......**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.....
+1170 ....Y**A.......Y**A.......**A.......**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.......Y**A.....
+1172 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1174 ...Y****A.....Y****A.....Y***A.....Y***A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A.....Y****A....
+1176 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1178 ..Y******A...Y******A...Y*****A...Y*****A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...Y******A...
+1180 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1182 .Y********A.Y********A.Y*******A.Y*******A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y********A.Y
+1184 ............................................................................................................................................................................................................................

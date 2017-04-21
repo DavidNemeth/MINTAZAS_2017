@@ -1,0 +1,63 @@
+  C TELI VARIACIO, ZARTABB KARDIGANHOZ, AZ UTOLSO LYUK FELJEBB VAN.
+  C NYARI VAR:PANTOK-NYAKAK/PIKO PANT REX SZIVECSKEKKEL+8GOMBLYUK (KISEBB LYUKAK)
+  C***REX PIKO PANT 8 VAGY 9 GOMBLYUKKAL KICSIT NAGYOBB GOMBLYUK (+1 VAKSZEM)****
+  C KT:NPK=0 PKT:NPK=-0.2
+  C*** AZ ALSO GOMBLYUK LEGALUL LEGYEN, A FELSO EGY GOMLYUKTAVOLSAGGAL FELJEBB, MINT A HONALJA!
+  C*** AZ 1. ES A 9. GOMBLYUK KOZTI TAVOLSAG:50CM.
+ 600 C*** A KESZ KISKABAT KB. 70-72CM. 
+
+ 608 NP4=12.6    C:LEVALASZTAS,1/1
+ 610 NP10=11.4   C:BEKEZDES,REX
+ 612 NP12=15.0   C:SLAG GOMBLYUK ELOTT (REGEBBI: 14.8
+ 614 NP13=14.4   C:SLAG PASSZE         (REGEBBI: PKT14.0 KT:14.2)
+ 616 NP11=6.0    C:GOMBLYUK
+ 618 START 
+ 620 YG:6/256;
+ 622 WM=24
+ 624 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 626 JA1=1990; 
+ 628 PA:<JA1>; 
+ 630 FA=2-7; C FA=1-7 VAGY 2-7;
+ 632 PM:<.>5:<FA>547:<.>;
+ 634 >> S:D.I-DI./UVN.I;	           	Y:2;    ML                 	    S1    T2
+ 636 << S:U^NA/.I-A;                         ML                   T1 S1
+ 638 >> S:.I-A;                      Y:5;    ML            VR1       S1
+ 640 << S:.I-0/UVNA;                         ML    NP-0    VKA>3     S1    T2
+ 642 >> S:.I-.I;                     Y:6;    ML            V0        S1
+ 644 << S:.I-0/0-.I;                 Y:6/0;  ML                      S1 S2
+ 646 >> S:.I-.I/.-0;                 Y:5/2;  ML    NP10-10           S1 S2
+ 648 << S:0-./.-.;                   Y:2/5;              ML          S1 S2
+ 650 >> S:.-./.-.;                   Y:5/2;              ML          S1 S2
+ 652 << S:.-./.-.;                                       ML          S1 S2
+ 654 >> S:.-./.I-.I;                                     ML          S1 S2
+ 656 << S:R-R;                                                       S1 S2
+ 658 VJA^1
+ 660    PM:14.9(YTI16*)<*>544:<.>; C    70CM-ES KK-HOZ  (9 GOMBLYUKKAL.)                         VAGY
+ 662    PM:14.8(YTI18*)<*>544:<.>; C    70CM-ES KK-HOZ  (8 GOMBLYUKKAL, DE KET TUVEL TAVOLABB)   VAGY
+ 664 >> S:R-0/0-R;                             NP12-12                S1 S2
+ 666 WM=18
+ 668 << S:0-R/UVSYTI;                 Y:5;    NP12-12                S1    T2
+ 670 >> S:R-T(11)/0-T(8.0);            Y:5/0;            VU         S1 S2
+ 672 C GOMBLYUKAK:
+ 674 WM=0
+ 676 << S:U^SI;                        VL1                T1
+ 678 >> S:U^SYT;                        VR2                T1
+ 680 WM=20
+ 682 << S:T(11)-.*YI(13);         Y:2;    V0  VU               S1
+ 684 WM=24
+C*****************************************************************************
+ 686 >> S:.*YI(13)-T(11);                     VL1 VU               S1 CVAGY
+C*****************************************************************************
+ 688 NP13-13
+C*****************************************************************************
+ 689 << S:R-0/0-R;                    Y:5/2;  VR1                  S1 S2
+ 690 >>                                                            S1 S2
+C*****************************************************************************
+ 691 <<                                       V0                    S1 S2
+ 692 >>                                                             S1 S2
+ 693 <<                                                             S1 S2
+ 694 >> S:R-0/R(10)-R(10);                                          S1 S2
+ 695 END
+ 999 <> W0 S0
+
+1990 4.AIA

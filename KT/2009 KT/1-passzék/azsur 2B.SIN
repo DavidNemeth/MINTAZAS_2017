@@ -1,0 +1,46 @@
+ EZ A JOBB
+   1 C AZSUR 2B  - PARALELOGRAMMA ALAKU ---- 1 JAC.SOR
+   1 C    KULONBSEG AZ AZSUR 2-HOZ KEPEST: - A SLAGOT 2SZV.-VEL KOTI.
+   2 C                                     - A SLAG UTAN SZIN OLD. SORRAL KEZD.
+
+  10 NP4=12.4;             C LEVALASZTAS
+  11 NP2=9.5               C BEKEZDES
+  12 NP3=13.6              C KORSLAG MADONNA:14.4
+  13 NP5=13.6              C PASSZE  MADONNA:14.4
+
+  40 START        
+  50 YG:6/256;
+  51 WM=16;WMI=7
+  52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU ML       S1 S2
+
+--- ide kell a #100 és a tûkiosztás!--------
+
+ 200 >> S:D.I-DI./DI.-D.I/UVNDI.;                              ML       S1 S2 T2
+ 202 << S:DI.-D.I/UVND.I;             Y:5;	             	      ML       S1    T2
+ 204 >> S:R-R;		                      Y:6;	       NP4-2     VU ML          S2
+ 206 << S:R-0/0-R;                    Y:6/0;      NP4-4	    VU ML       S1 S2
+ 208 >> S:R-R;                        Y:5;        NP2-2     VU ML       S1
+ 210 Y:2/5;
+ 212 REP*2 C MADONNA:1
+ 214 << S:R-0/0-R;		                         ML   NP3-3     VU          S1 S2
+ 216 >> S:0-R/R-0;		                         ML             VU          S1 S2
+ 218 REPEND
+ 220 << S:0-R/UVS.;		                 Y:2;   ML                         S1    T2
+ 222 >> S:U^SN./.-N./UVSN.I;                 ML                      T1 S1    T2
+ 224 Y:5/5/2/2;
+ 225 REP*2 C  2VAGY5 JAC.:1006-TOL FUGGOEN
+ 226 << S:NI-I;                        NP5-5 VU          S1
+ 228 WM=0
+ 230 >> S:U^SA;                                   VL1 T1
+ 232 << S:U^SY;                                   VR1 T1
+ 234 WM=16
+ 236 >> S:U^S*/.-N./UVSAY*;                  V0       T1 S1 T2 
+ 238 REPEND
+ 240 GOSUB 226-234
+ 242 >> S:U^S*/.-N./UVSN.;                   V0       T1 S1 T2 
+ 249 C********************************************************
+
+C VAGY-VAGY:
+1006 YYYYYIAAAAAAAIYY
+1006 YYYYYIAAAAAAA*YY
+1006 AAA*YYYI

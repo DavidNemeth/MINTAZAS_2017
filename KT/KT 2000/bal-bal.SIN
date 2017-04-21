@@ -1,0 +1,255 @@
+1C 2 SZALVEZETOS BAL-BAL
+1C KEREK FONOTT NYAK:SP900
+1C REX PIKO PANT SZIVECSKEKKEL:SP600
+1C                         NP1=  NP6=      RS1=
+1C                                        ELEJE:       HATA:        UJJA:
+1C TUNIKA                                 RS17=0       RS17=1       RS17=1
+1C                                                      18-           -17
+1C-----------------------+------------+------------+------------+-------------+
+1C   3X16/1 PAMUT(FEHER):  14.5  14.9       17           18            14
+1C-----------------------+------------+------------+------------+-------------+
+1C   2X15/1 PAMUT+1BRILL:  14.2  14.6       19           20            16
+1C    (LEJTNER,RAKLAPOS)
+1C-----------------------+------------+------------+------------+-------------+
+1C   2X16/1 PAMUT+1BRILL:  13.5  13.9       22           23            -
+1C    (MAGYAR)
+1C-----------------------+------------+------------+------------+-------------+
+1C 16/1+12/1 PAMUT+1BRILL: 13.6  14.0       22           23            17
+1C    (MAGYAR)
+1C-----------------------+------------+------------+------------+-------------+
+
+  10 C
+  14 NP1=14.5   C:MINTA 
+  15 NP6=14.9   C:HATA-UJJA
+  16 NP2=12.0   C:1/1,BEKEZDES
+  18 NP3=11.2   C:REX PASSZE
+  20 NP4=12.5   C:LEVALASZTAS
+  22 NP5=14.5   C:LEVALASZTAS
+  40 START
+  42 YG:6/256;
+  44 WM=20 WMI=7
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5;	ML      NP4-4   VU   V0	     S1 S2
+  48 JA1=1991(1991-1993); 
+  50 PA:<JA1>; 
+  52 FA=1-7; 
+  54 PM:<.>5:77FA;
+  56 C Y:2/2/5/5;
+  58 VJA^0
+  60 >> S:U^SA /.-A/UVS.;            Y:5;    ML     NP5-5           T1 S1    T2
+  62 << S:<1+>.-A/UVSA;                      ML              VL1       S1    T2
+  64 >> S:<1+>.I-.I/0-.I;            Y:6/0;  ML              V0        S1 S2
+  66 << S:.I-0;                      Y:6;    ML                        S1
+  68 >> S:.I-.I/.-0;                 Y:2/5;  ML     NP2-2              S1 S2
+  69 WM=24
+  70 << S:0-./.-.;                   Y:5/2;  ML     NP3-3              S1 S2
+  72 >> S:.-.;                               ML                        S1 S2
+  74 <<                                      ML                        S1 S2
+  76 >> S:.-./.I-.I;                         ML                        S1 S2
+  78 << S:R-R;                                                         S1 S2
+  80 >> S:R-R;                                                         S1 S2
+  90 C ---3LAP 523 TU---------------------
+  95 FA=7-182;
+ 100 PM:<.>7:I3(I FA III)545:....;
+ 105 JA1=1132(1092-1122)
+ 110 JA2=1010(1004-1010)  C KREPP
+ 112 IF RS17=1 GOTO 400   C HATA-UJJA
+ 115 PA:JA2:JA1;
+ 120 << S:R-R/R(4)-R(4);                                              S1 S2
+ 122 WM=0
+ 125 >> S:U^SIW/UVS.*;                                            T1       T2
+ 128 << S:0-0;                                 Y:0;                   S1
+ 132 WM=24
+ 135 >> S:.*-N.*/.%*-N.*/UVNN.*;               Y:2/5; NP1-1     S1 S2 T2
+ 200 C-----MINTA-----
+ 205 WM=24
+ 220 REP*2
+ 225 << S:U^N<1-2->I/.*-IW/.%*-IW/UVNIW;                     T1 S1 S2 T2
+ 230 >> S:U^N<1-2->I/.*-IW/.%*-IW/UVNIW;                     T1 S1 S2 T2
+ 235 REPEND
+ 238 RBEG*RS1
+ 240 GOSUB 225-230*8
+ 242 REND
+ 244 JA1=1090(1034-1064)
+ 246 RBEG*RS2
+ 248 GOSUB 225-230
+ 250 REND
+ 255 GOTO 473
+ 400 C********* HATA-UJJA *************
+ 410 PA:JA2;
+ 415 FA=1-6
+ 420 PM:<FA>1:9.186:3.365:3.544:9.;IF RS1<18 PM:<FA>1:9.141:3.275:3.409:3.543:10.;C4LAP
+ 425 << S:R-R;                            Y:5;       NP4-4            S1
+ 426 WM=0
+ 430 >> S:UVSDI.;                                                           T2
+ 435 << S:UVSD.I;                                                           T2
+ 436 WM=24
+ 440 >> S:.%*-0;                                     NP6-6               S2
+ 442 Y:2/5;
+ 445 RBEG*RS1
+ 450 REP*4
+ 455 << S:<2->.*-0/.%*-0;                                             S1 S2
+ 460 >> S:<2->.*-0/.%*-0;                                             S1 S2
+ 465 REPEND
+ 470 REND
+ 471 GOSUB 455
+ 472 >> S:R-0/R-0;                                                    S1 S2
+ 473 << S:U^SD.I/DI.-D.I/DI.-D.I;                    NP4-4         T1 S1 S2
+ 474 >> S:DI.-D.I/DI.-D.I/UVSD.I;                                     S1 S2 T2
+ 475 END
+
+ 600 C***REX PIKO PANT SZIECSKEKKEL II (KISSEBB SZIVEK)*****
+ 602 NP1=14.5  C:LEVALASZTAS
+ 604 NP4=12.5  C:LEVALASZTAS,1/1
+ 606 NP2=12.0  C:BEKEZDES
+ 608 NP3=11.5  C:REX
+ 609 NP5=13.0
+ 610 START 
+ 612 YG:6/256;
+ 614 WM=24
+ 616 << S:D.I-DI./DI.-D.I;	          Y:2/5;	        NP4-4   VU   V0	     S1 S2
+ 618 JA1=1991(1991-1993); 
+ 620 PA:<JA1>; 
+ 622 FA=1-7; 
+ 624 PM:<.>5:77FA;
+ 625 CY:2/2/5/5;
+ 626 VJA^0
+ 628 >> S:U^SA /.-A/UVS.;            Y:5;           NP1-1           T1 S1    T2
+ 630 << S:<1+>.-A/UVSA;                                      VL1       S1    T2
+ 636 >> S:<1+>.I-.I/0-.I;            Y:6/0;                  V0        S1 S2
+ 638 << S:.I-0;                      Y:6;                              S1
+ 640 >> S:.I-.I/.-0;                 Y:2/5;         NP2-2    ML          S1 S2
+ 642 << S:0-./.-.;                                  NP3-3    ML          S1 S2
+ 644 >> S:.-.;                                               ML          S1 S2
+ 646 <<                                                      ML          S1 S2
+ 648 >> S:.-./.I-.I;                                         ML          S1 S2
+ 650 << S:R-R;                                                         S1 S2
+ 652 >> S:R-R;                                                         S1 S2
+ 656 << S:R-R;                                                         S1 S2
+ 658 >> S:R-R;                                      NP4-4              S1 S2
+ 660 END
+
+ 900 C---FONOTT NYAK-------UJ-BAL-BAL VARRO SZEGELLYEL-----------------------------------------------
+ 902 START
+ 904 NP1=14.7   C:LEVALASZTAS
+ 906 NP2=12.0   C:1/1-ES PASSZE
+ 908 NP4=11.5   C:LEVALASZTAS
+ 910 YG:6/256;
+ 912 WM=20
+ 914 <<	S:D.I-DI./DI.-D.I;		                Y:5/2;	 NP4-4 VU V0	     S1 S2
+ 916 >> S:0-R/R-0;                           Y:5/2;            VU     S1 S2
+ 918 << S:R-0/0-R;                           Y:5/2;   NP1-1           S1 S2
+ 920 >>	S:D.I-DI./DI.-D.I/UVNDI.;            	Y:5/2;	  NP1-1	           S1 S2 T2
+ 922 <<	S:U^ND.I/DI.-D.I;		                  Y:5;			             T1 S1
+ 924 >>	S:U^NDI./D.I-D.I;		                  Y:6;	    NP0-  VL1	  T1	  S2
+ 926 <<	S:R-0/0-D.I/R-0;		                    Y:0/6/0; NP2-2  V#	  T1 S1 S2
+ 928 >>	S:DI.(8.0)-D.I;		                   	Y:5;	           V# V0 ML S1
+ 930 << S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 932 >> S:DI.(7.5)-0;                         Y:6;             V#     S1
+ 934 << S:0-D.I(10.0)/DI.(10.0)-D.I(10.0);    Y:5/2;           V#     S1 S2
+ 936 WM=26
+ 938 JA1=1999
+ 940 FA=1-6
+ 942 PA:JA1;
+ 944 PM:<.> 9:<FA> 543:<.>;
+ 946 >>S:DI.(10.0)-D.I(10.0)/DI.-D.I/UVS.;   Y:2/5;                   S1 S2 T2
+ 948 REP*2
+ 950 VJA^1
+ 952 WM=20
+ 954 << S:U^SY*/.(13.9)-Y*(14.5)/.-Y*;        Y:2/5;          V0   T1 S1 S2
+ 956 WM=12
+ 958 >> S:.-*/UVS*;                           Y:2;            VL2     S1    T2
+ 960 << S:.-Y;                                Y:2;            VR2     S1
+ 962 VJA^0
+ 964 WM=20
+ 966 >> S:U^SY/.-Y*/.-Y*/UVSY*;               Y:2/5;         VKE>4 T1 S1 S2 T2
+ 968 REPEND
+ 970 << S:U^SY*/.(14.0)-Y*(14.0);             Y:2;            V0   T1 S1
+ 972 PM:<W> 9:<FA> 543:<W>;
+ 974 >> S:U^S./W-NW/UVSNW;                                         T1 S1    T2
+ 976 << S:R-0;                                Y:5/2;                  S1 S2
+ 978 >> S:U^SNW/W-NW/W-NW;                                         T1 S1 S2
+ 980 << S:W-NW/W-NW/UVSDI.;                   Y:5/2;  NP2-2 V0        S1 S2 T2
+ 982 >>	S:DI.-D.I/R-0;		                       Y:5/2;	      VU V0	   S1 S2
+ 984 END
+
+ 990 C FEHER     . FONAK 
+ 991 C FEKETE    I SZIN
+ 992 C SARGA     Y SZIN ->
+ 993 C OKKERS.   A SZIN <-
+ 994 C VSZURKE   X
+ 995 C SSZURKE   * KREPP
+
+1999 .YY**.
+
+1991 ....A.A
+1992 ...A*A*
+1993 ....*I*
+
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 .*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.I
+1006 ..*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*..I
+1008 .*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.I
+1010 *...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*...*I
+1012 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1014 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXX..........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W..........XXXXXXXXXXI
+1016 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXX.IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII.XXXXXXXXXI
+1018 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXX..............W.W...............W.W...............W.W...............W.W..............XXXXXXXXI
+1020 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXX.IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII.XXXXXXXI
+1022 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXX.......W.W...............W.W...............W.W...............W.W...............W.W.......XXXXXXI
+1024 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XXXXXI
+1026 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........X.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......XXXXI
+1028 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII..IIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIII.XXXI
+1030 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........X.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......XXXXI
+1032 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XXXXXI
+1034 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXX.......W.W...............W.W...............W.W...............W.W...............W.W.......XXXXXXI
+1036 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXX.IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII.XXXXXXXI
+1038 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXX..............W.W...............W.W...............W.W...............W.W..............XXXXXXXXI
+1040 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXX.IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII.XXXXXXXXXI
+1042 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXX..........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W..........XXXXXXXXXXI
+1044 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXX.IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII.XXXXXXXXXXXI
+1046 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXX..........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W..........XXXXXXXXXXI
+1048 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXX.IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII.XXXXXXXXXI
+1050 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXX..............W.W...............W.W...............W.W...............W.W..............XXXXXXXXI
+1052 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXX.IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII.XXXXXXXI
+1054 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXX.......W.W...............W.W...............W.W...............W.W...............W.W.......XXXXXXI
+1056 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XXXXXI
+1058 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........X.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......XXXXI
+1060 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII..IIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIII.XXXI
+1062 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........X.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......XXXXI
+1064 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XXXXXI
+1066 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXX.......W.W.......X.......W.W.......X.......W.W.......X.......W.W.......X.......W.W.......XXXXXXI
+1068 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXXXXXXI
+1070 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXX.............XXXXX.............XXXXX.............XXXXX.............XXXXX.............XXXXXXXXI
+1072 XXXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXXXXI
+1074 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1076 XXXXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1078 XXXXXXXX.............XXXXX.............XXXXX.............XXXXX.............XXXXX.............XXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1080 XXXXXXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1082 XXXXXX.......W.W.......X.......W.W.......X.......W.W.......X.......W.W.......X.......W.W.......XXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1084 XXXXX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1086 XXXX.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......X.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1088 XXX.IIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIIX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1090 XXXX.......W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......X.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1092 XXXXX.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1094 XXXXXX.......W.W...............W.W...............W.W...............W.W...............W.W.......XXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1096 XXXXXXX.IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII.XXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1098 XXXXXXXX..............W.W...............W.W...............W.W...............W.W..............XXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1100 XXXXXXXXX.IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII.XXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1102 XXXXXXXXXX..........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W..........XXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1104 XXXXXXXXXXX.IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII.XXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1106 XXXXXXXXXX..........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W..........XXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1108 XXXXXXXXX.IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII.XXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1110 XXXXXXXX......W.......W.W...............W.W...............W.W...............W.W..............XXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1112 XXXXXXX.IIIIW.W.WIIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII..W..IIII.XXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1114 XXXXXX.....W.W.W.W.............W.W...............W.W...............W.W...............W.W.......XXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1116 XXXXX.IIIIW.W.W.W.WIIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1118 XXXX.....W.W.W.W.W.W.........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......X.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1120 XXX.IIIIW.W.W.W.W.W.WIIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIII..W.W.W.W.W..IIIIX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1122 XXXX.....W.W.W.W.W.W.........W.W.W.W...........W.W.W.W...........W.W.W.W...........W.W.W.W.......X.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1124 XXXXX.IIIIW.W.W.W.WIIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.IIII..W.W.W..IIII.XX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1126 XXXXXX.....W.W.W.W.....X.......W.W.......X.......W.W.......X.......W.W.......X.......W.W.......XXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1128 XXXXXXX.IIIIW.W.WIIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXX.IIII..W..IIII.XXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1130 XXXXXXXX.....W.W.....XXXXX.............XXXXX.............XXXXX.............XXXXX.............XXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1132 XXXXXXXXX.IIIIWIIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXXX.IIII.IIII.XXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXX.IIIIIII.XXXXXXXXXXI
+1134 XXXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXX.........XXXXXXXXXXI
+1136 IIIIIIXIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIXIIIIIIII

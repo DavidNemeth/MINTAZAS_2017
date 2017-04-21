@@ -1,0 +1,244 @@
+ C KRIMSZKI - PONCSO/PELERIN
+
+C MIKOLCI - TUKIHAGYASOS ROMBUSZMINTA -
+C PONCSO - PELERIN (EREDETI:2012 kt/Madonna miskolci)
+
+C 1SZVCS
+
+1C *************************************************************
+1C      PONCSO - 3SZAL PAMUT
+1C      PELERIN- 2PAMUT+1TX NPK:-0.2 A 3 PAMUTHOZ KEPEST
+1C ************************************************************
+C
+C        PAMUT:F-F:650 T.NYERS:690  L.FEKETE:680 L.FUST:780 SUM:680
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO:      I FT/O: I %:  I
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
+C 135*85    0.77      525       200-250       15      100     900     1500    600     50'       720    35%
+C ELLA                                  3DB SZIVAR                                            
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
+C 135*85    0.77      525       200-250       15      100     900     1600
+C TIMI                                  3DB SZIVAR                                     
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
+C PELERIN
+C 125*65  0.58        545       200        25       100       900     KB1400   500       37'     800 
+C ELLA    *940                            2*IDA                                    
+C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
+
+!!!!!!!!!! mandzsetta:9cm leszabva:10-11cm!!!!!!!!!!!!!!!!!!!!
+ 
+  10 NP4=13.0   C:LEVALASZTAS
+  11 NP2=12.2   C:BEKEZDES,1/1              12.2
+  12 NP3=11.4   C:BEKEZDES,1/1 MANDZSETTA   11.4
+  13 NP1=14.4              C MINTA             
+
+  40 START
+  50 YG:6/23456;
+  51 WM=18 WMI=7
+  52 <<	S:0-R/R-R;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+  52 <<	S:DI.-D.I/D.I-DI.;		         Y:2/5;	    NP4-4 VU V0	       S1 S2
+  52 <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	    NP4-4 VU V0	       S1 S2
+
+
+ C***PONCSO******************************************FUST:NTTO.2.2-0.65=1.55KG (7*0.04XO)  0.775KG/DB+ROJT
+  62 C IF #100=14 RS17=50	  C  NECCES KORSLAG PANTJA 3 GOMBLYUKKAL   GY:2'14
+  63 C IF #100=17 RS17=51	  C  1/1 MANDZSETTA 4-5                    GY:2'30
+  64 C IF #100=8  RS17=0	   C  T-1/2E                                GY:27'  ML:35'
+  66 C IF #100=8  RS17=0	   C  T-1/2E                                GY:27'  ML:35'
+C*****PELERIN********************************************************VASALVA:******KESZEN:*****KG:******
+  68 C  IF #100=38 RS17=52	  C  NECCES KORSLAG PANTJA GOMBLYUK NELKUL GY:2'                      0.04
+  70 C  IF #100=16  RS17=1	   C  T-1/2E                                GY:     ML:29' 125*65     0.35
+C  FEHER 10 KT NPK=-0.3
+C   FUST 16 UJ NPK=-0.2 WM%=15
+C*************************************************************VASALVA:******KESZEN:*****KG:******
+C PELERIN:
+  90 IF RS17=1  RS19=0 RS18=0 RS1=23  C  T-1/2E  22           130*70        
+C PONCSO:
+  91 IF RS17=0  RS19=0 RS18=0 RS1=28  C  T-1/2E  27-28        130*90        122*85      0.45
+  92 IF RS17=51        RS18=1 RS1=10  C  1/1 MANDZSETTA 4-5DB                           0.06
+  94 IF RS17=50 GOTO 600              C  GOMBLYUKAS PANT                                0.05
+  96 IF RS17=52 GOTO 600              C  PANT GOMBLYUK NELKUL                     ROJT: 0.07
+C                                                                               ----------------
+C------------------------------------------------------------------------------    SUM:  0.74
+C PNCSO:3PAMUT
+C Y:2/5: 1-1XO        3*T        2*T.FEH.        2*T.FEH.        3*L      3*T
+C  ATORSOZVA         FEHER:      +1L.FUST       +1L.FEKETE     FEKETE:   NYERS
+C----------------------------------------------------------------------------------
+C KT :WM%=0          -0.1           0                           +0.1                                  
+C----------------------------------------------------------------------------------
+CPKT :WM%=0          -0.1           0                           +0.1?    -0.2
+C-------------------------------------------------------------------------------------
+C UJ :WM%=5-10       -0.1           0                           +0.2?
+C--------------------------------------------------------------------------------------
+C PELERIN:2 PAMUT+1TX:NPK:-0.2 A 3PAMUTHOZ KEPEST
+C-------------------------------------------------------------------------------
+
+ 180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
+ 182 JA1=1172
+ 184 PA:1:<JA1>;
+
+ 186C IF RS19=0  FA=15-386;FB=2-187;   PM:+<I>8:FA 9I FB;          C*1TEST (E V.H)+1/2ELEJE
+ 186C IF RS19=0  FA=15-386;FB=2-187;   PM:+<I>7:T FA T7IT FB T;    C*1TEST (E V.H)+1/2ELEJE
+
+ 186 IF RS19=0 FA=15-386;FB=2-187;    PM:+<.>7:I FA 9I FB I;  C*1TEST (E V.H)+1/2ELEJE
+ 187 IF RS19=3 FA=6-192;              PM:<.>7:3(IIFA)II;      C*3 
+ 190 IF RS19=4 FB=20-159;             PM:<.>7:I4(FBII);       C*4
+ 191 IF RS19=5 FB=34-144;             PM:<.>7:5(IIFB)II;      C*5
+
+ 199 C********************************************************************************
+
+ 200 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 201 WM=10
+ 202 <<	S:U^NDI./D.I-DI.;		              			 NP1-1              T1 S1
+ 204 >>	S:D.I-DI.;		                 Y:2;	   NP4-4    VU VR1	  	   S1
+ 203 WM=18 
+ 206 <<	S:D.I-0/UVSDI.;		                      	                   S1    T2
+ 208 >> S:D.I-DI.;		                	Y:6;	      NP2-2 VU V0           S2
+ 210 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU           S1 S2
+ 212 >>	S:D.I-DI./D.I-0;		          	Y:5/2; 	   NP2-2 VU V0        S1 S2
+ 214 IF RS18=1 GOTO 500 C 1/1 MANDZSETTA
+ 216 << S:0-DI./D.I-DI.;                              VU           S1 S2
+ 218 REP*1
+ 220 >> S:D.I-DI.;                                    VU           S1 S2
+ 222 <<                                               VU           S1 S2
+ 224 REPEND
+ 230 >> S:D.I-DI./D.I(4)-DI.(4)/UVS.+;                            S1 S2 T2
+
+ 300 CCCCCCCCCCCCCCCCCCCC MINTA CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+ 302 JA1=1172(1102-1172) C 
+ 306 C********************************************************
+ 308 VJA^0
+ 309 WM=16
+ 310 Y:5/5/2/2;
+ 312 NP1-1
+ 314 RBEG*RS1
+ 315 REP*6
+ 316 << S:U^S<1->N.*+/.+-N.*+/UVSNY.*+;             V0         T1 S1    T2
+ 318 >> S:U^S<1->N.*+/.-N.*+/UVSNA.*+;             VL1        T1 S1    T2
+ 319 REPEND
+ 320 REND
+
+ 424 << S:U^S<1->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S1    T2
+ 426 >> S:U^ND.I/DI.-D.I;             NP4-4               T1 S1
+ 428 << S:DI.-D.I/DI.-D.I;            Y:5/2;         VU      S1 S2
+ 430 >> S:DI.-D.I/DI.-D.I/UVND.I;                            S1 S2 T2
+ 432 END C************************************************
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+
+ 500 C-----1/1 MANDZSETTA--------------------
+ 502 << S:0-DI.;             NP3-3   Y:6;          VU     S1
+ 504 >>                                            VU     S1
+ 506 RBEG*RS1
+ 508 << S:D.I-DI.;                   Y:5/2;       VU     S1 S2
+ 510 >>                                           VU     S1 S2
+ 512 REND
+ 513 <<                                           VU     S1 S2
+ 514 >> S:D.I-DI./D.I(2)-DI.(2)/UVSDI.;                  S1 S2 T2
+ 516 END
+
+ 600 C ************** ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL ************
+ 602 C CNCA 2010/ CP NP
+ 604 NP4=12.8    C LEVALASZTAS   
+ 606 NP12=10.0   C BEKEZDES,1/1,REX      
+ 608 NP13=14.0   C SLAG PASSZE   
+ 609 NP14=12.2   C 1/1
+ 610 NP11=6.2    C:GOMBLYUK
+ 612 C START
+ 614 C YG:6/256;
+ 616 C <<	S:D.I-DI./DI.-D.I;		       Y:5/2;	      NP4-4   V0	VU      S1 S2
+ 618 WM=20
+ 620 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                            S1    T2
+ 622 <<	S:U^ND.I/DI.-D.I;		              			                      T1 S1
+ 624 >> S:DI.-D.I;                   Y:5;                 VR1 VU     S1
+ 626 << S:U^NDI./0-D.I;                                           T1 S1
+ 628 >> S:0-D.I/DI.-D.I;             Y:2/6;               V0 VU      S1 S2
+ 630 << S:0-D.I/R-0;                 Y:6/0;                  VU      S1 S2
+
+C$$$$$$$$$ VAGY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 632 >>	S:DI.-D.I;		                 Y:5;	          NP12-12   VU      S1
+ 633 << S:0-D.I/DI.-0;               Y:2/5;                     VU      S1 S2
+ 634 >> S:DI.-0/0-R(13);             Y:5/2;                     VU      S1 S2
+ 635 C
+ 636 C
+C$$$$$$$$$$ VAGY (SZEBB) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 632 >>	S:D.I-D.I;		                 Y:5;	          NP12-12   VU      S1
+ 633 << S:0-D.I/D.I-0;               Y:2/5;         NP14-14    VU      S1 S2
+ 634 >>                                                        VU      S1 S2
+ 635 << S:D.I(14)-DI.(12);                      Y:2;                       VU      S1
+ 636 >> S:DI.(12)-D.I(14);                                                 VU      S1
+C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+ 638 REP*2
+ 640 << S:R-0/0-R;                   Y:2/5;         NP13-13    VU      S1 S2
+ 642 >> S:0-R/R-0;                                             VU      S1 S2
+ 644 REPEND
+ 646 IF RS17=52 GOTO 680 C *** GOMBLYUK NELKUL ***
+C----------GOMBLYUK-------------------
+ 648 JA1=1990;  C 1990 YTI200.
+ 650 PA:JA1; 
+ 652 FA=1-34;
+ 654 PM:<.>108:3FA; C 3 GOMBLYUK
+ 654 PM:<.>403:3FA; C 3 GOMBLYUK - - JOBB OLDALRA KELL TENNI A LYUKAKAT, MERT A PLTIROZAS ELOL CSIKOZ
+
+ 656 WM=20 C20
+ 660 << S:0-R/R-0;                                  VU      S1 S2
+ 662 >> S:U^SYTI/T(11)-R/T(8.0)-0;  Y:5/0;               T1 S1 S2
+ 664 C GOMBLYUKAK:
+ 666 WM=0
+ 668 << S:UVSY;                          VL1                T2
+ 670 >> S:UVSTI;                         VR2                T2
+ 672 WM=20 C22
+ 674 << S:.YI(13)-T(11);          Y:5;   V0  VU               S1
+ 676 WM=20 C24
+ 678 >> S:T(11)-.YI(13)/R(13)-0;  Y:5/2; VL1 VU               S1 S2
+ 680 REP*4
+ 682 << S:0-R/R-0;                       V0  VU               S1 S2
+ 684 >> S:R-0/0-R;                           VU               S1 S2
+ 686 REPEND
+ 688 END
+
+ 999 <> W0 VU V0 S0
+ 999 <> W0 VU    S0
+
+1990 YTI200.
+
+1100 WWWWWWWWWWWWWWWW
+1102 IIIIIIIIIIAIIAII
+1104 I*IIYIIYIIIIIII*
+1106 I**IIIIIIAIIAI**
+1108 IY**IYIIIIIIII**
+1110 II**IIIIAIIAI**A
+1112 IIY**IYIIIIII**I
+1114 AII**IIIIIAI**AI
+1116 IIIY**IYIIII**II
+1118 IAII**IIIAI**AII
+1120 IIIIY**IIII**IIY
+1122 IIAII**IAI**AIII
+1124 IIIIIY**II**IIYI
+1126 AIIAII**I**AIIII
+1128 IIIIIIY*I**IIYII
+1130 IAIIAII*I*AIIIII
+1132 IIIIIII*I*IIYIIY
+1134 IIAIIAI*IAIIIIII
+1136 IIIIIIIYIIIYIIYI
+1138 IIAIIAIIIIIIIIII
+1140 IIIIIII*I*IIYIIY
+1142 IAIIAI**I**IIIII
+1144 IIIIII**IY**IYII
+1146 AIIAI**AII**IIII
+1148 IIIII**IIIY**IYI
+1150 IIAI**AIAII**III
+1152 IIII**IIIIIY**IY
+1154 IAI**AIIIAII**II
+1156 III**IIYIIIIY**I
+1158 AI**AIIIIIAII**I
+1160 II**IIYIIIIIIY*I
+1162 I**AIIIIAIIAII**
+1164 I**IIYIIIIIIIIY*
+1166 I*AIIIIIIAIIAII*
+1168 I*IIYIIYIIIIIII*
+1170 IAIIIIIIIIAIIAI*
+1172 IIIYIIYIIIIIIIIY
+1174 WWWWWWWWWWWWWWWW

@@ -1,0 +1,169 @@
+   1 C BALINT KK.*CP B RS10= RS17= 
+   2 C BEKEZDES,KORSLAG,MINTA,1SZV.KREPP:NP1-1:
+   3 C 2FEHER LUSI+1TX VAGY 3LUSI:   2NYERSLUSI+FUSTTX:   LURXXEL:
+   4 C         14.25  14.5           14.0    14.25        15.00                      
+   5 C  1:     <----  ---->          <----   ---->       <-----> A BALMENETEN LEHET CSAK TOBBET SZORITANI!!!!        
+   6 C         14.5   14.75          14.25   14.5         15.75                      
+  19 C B2:11.7 BEKEZDES 1/1            
+  20 C J4:13.5 LEVALASZTAS               
+  21 C B4->,J2<-:14.5 NAGY LYUKU (2SZV.)
+  25 C TUAGYKORREKCIOK: V0:->1.75                         !!!!!2006.10.19.:V0:->1.85!!!!!!!!10.23.: ->1.5
+  26 C  7-8 SULY          R1:->2 _________R2: - ________R3:-
+  27 C                  L1:<-1 _________L2: - ________L3:-!!2006.10.12.:L1:<-0.5 !!  2007.04.02.:<-1.0
+  28 C********************************************************************************
+  40 START        
+  41 YG:6/256;
+  42 << S:D.I-DI./DI.-D.I;           Y:5/2;      NP4-4      V0  V# ML    S1 S2
+  43 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                          ML    S1    T2
+  44 <<	S:U^ND.I/DI.-D.I;		              			                       ML T1 S1
+  45 >> S:DI.-D.I;                   Y:5;        NP1-1      VR1    ML    S1
+  46 << S:DI.-0/UVND.I;                          NP4-04            ML    S1    T2
+  47 >> S:DI.-D.I;                   Y:6;                   V0  V# ML        S2
+  48 << S:DI.-0/0-R;                 Y:6/0;                     V# ML     S1 S2
+  49 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	     NP2-2      V0  V# ML     S1 S2
+  50 C*********** BALINTKK. *********************************************************************
+  51 C IF RS10=21 RS17=0   C*** TUN E   CS
+  52 C IF RS10=19 RS17=1   C*** TUN H   K
+  53 C IF RS10=15 RS17=4   C*** MEL E   CS
+  54 C IF RS10=13 RS17=5   C*** MEL H   K  (CSAK ALUL CSIPKE)
+  55 C IF RS10=18 RS17=6   C*** HU      K  (CSAK ALUL CSIPKE)
+  56 C IF RS10=7  RS17=11  C*** RU      CS
+  57 C IF RS10=1  RS17=12  C*** U-E-H-U CS  HU TOP
+  58 C IF RS10=1  RS17=50  C*** GOMBLYUKAS PANT******************
+  59 C IF RS10=1  RS17=13  C*** 3 TEST  CS     RU TOP  472TU
+  60 C IF RS10=1  RS17=14  C*** 3 HATA  KREPP  RU TOP  472TU
+  61 C IF RS10=1  RS17=15  C*** RU      CS     RU TOP  472TU
+  62 C IF RS10=1  RS17=16  C*** RU      KREPP  RU TOP  472TU
+  76 C********************************************************************************
+  77 C******************************************** 2LUSI+1TX:NPK=-0.3*********VAGY:LUREX:(NPK=0.6)*****
+  78 IF RS17=0  RS1=25   RS2=20     C TUN.E               KESZEN:69CM.      
+  79C IF RS17=1  RS1=    RS2=       C TUN.H           
+  80C IF RS17=4  RS1=    RS2=       C MEL.E           
+  81C IF RS17=5  RS1=    RS2=       C MEL.H                           
+  82C IF RS17=6  RS1=    RS2=       C TELI UJJA H/R     
+  83 IF RS17=11 RS1=21  RS2=0      C RU CSIPKE        
+  84C IF RS17=12 RS1=    RS2=       C PUL U-E-H-U     
+  85 C------------------------------------------------------------         
+  86C IF RS17=13 RS1=    RS2=       C 3TEST 472TU                
+  87C IF RS17=14 RS1=    RS2=       C 3 HAT KREPP          
+  88C IF RS17=15 RS1=    RS2=       C RU CSIPKE        
+  89C IF RS17=16 RS1=    RS2=       C RU KREPP 
+  90 IF RS17=50 GOTO 600 C KK.PANT
+ 100 C********************************************************************************
+ 101 JA1=1010(1004-1008);             C CSIPKE BALINT
+ 102 JA2=1362(1334-1362);  C KREPP
+ 103 PA:<JA1>;
+ 104 FA=12-189;PM:<.>8:3(IFAI);                         C*3LAP************554
+ 105 IF RS17>5  FA=25-157;PM:<.>8:4(IFAI);                         C*4LAP************
+ 106 C IF RS17=12 FA=20-161;FB=29-152; PM:<.>7:..FB..FA..FA..FB.;   C*U-E-H-U ************ 
+ 107 C IF RS17>12 FA=16-165; PM:<.>8:3(..FA);                       C*3TEST***472 TU********* 
+ 108 C IF RS17>14 FA=35-147;PM:<.>8:4(FA..);                        C*4LAP****472 TU********
+ 109 C********************************************************************************
+ 119 Y:2/2/5/5;
+ 120 << S:DI.-0/UVN.;                NP1-01                               S1 T2
+ 200 C****************SZIMMETRIKUS CSIPKE PASSZE***********************************
+ 202 RBEG*RS1 C**SZIMMETRIKUS CSIPKE PASSZE**
+ 204 REP*3
+ 206 >> S:U^NN./.-N./<1->UVNI;                             T1 S1 T2
+ 208 << S:UVNY;                          NP0-0     VL1           T2
+ 210 >> S:UVNA;                          NP0-0     VR1           T2
+ 212 << S:R-0;                           NP-0      V0         S1
+ 214 REPEND
+ 216 REND
+ 218 >> S:U^NN./.-N./UVNN.;                                T1 S1 T2
+ 220 << S:R-0;                           NP-0      V0         S1
+ 222 >> S:U^NN./.-N./UVNN.;                                T1 S1 T2
+ 224 C**********************************************************************
+ 225 IF RS2=0 GOTO 260
+ 226 C*****NAGY LYUKU***********************************************************
+ 228 JA1=1200 C 1200 AIIY
+ 229 RBEG*RS2
+ 230 << S:R-0;                      NP2-0    Y:2/5;            S1 S2
+ 232 >> S:U^NN./.-N./.-N./UVNAY;    NP4-4                   T1 S1 S2 T2
+ 234 << S:U^NY;                     NP04-02          VR1    T1
+ 236 >> S:U^NA;                     NP0-0            VL1    T1
+ 238 << S:.YA-I/.A-I/UVNI;                           V0        S1 S2 T2
+ 239 C
+ 240 >> S:R-0;                      NP4-04    Y:2/5;            S1 S2
+ 242 << S:U^NN./.-N./.-N./UVNAY;    NP2-2                   T1 S1 S2 T2
+ 244 >> S:U^NY;                     NP02-04          VR1    T1
+ 246 << S:U^NA;                     NP0-0            VL1    T1
+ 248 >> S:.YA-I/.Y-I/UVNI;                           V0        S1 S2 T2
+ 250 REND
+ 252 << S:R-0;                      NP2-0    Y:2/5;            S1 S2
+ 255 >> S:U^NN./.-N./.-N./UVNN.;    NP4-4                   T1 S1 S2 T2
+ 260 << S:U^ND.I/DI.-D.I;           NP4-4    Y:2;           T1 S1
+ 262 >> S:DI.-D.I/UVND.I;                                      S1    T2
+ 264 C*********************************************************************
+ 266 RS10=RS10-1
+ 268 IF RS10>0 GOTO 42
+ 270 END 
+ 400 C**HATA-UJJA (KREPP)*******************************************************
+ 402 JA2=1362;            C KREPP
+ 404 PA:<JA2>;
+ 406 << S:U^NN./UVN.;                    NP0-0        T1 T2
+ 408 >>                                  NP0-0        T1 T2
+ 410 JA2=1362(1334-1362); C KREPP
+ 414 Y:2/2/5/5;
+ 416 NP1-1
+ 418 RBEG*RS2
+ 420 << S:U^N<2->N./.-N./UVNI;                         T1 S1     T2
+ 422 >>                                                T1 S1     T2
+ 424 REND C******
+ 426 << S:U^ND.I/DI.-D.I;                          NP4-4       T1 S1
+ 428 >> S:DI.-D.I/UVND.I;                                         S1   T2
+ 430 C*********************************************************************
+ 432 RS10=RS10-1
+ 434 IF RS10>0 GOTO 42
+ 436 END 
+ 500 << S:R-0/UVND.I;                            NP-0             S1 T2
+ 502 >> S:U^NDI./D.I-DI./UVNDI.;                               T1 S1 T2
+ 503 PA:<JA2>;
+ 504 GOTO 410
+ 600 C************ KK.PANT ***************
+ 602 JA1=1000; PA:<JA1>; FA=1-8; PM:<.>10:67FA;      C KK.PANT
+ 604 Y:2/2/5/5;
+ 606 << S:DI.-0/UVN.;                NP1-01                               S1 T2
+ 608 C****************SZIMMETRIKUS CSIPKE PASSZE***********************************
+ 612 REP*2
+ 614 >> S:U^NN./.-N./<1->UVNI*;                             T1 S1 T2
+ 616 << S:UVNY;                          NP0-0     VL1           T2
+ 618 >> S:UVNA;                          NP0-0     VR1           T2
+ 620 << S:R-0;                           NP-0      V0         S1
+ 622 REPEND
+ 624 VJA^0
+ 626 >> S:U^NN./.-N./UVNN.*;                       VR1      T1 S1 T2
+ 628 << S:U^ND.I/DI.-D.I;           NP4-4    Y:2;  V0       T1 S1
+ 630 >> S:DI.-D.I;                  NP2-2          V#          S1
+ 632 REP*1
+ 634 <<                                      Y:5/2;  V#        S1 S2
+ 636 >>                                              V#        S1 S2
+ 638 REPEND
+ 640 <<                                              V#        S1 S2
+ 642 >> S:DI.-D.I/DI.-D.I/UVND.I;                              S1 S2 T2
+ 644 RS10=RS10-1
+ 646 IF RS10>0 GOTO 42
+ 648 END 
+1000 3A*3YI
+1002 8W
+1004 IIAIY3I
+1006 IAAIYYII
+1008 3AI3YI
+1010 8I
+1012 8W
+1200 AIIY
+1334 II.I2(I3.)
+1336 3(I.).3I..
+1338 3(.I)I3.II
+1340 .3I.3(.I).
+1342 I3.I3(I.)I
+1344 ..I.2(.3I)
+1346 II.I2(I3.)
+1348 II.II2(I..)I
+1350 ..I..2(.II).
+1352 2(II.)I3.I.
+1354 2(..I).3I.I
+1356 I3.2(I.I)I.
+1358 .3I2(.I.).I
+1360 II.II2(I..)I
+1362 ..I..2(.II).

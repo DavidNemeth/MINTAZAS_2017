@@ -1,0 +1,73 @@
+   1C  CP LEVEL RS10= RS17=    CSIPKE PASSZE KORSLAG BEKEZDESSEL ** JAC:RAJZOK 5/LEVELES----SZIMMETRIKUS CSIPKE-----
+   2 C *******VAGY:2006 KT/MADONNA LEVELES (EZ IS SZIMM.CSIPKE ********VAGY CP PRAGA RS10= RS17=0/1/2/3
+   4 C       16.0    0            0     16.0
+   5 C  1: <-------------       ------------->  BEKEZDES,KORSLAG,MINTA,1SZV.KREPP
+   6 C       16.0    0            0     16.0
+   7 C B2: 12.0 BEKEZDES
+  19 C        
+  20 C J4:13.5                                  LEVALASZTAS
+  21 C  8 SULY      
+  25 C TUAGYKORREKCIOK: V0:->1.75
+  26 C                  R1:->2 _________R2: - ________R3:-
+  27 C                  L1:<-1 _________L2: - ________L3:-
+  28 C********************************************************************************
+  40 START        
+  50 YG:6/256;
+  56 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4    V# V0 ML       S1 S2
+  62 >> S:D.I-DI./DI.-D.I/UVNDI.;                                ML       S1 S2 T2
+  64 << S:DI.-D.I/UVND.I;             Y:5;	             	        ML       S1    T2
+  66 >> S:R-R;		                      Y:6;	                  	   ML          S2
+  68 << S:R-0/0-R;                    Y:6/0;            	        ML       S1 S2
+  70 >> S:R-R;                        Y:5;       NP1-01          ML       S1
+  71 C********************************************************************************
+  72 IF RS10=2 RS17=0      C*** MADONNA TEST
+  73 IF RS10=1 RS17=1      C*** MADONNA U
+  93 C*************************************************************
+  94 IF RS17=0  RS1=117    C T 2X15/1+TX:127   3XLUSI:117 TRIKO:112  (LUSIFIL)
+  95 IF RS17=1  RS1=20     C U
+ 101 C********************************************************************************
+ 111 JA1=1334(1304-1334)
+ 112 PA:<JA1>;
+ 116 FA=2-134;PM:<.>6:4(IIFA)II;          C*4LAP************
+ 119 Y:2/2/5/5;
+ 120 REP*2
+ 121 << S:R-0;		                                NP1-01             S1
+ 122 >> S:0-R;		                                NP01-1             S1
+ 123 REPEND
+ 124 << S:R-0/UVNNI;                            NP-0             S1 T2
+ 125 >> S:U^NI/NI-I;                                          T1 S1
+ 132 C*************CIKLUS***SZIMMETRIKUS CSIPKE***********************************
+ 136 RBEG*RS1
+ 138 << S:U^NY;               VR1 NP0-0     T1
+ 140 >> S:U^NAW;              VL1 NP0-0     T1
+ 142 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S1 T2 
+ 144 >> S:U^NI/.-I/UVN<1->NI;                                   T1 S1 T2
+ 146 REND
+ 147 C*************CIKLUS**********************************************************
+ 148 << S:U^NY;                                   VR1 NP0-0     T1
+ 150 >> S:U^NAW;                                  VL1 NP0-0     T1
+ 152 << S:U^NI/.-N.W/UVN<1->.;                    V0            T1 S1 T2 
+ 154 >> S:U^NI/.-I/UVNI;                                        T1 S1 T2
+ 158 << S:U^ND.I/DI.-D.I;                           NP4-4       T1 S1
+ 160 >> S:DI.-D.I/UVND.I;                                          S1   T2
+ 164 RS10=RS10-1
+ 166 IF RS10>0 GOTO 56
+ 168 END 
+1000 IA
+1302 IIIIIIIIII
+1304 IIIIIIIIII
+1306 IY.......A
+1308 II.......I
+1310 IYYIIIIIAA
+1312 IIIIIIIIII
+1314 IYYY...AAA
+1316 IIII...III
+1318 IIAIAIYIYI
+1320 IIII.I.III
+1322 IAIAAIYYIY
+1324 III..I..II
+1326 IIAAAIYYYI
+1328 II...I...I
+1330 IAAAAIYYYY
+1332 I....I....
+1334 IAAAAIYYYY

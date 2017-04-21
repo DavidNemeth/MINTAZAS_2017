@@ -1,0 +1,126 @@
+ C UA MINT A PIKO KK PANT ELLA
+   1 C KORSLAG PIKO+1SZVCS KK.PANT ELLA OVES KK.-HOZ 6GOMBLYUKKAL
+
+  40 START
+  50 YG:6/25;
+  51 WM=17 WMI=7         C-----VAGY-VAGY:-----------
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-2 VU V0	       S1 S2
+  52 <<	S:DI.-D.I/D.I-DI.;		         Y:5/2;	    NP4-2 VU V0	       S1 S2
+  54 C**********NYAK**********************************
+  58 C IF #100=4   RS17=51    C ELLA PANT GOMBLYUK NELKUL
+  59 C IF #100=27 RS17=52      C 2'46 ELLA PANT 6 GLYUKKAL 69CM-ES KKHOZ,VAGY 5 LYUKKAL 65CM.ES KKHOZ (BEALLITAS:652.SOR)      
+  60 C**************************************************
+  96 IF RS17=51 GOTO 600          C PANT
+  98 IF RS17=52 GOTO 600          C PANT
+
+
+ 600 C******KORSLAG PIKO ELLA 5 GOMBLYUKKAL-2LUSI+1TX:*A GOMBLYUKAK KOZTI TAVOLSAG CSOKKENTHETO A 652.SORBAN!****
+     C***GUMIVAL ES GUMI NELKUL IS KOTHETO-BEALLITAS:634-635. SOROKBAN.
+ 601 NP4=12.0    C LEVALASZTAS 12.2
+ 602 NP13=12.2   C:SLAG PASSZE 12.2-12.4
+ 603 NP14=9.5    C BEKEZDES     9.5
+ 604 NP10=9.2    C:1/1          9,2
+ 605 NP11=12.3   C:1SZVCS      12.2-12.4
+608C START        
+610C YG:6/256;
+ 612 WM=16;WMI=7
+614C << S:D.I-DI./DI.-D.I;            Y:5/2;  NP4-14    VU V0       S1 S2
+C********KORSLAG PIKO PASSZE***************************
+ 616 JA1=1930(1902-1904);  C
+ 618 PA:<JA1>; 
+ 620 FA=1-10;
+ 623 PM:5. 57FA 6.;
+C************************************************************
+ 626 >> S:D.I-DI./DI.-D.I/UVNDI.;             NP4-4                   S1 S2 T2
+ 628 << S:DI.-D.I/UVND.I;             Y:5;	               	           S1    T2
+ 630 >> S:R-R;		                      Y:6;	                 VU            S2
+ 632 << S:R-0/0-R;                    Y:6/0;                VU	        S1 S2
+ 633 >> S:R-R;                        Y:5;    NP14-14       VU         S1
+
+C****************************GUMI:HA NEM KELL, KI KELL CEZNI***************
+ 634C << S:R-0;                        Y:6;    NP13-13      VU  S1
+ 635C >>                                                     VU  S2
+C**************************************************************************
+
+ 636 WM=22 C24
+ 638 VJA^1
+ 640 << S:0-NA/NA-0;                  Y:2/5;  NP13-13       VU         S1 S2
+ 642 >> S:0-NA/NA-0;                  Y:5/2;                VU         S1 S2
+ 644 << S:0-NA/NA-0/UVS<1->A;         Y:2/5;               VR1         S1 S2 T2
+ 646 >> S:U^SA/R-0/0-R;                                             T1 S1 S2
+ 648 << S:0-R/R-0;                                       V0 VU         S1 S2
+ 650 IF RS17=51 GOTO 696 C ****** GOMBLYUK NELKUL ******
+
+ 651C $*$*$*$*$ A GOMBLYUKAK KOZTI TAVOLSAG CSOKKENTHETO:*$*$*$*$*$*$*$*$
+ 652          F2=11-19; F3=11-20;PM:5. 40FA 5(F2FAFA)F3FA <.>; C-1TU(6 GLYUK                   
+ 652 F1=1-10; F2=11-20; F3=21-30;PM:5. 42FA 5(F1F2F3) <.>;       C  (5 GLYUK 65-66CM-ES KKHOZ)     S-M
+ 652 F1=1-9;  F2=11-19; F3=11-20;PM:5. 41FA 5(F2FAF1)F3FA <.>; C-2TU(6 GLYUK 69-70CM-ES KKHOZ)    XL                
+ 652 F1=1-9;  F2=11-19; F3=11-20;PM:5. 41FA 5(F2F1F1)F3FA <.>; C-3TU(6 GLYUK 67-68CM-ES KKHOZ)     L-XL            
+ 652 F1=1-10; F2=11-20; F3=21-30;PM:5. 39FA 6(F1F2F3) <.>;       C  (6 GLYUK 71-72CM-ES KKHOZ)   2XL-3XL VAGY S-M DE CSAK 5 LYUKKAL 
+
+ 653C $*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$**$*$*$*$*$*$*$*$*$*$*$*
+C       FA,F1:      F2:         F3
+C1922 .AA....III .AA....III .AA....III
+C1924 .II.....YY .II.....YY .II.....YY
+C1926 .II.....II .IIBY*A+II .II.....II
+
+C**************KISEBB LYUK:*******************************************
+ 658 >> S:R-0/0-R/UVS<1->NI*;                               S1 S2 T2
+ 660 << S:U^SI*/NI*-I*/NI*-I*/UVS*;                      T1 S1 S2 T2
+ 661 C
+ 662 WM=0
+ 663 VJA^0
+ 664 >> S:U^SY;                                          T1
+ 666 << S:UVSB;                                VL1          T2     VKA>2
+ 668 >> S:U^S*A;                               VL2       T1        VKA>2
+ 670 << S:UVS+;                                V0           T2
+ 672 WM=18
+ 674 >> S:NI*-I/NI-I; Y:2/5;  NP11-11 VU   S1 S2
+C**************NAGYOBB LYUK:******.II.....II.IIBY*A+II.II.....II******************
+ 658 >> S:R-0/0-R/UVS<1->NI;                               S1 S2 T2
+ 660 << S:U^SI/NI-I/NI-IY;                               T1 S1 S2
+ 661 C
+ 662 WM=0
+ 663 VJA^0
+ 664 >> S:U^SY/0-*;           Y:0;             VR1       T1 S1
+ 666 << S:UVSB;                                V0              T2
+ 668 >> S:U^S*A;                               VL2       T1          C VKA>2 - >4
+ 670 << S:UVS+;                                V0              T2
+ 672 WM=18
+C******VAGY:**************************BY*A+************************************
+ 674 >> S:NI*-I/NIAY-I;       Y:2/5;  NP11-11 VU   S1 S2
+C******VAGY:*********NAGYOBB LYUK:*****************************************************
+ 674 >> S:NI*-I*/NIAY-I/UVN*; Y:2/5;  NP11-11 VU   S1 S2 T2
+C******VAGY:**************************************************************
+ 674 >> S:NI*-I/NI-I;         Y:2/5;  NP11-11 VU   S1 S2
+C********************************************************************
+ 676 Y:5/5/2/2;
+ 678 VJA^0
+ 680 WM=16
+ 682 REP*5
+ 684 << S:U^S<1->N./.-N./UVNNY.;             V0         T1 S1    T2
+ 686 >> S:U^S<1->N./.-N./UVSNA.;             VL1        T1 S1    T2
+ 688 REPEND
+ 690 << S:U^S<1->N./.-N./.-N.;  Y:5/2;   NP10-10   V0   T1 S1 S2
+ 692 >> S:.-N./.-N./UVNN.;                                 S1 S2 T2
+ 694 END C************************************************
+ 696 >> S:R-0/0-R/UVS<1->NI;                               S1 S2 T2
+ 698 << S:U^SI/NI-I/NI-IY;                               T1 S1 S2
+ 699 GOTO 672 C---------- GOMBLYUK NELKUL ------------
+1900 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1902 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1904 .I.I.I.I.I.I.I.I.I.I.I.I.I.I.I
+1906 .II.AI.III.II.AI.III.II.AI.III
+1908 .II.IIY.II.II.IIY.II.II.IIY.II
+1910 .I.AAII.II.I.AAII.II.I.AAII.II
+1912 .I.IIIYY.I.I.IIIYY.I.I.IIIYY.I
+1914 ..AAAIII.I..AAAIII.I..AAAIII.I
+1916 ..III.YYY...III.YYY...III.YYY.
+1918 .AAA..III..AAA..III..AAA..III.
+1920 .III...YYY.III...YYY.III...YYY
+1922 .AA....III.AA....III.AA....III
+1924 .II.....YY.II.....YY.II.....YY
+1926 .II.....II.IIBY*A+II.II.....II
+1928 *A*A**A*A**A*A**A*A**A*A**A*A*
+1930 A****A****A****A****A****A****
+1932 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW

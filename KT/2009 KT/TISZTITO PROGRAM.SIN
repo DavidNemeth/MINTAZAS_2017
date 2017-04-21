@@ -1,0 +1,30 @@
+
+   1 C TISZTITO PROGRAM ES TUAGY FINOMBEALLITO TESZT
+
+  10 C A CNCA-N:CP TISZTIT
+  11  NP1=14.0;    C **KT**
+  12  NP4=12.5;    C **KT**
+  40 START
+  50 YG:/25;
+  52  WM=20        C **KT**
+  54 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4 VU   V0     S1 S2
+  56 >> S:DI.-D.I/D.I-DI./UVNDI.;                             S1 S2 T2
+  58 << S:DI.-D.I/UVND.I;           Y:2;                      S1    T2
+  60 >> S:R-0;                              NP1-0 VU          S1
+  62 <<                             Y:5;    NP-0  VU          S1
+  64 >>                                     NP-0  VU          S1
+  66 << S:DI.-D.I/D.I-DI.;          Y:2/5;  NP4-4 VU          S1 S2
+  68 >> S:DI.-D.I/D.I-DI.;                        VU          S1 S2
+  70 << S:U^ND.I/DI.-D.I;           Y:2;                   T1 S1
+  72 >> S:U^NDI./0-R;                       NP0-1          T1 S1
+  73 << S:0-R;                      Y:5;    NP0-  VU          S1
+  74 >>                                     NP0-  VU          S1
+  75 <<                             Y:2;    NP0-  VU          S1
+  76 >>                                     NP0-  VU          S1
+C---EZ CSAK A TUAGYVALTO MOTORTESZTHEZ KELL:-------------------
+  77 CRBEG*RS1 C***************TUAGY FINOMBEALLITO TESZT **************
+  78 C<<                             Y:5;    NP0-                 S1
+  80 C>>                                     NP0-     VKA>10  VU  S1
+  81 CREND     C*******************************************************
+  82 END
+ 999 <> W0 VU S0

@@ -1,0 +1,163 @@
+ 1C LEVELES 1X1-JACQUARD  JAC.:R2009/KRABL1X1
+
+    A LEVALASZTAST IS JAC.-BOL KOTI
+   !!! MINIMUM 2XO PAMUTOT AT KELL PARAFINOZNI - A KT-N MIND A 6-OT !!!!!
+   !!! A TOBBI XO-T IS BE KELL KENNI PARAFINNAL!!! KT:WM%=5
+   !!! A KT-N JOBBAN MEGY A FEKETE, MERT LAGYABB FONAL !!!
+   !!! A SZELFESZITOKET BELJEBB KELL HUZNI !!!
+
+1 C 3 MENETES BOLERO - JAC:R2009/KRABL1X1
+1 C 1/1-BEN KOTVE, VAKSZEMMEL:4SZAL:1TX,1HB,3PAMUT VAGY:3TX 3PAMUT
+1C-----------------------+------------+------------+------------+-VAGY:NPK=0-0.2-----------+
+1C FONAL:0.3KG:   HB:2*0.045*1200 =108                  LYUK
+1C                TX:2*0.025*1050 = 53 1030/1070(F/F)   LYUK     3*TX         0.15
+1C              15/1:6*0.04 * 500 =120                  HOLD     3*15/1       0.24
+1C             LUREX:                                   LYUK
+1C                     ---------------
+1C                     0.40* 700 =280FT
+1C VARRAS:                        140  
+1C VASALAS:                        20 
+1C GOMB:                            3  
+1C REZSI:                          22  
+1C --------------------------------------
+1C SUM:                           465      KLTS./ORA:650FT/ORA  LUREX:+0.015*4500=70
+1C ELADAS:                        900                                           1000
+1C H.:                            435/  '     H./ORA:   FT/ORA                      
+1C-----------------------+------------+------------+------------+-------------+------
+1C 
+
+   1 C NPK=0-0.2  LUREXXEL:NPK=0.4-0.5 (MINDKETTO SZV.-BE KELL A LUREX)
+
+  10 NP4=13.2;             C LEVALASZTAS
+  11 NP2=10.0              C BEKEZDES
+  12 NP3=15.0              C KORSLAG
+  16 NP1=12.0              C:CSIPKE    13.0
+  17 NP7=14.6              C:PASSZE
+  18 NP5=6.0   C 5.8?            C:PASSZE ???????
+  20 NP6=10.0              C:LEDOBAS
+  40 START
+  50 YG:6/23456;
+  51 WM=18;WMI=7
+  52 <<	S:0-R/D.I-DI.;		         Y:5/2;	    NP4-4 VU V0	G        S1 S2
+  52 <<	S:R(2)-R(2)/R(4)-0;	 Y:5/2;	 NP4-4 VU V0	 S1 S2 C EZ JOBB HA LE KELL ROVIDITENI
+  52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
+  60 C***********************************************KG.:**************IDO:**********
+  61 CIF #100=1   RS17=4    C 3 NAGYKABAT TEST  PKT-N VASALVA:107CM; 0.56KG;  57' VAGY KISEBB MERET:95CM
+C BOLERO:
+  62 C IF #100=3   RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.35 KG.   33'  1DB:40''
+  64 C IF #100=5   RS17=1    C 3 DB. HATA     *2=6    0.2                 25'
+  66 C IF #100=8   RS17=2    C 2 PAR ELEJE    *3=6    0.15                20'
+  68 C IF #100=11  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  70 C IF #100=14  RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.35 KG.   33'  1DB:40''
+  72 C IF #100=16  RS17=1    C 3 DB. HATA     *2=6    0.2                 25'
+  74 C IF #100=19  RS17=2    C 2 PAR ELEJE    *3=6    0.15                20'
+  76 C IF #100=22  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  78 C IF #100=25  RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.35 KG.   33'  1DB:40''
+  80 C IF #100=27  RS17=1    C 3 DB. HATA     *2=6    0.2                 25'
+  82 C IF #100=30  RS17=2    C 2 PAR ELEJE    *3=6    0.15                20'
+  84 C IF #100=33  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  86 C IF #100=36  RS17=0    C 2 PAR UJJA     *3=6    0.25  1DB:0.35 KG.   33'  1DB:40''
+  88 C IF #100=38  RS17=1    C 3 DB. HATA     *2=6    0.2                 25'
+  90 C IF #100=41  RS17=2    C 2 PAR ELEJE    *3=6    0.15                20'
+  92 C IF #100=44  RS17=3    C 2 DB. GALLER   *3=6    0.05                 8'
+
+  99 C*********3TX + 3PAMUT:********************CM:*****DB.:***KG.:*****IDO:**1DB:40'****
+ 101  IF RS17=0  RS1=15 RS19=0   C 2 PAR UJJA   60CM   *3=6              33'
+ 102  IF RS17=1  RS1=13 RS19=0   C 3 DB. HATA   48CM   *2=6    0.2       25'
+ 104  IF RS17=2  RS1=9  RS19=2   C 2 PAR ELEJE  37CM   *3=6    0.15      20'
+ 106  IF RS17=3  RS1=3  RS19=2   C 2 DB. GALLER 15CM   *3=6    0.05       8'
+C NAGYKABAT:105CM/90CM RS1:29/25
+ 100  IF RS17=4  RS1=25 RS19=0   C 3 NAGYKABAT TEST
+ 180 C************581TU**************************************************************
+ 182 JA1=1140(1126-1138)   C CSIPKE PASSZE
+ 186 PA:1:<JA1>;
+ 187 FA=23-586;   PM:1:4(I+)FA<I+>;   C*NINCS JELOLES
+ 194 C********************************************************************************
+
+ 200 >>	S:.+-I/UVN.+;   	               Y:5;	    	 NP4-4              S1    T2
+ 202 <<	S:U^NI/.+-I;		                     			    NP3-3           T1 S1
+ 204 >>	S:U^N.+/0-I/I-I;		             Y:2/6;	    NP0-  VR1	      T1	S1 S2
+ 206 <<	S:0-I/R-0;		                  Y:6/0;     NP2-2 VU	          S1 S2
+
+ 212 >>	S:.+(2)-I;		                  	Y:5;	            VU V0 ML     S1
+ 214 REP*2 C2
+ 216 << S:0-I/.+-0;                    Y:5/2;     NP3-3 VU           S1 S2
+ 220 >>                               Y:5/2;           VU           S1 S2
+ 222 REPEND
+ 224 << S:0-I;                        Y:5;             VU           S1
+ 226 >> S:U^S.+/I(1)-I(1)/<1->N.+(6)-0; Y:5/0;          VR1    T1 S1 S2
+
+ 227 << S:UVSN.+; V0 T2
+ 228 >> W0 S0 VU
+
+ 300 C****SZIMMETRIKUS CSIPKE*2SOR/4LOKET************
+ 302 NP5-1
+ 304 WM=13 C10
+ 306 Y:5/0/5/0/2/0/2/0;
+
+ 312 << S:N.+(7)-.+(5)/0-.+(6);                VU  V0       S1 S2
+ 314 >> S:U^SBAY/I.(1)-NI.(1)/.(6)-+(6)/UVS<1->AYB;          T1 S1 S2 T2
+
+
+ 318 REP*4 C PASSZE
+ 320 WM=0
+ 322 << S:U^SA;   VKA>5                  VL2   T1 C PKT: VKA>5 4-6   KT: VKA>2-4 ****
+ 324 >> S:U^SY;   VKA<1                  VR2   T1 C PKT: VKA<1 1-0   KT: VKA<2 ******
+ 326 WM=13 WMI=3  C10
+ 328 << S:U^S<1->AYB/.I(1)-N.I(1)/.(6)-+(6)/UVSAYB;   V0    T1 S1 S2 T2
+ 329 >> S:N.+(7)-.+(5)/0-.+(6);                       V0 VU    S1 S2
+ 334 REPEND
+
+ 338 JA1=1120(1102-1120)   C CSIPKE PASSZE
+ 340               PM:1:4(.*)FA<.*>;   C*************NINCS JELOLES
+ 346 WM=18
+ 348 VJA^0
+ 350 RBEG*RS1
+ 352 REP*5
+ 354 << S:U^S<1->YI/.+(1)-IY*(1)/+(6)-*(6)/UVSI.;            VR1        T1 S1 S2 T2
+ 356 >> S:U^S<1->AI/.+(1)-AI*(1)/+(6)-*(6)/UVSI.;            VL1        T1 S1 S2 T2
+ 358 REPEND
+ 360 REND
+ 362 << S:U^S<1->YI/.+(1)-IY*(1)/+(6)-*(6)/UVSIY.;           VR1        T1 S1 S2 T2
+ 364 >> S:R-0;                                               V0   VU       S1
+ 366 END
+
+999 <> W0 S0 VU
+
+1100 WWWWWWWWWWWW
+1102 I+I+I*.*.*.*
+1104 I+I+Y*.*.*.*
+1106 A+I+I*.*.*.*
+1108 I+I+Y*.*.*.*
+1110 A+I+I*.*.*.*
+1112 .*.*.*I+I+I*
+1114 .*.*.*A+I+I*
+1116 .*.*.*I+I+Y*
+1118 .*.*.*A+I+I*
+1120 .*.*.*I+I+Y*
+1122 WWWWWWWWWWWW
+1100 WWWWWWWWWWWW
+1102 I+I+I+.*.*.+
+1104 I+I+Y+.*.*.+
+1106 A+I+I+.*.*.+
+1108 I+I+Y+.*.*.+
+1110 A+I+I+.*.*.+
+1112 .*.*.+I+I+I+
+1114 .*.*.+A+I+I+
+1116 .*.*.+I+I+Y+
+1118 .*.*.+A+I+I+
+1120 .*.*.+I+I+Y+
+1122 WWWWWWWWWWWW
+1124 WWWWWWWWWWWWWWWWWWWWWWWWWWW
+1126 B.B.B.A.B.S.B.B.B.Y.B.Y.B.B.
+1128 B.B.A.B.A.B.A.B.Y.B.Y.B.Y.B.
+1130 B.A.B.A.B.A.A.B.Y.Y.B.Y.B.Y.
+1132 B.B.A.B.A.A.A.B.Y.Y.Y.B.Y.B.
+1134 B.A.B.A.A.A.A.B.Y.Y.Y.Y.B.Y.
+1136 B.B.A.A.A.A.A.B.Y.Y.Y.Y.Y.B.
+1138 B.A.A.A.A.A.A.B.Y.Y.Y.Y.Y.Y.
+1140 I.I.I.I.I.I.I.I.I.I.I.I.I.I.
+1142 WWWWWWWWWWWWWWWWWWWWWWWWWWWW

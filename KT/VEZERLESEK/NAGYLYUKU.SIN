@@ -1,0 +1,57 @@
+   1 C NAGYYUKU PROBA:2 FELE VEZERLES-2FELE JAC. (KISEBB, VAGY NAGYOBB LYUK)
+  10 NP1=14.4;           C:MINTA 
+  18 NP4=12.6            C:LEVALASZTAS-------------
+  22 NP3=11.2;           C:REX PASSZE
+  40 START 
+  42 YG:6/256;
+  44 WM=20 WMI=7
+  46 << S:D.I-DI./DI.-D.I;	          Y:2/5; 	ML     NP4-4   VU   V0	   S1 S2
+  56 >> S:D.I-DI./UVND.I;	          	Y:2;    ML                 	      S1    T2
+  58 << S:R-0/UVNDI.;                        ML                        S1    T2
+  64 >> S:R-R;                       Y:6;    ML             V0         S1
+  66 << S:R-0/0-R;                   Y:6/0;  ML                        S1 S2
+  74 >> S:R-R/R-0;                   Y:2/5;  ML     NP3-3              S1 S2
+  86 << S:0-R/R-R;                           ML     NP3-3              S1 S2
+
+  94    RS1=9   C U
+ 100 JA1=1016(1002-1016)              CC**VAGY*****1
+ 100 JA1=1116(1102-1116)              CC**VAGY*****2
+ 110 PA:<JA1>;
+ 131 FA=1-139; PM:<.>8:4(IIFA)II;   C**U**
+ 132 WM=0
+ 133 >> S:UVS.;            VKB>3       T2
+ 134 << S:U^SN.;           VKB    T1
+ 140 WM=22
+ 150 NP1-1
+ 160 >> S:.-N./.-N./UVNYAW;                    S1 S2 T2
+ 170 RBEG*RS1
+ 172 WM=0
+ 174 << S:U^NA;                                       VL1  VKB>4  T1
+ 176 >> S:U^NY;                                       VR1         T1           C**VAGY*****1
+ 176 >> S:U^NWY;                                       VR2         T1           C**VAGY*****2
+ 178 WM=22
+ 180 << S:.Y-IAW;                                   VU V0   NP1-1      S1 S2
+ 182 >> S:U^S<1->Y/<1->.-N./<1->.-N./UVN<1->AYW;                    T1 S1 S2 T2
+ 184 REND
+ 220 GOSUB 172-180
+ 225 >> S:U^S<1->Y/<1->.-N./<1->.-N./UVNDI.;                   T1 S1 S2 T2
+ 245 << S:U^ND.I/DI.-D.I;                            Y:5;  NP4-4   T1 S1
+ 250 >> S:DI.-D.I/UVND.I;                                             S1    T2
+ 255 END
+1002 IIII
+1004 IIII
+1006 IIYA
+1008 IIYA
+1010 IIII
+1012 IIII
+1014 YAII
+1016 YAII
+
+1102 IIIIII
+1104 IIIIII
+1106 IIIWYA
+1108 IIIWYA
+1110 IIIIII
+1112 IIIIII
+1114 WYAIII
+1116 WYAIII

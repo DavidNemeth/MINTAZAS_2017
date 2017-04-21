@@ -1,0 +1,75 @@
+ez a jo.
+   1 C PONCSO 3 (KOCKAS HALO) 'V'VAGY'O'NYAK:1/1 -ES NYAK/PANTOK-NYAKAK 
+   1 C ELTERES A PONCSO 2-TOL:A TUKET NEM KELL A SIN ALA TOLNI,CSAK A SZEMEKET LEDOBNI.
+   1 C  ROJT SZOROSSAG A 8-ASON: ELOL:13-00 HATUL:00-14
+   2 C 6-318,TU.A TOBBI NEM DOLGOZIK:1-5-IG,ES 319-TOL VEGIG. A SZELFESZITO NEM KELL!
+   2 C HAROMSZOGLETU PONCSO: 318 TU   120CM
+   3 C                       RS1=155  120CM A SZELFESZITO NEM KELL!
+   4 CLAP:0.6+NYAK:0.016+ROJT:0.09=0.7KG->480FT ELADAS 1000FT MARAD KB.:250FT..600/H/GEP
+   5 C ROJT:1KG. 3 ORA ALATT JON LE.
+   6 C 1LAP=1PONCSO:23'
+   7 C       PONCSO               NP3=         NP1=          RS1=  
+   8 C       318 TU  27MIN        -->          <--
+   9 C-----------------------+------------+------------+------------+-------------+
+  10 C 3X16/1 PAMUT(FEKETE):      11.6       14.6          144   MINDEN SZAL ATORSOZVA!
+  11 C-----------------------+------------+------------+------------+-------------+
+  12 C 2X16/1 PAMUT+1BRILL:       11.5       14.4          155 
+  13 C     EGY,VAGY HA SZAKITJA,MINDKET SZAL PAMUT ATORSOZVA.
+  14 C     FOLEG 2.SZV. A JOBB SZELEN SZAKITJA GYORSBAN, HA NINCS ATPARAFINOZVA!
+  15 C     SPRODEBB FONALNAL(PL.:FUST)NP1=14.5
+  16 C-----------------------+------------+------------+------------+-------------+
+
+  20 NP1=14.6   C:MINTA 
+  22 NP3=11.6   C:MINTA
+  24 NP4=13.0   C:LEVALASZTAS
+  26 NP2=11.5   C:1/1-ES PASSZE
+  40 START 
+  50 YG:6/256;
+  60 JA1=1001(1000-1001)
+  62 PA:<JA1>;
+  64 FA=1-308  C 1001  .I.I.I.I.I.I.I.I
+  66               PM:+++++.IFA.I. 319:<+>;
+  68 WM=15
+  70 <<	S:I-./.-I;		              Y:5/2;	  NP4-4  VU V0	    S1 S2
+  72 >>	S:I-./UVS.;      	        Y:5;	  	                  S1    T2
+  74 <<	S:U^SI/.-I;		                 		  	NP1-1         T1 S1
+  76 >>	S:U^S./I-I;		             Y:6;	    NP0-   VR1	   T1	   S2
+  78 <<	S:N+-0/0-I/N+-0;		        Y:0/6/0; NP2-2  VU	    T1 S1 S2
+  80 >>	S:.-I;		                  Y:2;	           VU V0     S1
+  82 << S:0-I;                                    VU        S1
+  84 >> S:.-0;                    Y:5;            VU        S1
+ 100 C ---1LAP 6-318 TU---------------------
+ 115 PM:+++++..FA... 319:<+>;
+ 125 << S:.-I/UVS<1->.Y;                                       S1    T2
+ 130 WM=15
+ 132                                             
+ 135 >> S:U^S*/.IY-*/.Y-*I;            Y:5/2;             T1 S1 S2
+ 140 RBEG*RS1
+ 145 << S:.IY-*I;                    NP1-1       V0          S1 S2
+ 155 >> S:.Y%I-*%I;                  NP3-3       VR1         S1 S2
+ 165 REND
+ 170 GOSUB 145
+ 175 >> S:N+-0/0-N+;                                         S1 S2
+ 180 END
+
+ 200 C UJ KOCKAK (PROBA)
+ 202 RBEG*RS1
+ 204 << S:.IY-I;                    NP1-1       V0          S1 S2
+ 206 >> S:.Y%I-%I;                  NP3-3       VR1         S1 S2
+ 208 REND
+
+ 202 RBEG*RS1
+ 204 << S:.IY-I;                    NP1-1       VL1         S1 S2
+ 206 >> S:.Y%I-%I;                  NP3-3       VR1         S1 S2
+ 208 REND
+
+ 1000 *IY
+ 1001 .I.I.I.I.I.I.I.I
+
+
+
+
+
+
+
+

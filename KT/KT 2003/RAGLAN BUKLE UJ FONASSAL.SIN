@@ -1,0 +1,180 @@
+1C ZSEBES BUKLE 3X3:10 SOR/8 LOKET -----2 VAK SZEM VAN BENNE-------
+1C PAMUTOS VARIACIO:KT2004/3X3PAMUT TUNIKA
+1C ABUKLE EZT KOTI A LEGBIZTONSAGOSABBAN
+
+C     *******A CNCA-RA IS MEG LEHETNE CSINALNI!!! NAGYON BIZTONSAGOS FONAS.*********
+
+1C                              E: RS17=0         H: RS17=0         U: RS17=0
+1C                               RS1<40          39<RS1<76              RS1>75   
+1C          RAGLAN UJJU TUNIKA:   70CM             70CM                70CM
+1C          AZ UJJA SZABASI HULLADEKABOL ZSEBET LEHET CSINALNI
+1C--------------------------+-----------------+------------------+----------------+
+1C 1 TOROK BUKLE+HB:NPK=+0.4-0.5 74CM TUN: 26              66     U:CP SLAG/CNCA2004
+1C--------------------------+-----------------+------------------+----------------+
+  10 NP1=13.8 C MINTA ELOL      HATUL: SZELEKTIV  SZOROSSAG:110-120 SOR
+  11 NP9=11.8 C MINTA ELOL(14)
+  12 NP4=12.0 C LEVALASZTAS
+  13 NP2=10.4 C 1/1
+  13 NP8=8.4 C 1/1(14)
+  
+  40 START
+  45 WM=18; WMI=7
+  50 YG:6/23456;
+  60 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+  62 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+  64 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+  66 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+  68 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+  70 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+  72 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+  77 >>	S:DI.-D.I/0-D.I;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+  78 << S:DI.-0/DI.-D.I;                                       VU      S1 S2
+  80 REP*4 C4
+  82 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+  84 << S:DI.(2)-D.I/DI.-D.I;                             VU           S1 S2
+  90 REPEND
+  95 IF RS1>40 GOTO 400
+ 100 JA1=1104;  C  1VAR:JA1=1004;  2VAR:JA1=1104;****************************
+ 102 PA:JA1;
+ 104 FA=6-184
+ 106 PM:<.>7:3(FA..);
+
+ 110 JA2=1600;  C  1VAR:JA2=1500;  2VAR:JA2=1600;******************************
+ 112 PANP:1:JA2;
+ 116 PMNP:<.>7:3(FA..);
+ 118 NPJ1:.=13.8 I=14.0 ; C MINTA HATUL
+ 150 C-----MINTA-----
+ 155 VJA^0
+ 160 >> S:DI.-D.I/DI.(8)-D.I/UVN.;                        S1 S2 T2
+ 162 WM=22
+ 165 << S:U^NN./.-N./.-N.;           Y:2/5;   NP1-1     T1 S1 S2
+ 170 RBEG*RS1 C***  FONASOK SZAMA  ...... ...OTBW+G... ................................
+ 172 WM=22
+ 174 >> S:.(1)-N.(J1)/.(9)-N.(J1);   Y:2/5;  V0 VU          S1 S2
+ 176 << S:.(1)-N.(J1)/.(1)-N.(J1);              VU          S1 S2
+ 178 >> S:.(1)-N.(J1)/.(9)-N.(J1);              VU          S1 S2
+ 180 << S:.(1)-N.(J1)/.(1)-N.(J1)/UVNW+G;                   S1 S2 T2
+ 181 WM=18
+ 182 >> S:.O-IOTB/O-0;                     Y:2/0;           S1 S2
+ 184 << S:.W+G-IG/0-G/UVNOTB;                               S1 S2 T2
+ 186 WM=0
+ 188 >> S:U^NOTB;                            VL3         T1
+ 190 <<  S:U^NW+G;                            VR3         T1
+ 200 REND C******************** ...OTBW+G *******************************
+ 202 >> S:.(1)-N(J1)./.(9)-N.(J1)/UVSDI.;  Y:2/5; V0              S1 S2 T2
+ 204 << S:U^SD.I/DI.-D.I;                   Y:2;  NP4-4       T1 S1
+ 206 >> S:DI.-D.I/UVSD.I;                                        S1    T2
+ 208 END
+ 400 C ***********H-U********
+ 402 NP1=13.8 C H MINTA
+ 404 WM=22
+ 406 IF RS1>75 WM=18 C U MINTA
+ 408 IF RS1>75 NP1=12.6 C U MINTA
+ 410 IF RS1>75 NP9=10.6 C U MINTA
+ 412 JA1=1002;
+ 414 IF RS1>75 JA1=1000;
+ 416 PA:<JA1>;
+ 418 FA=7-182
+ 420 PM:<.>10:3(FA...);
+ 422 IF RS1>75 FA=1-135
+ 424 IF RS1>75 PM:<.>6:4(FA.);
+ 426 >> S:DI.-D.I/DI.(8)-D.I/UVN.;                         S1 S2 T2
+ 428 << S:U^NN./.-N./.-N.;           Y:2/5;   NP1-1     T1 S1 S2
+ 445 RBEG*RS1
+ 450 >> S:.-N./.(9)-N.;                         VU         S1 S2
+ 455 << S:.(1)-N./.-N.;                         VU         S1 S2
+ 460 REND C******************** ...OTBW+G *******************************
+ 465 >> S:.-N./.(9)-N./UVSDI.;                                   S1 S2 T2
+ 470 << S:U^SD.I/DI.-D.I;            Y:2;       NP4-4         T1 S1
+ 475 >> S:DI.-D.I/UVSD.I;                                        S1    T2
+ 480 END
+
+ 600 C 1/1 PASSZE GUMIVAL (NYAKHOZ, FELKORIVES ZSEBHEZ)
+ 602 NP1=13.8 C MINTA
+ 604 NP9=11.8 C MINTA(14)
+ 606 NP4=12.0 C LEVALASZTAS
+ 608 NP2=10.5 C 1/1
+ 610 NP8=8.5 C 1/1(14)
+ 612 START
+ 614 WM=20; WMI=7
+ 616 YG:6/23456;
+ 618 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+ 620 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+ 622 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+ 624 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+ 626 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+ 628 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+ 630 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+ 632 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+ 634 << S:0-D.I;                     Y:6;    ML                VU      S1
+ 636 >>                                      ML                VU      S1
+ 638 REP*3 C
+ 640 << S:DI.(2)-D.I/DI.-D.I;        Y:2/5;               VU           S1 S2
+ 642 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+ 644 REPEND
+ 646 << S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+ 648 >> S:U^NR/0-R/0-R;              Y:2/5;         NP1-1           T1 S1 S2
+ 650 END
+
+ 700 C 1/1 PASSZE GUMI NELKUL (FUGGOLEGES ALZSEBHEZ REP*3), ALLO NYAKHOZ(REP*18)
+ 702 NP1=13.8 C MINTA
+ 704 NP9=11.8 C MINTA(14)
+ 706 NP4=12.0 C LEVALASZTAS
+ 708 NP2=10.0 C 1/1
+ 710 NP8=8.0 C 1/1(14)
+ 712 START
+ 714 WM=20; WMI=7
+ 716 YG:6/23456;
+ 718 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+ 720 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+ 722 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+ 724 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+ 726 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+ 728 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+ 730 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+ 732 >>	S:DI.-D.I/DI.-0;		           Y:2/5;	 ML     NP2-2      VU      S1 S2
+ 734 << S:0-D.I/DI.-D.I;                     ML                VU      S1 S2
+ 736 REP*13 C 3-18
+ 738 >> S:DI.-D.I/DI.(8)-D.I;                             VU           S1 S2
+ 740 << S:DI.(2)-D.I/DI.-D.I;                             VU           S1 S2
+ 742 REPEND
+ 744 >> S:U^NDI./0-R/0-R;                               VU          T1 S1 S2
+ 746 END
+
+ 800 C************************  PODROS NYAK *********************
+ 802 NP1=13.8 C MINTA
+ 804 NP9=11.8 C MINTA(14)
+ 806 NP4=12.0 C LEVALASZTAS
+ 808 NP2=10.4 C 1/1
+ 810 NP8=8.4 C 1/1(14)
+ 812 START
+ 814 WM=20; WMI=7
+ 816 YG:6/23456;
+ 818 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	 ML     NP4-4   V0	VU      S1 S2
+ 820 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;    ML                        S1    T2
+ 822 <<	S:U^ND.I/DI.-D.I;		              			 ML                     T1 S1
+ 824 >> S:DI.-D.I;                   Y:5;    ML             VR1        S1
+ 826 << S:U^NDI./0-D.I;                      ML     NP0-            T1 S1
+ 828 >> S:DI.-D.I;                   Y:6;    ML             V0 VU      S1
+ 830 << S:0-D.I/R-0;                 Y:6/0;  ML                VU      S1 S2            
+ 832 >>	S:DI.(2)-D.I(2)/DI.(8)-D.I;		Y:2/5;	                   VU      S1 S2
+ 834 << S:U^NDI./0-R/0-R;                                 NP1-1     T1 S1 S2
+ 836 >> S:0-R;             S1 S2
+ 838 <<                    S1 S2
+ 840 >>                    S1 S2
+ 842 << S:0-R/0-R/UVND.I;                                         S1 S2 T2
+ 844 REP*2
+ 846 >> S:D.I(2)-DI.(2)/D.I(8)-DI.(2);                VU          S1 S2
+ 848 << S:D.I(2)-DI.(2)/D.I(2)-DI.(2);                VU          S1 S2
+ 850 REPEND
+ 852 >> S:D.I(2)-DI.(2)/D.I(8)-DI.(2)/UVNDI.;                     S1 S2 T2
+ 854 END
+1000 I..I
+1002 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII...OTBW+G...IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1004 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+1006 IIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIIIIIIIIIIIIIIIIIIIIIIII.IIIIIIII
+1500 ........................................................................................IIIIIIIIIIII..........................................................................................
+1104 IIIIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIII..OTBW+G..IIIIIIIIIIIIIIIIIIIII
+1600 ...................IIIIIIIIIIII...............IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII................IIIIIIIIIIII....................
+1900 .....*...I.........I.........I.........I.........I.........I.........I.........I.........I....*....I.........I.........I.........I.........I.........I.........I.........I.........I...*
