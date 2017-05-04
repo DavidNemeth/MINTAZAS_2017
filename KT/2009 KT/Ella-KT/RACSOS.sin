@@ -74,13 +74,13 @@ C--------------------------------------------------------------10DB:------------
   56 C IF #100=12  RS17=7          C  70*90   F-T-T NK VAGY M     8        GY:38'   ML:51'   0.66 FUST:ST=12 KT:NPK=-0.2--0.3
   57 C IF #100=15  RS17=1          C  45*58   2PAR  H.UJJA        5        GY:26'   ML:34'   0.43
 C--------------------------------------------------------------------------------------------------------------------
-  58  IF #100=39  RS17=7          C  70*90   F-T-T NK VAGY M                           43'   0.63
-  59  IF #100=31  RS17=4          C  45*45   2PAR  3/4 UJJA                            22'   0.33
+  58 C IF #100=39  RS17=7          C  70*90   F-T-T NK VAGY M                           43'   0.63
+  59 C IF #100=31  RS17=4          C  45*45   2PAR  3/4 UJJA                            22'   0.33
 C                                                                          PODROS PANT:      0.03
-  60  IF #100=26  RS17=7          C  70*90   F-T-T NK VAGY M                       SUM:45'   0.7        K NPK=0 WM%=5 FEKETE 04.02.
-  61  IF #100=18  RS17=4          C  45*45   2PAR  3/4 UJJA 
+  60 C IF #100=26  RS17=7          C  70*90   F-T-T NK VAGY M                       SUM:45'   0.7        K NPK=0 WM%=5 FEKETE 04.02.
+  61 C IF #100=18  RS17=4          C  45*45   2PAR  3/4 UJJA 
 
-  62  IF #100=13  RS17=7          C  70*90   F-T-T NK VAGY M 
+  62  IF #100=7  RS17=7          C  70*90   F-T-T NK VAGY M 
   63  IF #100=5   RS17=4          C  45*45   2PAR  3/4UJJA                    
 C------------------------------------------------------------------------------------------------------------
  
@@ -89,10 +89,10 @@ C-------------------------------------------------------------------------------
   69 C IF #100=5   RS17=8          C  45*30   2PAR  R.UJJA     14'       
 C*****RS2=0-4 FINOMBEALLITAS: AZ RS1 NEGYEDE***********************************  
   70 IF RS17=51 GOTO 500 C 2/1 KK PANT                   KESZ MERET:
-  73 IF RS17=7  RS1=12  RS2=3  RS19=0   C F-T-T NK VAGY M  70*90CM  42'     RS1=12   RS2=1-2  - KEK:RS1=12 RS2=3-4
+  73 IF RS17=7  RS1=12  RS2=2  RS19=0   C F-T-T NK VAGY M  70*90CM  42'     RS1=12   RS2=1-2  - KEK:RS1=12 RS2=3-4
   74 IF RS17=1  RS1=8   RS2=1  RS19=4   C UUUU  HU         50*60CM  29'     RS1=8    RS2=0-3
   75 IF RS17=8  RS1=4   RS2=1  RS19=4   C UUUU  RU         50*30CM  14'     RS1=4    RS2=1-2
-  76 IF RS17=4  RS1=6   RS2=2  RS19=4   C UUUU 3/4U        50*45CM          RS1=6    RS2=1-2
+  76 IF RS17=4  RS1=6   RS2=1  RS19=4   C UUUU 3/4U        50*45CM          RS1=6    RS2=1-2
 C---------------------------
   77 IF RS17=9  RS1=11  RS2=3  RS19=3   C T-T-T MELLENY    60*77CM  36'     RS1=11   RS2=0-3
   77 IF RS17=9  RS1=13  RS2=3  RS19=3   C T-T-T MELL.V.NK  65*90CM              13        3

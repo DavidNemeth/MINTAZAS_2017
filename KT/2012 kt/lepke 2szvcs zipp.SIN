@@ -1,5 +1,10 @@
  C A JACOT NEM SZABAD KITOMORITENI!!!!!!!!!!!!!!!!!
 
+ 1 Nem szabad kotni!
+ 1500ft kell minimum!!!! 017.04.22.:Ellával beszéltem, kérdéses, a vevõvel meg kell beszélnie
+
+1C A NÉMET/ZIPP LEPKE S-3XL gyorsabb!!!!!!
+
  C LEPKES - 2SZVCS, ZIPPES, KAPUCNIS, ZSEBES
 
    1 C JAC.:R2012/LEPKE     
@@ -18,7 +23,7 @@ C ZIPPES-KAPUCNIS-FUZOS VALTOZAT (TEST ES KAPUCNI:FUZO) 55X64CM. ZIPP:50CM
 
 C  KT: WM%=0   NPK=0
 C PKT: WM%=-10 NPK=0
-C  UJ: WM%=0   NPK=0
+C  UJ: WM%=15  NPK=0
 C FEKETE: NPK=0.6
 
   40 START        
@@ -37,34 +42,34 @@ C FEKETE: NPK=0.6
   67 CCCCCC IF #100=5  RS17=3         C RU      CS 11' (5 VAGY 4 LAPOS - BEALLITAS:108,190
 
 C****** KAPUCNIS:55X65CM. ZIPP:55CM ************************KESZEN:**VASALVA****
-  68  IF #100=17 RS17=7         C 12DB ZSEB                  14*14    15*15CM
-  70  IF #100=15 RS17=6         C 3DB KAPUCNI                 30         33CM
-  72 C IF #100=11 RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65     2*105*70
-  74 C IF #100=5  RS17=5         C U-H-H-U CS 2SZV.
-  76  IF #100=11 RS17=8         C U-E-H-U CS 2SZV.1SZV-VEL
+  68  IF #100=25 RS17=7         C 12DB ZSEB                  14*14    15*15CM
+  70  IF #100=22 RS17=6         C 3DB KAPUCNI                 30         33CM
+  72  IF #100=8  RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65     2*105*70
+  74  IF #100=16 RS17=5         C U-H-H-U CS 2SZV.
+  76 C IF #100=1  RS17=8         C U-E-H-U CS 2SZV.1SZV-VEL
   92 C************************************************
 
   94 IF RS17=50 GOTO 500          C CSIPKE NYAK
   96 IF RS17=51 GOTO 700          C  GOMBLYUKAS PANT
   98 IF RS17=52 GOTO 700          C  MELLENY PANT
  100 C******************************************* 2LUSI+1TX: PKT:NPK=0 KT:NPK=-0.1                                     
- 102 IF RS17=0  RS19=4 RS1=84          C 4E      CS              
- 104 IF RS17=1  RS19=4 RS1=84          C 4H      CS              
- 106 IF RS17=2  RS19=5 RS1=72          C 5HU     CS 
- 107 IF RS17=3  RS19=5 RS1=37          C 5RU     CS 5/4LAPOS: 37/34  
+ 102 IF RS17=0  IF RS18=0  RS19=4 RS1=84          C 4E      CS              
+ 104 IF RS17=1  IF RS18=1  RS19=4 RS1=84          C 4H      CS              
+ 106 IF RS17=2  IF RS18=2  RS19=5 RS1=72          C 5HU     CS 
+ 107 IF RS17=3  IF RS18=3  RS19=5 RS1=37          C 5RU     CS 5/4LAPOS: 37/34  
 
- 108 IF RS17=7  RS19=1 RS1=15          C 12 ZSEB
- 110 IF RS17=6  RS19=1 RS1=31          C 3 KAPUCNI
- 112 IF RS17=4  RS19=2 RS1=84          C UEEU    CS 2SZVCS. 1SZV-VEL                    
- 114 IF RS17=5  RS19=3 RS1=84          C UHHU    CS 2SZVCS.
- 116 IF RS17=8  RS19=6 RS1=84          C UEHU    CS 2SZVCS. 1SZV-VEL
+ 108 IF RS17=7  IF RS18=7  RS19=1 RS1=15          C 12 ZSEB
+ 110 IF RS17=6  IF RS18=6  RS19=1 RS1=31          C 3 KAPUCNI
+ 112 IF RS17=4  IF RS18=4  RS19=2 RS1=85          C UEEU    CS 2SZVCS. 1SZV-VEL                    
+ 114 IF RS17=5  IF RS18=5  RS19=3 RS1=85          C UHHU    CS 2SZVCS.
+ 116 IF RS17=8  IF RS18=8  RS19=6 RS1=85          C UEHU    CS 2SZVCS. 1SZV-VEL
  130 C************************************************
 C------------------------------------------------------------------------------------------------------------
-C                             TAMAS     TAMAS       TAMAS    LAJT30
+C                             TAMAS     TAMAS       TAMAS    LAJT30        R.FEKETE
 C                             GRAFIT:   FEHER:      NYERS:   FEKETE:
 C------------------------------------------------------------------------------------------------------------
-C        NPK=                   0.2        0          0        0.6
-C       RS1=ZS/K/T           15/31/84   15/31/84   15/31/84  15/32/86                                          
+C        NPK=                   0.2        0          0        0.6           0.2
+C       RS1=ZS/K/T           15/31/84   15/31/84   15/31/84  15/32/86      15/32/85                                     
 C------------------------------------------------------------------------------------------------------------
 
  180 C************581TU**************************************************************
@@ -110,12 +115,12 @@ C-------------------------------------------------------------------------------
  242 C
 
  249 C**************2SZVCS******************************************
- 294 IF RS17=1 GOTO 316
- 295 IF RS17=2 GOTO 316
- 296 IF RS17=3 GOTO 316
- 297 IF RS17=5 GOTO 316
- 298 IF RS17=6 GOTO 316
- 299 IF RS17=7 GOTO 316
+ 294 IF RS18=1 GOTO 316
+ 295 IF RS18=2 GOTO 316
+ 296 IF RS18=3 GOTO 316
+ 297 IF RS18=5 GOTO 316
+ 298 IF RS18=6 GOTO 316
+ 299 IF RS18=7 GOTO 316
 C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  300 C
  302 JA1=1324(1104-1316)     C LEPKE

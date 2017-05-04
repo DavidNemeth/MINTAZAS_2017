@@ -48,7 +48,7 @@ C
   52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
 
   54 C**********NYAK**********************************
-  56 C IF #100=2   RS17=53 C BON PRIX PANT                        2'45
+  56 C IF #100=96   RS17=53 C BON PRIX PANT                        2'45
   57 C IF #100=30  RS17=51 C MELLENY PANT
   58 C IF #100=40  RS17=50 C KK. PANT 5 GOMBLYUKKAL 60CM KK.-HOZ    KT:2'27  (761-766: KISEBB V NAGYOBB LYUK - 24-28-AS GOMBHOZ)
   59  IF #100=30  RS17=50 C KK. PANT 5 GOMBLYUKKAL 60CM KK.-HOZ    KT:2'27  (761-766: KISEBB V NAGYOBB LYUK - 24-28-AS GOMBHOZ)
@@ -63,11 +63,11 @@ C------------------ HU KK ------------------------------------
   70 C IF #100=25  RS17=1         C 2T-2T TOP 59CM                    UJGY:    KTML:30'  PKTML:    04.20.:MOGYI:ST=13 RS17=1
   71 C IF #100=21  RS17=2         C 5HU              RS1=10   0.2KG   UJGY:    KTML:27'  PKTML: 
 
-  72 C IF #100=18  RS17=1         C 2T-2T TOP 59CM                    UJGY:    KTML:30'  PKTML:    04.20.:MOGYI:ST=13 RS17=1
-  73 C IF #100=13  RS17=2          C 5HU              RS1=10   0.2KG   UJGY:    KTML:27'  PKTML: 
+  72 C IF #100=76  RS17=1         C 2T-2T TOP 59CM                    UJGY:    KTML:30'  PKTML:    04.20.:MOGYI:ST=13 RS17=1
+  73  IF #100=57  RS17=2          C 5HU              RS1=10   0.2KG   UJGY:    KTML:27'  PKTML: 
 
-  74  IF #100=39   RS17=1         C 2T-2T TOP 59CM                    UJGY:    KTML:30'  PKTML:    04.20.:MOGYI:ST=13 RS17=1
-  76  IF #100=34   RS17=2         C 5HU              RS1=10   0.2KG   UJGY:    KTML:27'  PKTML: 
+  74  IF #100=56   RS17=1         C 2T-2T TOP 59CM                    UJGY:    KTML:30'  PKTML:    04.20.:MOGYI:ST=13 RS17=1
+  76  IF #100=41   RS17=2         C 5HU              RS1=10   0.2KG   UJGY:    KTML:27'  PKTML: 
 C------------------- MADONNA -----------------------------------
   78 C IF #100=14  RS17=4         C MADONNA T-T-T-T           0.37KG            ML:   UJGY: 
   80 C IF #100=26  RS17=6         C 5 RU              RS1=7    0.16             ML:     GY: 

@@ -1,5 +1,8 @@
 
- C  
+ 1 Nem szabad kotni!
+ 1500ft kell minimum!!!! 017.04.22.:Ellával beszéltem, kérdéses, a vevõvel meg kell beszélnie
+
+
  C LEPKE 2 - GYORSABB MINT A MASIK, MERT A ZSEB HELYEN NEM KOT MINTAT, CSAK 2SZVCS-T
  C A JACOT NEM SZABAD KITOMORITENI!!!!!!!!!!!!!!!!!
 
@@ -16,6 +19,8 @@ C MERET: I FONAL:  I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H
 C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C 55*64  I2*15/1+TXI  0.50KG  I PM:300  I ZIPP.:71 I       I       I         I     I      I       I     I 
 C        I         I *950=475 I  E:250  I 8ZSV.:25 I   70  I  940  I  1200 ! I 260 I  30' I  540  I 21% I NEM SZABAD KOTNI!!
+C                              UJ:400                        1050     1500 2017.04.22.:Ellával beszéltem, kérdéses, a vevõvel meg kell beszélnie
+
 !!!!!! 2016 AUGUSZTUSBAN MEGBESZELTUK, HOGY TOBB LESSZ, MEGIS SZEPTEMBERBEN UGYAN UGY 1200-AL FUZETTE KI A KOVETKEZO ADAGOT.
 !!!%!!! NEM SZABAD KOTNI!!                                                                                              
 C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
@@ -75,12 +80,12 @@ C$$$$$$$$$$$$$$$$$$$ 60*70 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   74 C IF #100=78  RS17=14        C U-H-H-U CS 2SZV.                              
 
 C$$$$$$$$$$$$$$$$$$$ 55*65 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  75  IF #100=22  RS17=7         C 12DB ZSEB  V. 3 GALLER     14*14    16*16CM
-  76  IF #100=18  RS17=6         C 3DB KAPUCNI                 30      65*33CM
-  77  IF #100=13  RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65    2*105*70           27'
-  78  IF #100=6   RS17=5         C U-H-H-U CS 2SZV.                                 19'    
-  79 C IF #100=15  RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65    2*105*70           27'
-  80 C IF #100=30  RS17=5         C U-H-H-U CS 2SZV.                                 19'    
+  75  IF #100=24  RS17=7         C 12DB ZSEB  V. 3 GALLER     14*14    16*16CM
+  76  IF #100=21  RS17=6         C 3DB KAPUCNI                 30      65*33CM
+  77  IF #100=8   RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65    2*105*70           27'
+  78  IF #100=15  RS17=5         C U-H-H-U CS 2SZV.                                 19'    
+  79  IF #100=25  RS17=4         C U-E-E-U CS 2SZV 1SZV-VEL   55*65    2*105*70           27'
+  80  IF #100=26  RS17=5         C U-H-H-U CS 2SZV.                                 19'    
 
 C$$$$$$$$$$$$$$$$$$$ 50*60 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   86 C IF #100=10  RS17=7         C 12DB ZSEB  V. 3 GALLER    14*14    16*16CM
