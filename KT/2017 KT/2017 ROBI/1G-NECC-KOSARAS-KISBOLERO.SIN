@@ -1,5 +1,5 @@
 
-C    1G NECC+KOSARAS CSIPKE - 
+C    1G NECC+KOSARAS KISBOLERO ROBI - 
 C JAC:R2017/NECC-KOSARAS
 
 1C MIKOLCI BOLERO - TUKIHAGYASOS ROMBUSZMINTA -
@@ -7,26 +7,17 @@ C                  PELERIN:2016 KT/MISKOLCI PELERIN
 C                  MADONNA:2012 KT/MADONNA MISKOLCI
 C                  JAC:R2012/MADONNA MISKOLCI
 C 
-C TX:T:1550 PAMUT:T:700  SUM:943
-C    R:1450       R:680      900
+C TX:       PAMUT:       SUM:
+C    R:1550       R:680      930
 C    L:           L:700
 
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
 C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO:      I FT/O: I %:  I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
-C BOLERO XL
-C 58*62   0.33*940   310        150        15        70     545       800     250    30'        500     31%
-C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
 C BOLERO M
-C 46*58   0.29*940   273        150        15        70     508       750     242                       32%
+C 46*48   0.29*930   270         140        15        65     490      750     260      25'      624    34%
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
-C KABAT
-C 60*77   0.39*940   370        170        15        70     625      1000     375    38'        590     37%
-C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
-C MELLENY
-C 60*77   0.27*940   254        160        15        65     494       900     406    30'        812     45%
-C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
-C PLATIR: TX A LYUKBA(FELUL)
+C PLATIR: TX A HOLDBA(ALUL)
 
  
   10 NP4=12.4   C:LEVALASZTAS
@@ -34,8 +25,8 @@ C PLATIR: TX A LYUKBA(FELUL)
   12 NP3=12.8               C 1/1
   13 NP5=13.6              C PASSZE   13.8
   14 NP6=14.3              C PASSZE   14.5
-  16 NP1=13.6              C MINTA HATUL H-U 
-  18 NP8=14.2              C MINTA HATUL  E
+  16 CNP1=13.6              C MINTA HATUL H-U 
+  18 NP8=14.6              C MINTA HATUL  E 14.2 14.4 14.6
   20 NP7=13.0              C MINTA ELOL            
 
   40 START
@@ -47,30 +38,24 @@ C PLATIR: TX A LYUKBA(FELUL)
 
  C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
   53 C IF #100=5  RS17=51	  C  8CM BOLERO PANT (SZELES)   
-C-------------XL BOLERO 58*62----------------------------------------------------- 
-  57 C IF #100=71  RS17=0	   C  E-E-E                   31'     60*63                    0.28       10
-  58 C IF #100=77  RS17=1	   C  H-H-H                   33'     62*66         58*62      0.3        10
-  59 C IF #100=65  RS17=2	   C  U-U-U-U                 22'     50*45                    0.21       15
-  60 C IF #100=56  RS17=50	  C  KESKENY BOLERO PANT     4'                              0.035      30
-C*********60*77 KABAT**********************************SUM:32'* ************************ SUM:0.29 ***********
-  70 C IF #100=7   RS17=3	   C  E-E-E                                
-  72 C IF #100=7   RS17=7	   C  H-H-H                                
-  74 C IF #100=3   RS17=2	   C  U-U-U-U                                         
-  76 C IF #100=33   RS17=50	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
-C*******************************************************SUM:40'************************** SUM:0.39   ***********
+C-------------M BOLERO 46*48----------------------------------------------------- 
+  57  IF #100=8  RS17=0	   C  EEEE                         21'   45*46                    
+  58  IF #100=7  RS17=4	   C  HHHH                         23'   52*52          46*48       
+  59  IF #100=6  RS17=5	   C  UUUUU                        18'   42*42                     
+  60  IF #100=4  RS17=51	  C  SZELES BOLERO PANT            7'                              
+C***********************************************SUM:25'************************** SUM:0.3    ***********
   81 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   82 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
-C----------------------BOLERO:XL
-  83 IF RS17=0  RS19=3 RS18=1 RS1=    C  E-E-E   
-  84 IF RS17=1  RS19=3 RS18=0 RS1=    C  H-H-H  
-C----------------------BOLERO:M
-  83 IF RS17=0  RS19=4 RS18=1 RS1=    C  E-E-E-E-   
-  84 IF RS17=1  RS19=4 RS18=0 RS1=25  C  H-H-H-H  
-C---------------------KABAT:
-  88 IF RS17=2  RS19=4 RS18=0 RS1=16  C  U-U-U-U 42CM
-  89 IF RS17=7  RS19=7 RS18=0 RS1=32  C  H-H-H   77CM 
-  90 IF RS17=3  RS19=3 RS18=0 RS1=32  C  E-E-E   77CM
-  C*********************************************************************************************
+C----------------------BOLERO:M VAGY
+  83 IF RS17=0  RS19=4 RS18=1 RS1=17  C  E-E-E-E    
+  84 IF RS17=4  RS19=4 RS18=0 RS1=18  C  H-H-H-H  
+  85 IF RS17=5  RS19=5 RS18=0 RS1=14  C  U-U-U-U-U 42CM
+C----------------------BOLERO:M VAGY
+  83 IF RS17=0  RS19=4 RS18=1 RS1=34  C  E-E-E-E    
+  84 IF RS17=4  RS19=4 RS18=0 RS1=36  C  H-H-H-H  
+  85 IF RS17=5  RS19=5 RS18=0 RS1=28  C  U-U-U-U-U 42CM
+C*********************************************************************************************
+
  100 IF RS18=2  GOTO 700          C PANT
 
 C-------------------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +66,7 @@ C KT :WM%=0-+5
 C---------------------------------------------------------------------------------------------------------------------------------------------
 CPKT :WM%=           
 C------------------------------------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=+10                         0
+C UJ :WM%=+10                                           0.2
 C----------------------------------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -90,9 +75,9 @@ C-------------------------------------------------------------------------------
  184 PA:1:<JA1> 201:<JA2>;
 
 
- 190 IF RS19=4           FB=20-159;           PM:+<.>7:I4(FBII);                   C*4
- 190 IF RS19=4           FB=21-158;           PM:+<.>7: 4(IIFBII);                 C*4
- 191 IF RS19=5           FB=34-144;           PM:+<.>8: 5(IIFB)II;                 C*5
+ 190 IF RS19=4           FB=18-157;           PM:+<.>7:I4(FBII);                   C*4
+ 190 IF RS19=4           FB=19-156;           PM:+<.>7: 4(IIFBII);                 C*4
+ 191 IF RS19=5           FB=32-142;           PM:+<.>8: 5(IIFB)II;                 C*5
 
  192 IF RS19=7           FB=205-389;           PM:+<.>7:II FB 5I FB 5I FB II ;      C*3H
  193 IF RS19=3  FA=5-189 FB=205-389;           PM:+<.>7:II FA 5I FB 5I FB II ;      C*3E (HATA IS KOTHETO)
@@ -144,38 +129,30 @@ C1010 WWWWWWWW
  306 VJA^0
  308 WM=16
  310 Y:5/5/2/2;
-
-
  312 NP7-8
- 320 RBEG*RS1
- 325 REP*5 
- 340 << S:U^S<1-2->IY*/.+-IY/UVSI*;            V0         T1 S1    T2
- 342 >> S:U^S<1-2->IA*/. -IA/UVSI*;            VL1        T1 S1    T2
- 344 REPEND
- 348 REND
 
+C 320 RBEG*RS1 C VAGY - IGY 10 SOR A CIKLUS
+C 325 REP*5 
+C 340 << S:U^S<1-2->IY*/.+-IY/UVSI*;            V0         T1 S1    T2
+C 342 >> S:U^S<1-2->IA*/. -IA/UVSI*;            VL1        T1 S1    T2
+C 344 REPEND
+C 346 C
+C 348 REND
+
+ 320 RBEG*RS1 C VAGY - IGY CSAK 5 SOR A CIKLUS
+ 325 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
+ 340 <> S:U^S<1-2->IYA*/. -IYA/UVSI*;            VL1        T1 S1    T2
+ 342 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
+ 344 <> S:U^S<1-2->IYA*/. -IYA/UVSI*;            VL1        T1 S1    T2
+ 346 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
+ 348 REND
+ 350 IF #124=1 GOSUB 344
 
  424 << S:U^S<1-2->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S1    T2
  426 >> S:U^ND.I/DI.-D.I;             NP4-4               T1 S1
  428 << S:DI.-D.I/DI.-D.I;            Y:5/2;         VU      S1 S2
  430 >> S:DI.-D.I/DI.-D.I/UVND.I;                            S1 S2 T2
  432 END C************************************************
-
-
-C################################################################################################
- 500 MS
- 501 <> S:U^S<1->I*/. -I/<1->. -I/UVSI*;  Y:5/2;  V0   T1 S1 S2 T2
- 502 Y:5/5/2/2;
- 503 REND
- 504 MS
- 505 <> S:U^S<1->I*/. -I/<1->. -IA/UVSI*; Y:5/2;  VL1   T1 S1 S2 T2
- 506 Y:5/5/2/2;
- 507 REND
-
-
-C################################################################################################
-
-
 
 
  600 C ELEJE PASSZE
@@ -298,4 +275,47 @@ C###############################################################################
 1376 IYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIY
 1378 IAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIA
 1380 IYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1382 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+1300 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+1302 IAIIIIIIIIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1304 II...II...IIIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1306 II.*.II.*.IIIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1308 IIY**IIY**IIIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1310 III*AIII*AIIIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1312 IIIYIIIIYIIIIIIYIYIYIYIYIYIYIYIYIYIYIYII
+1314 ...II...II...IIAIAIAIAIAIAIAIAIAIAIAIAII
+1316 .*.II.*.II.*.IIYIYIYIYIYIYIYIYIYIYIYIYII
+1318 **AII**AII**AIIAIAIAIAIAIAIAIAIAIAIAIAII
+1320 Y*IIIY*IIIY*IIIYIYIYIYIYIYIYIYIYIYIYIYII
+1322 IAIIIIAIIIIAIIIAIAIAIAIAIAIAIAIAIAIAIAII
+1324 II...II...IIIIIYIYIYIYIYIYIYIYIYIYIYIYII
+1326 II.*.II.*.IIIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1328 IIY**IIY**IIIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1330 III*AIII*AIIIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1332 IIIYIIIIYIIIIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1334 IAIIIIIIIIIAIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1336 IYIYIIIIIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIY
+1338 IAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1340 IYIYIYIYIYIYIYIYIYIYIYIYIIIIIYIYIYIYIYIY
+1342 IAIAIAIAIAIAIAIAIAIAIAIIIIIIIIIAIAIAIAIA
+1344 IYIYIYIYIYIYIYIYIYIYII...II...IIIYIYIYIY
+1346 IAIAIAIAIAIAIAIAIAIAII.*.II.*.IIIAIAIAIA
+1348 IYIYIYIYIYIYIYIYIYIYIIY**IIY**IIIYIYIYIY
+1350 IAIAIAIAIAIAIAIAIAIAIII*AIII*AIIIAIAIAIA
+1352 IYIYIYIYIYIYIYIYIYIIIIIYIIIIYIIIIIIYIYIY
+1354 IAIAIAIAIAIAIAIAIAII...II...II...IIAIAIA
+1356 IYIYIYIYIYIYIYIYIYII.*.II.*.II.*.IIYIYIY
+1358 IAIAIAIAIAIAIAIAIAII**AII**AII**AIIAIAIA
+1360 IYIYIYIYIYIYIYIYIYIIY*IIIY*IIIY*IIIYIYIY
+1362 IAIAIAIAIAIAIAIAIAIIIAIIIIAIIIIAIIIAIAIA
+1364 IYIYIYIYIYIYIYIYIYIIII...II...IIIIIYIYIY
+1366 IAIAIAIAIAIAIAIAIAIAII.*.II.*.IIIAIAIAIA
+1368 IYIYIYIYIYIYIYIYIYIYIIY**IIY**IIIYIYIYIY
+1370 IAIAIAIAIAIAIAIAIAIAIII*AIII*AIIIAIAIAIA
+1372 IYIYIYIYIYIYIYIYIYIYIIIYIIIIYIIIIYIYIYIY
+1374 IAIAIAIAIAIAIAIAIAIAIAIIIIIIIIIAIAIAIAIA
+1376 IYIYIYIYIYIYIYIYIYIYIYIYIIIIIYIYIYIYIYIY
+1378 IAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIAIA
+1380 IYIYIIIIIYIYIYIYIYIYIYIYIYIYIYIYIYIYIYIY
 1382 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
