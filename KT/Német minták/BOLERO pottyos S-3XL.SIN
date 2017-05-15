@@ -2,12 +2,11 @@
    1 C POIIYOS BOLERO
    1 C                         
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
-C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I EGYEB I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
+C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I GOZ   I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
-C 3/4U   I 2*15/1 I 0.29KG*  I         I          I       I       I         I     I      I       I32-37I 
-C BOLERO I 1*TX   I*1000=290 I  140    I          I       I 430   I   680   I 210 IML:  'I  786  I  %  I
-C 47CM   I        I* 930=270 I         I          I       I 410   I         I 230 IGY:15'I   -   I     I
-C                  * 910=264                                404               246           984
+C 3/4U   I 2*15/1 I 0.29KG*  I         I          I       I       I  2017.  I     I      I       I     I 
+C BOLERO I 1*TX   I*950=276  I  140    I   5      I  65   I 485   I 05.06.: I 215 I      I  860  I  %  I
+C        I        I          I         I          I       I       I   700   I     IGY:15'I       I     I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C HU     I 2*15/1 I 0.39 KG*  I         I          I       I       I         I     I      I       I32-37I 
 C BOLERO I 1*TX   I*1000=    I  140    I          I       I       I   750   I     I P:  'I       I  %  I
@@ -32,19 +31,20 @@ C--------+--------+----------+---------+----------+-------+-------+---------+---
 
   55 C***********************************DB:(20 KOMPLETTHEZ)*****TOUREN:************MIN:********
 C    --------S-M-L------
-  60C IF #100=45  RS17=50  C BON PRIX     20   30                   39          GY: 6'   ML:7'
-  61C IF #100=12  RS17=0   C EEEEE         4    6                   58          GY:10'   ML:
-  62C IF #100=7   RS17=1   C HHHH          5    8(2)                70          GY:12'   ML:15' 
-  63C IF #100=22  RS17=6   C UUUUU 3/4U    8   12                   61          GY:10'   ML:
+  60C IF #100=45  RS17=50  C BON PRIX     20   30      31           39          GY: 6'   ML:7'
+  60C IF #100=45  RS17=51  C BABOS PANT   20   30      31           39          GY: 6'   ML:7'
+  61C IF #100=12  RS17=0   C EEEEE         4    6       6           58          GY:10'   ML:
+  62C IF #100=7   RS17=1   C HHHH          5    8(2)    8           70          GY:12'   ML:15' 
+  63C IF #100=22  RS17=6   C UUUUU 3/4U    8   12      13(3)        61          GY:10'   ML:
                                                                                                                                                                                                         
-  64 IF #100=7  RS17=51  C BABOS PANT    20                       39                               17.02.15.:   PKT MOGYI NPK=0.1 ST=7     
-  65C IF #100=27  RS17=0   C EEEEE         4                        58         
-  66C IF #100=23  RS17=1   C HHHH          5                        70         
-  67 IF #100=2   RS17=6   C UUUUU 3/4U    8                        61         
+  64 IF #100=20  RS17=51  C BABOS PANT    20                       39
+  65 IF #100=24  RS17=0   C EEEEE         4                        58         
+  66 IF #100=29  RS17=1   C HHHH          5                        70         
+  67 IF #100=37  RS17=6   C UUUUU 3/4U    8                        61         
 
-      -------L-XL-------------SUM:37 -- 19 -- 28 -------------------------------------------------------
+C      -------L-XL-------------------SUM:37 -- 19 -- 28 -------------------------------------------------------
   72 C IF #100=75 RS17=50  C BON PRIX    20
-  73 C IF #100=13 RS17=2   C EEEE         5
+  73 C IF #100=4 RS17=2   C EEEE         5
   74 C IF #100=18 RS17=3   C HHHH         5
   75 C IF #100=8  RS17=5   C UUUUU 3/4U   8
 
@@ -53,7 +53,7 @@ C    --------S-M-L------
   78 C IF #100=11  RS17=3   C HHHH         5
   79 C IF #100=7   RS17=5   C UUUUU 3/4U   8
 
-      -------2XL-3XL-------------SUM:37 -- 19 -- 28 -------------------------------------------------------
+C      -------2XL-3XL----------------- -------------------------------------------------------
   80 C IF #100=75 RS17=50  C BON PRIX    20
   82 C IF #100=14 RS17=7   C EEEE         5
   84 C IF #100=16 RS17=8   C HHH          7
@@ -102,8 +102,8 @@ C-------------------------------------------------------------------------------
  115 IF RS17=52 RS1=1                              C KESKENY PANT EVA BOLEROHOZ
  116 IF RS17=51 RS1=4                              C BABOS BOLERO PANTJA (GYORSABB)
  118 C************************************************
- 120 IF RS17=50 GOTO 700          C BON PRIX - 
- 121 IF RS17=51 GOTO 800          C BABOS PANTJA 
+ 120 IF RS17=50 GOTO 700          C BON PRIX           8,07-8'33
+ 121 IF RS17=51 GOTO 800          C BABOS PANTJA       7'16-7'42
  122 IF RS17=52 GOTO 700          C KESKENY BON PRIX
 
  180 C************581TU**************************************************************
@@ -175,7 +175,7 @@ C$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  700 C BOLEROHOZ SZELESEBB PANT: RS1= A MINTAELEMEK SZAMA 
  700 CRS1=3
 
- 702 C KESKENY SZIMM. CSIPKE NYAK GUMI NELKUL (MINT AZ ANTIE)-1/1 BEKEZDESSEL
+ 702 C KESKENY SZIMM. CSIPKE PANT GUMI NELKUL (MINT AZ ANTIE)-1/1 BEKEZDESSEL
  704 NP4=12.4  C:LEVALASZTAS
  706 NP10=10.8  C:BEKEZDES    10.8
  708 NP11=12.2  C:1/1 KORSLAG 12.2

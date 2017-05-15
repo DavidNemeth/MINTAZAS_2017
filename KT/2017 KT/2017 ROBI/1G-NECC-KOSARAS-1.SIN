@@ -15,7 +15,7 @@ C--------+--------+----------+---------+----------+-------+-------+---------+---
 C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO:      I FT/O: I %:  I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
 C BOLERO M
-C 48*50   0.29*940   273        150        15        70     508       750     242                       32%
+C 46*48   0.26*930   242         140        15        65     465      750     285      25'      684    38%
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
 C KABAT
 C 60*77   0.39*940   370        170        15        70     625      1000     375    38'        590     37%
@@ -45,21 +45,23 @@ C PLATIR: TX A LYUKBA(FELUL)
  C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
   53 C IF #100=5  RS17=51	  C  8CM BOLERO PANT (SZELES)   
 C-------------M BOLERO 48*50-E-H:EGYFORMA(NEM MINTAS)---------------------------------------------------- 
-  57 C IF #100=12  RS17=0	   C  E-E-E-E                                          
-  58  IF #100=5  RS17=1	   C  H-H-H-H                      48*48 VASALVA:52*52              
-  59 C IF #100=19  RS17=5	   C  U-U-U-U-U                    42*42                   
-  60  IF #100=2  RS17=51	  C  SZELES BOLERO PANT                                   
+  57 C IF #100=16  RS17=0	   C  E-E-E-E                              48*48      
+  58 C IF #100=19  RS17=1	   C  H-H-H-H               48*48 VASALVA:52*52              
+  59 C IF #100=14  RS17=5	   C  U-U-U-U-U                             42*42                   
+  60 C IF #100=32  RS17=52	  C  SZELES BOLERO PANT                                   
 C********* KABAT 60*77 ************************************************************************
 C                                                         TM4.8:  TM4.5:
-  66 C IF #100=2   RS17=3	   C  E-E-E                       36'    38'        
-  68 C IF #100=1    RS17=7	   C  H-H-H                       31'    33'
-  70 C IF #100=30  RS17=2	   C  U-U-U-U                     18'    19'                
-  72 C IF #100=82  RS17=50	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
-  74 C IF #100=92  RS17=7	   C  H-H-H                       31'    33'
-  76 C IF #100=7   RS17=2	   C  U-U-U-U                            19'                
+
+  66 C IF #100=10  RS17=3	   C  E-E-E                       36'    38'        
+  68  IF #100=26  RS17=7	   C  H-H-H                       31'    33'
+  70  IF #100=18  RS17=2	   C  U-U-U-U                     18'    19'                
+  72  IF #100=12  RS17=50	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
+  74 C IF #100=40  RS17=7	   C  H-H-H                       31'    33'
+  76 C IF #100=30  RS17=2	   C  U-U-U-U                            19'                
 C******************************************************SUM:36'****38'******************* SUM:0.39   ***********
-  81 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
-  82 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
+  80 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT BON PRIX
+  81 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)BON PRIX        8'
+  82 IF RS17=52        RS18=3 RS1=4    C 8CM BOLERO PANT (SZELES) BABOS PANTJA   7'
 C----------------------BOLERO:M------------------------------KESZEN:--
   83 IF RS17=0  RS19=4 RS18=1 RS1=0   RS2=22  C  E-E-E-E   
   84 IF RS17=1  RS19=4 RS18=0 RS1=0   RS2=23  C  H-H-H-H    48*50
@@ -69,17 +71,18 @@ C---------------------KABAT:-------------------------------------
   90 IF RS17=7  RS19=7 RS18=0 RS1=0   RS2=32  C  H-H-H   77CM 
   92 IF RS17=2  RS19=4 RS18=0 RS1=0   RS2=17  C  U-U-U-U 42CM
   C*********************************************************************************************
- 100 IF RS18=2  GOTO 700          C PANT
+  99 IF RS18=2  GOTO 700          C BON PRIX PANT
+ 100 IF RS18=3  GOTO 800          C BABOS PANTJA
 
 C-------------------------------------------------------------------------------------------------------------------------------------
 C                  ROBI FEHER:     ROBI FEHER:     ROBI FEHER:     ROBI FEKETE:     R.NYERS    L.FEKETE:      R. SOTETKEK    R. BORDO
 C PARAFINOZVA:      +FEHER TX       +FUST TX       +FEKETE TX                                     
 C-------------------------------------------------------------------------------------------------------------------------------------
-C KT :WM%=0-+5                                                         0.1-0.2
+C KT :WM%=0-+5                        -0.2                             0.1-0.2                                     0           -0.1
 C---------------------------------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=           -0.2
+CPKT :WM%=           -0.2                                                             -0.2
 C------------------------------------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=+15                         0                 0              0.2-0.3         -0.1
+C UJ :WM%=+15       -0.1-+0.2            0                 0           0.2-0.3      -0.1-+0.2                       0.2
 C----------------------------------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -91,11 +94,11 @@ C-------------------------------------------------------------------------------
  191 IF RS19=5           FB=234-344;           PM:+<.>8: 5(IIFB)II;                 C*5
 
  192 IF RS19=7           FB=205-389;           PM:+<.>7:II FB 5I FB 5I FB II ;      C*3H
- 193 IF RS19=3  FA=5-189 FB=205-389;           PM:+<.>7:II FA 5I FB 5I FB II ;      C*3E (HATA IS KOTHETO)
+ 193 IF RS19=3  FA=5-189 FB=205-389;           PM:+<.>7:II FA 5I FA 5I FA II ;      C*3E (HATA IS KOTHETO)
 
- 199 IF RS19=3  FA=5-189 FB=205-389; F1=5-97; F2=97-189; PM:+<.>7:II F1 II F1 II F1 II F1 II FB II;
+ 199 C********************************************************************************
+ 199 C JAV:  FA=5-189 FB=205-389; F1=5-97; F2=97-189; PM:+<.>7:II F1 II F1 II F1 II F1 II FB II;
                                      C*3E (HATA IS KOTHETO) JAVITAS FA:E FB:H F1:JOBB FEL F2:BAL FEL
-
  199 C********************************************************************************
 
  200 >>	S:D.I-DI./UVNDI.;   	        Y:2;	    	                    S1    T2
@@ -275,7 +278,53 @@ C1222 WWWWW
  794 << S:R-0;                           VU       S1 
  796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
  798 REPEND
- 800 END  C**********************************
+ 799 END  C**********************************
+
+ 800 C BABOS BOLERO PANTJA
+ 801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
+ 802 NP14=10.6               C:1/1
+ 803 NP11=9.6               C BEKEZDES       9.4-9.8
+ 804 NP12=13.6             C PASSZE        13.6-13.8
+ 805 NP13=13.8              C PASSZE        13.8-14.0
+ 806 C START
+ 807 C YG:6/256;
+ 808 WM=14 WMI=7
+ 811 C <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 812 JA1=1060(1050-1060)   C CSIPKE PASSZE
+ 813 PA:1:<JA1>;
+ 814 FA=1-8; PM:*6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 818 <<	S:UVSDI.;		                      	                               T2
+ 819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 822 Y:2/2/5/5;
+ 823 << S:D.I-0;                                NP13-13 VU           S1
+ 824 >> S:0-DI./UVS.;                                              S1    T2
+ 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S1    T2
+ 826 >> S:N*-0;                          NP13-13         VU           S1
+ 827 VJA^1
+ 829 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 830 REP*3
+ 831 WM=0
+ 832 << S:U^SA;                                   VL1      T1
+ 833 >> S:U^SY;                                   VR1      T1
+ 834 WM=12
+ 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S1 T2 
+ 836 >> S:N*-0;                          NP13-13         VU     S1
+ 837 REPEND
+ 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S1 T2 
+ 839 >> S:N*-0;                          NP13-13         VU     S1
+ 840 REND C*********************************
+C VAGY
+ 841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
+ 842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+C VAGY
+ 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S1 
+ 842 >> S:D.I(4)-DI.(4)/UVSDI.;	                     S1    T2
+ 843 END
 
  999 <> W0 VU V0 S0
 
@@ -284,6 +333,15 @@ C1222 WWWWW
 1006 3IAAIYY
 1008 YI3AIYY
 1010 8W
+
+1048 WWWWWWWW
+1050 IYYYIAAA
+1052 IYYIIIAA
+1054 IYYYIAAA
+1056 IAAAIYYY
+1058 IIAAIYYI
+1060 IAAAIYYY
+1062 WWWWWWWW
 
 1994 A7IY
 1995 3IAIY3I

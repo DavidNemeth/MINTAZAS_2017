@@ -16,13 +16,13 @@ C HU GARNITURA         0.76-0.8                              1220    HU:1800   5
 C                  *970=777      300                 140                                    630
 C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C--------------------------------------------------------------------------------------------
-C 4T.PAMUT+1TX            I   FEHER   FUST     MOGYI    MAKOS    NYERS    L.FEKETE+FEK.TX
+C 4T.PAMUT+1TX            I   FEHER   FUST     MOGYI    MAKOS    NYERS    L.FEKETE+FEK.TX   ROBI PAMUT+TX
 C-------------------------+-----------------------------------------------------------------
 C KT                      I           +0.1               +0.1      
-C-------------------------+------------------------------------------------------------------
-C PKT                     I                    -0.2      +0.1
-C-------------------------+------------------------------------------------------------------
-C UJ WM%=10 NPK=           I          +0.2     -0.2      +0.1   -0.2-0.2           
+C-------------------------+--------------------------------------------------------------------------------
+C PKT                     I        +0.1-+0.2  +0.1-+0.2   0.1     +0.1                          +0.2
+C-------------------------+----------------------------------------------------------------------------------
+C UJ WM%=10 NPK=           I          +0.2               +0.1  -0.2-+0.2           
 C-------------------------+-----------------------------------------------------------------
   10 NP4=13.0   C:LEVALASZTAS
   11 NP2=10.8   C:BEKEZDES,1/1-ES PASSZE
@@ -36,26 +36,26 @@ C-------------------------+-----------------------------------------------------
   52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
 
 C**********PANT****************************************************************************************************************
-  53  IF #100=48   RS17=52        C SLAG PIKO PANT GOMBLYUK NELKUL    2'3       0.045
-  54  IF #100=8    RS17=40        C 2SZVCS NYAK G  3DB V NYAK        1'50      0.03
-  55 C IF #100=15   RS17=42        C 2SZVCS NYAK G NELKUL             1'50
+  53 C IF #100=106 RS17=52        C SLAG PIKO PANT GOMBLYUK NELKUL    2'3       0.045
+  54 C IF #100=76  RS17=40        C 2SZVCS NYAK G ????? 2 VAGY 3????DB V NYAK        1'50      0.03
+  55 C IF #100=15  RS17=42        C 2SZVCS NYAK G NELKUL             1'50
 C******************* 581TU *****************************KG*********************KG************************************************
-  56  IF #100=92  RS17=0         C T EEE     30'                             0.39
-  57  IF #100=91  RS17=1         C T HHH                                     0.39
-  58  IF #100=90  RS17=6         C HUUUU    H22' R13'                        0.19
-  59  IF #100=89  RS17=2         C  M EEE     32'                             0.38
-  60  IF #100=88  RS17=3         C M HHH                                     0.40
-                                                                        SUM:RU:0.70 HU:0.76
-  61  IF #100=55  RS17=0         C T EEE     30'
-  62  IF #100=62  RS17=1         C T HHH  !!!!!!!!!!!!!! 2016.10.26.:KT MOGYORO ST=44 RS17=1 NPK=0.1 !!!!!!!!!!!!
-  63  IF #100=73  RS17=6         C HUUUU     
-  64  IF #100=80  RS17=2         C M EEE     
-  65  IF #100=87  RS17=3         C M HHH     
+  56 C  IF #100=22  RS17=0         C T EEE     30'                             0.39
+  57 C  IF #100=18  RS17=1         C T HHH                                     0.39
+  58 C  IF #100=12  RS17=4         C RUUUU    H22' R13'                        0.19
+  59 C IF #100=12  RS17=2         C M EEE     32'                             0.38
+  60 C IF #100=11  RS17=3         C M HHH                                     0.40
+                                                                       SUM:RU:0.70 HU:0.76
+  63 C IF #100=33 RS17=0         C T EEE     30'
+  64 C IF #100=27 RS17=1         C T HHH  !!!!!!!!!!!!!! 2016.10.26.:KT MOGYORO ST=44 RS17=1 NPK=0.1 !!!!!!!!!!!!
+  65 C IF #100=21 RS17=6         C HUUUU     
+  66 C IF #100=8  RS17=2         C M EEE     
+  67 C IF #100=7  RS17=3         C M HHH     
 
-  66 C IF #100=3   RS17=4         C RUUUU     
+  74 C IF #100=10  RS17=4         C RUUUU     
 
   JAVITAS:
-  70 C IF #100=1   RS17=10        C MELLENY EEH BEALLITAS: 148.SOR  
+  75 C IF #100=1   RS17=10        C MELLENY EEH BEALLITAS: 148.SOR  
 C************************************************
 
   99 IF RS17>49 GOTO 600          C SLAG PIKO PANT
@@ -64,9 +64,9 @@ C************************************************
  C                                ALUL:   KÖZEPEN:  KREPP:  FELUL:
 C --------------------------------6SOR-----6SOR-----8SOR----6SOR----------------------------------------------------------
  102 IF RS17=0  RS19=3   RS15=1   RS1=8    RS2=6    RS3=8   RS4=20   C TUNIKA E-E-E  8/6/6/20 - 8/6/9/20   
- 104 IF RS17=1  RS19=6   RS15=2   RS1=8    RS2=0    RS3=28  RS4=0    C TUNIKA H-H-H  8/0/26/0 - 8/0/29/0   
+ 104 IF RS17=1  RS19=6   RS15=2   RS1=8    RS2=0    RS3=27  RS4=0    C TUNIKA H-H-H  8/0/26/0 - 8/0/29/0   
  105 IF RS17=6  RS19=4   RS15=2   RS1=3    RS2=0    RS3=26  RS4=0    C H U-U-U-U     3/0/25/0 - 3/0/27/0    
- 106 IF RS17=4  RS19=4   RS15=2   RS1=3    RS2=0    RS3=13  RS4=0    C R U-U-U-U                
+ 106 IF RS17=4  RS19=4   RS15=2   RS1=3    RS2=0    RS3=12  RS4=0    C R U-U-U-U                
  110 IF RS17=2  RS19=3   RS15=0   RS1=50   RS2=0    RS3=0   RS4=0    C MELLENY E-E-E 48/0/0/0 - 51/0/0/0      
  112 IF RS17=3  RS19=3   RS15=2   RS1=8    RS2=0    RS3=29  RS4=0    C MELLENY H-H-H 8/0/27/0 - 8/0/30/0          
  JAVITAS- TUNIKA E-H-U, MELLENY E-H:
@@ -87,15 +87,8 @@ C#####################  581 TU #################################################
  138 JA2=1092(1092-1130)        C KREPP
  140 PA:1:<JA2> 1:JA1  201:JA3 401:JA4
 
- 142 IF RS19=3 FA=4-189;             PM:*<.>7:3IFAIIFAIIFA4I;    C*T-T-T
  142 IF RS19=3 FA=4-190;             PM:*<.>7:IIFAIIFAIIFAII;    C*T-T-T
- 143 IF RS19=6 FA=5-189; PM:*<.>7:IIFA5IFA5IFAII;    C*T-T-T CSAK A TUN HATA, HOGY MEG LEHESSEN KULONBOZTETNI A MELLENY HATATOL
- 144 IF RS19=4 FA=27-166;            PM:*<.>7:4(IIFA)I;          C*U-U-U-U
- 146 IF RS19=5 FA=41-152;            PM:*<.>6:5(IFAI);           C*U-U-U-U-U
-
- 142 IF RS19=3 FA=4-189;             PM:*<.>7:3IFAIIFAIIFA4I;    C*T-T-T
- 142 IF RS19=3 FA=4-190;             PM:*<.>7:IIFAIIFAIIFAII;    C*T-T-T
- 143 IF RS19=6 FA=5-189; PM:*<.>7:IIFA5IFA5IFAII;    C*T-T-T CSAK A TUN HATA, HOGY MEG LEHESSEN KULONBOZTETNI A MELLENY HATATOL
+ 143 IF RS19=6 FA=5-189; PM:*<.>7:IIFAII.IIFAII.IIFAII; C*T-T-T CSAK A TUN HATA, HOGY MEG LEHESSEN KULONBOZTETNI A MELLENY HATATOL
  144 IF RS19=4 FA=27-166;            PM:*<.>7:4(IIFA)I;          C*U-U-U-U
  146 IF RS19=5 FA=41-152;            PM:*<.>6:5(IFAI);           C*U-U-U-U-U
 

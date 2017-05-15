@@ -1,9 +1,6 @@
-C    KRIMSZKI
-1C MIKOLCI BOLERO - TUKIHAGYASOS ROMBUSZMINTA -
-C                  PELERIN:2016 KT/MISKOLCI PELERIN 
-C                  MADONNA:2012 KT/MADONNA MISKOLCI
-C                  JAC:R2012/MADONNA MISKOLCI
-C 
+C
+1C  2 GOMBOS HB-PAMUT KABAT 1200FT
+C
 C HB:T:16000 PAMUT:T:700  SUM: 
 C    R:1600        R:680      1000
 
@@ -13,7 +10,8 @@ C--------+--------+----------+---------+----------+-------+-------+---------+---
 C 2GOMBOS KK
 C 55*74     0.48*1000=480         190       25        65     760      1200    440     38'        693    36%
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+-----------+-------+-----+
-C PLATIR: TX A LYUKBA(FELUL)
+
+1C!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! PLATIR: TX A LYUKBA MINDEN SZINNEL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
  
   10 NP4=12.4   C:LEVALASZTAS
@@ -37,12 +35,12 @@ C PLATIR: TX A LYUKBA(FELUL)
   52 <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	    NP4-4 VU V0	       S1 S2
 
 C*********55*74 KABAT***************************************VAALVA:********MIN:****KG:*****
-  60C IF #100=2   RS17=3	   C  T-T-T                        60*78         34'    0.45    
-  62C IF #100=15   RS17=2	   C  U-U-U-U                      45*48         21'    0.28      
-  64C IF #100=63   RS17=50	  C  PANT                                        5'    0.04
-  66C IF #100=1   RS17=3	   C  T-T-T                        60*78         34'    0.45    
-  68C IF #100=2   RS17=2	   C  U-U-U-U                      45*48         21'    0.28      
-  70 IF #100=10   RS17=50	  C  PANT                                        5'    0.04
+  60 CIF #100=52  RS17=3	   C  T-T-T                        60*78         34'    0.45    
+  62 CIF #100=51  RS17=2	   C  U-U-U-U                      45*48         21'    0.28      
+  64 CIF #100=29   RS17=50	  C  PANT                                        5'    0.04
+  66 IF #100=52  RS17=3	   C  T-T-T                        60*78         34'    0.45    
+  68 IF #100=36  RS17=2	   C  U-U-U-U                      45*48         21'    0.28      
+  70 IF #100=24   RS17=50	  C  PANT                                        5'    0.04
 C**************************PASSZE:***SAVOK:***NAGYLYUK(MAX3):***1SZVCS:****38'****0,48*******************************
   81 IF RS17=50 RS19=1     RS1=9     RS2=0                                 C  KK PANT - 2 KISIDA GOMBHOZ GOMBLYUKASZTATNI KELL!
   89 IF RS17=3  RS19=3     RS1=6     RS2=5      RS3=3           RS4=2      C  T-T-T
