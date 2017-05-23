@@ -30,25 +30,25 @@ C PLATIR: TX A LYUKBA(FELUL)
   52 <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	    NP4-4 VU V0	       S1 S2
 
  C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
-  59 C IF #100=30  RS17=51	  C  8CM BOLERO PANT (SZELES)   
+  59 C IF #100=54  RS17=51	  C  8CM BOLERO PANT (SZELES)   
 C------------------------------------------------------------------ 
   60 C IF #100=15  RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035      30
-  61 C IF #100=5   RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
-  62 C IF #100=10  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
-  63 C IF #100=17  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
+  61  IF #100=6  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
+  62 C IF #100=65  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
+  63 C IF #100=49  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
 C                                                                                                -------------
-  64 C IF #100=47  RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035      C KT FUST NPK=-0.2
-  65 C IF #100=84  RS17=0	   C  E-E-E                       28'     60*63                    0.26       
-  66 C IF #100=89  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
-  67 C	IF #100=97  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  64  IF #100=25  RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035      C KT FUST NPK=-0.2
+  65  IF #100=2   RS17=0	   C  E-E-E                       28'     60*63                    0.26       
+  66  IF #100=10  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
+  67 	IF #100=4   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
 C*********60*75 KABAT**********************************SUM:32'* ************************** SUM:0.32 ***********
-  68 C IF #100=30   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
-  69 C IF #100=42   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  70 C IF #100=58   RS17=3	   C  T-T-T  
+  68 C IF #100=29   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
+  69 C IF #100=23   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  70 C IF #100=35   RS17=3	   C  T-T-T  
 
   71 C IF #100=24   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
-  72 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  73 C IF #100=7   RS17=3	   C  T-T-T  F
+  72C  IF #100=60    RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  73C  IF #100=65   RS17=3	   C  T-T-T   
 
   74 C IF #100=95   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
   75 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
@@ -60,8 +60,8 @@ C*********60*75 KABAT**********************************SUM:32'* ****************
 C*******************************************************SUM:38'**************************** SUM:0.39   ***********
   83 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   84 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
-  85 IF RS17=0  RS19=3 RS18=1 RS1=13  C  E-E-E   13-14                          
-  86 IF RS17=1  RS19=3 RS18=0 RS1=13  C  H-H-H   13-14           
+  85 IF RS17=0  RS19=3 RS18=1 RS1=12  C  E-E-E   12-14                          
+  86 IF RS17=1  RS19=3 RS18=0 RS1=12  C  H-H-H   12-14           
   87 IF RS17=2  RS19=4 RS18=0 RS1=8   C  U-U-U-U
   88 IF RS17=3  RS19=3 RS18=0 RS1=17  C  T-T-T   16-17          
   C*********************************************************************************************
