@@ -30,42 +30,48 @@ C PLATIR: TX A LYUKBA(FELUL)
   52 <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	    NP4-4 VU V0	       S1 S2
 
  C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
-  59 C IF #100=54  RS17=51	  C  8CM BOLERO PANT (SZELES)   
+  56 C IF #100=68  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
+  57 C IF #100=68  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50
+  58 C IF #100=68  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
+  59 C IF #100=68  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
 C------------------------------------------------------------------ 
-  60 C IF #100=15  RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035      30
-  61  IF #100=6  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
-  62 C IF #100=65  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
-  63 C IF #100=49  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
+  60 C IF #100=51  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
+  61 C IF #100=55  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
+  62 C IF #100=59  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
+  63 C IF #100=65  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
 C                                                                                                -------------
-  64  IF #100=25  RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035      C KT FUST NPK=-0.2
-  65  IF #100=2   RS17=0	   C  E-E-E                       28'     60*63                    0.26       
-  66  IF #100=10  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
-  67 	IF #100=4   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  64 CC IF #100=16  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.035      C KT FUST NPK=-0.2
+  65 C IF #100=30  RS17=0	   C  E-E-E                       28'     60*63                    0.26       
+  66  IF #100=3  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
+  67 	IF #100=16  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
 C*********60*75 KABAT**********************************SUM:32'* ************************** SUM:0.32 ***********
-  68 C IF #100=29   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
-  69 C IF #100=23   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  70 C IF #100=35   RS17=3	   C  T-T-T  
+  68 C IF #100=51   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
+  69 C IF #100=2   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  70C IF #100=65   RS17=3	   C  T-T-T  
 
-  71 C IF #100=24   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
-  72C  IF #100=60    RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  73C  IF #100=65   RS17=3	   C  T-T-T   
+  71 C IF #100=18   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
+  72 C IF #100=11  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  73 C IF #100=23   RS17=3	   C  T-T-T   
 
-  74 C IF #100=95   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
+  74 C IF #100=95   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
   75 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
   76 C IF #100=59   RS17=3	   C  T-T-T                            
 
-  77 C IF #100=95   RS17=50	  C  KESKENY BOLERO PANT          4'                              0.035
+  77 C IF #100=95   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
   78 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
   79 C IF #100=42   RS17=3	   C  T-T-T                            
 C*******************************************************SUM:38'**************************** SUM:0.39   ***********
+  81 IF RS17=54        RS18=3 RS1=4    C 8CM BOLERO PANT BABOS
+  82 IF RS17=53        RS18=3 RS1=2    C 4CM BOLERO PANT BABOS
   83 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   84 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
-  85 IF RS17=0  RS19=3 RS18=1 RS1=12  C  E-E-E   12-14                          
-  86 IF RS17=1  RS19=3 RS18=0 RS1=12  C  H-H-H   12-14           
+  85 IF RS17=0  RS19=3 RS18=1 RS1=13  C  E-E-E   12-14                          
+  86 IF RS17=1  RS19=3 RS18=0 RS1=13  C  H-H-H   12-14           
   87 IF RS17=2  RS19=4 RS18=0 RS1=8   C  U-U-U-U
   88 IF RS17=3  RS19=3 RS18=0 RS1=17  C  T-T-T   16-17          
   C*********************************************************************************************
-  90 IF RS18=2  GOTO 700          C PANT
+  90 IF RS18=2  GOTO 700          C PANT BON PRIX
+  92 IF RS18=3  GOTO 800          C PANT BABOS
 
 C------------------------------------------------------------------------------    
 C                      T          T           T        T,R        L             R           R       R
@@ -73,9 +79,10 @@ C                    FEHER       FUST       MOGYI     NYERS     FEKETE:       FE
 C-------------------------------------------------------------------------------------------------------------------
 C KT :WM%=0          -0.3        -0.3                -0.3                      -0.2                      
 C-------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=0          -0.3        -0.3                -0.3                                             -0.3
+CPKT :WM%=0          -0.3        -0.3                -0.3                                            -0.3--0.1
 C-------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=5-10       -0.2        -0.2                -0.2         0.1         -0.1-+0.1      -0.2-+0.1             +0.2
+C UJ :WM%=5-10       -0.2        -0.2                -0.2         0.1        -0.1-+0.1    -0.2-+0.1   -0.1-0     +0.2
+C RS1:                                                                          12           13          13       13
 C--------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -201,9 +208,66 @@ C1010 WWWWWWWW
  794 << S:R-0;                           VU       S1 
  796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
  798 REPEND
- 800 END  C**********************************
+ 799 END  C**********************************
+
+ 800 C BABOS BOLERO PANTJA
+ 801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
+ 802 NP14=10.6               C:1/1
+ 803 NP11=9.6               C BEKEZDES       9.4-9.8
+ 804 NP12=13.6             C PASSZE        13.6-13.8
+ 805 NP13=13.8              C PASSZE        13.8-14.0
+ 806 C START
+ 807 C YG:6/256;
+ 808 WM=14 WMI=7
+ 811 C <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 812 JA1=1060(1050-1060)   C CSIPKE PASSZE
+ 813 PA:1:<JA1>;
+ 814 FA=1-8; PM:*6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 818 <<	S:UVSDI.;		                      	                               T2
+ 819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 822 Y:2/2/5/5;
+ 823 << S:D.I-0;                                NP13-13 VU           S1
+ 824 >> S:0-DI./UVS.;                                              S1    T2
+ 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S1    T2
+ 826 >> S:N*-0;                          NP13-13         VU           S1
+ 827 VJA^1
+ 829 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 830 REP*3
+ 831 WM=0
+ 832 << S:U^SA;                                   VL1      T1
+ 833 >> S:U^SY;                                   VR1      T1
+ 834 WM=12
+ 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S1 T2 
+ 836 >> S:N*-0;                          NP13-13         VU     S1
+ 837 REPEND
+ 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S1 T2 
+ 839 >> S:N*-0;                          NP13-13         VU     S1
+ 840 REND C*********************************
+C VAGY
+ 841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
+ 842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+C VAGY
+ 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S1 
+ 842 >> S:D.I(4)-DI.(4)/UVSDI.;	                     S1    T2
+ 843 END
+
 
  999 <> W0 VU V0 S0
+
+1048 WWWWWWWW
+1050 IYYYIAAA
+1052 IYYIIIAA
+1054 IYYYIAAA
+1056 IAAAIYYY
+1058 IIAAIYYI
+1060 IAAAIYYY
+1062 WWWWWWWW
+
 
 1002 WWWWWWWW
 1004 IIIAIYII

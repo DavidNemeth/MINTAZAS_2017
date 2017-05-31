@@ -43,10 +43,10 @@ C PLATIR: TX A LYUKBA(FELUL)
   53 C IF #100=47  RS17=51	  C  8CM BOLERO PANT (SZELES) BON PRIX  
   53 C IF #100=47  RS17=52	  C  8CM BOLERO PANT (SZELES) BABOS  
 C-------------M BOLERO 48*50-E-H:EGYFORMA(NEM MINTAS)----------------------------- ----------------------- 
-  54 CIF #100=53  RS17=0	   C  E-E-E-E                              48*48                 0.25
-  55 IF #100=5   RS17=1	   C  H-H-H-H                              52*52       46*48     0.27
-  56 CIF #100=49  RS17=5	   C  U-U-U-U-U                            42*42                 0.21
-  57 IF #100=17  RS17=52	  C  SZELES BOLERO PANT                                         0.055
+  54 IF #100=37  RS17=0	   C  E-E-E-E                              48*48                 0.25
+  55 IF #100=57  RS17=1	   C  H-H-H-H                              52*52       46*48     0.27
+  56 IF #100=49  RS17=5	   C  U-U-U-U-U                            42*42                 0.21
+  57 IF #100=30  RS17=52	  C  SZELES BOLERO PANT                                         0.055
   58C IF #100=5   RS17=0	   C  E-E-E-E                                 
   59C IF #100=9  RS17=1	   C  H-H-H-H                
   60C IF #100=17   RS17=5	   C  U-U-U-U-U                                              
@@ -65,8 +65,8 @@ C******************************************************SUM:32'****35'***********
   81 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)BON PRIX        8'
   82 IF RS17=52        RS18=3 RS1=4    C 8CM BOLERO PANT (SZELES) BABOS PANTJA   7'
 C----------------------BOLERO:M------------------------------KESZEN:--
-  83 IF RS17=0  RS19=4 RS18=1 RS1=0   RS2=20  C  E-E-E-E            19-22
-  84 IF RS17=1  RS19=4 RS18=0 RS1=0   RS2=21  C  H-H-H-H    48*50   20-23
+  83 IF RS17=0  RS19=4 RS18=1 RS1=0   RS2=19  C  E-E-E-E            19-22
+  84 IF RS17=1  RS19=4 RS18=0 RS1=0   RS2=20  C  H-H-H-H    48*50   20-23
   86 IF RS17=5  RS19=5 RS18=0 RS1=0   RS2=16  C  U-U-U-U-U          16-17
 C---------------------KABAT:-------------------------------KESZEN:-----RS2:-----
   88 IF RS17=3  RS19=3 RS18=0 RS1=15  RS2=24  C  E-E-E    60*77CM     22-24
@@ -99,7 +99,7 @@ C-------------------------------------------------------------------------------
  193 IF RS19=3  FA=5-189 FB=205-389;           PM:+<.>7:II FA 5I FA 5I FA II ;      C*3E (HATA IS KOTHETO)
 
  199 C********************************************************************************
- 199 C  FA=5-189 FB=205-389; F1=5-97; F2=97-189; PM:+<.>7:I F1 II F1 II F1 I F1 II F1 II F1 I;
+ 199   FA=5-189 FB=205-389; F1=5-97; F2=97-189; PM:+<.>7:I F1 II F1 II F1 I F1 II F1 II F1 I;
                                      C*3E (HATA IS KOTHETO) JAVITAS FA:E FB:H F1:JOBB FEL F2:BAL FEL
  199 C********************************************************************************
 

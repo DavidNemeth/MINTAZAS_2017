@@ -15,7 +15,8 @@ C
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
-C !!! PLATIR:TX A LYUKBA !!!!!! MAKOS FORDITVA               
+C  PLATIR: F-F-NY:TX A LYUKBA 
+C        SZINESEK:FORDITVA            
  
   10 NP4=13.0;             C LEVALASZTAS
   11 NP2=9.6               C BEKEZDES
@@ -23,12 +24,12 @@ C !!! PLATIR:TX A LYUKBA !!!!!! MAKOS FORDITVA
   13 NP5=14.0              C PASSZE      
   14 NP6=14.6;             C PASSZE       
 C ALSO NAGYLYUKU MINTA:
-  15 NP7=13.8              C NAGYLYUKU HATUL                                13.6  13.8  14.0  14.2  14.0
-  16 NP8=12.6              C NAGYLYUKU ELOL -                               11.8  12.0  12.2  12.2  12.5
+  15 NP7=14.0              C NAGYLYUKU HATUL                                13.6  13.8  14.0  14.2  14.0   14.0  14.2
+  16 NP8=13.2              C NAGYLYUKU ELOL -                               11.8  12.0  12.2  12.2  12.5   12.8  13.2
   17 NP11=12.0             C NAGYLYUKU ELOL - A SZEMEK FELVETELE A LYUKBAN                          12.0
 C FELSO LEBEGOSZALAS MINTA:
-  18 NP9=14.2              C  HATUL         
-  20 NP10=13.8             C  ELOL           13.0 13.8
+  18 NP9=14.0              C  HATUL               04.2 14.0
+  20 NP10=14.0             C  ELOL           13.0 13.8 14.0
    
 
   40 START
@@ -40,46 +41,48 @@ C FELSO LEBEGOSZALAS MINTA:
 
 
    C**********BON PRIX PANT*********************************************************************************
-  60 C IF #100=30 RS17=52	   C SZELESEBB BOLERO PANT
-  62 C IF #100=15  RS17=50	  C KESKENYEBB  KK   PANT VAGY:TIMI/OVES KK PANTJA
-  64 C IF #100=50  RS17=51	  C  MELLENY PANT (NECCES PANTJA)
+  56 C IF #100=68  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
+  57 C IF #100=68  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50 24-ES GOMBHOZ
+  58 C IF #100=68  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
+  59 C IF #100=68  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
+
   66 C*****************************************************************************************************
 C----------------------- NORMAL KARDIGAN (65CM)-----------------
-  68 C IF #100=15  RS17=50	  C KESKENYEBB  KK   PANT VAGY:TIMI/OVES KK PANTJA
+  68 C IF #100=15  RS17=53	  C KESKENYEBB  KK   PANT BABOS
   70 C IF #100=42  RS17=0	   C T-T-T                             0.40KG  
   72 C IF	#100=8   RS17=4	   C R U-U-U-U                         0.36KG                                   
 C----------------------- 1 GOMBOS(NAGYIDA) KARDIGAN (58*73CM)-----------------
-  74 IF #100=19  RS17=1	   C T-T-T                              0.45KG  
-  75 IF	#100=6  RS17=5	   C 3/4 U-U-U-U                        0.24KG                                   
-  76C IF #100=24  RS17=50	  C KESKENYEBB  KK PANT
-  77C IF #100=25  RS17=1	   C T-T-T                              0.45KG  
-  78C IF	#100=10  RS17=5	   C 3/4 U-U-U-U                        0.24KG                                   
+  74C IF #100=11  RS17=1	   C T-T-T                              0.45KG  
+  75C IF	#100=16  RS17=5	   C 3/4 U-U-U-U                        0.24KG                                   
+  76 IF #100=12  RS17=53	  C KESKENYEBB  KK PANT BABOS
+  77 IF #100=19  RS17=1	   C T-T-T                              0.45KG  
+  78 IF	#100=25  RS17=5	   C 3/4 U-U-U-U                        0.24KG                                   
 C----------------------- XL BOLERO 58*62---CSAK A FELSO MINTA------------------------------------
-  80C IF #100=26  RS17=50	  C KESKENYEBB  KK PANT 
-  81C IF #100=15  RS17=53	  C BOLERO PANT SAJAT PASSZEBOL
-  82CC IF #100=25  RS17=2	   C E-E-E                              0.33KG  
-  83CC IF #100=33  RS17=3	   C H-H-H                                KG      30'
-  84CC IF	#100=15  RS17=6	   C 3/4 U-U-U-U                        0.24KG    19'                               
+  80CCC IF #100=57  RS17=53	  C KESKENYEBB  KK PANT BABOS
+  82CCC IF #100=37  RS17=2	   C E-E-E                              0.33KG  
+  83CCC IF #100=42  RS17=3	   C H-H-H                                KG      30'
+  84CCC IF	#100=32  RS17=5	   C 3/4 U-U-U-U                        0.24KG    19'                               
   85C IF #100=63  RS17=2	   C E-E-E                              0.33KG  
-  86C IF #100=24  RS17=3	   C H-H-H                                KG      30'
-  87	C IF	#100=3   RS17=6	   C 3/4 U-U-U-U                        0.24KG    19'                               
+  86CCC IF #100=58  RS17=3	   C H-H-H                                KG      30'
+  87C IF	#100=3   RS17=5	   C 3/4 U-U-U-U                        0.24KG    19'                               
 C*************************************************************************************************
 C----------------------- NORMAL KARDIGAN (55*65CM)----------------VASALVA------------
   90 IF RS17=0  RS19=3 RS18=0 RS1=17 RS2=54  C T-T-T                      58*70
   92 IF RS17=4  RS19=4 RS18=0 RS1=1  RS2=50  C R UUUU                     45*30
 C----------------------- 1 GOMBOS(NAGYIDA) KARDIGAN (58*73CM)-----VASALVA------------
   94 IF RS17=1  RS19=3 RS18=0 RS1=18 RS2=60  C T-T-T                      60*77
-  96 IF RS17=5  RS19=4 RS18=0 RS1=1  RS2=60  C 3/4 UUUU                   45*47
 C----------------------- XL BOLERO (58*62)-----------------------VASALVA------------
-  98 IF RS17=53 RS19=1 RS18=0 RS1=1  RS2=0   C PANT SAJAT PASSZEBOL                      
- 100 IF RS17=2  RS19=3 RS18=1 RS1=0  RS2=108 C E-E-E                      58*62  REGI:124          
- 102 IF RS17=3  RS19=3 RS18=0 RS1=1  RS2=108 C H-H-H                      60*65       
- 104 IF RS17=6  RS19=4 RS18=0 RS1=1  RS2=75  C 3/4 UUUU                   45*47   
+ 100 IF RS17=2  RS19=3 RS18=1 RS1=0  RS2=103 C E-E-E                      58*62  REGI:124          
+ 102 IF RS17=3  RS19=3 RS18=0 RS1=1  RS2=103 C H-H-H                      60*65       
+ 104 IF RS17=5  RS19=4 RS18=0 RS1=1  RS2=75  C 3/4 UUUU                   45*47   
 C****************************************************************************************************************
+ 110 IF RS17=54        RS18=3 RS1=4    C 8CM BOLERO PANT BABOS
+ 112 IF RS17=53        RS18=3 RS1=2    C 4CM BOLERO PANT BABOS
+ 114 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT BON PRIX
+ 116 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT BON PRIX
 
- 150 IF RS17=50 GOTO 700          C PANT
- 152 IF RS17=52 GOTO 700          C PANT
- 154 IF RS17=51 GOTO 600          C MELLENY PANT
+ 118 IF RS18=2  GOTO 700          C PANT BON PRIX
+ 120 IF RS18=3  GOTO 800          C PANT BABOS
 C------------------------------------------------------------------------------------------------------------------------
 C                        R NYERS        R FEHER      R FEHER    R FEHER    R FEKETE   R KEK   R BORDO
 C                                        +FUST        +FEHER     +PUDER
@@ -87,10 +90,10 @@ C-------------------------------------------------------------------------------
 C                NPK=                      0                      0.1         0.3
 C KT :WM%=0                                                                       
 C--------------------------------------------------------------------------------------------------------------------------
-C                NPK=       0.1                                    0.1                           0.1
-CPKT :WM%=0                                                                                             
+C                NPK=      -0.1-0.1                                0.1                           0.1
+CPKT :WM%=0                                                                                               
 C-------------------------------------------------------------------------------------------------------------------------
-C                NPK=        0.2                        0.1        0.2                   0.3
+C                NPK=      0-0.2             0.2        0.1        0.2                   0.3
 C UJ :WM%=15                                     
 C--------------------------------------------------------------------------------------------------------------------------
  C 
@@ -253,7 +256,7 @@ C  17 NP11=12.0             C NAGYLYUKU ELOL - A SZEMEK FELVETELE A LYUKBAN     
  794 << S:R-0;                           VU       S1 
  796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
  798 REPEND
- 800 END
+ 799 END
 
 ----------VAGY-------------
  786 GOSUB 756-766*2
@@ -264,9 +267,65 @@ C  17 NP11=12.0             C NAGYLYUKU ELOL - A SZEMEK FELVETELE A LYUKBAN     
  794 << S:R-0;                           VU       S1 
  796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
  798 REPEND
- 800 END
+ 799 END
 
- 999 <> W0 VU V0 ML S0
+ 800 C BABOS BOLERO PANTJA
+ 801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
+ 802 NP14=10.6               C:1/1
+ 803 NP11=9.6               C BEKEZDES       9.4-9.8
+ 804 NP12=13.6             C PASSZE        13.6-13.8
+ 805 NP13=13.8              C PASSZE        13.8-14.0
+ 806 C START
+ 807 C YG:6/256;
+ 808 WM=14 WMI=7
+ 811 C <<	S:D.I-DI./DI.-D.I;			 Y:5/2;	    NP4-4 VU V0	       S1 S2
+ 812 JA1=1032(1022-1032)   C CSIPKE PASSZE
+ 813 PA:1:<JA1>;
+ 814 FA=1-8; PM:*6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
+ 815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 818 <<	S:UVSDI.;		                      	                               T2
+ 819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
+ 820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
+ 821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
+ 822 Y:2/2/5/5;
+ 823 << S:D.I-0;                                NP13-13 VU           S1
+ 824 >> S:0-DI./UVS.;                                              S1    T2
+ 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S1    T2
+ 826 >> S:N*-0;                          NP13-13         VU           S1
+ 827 VJA^1
+ 829 RBEG*RS1 C ******  AZSUR PASSZE *********
+ 830 REP*3
+ 831 WM=0
+ 832 << S:U^SA;                                   VL1      T1
+ 833 >> S:U^SY;                                   VR1      T1
+ 834 WM=12
+ 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S1 T2 
+ 836 >> S:N*-0;                          NP13-13         VU     S1
+ 837 REPEND
+ 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S1 T2 
+ 839 >> S:N*-0;                          NP13-13         VU     S1
+ 840 REND C*********************************
+C VAGY
+ 841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
+ 842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
+C VAGY
+ 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S1 
+ 842 >> S:D.I(4)-DI.(4)/UVSDI.;	                     S1    T2
+ 843 END
+
+
+ 999 <> W0 VU V0 S0
+
+1020 WWWWWWWW
+1022 IYYYIAAA
+1024 IYYIIIAA
+1026 IYYYIAAA
+1028 IAAAIYYY
+1030 IIAAIYYI
+1032 IAAAIYYY
+1034 WWWWWWWW
 
 1000 IYAI
 
@@ -275,21 +334,6 @@ C  17 NP11=12.0             C NAGYLYUKU ELOL - A SZEMEK FELVETELE A LYUKBAN     
 1996 IIAAIYYI
 1997 IAAAIYYY
 
-1002 WWWWWWWWWWWWWWWW
-1004 IIIIIIIIIIIIIIII
-1006 IIIIIIIIIIIIIIII
-1008 IIAIAIAIYIYIYIII
-1010 IIIIII.I.IIIIIII
-1012 IAIAIAAIYYIYIYII
-1014 IIIII..I..IIIIII
-1016 IIAIAAAIYYYIYIII
-1018 IIII...I...IIIII
-1020 IAIAAAAIYYYYIYII
-1022 III....I....IIII
-1024 AIAAAAAIYYYYYIYI
-1026 II.....I.....III
-1028 IAAAAAAIYYYYYYII
-1030 WWWWWWWWWWWWWWWW
 
 1002 WWWWWWWWW
 1004 IIIIIIIII
