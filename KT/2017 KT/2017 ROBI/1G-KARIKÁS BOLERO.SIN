@@ -40,14 +40,14 @@ C PLATIR: TX A HOLDBA(ALUL)
   54 C IF #100=5  RS17=51	  C  8CM BOLERO PANT BONPRIX(SZELES)   
   56 C IF #100=5  RS17=53	  C  4CM BOLERO PANT BABOS  
 C-------------M BOLERO 46*48----------------------------------------------------- 
-  58 IF #100=4   RS17=0	   C  EEEE                         21'   45*46                    
-  60 IF #100=8   RS17=4	   C  HHHH                         23'   52*52          46*48       
-  62 IF #100=16  RS17=5	   C  UUUUU                        19'   42*42                     
-  64 C IF #100=20  RS17=52	  C  SZELES BOLERO PANT            7'                              
-  66 C IF #100=67  RS17=0	   C  EEEE                         21'   45*46                    
-  68 C IF #100=68  RS17=4	   C  HHHH                         23'   52*52          46*48       
-  70 C IF #100=6  RS17=5	   C  UUUUU                        19'   42*42                     
-  72 C IF #100=66 RS17=52	  C  SZELES BOLERO PANT            7'                              
+  58  IF #100=24  RS17=0	   C  EEEE                         21'   45*46                    
+  60  IF #100=28  RS17=4	   C  HHHH                         23'   52*52          46*48       
+  62  IF #100=34  RS17=5	   C  UUUUU                        19'   42*42                     
+  64  IF #100=20  RS17=52	  C  SZELES BOLERO PANT            7'                              
+  66  IF #100=35  RS17=0	   C  EEEE                         21'   45*46                    
+  68  IF #100=58  RS17=4	   C  HHHH                         23'   52*52          46*48       
+  70  IF #100=37  RS17=5	   C  UUUUU                        19'   42*42                     
+  72  IF #100=57  RS17=52	  C  SZELES BOLERO PANT            7'                              
 C***********************************************SUM:25'************************** SUM:0.3    ***********
   79 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT          BON PRIX
   80 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES) BON PRIX
@@ -128,8 +128,6 @@ C1006 IIAAIYYI
 C1008 IAAAIYYY
 C1010 WWWWWWWW
 
-
-
  300 CCCCCCCCCCCCCCCCCCCC MINTA CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
  302 JA1=1380(1302-1380) C 
  303 JA2=1220(1202-1220) C 
@@ -139,24 +137,12 @@ C1010 WWWWWWWW
  310 Y:5/5/2/2;
  312 NP7-8
 
-
-C 320 RBEG*RS1 C VAGY - IGY CSAK 5 SOR A CIKLUS
-C 325 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
-C 340 <> S:U^S<1-2->IYA*/. -IYA/UVSI*;            VL1        T1 S1    T2
-C 342 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
-C 344 <> S:U^S<1-2->IYA*/. -IYA/UVSI*;            VL1        T1 S1    T2
-C 346 <> S:U^S<1-2->IYA*/.+-IYA/UVSI*;            V0         T1 S1    T2
-C 348 REND
-C 350 IF #124=1 GOSUB 344
-
- 320 RBEG*RS1 C VAGY - IGY 10 SOR A CIKLUS
+ 320 RBEG*RS1
  325 REP*5 
  340 << S:U^S<1-2->IY*/.+-IY/UVSI*;            V0         T1 S1    T2
  342 >> S:U^S<1-2->IA*/. -IA/UVSI*;            VL1        T1 S1    T2
  344 REPEND
- 346 C
  348 REND
- 350 C
 
  424 << S:U^S<1-2->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S1    T2
  426 >> S:U^ND.I/DI.-D.I;             NP4-4               T1 S1

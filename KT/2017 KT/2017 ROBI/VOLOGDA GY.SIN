@@ -44,52 +44,43 @@ C PLATIR: TX A LYUKBA(FELUL)
   52 <<	S:DI.-D.I/D.I-DI.;		         Y:2/5;	    NP4-4 VU V0	       S1 S2
   52 <<	S:D.I-DI./DI.-D.I;		          Y:2/5;	    NP4-4 VU V0	       S1 S2
 
- C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
-  56 C IF #100=68  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
-  57 C IF #100=68  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50
-  58 C IF #100=68  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
-  59 C IF #100=68  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
-C-------------XL BOLERO 58*62----------------------------------------------------- 
-  56 IF #100=65  RS17=0	   C  E-E-E                   29'     60*63                    0.28       10
-  57 IF #100=60  RS17=1	   C  H-H-H                   30'     62*66         58*62      0.3        10
-  58 IF #100=55  RS17=2	   C  U-U-U-U                 19'     50*45                    0.21       15
-  59 IF #100=47  RS17=50	  C  KESKENY BOLERO PANT     4'                              0.035      30
-  60 IF #100=32  RS17=0	   C  E-E-E                   
-  61 IF #100=27  RS17=1	   C  H-H-H                   
-  62 IF #100=22  RS17=2	   C  U-U-U-U                 
-  63 IF #100=15  RS17=50	  C  KESKENY BOLERO PANT     4'                              0.035      30
-C------------S BOLERO  46*58 ------------------------------------------------------------SUM:0.333
-  64 C IF #100=57  RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
-  65 C IF #100=1   RS17=4	   C  EEEE                                50*59                    0.285
-  66 C IF #100=2   RS17=6	   C  HHHH                          '     52*62         46*58      0.295 
-  67 C	IF #100=4   RS17=5	   C  UUUUU                               40*42                    0.21 
+ C****************************************************
+  53 C IF #100=68  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
+  54 C IF #100=68  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50
+  55 C IF #100=68  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
+  56 C IF #100=30  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
+C-------------XL BOLERO 58*62--------------------------MIN:***VASALVA:******KESZEN:*****KG:********30DB:
+  57 C IF #100=2   RS17=0	   C  E-E-E                   29'     60*63                    0.28       10
+  58 C IF #100=7   RS17=1	   C  H-H-H                   30'     62*66         58*62      0.3        10
+  59 C IF #100=3   RS17=2	   C  U-U-U-U                 19'     50*45                    0.21       15
+  60 C IF #100=6  RS17=50	  C  KESKENY BOLERO PANT     4'                              0.035      30
+  61  IF #100=33  RS17=0	   C  E-E-E                   
+  62  IF #100=39  RS17=1	   C  H-H-H                   
+  63  IF #100=27  RS17=2	   C  U-U-U-U                 
+  64  IF #100=18  RS17=53	  C  KESKENY BOLERO PANT
 C*********60*77 VAGY 60*90 KABAT************************SUM:32'* ************************ SUM:0.29 ***********
 C                                                                                           77CM:    90CM:
-  68 C IF #100=8  RS17=50  C  KESKENY BOLERO PANT          4'                             0.034     0.051
-  69 C IF #100=16 RS17=3	   C  T-T-T                       33'-36     60*80                0.381     0.45   38'-42'
-  70 C IF #100=17 RS17=2	   C  U-U-U-U                     19'-21     45*45                0.21      0.21
-C                                                                                       SUM:0.4       0.46   9'-42'
-  73 C IF #100=18   RS17=51	  C  KESKENY BOLERO PANT
-  74 C IF #100=26   RS17=3	   C  T-T-T    
-  75 C IF #100=6   RS17=2	   C  U-U-U-U
-
-  76 C IF #100=8   RS17=3	   C  T-T-T                                
-  77 C IF #100=3   RS17=2	   C  U-U-U-U                                         
+  69 CIF #100=15  RS17=53   C  KESKENY BOLERO PANT          4'                             0.034     0.051
+  70 CIF #100=5   RS17=3	   C  T-T-T                       33'-36     60*80                0.381     0.45   38'-42'
+  71 CIF #100=4   RS17=2	   C  U-U-U-U                     19'-21     45*45                0.21      0.21
+                                                                                  SUM:0.4       0.46   9'-42'
+  73 IF #100=51   RS17=53	  C  KESKENY BOLERO PANT
+  74 IF #100=65   RS17=3	   C  T-T-T    
+  75C IF #100=25   RS17=2	   C  U-U-U-U 3/4
+  77 IF #100=57   RS17=7	   C  U-U-U-U ROVID                                       
 C*******************************************************SUM:36'-39'************************** SUM:0.39   ***********
   78 IF RS17=54        RS18=3 RS1=4    C 8CM BOLERO PANT BABOS
   79 IF RS17=53        RS18=3 RS1=2    C 4CM BOLERO PANT BABOS
+
   80 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   81 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
 C----------------------BOLERO:XL
-  83 IF RS17=0  RS19=3 RS18=1 RS1=123  C  E-E-E   122-125
-  84 IF RS17=1  RS19=3 RS18=0 RS1=123  C  H-H-H  
-C----------------------BOLERO:M
-  85 IF RS17=4  RS19=4 RS18=1 RS1=115  C  EEEE  
-  86 IF RS17=6  RS19=4 RS18=0 RS1=115  C  HHHH  
-  87 IF RS17=5  RS19=5 RS18=0 RS1=80   C  UUUUU
+  82 IF RS17=0  RS19=3 RS18=1 RS1=123  C  E-E-E   122-126 (122:RICHTUNG FALSH A VEGE))
+  83 IF RS17=1  RS19=3 RS18=0 RS1=123  C  H-H-H  
 C---------------------KABAT:
-  88 IF RS17=2  RS19=4 RS18=0 RS1=80   C U-U-U-U 42CM              3/4U:80(42CM)     RU: 60(30CM)  HU:120(60CM)  
-  89 IF RS17=3  RS19=3 RS18=0 RS1=155  C  T-T-T   77CM 153-157    KABAT:155(77CM)  PULI:130(65CM)  NAGYKABAT:182(90CM)
+  87 IF RS17=2  RS19=4 RS18=0 RS1=78   C 3/4U-U-U-U 42CM              3/4U:75-78(42CM)  HU:120(60CM)  
+  88 IF RS17=7  RS19=4 RS18=0 RS1=50   C  R U-U-U-U 25CM               RU: 47-50(25CM)  HU:120(60CM)  
+  89 IF RS17=3  RS19=3 RS18=0 RS1=155  C  T-T-T   77CM 153-157    KABAT:150-155(77CM)  PULI:130(65CM)  NAGYKABAT:182(90CM)
   C*********************************************************************************************
   90 IF RS18=2  GOTO 700          C PANT
   92 IF RS18=3  GOTO 800          C PANT
@@ -101,9 +92,9 @@ C-------------------------------------------------------------------------------
 C KT :WM%=0-+5          0                 0         -0.1-+0.1             0            -0.2                        0.1-0.2      -0.2-0.0
 C
 C---------------------------------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=           -0.2-0            0-0.1           0.1-+0.2                    -0.2- 0.0                       0.1           -0.2-+0
+CPKT :WM%=           -0.1-0.1            0-0.1          0.1-+0.2                    -0.2- 0.0                       0.1           -0.2-+0.1
 C------------------------------------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=+10                           0.2           0.1-+0.2              0.1                      0.3               0.2      -0.1-+0.1
+C UJ :WM%=+10                          +0.1-+0.2        0.1-+0.3              0.1                      0.3           0.2         -0.1-+0.2
 C----------------------------------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -113,7 +104,10 @@ C-------------------------------------------------------------------------------
 
  185 IF RS19=1 FA=1-24;               PM:+6. II <FA> 574:I 7.;            C*1 
  186 IF RS19=0 FA=15-386;FB=2-187;    PM:+<.>7: I FA 9I FB I;              C*1.5
+
+ 187 IF RS19=3 FA=5-189;              PM:+<.>7:I  FA 6I FA 5I FA II ;      C*3 
  187 IF RS19=3 FA=5-189;              PM:+<.>7:II FA 5I FA 5I FA II ;      C*3 
+
  190 IF RS19=4 FB=20-159;             PM:+<.>7:I4(FBII);                   C*4
  190 IF RS19=4 FB=21-158;             PM:+<.>7: 4(IIFBII);                 C*4
  191 IF RS19=5 FB=34-144;             PM:+<.>8: 5(IIFB)II;                 C*5
@@ -180,35 +174,54 @@ C  20 NP7=13.0              C MINTA ELOL
  344 C
  345 REND
 
- 346 IF #124=1 GOSUB 322-344
+C VAGY-VAGY:
+ 346 IF #2=1 GOTO 440
+ 346 IF #124=0 GOTO 440
 
  424 << S:U^S<1->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S1    T2
  426 >> S:U^ND.I/DI.-D.I;             NP4-4               T1 S1
  428 << S:DI.-D.I/DI.-D.I;            Y:5/2;         VU      S1 S2
  430 >> S:DI.-D.I/DI.-D.I/UVND.I;                            S1 S2 T2
  432 END C************************************************
+ 440 >> S:U^S<1->N.*+/.+-N.*+/.+-N.*+/UVNN.*+;  V0 Y:5/2;  T1 S1 S2 T2
+ 442 << S:U^ND.I/DI.-D.I/DI.-D.I;            NP4-4        T1 S1 S2
+ 444 >> S:DI.-D.I/DI.-D.I/UVND.I;                            S1 S2 T2
+ 446 END C************************************************
 
 
 C################################################################################################
  500 CMS
  502 <> S:U^S<1->I*/. -I/<1->. -I/UVSI*;  Y:5/2;  V0   T1 S1 S2 T2
  504 Y:5/5/2/2;
- 508 GOTO 344
+ 508 GOTO 345
  510 CMS
  512 <> S:U^S<1->I*/. -I/<1->. -IA/UVSI*; Y:5/2;  VL1   T1 S1 S2 T2
  514 Y:5/5/2/2;
- 518 GOTO 344
- 520 C------ 2SZV JAC SOROK --------------------
- 521 #1=0                C    RS1=
- 522 IF #127=1194 #1=1   C<<    14 + N*36
- 524 IF #127=1190 #1=2   C>>    15
- 526 IF #127=1138 #1=1   C<<    28
- 528 IF #127=1134 #1=2   C>>    29
- 530 IF #127=1126 #1=1   C<<    31
- 532 IF #127=1118 #1=1   C>>    33
- 534 IF #127=1114 #1=2   C<<    34
- 536 IF #127=1106 #1=1   C>>    36
+ 518 GOTO 345
 
+C VAGY-VAGY:
+ 520 C------ 2SZV JAC SOROK --------------------
+ 521 #1=0 #2=0                C    RS1= (A #1 A 2SZV SOROKHOZ KELL, A #2 PEDIG A BORULT LAKATIRANYHOZ) 
+ 522 IF #127=1194 #1=1 #2=1  C<<    14 + N*36
+ 523 IF #127=1190 #1=2       C>>    15
+ 524 IF #127=1138 #1=1 #2=1  C<<    28
+ 525 IF #127=1134 #1=2       C>>    29
+ 526 IF #127=1126 #1=1 #2=1  C<<    31
+ 528 IF #127=1122      #2=1  C<<    32
+ 530 IF #127=1118 #1=1       C>>    33
+ 532 IF #127=1114 #1=2 #2=1  C<<    34
+ 534 IF #127=1110      #2=1  C<<    35
+ 536 IF #127=1106 #1=1       C>>    36
+
+ 521 #1=0                 C    RS1= (A #1 A 2SZV SOROKHOZ KELL) 
+ 522 IF #127=1194 #1=1   C<<    14 + N*36
+ 523 IF #127=1190 #1=2   C>>    15
+ 524 IF #127=1138 #1=1   C<<    28
+ 525 IF #127=1134 #1=2   C>>    29
+ 526 IF #127=1126 #1=1   C<<    31
+ 530 IF #127=1118 #1=1   C>>    33
+ 532 IF #127=1114 #1=2   C<<    34
+ 536 IF #127=1106 #1=1   C>>    36
 
 C################################################################################################
 
@@ -347,32 +360,24 @@ C VAGY
 1100 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
  1102 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
  1104 I*III*III*III*III*III*III*III*III*III*III*III*II
-
 1106 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 1108 Y*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*II
-
  1110 IAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAII
  1112 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
  1114 II*III*III*III*III*III*III*III*III*III*III*III*I
  1116 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-
 1118 II*AII*AII*AII*AII*AII*AII*AII*AII*AII*AII*AII*A
 1120 IIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYIIIYI
-
  1122 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
  1124 I*III*III*III*III*III*III*III*III*III*III*III*II
-
 1126 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 1128 Y*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*IIY*II
-
  1130 IAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAIIIAII
  1132 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
  1134 IIIIIIIIIII*IIIIIIIIIII*IIIIIIIIIII*IIIIIIIIIII*
  1136 IIII*I*IIIIIIIII*I*IIIIIIIII*I*IIIIIIIII*I*IIIII
-
 1138 AII**I**III*AII**I**III*AII**I**III*AII**I**III*
 1140 III**IY**IIYIII**IY**IIYIII**IY**IIYIII**IY**IIY
-
 1142 II**AII**IIIII**AII**IIIII**AII**IIIII**AII**III
 1144 II**IIIY**IIII**IIIY**IIII**IIIY**IIII**IIIY**II
 1146 I**AIIII**III**AIIII**III**AIIII**III**AIIII**II
@@ -395,12 +400,11 @@ C VAGY
 1180 IYYY*I**IIIIIYYY*I**IIIIIYYY*I**IIIIIYYY*I**IIII
 1182 IIII*I*AAAIIIIII*I*AAAIIIIII*I*AAAIIIIII*I*AAAII
 1184 IYYYYI*IIIIIIYYYYI*IIIIIIYYYYI*IIIIIIYYYYI*IIIII
-
  1186 IIIIIIAAAAIIIIIIIIAAAAIIIIIIIIAAAAIIIIIIIIAAAAII
  1188 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
  1190 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
  1192 IIII*I*IIIIIIIII*I*IIIIIIIII*I*IIIIIIIII*I*IIIII
-
 1194 III**I**IIIIIII**I**IIIIIII**I**IIIIIII**I**IIII
 1196 III**IY**IIIIII**IY**IIIIII**IY**IIIIII**IY**III
 1198 II**AII**IIIII**AII**IIIII**AII**IIIII**AII**III

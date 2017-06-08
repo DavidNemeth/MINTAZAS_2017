@@ -35,19 +35,19 @@ C PLATIR: TX A LYUKBA(FELUL)
   58 C IF #100=68  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
   59 C IF #100=68  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
 C------------------------------------------------------------------ 
-  60 C IF #100=51  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
-  61 C IF #100=55  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
-  62 C IF #100=59  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
-  63 C IF #100=65  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
+  60 C IF #100=30  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
+  61 C IF #100=43  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
+  62  IF #100=32  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
+  63  IF #100=28  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
 C                                                                                                -------------
-  64 CC IF #100=16  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.035      C KT FUST NPK=-0.2
-  65 C IF #100=30  RS17=0	   C  E-E-E                       28'     60*63                    0.26       
-  66  IF #100=3  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
-  67 	IF #100=16  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  64  IF #100=21  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.035      C KT FUST NPK=-0.2
+  65  IF #100=5   RS17=0	   C  E-E-E                       28'     60*63                    0.26       
+  66  IF #100=10  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
+  67 C	IF #100=17  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
 C*********60*75 KABAT**********************************SUM:32'* ************************** SUM:0.32 ***********
   68 C IF #100=51   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
   69 C IF #100=2   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  70C IF #100=65   RS17=3	   C  T-T-T  
+  70 C IF #100=65   RS17=3	   C  T-T-T  
 
   71 C IF #100=18   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.035
   72 C IF #100=11  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
@@ -65,10 +65,11 @@ C*******************************************************SUM:38'*****************
   82 IF RS17=53        RS18=3 RS1=2    C 4CM BOLERO PANT BABOS
   83 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   84 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
-  85 IF RS17=0  RS19=3 RS18=1 RS1=13  C  E-E-E   12-14                          
-  86 IF RS17=1  RS19=3 RS18=0 RS1=13  C  H-H-H   12-14           
-  87 IF RS17=2  RS19=4 RS18=0 RS1=8   C  U-U-U-U
-  88 IF RS17=3  RS19=3 RS18=0 RS1=17  C  T-T-T   16-17          
+C---------------------------- RS1:FEL ROMBUSZ18SOR(9KOR)---RS2:2SOR(1KOR)
+  85 IF RS17=0  RS19=3 RS18=1 RS1=13 RS2=5  C  E-E-E      RS2:5-9                      
+  86 IF RS17=1  RS19=3 RS18=0 RS1=13 RS2=5  C  H-H-H          5-9           
+  87 IF RS17=2  RS19=4 RS18=0 RS1=7  RS2=9  C  U-U-U-U        8-10
+  88 IF RS17=3  RS19=3 RS18=0 RS1=15 RS2=9  C  T-T-T          5-9          
   C*********************************************************************************************
   90 IF RS18=2  GOTO 700          C PANT BON PRIX
   92 IF RS18=3  GOTO 800          C PANT BABOS
@@ -82,7 +83,6 @@ C-------------------------------------------------------------------------------
 CPKT :WM%=0          -0.3        -0.3                -0.3                                            -0.3--0.1
 C-------------------------------------------------------------------------------------------------------------------
 C UJ :WM%=5-10       -0.2        -0.2                -0.2         0.1        -0.1-+0.1    -0.2-+0.1   -0.1-0     +0.2
-C RS1:                                                                          12           13          13       13
 C--------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -99,7 +99,7 @@ C-------------------------------------------------------------------------------
  199 C********************************************************************************
 
  200 >>	S:D.I-DI./UVNDI.;   	        Y:2;	    	                    S1    T2
- 202 <<	S:U^ND.I/DI.-D.I;		NP5-5          			                    T1 S1
+ 202 <<	S:U^ND.I/DI.-D.I;		NP5-5          			                    T1 S2
  203 WM=10
  204 >>	S:DI.-D.I;		       NP4-4    Y:5;	             VR1	VU	   S1
  206 <<	S:UVSD.I;		                      	                               T2
@@ -111,9 +111,9 @@ C-------------------------------------------------------------------------------
  213 IF RS18=1 GOTO 500 C 1/1 CSIPKE HELYETT AZ ELEJEN
 
  214 Y:5/5/2/2;
- 216 << S:DI.-0;                                NP5-5 VU           S1
+ 216 << S:DI.-0;                                NP5-5 VU           S2
  218 >> S:0-D.I/UVSD.I;                                            S1 T2
- 220 << S:R-0;                                      NP6-6  VU      S1
+ 220 << S:R-0;                                      NP6-6  VU      S2
  222 >> S:U^SN.+/.+-N.+/UVSI;                          NP6-6       T1 S1 T2
 
  224 REP*5 C 
@@ -121,12 +121,12 @@ C-------------------------------------------------------------------------------
  228 << S:UVSY;                                   VL1           T2
  230 >> S:UVSA;                                   VR1           T2
  232 WM=17
- 234 << S:R-0;                           NP5-5    V0  VU     S1
+ 234 << S:R-0;                           NP5-5    V0  VU     S2
  236 >> S:U^SN.+/.-N.+/UVS<1->I;           NP6-6            T1 S1 T2
  238 REPEND
  240 GOSUB 226-234
  242 >> S:U^SN.+/.-N.+/UVSN.+;           NP6-6            T1 S1 T2
- 244 << S:R-0;                           NP5-5    V0  VU     S1
+ 244 << S:R-0;                           NP5-5    V0  VU     S2
  246 >> S:U^SN.+/.-N.+/UVSN.+;           NP6-6            T1 S1 T2
 C1002 WWWWWWWW
 C1004 IIIAIYII
@@ -145,12 +145,16 @@ C1010 WWWWWWWW
  312 NP1-1
  314 RBEG*RS1
  315 REP*9
- 316 << S:U^S<1->N.*+/.+-N.*+/UVSNY.*+;             V0         T1 S1    T2
+ 316 << S:U^S<1->N.*+/.+-N.*+/UVSNY.*+;             V0         T1 S2    T2
  318 >> S:U^S<1->N.*+/.-N.*+/UVSNA.*+;             VL1        T1 S1    T2
  319 REPEND
  320 REND
 
- 424 << S:U^S<1->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S1    T2
+ 322 RBEG*RS2
+ 324 GOSUB 316-318
+ 326 REND
+
+ 424 << S:U^S<1->N.*+/.+-N.*+/UVNN.*+;            V0         T1 S2    T2
  426 >> S:U^ND.I/DI.-D.I;             NP4-4               T1 S1
  428 << S:DI.-D.I/DI.-D.I;            Y:5/2;         VU      S1 S2
  430 >> S:DI.-D.I/DI.-D.I/UVND.I;                            S1 S2 T2
@@ -169,15 +173,16 @@ C1010 WWWWWWWW
  706 NP10=10.8  C:BEKEZDES   
  708 NP11=12.2  C:1/1 KORSLAG 
  710 NP12=13.6  C:CSIPKE PASSZE  
+ 712 NP13=14.3              C PASSZE   14.5
 718 C START        
 720 C YG:6/256;
  722 WM=16; WMI=7 C18
 724 C <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	       NP4-4   V0	VU      S1 S2
  726 VJA^1
  728 >>	S:D.I-DI./UVNDI.;   	      	 Y:2;                              S1    T2
- 730 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S1
+ 730 <<	S:U^ND.I/DI.-D.I;		              			                        T1 S2
  732 >> S:DI.-D.I;                   Y:5;                   VR1VU      S1
- 734 << S:DI.-0/UVND.I;                             NP-0               S1    T2
+ 734 << S:DI.-0/UVND.I;                             NP-0               S2    T2
  736 >> S:DI.-D.I;                   Y:6;                   V0 VU         S2
  738 << S:DI.-0/0-R;                 Y:6/0;                    VU      S1 S2
  740 >>	S:DI.(10)-D.I(10)/0-D.I(11);	Y:2/5;	                V0 VU      S1 S2
@@ -185,31 +190,30 @@ C1010 WWWWWWWW
  744 PA:<JA1>;
  746 FA=1-9;  PM:*8.I<FA>573:I<.>;        C**581TU**
  748 Y:5/5/2/2;
- 750 << S:DI.(11)-0/UVS.*;                       VU      S1 T2
- 752 >> S:U^SN.*/.-N.*/UVSI;           NP12-12    VU   T1 S1 T2
+ 750 << S:DI.(11)-0/UVS.*;                       VU      S2 T2
+ 752 >> S:U^SN.*/.-N.*/UVSI;           NP13-13    VU   T1 S1 T2
  753 RBEG*RS1
  754 REP*3
  756 WM=0
  758 << S:UVSY;                                 VL1  T2
  760 >> S:UVSA;                                 VR1  T2
  762 WM=16
- 764 << S:R-0;                                  VU V0   S1
- 766 >> S:U^SN.*/.-N.*/UVS<1->I;                  V0   T1 S1 T2 
+ 764 << S:R-0;                         NP12-12   VU V0   S2
+ 766 >> S:U^SN.*/.-N.*/UVS<1->I;       NP13-13    V0   T1 S1 T2 
  768 REPEND
  770 GOSUB 756-762
- 772 << S:.*I-YA(6.5);                        V0 VU      S1
+ 772 << S:.*I(12)-YA(6.5);                        V0 VU      S2
  782 >> S:U^SI/.-N.*A(12)/UVS<1->I;           V0      T1 S1 T2
  783 REND
  786 GOSUB 754-768
  787 GOSUB 756-762
- 788 << S:.*I-YA(6.5);                        V0 VU  S1
+ 788 << S:.*I(12)-YA(6.5);                        V0 VU  S2
  790 >> S:U^SI/.-N.*A(12)/UVSN.*;          V0   T1 S1  T2
  792 REP*2
- 794 << S:R-0;                           VU       S1 
+ 794 << S:R-0;                           VU       S2 
  796 >> S:U^SN.*/.-N.*/UVSN.*;                    T1 S1  T2
  798 REPEND
  799 END  C**********************************
-
  800 C BABOS BOLERO PANTJA
  801 NP4=12.6;              C LEVALASZTAS   FEH:-FEKETE:
  802 NP14=10.6               C:1/1
@@ -224,16 +228,16 @@ C1010 WWWWWWWW
  813 PA:1:<JA1>;
  814 FA=1-8; PM:*6.II<FA>574:II6.; C OSZTAS NELKUL - BARMELYIKHEZ JO
  815 >>	S:D.I-DI./UVND.I;   	        Y:5;	    	                    S1    T2
- 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S1
- 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1        C   !!!!!!! VU!!!!!!
+ 816 <<	S:U^NDI./D.I-DI.;		              			    NP12-12           T1 S2
+ 817 >>	S:D.I-DI.;		                 Y:2;	      NP4-4   VR1	VU   S1
  818 <<	S:UVSDI.;		                      	                               T2
  819 >> S:D.I-DI.;		                	Y:6;	      NP11-11 VU V0         S2
  820 << S:D.I-0/0-DI.;		            	Y:6/0;	    NP4-4 VU         S1 S2
  821 >>	S:D.I-DI.;		                	Y:5;	      NP11-11  VU V0      S1
  822 Y:2/2/5/5;
- 823 << S:D.I-0;                                NP13-13 VU           S1
+ 823 << S:D.I-0;                                NP13-13 VU           S2
  824 >> S:0-DI./UVS.;                                              S1    T2
- 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S1    T2
+ 825 << S:U^SN.*/*.-N.*/UVSR;                                      T1 S2    T2
  826 >> S:N*-0;                          NP13-13         VU           S1
  827 VJA^1
  829 RBEG*RS1 C ******  AZSUR PASSZE *********
@@ -242,17 +246,17 @@ C1010 WWWWWWWW
  832 << S:U^SA;                                   VL1      T1
  833 >> S:U^SY;                                   VR1      T1
  834 WM=12
- 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S1 T2 
+ 835 << S:U^SI/.*-N.*/UVS<1->N.*;         NP12-12    V0       T1 S2 T2 
  836 >> S:N*-0;                          NP13-13         VU     S1
  837 REPEND
- 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S1 T2 
+ 838 << S:U^SN.*/.*-N.*/UVSN.*;             NP12-12             T1 S2 T2 
  839 >> S:N*-0;                          NP13-13         VU     S1
  840 REND C*********************************
 C VAGY
  841 << S:U^SDI./D.I-DI./D.I-DI.;       Y:5/2;   NP14-14  T1 S1 S2 
  842 >> S:D.I-DI./D.I(4)-DI.(4)/UVSDI.;	                  S1 S2 T2
 C VAGY
- 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S1 
+ 841 << S:U^SDI./D.I-DI.;                NP14-14  T1 S2 
  842 >> S:D.I(4)-DI.(4)/UVSDI.;	                     S1    T2
  843 END
 
