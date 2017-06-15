@@ -33,19 +33,20 @@ C PLATIR: TX A LYUKBA(FELUL)
   52 <<	S:D.I-DI./DI.-D.I;		         Y:2/5;	    NP4-4 VU V0	       S1 S2
 
 C****** BOLERO --- 58*62 ---*********************************KESZEN:*****VASALVA:******MIN:GY:28'************************************
-  70 C IF #100=2   RS17=51   C BOLERO PANT SZOKASOS   4 CM-ES EZ A JO !!!!!!!!!!!       
+  70 C IF #100=2   RS17=51   C BOLERO PANT BON PRIX   4 CM     
   72 C IF #100=16   RS17=0	   C EEE                                       
   74 C IF #100=22   RS17=1	   C HHH                         
   76 C IF #100=10   RS17=4	   C UUUU  3/4 KAROLTO: 25-26
 C                                                                                     
 
-  78  IF #100=24   RS17=51   C BOLERO PANT SZOKASOS   4 CM-ES EZ A JO !!!!!!!!!!!         
+  78  IF #100=24   RS17=51   C BOLERO PANT BON PRIX   4 CM     
   80  IF #100=32   RS17=0	   C EEE                       
   82  IF #100=40   RS17=1	   C HHH                          
   84  IF #100=52   RS17=4	   C UUUU  3/4 KAROLTO: 25-26                  
 
-  86 C IF #100=60   RS17=52   C BOLERO PANT SZOKASOS   8 CM-ES
-  88 C IF #100=82   RS17=50   C BOLERO PANT SAJAT PASSZEVAL 4CM-ES
+  85  IF #100=24   RS17=51   C BOLERO PANT BON PRIX   4 CM     
+  86 C IF #100=60   RS17=52   C BOLERO BON PRIX   8 CM-ES
+  88 C IF #100=82   RS17=50   C BOLERO PANT SAJAT PASSZEVAL 4CM-ES!!!SZAR!!!!
 C****************************************************************************************************************
 
 
@@ -55,8 +56,8 @@ C*******************************************************************************
  108 IF RS17=1  RS19=3 RS15=0   RS1=36   C HHH                  R36  58*62       62*66       28
  110 IF RS17=4  RS19=4 RS15=0   RS1=24   C UUUU:                R24              50*45       19
  114 IF RS17=50 RS19=1 RS15=1            C BOLERO PANT SAJAT PASSZEVAL 4CM                      
- 116 IF RS17=51        RS15=2   RS1=1    C BOLERO PANT SZOKASOS 4CM EZ A JO                    4'
- 118 IF RS17=52        RS15=2   RS1=3    C BOLERO PANT SZOKASOS 8CM                      SUM: 31'
+ 116 IF RS17=51        RS15=2   RS1=1    C BOLERO PANT BON PRIX 4CM EZ A JO                    4'
+ 118 IF RS17=52        RS15=2   RS1=3    C BOLERO PANT BON PRIX 8CM                      SUM: 31'
  128 C*********************************************************************************************
  130 IF RS15=2  GOTO 700          C PANT
 C-------------------------------------------------------------------------------------------------------------------------------
