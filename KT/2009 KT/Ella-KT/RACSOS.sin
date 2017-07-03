@@ -24,19 +24,19 @@ C 58*77  I 2*15/1 I  =0.42KG I         I 2 BOGYO  I       I       I 800-850 I 30
 C MELLENYI 1*TX   I *956=402 I VM:140  I   5      I       I  550  I   750   I 200 I  20' I  600  I 26% I NEM JO!!!!!!
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C 3XL    I        I0.52+0.05(3.1M.PODROS PANT)    I       I       I         I     I      I       I     I
-C 70*90  I 2*15/1 I  =0.57KG I VM:140  I 2 BOGYO  I       I       I         I     IML:35'I ML:710I     I 
-C MELLENYI 1*TX   I          I  E:180  I   5      I       I       I  1200   I     IGY:27'I GY:920I     I      
-C        I        I  *900=513 I PM:200 I          I 60-65 I  785  I         I 415 I      I       I 34% I
+C 70*90  I 2*15/1 I  =0.57KG I VM:140  I 2 BOGYO  I       I       I         I     IML:35'I ML:685I     I 
+C MELLENYI 1*TX   I          I  E:180  I   5      I       I       I  1200   I     IGY:27'I       I     I      
+C        I        I  *930=530 I PM:200 I          I 60-65 I  800  I         I 400 I      I       I 33% I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C 3XL    I        I0.74+0.03(2M.PODROS PANT)      I       I       I         I     I      I       I     I
 C 70*90  I 2*15/1 I  =0.77KG I PM:200  I 2 BOGYO  I       I       I         I     I      I       I     I 
-C NK     I 1*TX   I          I VM:140  I   5      I       I       I         I     IGY:40'IML:600 I     I 
-C        I        I *900=693 I  E:180  I 3GOMB:35 I    65 I 1000  I  1500   I 500 IML:50'IGY:750 I 33% I
+C NK     I 1*TX   I          I VM:140  I   5      I       I       I         I     IGY:40'IML:546 I     I 
+C        I        I *930=716 I  E:180  I 3GOMB:35 I    65 I 1055  I  1500   I 455 IML:50'I       I 30% I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C 3XL    I        I0.67+0.03(2M.PODROS PANT)      I       I       I         I     I      I       I     I
 C 70*90  I 2*15/1 I  =0.70KG I PM:200  I          I       I       I         I     I      I       I     I 
-C NK     I 1*TX   I          I VM:140  I          I       I       I         I     I  45' I  760  I     I 
-C  3/4U  I        I *900=630 I  E:180  I 3GOMB:35 I   65  I 930   I  1500   I 570 I      I       I 38% I
+C NK     I 1*TX   I          I VM:140  I          I       I       I         I     I  45' I  733  I     I 
+C  3/4U  I        I *930=650 I  E:180  I 3GOMB:35 I   65  I  950  I  1500   I 550 I      I       I 36% I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C PLATIR:TX FELUL
 C MELLENY MERETEK: L:     3XL:               KABAT 3XL:

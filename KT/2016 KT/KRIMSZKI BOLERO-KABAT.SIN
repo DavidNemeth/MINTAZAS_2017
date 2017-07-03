@@ -32,30 +32,30 @@ C PLATIR: TX A LYUKBA(FELUL)
  C*** MISKOLCI BOLERO (MAXI BOLERO MERET)*****************MIN:***VASALVA:******KESZEN:*****KG:********30DB:
   56 C IF #100=30  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
   57 C IF #100=68  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50
-  58 C IF #100=36  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
-  59 C IF #100=61  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
+  58 C IF #100=57  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
+  59 C IF #100=30  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
 C------------------------------------------------------------------ 
-  60 C IF #100=44  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
-  61 C IF #100=34  RS17=0	   C  E-E-E                       22'     60*63                    0.26       10
-  62 C IF #100=40  RS17=1	   C  H-H-H                       28'     62*66         58*62      0.3        10
-  63 C IF #100=28  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19       15
+  60 C IF #100=90  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
+  61 C IF #100=94  RS17=0	   C  E-E-E                       26'     60*63                    0.26       10
+  62 C IF #100=104 RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3        10
+  63 C IF #100=100 RS17=2	   C  U-U-U-U                     18'-20' 50*45                    0.19       15
 C                                                                                                -------------
-  64 C IF #100=12  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.032      C KT FUST NPK=-0.2
-  65 C IF #100=16  RS17=0	   C  E-E-E                       28'     60*63                    0.26       
-  66 C IF #100=26  RS17=1	   C  H-H-H                       30'     62*66         58*62      0.3
-  67 C	IF #100=22  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  64  IF #100=30  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.032   
+  65  IF #100=40  RS17=0	   C  E-E-E                       26'     60*63                    0.26                  KB:5:30
+  66  IF #100=65  RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3
+  67 	IF #100=55  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
 C*********60*75 KABAT**********************************SUM:32'* ************************** SUM:0.32 ***********
-  68 C IF #100=38   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.03 
-  69 C IF #100=44   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  70 C IF #100=52   RS17=3	   C  T-T-T                       34'                             0.36
+  68 C IF #100=79   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.03 
+  69 C IF #100=96   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  70 C IF #100=89   RS17=3	   C  T-T-T                       34'                             0.36
 
-  71 C IF #100=12   RS17=53	  C  KESKENY BOLERO PANT          4'                               
-  72 C IF #100=18   RS17=2	   C  U-U-U-U                     18'     50*45                      
-  73 C IF #100=26   RS17=3	   C  T-T-T   
+  71 C IF #100=128   RS17=53	  C  KESKENY BOLERO PANT          4'                               
+  72 C IF #100=113  RS17=2	   C  U-U-U-U                     18'     50*45                      
+  73 C IF #100=105   RS17=3	   C  T-T-T   
 
   74 C IF #100=95   RS17=53	  C  KESKENY BOLERO PANT          4'                               
-  75 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                      
-  76 C IF #100=59   RS17=3	   C  T-T-T                            
+  75 C IF #100=19   RS17=2	   C  U-U-U-U                     18'     50*45                      
+  76 C IF #100=35   RS17=3	   C  T-T-T                            
 
   77 C IF #100=95   RS17=53	  C  KESKENY BOLERO PANT          4'                               
   78 C IF #100=38   RS17=2	   C  U-U-U-U                     18'     50*45                      
@@ -66,23 +66,24 @@ C*******************************************************SUM:36'*****************
   83 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   84 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
 C---------------------------- RS1:FEL ROMBUSZ18SOR(9KOR)---RS2:2SOR(1KOR)
-  85 IF RS17=0  RS19=3 RS18=1 RS1=13 RS2=2  C  E-E-E      RS2:2-8                      
-  86 IF RS17=1  RS19=3 RS18=0 RS1=13 RS2=2  C  H-H-H          2-8           
+  85 IF RS17=0  RS19=3 RS18=1 RS1=13 RS2=6  C  E-E-E      RS2:1-8                      
+  86 IF RS17=1  RS19=3 RS18=0 RS1=13 RS2=6  C  H-H-H          1-8           
   87 IF RS17=2  RS19=4 RS18=0 RS1=7  RS2=9  C  U-U-U-U        8-10
-  88 IF RS17=3  RS19=3 RS18=0 RS1=15 RS2=9  C  T-T-T          5-9          
+  88 IF RS17=3  RS19=3 RS18=0 RS1=16 RS2=3  C  T-T-T          3-10          
   C*********************************************************************************************
   90 IF RS18=2  GOTO 700          C PANT BON PRIX
   92 IF RS18=3  GOTO 800          C PANT BABOS
 
 C------------------------------------------------------------------------------    
-C                      T          T           T        T,R        L             R           R       R
-C                    FEHER       FUST       MOGYI     NYERS     FEKETE:       FEHER       FEKETE    NYERS       R.KEK
+C                      T          T           T        T          L             R           R       R                     R
+C                    FEHER       FUST       MOGYI     NYERS     FEKETE:       FEHER       FEKETE    NYERS       R.KEK   +FUST TX
 C-------------------------------------------------------------------------------------------------------------------
-C KT :WM%=0          -0.3        -0.3                -0.3                      -0.2                   -0.3   
+C KT :WM%=0          -0.3        -0.3                -0.3                      -0.2                -0.2-0                  -0.2
 C-------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=0          -0.3        -0.3                -0.3                                            -0.3--0.1
+CPKT :WM%=0          -0.3        -0.3                -0.3                        0         0.2       0.1
 C-------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=5-10       -0.2        -0.2                -0.2         0.1        -0.1-+0.1    -0.2-+0.1   -0.1-0     +0.2
+C UJ :WM%=5-10       -0.2        -0.2                -0.2         0.1           +0.1        +0.2     0.2      +0.2         -0.2
+C                                                                                                                  RS17=3: 16/9
 C--------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
@@ -149,7 +150,7 @@ C1010 WWWWWWWW
  318 >> S:U^S<1->N.*+/.-N.*+/UVSNA.*+;             VL1        T1 S1    T2
  319 REPEND
  320 REND
-
+ 321 IF RS2=0 GOTO 424
  322 RBEG*RS2
  324 GOSUB 316-318
  326 REND

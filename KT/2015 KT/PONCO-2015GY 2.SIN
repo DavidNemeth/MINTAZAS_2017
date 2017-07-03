@@ -47,8 +47,8 @@ C--------+--------+----------+---------+----------+-------+-------+---------+---
   65 C IF #100=27  RS17=51	  C  1/1 MANDZSETTA 4-5                    GY:2'30
   66 C IF #100=19  RS17=0	   C  T-1/2E                                GY:27'  ML:35'
 C*****PELERIN*****************************3DB:***************************VASALVA:******KESZEN:*****KG:******
-  68  IF #100=45 RS17=52	  C  NECCES KORSLAG PANTJA GOMBLYUK NELKUL GY:2'                      0.04
-  70  IF #100=24 RS17=1	   C  T-1/2E      4                         GY:     ML:25' 125*65     0.35
+  68  IF #100=6 RS17=52	  C  NECCES KORSLAG PANTJA GOMBLYUK NELKUL GY:2'                      0.04
+  70 C IF #100=4 RS17=1	   C  T-1/2E      4                         GY:     ML:25' 125*65     0.35
 C*********************************************************************************VASALVA:******KESZEN:*****KG:******
 C PELERIN:
   90 IF RS17=1  RS19=0 RS18=0 RS1=21  C  T-1/2E  20-22                              130*70      125*65
@@ -175,7 +175,7 @@ C*******************************************************************************
 
  600 C ************** ELLA NAGYLYUKUHOZ KORSLAG PANT 1/1 BEKEZDESSEL ************
  602 C CNCA 2010/ CP NP
- 604 NP4=12.8    C LEVALASZTAS   
+ 604 NP4=13.5    C LEVALASZTAS   
  606 NP12=10.0   C BEKEZDES,1/1,REX      
  608 NP13=14.0   C SLAG PASSZE   
  609 NP14=12.2   C 1/1

@@ -31,18 +31,18 @@ C  FEKETE: NPK=
   52 <<	S:D.I-DI./DI.-D.I;		         Y:5/2;	    NP4-4 VU V0	       S1 S2
 
 C ----------EVA MERETU HOSSZU BOLERO 46*56 CM KESKENYEBB PANTTAL--------------20DB:---30DB-------------------------------------------
-  68 IF	#100=30  RS17=50	 C KESKENY PANT                                     20      30
-  70 IF #100=45  RS17=1	  C H-H-H-H                  GY:25'                   5       8             2017.03. 02.:  FEHER  ST=40
-  72 IF #100=37  RS17=0	  C E-E-E-E           ML:27'                          5       7
-  74 IF	#100=55  RS17=5   C U-U-U-U-U 3/4     ML:23'                          8       12       49 -0.1
+  68 IF	#100=10  RS17=50	 C KESKENY PANT                                     20      30
+  70 IF #100=11   RS17=1	  C H-H-H-H                  GY:25'                   5       8            
+  72 IF #100=13  RS17=0	  C E-E-E-E           ML:27'                          5       7
+  74 IF	#100=17  RS17=5   C U-U-U-U-U 3/4     ML:23'                          8       12       49 -0.1
 
   76C IF	#100=20  RS17=50	 C KESKENY PANT                                     20      30
-  78C IF #100=24  RS17=1	  C H-H-H-H           ML:29'                          5       8
-  80C IF #100=23  RS17=0	  C E-E-E-E           ML:27'                          5       7
-  82C IF	#100=38  RS17=5   C U-U-U-U-U 3/4     ML:23'                          8       12     
+  78C IF #100=38  RS17=1	  C H-H-H-H           ML:29'                          5       8
+  80C IF #100=33  RS17=0	  C E-E-E-E           ML:27'                          5       7
+  82C IF	#100=28  RS17=5   C U-U-U-U-U 3/4     ML:23'                          8       12     
 C                                                                 ---SUM: --- 38 ----- 57 ----
   83 CIF	#100=95  RS17=50	 C KESKENY PANT                                     
-  84 CIF #100=39  RS17=51	  C SZELES PANT VIRAGOS BOLEROHOZ - EREDETI LASABB!
+  84 IF #100=29  RS17=51	  C SZELES PANT VIRAGOS BOLEROHOZ - EREDETI LASABB!
 C -----------------------------------------------------------------------------------------------------------------------
  100 C********************1CIKLUS=2CM*******************************************KESZ MERET:***VASALVA:*****NPK:*********
  102 IF RS17=50                RS1=1   C KESKENY PANT A HOSSZITOTT FAZONU BOLEROHOZ

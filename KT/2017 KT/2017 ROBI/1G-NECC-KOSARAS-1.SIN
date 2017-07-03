@@ -43,35 +43,37 @@ C PLATIR: TX A LYUKBA(FELUL)
   53 C IF #100=47  RS17=51	  C  8CM BOLERO PANT (SZELES) BON PRIX  
   53 C IF #100=47  RS17=52	  C  8CM BOLERO PANT (SZELES) BABOS  
 C-------------M BOLERO 48*50-E-H:EGYFORMA(NEM MINTAS)----------------------------- ----------------------- 
-  54 IF #100=10  RS17=0	   C  E-E-E-E                              48*48                 0.25
-  55 IF #100=14  RS17=1	   C  H-H-H-H                              52*52       46*48     0.27
-  56 IF #100=6   RS17=5	   C  U-U-U-U-U                            42*42                 0.21
-  57 IF #100=19  RS17=52	  C  SZELES BOLERO PANT                                         0.055
-  58 IF #100=20  RS17=0	   C  E-E-E-E                                 
-  59 IF #100=21  RS17=1	   C  H-H-H-H                
+  54C IF #100=10  RS17=0	   C  E-E-E-E                              48*48                 0.25
+  55C IF #100=14  RS17=1	   C  H-H-H-H                              52*52       46*48     0.27
+  56C IF #100=6   RS17=5	   C  U-U-U-U-U                            42*42                 0.21
+  57C IF #100=19  RS17=52	  C  SZELES BOLERO PANT                                         0.055
+  58C IF #100=20  RS17=0	   C  E-E-E-E                                 
+  59C IF #100=21  RS17=1	   C  H-H-H-H                
   60C IF #100=36  RS17=5	   C  U-U-U-U-U                                              
   61C IF #100=37  RS17=52	  C  SZELES BOLERO PANT                                   
 C********* KABAT 60*77 **************************************************************SUM:0.27KG*****************
 C                                                         TM4.8:  TM4.5:
-  66 C IF #100=6   RS17=3	   C  E-E-E                       33'    35'        
-  68 C IF #100=33  RS17=7	   C  H-H-H                       28'    30'
-  70 C IF #100=34  RS17=2	   C  U-U-U-U                     16'    17'                
-  72 C IF #100=19  RS17=50	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
-  74 C IF #100=38  RS17=7	   C  H-H-H                       
-  76 C IF #100=39  RS17=3	   C  E-E-E                       33'    35'        
-  79 C IF #100=43  RS17=2	   C  U-U-U-U                                             
+  66  IF #100=48  RS17=3	   C  E-E-E                       33'    35'        
+  68  IF #100=52  RS17=7	   C  H-H-H                       28'    30'
+  70  IF #100=44  RS17=2	   C  U-U-U-U                     16'    17'                
+  72  IF #100=38  RS17=53	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
+  74  IF #100=26  RS17=7	   C  H-H-H                       
+  76 C IF #100=22  RS17=3	   C  E-E-E                       33'    35'        
+  77  IF #100=18  RS17=2	   C  U-U-U-U                                             
+  78  IF #100=12 RS17=53	  C  KESKENY BOLERO PANT          4'                          0.03-0.035   
 C******************************************************SUM:32'****35'******************* SUM:0.39   ***********
-  80 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT BON PRIX
-  81 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)BON PRIX        8'
-  82 IF RS17=52        RS18=3 RS1=4    C 8CM BOLERO PANT (SZELES) BABOS PANTJA   7'
+  79 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT BON PRIX
+  80 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)BON PRIX        8'
+  81 IF RS17=52        RS18=3 RS1=4    C 8CM BOLERO PANT (SZELES) BABOS PANTJA   7'
+  82 IF RS17=53        RS18=3 RS1=2    C 8CM BOLERO PANT (SZELES) BABOS PANTJA   7'
 C----------------------BOLERO:M------------------------------KESZEN:--
   83 IF RS17=0  RS19=4 RS18=1 RS1=0   RS2=19  C  E-E-E-E            19-22
   84 IF RS17=1  RS19=4 RS18=0 RS1=0   RS2=20  C  H-H-H-H    48*50   20-23
   86 IF RS17=5  RS19=5 RS18=0 RS1=0   RS2=16  C  U-U-U-U-U          16-17
 C---------------------KABAT:-------------------------------KESZEN:-----RS2:-----
-  88 IF RS17=3  RS19=3 RS18=0 RS1=15  RS2=24  C  E-E-E    60*77CM     22-24
-  90 IF RS17=7  RS19=7 RS18=0 RS1=0   RS2=33  C  H-H-H       77CM     31-33
-  92 IF RS17=2  RS19=4 RS18=0 RS1=0   RS2=17  C  U-U-U-U     42CM     16-17
+  88 IF RS17=3  RS19=3 RS18=0 RS1=15  RS2=23  C  E-E-E    60*77CM     22-24
+  90 IF RS17=7  RS19=7 RS18=0 RS1=0   RS2=32  C  H-H-H       77CM     31-33
+  92 IF RS17=2  RS19=4 RS18=0 RS1=0   RS2=16  C  U-U-U-U     42CM     16-17
   C*********************************************************************************************
   99 IF RS18=2  GOTO 700          C BON PRIX PANT
  100 IF RS18=3  GOTO 800          C BABOS PANTJA
@@ -80,11 +82,14 @@ C-------------------------------------------------------------------------------
 C                  ROBI FEHER:     ROBI FEHER:     ROBI FEHER:     ROBI FEKETE:     R.NYERS    L.FEKETE:      R. SOTETKEK    R. BORDO
 C PARAFINOZVA:      +FEHER TX       +FUST TX       +FEKETE TX                                     
 C-------------------------------------------------------------------------------------------------------------------------------------
-C KT :WM%=0-+5          -0.1              -0.2                             -0.1-0                                      0           -0.1
+C KT :WM%=0-+5          -0.1-0              -0.2                             -0.1-0                                      0           -0.1
+C                        22/31
 C---------------------------------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=           -0.2                                                             -0.2
+CPKT :WM%=           -0.2                 0                                           -0.2          0.1
+C                                       22/31                                                     24/33 
 C------------------------------------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=+15       -0.1-+0.2            0                 0           0.2-0.3      -0.1-+0.2                       0.2         0-+0.2
+C UJ :WM%=+15       -0.1-+0.2            0                0.1           0.2-0.3      -0.1-+0.2                       0.2         0-+0.2
+C RS17=3/7                                              23/32   
 C----------------------------------------------------------------------------------------------------------------------------------------------
 
  180 C************581TU***** 1022 IIIIYIIIIYIA ***********************
