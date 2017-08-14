@@ -35,22 +35,22 @@ C PLATIR: TX A LYUKBA(FELUL)
   58 C IF #100=57  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
   59 C IF #100=30  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
 C------------------------------------------------------------------ 
-  60 C IF #100=90  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
-  61 C IF #100=94  RS17=0	   C  E-E-E                       26'     60*63                    0.26       10
-  62 C IF #100=104 RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3        10
-  63 C IF #100=100 RS17=2	   C  U-U-U-U                     18'-20' 50*45                    0.19       15
+  60  IF #100=13  RS17=53	  C  KESKENY BOLERO PANT          4'50                              0.035      30
+  61  IF #100=2  RS17=0	   C  E-E-E                       26'     60*63                    0.26       10
+  62  IF #100=7  RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3        10
+  63  IF #100=5  RS17=2	   C  U-U-U-U                     18'-20' 50*45                    0.19       15
 C                                                                                                -------------
-  64  IF #100=30  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.032   
-  65  IF #100=40  RS17=0	   C  E-E-E                       26'     60*63                    0.26                  KB:5:30
-  66  IF #100=65  RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3
-  67 	IF #100=55  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  64 C IF #100=12  RS17=53	  C  KESKENY BOLERO PANT  BABOS        4'                              0.032   
+  65 C IF #100=4   RS17=0	   C  E-E-E                       26'     60*63                    0.26                  KB:5:30
+  66 C IF #100=14  RS17=1	   C  H-H-H                       29'     62*66         58*62      0.3
+  67 C	IF #100=11  RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
 C*********60*75 KABAT**********************************SUM:32'* ************************** SUM:0.32 ***********
-  68 C IF #100=79   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.03 
-  69 C IF #100=96   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
-  70 C IF #100=89   RS17=3	   C  T-T-T                       34'                             0.36
+  68 C IF #100=18   RS17=53	  C  KESKENY BOLERO PANT          4'                              0.03 
+  69 C IF #100=24   RS17=2	   C  U-U-U-U                     18'     50*45                    0.19  
+  70 C IF #100=21   RS17=3	   C  T-T-T                       34'                             0.36
 
   71 C IF #100=128   RS17=53	  C  KESKENY BOLERO PANT          4'                               
-  72 C IF #100=113  RS17=2	   C  U-U-U-U                     18'     50*45                      
+  72 C IF #100=27  RS17=2	   C  U-U-U-U                     18'     50*45                      
   73 C IF #100=105   RS17=3	   C  T-T-T   
 
   74 C IF #100=95   RS17=53	  C  KESKENY BOLERO PANT          4'                               
@@ -66,10 +66,10 @@ C*******************************************************SUM:36'*****************
   83 IF RS17=50        RS18=2 RS1=1    C 4CM BOLERO PANT 
   84 IF RS17=51        RS18=2 RS1=3    C 8CM BOLERO PANT (SZELES)
 C---------------------------- RS1:FEL ROMBUSZ18SOR(9KOR)---RS2:2SOR(1KOR)
-  85 IF RS17=0  RS19=3 RS18=1 RS1=13 RS2=6  C  E-E-E      RS2:1-8                      
-  86 IF RS17=1  RS19=3 RS18=0 RS1=13 RS2=6  C  H-H-H          1-8           
-  87 IF RS17=2  RS19=4 RS18=0 RS1=7  RS2=9  C  U-U-U-U        8-10
-  88 IF RS17=3  RS19=3 RS18=0 RS1=16 RS2=3  C  T-T-T          3-10          
+  85 IF RS17=0  RS19=3 RS18=1 RS1=13 RS2=1  C  E-E-E      RS2:1-8                      
+  86 IF RS17=1  RS19=3 RS18=0 RS1=13 RS2=1  C  H-H-H          1-8           
+  87 IF RS17=2  RS19=4 RS18=0 RS1=7  RS2=6  C  U-U-U-U        6-10
+  88 IF RS17=3  RS19=3 RS18=0 RS1=16 RS2=5  C  T-T-T          3-10          
   C*********************************************************************************************
   90 IF RS18=2  GOTO 700          C PANT BON PRIX
   92 IF RS18=3  GOTO 800          C PANT BABOS

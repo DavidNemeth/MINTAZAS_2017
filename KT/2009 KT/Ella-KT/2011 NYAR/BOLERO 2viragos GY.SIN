@@ -33,7 +33,7 @@
 C**************************************************************************************
   54 C IF #100=13   RS17=50  C BABOS     BOLERO PANT SZELES  GYORSABB                              
   56 C IF #100=13   RS17=51  C BON PRIX  BOLERO PANT SZELES                                
-  58 C IF #100=30   RS17=52  C BABOS     BOLERO PANT KESKENY
+  58 C IF #100=86   RS17=52  C BABOS     BOLERO PANT KESKENY
   60 C IF #100=30   RS17=53  C BON PRIX  BOLERO PANT KESKENY
 C-------S-M----46*48----------------------------------
   62 C IF #100=44   RS17=50  C PANT                        KTML: 8'
@@ -47,10 +47,10 @@ C                                                     SUMM.:   22'
   74 C IF #100=32   RS17=1   C HHHH         50*50         
   76 C IF #100=52   RS17=6   C UUUUU 3/4    40*40         
 
-  78 C IF #100=30   RS17=50  C PANT                     20    10    15      
-  80  IF #100=6   RS17=0   C EEEEE        40*46        4     2     3 
-  82  IF #100=55   RS17=1   C HHHH         50*50        5     3(2)  4(1)   
-  84  IF #100=18   RS17=6   C UUUUU 3/4    40*40        8     4     6   
+  78  IF #100=20   RS17=50  C PANT                     20    10    15      
+  80  IF #100=24   RS17=0   C EEEEE        40*46        4     2     3 
+  82  IF #100=29   RS17=1   C HHHH         50*50        5     3(2)  4(1) MOGYI PKT ST=28 NPK=0.1 RS17=1 2017.07.18.  
+  84  IF #100=37   RS17=6   C UUUUU 3/4    40*40        8     4     6   
   C**********************************************SUMM:37****19****28**********
 
 C--------2XL----57*52CM-------------------------------------------------    

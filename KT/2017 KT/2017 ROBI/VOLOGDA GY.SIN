@@ -29,8 +29,8 @@ C999 <> S:R-R;  Y:2/5/6;NP4-4  T1 S1 S2
   10 NP4=12.4   C:LEVALASZTAS
   11 NP2=10.0               C BEKEZDESKT:NPK=0.2 WM%=10 
   12 NP3=12.8               C 1/1
-  13 NP5=13.6              C PASSZE   13.8
-  14 NP6=14.3              C PASSZE   14.5
+  13 NP5=14.0              C PASSZE   13.8
+  14 NP6=14.4              C PASSZE   14.5
   16 NP1=13.8              C MINTA HATUL 1  14.2 14.0 13.8      
   18 NP8=14.0   C14.4    C MINTA HATUL 2  14.8 14.6 14.4
   20 NP7=13.0              C MINTA ELOL            
@@ -46,24 +46,29 @@ C999 <> S:R-R;  Y:2/5/6;NP4-4  T1 S1 S2
   53 C IF #100=68  RS17=51	  C  8CM BOLERO PANT (SZELES)  BON PRIX  
   54 C IF #100=65  RS17=50	  C  4CM BOLERO PANT (KESKENY)  BON PRIX  4'50
   55 C IF #100=20  RS17=53	  C  4CM BOLERO PANT (KESKENY)  BABOS     4'20
-  56 C IF #100=30  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
-C-------------XL BOLERO 58*62--------------------------MIN:***VASALVA:******KESZEN:*****KG:********30DB:
-  57 C IF #100=62  RS17=0	   C  E-E-E                   25'     60*63                    0.28       10
-  58 C IF #100=75  RS17=1	   C  H-H-H                   27'     62*66         58*62      0.3        10
-  59 C IF #100=70  RS17=2	   C  U-U-U-U                 19'     50*45                    0.21       15
-  60 C IF #100=30  RS17=53	  C  KESKENY BOLERO PANT     4'                              0.035      30
-  61 C IF #100=56  RS17=0	   C  E-E-E                   
-  62 C IF #100=6   RS17=1	   C  H-H-H   ST=21 KT NYERS NPK=0.1                
-  63 C IF #100=3   RS17=2	   C  U-U-U-U                 
-  64  IF #100=12  RS17=53	  C  KESKENY BOLERO PANT ST=83 
+  56 C IF #100=42  RS17=54	  C  8CM BOLERO PANT (SZELES)  BABOS   
+C-------------XL BOLERO 58*62--------------------------MIN:***VASALVA:******KESZEN:***KG:********30DB:***12DB:***18DB:***15DB:
+  57  IF #100=42  RS17=0	   C  E-E-E                   25'     60*63                  0.28       10       4       6       5
+  58  IF #100=46  RS17=1	   C  H-H-H                   27'     62*66         58*62    0.3        10       4       6       5
+  59  IF #100=52  RS17=2	   C  U-U-U-U                 19'     50*45                  0.21       15       6       9       8(2)
+  60  IF #100=38  RS17=53	  C  KESKENY BOLERO PANT      4'                            0.035      30      12      18      15
+C                                                 -SUM:32'--------------------------- 0.33 ------65------26------39------33---
+  61  IF #100=16  RS17=0	   C  E-E-E                   
+  62  IF #100=20  RS17=1	   C  H-H-H                   
+  63  IF #100=26  RS17=2	   C  U-U-U-U
+  64  IF #100=12   RS17=53	  C  KESKENY BOLERO PANT ST=83 
+
+  65 C IF #100=80  RS17=1	   C  H-H-H   ST=21 KT NYERS NPK=0.1                
+  66 C IF #100=76  RS17=0	   C  E-E-E                   
+  67 C IF #100=72  RS17=2	   C  U-U-U-U
 C*********60*77 VAGY 60*90 KABAT************************SUM:30'* ************************ SUM:0.29 ***********
 C                                                                                           77CM:    90CM:
-  69C IF #100=105  RS17=53   C  KESKENY BOLERO PANT          4'                             0.034     0.051
-  70C IF #100=55  RS17=3	   C  T-T-T                       33'-36     60*80                0.381     0.45   38'-42'
-  71C IF #100=75  RS17=2	   C  U-U-U-U                     19'-21     45*45                0.21      0.21
+  69C IF #100=36  RS17=53   C  KESKENY BOLERO PANT          4'                             0.034     0.051
+  70C IF #100=11  RS17=3	   C  T-T-T                       33'-36     60*80                0.381     0.45   38'-42'
+  71C IF #100=20  RS17=2	   C  U-U-U-U                     19'-21     45*45                0.21      0.21
                                                                                        SUM:0.4       0.46   9'-42'
   73C IF #100=1   RS17=53	  C  KESKENY BOLERO PANT
-  74C IF #100=43    RS17=3	   C  T-T-T    
+  74C IF #100=21    RS17=3	   C  T-T-T    
   75C IF #100=33   RS17=2	   C  U-U-U-U 3/4 KT:ST=35
 
   77C	IF #100=36   RS17=7	   C  U-U-U-U ROVID                                       
@@ -79,7 +84,7 @@ C----------------------BOLERO:XL
 C---------------------KABAT:
   87 IF RS17=2  RS19=4 RS18=0 RS1=76   C 3/4U-U-U-U 42CM              3/4U:76-78(42CM)  HU:120(60CM)  
   88 IF RS17=7  RS19=4 RS18=0 RS1=50   C  R U-U-U-U 25CM               RU: 47-50(25CM)  HU:120(60CM)  
-  89 IF RS17=3  RS19=3 RS18=0 RS1=150  C  T-T-T   77CM 150-157    KABAT:150-155(77CM)  PULI:130(65CM)  NAGYKABAT:182(90CM)
+  89 IF RS17=3  RS19=3 RS18=0 RS1=155  C  T-T-T   77CM 150-157    KABAT:150-155(77CM)  PULI:130(65CM)  NAGYKABAT:182(90CM)
   C*********************************************************************************************
   90 IF RS18=2  GOTO 700          C PANT
   92 IF RS18=3  GOTO 800          C PANT
