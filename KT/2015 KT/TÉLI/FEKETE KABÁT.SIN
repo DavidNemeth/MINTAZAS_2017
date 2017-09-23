@@ -30,9 +30,9 @@ C  60*79!!           *1241=993            ZSV:10              1500              
 1C                                Y:4:  PASSZE:  FEKETE   3HB V.2HB 1PAMUT                  
 1C-----------------------+------------+----------------------------------------------------------------
 C
-C     UJKT:NPK=+0.2 WM%=25
-C      PKT:NPK=+0.1 WM%=0-10
-C       KT:NPK= 0
+C     UJKT:NPK=+0.2 WM%=25   +0.1 +0.2
+C      PKT:NPK=+0.1 WM%=0-10 -0.1 +0.1
+C       KT:NPK= 0             0   +0 
   10 C--------------------------------------------
   10 NP4=12.6    C:LEVALASZTAS  12.8            
   11 NP2=11.0    C:BEKEZDES     11.0
@@ -52,15 +52,15 @@ C--- M PODROS PANTTAL,5KISIDA----VAGY-------------------------------------------
   61 C IF #100=2   RS17=1         C  TTT1/2 M ELLA                55*72                     ML:38'        0.65
   62 C IF #100=2   RS17=5         C  UUUUU                                                  ML:33'        0.52  SUM:0.63
 C----L 60CM RT10 CIPPZARRAL, ZSEBBEL------------------ELLA---------------------------------------------------------
-  63  IF #100=48  RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'        0.60
-  64  IF #100=49  RS17=4         C  UUUU                                                   ML:31'        0.48
-  65  IF #100=36  RS17=6         C  3 KAPUCNI                                              ML:16'        0.30  SUM:0.80
-  66  IF #100=43  RS17=8         C  8 FERDE ZSEB                                           ML:12'        0.21
-  67  IF #100=47  RS17=7         C  3 GALLER                                                             0.16  SUM:0.76
+  63  IF #100=3   RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'39      0.60
+  64 C IF #100=16  RS17=4         C  UUUU                                                   ML:31'        0.48
+  65  IF #100=7  RS17=6         C  3 KAPUCNI                                              ML:16'        0.30  SUM:0.80
+  66  IF #100=13  RS17=8         C  8 FERDE ZSEB                                           ML:12'        0.21
+  67  IF #100=17  RS17=7         C  3 GALLER                                                             0.16  SUM:0.76
 C                                                                                      CIPPZAR TAKAROPANT:0.01
 
-  68  IF #100=19  RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'        0.60
-  69  IF #100=33  RS17=4         C  UUUU KT:08.24. FUST ST=1 NPK=0 WM%=0
+  68 C IF #100=19  RS17=2         C  TTT    L ELLA                62*72        65*75        ML:36'        0.60
+  69 C IF #100=33  RS17=4         C  UUUU KT:08.24. FUST ST=1 NPK=0 WM%=0
 C----80CM-ES KABAT PANTTAL, 5 KISIDA GOMBBAL KOCKA ZSEBBEL------------------------------------------------1LAP:----1DB:------
   71 C IF #100=20  RS17=3         C  TTT                          62*80      65*83          ML:39'        0.65    0.43
   72 C IF #100=15  RS17=4         C  UUUU                                                   ML:31'        0.48    0.24
@@ -140,8 +140,11 @@ C*******************************************************************************
  345 Y:2/5;
  348 NP6-6
 
+C1502 A.
+C1504 .A
+C1506 .A
+C1508 A.
  356 JA1=1502(1502-1508); C LEGJOBB
-
  400 RBEG*RS2
  402 << S:<1->*A-./I.-A;     VU              S1 S2
  404 >> S:<1->*A-./I.-A;     VU              S1 S2

@@ -5,7 +5,7 @@
  C -AZSUR 2 PASSZE 1/1 BEKEZDESSEL (ELSO TUAGYON)
 
 C !!! FORDITVA PLATIROZVA!!! PAMUT A LYUKBA!!!
-
+y  
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C MERET: I FONAL: I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
 C--------+--------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
@@ -30,9 +30,9 @@ C    HB:TAMAS        1HB NYERS      1HB FEHER      1HB FEKETE     1HB FUST      
 C----------------------------------------------------------------------------------------------------------------
 C KT :WM%=0         -0.2--0.3           0                            0.0               0            -0.2
 C------------------------------------------------------------------------------------------------------------------
-CPKT :WM%=0         -0.2--0.3           0              0.1           0.0                               -0.1
+CPKT :WM%=0         -0.2--0.3           0             -0.1!          -0.1                               -0.1
 C------------------------------------------------------------------------------------------------------------------
-C UJ :WM%=15?          -0.2             0.1                           0.1                            0
+C UJ :WM%=15?          -0.2             0.1!                           0.1             0.1!             0
 C-------------------------------------------------------------------------------------------------------------------
 
 C !!! PLATIROZAS:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -55,7 +55,7 @@ C A PANTOT AZ UJKT NAGYON CSIKOZZA!!!
 
    C**********  2*LUSI + 1*TX **********************************
   53 C IF #100=67 RS17=52        C 3DB 2SZVCS NYAK
-  54 C IF #100=90 RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  54 C IF #100=90 RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                              0.05KG  ML: 3' GY: 3'
                                  C 2TUS LYUK 24 V.28-AS GOMB (MINDKETTO BELEMEGY, HA HB-VAL KOTOM
                   C XXL-XL:7LYUK
                   C    M-L:6LYUK   
@@ -63,37 +63,39 @@ C-------S:49*59 ----------------------------------------------------------------
   55 C IF #100=    RS17=0         C T-T-T-T       S                    0.42KG  ML:30' GY:27'
   56 C IF #100=12  RS17=7         C HU 5                         
 C-------M:51*61--------SPANYOL:M------------------------------------------------------------------------------------------
-  57 C IF #100=7  RS17=1          C 1/2-T-T-T     M  SPANYOL M  (2016.06.24:50FEHER+50NYERS HU)  27'
-  58 C IF #100=22  RS17=9         C RU 5                         
+  C  NYERS UJ ST=18 NPK=0.1
+  57  IF #100=18  RS17=1         C 1/2-T-T-T     M  SPANYOL M  (2016.06.24:50FEHER+50NYERS HU)  31'  0.38KG 
+  58  IF #100=6   RS17=9         C RU 5                                                              0.18KG
+  59  IF #100=12  RS17=7         C HU 5                  GARNITURA SUM:.71KG 57' 750FT/O        28'  0.35KG   
 C-------L:53*63--------------------------------------------------------------------------------------------------------
-  59 C IF #100=19  RS17=2         C 1/2-T-T-T     L  ..........07.27.: UJGEP FUST FORD PLAT ST=19 WM%=15 NPK=0.1...........
-  60 C IF #100=105 RS17=9         C RU 5            ...................................................................
+  60 C IF #100=19  RS17=2         C 1/2-T-T-T     L  ..........07.27.: UJGEP FUST FORD PLAT ST=19 WM%=15 NPK=0.1...........
+  61 C IF #100=105 RS17=9         C RU 5            ...................................................................
 
-  61 C IF #100=38  RS17=2         C 1/2-T-T-T     L                               
-  62 C IF #100=35  RS17=7         C HU 5                         
+  62 C IF #100=38  RS17=2         C 1/2-T-T-T     L                               
+  63 C IF #100=35  RS17=7         C HU 5                         
 C-------XL:55*65-------SPANYOL:L--------------------------------------------------------------------------------------
-  63CC  IF #100=70 RS17=3         C T-T-T        XL  SPANYOL L                                    27'
-  64CC  IF #100=28 RS17=9         C RU 5                                                          23'
+  64 C IF #100=70  RS17=3         C T-T-T        XL  SPANYOL L                                    27'
+  65 C IF #100=28  RS17=9         C RU 5                                                          23'
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC TIMI:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-  65 C IF #100=30  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
-  66 C IF #100=33  RS17=3         C T-T-T        XL  SPANYOL L  (2016.06.24:50FEHER+50NYERS HU)  27'
-  67C  IF #100=12  RS17=7         C HU 5                                                          23'
+  66 C IF #100=30  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  67 C IF #100=33  RS17=3         C T-T-T        XL  SPANYOL L  (2016.06.24:50FEHER+50NYERS HU)  27'
+  68 C IF #100=12  RS17=7         C HU 5                                                          23'
 C-------XXL:57*67--------------------------------------------------------------------------------------------------------
-  68 C IF #100=12  RS17=4         C T-T-T       XXL    
-  69 C IF #100=71  RS17=8         C RU 4                                                          12'
-  70 C IF #100=29 RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  69 C IF #100=12  RS17=4         C T-T-T       XXL    
+  70 C IF #100=71  RS17=8         C RU 4                                                          12'
+  71 C IF #100=29  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
 
-  71 C IF #100=12  RS17=4         C T-T-T       XXL    
-  72 C IF #100=5   RS17=6         C HU 4                                                          23'
-  73 C IF #100=10  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  72 C IF #100=12  RS17=4         C T-T-T       XXL    
+  73 C IF #100=5   RS17=6         C HU 4                                                          23'
+  74 C IF #100=10  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
 C-------XXXL:59*69--------------------------------------------------------------------------------------------------------
-  76 C IF #100=93  RS17=5         C T-T-T      XXXL    
-  77 C IF #100=84  RS17=8         C RU 4                                                          23'
-  78 C IF #100=108 RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  75 C IF #100=93  RS17=5         C T-T-T      XXXL    
+  76 C IF #100=84  RS17=8         C RU 4                                                          23'
+  77 C IF #100=108 RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
 
-  79 C IF #100=53  RS17=5         C T-T-T      XXXL    
-  80 C IF #100=19  RS17=6         C HU 4                                                          12'
-  81 C IF #100=64  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
+  78 C IF #100=53  RS17=5         C T-T-T      XXXL    
+  79 C IF #100=19  RS17=6         C HU 4                                                          12'
+  80 C IF #100=64  RS17=50        C KK SLAG ZSAKOS PIKO   (UJKT CSIKOZZA)                       0.05KG  ML: 3' GY: 3'
 C---------------------------------------------------------------------------------------------------------------
 
   86 C IF #100=   RS17=6         C HU 4                                                          23'

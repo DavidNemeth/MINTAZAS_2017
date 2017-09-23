@@ -1,11 +1,10 @@
-
-C V NYAKU PULOVER+MELLENY
-
+C KAPELLA
+C V NYAKU PULOVER+MELLENY GARNITURA
  C KARDIGAN 2015.2
    1 C PASSZE: AZSUR 2B  - PARALELOGRAMMA ALAKU ---- 1 JAC.SOR
      C MINTA: 1SZV JAC
      C H-U:1.5SZV KREP
-     C JAC:NEMET/2006/NEMET GARNITURA !!! NEM SZABAD KITOMORITENI!!!
+     C JAC:NEMET/2016/NEMET KAPELLA GARNITURA !!! NEM SZABAD KITOMORITENI!!!
 C PAMUT:680  TX:1550  SUM:930
 C--------+---------+----------+---------+----------+-------+-------+---------+-----+------+-------+-----+
 C MERET: I FONAL:  I SULY*FT: I VARRAS: I KELLLEK: I  GOZ  I SUMM: I ELADAS: I H:  I IDO: I FT/O: I %:  I
@@ -37,21 +36,21 @@ C-------------------------+-----------------------------------------------------
   52 << S:D.I-DI./DI.-D.I;            Y:5/2;      NP4-4  V0 VU         S1 S2
 
 C**********PANT****************************************************************************************************************
-  53 C IF #100=27   RS17=52        C SLAG PIKO PANT GOMBLYUK NELKUL    2'3       0.045
-  54 C IF #100=31   RS17=40        C 2SZVCS NYAK G ????? 2 VAGY 3????DB V NYAK        1'50      0.03
+  53 C IF #100=26   RS17=52        C SLAG PIKO PANT GOMBLYUK NELKUL    2'3       0.045
+  54  IF #100=4   RS17=40        C 2SZVCS NYAK G ????? 2 VAGY 3????DB V NYAK        1'50      0.03
   55 C IF #100=15   RS17=42        C 2SZVCS NYAK G NELKUL             1'50
 C******************* 581TU *****************************KG*********************KG************************************************
-  56 C IF #100=7   RS17=0         C T EEE     30'                             0.39
-  57 C IF #100=4   RS17=1         C T HHH                                     0.39
-  58  IF #100=6   RS17=6         C HUUUU    H22' R13'                        0.19
-  59  IF #100=14    RS17=2         C M EEE     32'                             0.38
-  60  IF #100=10    RS17=3         C M HHH                                     0.40
+  56 C IF #100=21  RS17=0         C T EEE     30'                             0.39
+  57 C IF #100=20  RS17=1         C T HHH                                     0.39
+  58 C IF #100=11  RS17=6         C HUUUU    H22' R13'                        0.19
+  59 C IF #100=19    RS17=2         C M EEE     32'                             0.38
+  60 C IF #100=18   RS17=3         C M HHH                                     0.40
                                                                        SUM:RU:0.70 HU:0.76
-  63C  IF #100=46   RS17=0         C T EEE     30'
-  64C  IF #100=45   RS17=1         C T HHH  !!!!!!!!!!!!!! 2016.10.26.:KT MOGYORO ST=44 RS17=1 NPK=0.1 !!!!!!!!!!!!
-  65C  IF #100=14   RS17=4         C RUUUU     
-  66C  IF #100=44   RS17=2         C M EEE     
-  67C  IF #100=43   RS17=3         C M HHH     
+  63 C IF #100=17  RS17=0         C T EEE     30'
+  64 C IF #100=14  RS17=1         C T HHH  !!!!!!!!!!!!!! 2016.10.26.:KT MOGYORO ST=44 RS17=1 NPK=0.1 !!!!!!!!!!!!
+  65 C IF #100=14   RS17=4         C RUUUU     
+  66 C IF #100=6   RS17=2         C M EEE     NYERS:ST=6
+  67 C IF #100=3   RS17=3         C M HHH     
 
   74 C IF #100=10   RS17=4         C RUUUU     
 
@@ -68,7 +67,7 @@ C --------------------------------6SOR-----6SOR-----8SOR----6SOR----------------
  104 IF RS17=1  RS19=6   RS15=2   RS1=8    RS2=0    RS3=27  RS4=0    C TUNIKA H-H-H  8/0/26/0 - 8/0/29/0   
  105 IF RS17=6  RS19=4   RS15=2   RS1=3    RS2=0    RS3=26  RS4=0    C H U-U-U-U     3/0/25/0 - 3/0/27/0    
  106 IF RS17=4  RS19=4   RS15=2   RS1=3    RS2=0    RS3=12  RS4=0    C R U-U-U-U                
- 110 IF RS17=2  RS19=3   RS15=0   RS1=50   RS2=0    RS3=0   RS4=0    C MELLENY E-E-E 48/0/0/0 - 51/0/0/0      
+ 110 IF RS17=2  RS19=3   RS15=0   RS1=49   RS2=0    RS3=0   RS4=0    C MELLENY E-E-E 48/0/0/0 - 51/0/0/0      
  112 IF RS17=3  RS19=3   RS15=2   RS1=8    RS2=0    RS3=29  RS4=0    C MELLENY H-H-H 8/0/27/0 - 8/0/30/0          
  JAVITAS- TUNIKA E-H-U, MELLENY E-H:
  114 IF RS17=10 RS19=10  RS15=0   RS1=8    RS2=18   RS3=0   RS4=23   C T-T-T JAVITAS - TUKIOSZTAS BEALLITASA:148.SOR
